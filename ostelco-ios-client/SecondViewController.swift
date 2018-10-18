@@ -21,5 +21,8 @@ class SecondViewController: UIViewController {
     }
 
 
+    @IBAction func logout(_ sender: Any) {
+        Auth.logout()
+    }
 }
 
