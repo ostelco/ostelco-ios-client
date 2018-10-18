@@ -14,7 +14,6 @@ class Auth {
     
     static func login(accessToken: String) {
         self.keychain.setString(accessToken, forKey: "access_token")
-        
         UserDefaults.standard.set(true, forKey: "status")
         Switcher.updateRootVC()
     }

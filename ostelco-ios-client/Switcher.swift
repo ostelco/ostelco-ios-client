@@ -13,6 +13,7 @@ class Switcher {
     
     static func updateRootVC(){
         
+        // TODO: Verify that access token is valid
         let status = UserDefaults.standard.bool(forKey: "status")
         var rootVC : UIViewController?
         
