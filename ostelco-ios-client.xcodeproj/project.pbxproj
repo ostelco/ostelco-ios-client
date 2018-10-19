@@ -21,6 +21,8 @@
 		0448818E21792DF300F59758 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0448818D21792DF300F59758 /* Auth0.plist */; };
 		044881902179359700F59758 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
+		04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; };
+		04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +34,7 @@
 			files = (
 				0448818A21792D1100F59758 /* SimpleKeychain.framework in Embed Frameworks */,
 				0448818621792D0500F59758 /* Auth0.framework in Embed Frameworks */,
+				04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +57,8 @@
 		0448818D21792DF300F59758 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		0448818F2179359700F59758 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		04488193217A8CFE00F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		04488195217A8D0900F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 			files = (
 				0448818921792D1100F59758 /* SimpleKeychain.framework in Frameworks */,
 				044881812179292200F59758 /* Auth0.framework in Frameworks */,
+				04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +78,7 @@
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
+				04488195217A8D0900F59758 /* RxSwift.framework */,
 				0448818821792D1100F59758 /* SimpleKeychain.framework */,
 				0448818421792D0500F59758 /* Auth0.framework */,
 				04488168217924B700F59758 /* ostelco-ios-client */,
@@ -109,6 +116,7 @@
 		0448817F2179292200F59758 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04488193217A8CFE00F59758 /* RxSwift.framework */,
 				044881802179292200F59758 /* Auth0.framework */,
 			);
 			name = Frameworks;
@@ -193,11 +201,13 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Auth0.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SimpleKeychain.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Auth0.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SimpleKeychain.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class SecondViewController: UIViewController {
 
@@ -22,7 +23,8 @@ class SecondViewController: UIViewController {
 
 
     @IBAction func logout(_ sender: Any) {
-        Auth.logout()
+        os_log("Logout button clicked")
+        sharedAuth.logout()
     }
 }
 

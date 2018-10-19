@@ -29,11 +29,15 @@
   - (RxSwift)[https://github.com/ReactiveX/RxSwift]
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
 - How to structure files
+- Describe how to do logging and activity tracing for logging in async workloads
 
 
 # Resources
 
 - Choosing dependency manager: [Carthage or Cocoapods: That is the question](https://medium.com/xcblog/carthage-or-cocoapods-that-is-the-question-1074edaafbcb)
 - Simple login insipration: [Swift Login / Logout Navigation Process](https://medium.com/@paul.allies/ios-swift4-login-logout-branching-4cdbc1f51e2c)
-- Auth0 login setup: [IOS Swift: Login] (https://auth0.com/docs/quickstart/native/ios-swift/00-login)
+- Auth0 login setup: [IOS Swift: User Sessions] (https://auth0.com/docs/quickstart/native/ios-swift/03-user-sessions)
 - Auth0 browser vs native flow pro con: [Browser-Based vs. Native Login Flows on Mobile Device](https://auth0.com/docs/design/browser-based-vs-native-experience-on-mobile)
+- Logging is Swift: 
+  - [Unified Logging and Activity Tracing](https://medium.com/@abjurato/unified-logging-and-activity-tracing-aa77ffe9fb53)
+  - [Migrating to Unified Logging, Swift Edition](https://www.bignerdranch.com/blog/migrating-to-unified-logging-swift-edition/)
