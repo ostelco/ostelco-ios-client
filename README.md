@@ -28,6 +28,7 @@
 - Decide on how to handle state management
   - (RxSwift)[https://github.com/ReactiveX/RxSwift]
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
+- How to structure files
 
 
 # Resources
