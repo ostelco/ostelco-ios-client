@@ -26,7 +26,6 @@
       - auth0 webview closes automatically, do nothing else
 # TODO:
 - Decide on how to handle state management
-  - (RxSwift)[https://github.com/ReactiveX/RxSwift]
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
 - How to structure files
 - Describe how to do logging and activity tracing for logging in async workloads
