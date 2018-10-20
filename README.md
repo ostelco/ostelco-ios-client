@@ -29,7 +29,37 @@
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
 - How to structure files
 - Describe how to do logging and activity tracing for logging in async workloads
+- Decide on crash reporting tool
 
+# Crash Reporting Tool
+
+## Requirements for crash reporting tool
+- capture crashes
+- capture install errors
+- bug reporting in app with one or more of the following:
+  - screenshot
+  - replay screens up until crash
+  - possible to draw on screenshot to highlight something
+  - send text with the bug report
+  - send device logs with bug report
+- send device logs with crash
+- possible to communicate back with user in app or other means
+- integrates with other customer service portals (zendesk, freshdesk, ++)
+- pricing?
+- integrates with ios and android?
+  - doesn't need to work on all platforms if we integrate with customer service portal
+- abilitiy to manually send errors
+- MOST IMPORTANT enough information when:
+  - crash occurs
+  - user reports bug
+- shake to open and manually open
+- configurable in app ui for bug reporting etc
+- in app onboarding screens to tell users about the tool
+
+## [Buddybuild](https://docs.buddybuild.com/)
+## [Bugsee](https://www.bugsee.com/)
+## [Instabug](https://instabug.com/)
+## [Sentry](https://sentry.io/welcome/)
 
 # Resources
 
@@ -40,3 +70,5 @@
 - Logging is Swift: 
   - [Unified Logging and Activity Tracing](https://medium.com/@abjurato/unified-logging-and-activity-tracing-aa77ffe9fb53)
   - [Migrating to Unified Logging, Swift Edition](https://www.bignerdranch.com/blog/migrating-to-unified-logging-swift-edition/)
+- Crash Reporting Tools:
+  - [Best iOS crash reporting tool)[https://www.crashprobe.com/ios/]
