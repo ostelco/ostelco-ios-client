@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		0448816C217924B700F59758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
-		0448816E217924B700F59758 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SecondViewController.swift */; };
+		0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
 		04488171217924B700F59758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		04488173217924B800F59758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		04488176217924B800F59758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04488174217924B800F59758 /* LaunchScreen.storyboard */; };
@@ -50,7 +50,7 @@
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0448816B217924B700F59758 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0448816D217924B700F59758 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0448816D217924B700F59758 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488175217924B800F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			children = (
 				04488169217924B700F59758 /* AppDelegate.swift */,
 				0448816B217924B700F59758 /* HomeViewController.swift */,
-				0448816D217924B700F59758 /* SecondViewController.swift */,
+				0448816D217924B700F59758 /* SettingsTableViewController.swift */,
 				0448816F217924B700F59758 /* Main.storyboard */,
 				04488172217924B800F59758 /* Assets.xcassets */,
 				04488174217924B800F59758 /* LaunchScreen.storyboard */,
@@ -251,7 +251,7 @@
 				044881902179359700F59758 /* Switcher.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
-				0448816E217924B700F59758 /* SecondViewController.swift in Sources */,
+				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
