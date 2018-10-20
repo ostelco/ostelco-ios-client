@@ -23,6 +23,9 @@
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; };
 		04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
+		0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; };
+		0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +36,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0448818A21792D1100F59758 /* SimpleKeychain.framework in Embed Frameworks */,
+				0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */,
 				0448818621792D0500F59758 /* Auth0.framework in Embed Frameworks */,
 				04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */,
 			);
@@ -59,6 +63,8 @@
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		04488193217A8CFE00F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		04488195217A8D0900F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
+		0448819A217B447800F59758 /* SiestaUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SiestaUI.framework; path = Carthage/Build/iOS/SiestaUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0448818921792D1100F59758 /* SimpleKeychain.framework in Frameworks */,
+				0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */,
 				044881812179292200F59758 /* Auth0.framework in Frameworks */,
 				04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */,
 			);
@@ -78,6 +85,7 @@
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
+				0448819A217B447800F59758 /* SiestaUI.framework */,
 				04488195217A8D0900F59758 /* RxSwift.framework */,
 				0448818821792D1100F59758 /* SimpleKeychain.framework */,
 				0448818421792D0500F59758 /* Auth0.framework */,
@@ -109,6 +117,7 @@
 				0448818D21792DF300F59758 /* Auth0.plist */,
 				0448818F2179359700F59758 /* Switcher.swift */,
 				04488191217938A300F59758 /* Auth.swift */,
+				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -202,12 +211,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Auth0.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SimpleKeychain.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Auth0.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SimpleKeychain.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -236,6 +247,7 @@
 			files = (
 				044881902179359700F59758 /* Switcher.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
+				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				0448816E217924B700F59758 /* SecondViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,

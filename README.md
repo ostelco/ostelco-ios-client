@@ -72,3 +72,5 @@
   - [Migrating to Unified Logging, Swift Edition](https://www.bignerdranch.com/blog/migrating-to-unified-logging-swift-edition/)
 - Crash Reporting Tools:
   - [Best iOS crash reporting tool)[https://www.crashprobe.com/ios/]
+- REST API clients:
+  - [Siesta](https://bustoutsolutions.github.io/siesta/)

@@ -43,10 +43,11 @@ class Auth {
                         // Handle the error
                         os_log("Failed to login with auth0, got error: %{public}@", "\(error)")
                         observer.on(.error(error))
-                    case .success(let credentials):
+                    case .success(let credentials):    
                         os_log("Store credentials with auth0 credentials manager.")
                         self.credentialsManager.store(credentials: credentials)
                         os_log("Successfully logged in with auth0, credentials: %{private}@", "\(credentials)")
+                        
                         observer.on(.completed)
                     }
             }

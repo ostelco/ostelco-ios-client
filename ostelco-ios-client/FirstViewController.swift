@@ -10,6 +10,11 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ostelcoAPI.bundles.loadIfNeeded()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
