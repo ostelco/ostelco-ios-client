@@ -29,6 +29,10 @@
 		0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
 		044881A2217B896800F59758 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
+		044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */; };
+		044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
+		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
+		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +75,10 @@
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 		0448819F217B7CA100F59758 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
+		044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
+		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +135,10 @@
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 				0448819F217B7CA100F59758 /* ProfileTableViewController.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
+				044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */,
+				044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */,
+				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
+				044881A9217BA35C00F59758 /* ProductModel.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -255,15 +267,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				044881902179359700F59758 /* Switcher.swift in Sources */,
+				044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
+				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
+				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
+				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

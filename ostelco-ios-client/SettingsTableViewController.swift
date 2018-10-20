@@ -28,15 +28,13 @@ class SettingsTableViewController: UITableViewController {
         os_log("Row clicked: %{public}@", "\(rowIndex)")
         switch (rowIndex) {
         case 0:
-            os_log("Navigate to view controller with identifier: %{public}@", "profileTableVC")
             self.navigateToControllerByIdentifier(identifier: "profileTableVC")
             break
         case 1:
-        // TODO: open terms and conditions
             self.openURL()
             break
         case 2:
-        // TODO: open purchase history
+            self.navigateToControllerByIdentifier(identifier: "purchaseHistoryVC")
             break
         case 3:
             self.logout()
@@ -46,7 +44,8 @@ class SettingsTableViewController: UITableViewController {
     }
 
     private func navigateToControllerByIdentifier(identifier: String) {
-        if let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) as? ProfileTableViewController {
+        os_log("Navigate to view controller with identifier: %{public}@", identifier)
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) as? UIViewController {
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
