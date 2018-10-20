@@ -11,17 +11,20 @@ import Foundation
 struct PresentationModel: Codable {
     let label: String
     let price: String
+    let isDefault: String?
     
     enum CodingKeys: String, CodingKey {
         case label = "productLabel"
         case price = "priceLabel"
+        case isDefault
     }
 }
 
 struct ProductModel: Codable {
+    let sku: String
     let presentation: PresentationModel
     
     enum CodingKeys: String, CodingKey {
-        case presentation
+        case sku, presentation
     }
 }

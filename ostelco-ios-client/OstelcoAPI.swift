@@ -53,11 +53,16 @@ class OstelcoAPI: Service {
         self.configureTransformer("/purchases") {
             try jsonDecoder.decode([PurchaseModel].self, from: $0.content)
         }
+        
+        self.configureTransformer("/products") {
+            try jsonDecoder.decode([ProductModel].self, from: $0.content)
+        }
     }
     
     var bundles: Resource { return resource("/bundles") }
     var profile: Resource { return resource("/profile") }
     var purchases: Resource { return resource("/purchases") }
+    var products: Resource { return resource("/products") }
     
     var authToken: String? {
         didSet {
