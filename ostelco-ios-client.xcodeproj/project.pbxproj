@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		0448816C217924B700F59758 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* FirstViewController.swift */; };
+		0448816C217924B700F59758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
 		0448816E217924B700F59758 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SecondViewController.swift */; };
 		04488171217924B700F59758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		04488173217924B800F59758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -26,6 +26,7 @@
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; };
 		0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,7 +49,7 @@
 /* Begin PBXFileReference section */
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0448816B217924B700F59758 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		0448816B217924B700F59758 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0448816D217924B700F59758 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		04488195217A8D0900F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
 		0448819A217B447800F59758 /* SiestaUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SiestaUI.framework; path = Carthage/Build/iOS/SiestaUI.framework; sourceTree = "<group>"; };
+		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				04488169217924B700F59758 /* AppDelegate.swift */,
-				0448816B217924B700F59758 /* FirstViewController.swift */,
+				0448816B217924B700F59758 /* HomeViewController.swift */,
 				0448816D217924B700F59758 /* SecondViewController.swift */,
 				0448816F217924B700F59758 /* Main.storyboard */,
 				04488172217924B800F59758 /* Assets.xcassets */,
@@ -118,6 +120,7 @@
 				0448818F2179359700F59758 /* Switcher.swift */,
 				04488191217938A300F59758 /* Auth.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
+				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -251,7 +254,8 @@
 				0448816E217924B700F59758 /* SecondViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
-				0448816C217924B700F59758 /* FirstViewController.swift in Sources */,
+				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
+				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

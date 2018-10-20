@@ -7,15 +7,22 @@
 //
 
 import Siesta
+import Foundation
 
 let ostelcoAPI = OstelcoAPI()
 
 class OstelcoAPI: Service {
-    init() {
+    
+    fileprivate init() {
         #if DEBUG
             SiestaLog.Category.enabled = .all
         #endif
-        super.init(baseURL: "https://api.ostelco.org")
+        
+        super.init(
+            baseURL: "https://api.ostelco.org",
+            standardTransformers: [.text, .image]
+        )
+        
         configure {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
@@ -28,6 +35,15 @@ class OstelcoAPI: Service {
                     }
                 }
             }
+        }
+        
+        let jsonDecoder = JSONDecoder()
+        self.configureTransformer("/bundles") {
+            try jsonDecoder.decode([BundleModel].self, from: $0.content)
+        }
+        
+        self.configure("/bundles") {
+            $0.expirationTime = 5
         }
     }
     
