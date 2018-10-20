@@ -24,9 +24,11 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: replace row index with string identifier so you don't need to change both ui and code if you change the existing order of cells
         let rowIndex = (indexPath as NSIndexPath).row
+        os_log("Row clicked: %{public}@", "\(rowIndex)")
         switch (rowIndex) {
         case 0:
-        // TODO: open personal details
+            os_log("Navigate to view controller with identifier: %{public}@", "profileTableVC")
+            self.navigateToControllerByIdentifier(identifier: "profileTableVC")
             break
         case 1:
         // TODO: open terms and conditions
@@ -41,6 +43,15 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
+    private func navigateToControllerByIdentifier(identifier: String) {
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) as? ProfileTableViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
+        }
+        
+    }
+    
     func logout() {
         os_log("Logout button clicked")
         sharedAuth.logout()
