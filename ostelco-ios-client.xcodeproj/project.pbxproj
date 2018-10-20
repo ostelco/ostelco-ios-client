@@ -28,6 +28,7 @@
 		0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
+		044881A2217B896800F59758 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		0448819A217B447800F59758 /* SiestaUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SiestaUI.framework; path = Carthage/Build/iOS/SiestaUI.framework; sourceTree = "<group>"; };
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 		0448819F217B7CA100F59758 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 				0448819F217B7CA100F59758 /* ProfileTableViewController.swift */,
+				044881A1217B896800F59758 /* ProfileModel.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
+				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,

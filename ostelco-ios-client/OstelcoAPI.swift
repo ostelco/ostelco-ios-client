@@ -45,9 +45,14 @@ class OstelcoAPI: Service {
         self.configure("/bundles") {
             $0.expirationTime = 5
         }
+        
+        self.configureTransformer("/profile") {
+            try jsonDecoder.decode(ProfileModel.self, from: $0.content)
+        }
     }
     
     var bundles: Resource { return resource("/bundles") }
+    var profile: Resource { return resource("/profile") }
     
     var authToken: String? {
         didSet {
