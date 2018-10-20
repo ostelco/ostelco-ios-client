@@ -8,6 +8,7 @@
 
 import UIKit
 import os
+import SafariServices
 
 class SettingsTableViewController: UITableViewController {
     
@@ -32,6 +33,7 @@ class SettingsTableViewController: UITableViewController {
             break
         case 1:
         // TODO: open terms and conditions
+            self.openURL()
             break
         case 2:
         // TODO: open purchase history
@@ -50,6 +52,11 @@ class SettingsTableViewController: UITableViewController {
             }
         }
         
+    }
+    
+    private func openURL() {
+        let safariVC = SFSafariViewController(url: URL(string: "https://docs.google.com/document/d/1sO6M79QeAbf6IJT3X06nRC-fBCnvssEWuYliYw4lyMU/edit?usp=sharing")!)
+        self.present(safariVC, animated: true, completion: nil)
     }
     
     func logout() {
