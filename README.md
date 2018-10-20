@@ -27,6 +27,7 @@
 # TODO:
 - Decide on how to handle state management
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
+  - (Siesta)[https://bustoutsolutions.github.io/siesta/]
 - How to structure files
 - Describe how to do logging and activity tracing for logging in async workloads
 - Decide on crash reporting tool
