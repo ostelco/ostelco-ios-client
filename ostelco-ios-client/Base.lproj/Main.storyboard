@@ -19,22 +19,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-NJ-kyW">
-                                <rect key="frame" x="168" y="318" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using this app you agree to the terms &amp; conditions" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RId-2Y-HSb">
+                                <rect key="frame" x="87.5" y="606" width="200" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="3MQ-WQ-CZk"/>
+                                    <constraint firstAttribute="width" constant="200" id="PnJ-gT-h4d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.17645144462585449" green="0.17648285627365112" blue="0.17644456028938293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We believe that staying connected should be easy and affordable." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wg-Vh-FQm">
+                                <rect key="frame" x="87.5" y="301.5" width="200" height="64.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="nR7-CD-1zd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-NJ-kyW">
+                                <rect key="frame" x="37" y="514" width="300" height="60"/>
+                                <color key="backgroundColor" red="0.99681323766708374" green="0.99199360609054565" blue="0.99627393484115601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="YmD-78-P1d"/>
+                                    <constraint firstAttribute="width" constant="300" id="Z1x-Wa-h6g"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="60" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="0.0" height="1"/>
+                                <state key="normal" title="Sign in with Google" image="googleLogo">
+                                    <color key="titleColor" red="0.17645144462585449" green="0.17648285627365112" blue="0.17644456028938293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="login:" destination="NVb-cj-Zcz" eventType="touchUpInside" id="j2t-Nt-iub"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7wg-Vh-FQm" firstAttribute="centerY" secondItem="ewV-L2-nVR" secondAttribute="centerY" id="073-uR-Igm"/>
+                            <constraint firstItem="RId-2Y-HSb" firstAttribute="top" secondItem="Eu4-NJ-kyW" secondAttribute="bottom" constant="32" id="JBt-wJ-bi2"/>
+                            <constraint firstItem="7wg-Vh-FQm" firstAttribute="centerX" secondItem="ewV-L2-nVR" secondAttribute="centerX" id="Oco-WE-liL"/>
+                            <constraint firstItem="iQR-SK-i7E" firstAttribute="bottom" secondItem="RId-2Y-HSb" secondAttribute="bottom" constant="32" id="bYo-9n-1Ns"/>
+                            <constraint firstItem="Eu4-NJ-kyW" firstAttribute="centerX" secondItem="iQR-SK-i7E" secondAttribute="centerX" id="g6H-Tj-PoO"/>
+                            <constraint firstItem="RId-2Y-HSb" firstAttribute="centerX" secondItem="ewV-L2-nVR" secondAttribute="centerX" id="sqA-ui-Xgz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iQR-SK-i7E"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="Eu4-NJ-kyW" id="RTH-2J-aM5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohd-rZ-Uw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110" y="-828"/>
+            <point key="canvasLocation" x="-111.2" y="-828.03598200899557"/>
         </scene>
         <!--Home-->
         <scene sceneID="hNz-n2-bh7">
@@ -456,4 +494,7 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="googleLogo" width="50" height="50"/>
+    </resources>
 </document>

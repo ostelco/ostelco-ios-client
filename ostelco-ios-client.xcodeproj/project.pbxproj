@@ -33,6 +33,9 @@
 		044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
+		044881AC217BC18600F59758 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044881AB217BC18500F59758 /* Stripe.framework */; };
+		044881AD217BC18600F59758 /* Stripe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 044881AB217BC18500F59758 /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +48,7 @@
 				0448818A21792D1100F59758 /* SimpleKeychain.framework in Embed Frameworks */,
 				0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */,
 				0448818621792D0500F59758 /* Auth0.framework in Embed Frameworks */,
+				044881AD217BC18600F59758 /* Stripe.framework in Embed Frameworks */,
 				04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -79,6 +83,8 @@
 		044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		044881AB217BC18500F59758 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 				0448818921792D1100F59758 /* SimpleKeychain.framework in Frameworks */,
 				0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */,
 				044881812179292200F59758 /* Auth0.framework in Frameworks */,
+				044881AC217BC18600F59758 /* Stripe.framework in Frameworks */,
 				04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +106,7 @@
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
+				044881AB217BC18500F59758 /* Stripe.framework */,
 				0448819A217B447800F59758 /* SiestaUI.framework */,
 				04488195217A8D0900F59758 /* RxSwift.framework */,
 				0448818821792D1100F59758 /* SimpleKeychain.framework */,
@@ -139,6 +147,7 @@
 				044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
+				044881AE217BFBD800F59758 /* UIHelpers.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SimpleKeychain.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -240,6 +250,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SimpleKeychain.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -272,6 +283,7 @@
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
+				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,

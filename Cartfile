@@ -1,4 +1,4 @@
 github "auth0/Auth0.swift" ~> 1.13
 github "ReactiveX/RxSwift" ~> 4.0
 github "bustoutsolutions/siesta" ~> 1.0
-
+github "stripe/stripe-ios"

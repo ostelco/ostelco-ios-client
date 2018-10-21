@@ -11,6 +11,15 @@ import os
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        loginButton.layer.cornerRadius = 15.0
+        loginButton.addShadow(offset: CGSize.init(width: 0, height: 0), color: UIColor.black, radius: 15.0, opacity: 0.16)
+    }
+    
     @IBAction func login(_ sender: Any) {
         os_log("Login button clicked")
         sharedAuth.loginWithAuth0().subscribe(
