@@ -10,6 +10,7 @@ import UIKit
 import Siesta
 import SiestaUI
 import Foundation
+import os
 
 class HomeViewController: UIViewController, ResourceObserver {
 
@@ -101,7 +102,42 @@ class HomeViewController: UIViewController, ResourceObserver {
     }
 
     @IBAction func topUp(_ sender: Any) {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        ostelcoAPI.products.child(self.product!.sku).request(.post)
+            .onProgress({ progress in
+                print("Progress \(progress)")
+            })
+            .onSuccess({ result in
+                os_log("Successfully bought a product %{public}@", "\(result)")
+                ostelcoAPI.purchases.invalidate()
+                ostelcoAPI.bundles.invalidate()
+                ostelcoAPI.bundles.load()
+            })
+            .onFailure({ error in
+                // TODO: Report error to server
+                // TODO: fix use of insecure unwrapping, can cause application to crash
+                os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
+                let alert = UIAlertController(title: "Alert", message: "Failed to buy product. \(error.httpStatusCode!) \(error.userMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    switch action.style{
+                    case .default:
+                        print("default")
+                        
+                    case .cancel:
+                        print("cancel")
+                        
+                    case .destructive:
+                        print("destructive")
+                        
+                        
+                    }}))
+                self.present(alert, animated: true, completion: nil)
+            })
+            .onCompletion({ _ in
+                UIViewController.removeSpinner(spinner: sv)
+            })
         
+        // TODO: invalidate purchases resource after purchase
     }
     
 }
