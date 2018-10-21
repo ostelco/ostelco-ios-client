@@ -28,6 +28,8 @@ class PurchaseHistoryTableViewController: UITableViewController, ResourceObserve
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.rowHeight = 84
+        
         statusOverlay.embed(in: self)
         
         ostelcoAPI.purchases
