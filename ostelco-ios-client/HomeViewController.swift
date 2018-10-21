@@ -35,6 +35,8 @@ class HomeViewController: UIViewController, ResourceObserver {
         super.viewDidLoad()
         
         productButton.isHidden = true
+        productButton.layer.cornerRadius = 22.5
+        productButton.addShadow(offset: CGSize(width: 0.0, height: 15.0), color: UIColor(red: 0, green: 68.0/255.0, blue: 166.0/255.0, alpha: 0.35), radius: 18.0, opacity: 1)
         
         statusOverlay.embed(in: self)
         
