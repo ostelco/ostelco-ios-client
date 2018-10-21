@@ -40,10 +40,12 @@ class HomeViewController: UIViewController, ResourceObserver {
         
         statusOverlay.embed(in: self)
         
+        // TODO: Figure out how to handle case where bundles API fails
         ostelcoAPI.bundles
             .addObserver(self)
             .addObserver(statusOverlay)
         
+        // TODO: Figure out how to handle case where products API fails
         ostelcoAPI.products
             .addObserver(self)
             .addObserver(statusOverlay)
