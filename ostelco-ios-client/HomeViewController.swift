@@ -52,6 +52,7 @@ class HomeViewController: UIViewController, ResourceObserver {
     func converByteToGB(_ bytes:Int64) -> String {
         let formatter:ByteCountFormatter = ByteCountFormatter()
         formatter.countStyle = .decimal
+        formatter.zeroPadsFractionDigits = true
         return formatter.string(fromByteCount: Int64(bytes))
     }
     

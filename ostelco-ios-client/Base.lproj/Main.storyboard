@@ -84,7 +84,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-mE-Wsj">
                                 <rect key="frame" x="16" y="252" width="343" height="164.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0GB" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-ya-sZi" userLabel="Balance Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0GB" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="42" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-ya-sZi" userLabel="Balance Label">
                                         <rect key="frame" x="87.5" y="0.0" width="168" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="7fG-NM-Mbb"/>
