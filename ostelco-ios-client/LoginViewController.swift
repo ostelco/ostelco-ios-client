@@ -23,10 +23,10 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         os_log("Login button clicked")
         sharedAuth.loginWithAuth0().subscribe(
-            onError: { error in
+            onNext: { _ in
+                self.handleLoginSuccess()
+        },  onError: { error in
                 self.handleLoginError(errorMessage: "\(error)");
-        }, onCompleted: {
-            self.handleLoginSuccess()
         })
     }
     

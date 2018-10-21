@@ -28,7 +28,7 @@ class Auth {
         Switcher.updateRootVC()
     }
     
-    func loginWithAuth0() -> Observable<Void> {
+    func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
         return Observable.create { observer in
             Auth0
@@ -41,13 +41,25 @@ class Auth {
                     switch $0 {
                     case .failure(let error):
                         // Handle the error
-                        os_log("Failed to login with auth0, got error: %{public}@", "\(error)")
-                        observer.on(.error(error))
+                        if let err = error as? WebAuthError {
+                            switch err.errorCode {
+                            case WebAuthError.userCancelled.errorCode:
+                                observer.on(.completed)
+                                break
+                            default:
+                                os_log("Failed to login with auth0, got error: %{public}@", "\(error)")
+                                observer.on(.error(error))
+                            }
+                        } else {
+                            os_log("Failed to login with auth0, got non web auth error: %{public}@", "\(error)")
+                            observer.on(.error(error))
+                        }
+                        
                     case .success(let credentials):    
                         os_log("Store credentials with auth0 credentials manager.")
                         self.credentialsManager.store(credentials: credentials)
                         os_log("Successfully logged in with auth0, credentials: %{private}@", "\(credentials)")
-                        
+                        observer.on(.next(credentials))
                         observer.on(.completed)
                     }
             }
