@@ -27,6 +27,7 @@ class OstelcoAPI: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
             
+            // TODO: Verify that this works
             $0.decorateRequests { _, req in
                 req.onFailure { error in                   // If a request fails...
                     if error.httpStatusCode == 401 {         // ...with a 401...
