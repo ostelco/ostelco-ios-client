@@ -54,6 +54,8 @@
   - TODO: Missing API to perform action
 - [ ] Registration processs with EKYC
   - TODO: Define flow, interaction and design
+- [ ] User should be able to report problems / contact us through the app
+ - TODO: Missing design
 
 
 ## Error handling
