@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = "pk_test_4XDOdDMQvGeW9fr31gIlcg5z"
         Switcher.updateRootVC()
+        print("App started")
         return true
     }
     
