@@ -26,6 +26,30 @@
 		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
+		C29802AA2181EDA800FBC5C3 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
+		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
+		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
+		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
+		C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
+		C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
+		C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
+		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
+		C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
+		C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
+		C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
+		C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
+		C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */; };
+		C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
+		C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
+		C29802BA2181EDA800FBC5C3 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08447217E709900CAF9EA /* Stripe.framework */; };
+		C29802BB2181EDA800FBC5C3 /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08448217E709900CAF9EA /* Siesta.framework */; };
+		C29802BC2181EDA800FBC5C3 /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */; };
+		C29802BD2181EDA800FBC5C3 /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844D217E709900CAF9EA /* Auth0.framework */; };
+		C29802BE2181EDA800FBC5C3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844F217E709900CAF9EA /* RxSwift.framework */; };
+		C29802C02181EDA800FBC5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04488174217924B800F59758 /* LaunchScreen.storyboard */; };
+		C29802C12181EDA800FBC5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
+		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
+		C29802C32181EDA800FBC5C3 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0448818D21792DF300F59758 /* Auth0.plist */; };
 		C2B08450217E709900CAF9EA /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08447217E709900CAF9EA /* Stripe.framework */; };
 		C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08448217E709900CAF9EA /* Siesta.framework */; };
 		C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */; };
@@ -35,6 +59,16 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C296D02C217E6E4200CE06B0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C29802C62181EDA800FBC5C3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -68,6 +102,8 @@
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29802CD2181EDA800FBC5C3 /* ostelco-ios-client copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ostelco-ios-client copy-Info.plist"; path = "/Users/prasanth/dev/ostelco-ios-client/ostelco-ios-client copy-Info.plist"; sourceTree = "<absolute>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
@@ -88,6 +124,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C29802B92181EDA800FBC5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C29802BA2181EDA800FBC5C3 /* Stripe.framework in Frameworks */,
+				C29802BB2181EDA800FBC5C3 /* Siesta.framework in Frameworks */,
+				C29802BC2181EDA800FBC5C3 /* SimpleKeychain.framework in Frameworks */,
+				C29802BD2181EDA800FBC5C3 /* Auth0.framework in Frameworks */,
+				C29802BE2181EDA800FBC5C3 /* RxSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,6 +145,7 @@
 				04488168217924B700F59758 /* ostelco-ios-client */,
 				04488167217924B700F59758 /* Products */,
 				0448817F2179292200F59758 /* Frameworks */,
+				C29802CD2181EDA800FBC5C3 /* ostelco-ios-client copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				04488166217924B700F59758 /* ostelco-ios-client.app */,
+				C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +220,26 @@
 			productReference = 04488166217924B700F59758 /* ostelco-ios-client.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */;
+			buildPhases = (
+				C29802A92181EDA800FBC5C3 /* Sources */,
+				C29802B92181EDA800FBC5C3 /* Frameworks */,
+				C29802BF2181EDA800FBC5C3 /* Resources */,
+				C29802C42181EDA800FBC5C3 /* Copy Carthage Frameworks */,
+				C29802C52181EDA800FBC5C3 /* Warn About Outdated Carthage Frameworks */,
+				C29802C62181EDA800FBC5C3 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "dev-ostelco-ios-client";
+			productName = "ostelco-ios-client";
+			productReference = C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -200,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				04488165217924B700F59758 /* ostelco-ios-client */,
+				C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +284,17 @@
 				04488173217924B800F59758 /* Assets.xcassets in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				0448818E21792DF300F59758 /* Auth0.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C29802BF2181EDA800FBC5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C29802C02181EDA800FBC5C3 /* LaunchScreen.storyboard in Resources */,
+				C29802C12181EDA800FBC5C3 /* Assets.xcassets in Resources */,
+				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
+				C29802C32181EDA800FBC5C3 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +341,46 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings\n";
 		};
+		C29802C42181EDA800FBC5C3 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Auth0.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SimpleKeychain.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Auth0.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SimpleKeychain.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		C29802C52181EDA800FBC5C3 /* Warn About Outdated Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Warn About Outdated Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,6 +403,28 @@
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C29802A92181EDA800FBC5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C29802AA2181EDA800FBC5C3 /* Switcher.swift in Sources */,
+				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
+				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
+				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
+				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
+				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
+				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
+				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
+				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
+				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
+				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
+				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
+				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
+				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
+				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +610,52 @@
 			};
 			name = Release;
 		};
+		C29802C82181EDA800FBC5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "ostelco-ios-client copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C29802CA2181EDA800FBC5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "ostelco-ios-client copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,6 +673,15 @@
 			buildConfigurations = (
 				0448817B217924B800F59758 /* Debug */,
 				0448817C217924B800F59758 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C29802C82181EDA800FBC5C3 /* Debug */,
+				C29802CA2181EDA800FBC5C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
