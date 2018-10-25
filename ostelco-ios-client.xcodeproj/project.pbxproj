@@ -103,7 +103,7 @@
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C29802CD2181EDA800FBC5C3 /* ostelco-ios-client copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ostelco-ios-client copy-Info.plist"; path = "/Users/prasanth/dev/ostelco-ios-client/ostelco-ios-client copy-Info.plist"; sourceTree = "<absolute>"; };
+		C29802CD2181EDA800FBC5C3 /* dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dev-Info.plist"; path = "/Users/prasanth/dev/ostelco-ios-client/dev-Info.plist"; sourceTree = "<absolute>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 				04488168217924B700F59758 /* ostelco-ios-client */,
 				04488167217924B700F59758 /* Products */,
 				0448817F2179292200F59758 /* Frameworks */,
-				C29802CD2181EDA800FBC5C3 /* ostelco-ios-client copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +167,7 @@
 				04488172217924B800F59758 /* Assets.xcassets */,
 				04488174217924B800F59758 /* LaunchScreen.storyboard */,
 				04488177217924B800F59758 /* Info.plist */,
+				C29802CD2181EDA800FBC5C3 /* dev-Info.plist */,
 				0448817D2179287600F59758 /* LoginViewController.swift */,
 				0448818D21792DF300F59758 /* Auth0.plist */,
 				0448818F2179359700F59758 /* Switcher.swift */,
@@ -620,7 +620,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -643,7 +643,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
