@@ -14,18 +14,10 @@
 		04488173217924B800F59758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		04488176217924B800F59758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04488174217924B800F59758 /* LaunchScreen.storyboard */; };
 		0448817E2179287600F59758 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
-		044881812179292200F59758 /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044881802179292200F59758 /* Auth0.framework */; };
-		0448818621792D0500F59758 /* Auth0.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448818421792D0500F59758 /* Auth0.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0448818921792D1100F59758 /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0448818821792D1100F59758 /* SimpleKeychain.framework */; };
-		0448818A21792D1100F59758 /* SimpleKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448818821792D1100F59758 /* SimpleKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0448818E21792DF300F59758 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0448818D21792DF300F59758 /* Auth0.plist */; };
 		044881902179359700F59758 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
-		04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; };
-		04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04488195217A8D0900F59758 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
-		0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; };
-		0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0448819A217B447800F59758 /* SiestaUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
 		044881A2217B896800F59758 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
@@ -33,23 +25,21 @@
 		044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
-		044881AC217BC18600F59758 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044881AB217BC18500F59758 /* Stripe.framework */; };
-		044881AD217BC18600F59758 /* Stripe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 044881AB217BC18500F59758 /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
+		C2B08450217E709900CAF9EA /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08447217E709900CAF9EA /* Stripe.framework */; };
+		C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08448217E709900CAF9EA /* Siesta.framework */; };
+		C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */; };
+		C2B08456217E709900CAF9EA /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844D217E709900CAF9EA /* Auth0.framework */; };
+		C2B08458217E709900CAF9EA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844F217E709900CAF9EA /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0448818721792D0500F59758 /* Embed Frameworks */ = {
+		C296D02C217E6E4200CE06B0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0448818A21792D1100F59758 /* SimpleKeychain.framework in Embed Frameworks */,
-				0448819C217B447800F59758 /* SiestaUI.framework in Embed Frameworks */,
-				0448818621792D0500F59758 /* Auth0.framework in Embed Frameworks */,
-				044881AD217BC18600F59758 /* Stripe.framework in Embed Frameworks */,
-				04488197217A8D0900F59758 /* RxSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,16 +56,10 @@
 		04488175217924B800F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04488177217924B800F59758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0448817D2179287600F59758 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		044881802179292200F59758 /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
-		0448818421792D0500F59758 /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
-		0448818821792D1100F59758 /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		0448818D21792DF300F59758 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		0448818F2179359700F59758 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		04488193217A8CFE00F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		04488195217A8D0900F59758 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
-		0448819A217B447800F59758 /* SiestaUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SiestaUI.framework; path = Carthage/Build/iOS/SiestaUI.framework; sourceTree = "<group>"; };
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 		0448819F217B7CA100F59758 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -83,8 +67,12 @@
 		044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
-		044881AB217BC18500F59758 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
+		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
+		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
+		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +80,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0448818921792D1100F59758 /* SimpleKeychain.framework in Frameworks */,
-				0448819B217B447800F59758 /* SiestaUI.framework in Frameworks */,
-				044881812179292200F59758 /* Auth0.framework in Frameworks */,
-				044881AC217BC18600F59758 /* Stripe.framework in Frameworks */,
-				04488196217A8D0900F59758 /* RxSwift.framework in Frameworks */,
+				C2B08450217E709900CAF9EA /* Stripe.framework in Frameworks */,
+				C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */,
+				C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */,
+				C2B08456217E709900CAF9EA /* Auth0.framework in Frameworks */,
+				C2B08458217E709900CAF9EA /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,11 +94,6 @@
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
-				044881AB217BC18500F59758 /* Stripe.framework */,
-				0448819A217B447800F59758 /* SiestaUI.framework */,
-				04488195217A8D0900F59758 /* RxSwift.framework */,
-				0448818821792D1100F59758 /* SimpleKeychain.framework */,
-				0448818421792D0500F59758 /* Auth0.framework */,
 				04488168217924B700F59758 /* ostelco-ios-client */,
 				04488167217924B700F59758 /* Products */,
 				0448817F2179292200F59758 /* Frameworks */,
@@ -155,8 +138,11 @@
 		0448817F2179292200F59758 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				04488193217A8CFE00F59758 /* RxSwift.framework */,
-				044881802179292200F59758 /* Auth0.framework */,
+				C2B0844D217E709900CAF9EA /* Auth0.framework */,
+				C2B0844F217E709900CAF9EA /* RxSwift.framework */,
+				C2B08448217E709900CAF9EA /* Siesta.framework */,
+				C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */,
+				C2B08447217E709900CAF9EA /* Stripe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,7 +159,7 @@
 				04488164217924B700F59758 /* Resources */,
 				044881822179296600F59758 /* Copy Carthage Frameworks */,
 				04488183217929E600F59758 /* Warn About Outdated Carthage Frameworks */,
-				0448818721792D0500F59758 /* Embed Frameworks */,
+				C296D02C217E6E4200CE06B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,6 +229,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -251,10 +238,11 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		04488183217929E600F59758 /* Warn About Outdated Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -268,7 +256,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings";
+			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -436,7 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XRW2FSQ9QP;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -446,7 +434,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.ostelco-ios-client";
+				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -458,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XRW2FSQ9QP;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -468,7 +457,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.ostelco-ios-client";
+				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
