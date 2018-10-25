@@ -117,7 +117,7 @@ class HomeViewController: UIViewController, ResourceObserver {
                 // TODO: Report error to server
                 // TODO: fix use of insecure unwrapping, can cause application to crash
                 os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
-                let alert = UIAlertController(title: "Alert", message: "Failed to buy product. \(error.httpStatusCode!) \(error.userMessage)", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Alert", message: "Failed to buy product. \(error.httpStatusCode!) \(error.userMessage)", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                     switch action.style{
                     case .default:

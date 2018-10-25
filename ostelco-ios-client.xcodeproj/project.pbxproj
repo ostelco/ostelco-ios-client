@@ -182,6 +182,7 @@
 				TargetAttributes = {
 					04488165217924B700F59758 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -437,7 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -460,7 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

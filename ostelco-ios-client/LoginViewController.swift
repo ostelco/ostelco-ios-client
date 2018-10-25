@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
     
     func handleLoginError(errorMessage: String) {
         os_log("Login failed, show alert message to user.")
-        let alert = UIAlertController(title: "Alert", message: "Failed to login: \(errorMessage)", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Alert", message: "Failed to login: \(errorMessage)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
