@@ -29,6 +29,8 @@ platform :ios do
     )
     build_app(scheme: "dev-ostelco-ios-client")
     upload_to_testflight
+    # Commit the version bump
+    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
 
     # Add a git tag for this build. This will automatically
     # use an appropriate git tag name
