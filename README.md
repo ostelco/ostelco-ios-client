@@ -45,8 +45,7 @@ e.g.
 - [x] Shows login screen when opening app and is not logged in
 - [x] Shows home screen when opening app and is loggd in
 - [x] Shows login screen when opening app and auth token has expired
-- [ ] Shows login screen if request to ostelco API returns 401 - Unauthorized
-  - Implemented but not verified
+- [x] Use refresh token or show login screen if request to ostelco API returns 401 - Unauthorized
 - [x] Logout button redirects user to login screen
 - [x] Any action redirecting user to login screen also removes any cached data, like credentials from the app
 - [x] Home screen shows correct balance left
@@ -67,8 +66,6 @@ e.g.
   - Implemented, but needs to use correct stripe publishable key for production builds
   - All errors needs to be logged and sent to our server for immediate debugging
 - [x] Home screen has two tabs, one for home screen and one for settings
-- [ ] User can click on top up product which opens apple pay dialog
-  - TODO: Describe features in apple pay dialog
 - [ ] Settings screen shows links to the following:
   - [x] Personal details
   - [x] Terms & conditions
@@ -127,10 +124,12 @@ e.g.
 
 ## Authentication
 
-- User opens app
+- User opens app and sees initial login screen
   a. User is logged in and token is valid
     - set root view to TabBarController
-  b. User is not logged in or token is invalid
+  b. User is not logged in, token is invalid and refresh token is valid
+    - set root view to TabBarController
+  b. User is not logged in or token is invalid and refresh token is invalid
     - clear any local auth data
     - set root view to LoginViewController
 
@@ -138,8 +137,7 @@ e.g.
   - open auth0 webview
     a. User logs in using google account
       a. User logs in successfully
-        - Fetch access token from auth0 credentials and store it in A0SimpleKeychain
-        - Set login status to true using UserDefaults
+        - Fetch access token and refresh token from auth0 credentials and store it in A0SimpleKeychain
         - set root view to TabBarController
       b. TODO: Define each error case that can happen and decide what do show the user on each individual case to give the user a good feedback on why the login process failed
     b. User cancels auth0 webview flow
