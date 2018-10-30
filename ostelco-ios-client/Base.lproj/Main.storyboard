@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NVb-cj-Zcz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P1C-qU-gpf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="lG6-EO-X27">
             <objects>
-                <viewController storyboardIdentifier="loginvc" id="NVb-cj-Zcz" customClass="LoginViewController" customModule="ostelco_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginvc" id="NVb-cj-Zcz" customClass="LoginViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ewV-L2-nVR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-NJ-kyW">
-                                <rect key="frame" x="37" y="514" width="300" height="60"/>
+                                <rect key="frame" x="37.5" y="514" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.99681323766708374" green="0.99199360609054565" blue="0.99627393484115601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="YmD-78-P1d"/>
@@ -76,13 +76,13 @@
         <!--Home-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="ostelco_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-mE-Wsj">
-                                <rect key="frame" x="16" y="252" width="343" height="164.5"/>
+                                <rect key="frame" x="16" y="251.5" width="343" height="164.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0GB" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="42" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-ya-sZi" userLabel="Balance Label">
                                         <rect key="frame" x="87.5" y="0.0" width="168" height="70"/>
@@ -157,7 +157,7 @@
         <!--Settings-->
         <scene sceneID="K16-ea-W1V">
             <objects>
-                <tableViewController id="sPe-HE-MOT" customClass="SettingsTableViewController" customModule="ostelco_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sPe-HE-MOT" customClass="SettingsTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XHx-ZI-SRs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,13 +251,13 @@
         <!--Purchase History Table View Controller-->
         <scene sceneID="vFu-RT-OaI">
             <objects>
-                <tableViewController storyboardIdentifier="purchaseHistoryVC" id="XuF-pA-8f0" customClass="PurchaseHistoryTableViewController" customModule="ostelco_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="purchaseHistoryVC" id="XuF-pA-8f0" customClass="PurchaseHistoryTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ci0-El-aJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PurchaseHistoryTableViewCell" rowHeight="84" id="xun-yx-FMm" customClass="PurchaseHistoryTableViewCell" customModule="ostelco_ios_client" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PurchaseHistoryTableViewCell" rowHeight="84" id="xun-yx-FMm" customClass="PurchaseHistoryTableViewCell" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xun-yx-FMm" id="6v9-y1-V8n">
@@ -320,7 +320,7 @@
         <!--Personal Details-->
         <scene sceneID="I3Z-6S-068">
             <objects>
-                <tableViewController storyboardIdentifier="profileTableVC" id="YWw-oS-p0B" customClass="ProfileTableViewController" customModule="ostelco_ios_client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profileTableVC" id="YWw-oS-p0B" customClass="ProfileTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fNE-U4-TWr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,6 +516,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VMJ-RH-qJ3">
+            <objects>
+                <viewController id="P1C-qU-gpf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qBQ-fl-9Nt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Initial loading screen..." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UeY-lM-2vH">
+                                <rect key="frame" x="139" y="318" width="97" height="45"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UeY-lM-2vH" firstAttribute="centerY" secondItem="8Av-KI-bPF" secondAttribute="centerY" id="FmY-u5-ee3"/>
+                            <constraint firstItem="UeY-lM-2vH" firstAttribute="centerX" secondItem="8Av-KI-bPF" secondAttribute="centerX" id="VT4-q5-6NW"/>
+                            <constraint firstItem="UeY-lM-2vH" firstAttribute="width" secondItem="qBQ-fl-9Nt" secondAttribute="width" id="Ybf-Lh-Tdl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Av-KI-bPF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FP3-yw-MaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
