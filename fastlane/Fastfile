@@ -16,6 +16,7 @@
 default_platform(:ios)
 
 platform :ios do
+
   desc "Push a new beta build to TestFlight"
   lane :beta do
     # Ensure that your git status is not dirty
@@ -38,5 +39,10 @@ platform :ios do
 
     # Push the new commit and tag back to your git remote
     push_to_git_remote
+  end
+
+  desc "Get certificates for developement"
+  lane :certificates do
+    match(app_identifier: ["sg.redotter.dev.selfcare", "sg.redotter.selfcare"], readonly: true)
   end
 end
