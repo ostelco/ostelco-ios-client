@@ -6,7 +6,7 @@ team_id("2R8HFAXUXD") # Developer Portal Team ID
 
 for_platform :ios do
   for_lane :beta do
-    app_identifier '"sg.redotter.dev.selfcare"'
+    app_identifier 'sg.redotter.dev.selfcare'
   end
 end
 
