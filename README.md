@@ -8,6 +8,7 @@ xcode-select --install
 
 - Install Carthage dependency manager `brew install carthage`
 - Install dependencies `carthage bootstrap`
+- Install Apple Pay Payment Processing certificate with id `merchant.sg.redotter.alpha` (https://developer.apple.com/account/ios/certificate/)
 
 ### fastlane
 - Install _fastlane_ using
