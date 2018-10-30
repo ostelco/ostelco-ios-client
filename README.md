@@ -1,7 +1,38 @@
-# Dependencies
+# Bootstrap 
+
+Make sure you have the latest version of the Xcode command line tools installed:
+```
+xcode-select --install
+```
+
+### carthage
 
 - Install Carthage dependency manager `brew install carthage`
-- Install dependencies `carthage bootstrap` (I think that's the rigth command)
+- Install dependencies `carthage bootstrap`
+
+### fastlane
+
+- Install _fastlane_ using
+```
+brew cask install fastlane
+```
+or alternatively using `sudo gem install fastlane -NV`
+
+### Certificates
+
+- Install certificates, profiles for developement
+```
+fastlane ios certificates
+```
+- Install deployment certificates, private key and profiles
+```
+fastlane match appstore --readonly
+```
+
+### Deploy to Testflight
+```
+fastlane ios beta
+```
 
 # Features
 - [x] Can login with google using auth0
