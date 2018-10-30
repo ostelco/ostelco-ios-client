@@ -19,7 +19,7 @@ class OstelcoAPI: Service {
         #endif
         
         super.init(
-            baseURL: "https://api.ostelco.org",
+            baseURL: "https://api.dev.ostelco.org",
             standardTransformers: [.text, .image]
         )
         
@@ -51,7 +51,7 @@ class OstelcoAPI: Service {
             try jsonDecoder.decode(ProfileModel.self, from: $0.content)
         }
         
-        self.configureTransformer("/purchases") {
+        self.configureTransformer("/purchases*") {
             try jsonDecoder.decode([PurchaseModel].self, from: $0.content)
         }
         

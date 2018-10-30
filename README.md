@@ -183,3 +183,4 @@ fastlane ios beta
   - [Best iOS crash reporting tool)[https://www.crashprobe.com/ios/]
 - REST API clients:
   - [Siesta](https://bustoutsolutions.github.io/siesta/)
+- Payment: [Stripe - Apple Pay Integration](https://stripe.com/docs/mobile/ios/custom#apple-pay)
