@@ -8,6 +8,7 @@
 
 import Siesta
 import Foundation
+import os
 
 let ostelcoAPI = OstelcoAPI()
 
@@ -32,7 +33,7 @@ class OstelcoAPI: Service {
                 req.onFailure { error in                   // If a request fails...
                     if error.httpStatusCode == 401 {         // ...with a 401...
                         // TODO: Inform user that session has expired?
-                        sharedAuth.logout()
+                        Switcher.updateRootVC()
                     }
                 }
             }
