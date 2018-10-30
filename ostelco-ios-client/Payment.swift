@@ -36,6 +36,7 @@ extension HomeViewController {
         }
         else {
             // There is a problem with your Apple Pay configuration
+            os_log("There is a problem with your Apple Pay configuration")
         }
     }
     

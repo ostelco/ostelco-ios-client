@@ -19,7 +19,7 @@ class OstelcoAPI: Service {
         #endif
         
         super.init(
-            baseURL: "https://api.dev.ostelco.org",
+            baseURL: Environment().configuration(PlistKey.ServerURL),
             standardTransformers: [.text, .image]
         )
         
