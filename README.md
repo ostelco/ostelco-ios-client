@@ -55,6 +55,9 @@ fastlane ios beta
 - [ ] Top up product updates when user enters home screen while app was in background
   - Implemented but not verified
 - [ ] Top up product updates automatically while user is on home screen
+- [ ] Clicking on top up product opens apple pay dialog
+  - Implemented, but needs to use correct stripe publishable key for production builds
+  - All errors needs to be logged and sent to our server for immediate debugging
 - [x] Home screen has two tabs, one for home screen and one for settings
 - [ ] User can click on top up product which opens apple pay dialog
   - TODO: Describe features in apple pay dialog
