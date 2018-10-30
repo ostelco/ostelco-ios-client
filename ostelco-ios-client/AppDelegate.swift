@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = "pk_test_4XDOdDMQvGeW9fr31gIlcg5z"
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.sg.redotter.alpha"
         Switcher.updateRootVC()
         print("App started")
         return true
