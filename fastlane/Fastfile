@@ -43,7 +43,13 @@ platform :ios do
     # add_git_tag
 
     # Push the new commit and tag back to your git remote
-    push_to_git_remote
+    push_to_git_remote(
+      remote: "origin",
+      local_branch: "HEAD",
+      remote_branch: "master",
+      force: true,
+      tags: true 
+    )
   end
 
   desc "Installs the certificates and profiles locally"
