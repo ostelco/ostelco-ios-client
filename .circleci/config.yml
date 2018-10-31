@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  beta:
+    macos:
+      xcode: "10.0.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: beta
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Install carthage
+          command: brew install carthage
+      - run:
+          name: Bootstrap carthage
+          command: carthage bootstrap
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: output
+
+workflows:
+  version: 2
+  build-upload-testflight:
+    jobs:
+      - beta:
+          filters:
+            tags:
+              only: /^beta-tf.*/
+            branches:
+              only: master
