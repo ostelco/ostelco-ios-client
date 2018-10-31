@@ -12,9 +12,6 @@ jobs:
       - checkout
       - run: bundle install
       - run:
-          name: Install carthage
-          command: brew install carthage
-      - run:
           name: Bootstrap carthage
           command: carthage bootstrap
       - run:
