@@ -43,8 +43,18 @@ platform :ios do
     push_to_git_remote
   end
 
-  desc "Get certificates for developement"
+  desc "Installs the certificates and profiles locally"
   lane :certificates do
-    match(app_identifier: ["sg.redotter.dev.selfcare", "sg.redotter.selfcare"], readonly: true)
+    match(
+      app_identifier: ["sg.redotter.dev.selfcare", "sg.redotter.selfcare"],
+      type: "development",
+      readonly: true
+    )
+    match(
+      app_identifier: ["sg.redotter.dev.selfcare", "sg.redotter.selfcare"],
+      type: "appstore",
+      readonly: true
+    )
   end
+
 end
