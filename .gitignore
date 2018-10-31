@@ -6,6 +6,9 @@
 build/
 DerivedData/
 
+## CircleCI generated
+output/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
