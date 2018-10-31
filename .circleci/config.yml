@@ -8,6 +8,8 @@ jobs:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: beta
       CERTS_LANE: certificates
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
