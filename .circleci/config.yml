@@ -39,14 +39,10 @@ jobs:
           key: carthage-{{ checksum "Cartfile.resolved" }}
           paths:
             - /Users/distiller/project/Carthage
-
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.1) [" || true
       - run: bundle install
-      - run:
-          name: Bootstrap carthage
-          command: carthage bootstrap
       - run:
           name: Fastlane
           command: bundle exec fastlane test
@@ -74,9 +70,6 @@ jobs:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.1) [" || true
       - run: bundle install
-      - run:
-          name: Bootstrap carthage
-          command: carthage bootstrap
       - run:
           name: Fastlane
           command: bundle exec fastlane test
