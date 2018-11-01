@@ -66,4 +66,11 @@ platform :ios do
     )
   end
 
+  desc "Runs all the tests"
+  lane :test do
+    scan(
+      scheme: "dev-ostelco-ios-client",
+      devices: ["iPhone X", "iPad Air"]
+    )
+  end
 end

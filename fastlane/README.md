@@ -25,7 +25,12 @@ Push a new beta build to TestFlight
 ```
 fastlane ios certificates
 ```
-Get certificates for developement
+Installs the certificates and profiles locally
+### ios test
+```
+fastlane ios test
+```
+Runs all the tests
 
 ----
 

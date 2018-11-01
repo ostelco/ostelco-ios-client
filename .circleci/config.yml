@@ -21,6 +21,44 @@ jobs:
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
+  build-and-test:
+    macos:
+      xcode: "10.0.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Bootstrap carthage
+          command: carthage bootstrap
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane test
+
+  adhoc:
+    macos:
+      xcode: "10.0.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Bootstrap carthage
+          command: carthage bootstrap
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane test
 
 workflows:
   version: 2
@@ -32,3 +70,9 @@ workflows:
               only: /^beta-tf.*/
             branches:
               ignore: /.*/
+  build-test-adhoc:
+    jobs:
+      - build-and-test
+      - adhoc:
+          requires:
+            - build-and-test
