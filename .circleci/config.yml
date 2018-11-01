@@ -47,33 +47,6 @@ jobs:
           name: Fastlane
           command: bundle exec fastlane test
 
-  adhoc:
-    macos:
-      xcode: "10.0.0"
-    working_directory: /Users/distiller/project
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
-    shell: /bin/bash --login -o pipefail
-    steps:
-      - checkout
-      - restore_cache:
-          key: carthage-{{ checksum "Cartfile.resolved" }}
-      - run: scripts/bootstrap-if-needed
-      - save_cache:
-          key: carthage-{{ checksum "Cartfile.resolved" }}
-          paths:
-            - /Users/distiller/project/Carthage
-      - run:
-          name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.0) [" || true
-      - run: bundle install
-      - run:
-          name: Fastlane
-          command: bundle exec fastlane test
-
 workflows:
   version: 2
   build-upload-testflight:
@@ -87,12 +60,6 @@ workflows:
   build-test-adhoc:
     jobs:
       - build-and-test:
-          filters:
-            branches:
-              only: master
-      - adhoc:
-          requires:
-            - build-and-test
           filters:
             branches:
               only: master
