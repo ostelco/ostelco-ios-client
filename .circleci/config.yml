@@ -32,6 +32,14 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: carthage-{{ checksum "Cartfile.resolved" }}
+      - run: scripts/bootstrap-if-needed
+      - save_cache:
+          key: carthage-{{ checksum "Cartfile.resolved" }}
+          paths:
+            - /Users/distiller/project/Carthage
+
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.1) [" || true
@@ -55,6 +63,13 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: carthage-{{ checksum "Cartfile.resolved" }}
+      - run: scripts/bootstrap-if-needed
+      - save_cache:
+          key: carthage-{{ checksum "Cartfile.resolved" }}
+          paths:
+            - /Users/distiller/project/Carthage
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.1) [" || true
