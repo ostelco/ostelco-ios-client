@@ -26,6 +26,7 @@
 		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
+		C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */; };
 		C29802AA2181EDA800FBC5C3 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
@@ -56,6 +57,16 @@
 		C2B08456217E709900CAF9EA /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844D217E709900CAF9EA /* Auth0.framework */; };
 		C2B08458217E709900CAF9EA /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844F217E709900CAF9EA /* RxSwift.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2236F0F218A414C00B135C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0448815E217924B700F59758 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C29802A82181EDA800FBC5C3;
+			remoteInfo = "dev-ostelco-ios-client";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C296D02C217E6E4200CE06B0 /* Embed Frameworks */ = {
@@ -102,6 +113,9 @@
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
+		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29802CD2181EDA800FBC5C3 /* dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dev-Info.plist"; path = "/Users/prasanth/dev/ostelco-ios-client/ostelco-ios-client/dev-Info.plist"; sourceTree = "<absolute>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
@@ -124,6 +138,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2236F07218A414C00B135C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C29802B92181EDA800FBC5C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				04488168217924B700F59758 /* ostelco-ios-client */,
+				C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */,
 				04488167217924B700F59758 /* Products */,
 				0448817F2179292200F59758 /* Frameworks */,
 			);
@@ -153,6 +175,7 @@
 			children = (
 				04488166217924B700F59758 /* ostelco-ios-client.app */,
 				C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */,
+				C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +220,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */,
+				C2236F0E218A414C00B135C0 /* Info.plist */,
+			);
+			path = "dev-ostelco-ios-clientTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +251,24 @@
 			productName = "ostelco-ios-client";
 			productReference = 04488166217924B700F59758 /* ostelco-ios-client.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C2236F09218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2236F13218A414C00B135C0 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-clientTests" */;
+			buildPhases = (
+				C2236F06218A414C00B135C0 /* Sources */,
+				C2236F07218A414C00B135C0 /* Frameworks */,
+				C2236F08218A414C00B135C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2236F10218A414C00B135C0 /* PBXTargetDependency */,
+			);
+			name = "dev-ostelco-ios-clientTests";
+			productName = "dev-ostelco-ios-clientTests";
+			productReference = C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */ = {
 			isa = PBXNativeTarget;
@@ -246,13 +296,17 @@
 		0448815E217924B700F59758 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = mac;
 				TargetAttributes = {
 					04488165217924B700F59758 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1000;
+					};
+					C2236F09218A414C00B135C0 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = C29802A82181EDA800FBC5C3;
 					};
 				};
 			};
@@ -271,6 +325,7 @@
 			targets = (
 				04488165217924B700F59758 /* ostelco-ios-client */,
 				C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */,
+				C2236F09218A414C00B135C0 /* dev-ostelco-ios-clientTests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,6 +339,13 @@
 				04488173217924B800F59758 /* Assets.xcassets in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				0448818E21792DF300F59758 /* Auth0.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2236F08218A414C00B135C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +468,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C2236F06218A414C00B135C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C29802A92181EDA800FBC5C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,6 +499,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2236F10218A414C00B135C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */;
+			targetProxy = C2236F0F218A414C00B135C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0448816F217924B700F59758 /* Main.storyboard */ = {
@@ -613,6 +691,51 @@
 			};
 			name = Release;
 		};
+		C2236F11218A414C00B135C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
+				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.dev-ostelco-ios-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
+			};
+			name = Debug;
+		};
+		C2236F12218A414C00B135C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2R8HFAXUXD;
+				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.dev-ostelco-ios-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
+			};
+			name = Release;
+		};
 		C29802C82181EDA800FBC5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -683,6 +806,15 @@
 			buildConfigurations = (
 				0448817B217924B800F59758 /* Debug */,
 				0448817C217924B800F59758 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2236F13218A414C00B135C0 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-clientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2236F11218A414C00B135C0 /* Debug */,
+				C2236F12218A414C00B135C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

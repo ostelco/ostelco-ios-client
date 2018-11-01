@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C2236F09218A414C00B135C0"
+               BuildableName = "dev-ostelco-ios-clientTests.xctest"
+               BlueprintName = "dev-ostelco-ios-clientTests"
+               ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
