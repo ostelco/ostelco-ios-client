@@ -78,7 +78,13 @@ workflows:
               ignore: /.*/
   build-test-adhoc:
     jobs:
-      - build-and-test
+      - build-and-test:
+          filters:
+            branches:
+              only: master
       - adhoc:
           requires:
             - build-and-test
+          filters:
+            branches:
+              only: master
