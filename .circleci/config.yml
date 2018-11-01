@@ -32,7 +32,7 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
-       - run:
+      - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.1) [" || true
       - run: bundle install
