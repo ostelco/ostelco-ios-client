@@ -41,7 +41,7 @@ jobs:
             - /Users/distiller/project/Carthage
       - run:
           name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.1) [" || true
+          command: xcrun instruments -w "iPhone X (12.0) [" || true
       - run: bundle install
       - run:
           name: Fastlane
@@ -68,7 +68,7 @@ jobs:
             - /Users/distiller/project/Carthage
       - run:
           name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.1) [" || true
+          command: xcrun instruments -w "iPhone X (12.0) [" || true
       - run: bundle install
       - run:
           name: Fastlane
