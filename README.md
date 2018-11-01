@@ -17,7 +17,7 @@ brew cask install fastlane
 or alternatively using `sudo gem install fastlane -NV`
 
 ### Certificates
-- Install certificates, profiles for developement
+- Install certificates &  profiles for developement
 ```
 fastlane ios certificates
 ```
