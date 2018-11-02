@@ -20,7 +20,12 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane ios beta
 ```
-Push a new beta build to TestFlight
+Push a new beta build to TestFlight (Used by CircleCI)
+### ios localbeta
+```
+fastlane ios localbeta
+```
+Push beta build to TestFlight from developer machine
 ### ios certificates
 ```
 fastlane ios certificates

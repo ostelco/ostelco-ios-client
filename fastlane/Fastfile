@@ -19,7 +19,7 @@ platform :ios do
   before_all do
     setup_circle_ci
   end
-  desc "Push a new beta build to TestFlight"
+  desc "Push a new beta build to TestFlight (Used by CircleCI)"
   lane :beta do
     # Ensure that your git status is not dirty
     ensure_git_status_clean
@@ -50,6 +50,31 @@ platform :ios do
       force: true,
       tags: true
     )
+  end
+
+  desc "Push beta build to TestFlight from developer machine"
+  lane :localbeta do
+    # Ensure that your git status is not dirty
+    ensure_git_status_clean
+
+    # Increment the build number (not the version number)
+    # Providing the xcodeproj is optional
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "ostelco-ios-client.xcodeproj"
+    )
+    # build and upload dev app
+    build_app(scheme: "dev-ostelco-ios-client")
+    upload_to_testflight
+    # Commit the version bump
+    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
+
+    # Add a git tag for this build. This will automatically
+    # use an appropriate git tag name
+    add_git_tag
+
+    # Push the new commit and tag back to your git remote
+    push_to_git_remote
   end
 
   desc "Installs the certificates and profiles locally"
