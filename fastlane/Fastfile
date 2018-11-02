@@ -53,7 +53,7 @@ platform :ios do
   end
 
   desc "Push beta build to TestFlight from developer machine"
-  lane :beta-local do
+  lane :localbeta do
     # Ensure that your git status is not dirty
     ensure_git_status_clean
 
