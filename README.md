@@ -26,10 +26,18 @@ fastlane ios certificates
 fastlane match appstore --readonly
 ```
 
-### Deploy to Testflight
+### Deploy to Testflight (dev) locally
 ```
-fastlane ios beta
+fastlane ios localbeta
 ```
+
+### Deploy to Testflight (dev) from CI
+To deploy using CI, push a tag to git matching pattern `beta-tf*`.
+e.g.
+```
+ git tag -a beta-tf.14 -m "Beta version for build 14"
+ git push origin  beta-tf.14
+ ```
 
 # Features
 - [x] Can login with google using auth0
