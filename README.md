@@ -35,8 +35,8 @@ fastlane ios localbeta
 To deploy using CI, push a tag to git matching pattern `beta-tf*`.
 e.g.
 ```
- git tag -a beta-tf.14 -m "Beta version for build 14"
- git push origin  beta-tf.14
+ git tag -a beta-tf.v1.14 -m "Beta version 1 build 14"
+ git push origin  beta-tf.v1.14
  ```
 
 # Features
