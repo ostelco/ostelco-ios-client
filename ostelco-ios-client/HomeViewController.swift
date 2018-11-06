@@ -18,10 +18,17 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var balanceText: UILabel!
     @IBOutlet weak var productButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var paymentSucceeded = false;
     
     var product: ProductModel?;
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        ostelcoAPI.bundles.load().onCompletion({_ in
+            refreshControl.endRefreshing()
+        })
+    }   
     
     // TODO: Customize text in status overlay to reflect error message
     let statusOverlay = ResourceStatusOverlay()
@@ -56,6 +63,18 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         ostelcoAPI.products
             .addObserver(self)
             .addObserver(statusOverlay)
+        
+        let refreshControl = scrollView.addRefreshControl(target: self,
+                                                          action: #selector(handleRefresh(_:)))
+        refreshControl.tintColor = ThemeManager.currentTheme().mainColor
+        
+        refreshControl.attributedTitle =
+            NSAttributedString(string: "Refresh balance",
+                               attributes: [
+                                NSAttributedString.Key.foregroundColor: ThemeManager.currentTheme().mainColor,
+                                NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-UltraLight",
+                                                                   size: 36.0)! ])
+        self.scrollView.alwaysBounceVertical = true
     }
     
     func converByteToGB(_ bytes:Int64) -> String {

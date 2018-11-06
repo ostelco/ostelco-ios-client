@@ -22,7 +22,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
     return request.chained {
         // TODO: Why is the below line required?
         guard case .failure(let error) = $0.response, error.httpStatusCode == 401 else {
-            os_log("Not sure what this guard is about.")
+            os_log("Non 401 error, continue as normal")
             return .useThisResponse
         }
         
@@ -52,7 +52,8 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
             let credentials = $0.typedContent()! as Credentials
             let accessToken = credentials.accessToken;
             ostelcoAPI.authToken = "Bearer \(accessToken!)"
-            sharedAuth.credentialsManager.store(credentials: credentials)
+            // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating the accessToken with auth0 is that auth0 will again refresh the access token next time you open the app or the app comes into forground from background.
+            // sharedAuth.credentialsManager.store(credentials: credentials)
             os_log("Successfully fetched new access token.")
     }
 }
