@@ -55,7 +55,7 @@ class Auth {
                             observer.on(.error(error))
                         }
                         
-                    case .success(let credentials):    
+                    case .success(let credentials):
                         os_log("Store credentials with auth0 credentials manager.")
                         self.credentialsManager.store(credentials: credentials)
                         os_log("Successfully logged in with auth0, credential. refreshToken: %{private}@ accessToken: %{private}@ idToken: %{private}@", credentials.refreshToken ?? "none", credentials.accessToken ?? "none", credentials.idToken ?? "none")
