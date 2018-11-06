@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  dev-ostelco-ios-client
+//
+//  Created by mac on 10/30/18.
+//  Copyright © 2018 mac. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+server_url = https:\/\/api.dev.ostelco.org
+stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z

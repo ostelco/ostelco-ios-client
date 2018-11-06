@@ -27,6 +27,9 @@
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
 		C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */; };
+		04EC5AE221886316000C2EC3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE021886316000C2EC3 /* Payment.swift */; };
+		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
+		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		C29802AA2181EDA800FBC5C3 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
@@ -99,7 +102,7 @@
 		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488175217924B800F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		04488177217924B800F59758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04488177217924B800F59758 /* Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		0448817D2179287600F59758 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0448818D21792DF300F59758 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		0448818F2179359700F59758 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
@@ -116,8 +119,14 @@
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
+		04EC5AE021886316000C2EC3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		04EC5AE521887137000C2EC3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		04EC5AE7218872BA000C2EC3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		04EC5AEA2188743B000C2EC3 /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
+		04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C29802CD2181EDA800FBC5C3 /* dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dev-Info.plist"; path = "/Users/prasanth/dev/ostelco-ios-client/ostelco-ios-client/dev-Info.plist"; sourceTree = "<absolute>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
@@ -163,6 +172,7 @@
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
+				04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */,
 				04488168217924B700F59758 /* ostelco-ios-client */,
 				C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */,
 				04488167217924B700F59758 /* Products */,
@@ -183,14 +193,14 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
 				04488169217924B700F59758 /* AppDelegate.swift */,
 				0448816B217924B700F59758 /* HomeViewController.swift */,
 				0448816D217924B700F59758 /* SettingsTableViewController.swift */,
 				0448816F217924B700F59758 /* Main.storyboard */,
 				04488172217924B800F59758 /* Assets.xcassets */,
 				04488174217924B800F59758 /* LaunchScreen.storyboard */,
-				04488177217924B800F59758 /* Info.plist */,
-				C29802CD2181EDA800FBC5C3 /* dev-Info.plist */,
+				04488177217924B800F59758 /* Production.plist */,
 				0448817D2179287600F59758 /* LoginViewController.swift */,
 				0448818D21792DF300F59758 /* Auth0.plist */,
 				0448818F2179359700F59758 /* Switcher.swift */,
@@ -204,6 +214,11 @@
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881AE217BFBD800F59758 /* UIHelpers.swift */,
+				04EC5AE021886316000C2EC3 /* Payment.swift */,
+				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
+				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
+				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
+				04EC5AEA2188743B000C2EC3 /* Development.plist */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -303,10 +318,20 @@
 					04488165217924B700F59758 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
 					};
 					C2236F09218A414C00B135C0 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = C29802A82181EDA800FBC5C3;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -456,6 +481,7 @@
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
+				04EC5AE121886316000C2EC3 /* Payment.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
@@ -465,6 +491,7 @@
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
+				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +513,7 @@
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
+				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
@@ -495,6 +523,7 @@
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
+				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,15 +673,17 @@
 		};
 		0448817B217924B800F59758 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/ostelco-ios-client.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Info.plist";
+				INFOPLIST_FILE = "ostelco-ios-client/Production.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -668,8 +699,10 @@
 		};
 		0448817C217924B800F59758 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
@@ -677,7 +710,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Info.plist";
+				INFOPLIST_FILE = "ostelco-ios-client/Production.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -738,16 +771,18 @@
 		};
 		C29802C82181EDA800FBC5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 15;
+				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/dev-Info.plist";
+				INFOPLIST_FILE = "ostelco-ios-client/Development.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -764,17 +799,19 @@
 		};
 		C29802CA2181EDA800FBC5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 15;
+				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/dev-Info.plist";
+				INFOPLIST_FILE = "ostelco-ios-client/Development.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

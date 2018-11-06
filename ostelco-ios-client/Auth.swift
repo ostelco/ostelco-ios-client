@@ -33,9 +33,9 @@ class Auth {
         return Observable.create { observer in
             Auth0
                 .webAuth()
-                .responseType([ResponseType.token])
-                .scope("openid profile email offline_access")
+                .logging(enabled: true)
                 .audience("http://google_api")
+                .scope("openid email profile offline_access")
                 .connection("google-oauth2")
                 .start {
                     switch $0 {
@@ -55,10 +55,10 @@ class Auth {
                             observer.on(.error(error))
                         }
                         
-                    case .success(let credentials):    
+                    case .success(let credentials):
                         os_log("Store credentials with auth0 credentials manager.")
                         self.credentialsManager.store(credentials: credentials)
-                        os_log("Successfully logged in with auth0, credentials: %{private}@", "\(credentials)")
+                        os_log("Successfully logged in with auth0, credential. refreshToken: %{private}@ accessToken: %{private}@ idToken: %{private}@", credentials.refreshToken ?? "none", credentials.accessToken ?? "none", credentials.idToken ?? "none")
                         observer.on(.next(credentials))
                         observer.on(.completed)
                     }

@@ -8,6 +8,7 @@ xcode-select --install
 
 - Install Carthage dependency manager `brew install carthage`
 - Install dependencies `carthage bootstrap`
+- Install Apple Pay Payment Processing certificate with id `merchant.sg.redotter.alpha` (https://developer.apple.com/account/ios/certificate/)
 
 ### fastlane
 - Install _fastlane_ using
@@ -41,11 +42,14 @@ e.g.
 
 # Features
 - [x] Can login with google using auth0
-- [x] Shows login screen when opening app and is not logged in
-- [x] Shows home screen when opening app and is loggd in
-- [x] Shows login screen when opening app and auth token has expired
-- [ ] Shows login screen if request to ostelco API returns 401 - Unauthorized
-  - Implemented but not verified
+- [x] Shows login screen when opening app without a valid access token or refresh token
+- [x] Shows home screen when opening app mith a valid access token
+- [x] Shows home screen when opening app with invalid access token and valid refresh token
+  - Test by setting the expiration time for access token to less than 60 seconds. Login to the app. Close the app completely. Start the 1 minute after expiration time.
+- [x] Uses refresh token to get new access token and retries request if ostelco API returns 401
+  - [x] Make sure data show in view is actually data from the repeated request and not from a cached state
+- [x] Shows login screen if credentials are still invalid after trying to refresh the access token once after a 401 from ostelo API
+- [x] Refresh access token if invalid when opening app from background
 - [x] Logout button redirects user to login screen
 - [x] Any action redirecting user to login screen also removes any cached data, like credentials from the app
 - [x] Home screen shows correct balance left
@@ -62,9 +66,10 @@ e.g.
 - [ ] Top up product updates when user enters home screen while app was in background
   - Implemented but not verified
 - [ ] Top up product updates automatically while user is on home screen
+- [ ] Clicking on top up product opens apple pay dialog
+  - Implemented, but needs to use correct stripe publishable key for production builds
+  - All errors needs to be logged and sent to our server for immediate debugging
 - [x] Home screen has two tabs, one for home screen and one for settings
-- [ ] User can click on top up product which opens apple pay dialog
-  - TODO: Describe features in apple pay dialog
 - [ ] Settings screen shows links to the following:
   - [x] Personal details
   - [x] Terms & conditions
@@ -126,7 +131,9 @@ e.g.
 - User opens app
   a. User is logged in and token is valid
     - set root view to TabBarController
-  b. User is not logged in or token is invalid
+  b. User is not logged in, token is invalid and refresh token is valid
+    - set root view to TabBarController
+  b. User is not logged in or token is invalid and refresh token is invalid
     - clear any local auth data
     - set root view to LoginViewController
 
@@ -134,12 +141,43 @@ e.g.
   - open auth0 webview
     a. User logs in using google account
       a. User logs in successfully
-        - Fetch access token from auth0 credentials and store it in A0SimpleKeychain
-        - Set login status to true using UserDefaults
+        - Fetch access token and refresh token from auth0 credentials and store it using Auth0 Credentials Manager
+	- Invalidate any cached state (could be a new user logging in)
         - set root view to TabBarController
       b. TODO: Define each error case that can happen and decide what do show the user on each individual case to give the user a good feedback on why the login process failed
     b. User cancels auth0 webview flow
       - auth0 webview closes automatically, do nothing else
+
+- App receives 401 from API and tries to use refresh token to fetch a new access token
+  a. Operation succeedes
+    - Store new access token using Auth0 Credentials Manager
+    - Repeat previous request
+      a. Previous request completes
+        - App continues as normal
+      b. Previous request fails
+        - set root view to LoginViewController
+  b. Operation fails
+    - set root view to LoginViewController
+  c. refresh token is not defined
+    - set root view to LoginViewController
+  
+
+## Refresh- and Access Token
+
+### Access Token
+
+Lasts for 7200 seconds = 2 hours before it has to be refreshed.
+To set the expiration time:
+1. login to auth0
+2. navigate to APIs
+3. select the *Google Endpoints API*
+4. Set desired expiration time in seconds under *Token Expiration (Seconds)*
+[Direct link to settings](https://manage.auth0.com/#/apis/5ab0deded0b22601d4668b39/settings)
+
+### Refresh Token
+
+Is valid until explicitly revoked throuh the auth0 dashboard.
+
 # TODO:
 - Decide on how to handle state management
   - (Apollo Graphql)[https://www.apollographql.com/docs/ios/]
@@ -191,3 +229,4 @@ e.g.
   - [Best iOS crash reporting tool)[https://www.crashprobe.com/ios/]
 - REST API clients:
   - [Siesta](https://bustoutsolutions.github.io/siesta/)
+- Payment: [Stripe - Apple Pay Integration](https://stripe.com/docs/mobile/ios/custom#apple-pay)

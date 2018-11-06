@@ -30,6 +30,7 @@ class Switcher {
         os_log("Validate auth credentials")
         sharedAuth.credentialsManager.credentials { error, credentials in
             guard error == nil, let credentials = credentials else {
+                os_log("Credentials manager failed to get credentials: %{public}@", error.debugDescription)
                 handleInvalidCredentials()
                 return
             }
@@ -38,12 +39,27 @@ class Switcher {
                 return
             }
             
-            os_log("Use access token to set auth header in api client: %{private}@", accessToken)
-            ostelcoAPI.authToken = "Bearer \(accessToken)"
-            
-            os_log("auth credentials valid, redirect to tab bar vc.")
-            let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarvc") as! UITabBarController
-            setRootView(rootVC: rootVC)
+            // NOTE: Earlier we used .responseType([ResponseType.token]) in Auth.swift in Auth0.webAuth()
+            // After removing .responseType, to get refresh token, the code started failing and we had to
+            // wrap the below code within the main thread
+            DispatchQueue.main.async {
+                os_log("Use access token to set auth header in api client: %{private}@", accessToken)
+                
+                // Wipe cache if access token changes
+                if (ostelcoAPI.authToken != accessToken) {
+                    ostelcoAPI.wipeResources()
+                }
+                
+                ostelcoAPI.authToken = "Bearer \(accessToken)"
+                
+                if let refreshToken = credentials.refreshToken {
+                    ostelcoAPI.refreshToken = refreshToken
+                }
+                
+                os_log("auth credentials valid, redirect to tab bar vc.")
+                let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarvc") as! UITabBarController
+                setRootView(rootVC: rootVC)
+            }
         }
     }
     
