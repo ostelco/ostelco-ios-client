@@ -44,7 +44,18 @@ class Switcher {
             // wrap the below code within the main thread
             DispatchQueue.main.async {
                 os_log("Use access token to set auth header in api client: %{private}@", accessToken)
+                
+                // Wipe cache if access token changes
+                if (ostelcoAPI.authToken != accessToken) {
+                    ostelcoAPI.wipeResources()
+                }
+                
                 ostelcoAPI.authToken = "Bearer \(accessToken)"
+                
+                if let refreshToken = credentials.refreshToken {
+                    ostelcoAPI.refreshToken = refreshToken
+                }
+                
                 os_log("auth credentials valid, redirect to tab bar vc.")
                 let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarvc") as! UITabBarController
                 setRootView(rootVC: rootVC)
