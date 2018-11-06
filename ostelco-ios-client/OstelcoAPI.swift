@@ -22,7 +22,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
     return request.chained {
         // TODO: Why is the below line required?
         guard case .failure(let error) = $0.response, error.httpStatusCode == 401 else {
-            os_log("Not sure what this guard is about.")
+            os_log("Non 401 error, continue as normal")
             return .useThisResponse
         }
         
