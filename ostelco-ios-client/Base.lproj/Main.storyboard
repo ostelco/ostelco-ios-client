@@ -93,7 +93,7 @@
                                                     <constraint firstAttribute="height" constant="70" id="7fG-NM-Mbb"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="84"/>
-                                                <color key="textColor" name="PeacockBlue"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWc-Qe-Yd9">
@@ -528,8 +528,5 @@
         <image name="googleLogo" width="50" height="50"/>
         <image name="icons8-home" width="30" height="30"/>
         <image name="icons8-slider" width="30" height="30"/>
-        <namedColor name="PeacockBlue">
-            <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
