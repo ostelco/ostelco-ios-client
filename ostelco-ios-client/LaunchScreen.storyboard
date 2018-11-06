@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Launch Screen View Controller-->
+        <scene sceneID="t6r-UB-jqV">
+            <objects>
+                <viewController storyboardIdentifier="LaunchScreen" id="86X-Zj-eku" customClass="LaunchScreenViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B3z-yb-KTH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoryboardLaunchScreenProduction" translatesAutoresizingMaskIntoConstraints="NO" id="LKC-yw-IVU">
+                                <rect key="frame" x="-68.5" y="87.5" width="512" height="512"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerY" secondItem="yK8-xW-4fr" secondAttribute="centerY" id="EXw-Oh-MZi"/>
+                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerX" secondItem="yK8-xW-4fr" secondAttribute="centerX" id="hTN-VD-igZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yK8-xW-4fr"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="LKC-yw-IVU" id="WsZ-fd-Ov8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="guS-h6-aTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="StoryboardLaunchScreenProduction" width="512" height="512"/>
+    </resources>
+</document>

@@ -12,6 +12,25 @@ import os
 
 class Switcher {
     
+    static var prevController: UIViewController?;
+    
+    static func showLaunchScreen() {
+        
+        // Store previous VC so we can return to it after we hide the launch screen
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            prevController = topController;
+        } else {
+            prevController = nil;
+        }
+        
+        let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LaunchScreen")
+        setRootView(rootVC: vc);
+    }
+    
     static func handleInvalidCredentials() {
         os_log("Could not find valid auth credentials, clear credentials and show login vc")
         sharedAuth.clear()
@@ -25,7 +44,11 @@ class Switcher {
         appDelegate.window?.rootViewController = rootVC
     }
     
-    static func updateRootVC(){
+    static func updateRootVC(showSplashScreen: Bool = false){
+        
+        if (showSplashScreen) {
+            showLaunchScreen()
+        }
         os_log("update root VC...")
         os_log("Validate auth credentials")
         sharedAuth.credentialsManager.credentials { error, credentials in
@@ -57,8 +80,13 @@ class Switcher {
                 }
                 
                 os_log("auth credentials valid, redirect to tab bar vc.")
-                let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarvc") as! UITabBarController
-                setRootView(rootVC: rootVC)
+                
+                if let prevVC = prevController {
+                    setRootView(rootVC: prevVC)
+                } else {
+                    let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabbarvc") as! UITabBarController
+                    setRootView(rootVC: rootVC)
+                }
             }
         }
     }
