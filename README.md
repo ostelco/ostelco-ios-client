@@ -52,20 +52,20 @@ e.g.
 - [x] Refresh access token if invalid when opening app from background
 - [x] Logout button redirects user to login screen
 - [x] Any action redirecting user to login screen also removes any cached data, like credentials from the app
-- [x] Home screen shows correct balance left
-- [x] Balance updates every time user enters home screen
-- [ ] Balance updates when user enters home screen while app was in background
-  - Implemented but not verified
-- [ ] Balance updates automatically while user is on home screen
+- [ ] Balance
+  - [x] Home screen shows correct balance left
+  - [x] Balance updates every time user enters home screen
+  - [x] Balance updates when user enters home screen while app was in background
+  - ~~[ ] Balance updates automatically while user is on home screen~~
+  - [ ] User can refresh balance on home screen
 - [ ] User receives push notification when balance reaches low levels
   - TODO: Define flow, interaction and design
   - App should register for push notifications every time on home screen (assumed that user is logged in when entering home screen)
   - App should warn us if push notification registration fails
 - [x] Home screen shows top up product with product label and price label
 - [x] Top up product updates every time user enters the home screen
-- [ ] Top up product updates when user enters home screen while app was in background
-  - Implemented but not verified
-- [ ] Top up product updates automatically while user is on home screen
+- [x] Top up product updates when user enters home screen while app was in background
+- ~~[ ] Top up product updates automatically while user is on home screen~~
 - [ ] Clicking on top up product opens apple pay dialog
   - Implemented, but needs to use correct stripe publishable key for production builds
   - All errors needs to be logged and sent to our server for immediate debugging
@@ -78,16 +78,15 @@ e.g.
   - [ ] Delete Account
 - [x] Clicking on personal details shows the users profile information
 - [x] Profile information should refresh every time user enters personal details
-- [ ] It should be possible to update email in personal details
-- [ ] It should be possible to update address in personal details
-- [ ] Updating any field in personal details should open a new screen with only an editable field for only the selected value
+- ~~[ ] It should be possible to update email in personal details~~
+- ~~[ ] It should be possible to update address in personal details~~
+- ~~[ ] Updating any field in personal details should open a new screen with only an editable field for only the selected value~~
   - Should it save automatically
   - Should we have save button top right
   - Handle all error cases
 - [x] Clicking on terms & conditions shows terms and conditions in an inapp webview
 - [x] Clicking on purchase history shows list of all purchases
-  - [ ] Purchases should be ordered with latest first
-    - Implemented but not verified
+  - [x] Purchases should be ordered with latest first
   - [x] Refreshes purchases every time user enters purchase history
   - [x] Immediately refreshes with latest purchase after user performs top up in app
 - [x] Clicking on log out logs user out and shows login screen
