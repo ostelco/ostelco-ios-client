@@ -70,5 +70,11 @@
 	<string>$(server_url)</string>
 	<key>stripe_publishable_key</key>
 	<string>$(stripe_publishable_key)</string>
+	<key>auth0_client_id</key>
+	<string>$(auth0_client_id)</string>
+	<key>auth0_domain</key>
+	<string>$(auth0_domain)</string>
+	<key>auth0_logo_url</key>
+	<string>$(auth0_logo_url)</string>
 </dict>
 </plist>

@@ -37,7 +37,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-NJ-kyW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu4-NJ-kyW" customClass="SignInWithEmailButton" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
                                 <rect key="frame" x="37.5" y="514" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.99681323766708374" green="0.99199360609054565" blue="0.99627393484115601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -46,9 +46,7 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="60" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Sign in with Google" image="googleLogo">
-                                    <color key="titleColor" red="0.17645144462585449" green="0.17648285627365112" blue="0.17644456028938293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="login:" destination="NVb-cj-Zcz" eventType="touchUpInside" id="j2t-Nt-iub"/>
                                 </connections>
@@ -525,7 +523,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="googleLogo" width="50" height="50"/>
         <image name="icons8-home" width="30" height="30"/>
         <image name="icons8-slider" width="30" height="30"/>
     </resources>

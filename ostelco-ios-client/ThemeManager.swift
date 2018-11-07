@@ -21,6 +21,10 @@ enum Theme: Int {
             return UIColor(named: "TurquoiseBlue")!
         }
     }
+    
+    var textOnMainColor: UIColor {
+        return UIColor(named: "White")!
+    }    
 }
 
 // Enum declaration

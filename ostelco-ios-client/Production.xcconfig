@@ -10,3 +10,6 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 server_url = https:\/\/api.ostelco.org
 stripe_publishable_key = pk_live_TapwcFFxZ4ebhimyTvXSIWPY
+auth0_client_id = bNz2UjqvwtLvLu431zHFOujzDW24wO1f
+auth0_domain = ostelco.eu.auth0.com
+auth0_logo_url = https:\/\/i.imgur.com/kRdkzp2.png
