@@ -47,7 +47,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
 
 func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
     // TODO: It seems like we send multiple requests to refresh access token if multiple APIs fail with 401. Verify and fix if that's the case.
-    return auth0API.token.request(.post, json: ["grant_type": "refresh_token", "client_id": "bNz2UjqvwtLvLu431zHFOujzDW24wO1f", "refresh_token": refreshToken])
+    return auth0API.token.request(.post, json: ["grant_type": "refresh_token", "client_id": Environment().configuration(.Auth0ClientID), "refresh_token": refreshToken])
         .onSuccess() {
             let credentials = $0.typedContent()! as Credentials
             let accessToken = credentials.accessToken;
@@ -66,7 +66,7 @@ class Auth0API: Service {
         #endif
         
         super.init(
-            baseURL: "https://ostelco.eu.auth0.com"
+            baseURL: "https://\(Environment().configuration(.Auth0Domain))"
         )
         
         self.configure("oauth/token") {
