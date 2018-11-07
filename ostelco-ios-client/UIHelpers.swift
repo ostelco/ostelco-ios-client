@@ -65,13 +65,21 @@ class TopUpButton: UIButton {
 class SignInWithEmailButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.layer.cornerRadius = 22.5
+        self.layer.cornerRadius = 30
         self.addShadow(offset: CGSize(width: 0.0, height: 15.0), color: ThemeManager.currentTheme().mainColor.withAlphaComponent(0.35), radius: 18.0, opacity: 1)
         self.setTitleColor(ThemeManager.currentTheme().textOnMainColor, for: .normal)
         self.setTitle("Sign in with email", for: .normal)
         self.backgroundColor = ThemeManager.currentTheme().mainColor
-        self.setImage(UIImage(named: "icons8-home"), for: .normal)
-        
+        let emailImage = UIImage(named: "email")?.tint(with: ThemeManager.currentTheme().textOnMainColor)
+        self.setImage(emailImage, for: .normal)        
+    }
+}
+
+class LogoImageView: UIImageView {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.contentMode = .scaleAspectFit;
+        self.image = ThemeManager.currentTheme().logo
     }
 }
 
@@ -205,4 +213,26 @@ extension UIColor {
         }
     }
     
+}
+
+public extension UIImage {
+    
+    //
+    /// Tint Image
+    ///
+    /// - Parameter fillColor: UIColor
+    /// - Returns: Image with tint color
+    func tint(with fillColor: UIColor) -> UIImage? {
+        let image = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        fillColor.set()
+        image.draw(in: CGRect(origin: .zero, size: size))
+        
+        guard let imageColored = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+        
+        UIGraphicsEndImageContext()
+        return imageColored
+    }
 }
