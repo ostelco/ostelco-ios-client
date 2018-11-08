@@ -24,7 +24,16 @@ enum Theme: Int {
     
     var textOnMainColor: UIColor {
         return UIColor(named: "White")!
-    }    
+    }
+    
+    var logo: UIImage {
+        switch self {
+        case .BlueTheme:
+            return #imageLiteral(resourceName: "StoryboardLaunchScreenProduction")
+        case .TurquoiseTheme:
+            return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
+        }
+    }
 }
 
 // Enum declaration
