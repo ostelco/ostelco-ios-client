@@ -31,10 +31,9 @@ class Auth {
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
         var params: [String:String] = ["primaryColor": "#\(ThemeManager.currentTheme().mainColor.toHex!)", "logo": Environment().configuration(.Auth0LogoURL)]
-        
         return Observable.create { observer in
             Auth0
-                .webAuth(clientId: Environment().configuration(.Auth0ClientID), domain: Environment().configuration(.Auth0Domain))
+                .webAuth()
                 .logging(enabled: true)
                 .audience("http://google_api")
                 .scope("openid email profile offline_access")

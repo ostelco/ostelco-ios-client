@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
+		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
+		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
+		0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		0448816C217924B700F59758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
 		0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
 		04488171217924B700F59758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		0448817E2179287600F59758 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
-		0448818E21792DF300F59758 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0448818D21792DF300F59758 /* Auth0.plist */; };
 		044881902179359700F59758 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448818F2179359700F59758 /* Switcher.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -55,7 +58,6 @@
 		C29802BD2181EDA800FBC5C3 /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844D217E709900CAF9EA /* Auth0.framework */; };
 		C29802BE2181EDA800FBC5C3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844F217E709900CAF9EA /* RxSwift.framework */; };
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
-		C29802C32181EDA800FBC5C3 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0448818D21792DF300F59758 /* Auth0.plist */; };
 		C2B08450217E709900CAF9EA /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08447217E709900CAF9EA /* Stripe.framework */; };
 		C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B08448217E709900CAF9EA /* Siesta.framework */; };
 		C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */; };
@@ -97,6 +99,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
+		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0448816B217924B700F59758 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +109,6 @@
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488177217924B800F59758 /* Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		0448817D2179287600F59758 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0448818D21792DF300F59758 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		0448818F2179359700F59758 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
@@ -204,7 +207,6 @@
 				04488172217924B800F59758 /* Assets.xcassets */,
 				04488177217924B800F59758 /* Production.plist */,
 				0448817D2179287600F59758 /* LoginViewController.swift */,
-				0448818D21792DF300F59758 /* Auth0.plist */,
 				0448818F2179359700F59758 /* Switcher.swift */,
 				04488191217938A300F59758 /* Auth.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
@@ -223,6 +225,8 @@
 				04EC5AEA2188743B000C2EC3 /* Development.plist */,
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
+				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
+				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -296,6 +300,7 @@
 				C29802A92181EDA800FBC5C3 /* Sources */,
 				C29802B92181EDA800FBC5C3 /* Frameworks */,
 				C29802BF2181EDA800FBC5C3 /* Resources */,
+				0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */,
 				C29802C42181EDA800FBC5C3 /* Copy Carthage Frameworks */,
 				C29802C52181EDA800FBC5C3 /* Warn About Outdated Carthage Frameworks */,
 				C29802C62181EDA800FBC5C3 /* Embed Frameworks */,
@@ -364,10 +369,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
+				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
-				0448818E21792DF300F59758 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,9 +388,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
-				C29802C32181EDA800FBC5C3 /* Auth0.plist in Resources */,
+				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +399,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Auth0 environment to Auth0.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "RESOURCE_PATH=$SRCROOT/ostelco-ios-client\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\nif  \"$CONFIGURATION\" == \"Debug\" ]; then\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nelse\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi\n";
+		};
 		044881822179296600F59758 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
