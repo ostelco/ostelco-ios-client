@@ -5,7 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
+<<<<<<< HEAD
 	<string>Redotter</string>
+=======
+	<string>Red Otter</string>
+>>>>>>> fix auth issue
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -78,5 +82,7 @@
 	<string>$(server_url)</string>
 	<key>stripe_publishable_key</key>
 	<string>$(stripe_publishable_key)</string>
+	<key>apple_merchant_id</key>
+	<string>$(apple_merchant_id)</string>
 </dict>
 </plist>

@@ -30,7 +30,9 @@ class LoginViewController: UIViewController {
     
     func handleLoginSuccess() {
         os_log("Login success")
-        Switcher.updateRootVC()
+        DispatchQueue.main.async {
+            AppDelegate.shared.rootViewController.switchToMainScreen()
+        }
     }
     
     func handleLoginError(errorMessage: String) {
