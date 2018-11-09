@@ -5,12 +5,8 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-<<<<<<< HEAD
-	<string>Redotter</string>
-=======
 	<string>Red Otter</string>
->>>>>>> fix auth issue
-	<key>CFBundleExecutable</key>
+    <key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
