@@ -30,6 +30,8 @@
 		045D743C2195D30700F01D57 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743A2195D30700F01D57 /* RootViewController.swift */; };
 		045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
 		045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
+		0483619F2196FCBD00D990A3 /* Bugsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0483619E2196FCBD00D990A3 /* Bugsee.framework */; };
+		048361A02196FCC500D990A3 /* Bugsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0483619E2196FCBD00D990A3 /* Bugsee.framework */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -77,29 +79,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C296D02C217E6E4200CE06B0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C29802C62181EDA800FBC5C3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
 		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
@@ -123,6 +102,7 @@
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		045D743A2195D30700F01D57 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		0483619E2196FCBD00D990A3 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
@@ -152,6 +132,7 @@
 				C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */,
 				C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */,
 				C2B08456217E709900CAF9EA /* Auth0.framework in Frameworks */,
+				048361A02196FCC500D990A3 /* Bugsee.framework in Frameworks */,
 				C2B08458217E709900CAF9EA /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0483619F2196FCBD00D990A3 /* Bugsee.framework in Frameworks */,
 				C29802BA2181EDA800FBC5C3 /* Stripe.framework in Frameworks */,
 				C29802BB2181EDA800FBC5C3 /* Siesta.framework in Frameworks */,
 				C29802BC2181EDA800FBC5C3 /* SimpleKeychain.framework in Frameworks */,
@@ -238,6 +220,7 @@
 		0448817F2179292200F59758 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0483619E2196FCBD00D990A3 /* Bugsee.framework */,
 				C2B0844D217E709900CAF9EA /* Auth0.framework */,
 				C2B0844F217E709900CAF9EA /* RxSwift.framework */,
 				C2B08448217E709900CAF9EA /* Siesta.framework */,
@@ -269,7 +252,6 @@
 				040B85C02195FB2800EAF86F /* Copy Auth0 environment to Auth0.plist */,
 				044881822179296600F59758 /* Copy Carthage Frameworks */,
 				04488183217929E600F59758 /* Warn About Outdated Carthage Frameworks */,
-				C296D02C217E6E4200CE06B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,7 +290,6 @@
 				0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */,
 				C29802C42181EDA800FBC5C3 /* Copy Carthage Frameworks */,
 				C29802C52181EDA800FBC5C3 /* Warn About Outdated Carthage Frameworks */,
-				C29802C62181EDA800FBC5C3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -499,6 +480,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Bugsee.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -508,6 +490,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugsee.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -645,7 +628,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -831,7 +814,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,7 +843,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

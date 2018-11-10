@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>19</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -80,5 +80,7 @@
 	<string>$(stripe_publishable_key)</string>
 	<key>apple_merchant_id</key>
 	<string>$(apple_merchant_id)</string>
+	<key>bugsee_token</key>
+	<string>$(bugsee_token)</string>
 </dict>
 </plist>
