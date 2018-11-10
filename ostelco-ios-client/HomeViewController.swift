@@ -98,15 +98,15 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             
             dump(products)
             
-            products = products.filter { $0.presentation.isDefault == nil }
+            products = products.filter { $0.presentation.isDefault == "true" }
             
             dump(products)
             
-            if products.count < 2 {
+            if products.count < 1 {
                 print("Error: Could not find a default product.")
                 productButton.isHidden = true
             } else {
-                product = products[1]
+                product = products[0]
                 productButton.setTitle("\(product!.presentation.label) \(product!.presentation.price)", for: .normal)
                 productButton.isHidden = false
             }
@@ -136,8 +136,16 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
         os_log("Merchant identifier: %{public}@ country: SG currency: %{public}@ label: %{public}@ amount: %{public}@", merchantIdentifier, product!.price.currency, product!.presentation.label, "\(product!.price.amount)")
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: "NO", currency: product!.price.currency)
+        
         os_log("device supports apple pay: %{public}@", "\(Stripe.deviceSupportsApplePay())")
         os_log("can make payment: %{public}@", "\(PKPaymentAuthorizationViewController.canMakePayments())")
+        
+        if (Stripe.deviceSupportsApplePay()) {
+            self.showAlert(title: "Payment Error", msg: "Device not supported.")
+        }
+        if (!PKPaymentAuthorizationViewController.canMakePayments()) {
+            self.showAlert(title: "Payment Error", msg: "Can't make payment.")
+        }
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
             PKPaymentSummaryItem(label: self.product!.presentation.label, amount: Decimal(Double(self.product!.price.amount) / 100.0) as NSDecimalNumber),
