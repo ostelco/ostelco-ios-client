@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ThemeManager.applyTheme(theme: .BlueTheme)
         #endif
         
+        let options : [String: Any] =
+            [ BugseeMaxRecordingTimeKey   : 60,
+              BugseeShakeToReportKey      : true,
+              BugseeScreenshotToReportKey : true,
+              BugseeCrashReportKey        : true ]
+        
         Bugsee.launch(token : Environment().configuration(.BugseeToken), options: options)
         Bugsee.setAttribute("device_supports_apple_pay", value: Stripe.deviceSupportsApplePay())
         Bugsee.setAttribute("device_can_make_payments", value: PKPaymentAuthorizationViewController.canMakePayments())
@@ -38,12 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         freschatConfig.showNotificationBanner = true; // set to NO if you don't want to show the in-app notification banner upon receiving a new message while the app is open
         
         Freshchat.sharedInstance().initWith(freschatConfig)
-        
-        let options : [String: Any] =
-            [ BugseeMaxRecordingTimeKey   : 60,
-              BugseeShakeToReportKey      : true,
-              BugseeScreenshotToReportKey : true,
-              BugseeCrashReportKey        : true ]
         
         print("App started")
         return true
