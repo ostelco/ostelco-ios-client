@@ -14,6 +14,8 @@ public enum PlistKey {
     case Auth0ClientID
     case Auth0Domain
     case Auth0LogoURL
+    case FreshchatAppID
+    case FreshchatAppKey
     
     func value() -> String {
         switch self {
@@ -27,6 +29,10 @@ public enum PlistKey {
             return "auth0_domain"
         case .Auth0LogoURL:
             return "auth0_logo_url"
+        case .FreshchatAppID:
+            return "freshchat_app_id"
+        case .FreshchatAppKey:
+            return "freshchat_app_key"
         }
     }
 }
@@ -59,6 +65,12 @@ public struct Environment {
             break
         case .Auth0LogoURL:
             dictKey = PlistKey.Auth0LogoURL.value()
+            break
+        case .FreshchatAppID:
+            dictKey = PlistKey.FreshchatAppID.value()
+            break
+        case .FreshchatAppKey:
+            dictKey = PlistKey.FreshchatAppKey.value()
             break
         }
         return (infoDict[dictKey] as! String).replacingOccurrences(of: "\\", with: "")

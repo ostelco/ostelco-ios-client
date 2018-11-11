@@ -1,5 +1,6 @@
-github "ReactiveX/RxSwift" "4.3.1"
+github "ReactiveX/RxSwift" "4.4.0"
 github "auth0/Auth0.swift" "1.13.0"
 github "auth0/SimpleKeychain" "0.8.1"
 github "bustoutsolutions/siesta" "1.4.2"
+github "freshdesk/freshchat-ios" "8c4b6dfc2cc448f477fdd5539d5fe74f840aabb1"
 github "stripe/stripe-ios" "v13.2.0"

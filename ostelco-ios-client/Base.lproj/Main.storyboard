@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -510,10 +510,26 @@
             </objects>
             <point key="canvasLocation" x="-2236" y="851"/>
         </scene>
+        <!--Support-->
+        <scene sceneID="x4a-w6-iVH">
+            <objects>
+                <viewController id="uEP-OZ-oyq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kSc-iv-UIL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5AK-s9-KqL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Support" image="support" id="pNq-92-50D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVt-nU-heO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1153" y="21"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="tabbarvc" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbarvc" id="49e-Tb-3d3" customClass="TabBarController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -521,6 +537,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="uEP-OZ-oyq" kind="relationship" relationship="viewControllers" id="0yU-qZ-sEQ"/>
                         <segue destination="0dj-my-Qod" kind="relationship" relationship="viewControllers" id="ann-VE-Iej"/>
                     </connections>
                 </tabBarController>
@@ -532,5 +549,6 @@
     <resources>
         <image name="home" width="19" height="19"/>
         <image name="settings" width="19" height="19"/>
+        <image name="support" width="19" height="19"/>
     </resources>
 </document>

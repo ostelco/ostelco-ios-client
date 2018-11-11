@@ -24,6 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             ThemeManager.applyTheme(theme: .BlueTheme)
         #endif
+        
+        let freschatConfig:FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        
+        // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
+        // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera
+        // freschatConfig.teamMemberInfoVisible = true; // set to NO to turn off showing an team member avatar. To customize the avatar shown, use the theme file
+        freschatConfig.showNotificationBanner = true; // set to NO if you don't want to show the in-app notification banner upon receiving a new message while the app is open
+        
+        Freshchat.sharedInstance().initWith(freschatConfig)
+        
         print("App started")
         Switcher.updateRootVC(showSplashScreen: true)
         return true
@@ -51,6 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        Freshchat.sharedInstance().unreadCount { (unreadCount) in
+            print("-----------------")
+            print(unreadCount)
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

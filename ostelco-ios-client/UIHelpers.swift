@@ -236,3 +236,45 @@ public extension UIImage {
         return imageColored
     }
 }
+
+import os
+
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name(FRESHCHAT_UNREAD_MESSAGE_COUNT_CHANGED), object: nil)
+    }
+    
+    @objc func methodOfReceivedNotification(notification: Notification){
+        Freshchat.sharedInstance().unreadCount { (count:Int) -> Void in
+            self.updateBadgeCount(count: count)
+        }
+    }
+    
+    func updateBadgeCount(count: Int) {
+        if let tabItems = tabBar.items {
+            if count > 0 {
+                tabItems[1].badgeValue = "\(count)"
+            } else {
+                tabItems[1].badgeValue = nil
+            }
+        }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
+        if tabBarController.viewControllers!.index(of: viewController) == 1 {
+            updateBadgeCount(count: 0)
+            Freshchat.sharedInstance().showConversations(self)
+            return false
+        }
+        
+        Freshchat.sharedInstance().unreadCount { (unreadCount) in
+            print("-----------------")
+            print(unreadCount)
+        }
+        return true
+    }
+}
