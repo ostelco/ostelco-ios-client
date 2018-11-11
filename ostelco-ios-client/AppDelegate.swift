@@ -9,7 +9,7 @@
 import UIKit
 import Auth0
 import Stripe
-// import Bugsee
+import Bugsee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ThemeManager.applyTheme(theme: .BlueTheme)
         #endif
         
-        /*
         let options : [String: Any] =
             [ BugseeMaxRecordingTimeKey   : 60,
               BugseeShakeToReportKey      : true,
@@ -36,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugsee.launch(token : Environment().configuration(.BugseeToken), options: options)
         Bugsee.setAttribute("device_supports_apple_pay", value: Stripe.deviceSupportsApplePay())
         Bugsee.setAttribute("device_can_make_payments", value: PKPaymentAuthorizationViewController.canMakePayments())
-         */
+         
         print("App started")
         return true
     }
