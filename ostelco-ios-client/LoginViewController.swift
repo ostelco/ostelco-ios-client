@@ -8,6 +8,7 @@
 
 import UIKit
 import os
+import Bugsee
 
 class LoginViewController: UIViewController {
     
@@ -18,24 +19,26 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        os_log("Login button clicked")
+        Bugsee.event("login_init")
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
                 self.handleLoginSuccess()
         },  onError: { error in
+                Bugsee.logError(error: error)
                 self.handleLoginError(errorMessage: "\(error)");
         })
         
     }
     
     func handleLoginSuccess() {
-        os_log("Login success")
+        Bugsee.event("login_success")
         DispatchQueue.main.async {
             AppDelegate.shared.rootViewController.switchToMainScreen()
         }
     }
     
     func handleLoginError(errorMessage: String) {
+        Bugsee.event("login_failure")
         os_log("Login failed, show alert message to user.")
         let alert = UIAlertController(title: "Alert", message: "Failed to login: \(errorMessage)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in

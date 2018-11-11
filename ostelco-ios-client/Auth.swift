@@ -11,8 +11,16 @@ import Auth0
 import UIKit
 import RxSwift
 import os
+import Bugsee
 
 let sharedAuth = Auth()
+
+enum AuthError: Error {
+    case missingCredentials
+    case missingAccessTokenInCredentials
+    case missingRefreshTokenInCredentials
+}
+
 
 class Auth {
     let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
@@ -68,6 +76,45 @@ class Auth {
             return Disposables.create()
         }
         
+    }
+    
+    func verifyCredentials(completion: @escaping (Bool) -> Void ) {
+        sharedAuth.credentialsManager.credentials { error, credentials in
+            if let error = error {
+                Bugsee.logError(error: error)
+            } else {
+                if let credentials = credentials {
+                    if let accessToken = credentials.accessToken {
+                        Bugsee.trace(key: "hasAccessToken", value: true)
+                        DispatchQueue.main.async {
+                            if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
+                                ostelcoAPI.wipeResources()
+                            }
+                            
+                            if (ostelcoAPI.authToken != accessToken) {
+                                ostelcoAPI.authToken = "Bearer \(accessToken)"
+                            }
+                            
+                            if let refreshToken = credentials.refreshToken {
+                                Bugsee.trace(key: "hasRefreshToken", value: true)
+                                ostelcoAPI.refreshToken = refreshToken
+                            } else {
+                                Bugsee.trace(key: "hasRefreshToken", value: false)
+                                Bugsee.logError(error: AuthError.missingRefreshTokenInCredentials)
+                            }
+                        }
+                        completion(true)
+                        return
+                    } else {
+                        Bugsee.trace(key: "hasAccessToken", value: false)
+                        Bugsee.logError(error: AuthError.missingAccessTokenInCredentials)
+                    }
+                } else {
+                    Bugsee.logError(error: AuthError.missingCredentials)
+                }
+            }
+        }
+        completion(false)
     }
 
 }

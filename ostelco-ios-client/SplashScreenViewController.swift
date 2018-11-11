@@ -10,39 +10,15 @@ import UIKit
 
 class SplashScreenViewController: UIViewController {
     
-    
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         imageView.image = ThemeManager.currentTheme().logo
-        verifyCredentials()
-    }
-    
-    func verifyCredentials() {
-        sharedAuth.credentialsManager.credentials { error, credentials in
-            if error == nil, let credentials = credentials {
-                if let accessToken = credentials.accessToken {
-                    
-                    DispatchQueue.main.async {
-                        if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
-                            ostelcoAPI.wipeResources()
-                        }
-                        
-                        if (ostelcoAPI.authToken != accessToken) {
-                            ostelcoAPI.authToken = "Bearer \(accessToken)"
-                        }
-                        
-                        if let refreshToken = credentials.refreshToken {
-                            ostelcoAPI.refreshToken = refreshToken
-                        }
-                        
-                        AppDelegate.shared.rootViewController.switchToMainScreen()
-                    }
-                    
-                    return
-                }
+        sharedAuth.verifyCredentials(completion: { isLoggedIn in
+            if isLoggedIn {
+                AppDelegate.shared.rootViewController.switchToMainScreen()
+            } else {
+                AppDelegate.shared.rootViewController.switchToLogout()
             }
-        }
-        
-        AppDelegate.shared.rootViewController.switchToLogout()
+        })
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Bugsee
 
 class RootViewController: UIViewController {
     private var current: UIViewController
@@ -23,26 +24,8 @@ class RootViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        sharedAuth.verifyCredentials(completion: {_ in})
         
-        sharedAuth.credentialsManager.credentials { error, credentials in
-            if error == nil, let credentials = credentials {
-                if let accessToken = credentials.accessToken {
-                    DispatchQueue.main.async {
-                        if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
-                            ostelcoAPI.wipeResources()
-                        }
-                        
-                        if (ostelcoAPI.authToken != accessToken) {
-                            ostelcoAPI.authToken = "Bearer \(accessToken)"
-                        }
-                        
-                        if let refreshToken = credentials.refreshToken {
-                            ostelcoAPI.refreshToken = refreshToken
-                        }
-                    }
-                }
-            }
-        }
         addChild(current)
         current.view.frame = view.bounds
         view.addSubview(current.view)

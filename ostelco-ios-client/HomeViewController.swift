@@ -14,6 +14,18 @@ import os
 import Stripe
 import Bugsee
 
+enum HomeErrors: Error {
+    case failedToTransformBundlesToModel
+    case failedToTransformProductsToModel
+    case unknownResource
+    case bundlesIsEmpty
+    case productsIsEmpty
+    case noDefaultProductFound
+    case applePayDeviceNotSupported
+    case applePayUserHasNoValidCardsInWallet
+    case applePayCouldNotSubmitPaymentRequest
+    case stripeReturnedSourceIsEmpty
+}
 class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthorizationViewControllerDelegate {
 
     @IBOutlet weak var balanceLabel: UILabel!
@@ -52,6 +64,7 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         balanceText.textColor = ThemeManager.currentTheme().mainColor
         
         productButton.isHidden = true
+        Bugsee.trace(key: "productButtonIsHidden", value: true)
         
         statusOverlay.embed(in: self)
         
@@ -85,43 +98,62 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         return formatter.string(fromByteCount: Int64(bytes))
     }
     
-    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+    func productsChanged(products: [ProductModel]) {
         
-        // TODO: Handle below errors in a better way
-        guard let bundles = resource.jsonArray as? [BundleModel] else {
-            // print("Error: Could not cast response to model...")
-            
-            guard var products = resource.jsonArray as? [ProductModel] else {
-                // print("Error: Could not cast response to model...")
+        if products.count > 0 {
+            let filteredProducts = products.filter { $0.presentation.isDefault == "true" }
+            if filteredProducts.count < 1 {
+                Bugsee.logError(error: HomeErrors.noDefaultProductFound)
                 productButton.isHidden = true
-                return
-            }
-            
-            dump(products)
-            
-            products = products.filter { $0.presentation.isDefault == "true" }
-            
-            dump(products)
-            
-            if products.count < 1 {
-                print("Error: Could not find a default product.")
-                productButton.isHidden = true
+                
             } else {
-                product = products[0]
+                product = filteredProducts[0]
                 productButton.setTitle("\(product!.presentation.label) \(product!.presentation.price)", for: .normal)
                 productButton.isHidden = false
             }
-            return
+        } else {
+            Bugsee.logError(error: HomeErrors.productsIsEmpty)
+            productButton.isHidden = false
         }
         
-        if bundles.count < 1 {
-            print("Error: Could not find any bundles")
-            balanceLabel.text = "?"
-        } else {
+        
+        Bugsee.trace(key: "productButtonIsHidden", value: productButton.isHidden)
+    }
+    
+    func bundlesChanged(bundles: [BundleModel]) {
+        if bundles.count > 0 {
             let bundle = bundles[0]
             balanceLabel.text = self.converByteToGB(bundle.balance)
+            balanceLabel.isHidden = false
+        } else {
+            Bugsee.logError(error: HomeErrors.bundlesIsEmpty)
+            balanceLabel.isHidden = true
         }
-        balanceLabel.isHidden = false
+        Bugsee.trace(key: "balanceLabelIsHidden", value: balanceLabel.isHidden)
+    }
+    
+    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        
+        switch (resource.url) {
+        case ostelcoAPI.bundles.url:
+            if let bundles = resource.jsonArray as? [BundleModel] {
+              self.bundlesChanged(bundles: bundles)
+            } else {
+                Bugsee.logError(error: HomeErrors.failedToTransformBundlesToModel)
+                Bugsee.trace(key: "balanceLabelIsHidden", value: true)
+                balanceLabel.isHidden = true
+            }
+        case ostelcoAPI.products.url:
+            if let products = resource.jsonArray as? [ProductModel] {
+                self.productsChanged(products: products)
+            } else {
+                Bugsee.logError(error: HomeErrors.failedToTransformProductsToModel)
+                Bugsee.trace(key: "productButtonIsHidden", value: true)
+                productButton.isHidden = true
+            }
+        default:
+            Bugsee.logError(error: HomeErrors.unknownResource)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,6 +175,7 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             ])
         
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
+        
         os_log("Merchant identifier: %{public}@ country: SG currency: %{public}@ label: %{public}@ amount: %{public}@", merchantIdentifier, product!.price.currency, product!.presentation.label, "\(product!.price.amount)")
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: "SG", currency: product!.price.currency)
         
@@ -151,10 +184,12 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         
         if (!Stripe.deviceSupportsApplePay()) {
             self.showAlert(title: "Payment Error", msg: "Device not supported.")
+            Bugsee.logError(error: HomeErrors.applePayDeviceNotSupported)
             return
         }
         if (!PKPaymentAuthorizationViewController.canMakePayments()) {
             self.showAlert(title: "Payment Error", msg: "Wallet empty or does not contain any of the supported card types. Should give user option to open apple wallet to add a card.")
+            Bugsee.logError(error: HomeErrors.applePayUserHasNoValidCardsInWallet)
             return
         }
         // Configure the line items on the payment request
@@ -194,44 +229,49 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             #endif
             #endif
             Bugsee.event("payment_could_not_be_initiated")
+            Bugsee.logError(error: HomeErrors.applePayCouldNotSubmitPaymentRequest)
         }
     }
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
-            guard let source = source, error == nil else {
-                // Present error to user...
-                Bugsee.event("payment_failed")
-                Bugsee.logError(error: error!)
-                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
-                return
-            }
             
-            ostelcoAPI.products.child(self.product!.sku).child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onProgress({ progress in
-                    os_log("Progress %{public}@", "\(progress)")
-                })
-                .onSuccess({ result in
-                    Bugsee.event("payment_succeeded")
-                    os_log("Successfully bought a product %{public}@", "\(result)")
-                    ostelcoAPI.purchases.invalidate()
-                    ostelcoAPI.bundles.invalidate()
-                    ostelcoAPI.bundles.load()
-                    self.paymentSucceeded = true
-                    completion(.success)
-                })
-                .onFailure({ error in
-                    // TODO: Report error to server
-                    // TODO: fix use of insecure unwrapping, can cause application to crash
-                    Bugsee.logError(error: error)
-                    os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
-                    self.showAlert(title: "Failed to buy product with ostelcoAPI", msg: "\(error.localizedDescription)")
-                    self.paymentSucceeded = false
-                    completion(.failure)
-                })
-                .onCompletion({ _ in
-                    // UIViewController.removeSpinner(spinner: sv)
-                })
+            if let error = error {
+                self.showAlert(title: "Failed to create stripe source", msg: "\(error.localizedDescription)")
+                Bugsee.logError(error: error)
+            } else {
+                if let source = source {
+                    ostelcoAPI.products.child(self.product!.sku).child("purchase").withParam("sourceId", source.stripeID).request(.post)
+                        .onProgress({ progress in
+                            os_log("Progress %{public}@", "\(progress)")
+                        })
+                        .onSuccess({ result in
+                            Bugsee.event("payment_succeeded")
+                            os_log("Successfully bought a product %{public}@", "\(result)")
+                            ostelcoAPI.purchases.invalidate()
+                            ostelcoAPI.bundles.invalidate()
+                            ostelcoAPI.bundles.load()
+                            self.paymentSucceeded = true
+                            completion(.success)
+                        })
+                        .onFailure({ error in
+                            // TODO: Report error to server
+                            // TODO: fix use of insecure unwrapping, can cause application to crash
+                            Bugsee.event("purchase_failed")
+                            Bugsee.logError(error: error)
+                            os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
+                            self.showAlert(title: "Failed to buy product with ostelcoAPI", msg: "\(error.localizedDescription)")
+                            self.paymentSucceeded = false
+                            completion(.failure)
+                        })
+                        .onCompletion({ _ in
+                            // UIViewController.removeSpinner(spinner: sv)
+                        })
+                } else {
+                    self.showAlert(title: "Failed to create stripe source", msg: "Contact support")
+                    Bugsee.logError(error: HomeErrors.stripeReturnedSourceIsEmpty)
+                }
+            }
         }
     }
     

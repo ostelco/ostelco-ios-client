@@ -44,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         freschatConfig.showNotificationBanner = true; // set to NO if you don't want to show the in-app notification banner upon receiving a new message while the app is open
         
         Freshchat.sharedInstance().initWith(freschatConfig)
-        
-        print("App started")
         return true
     }
     
