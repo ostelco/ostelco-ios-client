@@ -247,6 +247,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name(FRESHCHAT_UNREAD_MESSAGE_COUNT_CHANGED), object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        Freshchat.sharedInstance().unreadCount { (unreadCount) in
+            self.updateBadgeCount(count: unreadCount)
+        }
+    }
+    
     @objc func methodOfReceivedNotification(notification: Notification){
         Freshchat.sharedInstance().unreadCount { (count:Int) -> Void in
             self.updateBadgeCount(count: count)
@@ -265,15 +271,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {
+        Freshchat.sharedInstance().unreadCount { (unreadCount) in
+            self.updateBadgeCount(count: unreadCount)
+        }
         if tabBarController.viewControllers!.index(of: viewController) == 1 {
             updateBadgeCount(count: 0)
             Freshchat.sharedInstance().showConversations(self)
             return false
-        }
-        
-        Freshchat.sharedInstance().unreadCount { (unreadCount) in
-            print("-----------------")
-            print(unreadCount)
         }
         return true
     }

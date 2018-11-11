@@ -69,15 +69,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Freshchat.sharedInstance().unreadCount { (unreadCount) in
-            print("-----------------")
-            print(unreadCount)
-        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Freshchat.sharedInstance().setPushRegistrationToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        if Freshchat.sharedInstance().isFreshchatNotification(userInfo) {
+            Freshchat.sharedInstance().handleRemoteNotification(userInfo, andAppstate: application.applicationState)
+        }
+    }
 }
 
