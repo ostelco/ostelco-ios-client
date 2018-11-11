@@ -34,6 +34,15 @@ enum Theme: Int {
             return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
         }
     }
+    
+    var splash: UIImage {
+        switch self {
+        case .BlueTheme:
+            return #imageLiteral(resourceName: "StoryboardLaunchScreenProduction")
+        case .TurquoiseTheme:
+            return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
+        }
+    }
 }
 
 // Enum declaration

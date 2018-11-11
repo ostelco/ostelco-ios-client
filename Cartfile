@@ -3,4 +3,5 @@ github "ReactiveX/RxSwift" ~> 4.0
 github "bustoutsolutions/siesta" ~> 1.0
 github "stripe/stripe-ios"
 github "freshdesk/freshchat-ios" "carthage"
+binary "https://download.bugsee.com/sdk/ios/dynamic/Bugsee.json"
 

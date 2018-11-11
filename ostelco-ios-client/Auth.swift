@@ -25,7 +25,7 @@ class Auth {
     func logout() {
         os_log("Logout user")
         self.clear()
-        Switcher.updateRootVC()
+        AppDelegate.shared.rootViewController.switchToLogout()
     }
     
     func loginWithAuth0() -> Observable<Credentials> {

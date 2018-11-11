@@ -15,4 +15,5 @@ auth0_domain = ostelco.eu.auth0.com
 auth0_logo_url = https:\/\/i.imgur.com/8iFdkBD.png
 freshchat_app_id = bcd5751d-ad5d-455f-bfba-1da395583e3d
 freshchat_app_key = 2326bd78-855a-47ba-9641-6bf9bb807038
-
+apple_merchant_id = merchant.sg.redotter.dev.selfcare
+bugsee_token = 636804c2-be5e-4236-bee0-fa92785f7eed

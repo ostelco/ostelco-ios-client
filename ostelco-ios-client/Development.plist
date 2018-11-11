@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Redotter</string>
+	<string>Dev - Red Otter </string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>17</string>
+	<string>21</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -82,5 +82,9 @@
 	<string>$(freshchat_app_id)</string>
 	<key>freshchat_app_key</key>
 	<string>$(freshchat_app_key)</string>
+	<key>apple_merchant_id</key>
+	<string>$(apple_merchant_id)</string>
+	<key>bugsee_token</key>
+	<string>$(bugsee_token)</string>
 </dict>
 </plist>
