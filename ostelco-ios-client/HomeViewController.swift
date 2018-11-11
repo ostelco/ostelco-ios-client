@@ -12,6 +12,7 @@ import SiestaUI
 import Foundation
 import os
 import Stripe
+import Bugsee
 
 class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthorizationViewControllerDelegate {
 
@@ -133,9 +134,29 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
     }
     
     func handleApplePayButtonTapped() {
-        let merchantIdentifier = "merchant.sg.redotter.alpha"
+        Bugsee.event("payment_button_clicked", params: [
+            "country": "SG",
+            "currency": product!.price.currency,
+            "label": product!.presentation.label,
+            "amount": "\(product!.price.amount)",
+            "sku": product!.sku
+            ])
+        
+        let merchantIdentifier = Environment().configuration(.AppleMerchantId)
+        os_log("Merchant identifier: %{public}@ country: SG currency: %{public}@ label: %{public}@ amount: %{public}@", merchantIdentifier, product!.price.currency, product!.presentation.label, "\(product!.price.amount)")
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: "SG", currency: product!.price.currency)
         
+        os_log("device supports apple pay: %{public}@", "\(Stripe.deviceSupportsApplePay())")
+        os_log("can make payment: %{public}@", "\(PKPaymentAuthorizationViewController.canMakePayments())")
+        
+        if (!Stripe.deviceSupportsApplePay()) {
+            self.showAlert(title: "Payment Error", msg: "Device not supported.")
+            return
+        }
+        if (!PKPaymentAuthorizationViewController.canMakePayments()) {
+            self.showAlert(title: "Payment Error", msg: "Wallet empty or does not contain any of the supported card types. Should give user option to open apple wallet to add a card.")
+            return
+        }
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
             PKPaymentSummaryItem(label: self.product!.presentation.label, amount: Decimal(Double(self.product!.price.amount) / 100.0) as NSDecimalNumber),
@@ -144,8 +165,10 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             // PKPaymentSummaryItem(label: "iHats, Inc", amount: 50.00),
         ]
         
+        Bugsee.setAttribute("device_can_submit_payment_request", value: Stripe.canSubmitPaymentRequest(paymentRequest))
         // Continued in next step
         if Stripe.canSubmitPaymentRequest(paymentRequest) {
+            Bugsee.event("payment_apple_pay_dialog_initiated")
             // Setup payment authorization view controller
             let paymentAuthorizationViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
             paymentAuthorizationViewController!.delegate = self
@@ -167,9 +190,10 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             #if targetEnvironment(simulator)
             self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode on simulator does not work.")
             #else
-            self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode on real devices has not been tested yet.")
+            self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode failed for unknown reason.")
             #endif
             #endif
+            Bugsee.event("payment_could_not_be_initiated")
         }
     }
     
@@ -177,6 +201,9 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
             guard let source = source, error == nil else {
                 // Present error to user...
+                Bugsee.event("payment_failed")
+                Bugsee.logError(error: error!)
+                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
                 return
             }
             
@@ -185,6 +212,7 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
                     os_log("Progress %{public}@", "\(progress)")
                 })
                 .onSuccess({ result in
+                    Bugsee.event("payment_succeeded")
                     os_log("Successfully bought a product %{public}@", "\(result)")
                     ostelcoAPI.purchases.invalidate()
                     ostelcoAPI.bundles.invalidate()
@@ -195,7 +223,9 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
                 .onFailure({ error in
                     // TODO: Report error to server
                     // TODO: fix use of insecure unwrapping, can cause application to crash
+                    Bugsee.logError(error: error)
                     os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
+                    self.showAlert(title: "Failed to buy product with ostelcoAPI", msg: "\(error.localizedDescription)")
                     self.paymentSucceeded = false
                     completion(.failure)
                 })

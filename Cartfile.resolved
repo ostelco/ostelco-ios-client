@@ -1,4 +1,5 @@
-github "ReactiveX/RxSwift" "4.3.1"
+binary "https://download.bugsee.com/sdk/ios/dynamic/Bugsee.json" "1.18.16"
+github "ReactiveX/RxSwift" "4.4.0"
 github "auth0/Auth0.swift" "1.13.0"
 github "auth0/SimpleKeychain" "0.8.1"
 github "bustoutsolutions/siesta" "1.4.2"

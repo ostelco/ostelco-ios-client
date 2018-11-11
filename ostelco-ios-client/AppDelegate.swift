@@ -9,6 +9,7 @@
 import UIKit
 import Auth0
 import Stripe
+import Bugsee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,14 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.sg.redotter.alpha"
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
         #if DEBUG
             ThemeManager.applyTheme(theme: .TurquoiseTheme)
         #else
             ThemeManager.applyTheme(theme: .BlueTheme)
         #endif
+        
+        let options : [String: Any] =
+            [ BugseeMaxRecordingTimeKey   : 60,
+              BugseeShakeToReportKey      : true,
+              BugseeScreenshotToReportKey : true,
+              BugseeCrashReportKey        : true ]
+        
+        Bugsee.launch(token : Environment().configuration(.BugseeToken), options: options)
+        Bugsee.setAttribute("device_supports_apple_pay", value: Stripe.deviceSupportsApplePay())
+        Bugsee.setAttribute("device_can_make_payments", value: PKPaymentAuthorizationViewController.canMakePayments())
+         
         print("App started")
-        Switcher.updateRootVC(showSplashScreen: true)
         return true
     }
     
@@ -41,12 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        Switcher.showLaunchScreen()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        Switcher.updateRootVC()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

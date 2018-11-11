@@ -18,10 +18,10 @@ let auth0API = Auth0API();
 let serialQueue = DispatchQueue(label: "SerialQueue")
 
 func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -> Siesta.Request {
-    os_log("API failed with 401, most likely the access token has expired. Try to get a new access token using the refresh token.")
+    // os_log("API failed with 401, most likely the access token has expired. Try to get a new access token using the refresh token.")
     return request.chained {
         // TODO: Why is the below line required?
-        guard case .failure(let error) = $0.response, error.httpStatusCode == 401 else {
+        guard case .failure(let error) = $0.response, error.httpStatusCode == 401 || error.httpStatusCode == 400  else {
             os_log("Non 401 error, continue as normal")
             return .useThisResponse
         }
@@ -31,7 +31,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
             return .passTo(refreshTokenHandler(refreshToken: refreshToken).chained {
                 if case .failure = $0.response {
                     os_log("Failed to refresh access token. Should send user back to login screen.")
-                    Switcher.updateRootVC() // Feels like a bad idea, nested within loads of logic
+                    AppDelegate.shared.rootViewController.switchToLogout()
                     return .useThisResponse
                 } else {
                     os_log("Repeat the original failed request.")
@@ -39,7 +39,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
                 }
             })
         } else {
-            Switcher.updateRootVC()
+            AppDelegate.shared.rootViewController.switchToLogout()
             return .useThisResponse
         }
     }
