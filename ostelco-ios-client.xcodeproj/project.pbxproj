@@ -37,6 +37,8 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
+		04D1D1372197D2FD00551B0E /* FreshchatCarthage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */; };
+		04D1D1382197D30100551B0E /* FreshchatCarthage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */; };
 		04EC5AE221886316000C2EC3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE021886316000C2EC3 /* Payment.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
@@ -115,8 +117,10 @@
 		045D743A2195D30700F01D57 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
+		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		04EC5AE021886316000C2EC3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				C2B08451217E709900CAF9EA /* Siesta.framework in Frameworks */,
 				C2B08455217E709900CAF9EA /* SimpleKeychain.framework in Frameworks */,
 				C2B08456217E709900CAF9EA /* Auth0.framework in Frameworks */,
+				04D1D1382197D30100551B0E /* FreshchatCarthage.framework in Frameworks */,
 				C2B08458217E709900CAF9EA /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +169,7 @@
 				C29802BB2181EDA800FBC5C3 /* Siesta.framework in Frameworks */,
 				C29802BC2181EDA800FBC5C3 /* SimpleKeychain.framework in Frameworks */,
 				C29802BD2181EDA800FBC5C3 /* Auth0.framework in Frameworks */,
+				04D1D1372197D2FD00551B0E /* FreshchatCarthage.framework in Frameworks */,
 				C29802BE2181EDA800FBC5C3 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +228,7 @@
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
 				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
 				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
+				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
 				045D743A2195D30700F01D57 /* RootViewController.swift */,
 				045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */,
 			);
@@ -231,6 +238,7 @@
 		0448817F2179292200F59758 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */,
 				0485E5CE2197BCC400758738 /* Bugsee.framework */,
 				C2B0844D217E709900CAF9EA /* Auth0.framework */,
 				C2B0844F217E709900CAF9EA /* RxSwift.framework */,
@@ -324,7 +332,7 @@
 				TargetAttributes = {
 					04488165217924B700F59758 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 1;
@@ -452,6 +460,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FreshchatCarthage.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -461,6 +470,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FreshchatCarthage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -492,6 +502,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Siesta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FreshchatCarthage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Bugsee.framework",
 			);
 			name = "Copy Carthage Frameworks";
@@ -502,6 +513,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Siesta.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FreshchatCarthage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugsee.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +737,7 @@
 			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/ostelco-ios-client.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
@@ -741,8 +754,11 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.selfcare";
+				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -751,6 +767,7 @@
 			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -768,8 +785,10 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.selfcare";
+				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -824,6 +843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
@@ -840,8 +860,10 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.dev.selfcare";
+				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -852,7 +874,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
@@ -868,9 +890,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.dev.selfcare";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.dev.selfcare";
+				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

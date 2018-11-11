@@ -78,6 +78,10 @@
 	<string>$(server_url)</string>
 	<key>stripe_publishable_key</key>
 	<string>$(stripe_publishable_key)</string>
+	<key>freshchat_app_id</key>
+	<string>$(freshchat_app_id)</string>
+	<key>freshchat_app_key</key>
+	<string>$(freshchat_app_key)</string>
 	<key>apple_merchant_id</key>
 	<string>$(apple_merchant_id)</string>
 	<key>bugsee_token</key>
