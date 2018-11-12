@@ -504,7 +504,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FreshchatCarthage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bugsee.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -515,7 +514,6 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FreshchatCarthage.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugsee.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
