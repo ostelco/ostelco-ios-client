@@ -30,7 +30,6 @@
 		045D743C2195D30700F01D57 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743A2195D30700F01D57 /* RootViewController.swift */; };
 		045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
 		045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
-		0485E5CF2197BCC400758738 /* Bugsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485E5CE2197BCC400758738 /* Bugsee.framework */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -164,7 +163,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0485E5CF2197BCC400758738 /* Bugsee.framework in Frameworks */,
 				C29802BA2181EDA800FBC5C3 /* Stripe.framework in Frameworks */,
 				C29802BB2181EDA800FBC5C3 /* Siesta.framework in Frameworks */,
 				C29802BC2181EDA800FBC5C3 /* SimpleKeychain.framework in Frameworks */,
@@ -506,7 +504,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SiestaUI.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FreshchatCarthage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Bugsee.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -517,7 +514,6 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SiestaUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FreshchatCarthage.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Bugsee.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -848,7 +844,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -879,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
