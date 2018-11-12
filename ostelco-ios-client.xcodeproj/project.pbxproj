@@ -877,7 +877,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
@@ -893,7 +893,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.dev.selfcare";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.dev.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
