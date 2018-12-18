@@ -37,6 +37,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This will allow to take photos of your credentials.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -68,23 +70,23 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>apple_merchant_id</key>
+	<string>$(apple_merchant_id)</string>
 	<key>auth0_client_id</key>
 	<string>$(auth0_client_id)</string>
 	<key>auth0_domain</key>
 	<string>$(auth0_domain)</string>
 	<key>auth0_logo_url</key>
 	<string>$(auth0_logo_url)</string>
-	<key>server_url</key>
-	<string>$(server_url)</string>
-	<key>stripe_publishable_key</key>
-	<string>$(stripe_publishable_key)</string>
+	<key>bugsee_token</key>
+	<string>$(bugsee_token)</string>
 	<key>freshchat_app_id</key>
 	<string>$(freshchat_app_id)</string>
 	<key>freshchat_app_key</key>
 	<string>$(freshchat_app_key)</string>
-	<key>apple_merchant_id</key>
-	<string>$(apple_merchant_id)</string>
-	<key>bugsee_token</key>
-	<string>$(bugsee_token)</string>
+	<key>server_url</key>
+	<string>$(server_url)</string>
+	<key>stripe_publishable_key</key>
+	<string>$(stripe_publishable_key)</string>
 </dict>
 </plist>

@@ -122,13 +122,19 @@ class OstelcoAPI: Service {
         self.configureTransformer("/products") {
             try jsonDecoder.decode([ProductModel].self, from: $0.content)
         }
+
+        self.configureTransformer("/customer/new-ekyc-scanId") {
+            try jsonDecoder.decode(ScanInformation.self, from: $0.content)
+        }
+
     }
     
     var bundles: Resource { return resource("/bundles") }
     var profile: Resource { return resource("/profile") }
     var purchases: Resource { return resource("/purchases") }
     var products: Resource { return resource("/products") }
-    
+    var scanInformation: Resource { return resource("/customer/new-ekyc-scanId") }
+
     var authToken: String? {
         didSet {
             // Rerun existing configuration closure using new value

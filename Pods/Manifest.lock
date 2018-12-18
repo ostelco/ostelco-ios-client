@@ -1,0 +1,16 @@
+PODS:
+  - JumioMobileSDK/Netverify (2.14.2)
+
+DEPENDENCIES:
+  - JumioMobileSDK/Netverify (~> 2.14)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JumioMobileSDK
+
+SPEC CHECKSUMS:
+  JumioMobileSDK: f1e3dc6fd474bdb1cfccd8ced263fe43e038eb2a
+
+PODFILE CHECKSUM: 533e956b8d1541b1a1105274442dd93947111cf0
+
+COCOAPODS: 1.5.3

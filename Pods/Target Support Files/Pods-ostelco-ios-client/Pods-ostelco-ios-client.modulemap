@@ -1,0 +1,6 @@
+framework module Pods_ostelco_ios_client {
+  umbrella header "Pods-ostelco-ios-client-umbrella.h"
+
+  export *
+  module * { export * }
+}

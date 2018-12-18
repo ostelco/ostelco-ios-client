@@ -38,3 +38,12 @@ struct ProductModel: Codable {
         case sku, presentation, price
     }
 }
+
+struct ScanInformation: Codable {
+    let scanId: String
+    let status: String
+    
+    enum CodingKeys: String, CodingKey {
+        case scanId, status
+    }
+}
