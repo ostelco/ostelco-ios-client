@@ -8,6 +8,9 @@ target 'dev-ostelco-ios-client' do
 
   # Pods for dev-ostelco-ios-client
   pod 'JumioMobileSDK/Netverify', '~>2.14'
+  #pod 'Alamofire', '~> 4.8'
+  pod 'Alamofire', '~> 5.0.0-beta.2'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'dev-ostelco-ios-clientTests' do
     inherit! :search_paths
@@ -23,5 +26,8 @@ target 'ostelco-ios-client' do
 
   # Pods for ostelco-ios-client
   pod 'JumioMobileSDK/Netverify', '~>2.14'
+  #pod 'Alamofire', '~> 4.8'
+  pod 'Alamofire', '~> 5.0.0-beta.2'
+  pod 'SwiftyJSON', '~> 4.0'
 
 end

@@ -134,7 +134,10 @@
 		4CEB7C10C3F49F7D43E3CAB6 /* Pods_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E99C51BCE902D09509C0751 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
 		83FF767F2C3E4B07A5D160DD /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B712E401826E2EA15DE0580 /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		A120EC1DAD565851D4A9F2A0 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFFAB29F021E28640C21BDF /* Pods-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		B95774916B1873479CB31F6F /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		D28A16CA87082CEB0E1487DB /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +280,10 @@
 			children = (
 				83FF767F2C3E4B07A5D160DD /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */,
 				6E99C51BCE902D09509C0751 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */,
+				B95774916B1873479CB31F6F /* Pods-dev-ostelco-ios-client.debug.xcconfig */,
+				D28A16CA87082CEB0E1487DB /* Pods-dev-ostelco-ios-client.release.xcconfig */,
+				9B712E401826E2EA15DE0580 /* Pods-ostelco-ios-client.debug.xcconfig */,
+				ADFFAB29F021E28640C21BDF /* Pods-ostelco-ios-client.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -636,24 +644,28 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/JumioCore.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/Netverify.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/Umoove.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Netverify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Umoove.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FBE370AA5B1928736ACD3AFB /* [CP] Embed Pods Frameworks */ = {
@@ -664,24 +676,28 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/JumioCore.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/Netverify.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/frameworks/Umoove.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Netverify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Umoove.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

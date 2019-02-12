@@ -39,11 +39,29 @@ struct ProductModel: Codable {
     }
 }
 
+struct ScanResult: Codable {
+  let vendorScanReference: String
+  let dob: String
+  let lastName: String
+  let time: Int64
+  let firstName: String
+  let verificationStatus: String
+  let rejectReason: String?
+  let type: String
+  let country: String
+
+  enum CodingKeys: String, CodingKey {
+    case vendorScanReference, dob, lastName, time, firstName
+    case verificationStatus, rejectReason, type, country
+  }
+}
+
 struct ScanInformation: Codable {
-    let scanId: String
-    let status: String
-    
+  let scanId: String
+  let status: String
+
+  let scanResult: ScanResult?
     enum CodingKeys: String, CodingKey {
-        case scanId, status
+        case scanId, status, scanResult
     }
 }

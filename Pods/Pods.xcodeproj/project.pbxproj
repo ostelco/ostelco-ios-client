@@ -6,364 +6,679 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8E5310D37DD1513A2C34DF7A85DCAD88 /* JumioMobileSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FD65B893DF1BBD626678201D2FF20ED9 /* Build configuration list for PBXAggregateTarget "JumioMobileSDK" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = JumioMobileSDK;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		010A1C9D1F80C4D471DC049907D7A7A4 /* Pods-dev-ostelco-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31750A846E2AA3F54092F39E07F35298 /* Pods-dev-ostelco-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2D11F2C759F15DB5FF355C8B6A56F1DB /* Pods-dev-ostelco-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E175318A3F19D510C260C86965A4B5F1 /* Pods-dev-ostelco-ios-client-dummy.m */; };
-		39418F510F714B400148D2ACBA9A4704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		49992F04E0EC9AD000CAAEF3236BC6BB /* Pods-ostelco-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B82743F39E63DAFE2C1CBCE7B2D1D6B /* Pods-ostelco-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		73FA2F50D1DAEC17D10A11BCA09690D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		7A847C3CB6141D0F11BF2F8AEACE1C02 /* Pods-ostelco-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A879B1A5F9D1E4719FE9BF9DC51258 /* Pods-ostelco-ios-client-dummy.m */; };
-		8C0783A753B143E77EF4826300535B18 /* Pods-dev-ostelco-ios-clientTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E426245ED46C993D2627279DD8194F01 /* Pods-dev-ostelco-ios-clientTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95186B5681B672F68D4D48FE06C0CB46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		A114357A51950984E01641FABCAA5905 /* Pods-dev-ostelco-ios-clientTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7014D9A8BA48EB86A73BEF27E34381 /* Pods-dev-ostelco-ios-clientTests-dummy.m */; };
+		02B7C407AF040B557C475C1493AD7DFE /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9905407675EEBA53D7692E306E99D4A7 /* MultipartFormData.swift */; };
+		18EAB79C3BD48EC93FF027A8CE798AB2 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259881EDB8F03796E4A2AA1EEA54EF23 /* RedirectHandler.swift */; };
+		1C13438B06600C08FC4763C25A2568F4 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE1F57E48A9719B253C1F50879922C6 /* Alamofire-dummy.m */; };
+		1D67E141FFDB8A796CC37A1A9A62ADC2 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E415D1F96620596C5C18897E2973F5 /* ResponseSerialization.swift */; };
+		271F9319B02DDFD0B9F1E3FDD2AF1B64 /* Pods-dev-ostelco-ios-clientTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C34845D918E9FE7466FD57187EDD34F7 /* Pods-dev-ostelco-ios-clientTests-dummy.m */; };
+		2A6C6FAEADCE55EDE62A2EAB053DF7F1 /* URLRequest+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7456110A2DE6A106481962906FE98 /* URLRequest+Alamofire.swift */; };
+		3005BE26F54050245F5D0811D075607B /* URLSessionConfiguration+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB37880B9F177157E0A22088F43D5C /* URLSessionConfiguration+Alamofire.swift */; };
+		30A498736BACC54F6963EC6D5B56BCE8 /* Pods-dev-ostelco-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EC983E588298BA6A45F150A6E300694 /* Pods-dev-ostelco-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		336A8F4B98EA5D62ADCD2B70B3F8C012 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */; };
+		36425536AA1810C4F0F614A2B41EE65A /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F810B5F2D5749907E52E3E2C3BDDBC85 /* MultipartUpload.swift */; };
+		4DB56E963A9B569C071E896A272C9966 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */; };
+		52CE0B33F587EDAEA14F0510F8AC625B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9486AE67C23025FD4DA4000088AFCF7 /* Result.swift */; };
+		52CF5A7BF580784F55773162CCC87908 /* RequestTaskMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A51481A17BAD9F4532468E62D6BEB /* RequestTaskMap.swift */; };
+		5CDF0BCFFA9C9EFFA86ED619D5FA9006 /* Pods-dev-ostelco-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D7C32EC785C22E0801B5F4DFEA17B /* Pods-dev-ostelco-ios-client-dummy.m */; };
+		667DF201AC89372389D28404D053BA8E /* Pods-ostelco-ios-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FEFAA05BA11D248E387267D85BAA7A7C /* Pods-ostelco-ios-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6AC8232513EE5EC7B42CB4C89BE04C81 /* Pods-ostelco-ios-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A61B2665FAA989AF130A9CF5602C8E /* Pods-ostelco-ios-client-dummy.m */; };
+		6E1834FFF1A2E344BC91A12FC20FBF32 /* Pods-dev-ostelco-ios-clientTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62705D8217CE5424A5B52684DFED096F /* Pods-dev-ostelco-ios-clientTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7583A0274D7AD8661095693FADD46E71 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE98CB911B37B6C43E79D82F7138D6A /* SwiftyJSON.swift */; };
+		76D6AAC3218B89EF98C42876AC60FEB0 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58396D483E9951B0D07E9038E1C1998 /* RetryPolicy.swift */; };
+		78EC0315D08100C7ABF78B3F4397014D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB730A6A5D7D787533B9F2479222D9FB /* Notifications.swift */; };
+		7CA89E0AFFDBFF0D43224861434762B9 /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC6C2F8DB65A7D9B390A58FE86949E /* URLConvertible+URLRequestConvertible.swift */; };
+		8094608CA1B0ED03726B6F5CD9074083 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3B94ED4AA1D5E80A90CA3BCF7B28D /* DispatchQueue+Alamofire.swift */; };
+		87427D89CC654574DD159A063BC5A4CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */; };
+		8CC346897655B5C5465FCE3C12816CF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */; };
+		91A71EFFED3DD3EF775A09BCA6EF1826 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D979BC16F6EAF616394E0D78E2521917 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A131FBA16CF09E2F5E103B5B5D13D54D /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D774B247070D9E73647EE3A4AEF6D8 /* AFError.swift */; };
+		A786677EFFCACD1594AA27FF259F09FD /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A641129CB6509CA1F8D6B1B0F651C4 /* SwiftyJSON-dummy.m */; };
+		A7E0156A4E8C1F429B3A1125455FEF9D /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1033291074784D8061EC4225CD16959 /* ParameterEncoder.swift */; };
+		ADFFD2A5E4ABAD36C7802206E003A764 /* SessionStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C310A501E85B31A426F2FC9352C62AB3 /* SessionStateProvider.swift */; };
+		B0B4A466BA1723F40DBFB47AB5286CDA /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFCD87D65A26523F82BC351A6359AB /* NetworkReachabilityManager.swift */; };
+		B0CECDFE19E11AF57557F65E9C75DC21 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4381EF12E36D75E87AA1E750FE8B192F /* Alamofire.swift */; };
+		B777169691CB17069A0BFD056EF2F261 /* ServerTrustEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DB383074A4A4712ABB2F958A4EEED3 /* ServerTrustEvaluation.swift */; };
+		C238C07E8C0F17EE94435D5642B6B14D /* Protector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE37F7C11C67943F62A6D1B46D88C731 /* Protector.swift */; };
+		C83AEE14E77EBC6DF5B9F43CF1E3D5C7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B497488E3314801E4FB0C8009F9FDF /* CFNetwork.framework */; };
+		CB72BA3D00861311E9A562F7957C26A7 /* OperationQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD8887EBA8CB001D2F5C1C1CDDAFCF /* OperationQueue+Alamofire.swift */; };
+		CF3B6A9B2CB46FD14902503908A2C2AD /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394CC734F769D96620207DFB9149F9C /* ParameterEncoding.swift */; };
+		CF4BDF72041631AA89FFB65906EC086E /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EFD5894019883EF8B6F0ACEF217F7A98 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0BA6E03DD9641E91AB38A3BD42EF0C4 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50370AB627E5890FC3AA0A528358EFB2 /* Validation.swift */; };
+		D14932B135DE6BC8908B119998EAD6D6 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7743ACA6D88DBE489DBA474123E8F5 /* HTTPHeaders.swift */; };
+		D20C4DB0FD5FDA39BB4BBEABD621CA03 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196A8FAD19D79B3632616CEA300D391F /* Response.swift */; };
+		D637AB8DBE03B7A10DF5A10275B54644 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96321FDFAF29844ED079677683BF719F /* RequestInterceptor.swift */; };
+		D655F03F287A46BB800EBB42A2E54086 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E73A9374CF5BF5459004CAC5D0448 /* Request.swift */; };
+		E88BD99C17FF641608BB7A162FDBAC3A /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C6A467E34342105EEA8DF49DAEEE29 /* CachedResponseHandler.swift */; };
+		ED13D55D6CE60A5D30A0F407DB87543E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */; };
+		EE13BB04E5D7F0A572E2F4989007983D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368D68D76B36ACC7AED89AC6F5188276 /* EventMonitor.swift */; };
+		EF84BC747CD62EA83C51FD4DDB1AD873 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C466E566D6B05E2FDF39400E585992 /* Session.swift */; };
+		FB9C3730089DC01822F3971EF063D6BB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22345B2C133B909C5E6D8DA73794902C /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5E79024E1A1CB5A4782188655301CBE3 /* PBXContainerItemProxy */ = {
+		064B66F8E45155D9DDD5D2A2009DD9D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FC86234D3994B301FF8295A352DA49D;
+			remoteGlobalIDString = 628DA498255215479ECAD389BEADB5E8;
+			remoteInfo = Alamofire;
+		};
+		1A86EAE42EEC0BE27E94A9B7EEF8C249 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 628DA498255215479ECAD389BEADB5E8;
+			remoteInfo = Alamofire;
+		};
+		36AF6DAB13BC88ECB05444E6CF9C9EE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E5310D37DD1513A2C34DF7A85DCAD88;
+			remoteInfo = JumioMobileSDK;
+		};
+		5C46D513D09F68595D13101465111791 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E5310D37DD1513A2C34DF7A85DCAD88;
+			remoteInfo = JumioMobileSDK;
+		};
+		7DD363C0D9B22831CF99067D86C636F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 157AF5F341AFC7048F52F408159E739B;
 			remoteInfo = "Pods-dev-ostelco-ios-client";
+		};
+		B4B5589BE8F5D2763EEC8FCE35187A29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76B1ADA422C8AA71FBFC2FEB7443B795;
+			remoteInfo = SwiftyJSON;
+		};
+		FA57686EB7FA26E4A28B5AF0B18EB630 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76B1ADA422C8AA71FBFC2FEB7443B795;
+			remoteInfo = SwiftyJSON;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		070EFBF759A0DAF423D7C03C61F088F0 /* Pods-ostelco-ios-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ostelco-ios-client-acknowledgements.plist"; sourceTree = "<group>"; };
-		0A15BBE8697391AAB0E487965EBEAC3F /* Pods_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ostelco_ios_client.framework; path = "Pods-ostelco-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F87A4E3509F10131551FC27C40129E3 /* Netverify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Netverify.framework; path = frameworks/Netverify.framework; sourceTree = "<group>"; };
-		125CBDBA0F60E77C2C6B1BC73F042F07 /* Pods-dev-ostelco-ios-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-dev-ostelco-ios-client.modulemap"; sourceTree = "<group>"; };
-		23B750EDEE8739CF0FF8CCB8A4984EAC /* Pods-dev-ostelco-ios-clientTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dev-ostelco-ios-clientTests-frameworks.sh"; sourceTree = "<group>"; };
-		2968F6CABE917860421352814ADE1F94 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DFA5BED0690DCD1F7C5679FCDE9FD52 /* Pods-dev-ostelco-ios-clientTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dev-ostelco-ios-clientTests-resources.sh"; sourceTree = "<group>"; };
-		30108DCC8E978ED199DDF098CF8394CF /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicroBlink.framework; path = frameworks/MicroBlink.framework; sourceTree = "<group>"; };
-		31750A846E2AA3F54092F39E07F35298 /* Pods-dev-ostelco-ios-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-dev-ostelco-ios-client-umbrella.h"; sourceTree = "<group>"; };
-		317CCF29A6B89E0559F58F672544979E /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3D58B49E640C003ECBDEF7E7163ED0E3 /* Pods-dev-ostelco-ios-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-client-acknowledgements.plist"; sourceTree = "<group>"; };
-		422702C3182E63E43A7FA41D00D4478A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		464EBA57506CF018618B991186111CA2 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
-		4A939D0C8A97B3A2308EBBFAE8EFB08D /* Pods-dev-ostelco-ios-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-dev-ostelco-ios-client-acknowledgements.markdown"; sourceTree = "<group>"; };
-		524D756997DEDF9A4CE5CA1DA2D5BA84 /* Pods-ostelco-ios-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ostelco-ios-client.modulemap"; sourceTree = "<group>"; };
-		5DAD90FC8E19393418D8E9601C7ACBC5 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
-		5ED7578AA126F1E9871A291C25A06DDB /* Pods-dev-ostelco-ios-clientTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-dev-ostelco-ios-clientTests.modulemap"; sourceTree = "<group>"; };
-		5FAF808BAF29468684EB497A8E786179 /* Pods-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
-		674043D0BC204CE41E0100C470C0A368 /* Pods-ostelco-ios-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ostelco-ios-client-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6E5101F0E789DB3BDF325809D1639A8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B82743F39E63DAFE2C1CBCE7B2D1D6B /* Pods-ostelco-ios-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ostelco-ios-client-umbrella.h"; sourceTree = "<group>"; };
-		81943500ED2CD392F92603D208B2B5AB /* Umoove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Umoove.framework; path = frameworks/Umoove.framework; sourceTree = "<group>"; };
-		86A0553F199DAD2765D3F8AF612E843C /* Pods-dev-ostelco-ios-clientTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-clientTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8808027CCC627B4B91AEA3BF5BFCDD23 /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
-		891D4AB92A797B214FABC859FF643E76 /* JumioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JumioCore.framework; path = frameworks/JumioCore.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C7014D9A8BA48EB86A73BEF27E34381 /* Pods-dev-ostelco-ios-clientTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dev-ostelco-ios-clientTests-dummy.m"; sourceTree = "<group>"; };
-		BDA793EB9BB85EBA49D84C10CAC9545C /* Pods-ostelco-ios-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ostelco-ios-client-frameworks.sh"; sourceTree = "<group>"; };
-		C5396101B196963052D0275A257B9679 /* Pods-ostelco-ios-client-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ostelco-ios-client-resources.sh"; sourceTree = "<group>"; };
-		CDA8278A6299130E15DF27876E1081D9 /* Pods_dev_ostelco_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_dev_ostelco_ios_clientTests.framework; path = "Pods-dev-ostelco-ios-clientTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D50C1A3668A46BC92C9917AF7DC1595C /* Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D6A879B1A5F9D1E4719FE9BF9DC51258 /* Pods-ostelco-ios-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ostelco-ios-client-dummy.m"; sourceTree = "<group>"; };
-		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E175318A3F19D510C260C86965A4B5F1 /* Pods-dev-ostelco-ios-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dev-ostelco-ios-client-dummy.m"; sourceTree = "<group>"; };
-		E2BBAB5268A09555D9B492DBAE6F2136 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
-		E426245ED46C993D2627279DD8194F01 /* Pods-dev-ostelco-ios-clientTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-dev-ostelco-ios-clientTests-umbrella.h"; sourceTree = "<group>"; };
-		EE9A8B4E2338D51F8A7CB647122B6B26 /* Pods-dev-ostelco-ios-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dev-ostelco-ios-client-frameworks.sh"; sourceTree = "<group>"; };
-		F52527AE96C7386B00238DF5DC32A380 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_dev_ostelco_ios_client.framework; path = "Pods-dev-ostelco-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB83997B01CDDEEAEF7A0F8C1DE72BA2 /* Pods-dev-ostelco-ios-client-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dev-ostelco-ios-client-resources.sh"; sourceTree = "<group>"; };
+		08D774B247070D9E73647EE3A4AEF6D8 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		08F89FEF952EB95298AC0CFE99743310 /* Pods-dev-ostelco-ios-clientTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-clientTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0B642330F1B2E7B7E887C72B49D804CB /* Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0C63A446748F948F29EFDECF94DBD117 /* Pods-ostelco-ios-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ostelco-ios-client-acknowledgements.plist"; sourceTree = "<group>"; };
+		0CD6FB22A9C187D8D0EF4B73E08DAFD8 /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
+		0EE57FDDFF2B88D146337EA6AEBE4A49 /* Umoove.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Umoove.framework; path = frameworks/Umoove.framework; sourceTree = "<group>"; };
+		116A7EA85FA1BA3B20693EE334BEAF01 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_dev_ostelco_ios_client.framework; path = "Pods-dev-ostelco-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		13068E3EC10094CD7D0E48408198350A /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		196A8FAD19D79B3632616CEA300D391F /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		1E80899EE1337F21E04CE741A8E460C7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EC6949DB73EDB86F02501383E0232B8 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		22345B2C133B909C5E6D8DA73794902C /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/HTTPMethod.swift; sourceTree = "<group>"; };
+		2394CC734F769D96620207DFB9149F9C /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		259881EDB8F03796E4A2AA1EEA54EF23 /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
+		276A51481A17BAD9F4532468E62D6BEB /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
+		2EC7859C26D67376E5EA63619E8331C4 /* JumioMobileSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JumioMobileSDK.xcconfig; sourceTree = "<group>"; };
+		3272243F4A743ED7BF401703340F7D20 /* Pods-dev-ostelco-ios-client-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-client-Info.plist"; sourceTree = "<group>"; };
+		3508E3C0BA029313DEA161C3C1E0A8E2 /* Pods-ostelco-ios-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ostelco-ios-client-acknowledgements.markdown"; sourceTree = "<group>"; };
+		368D68D76B36ACC7AED89AC6F5188276 /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
+		39721782E3A59B222102A1454EF6FC4E /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		3C2AD74FF6AF57E3B76012A0B24D25C2 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		42F84381CC169E8068B97A1D274247C8 /* Pods_dev_ostelco_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_dev_ostelco_ios_clientTests.framework; path = "Pods-dev-ostelco-ios-clientTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4381EF12E36D75E87AA1E750FE8B192F /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		4DE8BEB46C74A1A8BFEAD999F0BCE738 /* Pods-ostelco-ios-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ostelco-ios-client.modulemap"; sourceTree = "<group>"; };
+		50370AB627E5890FC3AA0A528358EFB2 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		52DC677EA99CC7BADB75CDC8C75AA7C3 /* Pods-dev-ostelco-ios-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dev-ostelco-ios-client-frameworks.sh"; sourceTree = "<group>"; };
+		5498A241724884B7215DA92C1FE2D25F /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		56DFCD87D65A26523F82BC351A6359AB /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		5754C13C9894D34730FEB348C901DA17 /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicroBlink.framework; path = frameworks/MicroBlink.framework; sourceTree = "<group>"; };
+		5DCB37880B9F177157E0A22088F43D5C /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
+		5E396B8BE16ED772E3C24231EAC82E89 /* Pods-dev-ostelco-ios-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-client-acknowledgements.plist"; sourceTree = "<group>"; };
+		601E01B41722DB89C6819C54DAE26CF5 /* Netverify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Netverify.framework; path = frameworks/Netverify.framework; sourceTree = "<group>"; };
+		62705D8217CE5424A5B52684DFED096F /* Pods-dev-ostelco-ios-clientTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-dev-ostelco-ios-clientTests-umbrella.h"; sourceTree = "<group>"; };
+		66235D72EF5652DA83FCF3484F4B47C2 /* Pods-dev-ostelco-ios-clientTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-clientTests-Info.plist"; sourceTree = "<group>"; };
+		6AC7456110A2DE6A106481962906FE98 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
+		6B7743ACA6D88DBE489DBA474123E8F5 /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
+		6EC983E588298BA6A45F150A6E300694 /* Pods-dev-ostelco-ios-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-dev-ostelco-ios-client-umbrella.h"; sourceTree = "<group>"; };
+		75B497488E3314801E4FB0C8009F9FDF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		794D7C32EC785C22E0801B5F4DFEA17B /* Pods-dev-ostelco-ios-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dev-ostelco-ios-client-dummy.m"; sourceTree = "<group>"; };
+		7B0E73A9374CF5BF5459004CAC5D0448 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		818C9493A54A2127961B3D44A6D25565 /* Pods-ostelco-ios-client-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ostelco-ios-client-Info.plist"; sourceTree = "<group>"; };
+		83E415D1F96620596C5C18897E2973F5 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		86D1CE14D4B3B2475DB884C0CC01E2E5 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		8C77F1B25E97E5E4ACFB02ED39F4113B /* Pods-dev-ostelco-ios-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-dev-ostelco-ios-client-acknowledgements.markdown"; sourceTree = "<group>"; };
+		92761E6055E7EDE747D8D0A660A61A8C /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		96321FDFAF29844ED079677683BF719F /* RequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestInterceptor.swift; path = Source/RequestInterceptor.swift; sourceTree = "<group>"; };
+		98A641129CB6509CA1F8D6B1B0F651C4 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		9905407675EEBA53D7692E306E99D4A7 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DBF4D7594BA1120913D1D16DB19D07F /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1033291074784D8061EC4225CD16959 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
+		B0C6A467E34342105EEA8DF49DAEEE29 /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
+		B50B7F4E31E55DDBD11C6066B763B172 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8C466E566D6B05E2FDF39400E585992 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
+		BFE1F57E48A9719B253C1F50879922C6 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		C2C59CED95488650412DB91037B1C7C8 /* Pods-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		C310A501E85B31A426F2FC9352C62AB3 /* SessionStateProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionStateProvider.swift; path = Source/SessionStateProvider.swift; sourceTree = "<group>"; };
+		C34845D918E9FE7466FD57187EDD34F7 /* Pods-dev-ostelco-ios-clientTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dev-ostelco-ios-clientTests-dummy.m"; sourceTree = "<group>"; };
+		C9486AE67C23025FD4DA4000088AFCF7 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		C9BD8887EBA8CB001D2F5C1C1CDDAFCF /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		CB730A6A5D7D787533B9F2479222D9FB /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		CE37F7C11C67943F62A6D1B46D88C731 /* Protector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protector.swift; path = Source/Protector.swift; sourceTree = "<group>"; };
+		CF0A1A845E5F6CF88033C405DF59DAC8 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		D5F04A86512AD7F911E8955E8FFA897E /* Pods_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ostelco_ios_client.framework; path = "Pods-ostelco-ios-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6A61B2665FAA989AF130A9CF5602C8E /* Pods-ostelco-ios-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ostelco-ios-client-dummy.m"; sourceTree = "<group>"; };
+		D7ADB5E6AD26C20078BE2D2F62226BF1 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		D8C3B94ED4AA1D5E80A90CA3BCF7B28D /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		D8F9E7CCB1A58D0A5B22DDDF1CB5F701 /* JumioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JumioCore.framework; path = frameworks/JumioCore.framework; sourceTree = "<group>"; };
+		D979BC16F6EAF616394E0D78E2521917 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		DB3F2DA592FFDEDC5FF7D5E21127001D /* Pods-ostelco-ios-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ostelco-ios-client-frameworks.sh"; sourceTree = "<group>"; };
+		E4D2816766E2395B19BD5D5D75E30DB2 /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8E88224004FCB86EECEBE7F3117B632 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
+		EBBC6C2F8DB65A7D9B390A58FE86949E /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
+		ECE98CB911B37B6C43E79D82F7138D6A /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		ED5F69CF0030D50E7585504F0546CCC3 /* Pods-dev-ostelco-ios-clientTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-dev-ostelco-ios-clientTests.modulemap"; sourceTree = "<group>"; };
+		EFD5894019883EF8B6F0ACEF217F7A98 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		F0DB383074A4A4712ABB2F958A4EEED3 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
+		F58396D483E9951B0D07E9038E1C1998 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
+		F810B5F2D5749907E52E3E2C3BDDBC85 /* MultipartUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartUpload.swift; path = Source/MultipartUpload.swift; sourceTree = "<group>"; };
+		FA11D6F87031B1F5D90A586D8271A5CC /* Pods-dev-ostelco-ios-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-dev-ostelco-ios-client.modulemap"; sourceTree = "<group>"; };
+		FEFAA05BA11D248E387267D85BAA7A7C /* Pods-ostelco-ios-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ostelco-ios-client-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A32F756DB8D7AA4C554B7C756E8FB80F /* Frameworks */ = {
+		186E64A0DF27A3AA2003CD378FDED895 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39418F510F714B400148D2ACBA9A4704 /* Foundation.framework in Frameworks */,
+				4DB56E963A9B569C071E896A272C9966 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A8119AFB0BBC98A828CAF62741E58B21 /* Frameworks */ = {
+		90A8DECFC0D1F96E8E986CE001E38DAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95186B5681B672F68D4D48FE06C0CB46 /* Foundation.framework in Frameworks */,
+				336A8F4B98EA5D62ADCD2B70B3F8C012 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C86CC5B979B4C082240DE848B160F455 /* Frameworks */ = {
+		986EEA0F710A52BC58F36041E76C46C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FA2F50D1DAEC17D10A11BCA09690D1 /* Foundation.framework in Frameworks */,
+				ED13D55D6CE60A5D30A0F407DB87543E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE1A7DA07628FAE33C2523DFEB9142E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87427D89CC654574DD159A063BC5A4CB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E53CD7F9EF9FCD3024B4DB0326C65C53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C83AEE14E77EBC6DF5B9F43CF1E3D5C7 /* CFNetwork.framework in Frameworks */,
+				8CC346897655B5C5465FCE3C12816CF0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CD2FBE26DD1391AFB83F66DB36C8F39 /* Products */ = {
+		06428FD32D76B7324F5E5500F051990B /* Pods-dev-ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
-				F52527AE96C7386B00238DF5DC32A380 /* Pods_dev_ostelco_ios_client.framework */,
-				CDA8278A6299130E15DF27876E1081D9 /* Pods_dev_ostelco_ios_clientTests.framework */,
-				0A15BBE8697391AAB0E487965EBEAC3F /* Pods_ostelco_ios_client.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		44D5347904CF754D6785B84253F2574A /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		539E4777920A5CE7F6456E7D8BF07822 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				891D4AB92A797B214FABC859FF643E76 /* JumioCore.framework */,
-				30108DCC8E978ED199DDF098CF8394CF /* MicroBlink.framework */,
-				0F87A4E3509F10131551FC27C40129E3 /* Netverify.framework */,
-				81943500ED2CD392F92603D208B2B5AB /* Umoove.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6404557CB65C6D85D11CF36C35E292C5 /* Pods-dev-ostelco-ios-clientTests */ = {
-			isa = PBXGroup;
-			children = (
-				2968F6CABE917860421352814ADE1F94 /* Info.plist */,
-				5ED7578AA126F1E9871A291C25A06DDB /* Pods-dev-ostelco-ios-clientTests.modulemap */,
-				D50C1A3668A46BC92C9917AF7DC1595C /* Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown */,
-				86A0553F199DAD2765D3F8AF612E843C /* Pods-dev-ostelco-ios-clientTests-acknowledgements.plist */,
-				9C7014D9A8BA48EB86A73BEF27E34381 /* Pods-dev-ostelco-ios-clientTests-dummy.m */,
-				23B750EDEE8739CF0FF8CCB8A4984EAC /* Pods-dev-ostelco-ios-clientTests-frameworks.sh */,
-				2DFA5BED0690DCD1F7C5679FCDE9FD52 /* Pods-dev-ostelco-ios-clientTests-resources.sh */,
-				E426245ED46C993D2627279DD8194F01 /* Pods-dev-ostelco-ios-clientTests-umbrella.h */,
-				317CCF29A6B89E0559F58F672544979E /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */,
-				5DAD90FC8E19393418D8E9601C7ACBC5 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */,
-			);
-			name = "Pods-dev-ostelco-ios-clientTests";
-			path = "Target Support Files/Pods-dev-ostelco-ios-clientTests";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9CEAC23DB00EC3A3FFEF683C92E5BD68 /* Pods */,
-				0CD2FBE26DD1391AFB83F66DB36C8F39 /* Products */,
-				FDED97DF0874E36C64E11A467E622763 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		98A0CD62F12B8E6D64446FECD8EFCB8C /* Pods-dev-ostelco-ios-client */ = {
-			isa = PBXGroup;
-			children = (
-				6E5101F0E789DB3BDF325809D1639A8D /* Info.plist */,
-				125CBDBA0F60E77C2C6B1BC73F042F07 /* Pods-dev-ostelco-ios-client.modulemap */,
-				4A939D0C8A97B3A2308EBBFAE8EFB08D /* Pods-dev-ostelco-ios-client-acknowledgements.markdown */,
-				3D58B49E640C003ECBDEF7E7163ED0E3 /* Pods-dev-ostelco-ios-client-acknowledgements.plist */,
-				E175318A3F19D510C260C86965A4B5F1 /* Pods-dev-ostelco-ios-client-dummy.m */,
-				EE9A8B4E2338D51F8A7CB647122B6B26 /* Pods-dev-ostelco-ios-client-frameworks.sh */,
-				FB83997B01CDDEEAEF7A0F8C1DE72BA2 /* Pods-dev-ostelco-ios-client-resources.sh */,
-				31750A846E2AA3F54092F39E07F35298 /* Pods-dev-ostelco-ios-client-umbrella.h */,
-				E2BBAB5268A09555D9B492DBAE6F2136 /* Pods-dev-ostelco-ios-client.debug.xcconfig */,
-				464EBA57506CF018618B991186111CA2 /* Pods-dev-ostelco-ios-client.release.xcconfig */,
+				FA11D6F87031B1F5D90A586D8271A5CC /* Pods-dev-ostelco-ios-client.modulemap */,
+				8C77F1B25E97E5E4ACFB02ED39F4113B /* Pods-dev-ostelco-ios-client-acknowledgements.markdown */,
+				5E396B8BE16ED772E3C24231EAC82E89 /* Pods-dev-ostelco-ios-client-acknowledgements.plist */,
+				794D7C32EC785C22E0801B5F4DFEA17B /* Pods-dev-ostelco-ios-client-dummy.m */,
+				52DC677EA99CC7BADB75CDC8C75AA7C3 /* Pods-dev-ostelco-ios-client-frameworks.sh */,
+				3272243F4A743ED7BF401703340F7D20 /* Pods-dev-ostelco-ios-client-Info.plist */,
+				6EC983E588298BA6A45F150A6E300694 /* Pods-dev-ostelco-ios-client-umbrella.h */,
+				1EC6949DB73EDB86F02501383E0232B8 /* Pods-dev-ostelco-ios-client.debug.xcconfig */,
+				3C2AD74FF6AF57E3B76012A0B24D25C2 /* Pods-dev-ostelco-ios-client.release.xcconfig */,
 			);
 			name = "Pods-dev-ostelco-ios-client";
 			path = "Target Support Files/Pods-dev-ostelco-ios-client";
 			sourceTree = "<group>";
 		};
-		9CEAC23DB00EC3A3FFEF683C92E5BD68 /* Pods */ = {
+		0CABE2B8A5E9F6C884435E0826488102 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				DB1861CA73AB8C714DE8916E286CCC2E /* JumioMobileSDK */,
+				13068E3EC10094CD7D0E48408198350A /* SwiftyJSON.modulemap */,
+				86D1CE14D4B3B2475DB884C0CC01E2E5 /* SwiftyJSON.xcconfig */,
+				98A641129CB6509CA1F8D6B1B0F651C4 /* SwiftyJSON-dummy.m */,
+				0CD6FB22A9C187D8D0EF4B73E08DAFD8 /* SwiftyJSON-Info.plist */,
+				CF0A1A845E5F6CF88033C405DF59DAC8 /* SwiftyJSON-prefix.pch */,
+				D979BC16F6EAF616394E0D78E2521917 /* SwiftyJSON-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
-		9D27D22E45CB0C7E05EAE61504935D63 /* Netverify */ = {
+		0F4756D3F82C38B331ED251CACAB1FEB /* Pods-ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
-				539E4777920A5CE7F6456E7D8BF07822 /* Frameworks */,
-			);
-			name = Netverify;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				44D5347904CF754D6785B84253F2574A /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DB1861CA73AB8C714DE8916E286CCC2E /* JumioMobileSDK */ = {
-			isa = PBXGroup;
-			children = (
-				9D27D22E45CB0C7E05EAE61504935D63 /* Netverify */,
-			);
-			name = JumioMobileSDK;
-			path = JumioMobileSDK;
-			sourceTree = "<group>";
-		};
-		F2E47ABD3E1FC7D5E51C8C5BB9D9C797 /* Pods-ostelco-ios-client */ = {
-			isa = PBXGroup;
-			children = (
-				422702C3182E63E43A7FA41D00D4478A /* Info.plist */,
-				524D756997DEDF9A4CE5CA1DA2D5BA84 /* Pods-ostelco-ios-client.modulemap */,
-				674043D0BC204CE41E0100C470C0A368 /* Pods-ostelco-ios-client-acknowledgements.markdown */,
-				070EFBF759A0DAF423D7C03C61F088F0 /* Pods-ostelco-ios-client-acknowledgements.plist */,
-				D6A879B1A5F9D1E4719FE9BF9DC51258 /* Pods-ostelco-ios-client-dummy.m */,
-				BDA793EB9BB85EBA49D84C10CAC9545C /* Pods-ostelco-ios-client-frameworks.sh */,
-				C5396101B196963052D0275A257B9679 /* Pods-ostelco-ios-client-resources.sh */,
-				7B82743F39E63DAFE2C1CBCE7B2D1D6B /* Pods-ostelco-ios-client-umbrella.h */,
-				8808027CCC627B4B91AEA3BF5BFCDD23 /* Pods-ostelco-ios-client.debug.xcconfig */,
-				5FAF808BAF29468684EB497A8E786179 /* Pods-ostelco-ios-client.release.xcconfig */,
+				4DE8BEB46C74A1A8BFEAD999F0BCE738 /* Pods-ostelco-ios-client.modulemap */,
+				3508E3C0BA029313DEA161C3C1E0A8E2 /* Pods-ostelco-ios-client-acknowledgements.markdown */,
+				0C63A446748F948F29EFDECF94DBD117 /* Pods-ostelco-ios-client-acknowledgements.plist */,
+				D6A61B2665FAA989AF130A9CF5602C8E /* Pods-ostelco-ios-client-dummy.m */,
+				DB3F2DA592FFDEDC5FF7D5E21127001D /* Pods-ostelco-ios-client-frameworks.sh */,
+				818C9493A54A2127961B3D44A6D25565 /* Pods-ostelco-ios-client-Info.plist */,
+				FEFAA05BA11D248E387267D85BAA7A7C /* Pods-ostelco-ios-client-umbrella.h */,
+				92761E6055E7EDE747D8D0A660A61A8C /* Pods-ostelco-ios-client.debug.xcconfig */,
+				C2C59CED95488650412DB91037B1C7C8 /* Pods-ostelco-ios-client.release.xcconfig */,
 			);
 			name = "Pods-ostelco-ios-client";
 			path = "Target Support Files/Pods-ostelco-ios-client";
 			sourceTree = "<group>";
 		};
-		FDED97DF0874E36C64E11A467E622763 /* Targets Support Files */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				98A0CD62F12B8E6D64446FECD8EFCB8C /* Pods-dev-ostelco-ios-client */,
-				6404557CB65C6D85D11CF36C35E292C5 /* Pods-dev-ostelco-ios-clientTests */,
-				F2E47ABD3E1FC7D5E51C8C5BB9D9C797 /* Pods-ostelco-ios-client */,
+				EBC880584FE2DFF823BCC5863C234694 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B193CD5E91A639ADB8D02434A803D84 /* JumioMobileSDK */ = {
+			isa = PBXGroup;
+			children = (
+				EEBEFEB504B0C5F16B9B47C9BCDE0E8F /* Netverify */,
+				D6100603994741DC7434C246CA4DD388 /* Support Files */,
+			);
+			name = JumioMobileSDK;
+			path = JumioMobileSDK;
+			sourceTree = "<group>";
+		};
+		5E331D7C4F2646019E2F2CA58D053D01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8F9E7CCB1A58D0A5B22DDDF1CB5F701 /* JumioCore.framework */,
+				5754C13C9894D34730FEB348C901DA17 /* MicroBlink.framework */,
+				601E01B41722DB89C6819C54DAE26CF5 /* Netverify.framework */,
+				0EE57FDDFF2B88D146337EA6AEBE4A49 /* Umoove.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		888C2EAAE681F061A163449BC58029F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0E8EA8C9A4316A6BD05771B9D178E0F /* Alamofire */,
+				2B193CD5E91A639ADB8D02434A803D84 /* JumioMobileSDK */,
+				9A691C0131923C0178B90137FA04F1D5 /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8900B2EB0E395092EEEA95149BD220EF /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				06428FD32D76B7324F5E5500F051990B /* Pods-dev-ostelco-ios-client */,
+				AA2012FC706CA9A630C1D381D564531E /* Pods-dev-ostelco-ios-clientTests */,
+				0F4756D3F82C38B331ED251CACAB1FEB /* Pods-ostelco-ios-client */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9A691C0131923C0178B90137FA04F1D5 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				ECE98CB911B37B6C43E79D82F7138D6A /* SwiftyJSON.swift */,
+				0CABE2B8A5E9F6C884435E0826488102 /* Support Files */,
+			);
+			name = SwiftyJSON;
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		AA2012FC706CA9A630C1D381D564531E /* Pods-dev-ostelco-ios-clientTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED5F69CF0030D50E7585504F0546CCC3 /* Pods-dev-ostelco-ios-clientTests.modulemap */,
+				0B642330F1B2E7B7E887C72B49D804CB /* Pods-dev-ostelco-ios-clientTests-acknowledgements.markdown */,
+				08F89FEF952EB95298AC0CFE99743310 /* Pods-dev-ostelco-ios-clientTests-acknowledgements.plist */,
+				C34845D918E9FE7466FD57187EDD34F7 /* Pods-dev-ostelco-ios-clientTests-dummy.m */,
+				66235D72EF5652DA83FCF3484F4B47C2 /* Pods-dev-ostelco-ios-clientTests-Info.plist */,
+				62705D8217CE5424A5B52684DFED096F /* Pods-dev-ostelco-ios-clientTests-umbrella.h */,
+				E4D2816766E2395B19BD5D5D75E30DB2 /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */,
+				9DBF4D7594BA1120913D1D16DB19D07F /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */,
+			);
+			name = "Pods-dev-ostelco-ios-clientTests";
+			path = "Target Support Files/Pods-dev-ostelco-ios-clientTests";
+			sourceTree = "<group>";
+		};
+		B0E8EA8C9A4316A6BD05771B9D178E0F /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				08D774B247070D9E73647EE3A4AEF6D8 /* AFError.swift */,
+				4381EF12E36D75E87AA1E750FE8B192F /* Alamofire.swift */,
+				B0C6A467E34342105EEA8DF49DAEEE29 /* CachedResponseHandler.swift */,
+				D8C3B94ED4AA1D5E80A90CA3BCF7B28D /* DispatchQueue+Alamofire.swift */,
+				368D68D76B36ACC7AED89AC6F5188276 /* EventMonitor.swift */,
+				6B7743ACA6D88DBE489DBA474123E8F5 /* HTTPHeaders.swift */,
+				22345B2C133B909C5E6D8DA73794902C /* HTTPMethod.swift */,
+				9905407675EEBA53D7692E306E99D4A7 /* MultipartFormData.swift */,
+				F810B5F2D5749907E52E3E2C3BDDBC85 /* MultipartUpload.swift */,
+				56DFCD87D65A26523F82BC351A6359AB /* NetworkReachabilityManager.swift */,
+				CB730A6A5D7D787533B9F2479222D9FB /* Notifications.swift */,
+				C9BD8887EBA8CB001D2F5C1C1CDDAFCF /* OperationQueue+Alamofire.swift */,
+				A1033291074784D8061EC4225CD16959 /* ParameterEncoder.swift */,
+				2394CC734F769D96620207DFB9149F9C /* ParameterEncoding.swift */,
+				CE37F7C11C67943F62A6D1B46D88C731 /* Protector.swift */,
+				259881EDB8F03796E4A2AA1EEA54EF23 /* RedirectHandler.swift */,
+				7B0E73A9374CF5BF5459004CAC5D0448 /* Request.swift */,
+				96321FDFAF29844ED079677683BF719F /* RequestInterceptor.swift */,
+				276A51481A17BAD9F4532468E62D6BEB /* RequestTaskMap.swift */,
+				196A8FAD19D79B3632616CEA300D391F /* Response.swift */,
+				83E415D1F96620596C5C18897E2973F5 /* ResponseSerialization.swift */,
+				C9486AE67C23025FD4DA4000088AFCF7 /* Result.swift */,
+				F58396D483E9951B0D07E9038E1C1998 /* RetryPolicy.swift */,
+				F0DB383074A4A4712ABB2F958A4EEED3 /* ServerTrustEvaluation.swift */,
+				B8C466E566D6B05E2FDF39400E585992 /* Session.swift */,
+				C310A501E85B31A426F2FC9352C62AB3 /* SessionStateProvider.swift */,
+				EBBC6C2F8DB65A7D9B390A58FE86949E /* URLConvertible+URLRequestConvertible.swift */,
+				6AC7456110A2DE6A106481962906FE98 /* URLRequest+Alamofire.swift */,
+				5DCB37880B9F177157E0A22088F43D5C /* URLSessionConfiguration+Alamofire.swift */,
+				50370AB627E5890FC3AA0A528358EFB2 /* Validation.swift */,
+				D926C57B9982DD3D3566D36B898719F6 /* Support Files */,
+			);
+			name = Alamofire;
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		CEEBF21DC69A8BA0930572850E50EA0C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E80899EE1337F21E04CE741A8E460C7 /* Alamofire.framework */,
+				116A7EA85FA1BA3B20693EE334BEAF01 /* Pods_dev_ostelco_ios_client.framework */,
+				42F84381CC169E8068B97A1D274247C8 /* Pods_dev_ostelco_ios_clientTests.framework */,
+				D5F04A86512AD7F911E8955E8FFA897E /* Pods_ostelco_ios_client.framework */,
+				B50B7F4E31E55DDBD11C6066B763B172 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				888C2EAAE681F061A163449BC58029F9 /* Pods */,
+				CEEBF21DC69A8BA0930572850E50EA0C /* Products */,
+				8900B2EB0E395092EEEA95149BD220EF /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D6100603994741DC7434C246CA4DD388 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2EC7859C26D67376E5EA63619E8331C4 /* JumioMobileSDK.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JumioMobileSDK";
+			sourceTree = "<group>";
+		};
+		D926C57B9982DD3D3566D36B898719F6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7ADB5E6AD26C20078BE2D2F62226BF1 /* Alamofire.modulemap */,
+				5498A241724884B7215DA92C1FE2D25F /* Alamofire.xcconfig */,
+				BFE1F57E48A9719B253C1F50879922C6 /* Alamofire-dummy.m */,
+				E8E88224004FCB86EECEBE7F3117B632 /* Alamofire-Info.plist */,
+				39721782E3A59B222102A1454EF6FC4E /* Alamofire-prefix.pch */,
+				EFD5894019883EF8B6F0ACEF217F7A98 /* Alamofire-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		EBC880584FE2DFF823BCC5863C234694 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				75B497488E3314801E4FB0C8009F9FDF /* CFNetwork.framework */,
+				12CD98D2E1967A971DD60249C2BD0616 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EEBEFEB504B0C5F16B9B47C9BCDE0E8F /* Netverify */ = {
+			isa = PBXGroup;
+			children = (
+				5E331D7C4F2646019E2F2CA58D053D01 /* Frameworks */,
+			);
+			name = Netverify;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3A5A4D23539D4C8A6B801C1861514B65 /* Headers */ = {
+		401C6DD744DE6A79655C0CBF29E4F17C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010A1C9D1F80C4D471DC049907D7A7A4 /* Pods-dev-ostelco-ios-client-umbrella.h in Headers */,
+				CF4BDF72041631AA89FFB65906EC086E /* Alamofire-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9CB0E85A45633FAFC9FAD04A683F0D45 /* Headers */ = {
+		4D2B291E060931BF9D101DFA929F51DA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49992F04E0EC9AD000CAAEF3236BC6BB /* Pods-ostelco-ios-client-umbrella.h in Headers */,
+				30A498736BACC54F6963EC6D5B56BCE8 /* Pods-dev-ostelco-ios-client-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C45F243D9903B25710BB160C5AA6E0D4 /* Headers */ = {
+		54F5C6A4B1B6C6BEC5BA9CF7FB454089 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0783A753B143E77EF4826300535B18 /* Pods-dev-ostelco-ios-clientTests-umbrella.h in Headers */,
+				6E1834FFF1A2E344BC91A12FC20FBF32 /* Pods-dev-ostelco-ios-clientTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB3575093F40E7E992951FD17678E255 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				667DF201AC89372389D28404D053BA8E /* Pods-ostelco-ios-client-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F674ABD62170D4AFCEABD43E07D8281D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91A71EFFED3DD3EF775A09BCA6EF1826 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4FC86234D3994B301FF8295A352DA49D /* Pods-dev-ostelco-ios-client */ = {
+		04EE41DA2B498CE3C08B54B9E19EDE18 /* Pods-ostelco-ios-client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2489BC73DD5B9601481E13136698E8D0 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-client" */;
+			buildConfigurationList = 2BA3D2B69A32B587ADF38AAC44249C17 /* Build configuration list for PBXNativeTarget "Pods-ostelco-ios-client" */;
 			buildPhases = (
-				3A5A4D23539D4C8A6B801C1861514B65 /* Headers */,
-				091E7F8E806FD8543AC768626C43097A /* Sources */,
-				C86CC5B979B4C082240DE848B160F455 /* Frameworks */,
-				7D05522D3ACE22DD1933AB367DD7912E /* Resources */,
+				BB3575093F40E7E992951FD17678E255 /* Headers */,
+				4E5CB162BF640EA81A284858A8262E52 /* Sources */,
+				986EEA0F710A52BC58F36041E76C46C3 /* Frameworks */,
+				BAF7751F02CAE639F1827811DB9C0537 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-dev-ostelco-ios-client";
-			productName = "Pods-dev-ostelco-ios-client";
-			productReference = F52527AE96C7386B00238DF5DC32A380 /* Pods_dev_ostelco_ios_client.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B785731B58E911C0074B771E83DECC26 /* Pods-dev-ostelco-ios-clientTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 84F32C9623042FC947CDDD185124819E /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-clientTests" */;
-			buildPhases = (
-				C45F243D9903B25710BB160C5AA6E0D4 /* Headers */,
-				D774A6833CFE2B46A37B6100F71C4208 /* Sources */,
-				A8119AFB0BBC98A828CAF62741E58B21 /* Frameworks */,
-				6946E2E3BE0341E024CFD85D248D48C4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CCA404224D970119D8D4F493D403F021 /* PBXTargetDependency */,
-			);
-			name = "Pods-dev-ostelco-ios-clientTests";
-			productName = "Pods-dev-ostelco-ios-clientTests";
-			productReference = CDA8278A6299130E15DF27876E1081D9 /* Pods_dev_ostelco_ios_clientTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E760FB89049CF7A27EC5A5F1CAD95D3D /* Pods-ostelco-ios-client */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2F912C811A8245EBC360E8601E3D1304 /* Build configuration list for PBXNativeTarget "Pods-ostelco-ios-client" */;
-			buildPhases = (
-				9CB0E85A45633FAFC9FAD04A683F0D45 /* Headers */,
-				4310573359C6F478E99F0D3DD2B35BBD /* Sources */,
-				A32F756DB8D7AA4C554B7C756E8FB80F /* Frameworks */,
-				18B691772C1998848D85F323B2DB7E03 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
+				A9638FB6B4E1DC3ADDE8D27A5E68E986 /* PBXTargetDependency */,
+				F1A66BA4DDFD11384D1F715D43AAC3B2 /* PBXTargetDependency */,
+				5C1D6F0F57029EFBE68E1635D026A601 /* PBXTargetDependency */,
 			);
 			name = "Pods-ostelco-ios-client";
 			productName = "Pods-ostelco-ios-client";
-			productReference = 0A15BBE8697391AAB0E487965EBEAC3F /* Pods_ostelco_ios_client.framework */;
+			productReference = D5F04A86512AD7F911E8955E8FFA897E /* Pods_ostelco_ios_client.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		157AF5F341AFC7048F52F408159E739B /* Pods-dev-ostelco-ios-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697982DC6A20A109A822A7EBEE77A4E3 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-client" */;
+			buildPhases = (
+				4D2B291E060931BF9D101DFA929F51DA /* Headers */,
+				44C50A8ED53BDA05ED2DEE70C85409A7 /* Sources */,
+				90A8DECFC0D1F96E8E986CE001E38DAA /* Frameworks */,
+				514A8735FAC9FE23A2BD971CE514DAE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5411BFEDBA68A1ED6C457FC2BC07DBE2 /* PBXTargetDependency */,
+				1F864514F3206260871524FC8E875BCF /* PBXTargetDependency */,
+				5B037AE510319578609F622AD43CF72F /* PBXTargetDependency */,
+			);
+			name = "Pods-dev-ostelco-ios-client";
+			productName = "Pods-dev-ostelco-ios-client";
+			productReference = 116A7EA85FA1BA3B20693EE334BEAF01 /* Pods_dev_ostelco_ios_client.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		628DA498255215479ECAD389BEADB5E8 /* Alamofire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19B567DEBB7DA61775F9F7008589052A /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildPhases = (
+				401C6DD744DE6A79655C0CBF29E4F17C /* Headers */,
+				D407A1E6D5FD7D098B6B09CF651EF192 /* Sources */,
+				E53CD7F9EF9FCD3024B4DB0326C65C53 /* Frameworks */,
+				54B28CEEE694D80D4F20531D93205CB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alamofire;
+			productName = Alamofire;
+			productReference = 1E80899EE1337F21E04CE741A8E460C7 /* Alamofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		76B1ADA422C8AA71FBFC2FEB7443B795 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73F8A6D212658090C4B1EB8090E41E0A /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				F674ABD62170D4AFCEABD43E07D8281D /* Headers */,
+				3B255AAB084CC133C421269BD41EE3B3 /* Sources */,
+				186E64A0DF27A3AA2003CD378FDED895 /* Frameworks */,
+				64E92CE8155B0689600EDAD93A11C89F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = B50B7F4E31E55DDBD11C6066B763B172 /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C792AE1A6768E955A65DDEDFEFC1EA94 /* Pods-dev-ostelco-ios-clientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48AEABA938ADD1545BE4B7D1D0798BB2 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-clientTests" */;
+			buildPhases = (
+				54F5C6A4B1B6C6BEC5BA9CF7FB454089 /* Headers */,
+				A67BF9D5832F64848AFD8881AA382884 /* Sources */,
+				DE1A7DA07628FAE33C2523DFEB9142E8 /* Frameworks */,
+				8E15BBF68A4277D342A717BC16FE11A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF5C702FDE295054DD7A7A4CCBCC16D6 /* PBXTargetDependency */,
+			);
+			name = "Pods-dev-ostelco-ios-clientTests";
+			productName = "Pods-dev-ostelco-ios-clientTests";
+			productReference = 42F84381CC169E8068B97A1D274247C8 /* Pods_dev_ostelco_ios_clientTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 0CD2FBE26DD1391AFB83F66DB36C8F39 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = CEEBF21DC69A8BA0930572850E50EA0C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4FC86234D3994B301FF8295A352DA49D /* Pods-dev-ostelco-ios-client */,
-				B785731B58E911C0074B771E83DECC26 /* Pods-dev-ostelco-ios-clientTests */,
-				E760FB89049CF7A27EC5A5F1CAD95D3D /* Pods-ostelco-ios-client */,
+				628DA498255215479ECAD389BEADB5E8 /* Alamofire */,
+				8E5310D37DD1513A2C34DF7A85DCAD88 /* JumioMobileSDK */,
+				157AF5F341AFC7048F52F408159E739B /* Pods-dev-ostelco-ios-client */,
+				C792AE1A6768E955A65DDEDFEFC1EA94 /* Pods-dev-ostelco-ios-clientTests */,
+				04EE41DA2B498CE3C08B54B9E19EDE18 /* Pods-ostelco-ios-client */,
+				76B1ADA422C8AA71FBFC2FEB7443B795 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		18B691772C1998848D85F323B2DB7E03 /* Resources */ = {
+		514A8735FAC9FE23A2BD971CE514DAE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6946E2E3BE0341E024CFD85D248D48C4 /* Resources */ = {
+		54B28CEEE694D80D4F20531D93205CB8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7D05522D3ACE22DD1933AB367DD7912E /* Resources */ = {
+		64E92CE8155B0689600EDAD93A11C89F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E15BBF68A4277D342A717BC16FE11A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAF7751F02CAE639F1827811DB9C0537 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,43 +688,126 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		091E7F8E806FD8543AC768626C43097A /* Sources */ = {
+		3B255AAB084CC133C421269BD41EE3B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D11F2C759F15DB5FF355C8B6A56F1DB /* Pods-dev-ostelco-ios-client-dummy.m in Sources */,
+				A786677EFFCACD1594AA27FF259F09FD /* SwiftyJSON-dummy.m in Sources */,
+				7583A0274D7AD8661095693FADD46E71 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4310573359C6F478E99F0D3DD2B35BBD /* Sources */ = {
+		44C50A8ED53BDA05ED2DEE70C85409A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A847C3CB6141D0F11BF2F8AEACE1C02 /* Pods-ostelco-ios-client-dummy.m in Sources */,
+				5CDF0BCFFA9C9EFFA86ED619D5FA9006 /* Pods-dev-ostelco-ios-client-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D774A6833CFE2B46A37B6100F71C4208 /* Sources */ = {
+		4E5CB162BF640EA81A284858A8262E52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A114357A51950984E01641FABCAA5905 /* Pods-dev-ostelco-ios-clientTests-dummy.m in Sources */,
+				6AC8232513EE5EC7B42CB4C89BE04C81 /* Pods-ostelco-ios-client-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67BF9D5832F64848AFD8881AA382884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				271F9319B02DDFD0B9F1E3FDD2AF1B64 /* Pods-dev-ostelco-ios-clientTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D407A1E6D5FD7D098B6B09CF651EF192 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A131FBA16CF09E2F5E103B5B5D13D54D /* AFError.swift in Sources */,
+				1C13438B06600C08FC4763C25A2568F4 /* Alamofire-dummy.m in Sources */,
+				B0CECDFE19E11AF57557F65E9C75DC21 /* Alamofire.swift in Sources */,
+				E88BD99C17FF641608BB7A162FDBAC3A /* CachedResponseHandler.swift in Sources */,
+				8094608CA1B0ED03726B6F5CD9074083 /* DispatchQueue+Alamofire.swift in Sources */,
+				EE13BB04E5D7F0A572E2F4989007983D /* EventMonitor.swift in Sources */,
+				D14932B135DE6BC8908B119998EAD6D6 /* HTTPHeaders.swift in Sources */,
+				FB9C3730089DC01822F3971EF063D6BB /* HTTPMethod.swift in Sources */,
+				02B7C407AF040B557C475C1493AD7DFE /* MultipartFormData.swift in Sources */,
+				36425536AA1810C4F0F614A2B41EE65A /* MultipartUpload.swift in Sources */,
+				B0B4A466BA1723F40DBFB47AB5286CDA /* NetworkReachabilityManager.swift in Sources */,
+				78EC0315D08100C7ABF78B3F4397014D /* Notifications.swift in Sources */,
+				CB72BA3D00861311E9A562F7957C26A7 /* OperationQueue+Alamofire.swift in Sources */,
+				A7E0156A4E8C1F429B3A1125455FEF9D /* ParameterEncoder.swift in Sources */,
+				CF3B6A9B2CB46FD14902503908A2C2AD /* ParameterEncoding.swift in Sources */,
+				C238C07E8C0F17EE94435D5642B6B14D /* Protector.swift in Sources */,
+				18EAB79C3BD48EC93FF027A8CE798AB2 /* RedirectHandler.swift in Sources */,
+				D655F03F287A46BB800EBB42A2E54086 /* Request.swift in Sources */,
+				D637AB8DBE03B7A10DF5A10275B54644 /* RequestInterceptor.swift in Sources */,
+				52CF5A7BF580784F55773162CCC87908 /* RequestTaskMap.swift in Sources */,
+				D20C4DB0FD5FDA39BB4BBEABD621CA03 /* Response.swift in Sources */,
+				1D67E141FFDB8A796CC37A1A9A62ADC2 /* ResponseSerialization.swift in Sources */,
+				52CE0B33F587EDAEA14F0510F8AC625B /* Result.swift in Sources */,
+				76D6AAC3218B89EF98C42876AC60FEB0 /* RetryPolicy.swift in Sources */,
+				B777169691CB17069A0BFD056EF2F261 /* ServerTrustEvaluation.swift in Sources */,
+				EF84BC747CD62EA83C51FD4DDB1AD873 /* Session.swift in Sources */,
+				ADFFD2A5E4ABAD36C7802206E003A764 /* SessionStateProvider.swift in Sources */,
+				7CA89E0AFFDBFF0D43224861434762B9 /* URLConvertible+URLRequestConvertible.swift in Sources */,
+				2A6C6FAEADCE55EDE62A2EAB053DF7F1 /* URLRequest+Alamofire.swift in Sources */,
+				3005BE26F54050245F5D0811D075607B /* URLSessionConfiguration+Alamofire.swift in Sources */,
+				D0BA6E03DD9641E91AB38A3BD42EF0C4 /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CCA404224D970119D8D4F493D403F021 /* PBXTargetDependency */ = {
+		1F864514F3206260871524FC8E875BCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JumioMobileSDK;
+			target = 8E5310D37DD1513A2C34DF7A85DCAD88 /* JumioMobileSDK */;
+			targetProxy = 5C46D513D09F68595D13101465111791 /* PBXContainerItemProxy */;
+		};
+		5411BFEDBA68A1ED6C457FC2BC07DBE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 628DA498255215479ECAD389BEADB5E8 /* Alamofire */;
+			targetProxy = 064B66F8E45155D9DDD5D2A2009DD9D7 /* PBXContainerItemProxy */;
+		};
+		5B037AE510319578609F622AD43CF72F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = 76B1ADA422C8AA71FBFC2FEB7443B795 /* SwiftyJSON */;
+			targetProxy = B4B5589BE8F5D2763EEC8FCE35187A29 /* PBXContainerItemProxy */;
+		};
+		5C1D6F0F57029EFBE68E1635D026A601 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = 76B1ADA422C8AA71FBFC2FEB7443B795 /* SwiftyJSON */;
+			targetProxy = FA57686EB7FA26E4A28B5AF0B18EB630 /* PBXContainerItemProxy */;
+		};
+		A9638FB6B4E1DC3ADDE8D27A5E68E986 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 628DA498255215479ECAD389BEADB5E8 /* Alamofire */;
+			targetProxy = 1A86EAE42EEC0BE27E94A9B7EEF8C249 /* PBXContainerItemProxy */;
+		};
+		BF5C702FDE295054DD7A7A4CCBCC16D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-dev-ostelco-ios-client";
-			target = 4FC86234D3994B301FF8295A352DA49D /* Pods-dev-ostelco-ios-client */;
-			targetProxy = 5E79024E1A1CB5A4782188655301CBE3 /* PBXContainerItemProxy */;
+			target = 157AF5F341AFC7048F52F408159E739B /* Pods-dev-ostelco-ios-client */;
+			targetProxy = 7DD363C0D9B22831CF99067D86C636F1 /* PBXContainerItemProxy */;
+		};
+		F1A66BA4DDFD11384D1F715D43AAC3B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JumioMobileSDK;
+			target = 8E5310D37DD1513A2C34DF7A85DCAD88 /* JumioMobileSDK */;
+			targetProxy = 36AF6DAB13BC88ECB05444E6CF9C9EE1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		16BC524EDE752B9BB72D7E267116A89A /* Debug */ = {
+		041FD3B46A21D2A2FBB96B1A8F2A1466 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -441,8 +839,82 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		19B6B41A7CE428CA0E5C7362CCFFF9BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EC7859C26D67376E5EA63619E8331C4 /* JumioMobileSDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D2C3A7F9CB0C7AD4FBEA3657F104047 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -475,109 +947,160 @@
 			};
 			name = Debug;
 		};
-		1DF68876DF2AD07A12482477C1AA7DB8 /* Release */ = {
+		5261D2A9FB45F2378888AF2F3F65DC0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DBF4D7594BA1120913D1D16DB19D07F /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5A4C4DFC841E0963E4DF0A936CFCD826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4D2816766E2395B19BD5D5D75E30DB2 /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5C0A40001FAFC782E187784BFC9276EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2C59CED95488650412DB91037B1C7C8 /* Pods-ostelco-ios-client.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6979CA1928F94B6CF73820DA42F41DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86D1CE14D4B3B2475DB884C0CC01E2E5 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		2F178BCA2DC78FDB5B67F01507E34D5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2BBAB5268A09555D9B492DBAE6F2136 /* Pods-dev-ostelco-ios-client.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		4A064C308218A635A8AAE15283BEA65A /* Release */ = {
+		6ECA2E5DAEC5B219257C8D64BC382E67 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DAD90FC8E19393418D8E9601C7ACBC5 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */;
+			baseConfigurationReference = 3C2AD74FF6AF57E3B76012A0B24D25C2 /* Pods-dev-ostelco-ios-client.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -590,46 +1113,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4B9D2FE8C423F989894EE5CE2063EED8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 464EBA57506CF018618B991186111CA2 /* Pods-dev-ostelco-ios-client.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -653,9 +1137,9 @@
 			};
 			name = Release;
 		};
-		8A65B6DAB89F7D0788B5BC3D0678A0E2 /* Debug */ = {
+		727E140CA2358036A4C763E75DD351EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8808027CCC627B4B91AEA3BF5BFCDD23 /* Pods-ostelco-ios-client.debug.xcconfig */;
+			baseConfigurationReference = 92761E6055E7EDE747D8D0A660A61A8C /* Pods-ostelco-ios-client.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -668,7 +1152,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ostelco-ios-client/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -691,9 +1175,98 @@
 			};
 			name = Debug;
 		};
-		C34957EBF7B005D534AE97800913A5F5 /* Debug */ = {
+		ACDD3B9256A0CFA00EA69808B7CA7323 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 317CCF29A6B89E0559F58F672544979E /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */;
+			baseConfigurationReference = 86D1CE14D4B3B2475DB884C0CC01E2E5 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4DBD274FFBF8D56C660F915274599B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EC7859C26D67376E5EA63619E8331C4 /* JumioMobileSDK.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEC02417B56C97EE0C6996711713C792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5498A241724884B7215DA92C1FE2D25F /* Alamofire.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E34DD26931B2A30710615E538731CEF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EC6949DB73EDB86F02501383E0232B8 /* Pods-dev-ostelco-ios-client.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -706,7 +1279,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -715,7 +1288,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -729,11 +1302,10 @@
 			};
 			name = Debug;
 		};
-		EC5F3C72869C78A8D643243E221882BC /* Release */ = {
+		F4D68B29343DF45DF0A29C50A5F02E3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FAF808BAF29468684EB497A8E786179 /* Pods-ostelco-ios-client.release.xcconfig */;
+			baseConfigurationReference = 5498A241724884B7215DA92C1FE2D25F /* Alamofire.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -744,23 +1316,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ostelco-ios-client/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -771,43 +1342,70 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2489BC73DD5B9601481E13136698E8D0 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-client" */ = {
+		19B567DEBB7DA61775F9F7008589052A /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2F178BCA2DC78FDB5B67F01507E34D5D /* Debug */,
-				4B9D2FE8C423F989894EE5CE2063EED8 /* Release */,
+				BEC02417B56C97EE0C6996711713C792 /* Debug */,
+				F4D68B29343DF45DF0A29C50A5F02E3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		2BA3D2B69A32B587ADF38AAC44249C17 /* Build configuration list for PBXNativeTarget "Pods-ostelco-ios-client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16BC524EDE752B9BB72D7E267116A89A /* Debug */,
-				1DF68876DF2AD07A12482477C1AA7DB8 /* Release */,
+				727E140CA2358036A4C763E75DD351EF /* Debug */,
+				5C0A40001FAFC782E187784BFC9276EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F912C811A8245EBC360E8601E3D1304 /* Build configuration list for PBXNativeTarget "Pods-ostelco-ios-client" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A65B6DAB89F7D0788B5BC3D0678A0E2 /* Debug */,
-				EC5F3C72869C78A8D643243E221882BC /* Release */,
+				3D2C3A7F9CB0C7AD4FBEA3657F104047 /* Debug */,
+				041FD3B46A21D2A2FBB96B1A8F2A1466 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84F32C9623042FC947CDDD185124819E /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-clientTests" */ = {
+		48AEABA938ADD1545BE4B7D1D0798BB2 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-clientTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C34957EBF7B005D534AE97800913A5F5 /* Debug */,
-				4A064C308218A635A8AAE15283BEA65A /* Release */,
+				5A4C4DFC841E0963E4DF0A936CFCD826 /* Debug */,
+				5261D2A9FB45F2378888AF2F3F65DC0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697982DC6A20A109A822A7EBEE77A4E3 /* Build configuration list for PBXNativeTarget "Pods-dev-ostelco-ios-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34DD26931B2A30710615E538731CEF3 /* Debug */,
+				6ECA2E5DAEC5B219257C8D64BC382E67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73F8A6D212658090C4B1EB8090E41E0A /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6979CA1928F94B6CF73820DA42F41DE7 /* Debug */,
+				ACDD3B9256A0CFA00EA69808B7CA7323 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD65B893DF1BBD626678201D2FF20ED9 /* Build configuration list for PBXAggregateTarget "JumioMobileSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19B6B41A7CE428CA0E5C7362CCFFF9BB /* Debug */,
+				B4DBD274FFBF8D56C660F915274599B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

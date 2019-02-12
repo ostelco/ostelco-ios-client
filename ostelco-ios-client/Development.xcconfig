@@ -10,9 +10,10 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 #include "../Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"
 server_url = https:\/\/api.dev.ostelco.org
+//server_url = https:\/\/api.dev4life.org
 stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z
-auth0_client_id = YA2dXSkRyWPeQA5y3GGzRub7TZtzYp31
-auth0_domain = ostelco.eu.auth0.com
+auth0_client_id = 0bzNsf2RAXlvQgFuTcrNXco85TzI5bJq
+auth0_domain = auth-dev.oya.world
 auth0_logo_url = https:\/\/i.imgur.com/8iFdkBD.png
 freshchat_app_id = bcd5751d-ad5d-455f-bfba-1da395583e3d
 freshchat_app_key = 2326bd78-855a-47ba-9641-6bf9bb807038

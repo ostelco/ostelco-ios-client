@@ -1,16 +1,24 @@
 PODS:
+  - Alamofire (5.0.0-beta.2)
   - JumioMobileSDK/Netverify (2.14.2)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.2)
   - JumioMobileSDK/Netverify (~> 2.14)
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - JumioMobileSDK
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: d1e5493588babe3e7b56ae29e8032942f4de09fe
   JumioMobileSDK: f1e3dc6fd474bdb1cfccd8ced263fe43e038eb2a
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 533e956b8d1541b1a1105274442dd93947111cf0
+PODFILE CHECKSUM: 9a8f19c7c83333c907cc17aa590017e09aa0dee9
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

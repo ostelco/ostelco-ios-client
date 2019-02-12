@@ -13,8 +13,10 @@ import Foundation
 import os
 import Stripe
 import Netverify
+import Alamofire
+import SwiftyJSON
 
-class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthorizationViewControllerDelegate, NetverifyViewControllerDelegate {
+class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthorizationViewControllerDelegate {
 
     
     @IBOutlet weak var balanceLabel: UILabel!
@@ -22,10 +24,11 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
     @IBOutlet weak var productButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var eKYCScanButton: UIButton!
     var paymentSucceeded = false;
     
     var product: ProductModel?;
-    
+
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         ostelcoAPI.bundles.load().onCompletion({_ in
             refreshControl.endRefreshing()
@@ -131,10 +134,13 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
     }
 
     @IBAction func topUp(_ sender: Any) {
-        self.startNetverify();
-        //self.handleApplePayButtonTapped();
+        self.handleApplePayButtonTapped();
     }
-    
+
+    @IBAction func start_eKYCScan(_ sender: Any) {
+        self.startNetverify();
+    }
+
     func handleApplePayButtonTapped() {
         
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
@@ -232,166 +238,31 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             }
         })
     }
-    var netverifyViewController:NetverifyViewController?
-    var customUIController:NetverifyUIController?
-    var merchantScanReference:String = ""
 
-    func createNetverifyConfiguration() -> NetverifyConfiguration {
-        let config:NetverifyConfiguration = NetverifyConfiguration()
-        //Provide your API token
-        config.merchantApiToken = "d93a8414-b175-4a70-a1ea-22ed0856a0a8"
-        //Provide your API secret
-        config.merchantApiSecret = "cEIu6iZBJ5zdlSf4WEcy6ZXulbNoHes9"
-        
-        // TEST config.merchantScanReference = "c30c7809-8ffc-43ac-ae5d-c514465c2db5"
-        config.merchantScanReference = self.merchantScanReference
+    @IBAction func lastScanStatus(_ sender: Any) {
+        let scanStatus = ostelcoAPI.scanStatus(scanId: self.merchantScanReference)
+        scanStatus.load().onCompletion { info in
+            guard let scanInformation = scanStatus.latestData?.content as? ScanInformation else {
+                os_log("Resource changed but returned data was empty for ScanInformation.")
+                print("Resource changed but returned data was empty for ScanInformation. \(String(describing: (scanStatus.latestData)))")
+                return
+            }
+            print("Scan Information =", scanInformation.scanId, scanInformation.status)
+            self.showAlert(title: "Scan Information", msg: "Scan Id: \(scanInformation.scanId) \nScan Status:\(scanInformation.status)")
+        }
+    }
 
-        config.requireVerification = true
-        
-        //You can enable face match during the ID verification for a specific transaction. This setting overrides your default Jumio merchant settings.
-        config.requireFaceMatch = false
-        
-        //You can get the current SDK version using the method below.
-        print("\(self.netverifyViewController?.sdkVersion() ?? "")")
-        
-        return config
-    }
-    
-    func createNetverifyController() -> Void {
-        
-        //prevent SDK to be initialized on Jailbroken devices
-        if JMDeviceInfo.isJailbrokenDevice() {
-            return
-        }
-        
-        //Setup the Configuration for Netverify
-        let config:NetverifyConfiguration = createNetverifyConfiguration()
-        //Set the delegate that implements NetverifyViewControllerDelegate
-        config.delegate = self
-        
-        //Perform the following call as soon as your app’s view controller is initialized. Create the NetverifyViewController instance by providing your Configuration with required merchant API token, merchant API secret and a delegate object.
-        
-        
-        self.netverifyViewController = NetverifyViewController(configuration: config)
-        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
-            self.netverifyViewController?.modalPresentationStyle = UIModalPresentationStyle.formSheet;  // For iPad, present from sheet
-        }
-    }
-    
-    func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
-        print("NetverifyViewController finished successfully with scan reference: %@", scanReference);
-        let selectedCountry:String = documentData.selectedCountry
-        let selectedDocumentType:NetverifyDocumentType = documentData.selectedDocumentType
-        var documentTypeStr:String
-        switch (selectedDocumentType) {
-        case .driverLicense:
-            documentTypeStr = "DL"
-            break;
-        case .identityCard:
-            documentTypeStr = "ID"
-            break;
-        case .passport:
-            documentTypeStr = "PP"
-            break;
-        case .visa:
-            documentTypeStr = "Visa"
-            break;
-        default:
-            documentTypeStr = ""
-            break;
-        }
-        
-        //id
-        let idNumber:String? = documentData.idNumber
-        let personalNumber:String? = documentData.personalNumber
-        let issuingDate:Date? = documentData.issuingDate
-        let expiryDate:Date? = documentData.expiryDate
-        let issuingCountry:String? = documentData.issuingCountry
-        let optionalData1:String? = documentData.optionalData1
-        let optionalData2:String? = documentData.optionalData2
-        
-        //person
-        let lastName:String? = documentData.lastName
-        let firstName:String? = documentData.firstName
-        let dateOfBirth:Date? = documentData.dob
-        let gender:NetverifyGender = documentData.gender
-        var genderStr:String;
-        switch (gender) {
-        case .unknown:
-            genderStr = "Unknown"
-            
-        case .F:
-            genderStr = "female"
-            
-        case .M:
-            genderStr = "male"
-            
-        case .X:
-            genderStr = "Unspecified"
-            
-        default:
-            genderStr = "Unknown"
-        }
-        
-        let originatingCountry:String? = documentData.originatingCountry
-        
-        //address
-        let street:String? = documentData.addressLine
-        let city:String? = documentData.city
-        let state:String? = documentData.subdivision
-        let postalCode:String? = documentData.postCode
-        
-        // Raw MRZ data
-        let mrzData:NetverifyMrzData? = documentData.mrzData
-        
-        let message:NSMutableString = NSMutableString.init()
-        message.appendFormat("Selected Country: %@", selectedCountry)
-        message.appendFormat("\nDocument Type: %@", documentTypeStr)
-        if (idNumber != nil) { message.appendFormat("\nID Number: %@", idNumber!) }
-        if (personalNumber != nil) { message.appendFormat("\nPersonal Number: %@", personalNumber!) }
-        if (issuingDate != nil) { message.appendFormat("\nIssuing Date: %@", issuingDate! as CVarArg) }
-        if (expiryDate != nil) { message.appendFormat("\nExpiry Date: %@", expiryDate! as CVarArg) }
-        if (issuingCountry != nil) { message.appendFormat("\nIssuing Country: %@", issuingCountry!) }
-        if (optionalData1 != nil) { message.appendFormat("\nOptional Data 1: %@", optionalData1!) }
-        if (optionalData2 != nil) { message.appendFormat("\nOptional Data 2: %@", optionalData2!) }
-        if (lastName != nil) { message.appendFormat("\nLast Name: %@", lastName!) }
-        if (firstName != nil) { message.appendFormat("\nFirst Name: %@", firstName!) }
-        if (dateOfBirth != nil) { message.appendFormat("\ndob: %@", dateOfBirth! as CVarArg) }
-        message.appendFormat("\nGender: %@", genderStr)
-        if (originatingCountry != nil) { message.appendFormat("\nOriginating Country: %@", originatingCountry!) }
-        if (street != nil) { message.appendFormat("\nStreet: %@", street!) }
-        if (city != nil) { message.appendFormat("\nCity: %@", city!) }
-        if (state != nil) { message.appendFormat("\nState: %@", state!) }
-        if (postalCode != nil) { message.appendFormat("\nPostal Code: %@", postalCode!) }
-        if (mrzData != nil) {
-            if (mrzData?.line1 != nil) {
-                message.appendFormat("\nMRZ Data: %@\n", (mrzData?.line1)!)
-            }
-            if (mrzData?.line2 != nil) {
-                message.appendFormat("%@\n", (mrzData?.line2)!)
-            }
-            if (mrzData?.line3 != nil) {
-                message.appendFormat("%@\n", (mrzData?.line3)!)
-            }
-        }
-        self.dismiss(animated: true, completion: {
-            print(message)
-            self.showAlert(title: "Netverify Mobile SDK", msg: message as String)
-            self.netverifyViewController?.destroy()
-            self.netverifyViewController = nil
-        })
-    }
-    
-    func netverifyViewController(_ netverifyViewController: NetverifyViewController, didCancelWithError error: NetverifyError?, scanReference: String?) {
-        print("NetverifyViewController cancelled with error: " + "\(error?.message ?? "")" + "scanReference: " + "\(scanReference ?? "")")
-        //Dismiss the SDK
-        self.dismiss(animated: true) {
-            self.netverifyViewController?.destroy()
-            self.netverifyViewController = nil
-        }
-    }
-    
+  
+  
     @IBAction func startNetverify() -> Void {
+      getnewScanId() { (scanId, error) in
+        if let scanId: String = scanId {
+          print("Retrieved \(scanId)")
+        } else if let error: Error = error {
+          print("Error received \(error)")
+        }
+      }
+      return;
         ostelcoAPI.scanInformation.load().onCompletion { info in
             guard let scanInformation = ostelcoAPI.scanInformation.latestData?.content as? ScanInformation else {
                 os_log("Resource changed but returned data was empty for ScanInformation.")
@@ -409,5 +280,193 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         }
     }
 
+  var netverifyViewController:NetverifyViewController?
+  var customUIController:NetverifyUIController?
+  var merchantScanReference:String = "240296a9-88d6-4979-820a-a227985d1a9f"
+
 }
 
+extension HomeViewController: NetverifyViewControllerDelegate {
+  func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
+    let baseUrl = Environment().configuration(PlistKey.ServerURL)
+    let newScanIdUrl = "\(baseUrl)/customer/scanStatus/240296a9-88d6-4979-820a-a227985d1a9f"
+    let headers: HTTPHeaders = [
+      "Authorization": ostelcoAPI.authToken!,
+      "Accept": "application/json"
+    ]
+    
+    AF.request(newScanIdUrl, method: .get, headers: headers)
+      .validate(statusCode: 200..<300)
+      .responseData { response in
+        switch response.result {
+        case .success:
+          print("Validation Successful")
+          let decoder = JSONDecoder()
+          do {
+            let data = try decoder.decode(ScanInformation.self, from: response.data!)
+            print("Data: \(data)")
+          } catch {
+            print("Data decoding error: \(error)")
+          }
+          let json = JSON(response.data ?? Data())
+          print("\(json)")
+          completion(json["scanId"].string, nil)
+        case .failure(let error):
+          print(error)
+          completion(nil, error)
+        }
+      }
+  }
+  func createNetverifyConfiguration() -> NetverifyConfiguration {
+    let config:NetverifyConfiguration = NetverifyConfiguration()
+    //Provide your API token
+    config.merchantApiToken = "xxxxx"
+    //Provide your API secret
+    config.merchantApiSecret = "xxxxx"
+    
+    config.merchantScanReference = self.merchantScanReference
+    
+    config.requireVerification = true
+    
+    //You can enable face match during the ID verification for a specific transaction. This setting overrides your default Jumio merchant settings.
+    config.requireFaceMatch = true
+    
+    //You can get the current SDK version using the method below.
+    print("\(self.netverifyViewController?.sdkVersion() ?? "")")
+    
+    return config
+  }
+  
+  func createNetverifyController() -> Void {
+    
+    //prevent SDK to be initialized on Jailbroken devices
+    if JMDeviceInfo.isJailbrokenDevice() {
+      return
+    }
+    
+    //Setup the Configuration for Netverify
+    let config:NetverifyConfiguration = createNetverifyConfiguration()
+    //Set the delegate that implements NetverifyViewControllerDelegate
+    config.delegate = self
+    
+    //Perform the following call as soon as your app’s view controller is initialized. Create the NetverifyViewController instance by providing your Configuration with required merchant API token, merchant API secret and a delegate object.
+    
+    
+    self.netverifyViewController = NetverifyViewController(configuration: config)
+    if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+      self.netverifyViewController?.modalPresentationStyle = UIModalPresentationStyle.formSheet;  // For iPad, present from sheet
+    }
+  }
+  func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
+    print("NetverifyViewController finished successfully with scan reference: %@", scanReference);
+    let selectedCountry:String = documentData.selectedCountry
+    let selectedDocumentType:NetverifyDocumentType = documentData.selectedDocumentType
+    var documentTypeStr:String
+    switch (selectedDocumentType) {
+    case .driverLicense:
+      documentTypeStr = "DL"
+      break;
+    case .identityCard:
+      documentTypeStr = "ID"
+      break;
+    case .passport:
+      documentTypeStr = "PP"
+      break;
+    case .visa:
+      documentTypeStr = "Visa"
+      break;
+    default:
+      documentTypeStr = ""
+      break;
+    }
+    
+    //id
+    let idNumber:String? = documentData.idNumber
+    let personalNumber:String? = documentData.personalNumber
+    let issuingDate:Date? = documentData.issuingDate
+    let expiryDate:Date? = documentData.expiryDate
+    let issuingCountry:String? = documentData.issuingCountry
+    let optionalData1:String? = documentData.optionalData1
+    let optionalData2:String? = documentData.optionalData2
+    
+    //person
+    let lastName:String? = documentData.lastName
+    let firstName:String? = documentData.firstName
+    let dateOfBirth:Date? = documentData.dob
+    let gender:NetverifyGender = documentData.gender
+    var genderStr:String;
+    switch (gender) {
+    case .unknown:
+      genderStr = "Unknown"
+      
+    case .F:
+      genderStr = "female"
+      
+    case .M:
+      genderStr = "male"
+      
+    case .X:
+      genderStr = "Unspecified"
+      
+    default:
+      genderStr = "Unknown"
+    }
+    
+    let originatingCountry:String? = documentData.originatingCountry
+    
+    //address
+    let street:String? = documentData.addressLine
+    let city:String? = documentData.city
+    let state:String? = documentData.subdivision
+    let postalCode:String? = documentData.postCode
+    
+    // Raw MRZ data
+    let mrzData:NetverifyMrzData? = documentData.mrzData
+    
+    let message:NSMutableString = NSMutableString.init()
+    message.appendFormat("Selected Country: %@", selectedCountry)
+    message.appendFormat("\nDocument Type: %@", documentTypeStr)
+    if (idNumber != nil) { message.appendFormat("\nID Number: %@", idNumber!) }
+    if (personalNumber != nil) { message.appendFormat("\nPersonal Number: %@", personalNumber!) }
+    if (issuingDate != nil) { message.appendFormat("\nIssuing Date: %@", issuingDate! as CVarArg) }
+    if (expiryDate != nil) { message.appendFormat("\nExpiry Date: %@", expiryDate! as CVarArg) }
+    if (issuingCountry != nil) { message.appendFormat("\nIssuing Country: %@", issuingCountry!) }
+    if (optionalData1 != nil) { message.appendFormat("\nOptional Data 1: %@", optionalData1!) }
+    if (optionalData2 != nil) { message.appendFormat("\nOptional Data 2: %@", optionalData2!) }
+    if (lastName != nil) { message.appendFormat("\nLast Name: %@", lastName!) }
+    if (firstName != nil) { message.appendFormat("\nFirst Name: %@", firstName!) }
+    if (dateOfBirth != nil) { message.appendFormat("\ndob: %@", dateOfBirth! as CVarArg) }
+    message.appendFormat("\nGender: %@", genderStr)
+    if (originatingCountry != nil) { message.appendFormat("\nOriginating Country: %@", originatingCountry!) }
+    if (street != nil) { message.appendFormat("\nStreet: %@", street!) }
+    if (city != nil) { message.appendFormat("\nCity: %@", city!) }
+    if (state != nil) { message.appendFormat("\nState: %@", state!) }
+    if (postalCode != nil) { message.appendFormat("\nPostal Code: %@", postalCode!) }
+    if (mrzData != nil) {
+      if (mrzData?.line1 != nil) {
+        message.appendFormat("\nMRZ Data: %@\n", (mrzData?.line1)!)
+      }
+      if (mrzData?.line2 != nil) {
+        message.appendFormat("%@\n", (mrzData?.line2)!)
+      }
+      if (mrzData?.line3 != nil) {
+        message.appendFormat("%@\n", (mrzData?.line3)!)
+      }
+    }
+    self.dismiss(animated: true, completion: {
+      print(message)
+      self.showAlert(title: "Netverify Mobile SDK", msg: message as String)
+      self.netverifyViewController?.destroy()
+      self.netverifyViewController = nil
+    })
+  }
+  
+  func netverifyViewController(_ netverifyViewController: NetverifyViewController, didCancelWithError error: NetverifyError?, scanReference: String?) {
+    print("NetverifyViewController cancelled with error: " + "\(error?.message ?? "")" + "scanReference: " + "\(scanReference ?? "")")
+    //Dismiss the SDK
+    self.dismiss(animated: true) {
+      self.netverifyViewController?.destroy()
+      self.netverifyViewController = nil
+    }
+  }
+}

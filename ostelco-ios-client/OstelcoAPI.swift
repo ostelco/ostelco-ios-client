@@ -123,7 +123,10 @@ class OstelcoAPI: Service {
             try jsonDecoder.decode([ProductModel].self, from: $0.content)
         }
 
-        self.configureTransformer("/customer/new-ekyc-scanId") {
+        self.configureTransformer("/customer/new-ekyc-scanId/*") {
+            try jsonDecoder.decode(ScanInformation.self, from: $0.content)
+        }
+        self.configureTransformer("/customer/scanStatus/*") {
             try jsonDecoder.decode(ScanInformation.self, from: $0.content)
         }
 
@@ -133,7 +136,11 @@ class OstelcoAPI: Service {
     var profile: Resource { return resource("/profile") }
     var purchases: Resource { return resource("/purchases") }
     var products: Resource { return resource("/products") }
-    var scanInformation: Resource { return resource("/customer/new-ekyc-scanId") }
+    var scanInformation: Resource { return resource("/customer/new-ekyc-scanId/sgp") }
+    
+    func scanStatus(scanId: String) -> Resource {
+        return resource("/customer/scanStatus/\(scanId)")
+    }
 
     var authToken: String? {
         didSet {
