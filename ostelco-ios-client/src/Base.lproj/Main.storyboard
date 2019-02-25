@@ -600,7 +600,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Country"/>
                                 <connections>
-                                    <action selector="showCountryViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="544-nw-UGT"/>
+                                    <action selector="showCountryTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="1He-zp-CcC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35j-j8-mLn">
@@ -608,7 +608,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="EKYC"/>
                                 <connections>
-                                    <action selector="showEKYCViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="RFE-5t-xHm"/>
+                                    <action selector="showEKYCTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="jhy-9e-eHV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaI-IT-7o2">
@@ -616,7 +616,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ESim"/>
                                 <connections>
-                                    <action selector="showESimViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="Qv0-dS-3ib"/>
+                                    <action selector="showESimTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="kyG-SP-rBw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGJ-pL-NcM">
@@ -624,7 +624,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <action selector="showHomeViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="Kg9-9Q-9B1"/>
+                                    <action selector="showHomeTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="nLD-QC-If5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-v0-bNa">
@@ -632,7 +632,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="showSignUpViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="nFX-e8-Crq"/>
+                                    <action selector="showSignUpTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="mTL-Eo-ueh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csU-2i-mxN">
@@ -640,7 +640,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="showLoginViewController:" destination="u5N-nF-og5" eventType="touchUpInside" id="bOP-wi-uDb"/>
+                                    <action selector="showLoginTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="G6t-v7-QSM"/>
                                 </connections>
                             </button>
                         </subviews>
