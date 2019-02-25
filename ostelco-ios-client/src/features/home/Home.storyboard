@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="X8J-lf-N4B"/>
                     </view>
                     <connections>
-                        <segue destination="wAv-jE-XE0" kind="unwind" identifier="unwindFromHomeViewController" unwindAction="unwindFromHomeViewControllerWithSender:" id="NEa-Nu-Sfo"/>
+                        <segue destination="wAv-jE-XE0" kind="unwind" identifier="unwindFromHomeViewController" animates="NO" unwindAction="unwindFromHomeViewControllerWithSender:" id="NEa-Nu-Sfo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ve8-sO-nyC" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="QmU-c5-5fH"/>
                     </view>
                     <connections>
-                        <segue destination="fAc-xp-FIf" kind="unwind" identifier="unwindFromEKYCViewController" unwindAction="unwindFromEKYCViewControllerWithSender:" id="Sla-Oo-jig"/>
+                        <segue destination="fAc-xp-FIf" kind="unwind" identifier="unwindFromEKYCViewController" animates="NO" unwindAction="unwindFromEKYCViewControllerWithSender:" id="Sla-Oo-jig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Wu-rR-H5r" userLabel="First Responder" sceneMemberID="firstResponder"/>

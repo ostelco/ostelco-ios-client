@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="Epl-HR-4mk"/>
                     </view>
                     <connections>
-                        <segue destination="Cbq-Y9-1pM" kind="unwind" identifier="unwindFromCountryViewController" unwindAction="unwindFromCountryViewControllerWithSender:" id="fcg-83-Gip"/>
+                        <segue destination="Cbq-Y9-1pM" kind="unwind" identifier="unwindFromCountryViewController" animates="NO" unwindAction="unwindFromCountryViewControllerWithSender:" id="fcg-83-Gip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XFR-sS-JP8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="xY8-Yo-qPs"/>
                     </view>
                     <connections>
-                        <segue destination="idV-QA-vQa" kind="unwind" identifier="unwindFromESimViewController" unwindAction="unwindFromESimViewControllerWithSender:" id="Kkj-NN-cLz"/>
+                        <segue destination="idV-QA-vQa" kind="unwind" identifier="unwindFromESimViewController" animates="NO" unwindAction="unwindFromESimViewControllerWithSender:" id="Kkj-NN-cLz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Bk-0e-ca7" userLabel="First Responder" sceneMemberID="firstResponder"/>

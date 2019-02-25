@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
-                        <segue destination="CPe-MD-7pH" kind="unwind" identifier="unwindFromLoginViewController" unwindAction="unwindFromLoginViewControllerWithSender:" id="ldJ-Ja-ZI9"/>
+                        <segue destination="CPe-MD-7pH" kind="unwind" identifier="unwindFromLoginViewController" animates="NO" unwindAction="unwindFromLoginViewControllerWithSender:" id="ldJ-Ja-ZI9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -60,32 +60,36 @@ class MainController: UIViewController {
     
     @objc private func showLogin() {
         let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() as! LoginViewController2
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
     @objc private func showSignUp() {
         let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController() as! SignUpViewController
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
     @objc private func showCountry() {
         let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController() as! CountryViewController
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
     @objc private func showEKYC() {
         let viewController = UIStoryboard(name: "EKYC", bundle: nil).instantiateInitialViewController() as! EKYCViewController
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
     @objc private func showESim() {
         let viewController = UIStoryboard(name: "ESim", bundle: nil).instantiateInitialViewController() as! ESimViewController
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
     @objc private func showHome() {
         let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController() as! HomeViewController2
-        present(viewController, animated: true, completion: nil)
+        self.presentVC(vc: viewController)
     }
     
+    private func presentVC(vc: UIViewController) {
+        vc.modalTransitionStyle = .flipHorizontal
+        present(vc, animated: true, completion: nil)
+    }
 }

@@ -38,7 +38,7 @@
                         <viewLayoutGuide key="safeArea" id="b15-5x-5WB"/>
                     </view>
                     <connections>
-                        <segue destination="pMg-tq-bSX" kind="unwind" identifier="unwindFromSignUpViewController" unwindAction="unwindFromSignUpViewControllerWithSender:" id="g8H-VX-fXm"/>
+                        <segue destination="pMg-tq-bSX" kind="unwind" identifier="unwindFromSignUpViewController" animates="NO" unwindAction="unwindFromSignUpViewControllerWithSender:" id="g8H-VX-fXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kax-rV-w4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
