@@ -30,6 +30,32 @@
 		045D743C2195D30700F01D57 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743A2195D30700F01D57 /* RootViewController.swift */; };
 		045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
 		045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
+		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
+		047F29002224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
+		047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController2.swift */; };
+		047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController2.swift */; };
+		047F2909222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
+		047F290A222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
+		047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F290B22244A8D00FC6A8F /* SignUpViewController.swift */; };
+		047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F290B22244A8D00FC6A8F /* SignUpViewController.swift */; };
+		047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
+		047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
+		047F2913222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
+		047F2914222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
+		047F29162224520300FC6A8F /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29152224520300FC6A8F /* CountryViewController.swift */; };
+		047F29172224520300FC6A8F /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29152224520300FC6A8F /* CountryViewController.swift */; };
+		047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291B2224539900FC6A8F /* EKYCViewController.swift */; };
+		047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291B2224539900FC6A8F /* EKYCViewController.swift */; };
+		047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291E222453DA00FC6A8F /* ESimViewController.swift */; };
+		047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291E222453DA00FC6A8F /* ESimViewController.swift */; };
+		047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2921222453FE00FC6A8F /* EKYC.storyboard */; };
+		047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2921222453FE00FC6A8F /* EKYC.storyboard */; };
+		047F29252224551A00FC6A8F /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F29242224551A00FC6A8F /* ESim.storyboard */; };
+		047F29262224551A00FC6A8F /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F29242224551A00FC6A8F /* ESim.storyboard */; };
+		047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController2.swift */; };
+		047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController2.swift */; };
+		047F292B222455CF00FC6A8F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F292A222455CF00FC6A8F /* Home.storyboard */; };
+		047F292C222455CF00FC6A8F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F292A222455CF00FC6A8F /* Home.storyboard */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -115,6 +141,19 @@
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		045D743A2195D30700F01D57 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		047F29022224460B00FC6A8F /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
+		047F2908222447E500FC6A8F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		047F290B22244A8D00FC6A8F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		047F290E22244A9800FC6A8F /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		047F2912222451DF00FC6A8F /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
+		047F29152224520300FC6A8F /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		047F291B2224539900FC6A8F /* EKYCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCViewController.swift; sourceTree = "<group>"; };
+		047F291E222453DA00FC6A8F /* ESimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimViewController.swift; sourceTree = "<group>"; };
+		047F2921222453FE00FC6A8F /* EKYC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EKYC.storyboard; sourceTree = "<group>"; };
+		047F29242224551A00FC6A8F /* ESim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ESim.storyboard; sourceTree = "<group>"; };
+		047F29272224558B00FC6A8F /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
+		047F292A222455CF00FC6A8F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -199,36 +238,17 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				047F292E2224587400FC6A8F /* old-view-controllers */,
+				047F292D2224585600FC6A8F /* src */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
 				04488169217924B700F59758 /* AppDelegate.swift */,
-				0448816B217924B700F59758 /* HomeViewController.swift */,
-				0448816D217924B700F59758 /* SettingsTableViewController.swift */,
-				0448816F217924B700F59758 /* Main.storyboard */,
 				04488172217924B800F59758 /* Assets.xcassets */,
-				04488177217924B800F59758 /* Production.plist */,
-				0448817D2179287600F59758 /* LoginViewController.swift */,
-				04488191217938A300F59758 /* Auth.swift */,
-				04488198217B42C200F59758 /* OstelcoAPI.swift */,
-				0448819D217B4E4E00F59758 /* BundleModel.swift */,
-				0448819F217B7CA100F59758 /* ProfileTableViewController.swift */,
-				044881A1217B896800F59758 /* ProfileModel.swift */,
-				044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */,
 				044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */,
-				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
-				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881AE217BFBD800F59758 /* UIHelpers.swift */,
 				04EC5AE021886316000C2EC3 /* Payment.swift */,
-				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
-				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
-				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
-				04EC5AEA2188743B000C2EC3 /* Development.plist */,
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
-				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
-				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
-				045D743A2195D30700F01D57 /* RootViewController.swift */,
-				045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -245,6 +265,134 @@
 				C2B08447217E709900CAF9EA /* Stripe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		047F28FC2224415000FC6A8F /* features */ = {
+			isa = PBXGroup;
+			children = (
+				047F291A2224538000FC6A8F /* home */,
+				047F29192224536100FC6A8F /* esim */,
+				047F29182224535300FC6A8F /* ekyc */,
+				047F2911222451D000FC6A8F /* country */,
+				047F2901222441A900FC6A8F /* sign-up */,
+				047F28FD2224415E00FC6A8F /* login */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		047F28FD2224415E00FC6A8F /* login */ = {
+			isa = PBXGroup;
+			children = (
+				047F28FE2224419700FC6A8F /* Login.storyboard */,
+				047F29022224460B00FC6A8F /* LoginViewController2.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		047F2901222441A900FC6A8F /* sign-up */ = {
+			isa = PBXGroup;
+			children = (
+				047F290B22244A8D00FC6A8F /* SignUpViewController.swift */,
+				047F290E22244A9800FC6A8F /* SignUp.storyboard */,
+			);
+			path = "sign-up";
+			sourceTree = "<group>";
+		};
+		047F2911222451D000FC6A8F /* country */ = {
+			isa = PBXGroup;
+			children = (
+				047F2912222451DF00FC6A8F /* Country.storyboard */,
+				047F29152224520300FC6A8F /* CountryViewController.swift */,
+			);
+			path = country;
+			sourceTree = "<group>";
+		};
+		047F29182224535300FC6A8F /* ekyc */ = {
+			isa = PBXGroup;
+			children = (
+				047F2921222453FE00FC6A8F /* EKYC.storyboard */,
+				047F291B2224539900FC6A8F /* EKYCViewController.swift */,
+			);
+			path = ekyc;
+			sourceTree = "<group>";
+		};
+		047F29192224536100FC6A8F /* esim */ = {
+			isa = PBXGroup;
+			children = (
+				047F291E222453DA00FC6A8F /* ESimViewController.swift */,
+				047F29242224551A00FC6A8F /* ESim.storyboard */,
+			);
+			path = esim;
+			sourceTree = "<group>";
+		};
+		047F291A2224538000FC6A8F /* home */ = {
+			isa = PBXGroup;
+			children = (
+				047F29272224558B00FC6A8F /* HomeViewController2.swift */,
+				047F292A222455CF00FC6A8F /* Home.storyboard */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		047F292D2224585600FC6A8F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				047F292F2224589300FC6A8F /* services */,
+				047F29302224589900FC6A8F /* models */,
+				047F2931222458E300FC6A8F /* environments */,
+				0448816F217924B700F59758 /* Main.storyboard */,
+				047F2908222447E500FC6A8F /* MainController.swift */,
+				047F28FC2224415000FC6A8F /* features */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		047F292E2224587400FC6A8F /* old-view-controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0448816B217924B700F59758 /* HomeViewController.swift */,
+				0448816D217924B700F59758 /* SettingsTableViewController.swift */,
+				045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */,
+				045D743A2195D30700F01D57 /* RootViewController.swift */,
+				0448819F217B7CA100F59758 /* ProfileTableViewController.swift */,
+				044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */,
+				0448817D2179287600F59758 /* LoginViewController.swift */,
+			);
+			path = "old-view-controllers";
+			sourceTree = "<group>";
+		};
+		047F292F2224589300FC6A8F /* services */ = {
+			isa = PBXGroup;
+			children = (
+				04488191217938A300F59758 /* Auth.swift */,
+				04488198217B42C200F59758 /* OstelcoAPI.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		047F29302224589900FC6A8F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				0448819D217B4E4E00F59758 /* BundleModel.swift */,
+				044881A1217B896800F59758 /* ProfileModel.swift */,
+				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
+				044881A9217BA35C00F59758 /* ProductModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		047F2931222458E300FC6A8F /* environments */ = {
+			isa = PBXGroup;
+			children = (
+				04488177217924B800F59758 /* Production.plist */,
+				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
+				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
+				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
+				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
+				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
+				04EC5AEA2188743B000C2EC3 /* Development.plist */,
+			);
+			path = environments;
 			sourceTree = "<group>";
 		};
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
@@ -384,8 +532,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
+				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
+				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
+				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
+				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
+				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
+				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
 			);
@@ -403,8 +557,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
+				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
+				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
+				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
+				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
+				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
+				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
 			);
@@ -541,9 +701,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */,
+				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
+				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
+				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
+				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
@@ -551,8 +715,11 @@
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
+				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
+				047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
+				047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
@@ -574,6 +741,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
+				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
+				047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
@@ -581,17 +750,22 @@
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
 				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
+				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
+				047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
+				047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
+				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
+				047F29172224520300FC6A8F /* CountryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
