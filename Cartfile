@@ -1,6 +1,5 @@
-github "auth0/Auth0.swift" ~> 1.13
-github "ReactiveX/RxSwift" ~> 4.0
+github "auth0/Auth0.swift" ~> 1.14
+github "ReactiveX/RxSwift" ~> 4.4
 github "bustoutsolutions/siesta" ~> 1.0
 github "stripe/stripe-ios"
 github "freshdesk/freshchat-ios" "carthage"
-

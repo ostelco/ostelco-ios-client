@@ -16,12 +16,35 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func login(_ sender: Any) {
+  func setAuth() {
+    sharedAuth.credentialsManager.credentials { error, credentials in
+      if error == nil, let credentials = credentials {
+        if let accessToken = credentials.accessToken {
+          DispatchQueue.main.async {
+            if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
+              ostelcoAPI.wipeResources()
+            }
+
+            if (ostelcoAPI.authToken != accessToken) {
+              ostelcoAPI.authToken = "Bearer \(accessToken)"
+            }
+
+            if let refreshToken = credentials.refreshToken {
+              ostelcoAPI.refreshToken = refreshToken
+            }
+            self.handleLoginSuccess()
+          }
+        }
+      }
+    }
+  }
+
+  @IBAction func login(_ sender: Any) {
         os_log("Login button clicked")
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
-                self.handleLoginSuccess()
+                self.setAuth()
+                //self.handleLoginSuccess()
         },  onError: { error in
                 self.handleLoginError(errorMessage: "\(error)");
         })

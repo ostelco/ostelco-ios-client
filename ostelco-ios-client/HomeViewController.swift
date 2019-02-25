@@ -138,6 +138,17 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
   @IBAction func start_eKYCScan(_ sender: Any) {
     self.startNetverify();
   }
+  @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
+  {
+    let sourceViewController = sender.source
+    // Pull any data from the view controller which initiated the unwind segue.
+    print("HomeViewController unwindToMainMenu")
+  }
+
+  func showOnBoardingView() {
+    let viewController = UIStoryboard(name: "OnBoarding", bundle: nil).instantiateInitialViewController() as! OnBoardingViewController
+    present(viewController, animated: true, completion: nil)
+  }
 
   func handleApplePayButtonTapped() {
 
@@ -238,6 +249,8 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
   }
 
   @IBAction func lastScanStatus(_ sender: Any) {
+    self.showOnBoardingView()
+    return
     let scanStatus = ostelcoAPI.scanStatus(scanId: self.merchantScanReference)
     scanStatus.load().onCompletion { info in
       guard let scanInformation = scanStatus.latestData?.content as? ScanInformation else {
@@ -309,9 +322,9 @@ extension HomeViewController: NetverifyViewControllerDelegate {
   func createNetverifyConfiguration() -> NetverifyConfiguration {
     let config:NetverifyConfiguration = NetverifyConfiguration()
     //Provide your API token
-    config.merchantApiToken = "xxxx"
+    config.merchantApiToken = ""
     //Provide your API secret
-    config.merchantApiSecret = "xxxx"
+    config.merchantApiSecret = ""
 
     config.merchantScanReference = self.merchantScanReference
 

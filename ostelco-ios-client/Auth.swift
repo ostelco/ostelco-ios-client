@@ -19,6 +19,9 @@ class Auth {
 
     func clear() {
         os_log("Clear credentials in auth0 credentials manager.")
+        Auth0
+            .webAuth()
+            .clearSession(federated: true) { print($0) }
         self.credentialsManager.clear()
     }
     

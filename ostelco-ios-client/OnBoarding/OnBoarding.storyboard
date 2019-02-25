@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="stM-La-eEH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--On Boarding View Controller-->
+        <scene sceneID="EpF-kF-VfL">
+            <objects>
+                <viewController id="stM-La-eEH" customClass="OnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BUM-z1-XXe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Mikayla!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kd5-fG-d6P">
+                                <rect key="frame" x="16" y="110" width="142" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Four steps to get your 2GB of free data " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZO-9k-Thv">
+                                <rect key="frame" x="16" y="148" width="209" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqp-YZ-kdF" userLabel="Product Button" customClass="TopUpButton" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
+                                <rect key="frame" x="156.5" y="543" width="62" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nis-Jq-RGu"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zcK-IS-Ch0" kind="presentation" id="2Kh-xI-xWJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATa-A6-CDd">
+                                <rect key="frame" x="111" y="302" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="stM-La-eEH" eventType="touchUpInside" id="owh-Eh-z6j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kd5-fG-d6P" firstAttribute="leading" secondItem="a3v-ge-1jO" secondAttribute="leading" constant="16" id="4hG-2D-Y4S"/>
+                            <constraint firstItem="9ZO-9k-Thv" firstAttribute="leading" secondItem="kd5-fG-d6P" secondAttribute="leading" id="A8o-sL-uMW"/>
+                            <constraint firstItem="a3v-ge-1jO" firstAttribute="bottom" secondItem="Sqp-YZ-kdF" secondAttribute="bottom" constant="74" id="Ans-f8-StX"/>
+                            <constraint firstItem="Sqp-YZ-kdF" firstAttribute="centerX" secondItem="a3v-ge-1jO" secondAttribute="centerX" id="PQ2-Da-un3"/>
+                            <constraint firstItem="kd5-fG-d6P" firstAttribute="top" secondItem="a3v-ge-1jO" secondAttribute="top" constant="90" id="W2r-Ly-PDX"/>
+                            <constraint firstItem="9ZO-9k-Thv" firstAttribute="firstBaseline" secondItem="kd5-fG-d6P" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="YAJ-AB-yZx"/>
+                            <constraint firstItem="a3v-ge-1jO" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kd5-fG-d6P" secondAttribute="trailing" constant="217" id="l16-cD-YI8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a3v-ge-1jO"/>
+                    </view>
+                    <connections>
+                        <segue destination="ahk-Jk-qqE" kind="unwind" identifier="unwindToMainMenu" unwindAction="unwindToMainMenuWithSender:" id="AFC-wm-T6h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="den-3M-5DU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ahk-Jk-qqE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-121" y="212"/>
+        </scene>
+        <!--On Boarding View Controller2-->
+        <scene sceneID="U7D-Hl-p6G">
+            <objects>
+                <viewController id="zcK-IS-Ch0" customClass="OnBoardingViewController2" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OVT-kD-SvY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show new screens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4g-Jq-ue7">
+                                <rect key="frame" x="113" y="323" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhL-FJ-d2V" userLabel="Product Button" customClass="TopUpButton" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
+                                <rect key="frame" x="35" y="546" width="304" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aCp-9w-9nE"/>
+                                </constraints>
+                                <state key="normal" title="Close this controller">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeThisFlow:" destination="zcK-IS-Ch0" eventType="touchUpInside" id="2dw-lt-lHp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uhL-FJ-d2V" firstAttribute="centerX" secondItem="V4g-Jq-ue7" secondAttribute="centerX" constant="2.5" id="YaJ-E6-6Uj"/>
+                            <constraint firstItem="fpZ-Zb-DBh" firstAttribute="bottom" secondItem="uhL-FJ-d2V" secondAttribute="bottom" constant="71" id="dYj-tj-OyM"/>
+                            <constraint firstItem="fpZ-Zb-DBh" firstAttribute="trailing" secondItem="uhL-FJ-d2V" secondAttribute="trailing" constant="36" id="fP2-Yx-ONo"/>
+                            <constraint firstItem="uhL-FJ-d2V" firstAttribute="leading" secondItem="fpZ-Zb-DBh" secondAttribute="leading" constant="35" id="jH9-CO-xjo"/>
+                            <constraint firstItem="V4g-Jq-ue7" firstAttribute="centerY" secondItem="OVT-kD-SvY" secondAttribute="centerY" id="qZn-yb-fcB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fpZ-Zb-DBh"/>
+                    </view>
+                    <connections>
+                        <segue destination="xdL-bE-KuS" kind="unwind" identifier="unWind1" animates="NO" unwindAction="unwindToMainMenuWithSender:" id="pjq-oh-9ie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gXq-kg-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xdL-bE-KuS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="920.79999999999995" y="211.84407796101951"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

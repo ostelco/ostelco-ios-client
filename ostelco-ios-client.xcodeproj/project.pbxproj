@@ -44,6 +44,12 @@
 		536C95D88072551C26FB7460 /* Pods_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A120EC1DAD565851D4A9F2A0 /* Pods_dev_ostelco_ios_client.framework */; };
 		7289B1A92407CB10223AA975 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319FEF612CDD59BEDC6EF23E /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */; };
+		C27828E72216BF76000290C5 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27828E62216BF76000290C5 /* OnBoarding.storyboard */; };
+		C27828E82216BF76000290C5 /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27828E62216BF76000290C5 /* OnBoarding.storyboard */; };
+		C27828EA2216F036000290C5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27828E92216F036000290C5 /* OnBoardingViewController.swift */; };
+		C27828EB2216F036000290C5 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27828E92216F036000290C5 /* OnBoardingViewController.swift */; };
+		C27828ED2216F83F000290C5 /* OnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27828EC2216F83F000290C5 /* OnBoardingViewController2.swift */; };
+		C27828EE2216F83F000290C5 /* OnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27828EC2216F83F000290C5 /* OnBoardingViewController2.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -141,6 +147,9 @@
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C27828E62216BF76000290C5 /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		C27828E92216F036000290C5 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		C27828EC2216F83F000290C5 /* OnBoardingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController2.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
@@ -215,6 +224,7 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				C27828E52216BF11000290C5 /* OnBoarding */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
 				04488169217924B700F59758 /* AppDelegate.swift */,
 				0448816B217924B700F59758 /* HomeViewController.swift */,
@@ -273,6 +283,16 @@
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 			);
 			path = "dev-ostelco-ios-clientTests";
+			sourceTree = "<group>";
+		};
+		C27828E52216BF11000290C5 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				C27828E62216BF76000290C5 /* OnBoarding.storyboard */,
+				C27828E92216F036000290C5 /* OnBoardingViewController.swift */,
+				C27828EC2216F83F000290C5 /* OnBoardingViewController2.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		C4B74FAE6888F4D375ECE526 /* Pods */ = {
@@ -425,6 +445,7 @@
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
+				C27828E72216BF76000290C5 /* OnBoarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +465,7 @@
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
+				C27828E82216BF76000290C5 /* OnBoarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,11 +732,13 @@
 				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
+				C27828EA2216F036000290C5 /* OnBoardingViewController.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
+				C27828ED2216F83F000290C5 /* OnBoardingViewController2.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
@@ -756,8 +780,10 @@
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
+				C27828EE2216F83F000290C5 /* OnBoardingViewController2.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
+				C27828EB2216F036000290C5 /* OnBoardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
