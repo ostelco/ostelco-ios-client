@@ -238,6 +238,8 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
+				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 				047F292E2224587400FC6A8F /* old-view-controllers */,
 				047F292D2224585600FC6A8F /* src */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
@@ -385,8 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				04488177217924B800F59758 /* Production.plist */,
-				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
-				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
 				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
 				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
@@ -918,7 +918,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Production.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ostelco-ios-client/src/environments/Production.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -949,7 +949,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Production.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ostelco-ios-client/src/environments/Production.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1024,7 +1024,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Development.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ostelco-ios-client/src/environments/Development.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1055,7 +1055,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "ostelco-ios-client/Development.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ostelco-ios-client/src/environments/Development.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
