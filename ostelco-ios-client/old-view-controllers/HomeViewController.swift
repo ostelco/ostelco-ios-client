@@ -8,7 +8,6 @@
 
 import UIKit
 import Siesta
-import SiestaUI
 import Foundation
 import os
 import Stripe

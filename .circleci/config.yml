@@ -1,4 +1,4 @@
-version: 2
+version: 3
 jobs:
   beta:
     macos:
@@ -21,7 +21,7 @@ jobs:
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
-  build-and-test:
+  build-and-test-carthage:
     macos:
       xcode: "10.0.0"
     working_directory: /Users/distiller/project
@@ -39,6 +39,31 @@ jobs:
           key: carthage-{{ checksum "Cartfile.resolved" }}
           paths:
             - /Users/distiller/project/Carthage
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone X (12.0) [" || true
+      - run: bundle install
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane test
+  build-and-test:
+    macos:
+      xcode: "10.2.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose     
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.0) [" || true

@@ -1,0 +1,50 @@
+PODS:
+  - Auth0 (1.14.1):
+    - SimpleKeychain
+  - FreshchatSDK (2.4.0)
+  - JumioMobileSDK/Netverify (2.15.0)
+  - RxAtomic (4.4.1)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
+  - Siesta (1.4.2):
+    - Siesta/Core (= 1.4.2)
+  - Siesta/Core (1.4.2)
+  - Siesta/UI (1.4.2):
+    - Siesta/Core
+  - SimpleKeychain (0.8.1)
+  - Stripe (14.0.0)
+
+DEPENDENCIES:
+  - Auth0 (~> 1.14)
+  - FreshchatSDK
+  - JumioMobileSDK/Netverify (~> 2.14)
+  - RxSwift (~> 4.0)
+  - Siesta (~> 1.0)
+  - Siesta/UI (~> 1.0)
+  - SimpleKeychain
+  - Stripe
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Auth0
+    - FreshchatSDK
+    - JumioMobileSDK
+    - RxAtomic
+    - RxSwift
+    - Siesta
+    - SimpleKeychain
+    - Stripe
+
+SPEC CHECKSUMS:
+  Auth0: 064dc115cd99eec7334d1cab565f4d974eecac4d
+  FreshchatSDK: ecb52e1b6c2ada613eb61a7ca21278385500ba7d
+  JumioMobileSDK: 8949971b2007fccf1e63bac2f30f108a1ff2c53f
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
+  SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
+  Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+
+PODFILE CHECKSUM: ff85af58947bac9287c0e1849b7ea6869aff7cb6
+
+COCOAPODS: 1.6.0

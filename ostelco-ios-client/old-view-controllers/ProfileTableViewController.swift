@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Siesta
-import SiestaUI
 import os
 
 class ProfileTableViewController: UITableViewController, ResourceObserver {

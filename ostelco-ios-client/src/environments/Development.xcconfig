@@ -8,6 +8,8 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
+#include "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"
+#include "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"
 server_url = https:\/\/api.dev.ostelco.org
 stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z
 auth0_client_id = YA2dXSkRyWPeQA5y3GGzRub7TZtzYp31
