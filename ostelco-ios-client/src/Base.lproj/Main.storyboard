@@ -585,7 +585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPe-lc-wQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1353" y="-79"/>
+            <point key="canvasLocation" x="-1622" y="-395"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="fSn-xi-1kx">
@@ -641,6 +641,14 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="showLoginTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="G6t-v7-QSM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hwm-Yx-oNR">
+                                <rect key="frame" x="154" y="151" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="App Start"/>
+                                <connections>
+                                    <action selector="appStartTapped:" destination="u5N-nF-og5" eventType="touchUpInside" id="CUq-fx-mx6"/>
                                 </connections>
                             </button>
                         </subviews>

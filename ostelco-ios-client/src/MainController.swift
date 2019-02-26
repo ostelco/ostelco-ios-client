@@ -34,6 +34,10 @@ class MainController: UIViewController {
         
     }
     
+    @IBAction func unwindFromSplashViewController(sender: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func showLoginTapped(_ sender: Any?) {
         self.showLogin()
     }
@@ -56,6 +60,10 @@ class MainController: UIViewController {
     
     @IBAction func showHomeTapped(_ sender: Any) {
         self.showHome()
+    }
+    
+    @IBAction func appStartTapped(_ sender: Any) {
+        self.showSplash()
     }
     
     @objc private func showLogin() {
@@ -85,6 +93,11 @@ class MainController: UIViewController {
     
     @objc private func showHome() {
         let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController() as! HomeViewController2
+        self.presentVC(vc: viewController)
+    }
+    
+    private func showSplash() {
+        let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController() as! SplashViewController
         self.presentVC(vc: viewController)
     }
     
