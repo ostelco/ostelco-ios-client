@@ -61,13 +61,13 @@ platform :ios do
     # Providing the xcodeproj is optional
     increment_build_number(
       build_number: latest_testflight_build_number + 1,
-      xcodeproj: "ostelco-ios-client.xcodeproj"
+      xcodeproj: "ostelco-ios-client.xcworkspace"
     )
     # build and upload dev app
     build_app(scheme: "dev-ostelco-ios-client")
     upload_to_testflight
     # Commit the version bump
-    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
+    commit_version_bump(xcodeproj: "ostelco-ios-client.xcworkspace")
 
     # Add a git tag for this build. This will automatically
     # use an appropriate git tag name
