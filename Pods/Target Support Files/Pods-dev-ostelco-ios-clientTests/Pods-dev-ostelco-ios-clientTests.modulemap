@@ -1,0 +1,6 @@
+framework module Pods_dev_ostelco_ios_clientTests {
+  umbrella header "Pods-dev-ostelco-ios-clientTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

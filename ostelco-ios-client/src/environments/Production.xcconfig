@@ -1,0 +1,21 @@
+//
+//  Production.xcconfig
+//  ostelco-ios-client
+//
+//  Created by mac on 10/30/18.
+//  Copyright © 2018 mac. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"
+#include "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"
+server_url = https:\/\/api.ostelco.org
+stripe_publishable_key = pk_live_TapwcFFxZ4ebhimyTvXSIWPY
+auth0_client_id = bNz2UjqvwtLvLu431zHFOujzDW24wO1f
+auth0_domain = ostelco.eu.auth0.com
+auth0_logo_url = https:\/\/i.imgur.com/kRdkzp2.png
+freshchat_app_id = bcd5751d-ad5d-455f-bfba-1da395583e3d
+freshchat_app_key = 2326bd78-855a-47ba-9641-6bf9bb807038
+apple_merchant_id = merchant.sg.redotter.dev.selfcare
+bugsee_token = 2528d676-0561-47a7-a091-742a0cdbcf8f

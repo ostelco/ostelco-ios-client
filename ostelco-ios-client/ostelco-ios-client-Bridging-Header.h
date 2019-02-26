@@ -9,6 +9,6 @@
 #ifndef ostelco_ios_client_Bridging_Header_h
 #define ostelco_ios_client_Bridging_Header_h
 
-#import "FreshchatCarthage/FreshchatSDK.h"
+#import "FreshchatSDK/FreshchatSDK.h"
 
 #endif /* ostelco_ios_client_Bridging_Header_h */
