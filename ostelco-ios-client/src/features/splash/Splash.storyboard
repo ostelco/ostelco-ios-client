@@ -31,9 +31,11 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ROJ-9a-odl" id="Dzl-Hk-YyM"/>
+                        <segue destination="5E2-Oh-ngD" kind="unwind" identifier="unwindFromSplashViewController" animates="NO" unwindAction="unwindFromSplashViewControllerWithSender:" id="t9x-la-IkZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEL-B7-INL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5E2-Oh-ngD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1622" y="-395"/>
         </scene>

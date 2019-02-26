@@ -34,7 +34,9 @@ class SplashViewController: UIViewController {
                         }
                         
                         self.showMessage(loggedIn: true)
-                        // AppDelegate.shared.rootViewController.switchToMainScreen()
+                        
+                        // TODO: Handle redirect logic. Remember that this redirect logic should also be handled after you successfully login from the login screen.
+                        // AppDelegate.shared.rootViewController.switchToMainScreen() // Old redirect logic
                     }
                     
                     return
@@ -43,7 +45,8 @@ class SplashViewController: UIViewController {
         }
         
         self.showMessage(loggedIn: false)
-        // AppDelegate.shared.rootViewController.switchToLogout()
+        // TODO: Redirect to login screen. Remember to clean up any local state from authentication
+        // AppDelegate.shared.rootViewController.switchToLogout() // Old redirect logic
     }
     
     private func showMessage(loggedIn: Bool) {
@@ -60,11 +63,11 @@ class SplashViewController: UIViewController {
     }
 
     @objc private func presentAlert(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { alertAction in
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { alertAction in
             self.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "This is false!", style: .default, handler: { alertAction in
-            self.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Take me to login screen", style: .default, handler: { alertAction in
+            self.performSegue(withIdentifier: "unwindFromSplashViewController", sender: self)
         }))
 
         self.present(alert, animated: true)
