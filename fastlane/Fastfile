@@ -59,15 +59,19 @@ platform :ios do
 
     # Increment the build number (not the version number)
     # Providing the xcodeproj is optional
+    build_number = latest_testflight_build_number(
+      app_identifier: "sg.redotter.dev.selfcare",
+      version: "1.0"
+    )
     increment_build_number(
-      build_number: latest_testflight_build_number(version: "1.0") + 1,
-      xcodeproj: "ostelco-ios-client.xcworkspace"
+      build_number: build_number + 1,
+      xcodeproj: "ostelco-ios-client.xcodeproj"
     )
     # build and upload dev app
     build_app(scheme: "dev-ostelco-ios-client")
     upload_to_testflight
     # Commit the version bump
-    commit_version_bump(xcodeproj: "ostelco-ios-client.xcworkspace")
+    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
 
     # Add a git tag for this build. This will automatically
     # use an appropriate git tag name
