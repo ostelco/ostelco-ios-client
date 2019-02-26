@@ -62,6 +62,10 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
+		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
+		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
+		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
+		04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04EC5AE221886316000C2EC3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE021886316000C2EC3 /* Payment.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
@@ -136,6 +140,8 @@
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		04EC5AE021886316000C2EC3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -254,6 +260,7 @@
 		047F28FC2224415000FC6A8F /* features */ = {
 			isa = PBXGroup;
 			children = (
+				04BA3498222568E4000359C4 /* splash */,
 				047F291A2224538000FC6A8F /* home */,
 				047F29192224536100FC6A8F /* esim */,
 				047F29182224535300FC6A8F /* ekyc */,
@@ -375,6 +382,15 @@
 				04EC5AEA2188743B000C2EC3 /* Development.plist */,
 			);
 			path = environments;
+			sourceTree = "<group>";
+		};
+		04BA3498222568E4000359C4 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				04BA3499222587DD000359C4 /* Splash.storyboard */,
+				04BA349B222587F6000359C4 /* SplashViewController.swift */,
+			);
+			path = splash;
 			sourceTree = "<group>";
 		};
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
@@ -539,6 +555,7 @@
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
+				04BA349A222587DD000359C4 /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +581,7 @@
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
+				04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +848,7 @@
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
+				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
@@ -854,6 +873,7 @@
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
 				047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
+				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
