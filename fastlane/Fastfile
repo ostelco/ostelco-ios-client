@@ -59,13 +59,31 @@ platform :ios do
 
     # Increment the build number (not the version number)
     # Providing the xcodeproj is optional
-    increment_build_number(
-      build_number: latest_testflight_build_number + 1,
+
+    ##Disabled
+    # Currently we are not able to fetch the latest build number from testflight
+    # Re-enable this when we can successfully execute the following
+    # `fastlane run latest_testflight_build_number app_identifier:"sg.redotter.dev.selfcare" version:"1.0"`
+    # build_number = latest_testflight_build_number(
+    #  app_identifier: "sg.redotter.dev.selfcare",
+    #  version: "1.1"
+    # )
+    ##Disabled
+
+    # Get the current build number from the project file
+    latest_build_number = get_build_number(
       xcodeproj: "ostelco-ios-client.xcodeproj"
     )
+    build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
+
+    increment_build_number(
+      build_number: build_number,
+      xcodeproj: "ostelco-ios-client.xcodeproj"
+    )
+
     # build and upload dev app
     build_app(scheme: "dev-ostelco-ios-client")
-    upload_to_testflight
+    upload_to_testflight(skip_waiting_for_build_processing: true)
     # Commit the version bump
     commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
 
