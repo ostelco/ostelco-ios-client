@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168B2226BBBA00455278 /* GetStartedViewController.swift */; };
+		0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168B2226BBBA00455278 /* GetStartedViewController.swift */; };
+		0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */; };
+		041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */; };
 		0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
 		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
@@ -36,8 +40,6 @@
 		047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController2.swift */; };
 		047F2909222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
 		047F290A222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
-		047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F290B22244A8D00FC6A8F /* SignUpViewController.swift */; };
-		047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F290B22244A8D00FC6A8F /* SignUpViewController.swift */; };
 		047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F2913222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
@@ -66,6 +68,8 @@
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
+		04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
+		04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
 		04EC5AE221886316000C2EC3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE021886316000C2EC3 /* Payment.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
@@ -101,6 +105,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0412168B2226BBBA00455278 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
 		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
 		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +132,6 @@
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
 		047F2908222447E500FC6A8F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		047F290B22244A8D00FC6A8F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		047F290E22244A9800FC6A8F /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		047F2912222451DF00FC6A8F /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
 		047F29152224520300FC6A8F /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +147,7 @@
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		04EC5AE021886316000C2EC3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -281,8 +287,10 @@
 		047F2901222441A900FC6A8F /* sign-up */ = {
 			isa = PBXGroup;
 			children = (
-				047F290B22244A8D00FC6A8F /* SignUpViewController.swift */,
 				047F290E22244A9800FC6A8F /* SignUp.storyboard */,
+				04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */,
+				0412168B2226BBBA00455278 /* GetStartedViewController.swift */,
+				0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */,
 			);
 			path = "sign-up";
 			sourceTree = "<group>";
@@ -843,13 +851,15 @@
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
+				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */,
+				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
+				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
-				047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
@@ -872,18 +882,20 @@
 			files = (
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
-				047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
+				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
+				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
 				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
+				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,

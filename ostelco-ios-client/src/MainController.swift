@@ -72,7 +72,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showSignUp() {
-        let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController() as! SignUpViewController
+        let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
