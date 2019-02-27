@@ -7,8 +7,27 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MainController: UIViewController {
+    
+    @IBOutlet weak var notificationStatusLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkNotificationStatus()
+    }
+    
+    private func checkNotificationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                self.notificationStatusLabel.text = "Notification Status: \(settings.authorizationStatus.description)"
+            }
+        }
+    }
     
     @IBAction func unwindFromLoginViewController(sender: UIStoryboardSegue) {
         perform(#selector(showSignUp), with: nil, afterDelay: 0)
