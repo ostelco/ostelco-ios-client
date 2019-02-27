@@ -30,7 +30,7 @@ class Auth {
     
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
-        var params: [String:String] = ["primaryColor": "#\(ThemeManager.currentTheme().mainColor.toHex!)", "logo": Environment().configuration(.Auth0LogoURL)]
+        // let params: [String:String] = [:]
         return Observable.create { observer in
             Auth0
                 .webAuth()
@@ -38,7 +38,7 @@ class Auth {
                 .audience("http://google_api")
                 .scope("openid email profile offline_access")
                 // .connection("google-oauth2")
-                .parameters(params)
+                // .parameters(params)
                 .start {
                     switch $0 {
                     case .failure(let error):
