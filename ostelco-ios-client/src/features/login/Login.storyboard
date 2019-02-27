@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-Ee-vXa">
-                                <rect key="frame" x="284" y="617" width="75" height="30"/>
-                                <state key="normal" title="Close Flow"/>
+                                <rect key="frame" x="320" y="617" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
                                 <connections>
-                                    <action selector="closeFlow:" destination="iNM-8Q-weE" eventType="touchUpInside" id="zUN-RG-zfv"/>
+                                    <action selector="closeTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="D4j-mh-Npi"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
@@ -31,6 +31,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-Tc-iUy">
                                 <rect key="frame" x="164" y="617" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="H3m-OH-Ihp"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="loX-Ww-Z88">
                                 <rect key="frame" x="90" y="85" width="195" height="57"/>
@@ -56,6 +59,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CPe-MD-7pH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="56.799999999999997" y="30.134932533733135"/>
         </scene>
     </scenes>
     <resources>
