@@ -71,12 +71,14 @@ platform :ios do
     ##Disabled
 
     # Get the current build number from the project file
-    build_number = get_build_number(
+    latest_build_number = get_build_number(
       xcodeproj: "ostelco-ios-client.xcodeproj"
     )
+    puts latest_build_number
+    build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
 
     increment_build_number(
-      build_number: build_number + 1,
+      build_number: build_number,
       xcodeproj: "ostelco-ios-client.xcodeproj"
     )
 
