@@ -73,6 +73,12 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		8A43EA1A7FBDE4087F9E2C1A /* Pods_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */; };
 		C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */; };
+		C25A958D2226BA8C005958EC /* SingPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A958C2226BA8C005958EC /* SingPassView.swift */; };
+		C25A958E2226BA8C005958EC /* SingPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A958C2226BA8C005958EC /* SingPassView.swift */; };
+		C25A95902226F0E2005958EC /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A958F2226F0E2005958EC /* IdentityView.swift */; };
+		C25A95912226F0E2005958EC /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A958F2226F0E2005958EC /* IdentityView.swift */; };
+		C25A95932226F26E005958EC /* NricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95922226F26E005958EC /* NricView.swift */; };
+		C25A95942226F26E005958EC /* NricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95922226F26E005958EC /* NricView.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -161,6 +167,9 @@
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C25A958C2226BA8C005958EC /* SingPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassView.swift; sourceTree = "<group>"; };
+		C25A958F2226F0E2005958EC /* IdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
+		C25A95922226F26E005958EC /* NricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NricView.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
@@ -301,6 +310,9 @@
 			children = (
 				047F2921222453FE00FC6A8F /* EKYC.storyboard */,
 				047F291B2224539900FC6A8F /* EKYCViewController.swift */,
+				C25A958F2226F0E2005958EC /* IdentityView.swift */,
+				C25A958C2226BA8C005958EC /* SingPassView.swift */,
+				C25A95922226F26E005958EC /* NricView.swift */,
 			);
 			path = ekyc;
 			sourceTree = "<group>";
@@ -836,6 +848,7 @@
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
+				C25A95932226F26E005958EC /* NricView.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
@@ -851,10 +864,12 @@
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047F290C22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
+				C25A95902226F0E2005958EC /* IdentityView.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
+				C25A958D2226BA8C005958EC /* SingPassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,6 +885,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25A958E2226BA8C005958EC /* SingPassView.swift in Sources */,
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
 				047F290D22244A8D00FC6A8F /* SignUpViewController.swift in Sources */,
@@ -891,10 +907,12 @@
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
+				C25A95942226F26E005958EC /* NricView.swift in Sources */,
 				047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
+				C25A95912226F0E2005958EC /* IdentityView.swift in Sources */,
 				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047F29172224520300FC6A8F /* CountryViewController.swift in Sources */,
 			);

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Jv-ZB-YWH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Jv-ZB-YWH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +14,10 @@
         <scene sceneID="F9x-nj-1r0">
             <objects>
                 <viewController id="5Jv-ZB-YWH" customClass="EKYCViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vrh-iC-pOG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zlu-4P-mIg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aQf-51-GjO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,24 +28,172 @@
                                     <segment title="SingPass"/>
                                     <segment title="NRIC/FIN"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchedSegment:" destination="5Jv-ZB-YWH" eventType="valueChanged" id="Ilh-6i-MYd"/>
+                                </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meC-ws-pLf">
+                                <rect key="frame" x="16" y="88" width="343" height="559"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mY6-el-MlI" firstAttribute="top" secondItem="0Sf-Tu-EKC" secondAttribute="top" constant="32" id="BBt-Mw-Ciw"/>
-                            <constraint firstItem="0Sf-Tu-EKC" firstAttribute="trailing" secondItem="mY6-el-MlI" secondAttribute="trailing" constant="16" id="mG7-gV-PPl"/>
-                            <constraint firstItem="mY6-el-MlI" firstAttribute="leading" secondItem="0Sf-Tu-EKC" secondAttribute="leading" constant="16" id="qhf-Sy-hXB"/>
+                            <constraint firstAttribute="trailing" secondItem="meC-ws-pLf" secondAttribute="trailing" constant="16" id="3jP-Oc-YYX"/>
+                            <constraint firstItem="mY6-el-MlI" firstAttribute="top" secondItem="Vrh-iC-pOG" secondAttribute="bottom" constant="32" id="BBt-Mw-Ciw"/>
+                            <constraint firstItem="meC-ws-pLf" firstAttribute="leading" secondItem="aQf-51-GjO" secondAttribute="leading" constant="16" id="O3o-wM-usC"/>
+                            <constraint firstItem="Zlu-4P-mIg" firstAttribute="top" secondItem="meC-ws-pLf" secondAttribute="bottom" constant="20" id="fwU-9O-rgw"/>
+                            <constraint firstAttribute="trailing" secondItem="mY6-el-MlI" secondAttribute="trailing" constant="16" id="mG7-gV-PPl"/>
+                            <constraint firstItem="mY6-el-MlI" firstAttribute="leading" secondItem="aQf-51-GjO" secondAttribute="leading" constant="16" id="qhf-Sy-hXB"/>
+                            <constraint firstItem="meC-ws-pLf" firstAttribute="top" secondItem="Vrh-iC-pOG" secondAttribute="bottom" constant="68" id="vFJ-Ht-HvB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0Sf-Tu-EKC"/>
                     </view>
                     <connections>
+                        <outlet property="identitySegments" destination="mY6-el-MlI" id="IGc-em-zcy"/>
+                        <outlet property="nricView" destination="9l8-Li-iWM" id="7ic-Ca-YaV"/>
+                        <outlet property="placeHolderView" destination="meC-ws-pLf" id="DZy-c7-eyc"/>
+                        <outlet property="singPassErrorView" destination="spA-Ur-wtk" id="Oph-hv-FvH"/>
+                        <outlet property="singPassView" destination="ys4-ru-Id5" id="tw9-qT-ElQ"/>
                         <segue destination="RW4-9D-Jnf" kind="unwind" unwindAction="unwindFromEKYCViewControllerWithSender:" id="Tf4-WD-Wpg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBV-gy-ZOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view hidden="YES" contentMode="scaleToFill" id="spA-Ur-wtk">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o35-8w-EJQ">
+                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At this moment SingPass service is unavailable.  Try later or continue with NRIC/FIN option above." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af5-UK-aD1">
+                            <rect key="frame" x="0.0" y="142" width="340" height="47"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blz-Uo-K0p">
+                            <rect key="frame" x="122" y="603.5" width="110" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="PeacockBlue"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35W-eV-aHj">
+                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
+                            <state key="normal" title="Continue"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="o35-8w-EJQ" firstAttribute="top" secondItem="spA-Ur-wtk" secondAttribute="top" constant="77" id="Ctz-2a-Ggg"/>
+                        <constraint firstItem="35W-eV-aHj" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="KXT-fe-CdN"/>
+                        <constraint firstItem="blz-Uo-K0p" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="Kcw-VU-4EI"/>
+                        <constraint firstItem="af5-UK-aD1" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="bWw-i3-v0A"/>
+                        <constraint firstItem="af5-UK-aD1" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="hQP-g8-N8g"/>
+                        <constraint firstItem="35W-eV-aHj" firstAttribute="top" secondItem="blz-Uo-K0p" secondAttribute="bottom" constant="12" id="jrA-XJ-soh"/>
+                        <constraint firstItem="o35-8w-EJQ" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="k5n-OL-hJo"/>
+                        <constraint firstAttribute="bottom" secondItem="35W-eV-aHj" secondAttribute="bottom" constant="20" id="kBC-Oc-VZs"/>
+                        <constraint firstItem="35W-eV-aHj" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="wIQ-f6-Qmh"/>
+                        <constraint firstItem="o35-8w-EJQ" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="zK8-NG-fyc"/>
+                        <constraint firstItem="af5-UK-aD1" firstAttribute="top" secondItem="o35-8w-EJQ" secondAttribute="bottom" constant="44" id="zop-aO-dfx"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="ys4-ru-Id5" customClass="SingPassView" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your Identity with SingPass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu8-66-MKS">
+                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPP-aX-t2V">
+                            <rect key="frame" x="122" y="603.5" width="110" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="PeacockBlue"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23j-IH-8ov">
+                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
+                            <state key="normal" title="Continue"/>
+                            <connections>
+                                <action selector="continueSingPass:" destination="ys4-ru-Id5" eventType="touchUpInside" id="WYE-Fh-1IM"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="mu8-66-MKS" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="AEZ-dM-56d"/>
+                        <constraint firstItem="mu8-66-MKS" firstAttribute="top" secondItem="ys4-ru-Id5" secondAttribute="top" constant="77" id="Y5a-WW-cgR"/>
+                        <constraint firstAttribute="bottom" secondItem="23j-IH-8ov" secondAttribute="bottom" constant="20" id="Yny-JU-mAv"/>
+                        <constraint firstItem="23j-IH-8ov" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="dRD-At-EWS"/>
+                        <constraint firstItem="KPP-aX-t2V" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="gp3-Dc-Woq"/>
+                        <constraint firstItem="23j-IH-8ov" firstAttribute="top" secondItem="KPP-aX-t2V" secondAttribute="bottom" constant="12" id="qh9-sk-gL3"/>
+                        <constraint firstItem="mu8-66-MKS" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="r37-Q6-lne"/>
+                        <constraint firstItem="23j-IH-8ov" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="yWP-zk-wsk"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" id="9l8-Li-iWM" customClass="NricView" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your NRIC/FIN ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-D9-eH8">
+                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-5z-9P0">
+                            <rect key="frame" x="0.0" y="132" width="340" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT7-ql-lOR">
+                            <rect key="frame" x="0.0" y="180" width="340" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-In-cja">
+                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
+                            <state key="normal" title="Continue"/>
+                            <connections>
+                                <action selector="continueNric:" destination="9l8-Li-iWM" eventType="touchUpInside" id="8rs-Gc-TxS"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-5R-gvH">
+                            <rect key="frame" x="122" y="603.5" width="110" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="PeacockBlue"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="o2G-D9-eH8" firstAttribute="top" secondItem="9l8-Li-iWM" secondAttribute="top" constant="77" id="0ar-4L-vTz"/>
+                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="6W4-Y1-jtR"/>
+                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="top" secondItem="o2G-D9-eH8" secondAttribute="bottom" constant="34" id="7Sw-Wb-GDB"/>
+                        <constraint firstItem="o2G-D9-eH8" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="825-Su-1Ch"/>
+                        <constraint firstItem="PT7-ql-lOR" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="9Tx-ug-GIQ"/>
+                        <constraint firstItem="hbJ-In-cja" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="B5s-MN-txZ"/>
+                        <constraint firstItem="BxU-5R-gvH" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="Ezs-EK-ucd"/>
+                        <constraint firstItem="PT7-ql-lOR" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="Kdi-Tg-gXm"/>
+                        <constraint firstAttribute="bottom" secondItem="hbJ-In-cja" secondAttribute="bottom" constant="20" id="TL7-sC-f9r"/>
+                        <constraint firstItem="o2G-D9-eH8" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="aKf-39-apa"/>
+                        <constraint firstItem="hbJ-In-cja" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="fJ3-u6-kdh"/>
+                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="pGT-B4-7Wd"/>
+                        <constraint firstItem="hbJ-In-cja" firstAttribute="top" secondItem="BxU-5R-gvH" secondAttribute="bottom" constant="12" id="u8T-l5-PNY"/>
+                        <constraint firstItem="PT7-ql-lOR" firstAttribute="top" secondItem="PbZ-5z-9P0" secondAttribute="bottom" constant="18" id="z5y-KQ-iOq"/>
+                    </constraints>
+                </view>
                 <exit id="RW4-9D-Jnf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-215.19999999999999" y="-196.55172413793105"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="PeacockBlue">
+            <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
