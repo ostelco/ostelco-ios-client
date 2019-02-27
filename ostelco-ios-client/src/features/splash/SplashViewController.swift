@@ -19,7 +19,6 @@ class SplashViewController: UIViewController {
         sharedAuth.credentialsManager.credentials { error, credentials in
             if error == nil, let credentials = credentials {
                 if let accessToken = credentials.accessToken {
-                    
                     DispatchQueue.main.async {
                         if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
                             ostelcoAPI.wipeResources()
@@ -34,7 +33,6 @@ class SplashViewController: UIViewController {
                         }
                         
                         self.showMessage(loggedIn: true)
-                        
                         // TODO: Handle redirect logic. Remember that this redirect logic should also be handled after you successfully login from the login screen.
                         // AppDelegate.shared.rootViewController.switchToMainScreen() // Old redirect logic
                     }
@@ -42,11 +40,11 @@ class SplashViewController: UIViewController {
                     return
                 }
             }
+            self.showMessage(loggedIn: false)
+            // TODO: Redirect to login screen. Remember to clean up any local state from authentication
+            // AppDelegate.shared.rootViewController.switchToLogout() // Old redirect logic
         }
         
-        self.showMessage(loggedIn: false)
-        // TODO: Redirect to login screen. Remember to clean up any local state from authentication
-        // AppDelegate.shared.rootViewController.switchToLogout() // Old redirect logic
     }
     
     private func showMessage(loggedIn: Bool) {
