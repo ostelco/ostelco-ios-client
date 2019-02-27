@@ -15,30 +15,6 @@ class EnableNotificationsViewController: UIViewController {
         self.enableNotifications()
     }
     
-    private func showNotificationAlreadyEnabledAlert() {
-        let alert = UIAlertController(title: "Notification Alert", message: "you have already enabled notifications", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
-        }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    private func showNotificationDisabledAlert() {
-        let alert = UIAlertController(title: "Notification Alert", message: "you have disabled notifications for this app", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
-        }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     private func showNotificationAlreadySetAlert(status: String) {
         let alert = UIAlertController(title: "Notification Alert", message: "your notification status is: \(status)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -66,12 +42,8 @@ class EnableNotificationsViewController: UIViewController {
     private func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            if (granted) {
-                DispatchQueue.main.async {
-                    self.showGetStarted()
-                }
-            } else {
-                self.showNotificationDisabledAlert()
+            DispatchQueue.main.async {
+                self.showGetStarted()
             }
         }
     }
