@@ -45,14 +45,18 @@ class EKYCViewController: UIViewController {
 
   @IBAction func switchedSegment(_ sender: UISegmentedControl) {
     if sender.selectedSegmentIndex == 0 {
-      singPassView.isHidden = true
-      singPassErrorView.isHidden = false
+      singPassView.isHidden = false
+      singPassErrorView.isHidden = true
       nricView.isHidden = true
     } else {
       singPassView.isHidden = true
       singPassErrorView.isHidden = true
       nricView.isHidden = false
     }
+  }
+  @IBAction func unwindFromSingPassInfoViewController(sender: UIStoryboardSegue) {
+    print("received unwindFromSingPassInfoViewController")
+    performSegue(withIdentifier: "unwindFromEKYCViewController", sender: self)
   }
 }
 
@@ -72,6 +76,7 @@ extension EKYCViewController: IdentityViewDelegate {
   }
   func continueSingPass() {
     print("Continue SingPass")
+    performSegue(withIdentifier: "singPassAddress", sender: self)
   }
 
 

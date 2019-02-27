@@ -79,6 +79,8 @@
 		C25A95912226F0E2005958EC /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A958F2226F0E2005958EC /* IdentityView.swift */; };
 		C25A95932226F26E005958EC /* NricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95922226F26E005958EC /* NricView.swift */; };
 		C25A95942226F26E005958EC /* NricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95922226F26E005958EC /* NricView.swift */; };
+		C25A95962226FF7F005958EC /* SingPassInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */; };
+		C25A95972226FF7F005958EC /* SingPassInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -170,6 +172,7 @@
 		C25A958C2226BA8C005958EC /* SingPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassView.swift; sourceTree = "<group>"; };
 		C25A958F2226F0E2005958EC /* IdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
 		C25A95922226F26E005958EC /* NricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NricView.swift; sourceTree = "<group>"; };
+		C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassInfoViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
@@ -313,6 +316,7 @@
 				C25A958F2226F0E2005958EC /* IdentityView.swift */,
 				C25A958C2226BA8C005958EC /* SingPassView.swift */,
 				C25A95922226F26E005958EC /* NricView.swift */,
+				C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */,
 			);
 			path = ekyc;
 			sourceTree = "<group>";
@@ -847,6 +851,7 @@
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
+				C25A95962226FF7F005958EC /* SingPassInfoViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
 				C25A95932226F26E005958EC /* NricView.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
@@ -907,6 +912,7 @@
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
+				C25A95972226FF7F005958EC /* SingPassInfoViewController.swift in Sources */,
 				C25A95942226F26E005958EC /* NricView.swift in Sources */,
 				047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
