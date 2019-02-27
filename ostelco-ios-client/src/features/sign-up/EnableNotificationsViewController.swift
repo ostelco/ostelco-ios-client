@@ -27,6 +27,18 @@ class EnableNotificationsViewController: UIViewController {
         }
     }
     
+    private func showNotificationDisabledAlert() {
+        let alert = UIAlertController(title: "Notification Alert", message: "you have disabled notifications for this app", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            DispatchQueue.main.async {
+                self.showGetStarted()
+            }
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func enableNotifications() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             if settings.authorizationStatus == .authorized {
@@ -35,8 +47,10 @@ class EnableNotificationsViewController: UIViewController {
             else {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
                     (granted, error) in
-                    DispatchQueue.main.async {
-                        self.showGetStarted()
+                    if (granted) {
+                        self.showNotificationAlreadyEnabledAlert()
+                    } else {
+                        self.showNotificationDisabledAlert()
                     }
                 }
             }
