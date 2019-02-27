@@ -223,8 +223,6 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
-				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
-				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 				047F292E2224587400FC6A8F /* old-view-controllers */,
 				047F292D2224585600FC6A8F /* src */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
@@ -375,6 +373,8 @@
 		047F2931222458E300FC6A8F /* environments */ = {
 			isa = PBXGroup;
 			children = (
+				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
+				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
 				04488177217924B800F59758 /* Production.plist */,
 				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
 				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
@@ -622,7 +622,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "RESOURCE_PATH=$SRCROOT/ostelco-ios-client\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\nif  \"$CONFIGURATION\" == \"Debug\" ]; then\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nelse\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi\n";
+			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/src/environments\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nelse\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi\n";
 		};
 		375B37515FF6842145E1B208 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

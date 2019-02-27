@@ -18,23 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-Ee-vXa">
-                                <rect key="frame" x="150" y="318" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Close Flow"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-Ee-vXa">
+                                <rect key="frame" x="320" y="617" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
                                 <connections>
-                                    <action selector="closeFlow:" destination="iNM-8Q-weE" eventType="touchUpInside" id="zUN-RG-zfv"/>
+                                    <action selector="closeTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="D4j-mh-Npi"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrj-Aa-SR5">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Login" id="6De-9L-N2g"/>
-                                </items>
-                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
+                                <rect key="frame" x="46" y="279.5" width="283" height="108"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-Tc-iUy">
+                                <rect key="frame" x="164" y="617" width="47" height="30"/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="H3m-OH-Ihp"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="loX-Ww-Z88">
+                                <rect key="frame" x="90" y="85" width="195" height="57"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BKf-r6-AsX" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="023-UO-Lbf"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="eXR-Ee-vXa" secondAttribute="trailing" constant="16" id="0Vn-Wi-f5m"/>
+                            <constraint firstItem="loX-Ww-Z88" firstAttribute="centerY" secondItem="Lv7-dN-bZA" secondAttribute="centerY" multiplier="0.34" id="9df-Go-g1g"/>
+                            <constraint firstItem="loX-Ww-Z88" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="ANb-L0-Tf9"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="sEF-Tc-iUy" secondAttribute="bottom" constant="20" id="Amx-o4-J2x"/>
+                            <constraint firstItem="sEF-Tc-iUy" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Bq8-eP-J6O"/>
+                            <constraint firstItem="BKf-r6-AsX" firstAttribute="centerY" secondItem="Lv7-dN-bZA" secondAttribute="centerY" id="JfO-Gp-Ly8"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="eXR-Ee-vXa" secondAttribute="bottom" constant="20" id="ffX-Mj-KN1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
@@ -44,6 +59,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CPe-MD-7pH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="56.799999999999997" y="30.134932533733135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="oyaHorizontal" width="195" height="57"/>
+        <image name="slogan" width="283" height="108"/>
+    </resources>
 </document>
