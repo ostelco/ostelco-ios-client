@@ -37,13 +37,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-vT-T2w">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="49" id="sTQ-oD-ohO"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions I confirm that I act on my own behalf.">
-                                                <rect key="frame" x="65" y="0.0" width="278" height="31"/>
+                                                <rect key="frame" x="218.5" y="0.0" width="124.5" height="31"/>
                                                 <string key="text">I hereby agree to the Terms &amp; Conditions
 I confirm that I act on my own behalf.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -51,19 +48,15 @@ I confirm that I act on my own behalf.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="HqU-12-Fy1" secondAttribute="bottom" id="9fV-qr-zqE"/>
-                                            <constraint firstItem="HqU-12-Fy1" firstAttribute="top" secondItem="GHH-2F-jfY" secondAttribute="top" id="IOw-o4-TUA"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-hr-IY5">
                                         <rect key="frame" x="0.0" y="65" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-rj-S5e">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the  Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H27-wE-pwz">
-                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -74,13 +67,10 @@ I confirm that I act on my own behalf.</string>
                                         <rect key="frame" x="0.0" y="130" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOr-C2-rXU">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="49" id="I3u-Jg-ysH"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to recieve OYA updates by email. This consent can be revoked at any time." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN7-Nc-WT8">
-                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -109,20 +99,19 @@ I confirm that I act on my own behalf.</string>
                         <constraints>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="64" id="0cg-Fv-WhP"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
+                            <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="Ds1-xT-bhB"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="C5m-EY-WtU" secondAttribute="bottom" constant="20" id="G2Z-sD-Thn"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="Gyy-ba-9HA"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="fny-Oc-nj2" secondAttribute="trailing" constant="16" id="Jnz-lI-pcr"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="OCt-hi-JUp"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="UzR-qU-btK"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="Yf4-EW-e0a"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="BD5-xy-nGB" secondAttribute="trailing" constant="16" id="ZJn-iF-S9D"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="aFU-nu-jr4"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="76" id="aSc-qR-VkS"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="fyT-F3-iGV"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="64" id="icc-2j-d81"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="itl-al-8QH"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="C5m-EY-WtU" secondAttribute="trailing" constant="16" id="tdL-Et-FgF"/>
+                            <constraint firstItem="fny-Oc-nj2" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="76" id="zO5-Hh-4im"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
                     </view>
@@ -239,7 +228,6 @@ I confirm that I act on my own behalf.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="j3T-mX-GWu" firstAttribute="top" secondItem="Nv8-qY-Xwu" secondAttribute="bottom" constant="64" id="2qh-07-Dra"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" constant="16" id="7kk-Lv-v0f"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="ARs-5g-sP5" secondAttribute="trailing" constant="16" id="GIc-pi-per"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="IMT-1x-fsB"/>
