@@ -7,11 +7,33 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MainController: UIViewController {
     
+    @IBOutlet weak var notificationStatusLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkNotificationStatus()
+    }
+    
+    private func checkNotificationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                self.notificationStatusLabel.text = "Notification Status: \(settings.authorizationStatus.description)"
+            }
+        }
+    }
+    
     @IBAction func unwindFromLoginViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showSignUp), with: nil, afterDelay: 0)
+        // TODO: showSignUp is not called if delay is too small.
+        // If you try to set afterDelay to 0, you will stay on the main screen and see the following warning in the logs:
+        // Warning: Attempt to present <dev_ostelco_ios_client_app.TheLegalStuffViewController: 0x7fece3e24380> on <dev_ostelco_ios_client_app.MainController: 0x7fece38066d0> while a presentation is in progress!
+        perform(#selector(showSignUp), with: nil, afterDelay: 0.5)
     }
     
     @IBAction func unwindFromSignUpViewController(sender: UIStoryboardSegue) {
@@ -72,7 +94,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showSignUp() {
-        let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController() as! SignUpViewController
+        let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
