@@ -99,7 +99,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showCountry() {
-        let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController() as! CountryViewController
+        let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     

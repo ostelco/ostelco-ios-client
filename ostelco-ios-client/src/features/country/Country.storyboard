@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3B3-os-nRx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,5 +46,111 @@
                 <exit id="Cbq-Y9-1pM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
         </scene>
+        <!--Choose Country On Boarding View Controller-->
+        <scene sceneID="kRV-OE-jZn">
+            <objects>
+                <viewController id="LdJ-hc-ks3" customClass="ChooseCountryOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GkR-0X-0d9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Mikayla!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCM-Rj-d9a">
+                                <rect key="frame" x="16" y="84" width="343" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Q1-eJN">
+                                <rect key="frame" x="16" y="152" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="CYM-RT-YcS">
+                                <rect key="frame" x="16" y="205" width="25" height="25"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB6-Fg-o8Z">
+                                <rect key="frame" x="21.5" y="262" width="14.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="PeacockBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-gL-FXn">
+                                <rect key="frame" x="21.5" y="315" width="14.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="PeacockBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-ty-u2Y">
+                                <rect key="frame" x="57" y="207" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-NL-scm">
+                                <rect key="frame" x="57" y="262" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-pr-B2P">
+                                <rect key="frame" x="57" y="315.5" width="146" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-Or-ngz">
+                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped:" destination="LdJ-hc-ks3" eventType="touchUpInside" id="6vP-ja-N4Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUr-Rx-edr">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="LdJ-hc-ks3" eventType="touchUpInside" id="cP5-a0-uQj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9vV-Or-ngz" firstAttribute="top" secondItem="aUr-Rx-edr" secondAttribute="bottom" constant="32" id="5GQ-1j-J0R"/>
+                            <constraint firstItem="wFK-Q1-eJN" firstAttribute="top" secondItem="sCM-Rj-d9a" secondAttribute="bottom" constant="32" id="6Fk-44-SKb"/>
+                            <constraint firstItem="9ZK-gL-FXn" firstAttribute="top" secondItem="fB6-Fg-o8Z" secondAttribute="bottom" constant="32" id="8pZ-Bm-rSf"/>
+                            <constraint firstItem="fB6-Fg-o8Z" firstAttribute="top" secondItem="CYM-RT-YcS" secondAttribute="bottom" constant="32" id="9c7-Du-69v"/>
+                            <constraint firstItem="CYM-RT-YcS" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="16" id="DBp-AC-avA"/>
+                            <constraint firstItem="sCM-Rj-d9a" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="16" id="DI5-Rq-iHd"/>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" secondItem="wFK-Q1-eJN" secondAttribute="trailing" constant="16" id="Dnr-1w-dA1"/>
+                            <constraint firstItem="CYM-RT-YcS" firstAttribute="top" secondItem="wFK-Q1-eJN" secondAttribute="bottom" constant="32" id="JHe-fL-no5"/>
+                            <constraint firstItem="PW7-NL-scm" firstAttribute="centerY" secondItem="fB6-Fg-o8Z" secondAttribute="centerY" id="N3g-jx-sFS"/>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" secondItem="sCM-Rj-d9a" secondAttribute="trailing" constant="16" id="NIP-gE-Lq4"/>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="bottom" secondItem="9vV-Or-ngz" secondAttribute="bottom" constant="64" id="PxJ-MZ-bJS"/>
+                            <constraint firstItem="9vV-Or-ngz" firstAttribute="centerX" secondItem="GkR-0X-0d9" secondAttribute="centerX" id="QSE-Iz-TWT"/>
+                            <constraint firstItem="9ZK-gL-FXn" firstAttribute="centerX" secondItem="fB6-Fg-o8Z" secondAttribute="centerX" id="Tk9-Q4-Net"/>
+                            <constraint firstItem="rxJ-pr-B2P" firstAttribute="leading" secondItem="PW7-NL-scm" secondAttribute="leading" id="b5n-Pf-9Ds"/>
+                            <constraint firstItem="Y2B-ty-u2Y" firstAttribute="leading" secondItem="CYM-RT-YcS" secondAttribute="trailing" constant="16" id="bks-xu-DUQ"/>
+                            <constraint firstItem="fB6-Fg-o8Z" firstAttribute="centerX" secondItem="CYM-RT-YcS" secondAttribute="centerX" id="gBT-P1-9wJ"/>
+                            <constraint firstItem="sCM-Rj-d9a" firstAttribute="top" secondItem="hM8-XF-g1b" secondAttribute="top" constant="64" id="hRH-7k-8xW"/>
+                            <constraint firstItem="wFK-Q1-eJN" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="16" id="i8n-yW-kCw"/>
+                            <constraint firstItem="rxJ-pr-B2P" firstAttribute="centerY" secondItem="9ZK-gL-FXn" secondAttribute="centerY" id="qcr-8l-cgj"/>
+                            <constraint firstItem="PW7-NL-scm" firstAttribute="leading" secondItem="Y2B-ty-u2Y" secondAttribute="leading" id="qvy-Wf-NTs"/>
+                            <constraint firstItem="Y2B-ty-u2Y" firstAttribute="centerY" secondItem="CYM-RT-YcS" secondAttribute="centerY" id="ybV-vL-bbH"/>
+                            <constraint firstItem="aUr-Rx-edr" firstAttribute="centerX" secondItem="GkR-0X-0d9" secondAttribute="centerX" id="zPe-B5-6jf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hM8-XF-g1b"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6G-8H-L6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="-221"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="stepArrowIcon" width="25" height="25"/>
+        <namedColor name="PeacockBlue">
+            <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
