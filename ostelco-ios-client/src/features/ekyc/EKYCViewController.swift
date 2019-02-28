@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Netverify
 
 class EKYCViewController: UIViewController {
   @IBOutlet var singPassView: SingPassView!
@@ -14,6 +15,9 @@ class EKYCViewController: UIViewController {
   @IBOutlet var nricView: NricView!
   @IBOutlet weak var placeHolderView: UIView!
   @IBOutlet weak var identitySegments: UISegmentedControl!
+
+  var netverifyViewController:NetverifyViewController?
+  var merchantScanReference:String = "240296a9-88d6-4979-820a-a227985d1a9f"
 
   override func viewDidLoad() {
     singPassView.delegate = self
@@ -58,6 +62,17 @@ class EKYCViewController: UIViewController {
     print("received unwindFromSingPassInfoViewController")
     performSegue(withIdentifier: "unwindFromEKYCViewController", sender: self)
   }
+
+  @IBAction func unwindFromEKYCWaitViewController(sender: UIStoryboardSegue) {
+    print("received unwindFromEKYCWaitViewController")
+    performSegue(withIdentifier: "unwindFromEKYCViewController", sender: self)
+  }
+
+  @objc func waitForDocs() {
+    let viewController = UIStoryboard(name: "EKYC", bundle: nil)
+      .instantiateViewController(withIdentifier: "EKYCWaitViewController") as! EKYCWaitViewController
+    self.present(viewController, animated: true, completion: nil)
+  }
 }
 
 extension EKYCViewController: IdentityViewDelegate {
@@ -73,7 +88,10 @@ extension EKYCViewController: IdentityViewDelegate {
   }
   func continueNric() {
     print("Continue NRIC")
+    //startNetverify()
+    self.performSegue(withIdentifier: "yourAddress", sender: self)
   }
+
   func continueSingPass() {
     print("Continue SingPass")
     performSegue(withIdentifier: "singPassAddress", sender: self)
