@@ -30,7 +30,10 @@ class MainController: UIViewController {
     }
     
     @IBAction func unwindFromLoginViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showSignUp), with: nil, afterDelay: 0)
+        // TODO: showSignUp is not called if delay is too small.
+        // If you try to set afterDelay to 0, you will stay on the main screen and see the following warning in the logs:
+        // Warning: Attempt to present <dev_ostelco_ios_client_app.TheLegalStuffViewController: 0x7fece3e24380> on <dev_ostelco_ios_client_app.MainController: 0x7fece38066d0> while a presentation is in progress!
+        perform(#selector(showSignUp), with: nil, afterDelay: 0.5)
     }
     
     @IBAction func unwindFromSignUpViewController(sender: UIStoryboardSegue) {

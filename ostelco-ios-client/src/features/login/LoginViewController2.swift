@@ -18,10 +18,14 @@ class LoginViewController2: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
-                self.handleLoginSuccess()
+                DispatchQueue.main.async {
+                    self.handleLoginSuccess()
+                }
             },
             onError: { error in
-                self.handleLoginFailure(message: "\(error)")
+                DispatchQueue.main.async {
+                    self.handleLoginFailure(message: "\(error)")
+                }
             }
         )
     }
