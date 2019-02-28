@@ -141,10 +141,66 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hM8-XF-g1b"/>
                     </view>
+                    <connections>
+                        <segue destination="qUz-io-xXw" kind="show" identifier="displayChooseCountry" id="KJh-70-h5x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6G-8H-L6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1598" y="-221"/>
+        </scene>
+        <!--Choose Country View Controller-->
+        <scene sceneID="PLw-gW-CHP">
+            <objects>
+                <viewController id="qUz-io-xXw" customClass="ChooseCountryViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XbB-Nd-iwA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-mv-q3A">
+                                <rect key="frame" x="85" y="84" width="205" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yl-dK-x4g">
+                                <rect key="frame" x="27.5" y="225.5" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-S8-29C">
+                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped:" destination="qUz-io-xXw" eventType="touchUpInside" id="WA6-5b-EZA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crC-Wa-ajC">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="qUz-io-xXw" eventType="touchUpInside" id="RHk-kZ-MGj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="crC-Wa-ajC" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="2DR-cE-ERm"/>
+                            <constraint firstItem="9yl-dK-x4g" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="5JI-Nq-A54"/>
+                            <constraint firstItem="Ndf-mv-q3A" firstAttribute="top" secondItem="5Kh-UI-MQa" secondAttribute="top" constant="64" id="Byr-b6-noD"/>
+                            <constraint firstItem="5Kh-UI-MQa" firstAttribute="bottom" secondItem="ihi-S8-29C" secondAttribute="bottom" constant="64" id="Cm0-ZC-uFM"/>
+                            <constraint firstItem="ihi-S8-29C" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="G2E-8b-Bgw"/>
+                            <constraint firstItem="ihi-S8-29C" firstAttribute="top" secondItem="crC-Wa-ajC" secondAttribute="bottom" constant="32" id="MGk-1f-DO7"/>
+                            <constraint firstItem="9yl-dK-x4g" firstAttribute="centerY" secondItem="XbB-Nd-iwA" secondAttribute="centerY" id="aWu-w1-G7f"/>
+                            <constraint firstItem="Ndf-mv-q3A" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="qAL-SQ-2bQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Kh-UI-MQa"/>
+                    </view>
+                    <connections>
+                        <outlet property="picker" destination="9yl-dK-x4g" id="lf8-O2-TSZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHW-hg-TWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2396" y="-222"/>
         </scene>
     </scenes>
     <resources>

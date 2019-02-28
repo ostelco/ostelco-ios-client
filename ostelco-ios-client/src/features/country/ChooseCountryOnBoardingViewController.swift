@@ -17,6 +17,6 @@ class ChooseCountryOnBoardingViewController: UIViewController {
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        
+        performSegue(withIdentifier: "displayChooseCountry", sender: self)
     }
 }
