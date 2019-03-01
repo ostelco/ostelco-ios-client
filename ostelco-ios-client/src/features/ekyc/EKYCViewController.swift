@@ -17,7 +17,7 @@ class EKYCViewController: UIViewController {
   @IBOutlet weak var identitySegments: UISegmentedControl!
 
   var netverifyViewController:NetverifyViewController?
-  var merchantScanReference:String = "240296a9-88d6-4979-820a-a227985d1a9f"
+  var merchantScanReference:String = ""
 
   override func viewDidLoad() {
     singPassView.delegate = self
@@ -58,6 +58,7 @@ class EKYCViewController: UIViewController {
       nricView.isHidden = false
     }
   }
+
   @IBAction func unwindFromSingPassInfoViewController(sender: UIStoryboardSegue) {
     print("received unwindFromSingPassInfoViewController")
     performSegue(withIdentifier: "unwindFromEKYCViewController", sender: self)
@@ -86,18 +87,17 @@ extension EKYCViewController: IdentityViewDelegate {
       print("Unknown sender")
     }
   }
+
   func continueNric() {
     print("Continue NRIC")
-    //startNetverify()
-    self.performSegue(withIdentifier: "yourAddress", sender: self)
+    startNetverify()
+    //self.performSegue(withIdentifier: "yourAddress", sender: self)
   }
 
   func continueSingPass() {
     print("Continue SingPass")
     performSegue(withIdentifier: "singPassAddress", sender: self)
   }
-
-
 }
 
 extension UIView {
@@ -106,7 +106,7 @@ extension UIView {
     constrainedTo anchorsView: UIView,
     widthAnchorView: UIView? = nil,
     multiplier: CGFloat = 1
-  ) {
+    ) {
     addSubview(subview)
     subview.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(
@@ -116,7 +116,7 @@ extension UIView {
         equalTo: (widthAnchorView ?? anchorsView).widthAnchor,
         multiplier: multiplier
         ),
-      subview.heightAnchor.constraint(
+       subview.heightAnchor.constraint(
         equalTo: anchorsView.heightAnchor,
         multiplier: multiplier
         )]

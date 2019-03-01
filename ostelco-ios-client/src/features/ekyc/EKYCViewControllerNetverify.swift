@@ -24,8 +24,8 @@ extension EKYCViewController: NetverifyViewControllerDelegate {
     }
     // Setup the Configuration for Netverify
     let config:NetverifyConfiguration = NetverifyConfiguration()
-    config.merchantApiToken = "" // Fill this from JUMIO console
-    config.merchantApiSecret = "" //Fill this from JUMIO console
+    config.merchantApiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
+    config.merchantApiSecret = Environment().configuration(.JumioSecret) //Fill this from JUMIO console
     config.merchantScanReference = self.merchantScanReference
     config.requireVerification = true
     config.requireFaceMatch = true
