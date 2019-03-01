@@ -1,2 +1,2 @@
-dev_overrides.xcconfig
-prod_overrides.xcconfig
+debug_overrides.xcconfig
+release_overrides.xcconfig

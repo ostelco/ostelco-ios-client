@@ -21,4 +21,4 @@ apple_merchant_id = merchant.sg.redotter.dev.selfcare
 bugsee_token = 2528d676-0561-47a7-a091-742a0cdbcf8f
 jumio_token = prod_token
 jumio_secret = prod_secret
-#include? "prod_overrides.xcconfig"
+#include? "release_overrides.xcconfig"

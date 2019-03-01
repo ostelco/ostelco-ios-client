@@ -22,6 +22,10 @@ extension EKYCViewController: NetverifyViewControllerDelegate {
       print("Will not allow this from a jailbroken device")
       return
     }
+    var message = "JumioToken: \(Environment().configuration(.JumioToken)) \n"
+    message += "JumioSecret: \(Environment().configuration(.JumioSecret))"
+    //self.showAlert(title: "Jumio Settings", msg: message)
+
     // Setup the Configuration for Netverify
     let config:NetverifyConfiguration = NetverifyConfiguration()
     config.merchantApiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
