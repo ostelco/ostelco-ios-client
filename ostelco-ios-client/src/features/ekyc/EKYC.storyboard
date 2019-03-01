@@ -265,13 +265,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Coronation Rd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lV2-K6-O7a">
-                                                    <rect key="frame" x="16" y="11" width="108" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="lV2-K6-O7a" secondAttribute="trailing" constant="16" id="UFV-Xo-cDv"/>
                                                 <constraint firstItem="lV2-K6-O7a" firstAttribute="top" secondItem="UI4-zS-vHx" secondAttribute="top" constant="11" id="dlb-Mc-lIP"/>
                                                 <constraint firstItem="lV2-K6-O7a" firstAttribute="leading" secondItem="UI4-zS-vHx" secondAttribute="leading" constant="16" id="t3U-YT-ObD"/>
                                             </constraints>
@@ -289,13 +290,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phg-bf-QMU">
-                                                    <rect key="frame" x="16" y="11" width="21" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Phg-bf-QMU" secondAttribute="trailing" constant="16" id="DS5-F2-Acg"/>
                                                 <constraint firstItem="Phg-bf-QMU" firstAttribute="top" secondItem="ygz-Xc-xJx" secondAttribute="top" constant="11" id="Sc9-UV-j87"/>
                                                 <constraint firstItem="Phg-bf-QMU" firstAttribute="leading" secondItem="ygz-Xc-xJx" secondAttribute="leading" constant="16" id="shq-Nm-baV"/>
                                             </constraints>
@@ -313,13 +315,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Singapore" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGB-ZW-prc">
-                                                    <rect key="frame" x="16" y="11" width="78" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bGB-ZW-prc" secondAttribute="trailing" constant="16" id="K8m-IX-1BC"/>
                                                 <constraint firstItem="bGB-ZW-prc" firstAttribute="leading" secondItem="VNg-HW-vNf" secondAttribute="leading" constant="16" id="cRy-f8-OhK"/>
                                                 <constraint firstItem="bGB-ZW-prc" firstAttribute="top" secondItem="VNg-HW-vNf" secondAttribute="top" constant="11" id="i4J-L8-wN4"/>
                                             </constraints>
@@ -337,7 +340,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="078881" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-xa-u1e">
-                                                    <rect key="frame" x="16" y="11" width="59" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -345,6 +348,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="qDP-xa-u1e" firstAttribute="leading" secondItem="plc-sB-vy4" secondAttribute="leading" constant="16" id="02l-aO-yfo"/>
+                                                <constraint firstAttribute="trailing" secondItem="qDP-xa-u1e" secondAttribute="trailing" constant="16" id="WfZ-yy-VMg"/>
                                                 <constraint firstItem="qDP-xa-u1e" firstAttribute="top" secondItem="plc-sB-vy4" secondAttribute="top" constant="11" id="wjM-JQ-nEG"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -361,7 +365,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Singapore" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDa-9J-MEB">
-                                                    <rect key="frame" x="16" y="11" width="78" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -370,6 +374,7 @@
                                             <constraints>
                                                 <constraint firstItem="wDa-9J-MEB" firstAttribute="leading" secondItem="dHe-1o-DMA" secondAttribute="leading" constant="16" id="VwE-ts-HCk"/>
                                                 <constraint firstItem="wDa-9J-MEB" firstAttribute="top" secondItem="dHe-1o-DMA" secondAttribute="top" constant="11" id="klB-Ph-UIs"/>
+                                                <constraint firstAttribute="trailing" secondItem="wDa-9J-MEB" secondAttribute="trailing" constant="16" id="pQx-sw-wK8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -435,7 +440,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your street name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXl-8v-OR4">
-                                                    <rect key="frame" x="16" y="11" width="166.5" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -444,6 +449,7 @@
                                             <constraints>
                                                 <constraint firstItem="mXl-8v-OR4" firstAttribute="leading" secondItem="650-mT-z3p" secondAttribute="leading" constant="16" id="I4r-h5-8up"/>
                                                 <constraint firstItem="mXl-8v-OR4" firstAttribute="top" secondItem="650-mT-z3p" secondAttribute="top" constant="11" id="Vti-fp-hNl"/>
+                                                <constraint firstAttribute="trailing" secondItem="mXl-8v-OR4" secondAttribute="trailing" constant="16" id="sLY-XS-Xul"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -459,7 +465,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your house number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSZ-4N-eXc">
-                                                    <rect key="frame" x="16" y="11" width="184.5" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -468,6 +474,7 @@
                                             <constraints>
                                                 <constraint firstItem="HSZ-4N-eXc" firstAttribute="top" secondItem="eh3-K4-WL5" secondAttribute="top" constant="11" id="R7k-3A-cD4"/>
                                                 <constraint firstItem="HSZ-4N-eXc" firstAttribute="leading" secondItem="eh3-K4-WL5" secondAttribute="leading" constant="16" id="sgJ-2a-xZi"/>
+                                                <constraint firstAttribute="trailing" secondItem="HSZ-4N-eXc" secondAttribute="trailing" constant="16" id="zcf-z9-oMw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -483,7 +490,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohy-EH-hek">
-                                                    <rect key="frame" x="16" y="11" width="106.5" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -491,6 +498,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ohy-EH-hek" firstAttribute="top" secondItem="16E-k9-Npg" secondAttribute="top" constant="11" id="FVq-Th-YTH"/>
+                                                <constraint firstAttribute="trailing" secondItem="ohy-EH-hek" secondAttribute="trailing" constant="16" id="Rmp-f9-KqE"/>
                                                 <constraint firstItem="ohy-EH-hek" firstAttribute="leading" secondItem="16E-k9-Npg" secondAttribute="leading" constant="16" id="UIJ-zP-xD4"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -507,13 +515,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAE-5k-Tqv">
-                                                    <rect key="frame" x="16" y="11" width="148" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gAE-5k-Tqv" secondAttribute="trailing" constant="16" id="JZh-3L-H6d"/>
                                                 <constraint firstItem="gAE-5k-Tqv" firstAttribute="top" secondItem="zWY-3u-zUi" secondAttribute="top" constant="11" id="MwL-7e-cl7"/>
                                                 <constraint firstItem="gAE-5k-Tqv" firstAttribute="leading" secondItem="zWY-3u-zUi" secondAttribute="leading" constant="16" id="xVf-CI-7a6"/>
                                             </constraints>
@@ -531,13 +540,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Singapore" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3MF-a8-B7b">
-                                                    <rect key="frame" x="16" y="11" width="78" height="20"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3MF-a8-B7b" secondAttribute="trailing" constant="16" id="0g4-ZT-aAL"/>
                                                 <constraint firstItem="3MF-a8-B7b" firstAttribute="top" secondItem="gLj-5K-Eyj" secondAttribute="top" constant="11" id="Vmo-RG-tNK"/>
                                                 <constraint firstItem="3MF-a8-B7b" firstAttribute="leading" secondItem="gLj-5K-Eyj" secondAttribute="leading" constant="16" id="X9b-kX-wPT"/>
                                             </constraints>

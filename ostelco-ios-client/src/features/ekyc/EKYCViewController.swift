@@ -90,8 +90,8 @@ extension EKYCViewController: IdentityViewDelegate {
 
   func continueNric() {
     print("Continue NRIC")
-    startNetverify()
-    //self.performSegue(withIdentifier: "yourAddress", sender: self)
+    //startNetverify()
+    self.performSegue(withIdentifier: "yourAddress", sender: self)
   }
 
   func continueSingPass() {
