@@ -65,36 +65,26 @@ public struct Environment {
     switch key {
     case .ServerURL:
       dictKey = PlistKey.ServerURL.value()
-      break;
     case .StripePublishableKey:
       dictKey = PlistKey.StripePublishableKey.value()
-      break;
     case .Auth0ClientID:
       dictKey = PlistKey.Auth0ClientID.value()
-      break;
     case .Auth0Domain:
       dictKey = PlistKey.Auth0Domain.value()
-      break
     case .Auth0LogoURL:
       dictKey = PlistKey.Auth0LogoURL.value()
-      break
     case .FreshchatAppID:
       dictKey = PlistKey.FreshchatAppID.value()
-      break
     case .FreshchatAppKey:
       dictKey = PlistKey.FreshchatAppKey.value()
     case .AppleMerchantId:
       dictKey = PlistKey.AppleMerchantId.value()
-      break
     case .BugseeToken:
       dictKey = PlistKey.BugseeToken.value()
-      break
     case .JumioToken:
       dictKey = PlistKey.JumioToken.value()
-      break
     case .JumioSecret:
       dictKey = PlistKey.JumioSecret.value()
-      break
     }
     return (infoDict[dictKey] as! String).replacingOccurrences(of: "\\", with: "")
   }
