@@ -24,7 +24,7 @@ extension EKYCViewController: NetverifyViewControllerDelegate {
     }
     var message = "JumioToken: \(Environment().configuration(.JumioToken)) \n"
     message += "JumioSecret: \(Environment().configuration(.JumioSecret))"
-    self.showAlert(title: "Jumio Settings", msg: message)
+    //self.showAlert(title: "Jumio Settings", msg: message)
 
     // Setup the Configuration for Netverify
     let config:NetverifyConfiguration = NetverifyConfiguration()
