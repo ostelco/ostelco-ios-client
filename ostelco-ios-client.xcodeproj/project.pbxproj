@@ -335,15 +335,15 @@
 			isa = PBXGroup;
 			children = (
 				047F2921222453FE00FC6A8F /* EKYC.storyboard */,
+				C25A958F2226F0E2005958EC /* IdentityView.swift */,
 				047F291B2224539900FC6A8F /* EKYCViewController.swift */,
+				C25A958C2226BA8C005958EC /* SingPassView.swift */,
+				C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */,
+				C25A960E2227E1C2005958EC /* SingPassInfoTableViewController.swift */,
+				C25A95922226F26E005958EC /* NricView.swift */,
 				C25A96112227F0B1005958EC /* EKYCViewControllerNetverify.swift */,
 				C24EE402222831970053937E /* AddAddressTableViewController.swift */,
 				C24EE404222838950053937E /* EKYCWaitViewController.swift */,
-				C25A958F2226F0E2005958EC /* IdentityView.swift */,
-				C25A958C2226BA8C005958EC /* SingPassView.swift */,
-				C25A95922226F26E005958EC /* NricView.swift */,
-				C25A95952226FF7F005958EC /* SingPassInfoViewController.swift */,
-				C25A960E2227E1C2005958EC /* SingPassInfoTableViewController.swift */,
 			);
 			path = ekyc;
 			sourceTree = "<group>";
