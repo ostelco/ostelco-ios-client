@@ -34,6 +34,18 @@ extension EKYCViewController: NetverifyViewControllerDelegate {
     config.requireVerification = true
     config.requireFaceMatch = true
     config.delegate = self
+
+    // General appearance - deactivate blur
+    NetverifyBaseView.netverifyAppearance().disableBlur = true
+    // General appearance - background color
+    NetverifyBaseView.netverifyAppearance().backgroundColor =
+      UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    // Positive Button - Background Color
+    NetverifyPositiveButton.netverifyAppearance().setBackgroundColor(
+      UIColor(red: 47/255.0, green: 22/255.0, blue: 232/255.0, alpha: 1),
+      for: .normal
+    )
+
     // Create the verification view
     self.netverifyViewController = NetverifyViewController(configuration: config)
     if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
