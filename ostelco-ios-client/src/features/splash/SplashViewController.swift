@@ -57,18 +57,19 @@ class SplashViewController: UIViewController {
             alert = UIAlertController(title: "Authentication", message: "You are not logged in.", preferredStyle: .alert)
         }
         
-        perform(#selector(presentAlert), with: alert, afterDelay: 0)
+        presentAlert(alert: alert)
     }
 
     @objc private func presentAlert(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { alertAction in
-            self.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showLogin", sender: self)
+            }
         }))
-        alert.addAction(UIAlertAction(title: "Take me to login screen", style: .default, handler: { alertAction in
-            self.performSegue(withIdentifier: "unwindFromSplashViewController", sender: self)
-        }))
-
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
 }
 

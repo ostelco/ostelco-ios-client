@@ -121,7 +121,7 @@ class AllowLocationAccessViewController: UIViewController {
                 showLocationAccessDenied()
             case .authorizedAlways, .authorizedWhenInUse:
                 userLocation = nil
-                print("request location...")
+                showSpinner(onView: self.view)
                 locationManager.requestLocation()
                 /*
                 TODO: Did not get the location part to work using RxCoreLocation. the subscription never returned a value thus nothing happened. Could be related to simulator only when faking locations.
@@ -132,7 +132,7 @@ class AllowLocationAccessViewController: UIViewController {
                             if self.selectedCountry == country {
                                 // Location verified
                                 DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "unwindFromCountry", sender: self)
+                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
                                 }
                             } else {
                                 // Location not in correct country
@@ -255,6 +255,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         if userLocation == nil {
+            removeSpinner()
             if let location = locations.first {
                 userLocation = location
                 print("Location: \(location)")
@@ -271,7 +272,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                             if self.selectedCountry == country {
                                 // Location verified
                                 DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "unwindFromCountry", sender: self)
+                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
                                 }
                             } else {
                                 // Location not in correct country
@@ -290,6 +291,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        removeSpinner()
         print("Failed to find user's location: \(error.localizedDescription)")
         failedToGetLocationAlert()
     }

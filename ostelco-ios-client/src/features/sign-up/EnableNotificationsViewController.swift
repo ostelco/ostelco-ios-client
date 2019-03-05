@@ -51,8 +51,4 @@ class EnableNotificationsViewController: UIViewController {
     private func showGetStarted() {
         performSegue(withIdentifier: "displayGetStarted", sender: self)
     }
-    
-    @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }

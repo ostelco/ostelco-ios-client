@@ -11,10 +11,11 @@ import UIKit
 class GetStartedViewController: UIViewController {
     
     @IBAction func continueTapped(_ sender: Any) {
-        performSegue(withIdentifier: "unwindFromSignUpViewController", sender: self)
+        performSegue(withIdentifier: "showCountry", sender: self)
     }
     
-    @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
     }
 }

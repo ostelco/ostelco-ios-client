@@ -11,10 +11,6 @@ import UIKit
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
     
-    @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func signInTapped(_ sender: Any) {
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
@@ -31,7 +27,13 @@ class LoginViewController2: UIViewController {
     }
     
     private func handleLoginSuccess() {
-        performSegue(withIdentifier: "unwindFromLoginViewController", sender: self)
+        // TODO: For some reason, the afterDelay needs more than 0.0 when we try to navigate from the auth0 callback.
+        // In the old client, we used to set the root controller instead of performing a segue or using present
+        perform(#selector(showSignUp), with: nil, afterDelay: 0.5)
+    }
+    
+    @objc private func showSignUp() {
+        performSegue(withIdentifier: "showSignUp", sender: nil)
     }
     
     private func handleLoginFailure(message: String) {
