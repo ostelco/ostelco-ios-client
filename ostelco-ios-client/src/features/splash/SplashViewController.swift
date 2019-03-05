@@ -11,7 +11,7 @@ import UIKit
 class SplashViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
-        imageView.image = ThemeManager.currentTheme().logo
+        view.backgroundColor = ThemeManager.currentTheme().mainColor
         verifyCredentials()
     }
     
