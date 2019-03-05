@@ -61,23 +61,23 @@ class MainController: UIViewController {
     }
     
     @IBAction func unwindFromSignUpViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showCountry), with: nil, afterDelay: 0)
+        // perform(#selector(showCountry), with: nil, afterDelay: 0)
     }
     
     @IBAction func unwindFromCountryViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showEKYC), with: nil, afterDelay: 0)
+        // perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
     
     @IBAction func unwindFromCountry(sender: UIStoryboardSegue) {
-        perform(#selector(showEKYC), with: nil, afterDelay: 0)
+        // perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
     
     @IBAction func unwindFromEKYCViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showESim), with: nil, afterDelay: 0)
+        // perform(#selector(showESim), with: nil, afterDelay: 0)
     }
     
     @IBAction func unwindFromESimViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showHome), with: nil, afterDelay: 0)
+        // perform(#selector(showHome), with: nil, afterDelay: 0)
     }
     
     @IBAction func unwindFromHomeViewController(sender: UIStoryboardSegue) {
@@ -85,7 +85,7 @@ class MainController: UIViewController {
     }
     
     @IBAction func unwindFromSplashViewController(sender: UIStoryboardSegue) {
-        perform(#selector(showLogin), with: nil, afterDelay: 0)
+        ll perform(#selector(showLogin), with: nil, afterDelay: 0)
     }
     
     @IBAction func showLoginTapped(_ sender: Any?) {

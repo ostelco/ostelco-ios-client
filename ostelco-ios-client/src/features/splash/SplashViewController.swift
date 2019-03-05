@@ -61,14 +61,7 @@ class SplashViewController: UIViewController {
     }
 
     @objc private func presentAlert(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { alertAction in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Take me to login screen", style: .default, handler: { alertAction in
-            self.performSegue(withIdentifier: "unwindFromSplashViewController", sender: self)
-        }))
-
-        self.present(alert, animated: true)
+        self.performSegue(withIdentifier: "unwindFromSplashViewController", sender: self)
     }
 }
 
