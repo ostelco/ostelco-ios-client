@@ -12,7 +12,14 @@ import UserNotifications
 class EnableNotificationsViewController: UIViewController {
     
     @IBAction func continueTapped(_ sender: Any) {
-        self.enableNotifications()
+        enableNotifications()
+    }
+    
+    @IBAction func dontAllowTapped(_ sender: Any) {
+        enableNotifications()
+    }
+    @IBAction func okTapped(_ sender: Any) {
+        enableNotifications()
     }
     
     private func showNotificationAlreadySetAlert(status: String) {
