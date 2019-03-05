@@ -356,27 +356,18 @@
                                     <action selector="settingsTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="3RU-7i-ahV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APe-9f-fWD">
-                                <rect key="frame" x="16" y="40" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <segue destination="51P-Xu-Q3s" kind="custom" customClass="DismissSegue" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" id="L1d-CZ-WUM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="64" id="1fp-eg-JvS"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="IAI-Vb-4BI"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="top" secondItem="gj0-b2-7aj" secondAttribute="bottom" constant="32" id="Iuo-6u-x52"/>
-                            <constraint firstItem="APe-9f-fWD" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="16" id="Nh7-5z-pZo"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Vrl-rx-8Jt"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="trailing" secondItem="qse-GZ-iOp" secondAttribute="trailing" constant="64" id="Vvk-ub-94B"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="Xnp-nN-qfv"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="bottom" secondItem="qTN-jC-vf4" secondAttribute="bottom" constant="64" id="ZCu-4i-oGE"/>
                             <constraint firstItem="Xri-W8-wUh" firstAttribute="top" secondItem="Nly-Oz-x9M" secondAttribute="top" constant="64" id="aRb-IU-gUZ"/>
                             <constraint firstItem="Xri-W8-wUh" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="ob1-pW-cff"/>
-                            <constraint firstItem="APe-9f-fWD" firstAttribute="top" secondItem="Nly-Oz-x9M" secondAttribute="top" constant="20" id="okF-aK-TJ0"/>
                             <constraint firstAttribute="trailing" secondItem="Xri-W8-wUh" secondAttribute="trailing" constant="64" id="rRn-eF-c7Y"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="top" secondItem="Xri-W8-wUh" secondAttribute="bottom" constant="32" id="xsH-Tv-BII"/>
                         </constraints>
@@ -416,13 +407,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8Z-5o-ZyT">
-                                <rect key="frame" x="16" y="40" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <segue destination="51P-Xu-Q3s" kind="custom" customClass="DismissSegue" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" id="AEf-sT-73b"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yei-TJ-FnV">
                                 <rect key="frame" x="169" y="573" width="37" height="30"/>
                                 <state key="normal" title="Retry"/>
@@ -437,13 +421,11 @@
                             <constraint firstAttribute="trailing" secondItem="Mt7-A1-0HS" secondAttribute="trailing" constant="64" id="8ai-9c-qRH"/>
                             <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="32" id="9xg-ZO-wAf"/>
                             <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="32" id="EI8-DF-3wX"/>
-                            <constraint firstItem="Y8Z-5o-ZyT" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="16" id="bRD-5J-nWb"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="ijM-x6-cD2"/>
                             <constraint firstAttribute="trailing" secondItem="smW-PN-EFs" secondAttribute="trailing" constant="64" id="kjc-h1-eGB"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="64" id="mx4-hZ-Ij5"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="WAA-gr-GSL" secondAttribute="trailing" constant="64" id="sdc-ko-Qzq"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="bottom" secondItem="yei-TJ-FnV" secondAttribute="bottom" constant="64" id="wHh-ud-diL"/>
-                            <constraint firstItem="Y8Z-5o-ZyT" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="20" id="woB-hJ-CcG"/>
                             <constraint firstItem="yei-TJ-FnV" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="yrr-1J-r4z"/>
                             <constraint firstItem="Mt7-A1-0HS" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="zJg-vt-DsL"/>
                         </constraints>
@@ -483,13 +465,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qq-uT-hwd">
-                                <rect key="frame" x="16" y="40" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <segue destination="51P-Xu-Q3s" kind="custom" customClass="DismissSegue" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" id="XMT-Ep-cXx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -500,10 +475,8 @@
                             <constraint firstItem="Xjf-wV-tRb" firstAttribute="top" secondItem="TMz-Nl-rin" secondAttribute="bottom" constant="32" id="HRm-oo-c8H"/>
                             <constraint firstItem="TMz-Nl-rin" firstAttribute="top" secondItem="KTc-YA-9vq" secondAttribute="bottom" constant="32" id="LTo-if-3b8"/>
                             <constraint firstAttribute="trailing" secondItem="TMz-Nl-rin" secondAttribute="trailing" constant="64" id="lCG-HW-gWH"/>
-                            <constraint firstItem="7Qq-uT-hwd" firstAttribute="top" secondItem="Hg4-Of-0v4" secondAttribute="top" constant="20" id="lXT-HH-sET"/>
                             <constraint firstItem="Hg4-Of-0v4" firstAttribute="trailing" secondItem="KTc-YA-9vq" secondAttribute="trailing" constant="64" id="mh3-Fb-T7n"/>
                             <constraint firstItem="KTc-YA-9vq" firstAttribute="top" secondItem="Hg4-Of-0v4" secondAttribute="top" constant="64" id="oC0-Yj-liL"/>
-                            <constraint firstItem="7Qq-uT-hwd" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="16" id="rH0-RL-UiJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hg4-Of-0v4"/>
                     </view>
@@ -551,13 +524,6 @@
                                 <rect key="frame" x="210" y="335" width="113" height="30"/>
                                 <state key="normal" title="Contact support"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldQ-UI-Vb4">
-                                <rect key="frame" x="16" y="40" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissTapped:" destination="Zx0-FN-OXz" eventType="touchUpInside" id="WjS-MR-W1w"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -570,9 +536,7 @@
                             <constraint firstItem="H1e-no-SVO" firstAttribute="top" secondItem="rHG-u5-2NJ" secondAttribute="top" constant="64" id="R0n-Zl-tIP"/>
                             <constraint firstItem="H1e-no-SVO" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="64" id="c0J-yz-xCP"/>
                             <constraint firstItem="S0t-zg-0u3" firstAttribute="centerY" secondItem="HhJ-NA-eRn" secondAttribute="centerY" id="kGY-be-tdJ"/>
-                            <constraint firstItem="ldQ-UI-Vb4" firstAttribute="top" secondItem="rHG-u5-2NJ" secondAttribute="top" constant="20" id="mtI-Vx-dqm"/>
                             <constraint firstItem="rIv-uM-FfV" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="64" id="oy4-Ch-emd"/>
-                            <constraint firstItem="ldQ-UI-Vb4" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="16" id="p7B-TI-sLT"/>
                             <constraint firstItem="HhJ-NA-eRn" firstAttribute="top" secondItem="rIv-uM-FfV" secondAttribute="bottom" constant="32" id="q61-PS-CQu"/>
                             <constraint firstItem="fYI-3n-2A7" firstAttribute="top" secondItem="H1e-no-SVO" secondAttribute="bottom" constant="32" id="sl4-Qt-yeE"/>
                             <constraint firstItem="rHG-u5-2NJ" firstAttribute="trailing" secondItem="fYI-3n-2A7" secondAttribute="trailing" constant="64" id="xof-t3-Woz"/>
@@ -596,7 +560,4 @@
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="AEf-sT-73b"/>
-    </inferredMetricsTieBreakers>
 </document>

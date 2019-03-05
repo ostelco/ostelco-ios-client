@@ -12,10 +12,6 @@ import UIKit
 class WrongCountryViewController: UIViewController, WithCountryFieldProtocol {
     var country: String = ""
     
-    @IBAction func dismissTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBOutlet weak var descriptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
