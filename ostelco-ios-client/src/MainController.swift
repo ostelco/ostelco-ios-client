@@ -132,7 +132,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showEKYC() {
-        let viewController = UIStoryboard(name: "EKYC", bundle: nil).instantiateInitialViewController() as! EKYCViewController
+        let viewController = UIStoryboard(name: "EKYC", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Jv-ZB-YWH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GWU-ht-SLC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -780,8 +780,111 @@
             </objects>
             <point key="canvasLocation" x="2476" y="570"/>
         </scene>
+        <!--On Boarding View Controller-->
+        <scene sceneID="FnT-Yi-gYc">
+            <objects>
+                <viewController id="GWU-ht-SLC" customClass="EKYCOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4EK-0t-Rjt"/>
+                        <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hBZ-M3-Brj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-nA-Oi9">
+                                <rect key="frame" x="16" y="84" width="68" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-4L-NZF">
+                                <rect key="frame" x="16" y="152" width="308.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepDoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-3R-kYh">
+                                <rect key="frame" x="16" y="205" width="25" height="25"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wHp-SC-2Gv">
+                                <rect key="frame" x="16" y="262" width="25" height="25"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-H9-c0e">
+                                <rect key="frame" x="21.5" y="319" width="14.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="PeacockBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-Uu-blB">
+                                <rect key="frame" x="57" y="207" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQM-f2-0Z1">
+                                <rect key="frame" x="57" y="262" width="228" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Cn-N6y">
+                                <rect key="frame" x="57" y="319" width="146" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lQ-EU-5oz">
+                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped:" destination="GWU-ht-SLC" eventType="touchUpInside" id="29m-J8-pzS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-Fa-gNJ">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="GWU-ht-SLC" eventType="touchUpInside" id="BMM-Ak-wo9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DjD-3R-kYh" firstAttribute="top" secondItem="nMb-4L-NZF" secondAttribute="bottom" constant="32" id="01x-yb-9AK"/>
+                            <constraint firstItem="wl5-Cn-N6y" firstAttribute="leading" secondItem="aQM-f2-0Z1" secondAttribute="leading" id="9vE-OH-XWJ"/>
+                            <constraint firstItem="wl5-Cn-N6y" firstAttribute="centerY" secondItem="E0K-H9-c0e" secondAttribute="centerY" id="CsU-oV-si5"/>
+                            <constraint firstItem="wHp-SC-2Gv" firstAttribute="leading" secondItem="hBZ-M3-Brj" secondAttribute="leadingMargin" id="M6Y-9k-V6c"/>
+                            <constraint firstItem="8lQ-EU-5oz" firstAttribute="top" secondItem="KHe-Fa-gNJ" secondAttribute="bottom" constant="32" id="P6a-uU-77a"/>
+                            <constraint firstItem="8lQ-EU-5oz" firstAttribute="centerX" secondItem="hBZ-M3-Brj" secondAttribute="centerX" id="Rh9-YP-Ccl"/>
+                            <constraint firstItem="wHp-SC-2Gv" firstAttribute="top" secondItem="DjD-3R-kYh" secondAttribute="bottom" constant="32" id="T8N-RQ-YD7"/>
+                            <constraint firstItem="46U-nA-Oi9" firstAttribute="leading" secondItem="hBZ-M3-Brj" secondAttribute="leadingMargin" id="T8t-ZH-8tI"/>
+                            <constraint firstItem="gQp-Uu-blB" firstAttribute="centerY" secondItem="DjD-3R-kYh" secondAttribute="centerY" id="YPP-dt-myI"/>
+                            <constraint firstItem="aQM-f2-0Z1" firstAttribute="leading" secondItem="gQp-Uu-blB" secondAttribute="leading" id="c0J-Co-JQy"/>
+                            <constraint firstItem="E0K-H9-c0e" firstAttribute="centerX" secondItem="wHp-SC-2Gv" secondAttribute="centerX" id="dwS-AW-sa7"/>
+                            <constraint firstItem="E0K-H9-c0e" firstAttribute="top" secondItem="wHp-SC-2Gv" secondAttribute="bottom" constant="32" id="hC9-fP-lq4"/>
+                            <constraint firstItem="DjD-3R-kYh" firstAttribute="leading" secondItem="hBZ-M3-Brj" secondAttribute="leadingMargin" id="j6H-BF-Lpv"/>
+                            <constraint firstItem="nMb-4L-NZF" firstAttribute="top" secondItem="46U-nA-Oi9" secondAttribute="bottom" constant="32" id="jpR-6l-LZC"/>
+                            <constraint firstItem="KHe-Fa-gNJ" firstAttribute="centerX" secondItem="hBZ-M3-Brj" secondAttribute="centerX" id="mDF-0Y-guv"/>
+                            <constraint firstItem="nMb-4L-NZF" firstAttribute="leading" secondItem="hBZ-M3-Brj" secondAttribute="leadingMargin" id="mdg-pT-BCQ"/>
+                            <constraint firstItem="aQM-f2-0Z1" firstAttribute="centerY" secondItem="wHp-SC-2Gv" secondAttribute="centerY" id="rTf-4T-Yfm"/>
+                            <constraint firstItem="46U-nA-Oi9" firstAttribute="top" secondItem="4EK-0t-Rjt" secondAttribute="bottom" constant="64" id="shL-yz-A1f"/>
+                            <constraint firstItem="gQp-Uu-blB" firstAttribute="leading" secondItem="DjD-3R-kYh" secondAttribute="trailing" constant="16" id="tsU-7h-Vgp"/>
+                            <constraint firstItem="3pc-Zv-e1V" firstAttribute="top" secondItem="8lQ-EU-5oz" secondAttribute="bottom" constant="64" id="wZ9-bA-Bzx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="5Jv-ZB-YWH" kind="show" identifier="showEKYCViewController" id="jsh-LO-X8W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOV-rO-7eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277.60000000000002" y="-1017.84107946027"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="stepArrowIcon" width="25" height="25"/>
+        <image name="stepDoneIcon" width="25" height="25"/>
         <namedColor name="PeacockBlue">
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
