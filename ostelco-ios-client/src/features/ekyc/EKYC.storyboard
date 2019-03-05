@@ -75,26 +75,24 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blz-Uo-K0p">
-                            <rect key="frame" x="122" y="603.5" width="110" height="14.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" name="PeacockBlue"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35W-eV-aHj">
                             <rect key="frame" x="0.0" y="630" width="340" height="30"/>
                             <state key="normal" title="Continue"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWd-cn-S3R">
+                            <rect key="frame" x="131" y="583" width="78" height="30"/>
+                            <state key="normal" title="Need help?"/>
                         </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="o35-8w-EJQ" firstAttribute="top" secondItem="spA-Ur-wtk" secondAttribute="top" constant="77" id="Ctz-2a-Ggg"/>
                         <constraint firstItem="35W-eV-aHj" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="KXT-fe-CdN"/>
-                        <constraint firstItem="blz-Uo-K0p" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="Kcw-VU-4EI"/>
                         <constraint firstItem="af5-UK-aD1" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="bWw-i3-v0A"/>
+                        <constraint firstItem="35W-eV-aHj" firstAttribute="top" secondItem="YWd-cn-S3R" secondAttribute="bottom" constant="16" id="dH2-6P-2BF"/>
                         <constraint firstItem="af5-UK-aD1" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="hQP-g8-N8g"/>
-                        <constraint firstItem="35W-eV-aHj" firstAttribute="top" secondItem="blz-Uo-K0p" secondAttribute="bottom" constant="12" id="jrA-XJ-soh"/>
                         <constraint firstItem="o35-8w-EJQ" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="k5n-OL-hJo"/>
                         <constraint firstAttribute="bottom" secondItem="35W-eV-aHj" secondAttribute="bottom" constant="20" id="kBC-Oc-VZs"/>
+                        <constraint firstItem="YWd-cn-S3R" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="tpB-wi-XxO"/>
                         <constraint firstItem="35W-eV-aHj" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="wIQ-f6-Qmh"/>
                         <constraint firstItem="o35-8w-EJQ" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="zK8-NG-fyc"/>
                         <constraint firstItem="af5-UK-aD1" firstAttribute="top" secondItem="o35-8w-EJQ" secondAttribute="bottom" constant="44" id="zop-aO-dfx"/>
@@ -110,12 +108,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPP-aX-t2V">
-                            <rect key="frame" x="122" y="601" width="110" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" name="PeacockBlue"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23j-IH-8ov">
                             <rect key="frame" x="0.0" y="630" width="340" height="30"/>
                             <state key="normal" title="Continue"/>
@@ -123,15 +115,22 @@
                                 <action selector="continueSingPass:" destination="ys4-ru-Id5" eventType="touchUpInside" id="WYE-Fh-1IM"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4z3-XB-feo">
+                            <rect key="frame" x="131" y="584" width="78" height="30"/>
+                            <state key="normal" title="Need help?"/>
+                            <connections>
+                                <action selector="needHelpTapped:" destination="ys4-ru-Id5" eventType="touchUpInside" id="CTv-V3-CX6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="mu8-66-MKS" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="AEZ-dM-56d"/>
                         <constraint firstItem="mu8-66-MKS" firstAttribute="top" secondItem="ys4-ru-Id5" secondAttribute="top" constant="77" id="Y5a-WW-cgR"/>
                         <constraint firstAttribute="bottom" secondItem="23j-IH-8ov" secondAttribute="bottom" constant="20" id="Yny-JU-mAv"/>
+                        <constraint firstItem="4z3-XB-feo" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="ZRF-tK-2QR"/>
                         <constraint firstItem="23j-IH-8ov" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="dRD-At-EWS"/>
-                        <constraint firstItem="KPP-aX-t2V" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="gp3-Dc-Woq"/>
-                        <constraint firstItem="23j-IH-8ov" firstAttribute="top" secondItem="KPP-aX-t2V" secondAttribute="bottom" constant="12" id="qh9-sk-gL3"/>
                         <constraint firstItem="mu8-66-MKS" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="r37-Q6-lne"/>
+                        <constraint firstItem="23j-IH-8ov" firstAttribute="top" secondItem="4z3-XB-feo" secondAttribute="bottom" constant="16" id="tiv-AH-jlA"/>
                         <constraint firstItem="23j-IH-8ov" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="yWP-zk-wsk"/>
                     </constraints>
                 </view>
@@ -164,27 +163,28 @@
                                 <action selector="continueNric:" destination="9l8-Li-iWM" eventType="touchUpInside" id="8rs-Gc-TxS"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Need any help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxU-5R-gvH">
-                            <rect key="frame" x="122" y="601" width="110" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" name="PeacockBlue"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Bu-56-V10">
+                            <rect key="frame" x="131" y="584" width="78" height="30"/>
+                            <state key="normal" title="Need help?"/>
+                            <connections>
+                                <action selector="needHelpTapped:" destination="9l8-Li-iWM" eventType="touchUpInside" id="h2a-FD-hbX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="o2G-D9-eH8" firstAttribute="top" secondItem="9l8-Li-iWM" secondAttribute="top" constant="77" id="0ar-4L-vTz"/>
+                        <constraint firstItem="9Bu-56-V10" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="3mT-QE-QnO"/>
                         <constraint firstItem="PbZ-5z-9P0" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="6W4-Y1-jtR"/>
                         <constraint firstItem="PbZ-5z-9P0" firstAttribute="top" secondItem="o2G-D9-eH8" secondAttribute="bottom" constant="34" id="7Sw-Wb-GDB"/>
                         <constraint firstItem="o2G-D9-eH8" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="825-Su-1Ch"/>
                         <constraint firstItem="PT7-ql-lOR" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="9Tx-ug-GIQ"/>
                         <constraint firstItem="hbJ-In-cja" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="B5s-MN-txZ"/>
-                        <constraint firstItem="BxU-5R-gvH" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="Ezs-EK-ucd"/>
                         <constraint firstItem="PT7-ql-lOR" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="Kdi-Tg-gXm"/>
                         <constraint firstAttribute="bottom" secondItem="hbJ-In-cja" secondAttribute="bottom" constant="20" id="TL7-sC-f9r"/>
                         <constraint firstItem="o2G-D9-eH8" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="aKf-39-apa"/>
                         <constraint firstItem="hbJ-In-cja" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="fJ3-u6-kdh"/>
+                        <constraint firstItem="hbJ-In-cja" firstAttribute="top" secondItem="9Bu-56-V10" secondAttribute="bottom" constant="16" id="fKE-jq-fpz"/>
                         <constraint firstItem="PbZ-5z-9P0" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="pGT-B4-7Wd"/>
-                        <constraint firstItem="hbJ-In-cja" firstAttribute="top" secondItem="BxU-5R-gvH" secondAttribute="bottom" constant="12" id="u8T-l5-PNY"/>
                         <constraint firstItem="PT7-ql-lOR" firstAttribute="top" secondItem="PbZ-5z-9P0" secondAttribute="bottom" constant="18" id="z5y-KQ-iOq"/>
                     </constraints>
                 </view>
@@ -879,7 +879,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOV-rO-7eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277.60000000000002" y="-1017.84107946027"/>
+            <point key="canvasLocation" x="1089" y="-1213"/>
         </scene>
     </scenes>
     <resources>

@@ -12,4 +12,8 @@ class SingPassView: IdentityView {
   @IBAction func continueSingPass(_ sender: Any) {
     delegate.tappedContinue(self)
   }
+    @IBAction func needHelpTapped(_ sender: Any) {
+        print("tapped need help?")
+        delegate.tappedNeedHelp(self)
+    }
 }

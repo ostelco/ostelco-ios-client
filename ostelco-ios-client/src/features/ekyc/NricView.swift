@@ -12,4 +12,7 @@ class NricView: IdentityView {
   @IBAction func continueNric(_ sender: Any) {
     delegate.tappedContinue(self)
   }
+    @IBAction func needHelpTapped(_ sender: Any) {
+        delegate.tappedNeedHelp(self)
+    }
 }

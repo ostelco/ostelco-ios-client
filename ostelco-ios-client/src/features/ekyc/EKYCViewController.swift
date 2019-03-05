@@ -88,6 +88,10 @@ extension EKYCViewController: IdentityViewDelegate {
     }
   }
 
+    func tappedNeedHelp(_ sender: IdentityView) {
+        showNeedHelpActionSheet()
+    }
+    
   func continueNric() {
     print("Continue NRIC")
     startNetverify()
