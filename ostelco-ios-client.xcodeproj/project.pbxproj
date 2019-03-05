@@ -82,6 +82,8 @@
 		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
 		04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
+		04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */; };
+		04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -193,6 +195,7 @@
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIActivityIndicator.swift"; sourceTree = "<group>"; };
+		04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeedHelpActionSheet.swift"; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -420,6 +423,7 @@
 				047F28FC2224415000FC6A8F /* features */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
+				04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -965,6 +969,7 @@
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
+				04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				C25A95902226F0E2005958EC /* IdentityView.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
@@ -999,6 +1004,7 @@
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
+				04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
