@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ostelco-ios-client/DebugLocations.gpx">
+   </FileRef>
+   <FileRef
       location = "group:ostelco-ios-client.xcodeproj">
    </FileRef>
    <FileRef

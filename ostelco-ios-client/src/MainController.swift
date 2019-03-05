@@ -8,10 +8,12 @@
 
 import UIKit
 import UserNotifications
+import CoreLocation
 
 class MainController: UIViewController {
     
     @IBOutlet weak var notificationStatusLabel: UILabel!
+    @IBOutlet weak var locationStatusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class MainController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         checkNotificationStatus()
+        checkLocationStatus()
     }
     
     private func checkNotificationStatus() {
@@ -26,6 +29,27 @@ class MainController: UIViewController {
             DispatchQueue.main.async {
                 self.notificationStatusLabel.text = "Notification Status: \(settings.authorizationStatus.description)"
             }
+        }
+    }
+    
+    private func checkLocationStatus() {
+        if CLLocationManager.locationServicesEnabled() {
+            let status = CLLocationManager.authorizationStatus()
+            switch status {
+                
+            case .notDetermined:
+                self.locationStatusLabel.text = "Location Status: Not Determined"
+            case .restricted:
+                self.locationStatusLabel.text = "Location Status: Restricted"
+            case .denied:
+                self.locationStatusLabel.text = "Location Status: Denied"
+            case .authorizedAlways:
+                self.locationStatusLabel.text = "Location Status: Always"
+            case .authorizedWhenInUse:
+                self.locationStatusLabel.text = "Location Status: When In Use"
+            }
+        } else {
+            self.locationStatusLabel.text = "Location Status: Location Service is disabled"
         }
     }
     
@@ -41,6 +65,10 @@ class MainController: UIViewController {
     }
     
     @IBAction func unwindFromCountryViewController(sender: UIStoryboardSegue) {
+        perform(#selector(showEKYC), with: nil, afterDelay: 0)
+    }
+    
+    @IBAction func unwindFromCountry(sender: UIStoryboardSegue) {
         perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
     
@@ -99,7 +127,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showCountry() {
-        let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController() as! CountryViewController
+        let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
