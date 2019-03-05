@@ -24,15 +24,17 @@ extension UIViewController {
             let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         })
-        let logOutAction = UIAlertAction(title: "Log Out", style: .cancel, handler: {_ in
+        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive, handler: {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertCtrl.addAction(supportAction)
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
+        alertCtrl.addAction(cancelAction)
         
         present(alertCtrl, animated: true, completion: nil)
     }
