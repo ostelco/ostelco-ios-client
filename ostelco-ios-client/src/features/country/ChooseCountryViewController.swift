@@ -27,8 +27,15 @@ class ChooseCountryViewController: UIViewController {
     }
     
     @IBAction func continueTapped(_ sender: Any) {
+        performSegue(withIdentifier: "displayAllowLocationAccess", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedRow = picker.selectedRow(inComponent: 0)
-        print(countries[selectedRow])
+        let selectedCountry = countries[selectedRow]
+        
+        let vc = segue.destination as! AllowLocationAccessViewController
+        vc.selectedCountry = selectedCountry
     }
 }
 

@@ -17,6 +17,16 @@
 		041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */; };
 		041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
 		041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
+		041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
+		041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
+		041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B1222D6ADC00455278 /* LocationAccessDeniedViewController.swift */; };
+		041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B1222D6ADC00455278 /* LocationAccessDeniedViewController.swift */; };
+		041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */; };
+		041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */; };
+		041216B8222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */; };
+		041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */; };
+		041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
+		041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
 		0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
 		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
@@ -64,6 +74,10 @@
 		047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController2.swift */; };
 		047F292B222455CF00FC6A8F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F292A222455CF00FC6A8F /* Home.storyboard */; };
 		047F292C222455CF00FC6A8F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F292A222455CF00FC6A8F /* Home.storyboard */; };
+		04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
+		04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
+		04834D35222EAB5900A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
+		04834D37222EAB5B00A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -116,6 +130,11 @@
 		041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAuthorizationStatusExtensions.swift; sourceTree = "<group>"; };
 		041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountryOnBoardingViewController.swift; sourceTree = "<group>"; };
 		041216AB2228195600455278 /* ChooseCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountryViewController.swift; sourceTree = "<group>"; };
+		041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationAccessViewController.swift; sourceTree = "<group>"; };
+		041216B1222D6ADC00455278 /* LocationAccessDeniedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessDeniedViewController.swift; sourceTree = "<group>"; };
+		041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDisabledViewController.swift; sourceTree = "<group>"; };
+		041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessRestrictedViewController.swift; sourceTree = "<group>"; };
+		041216BA222D7B2B00455278 /* WrongCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongCountryViewController.swift; sourceTree = "<group>"; };
 		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
 		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +169,8 @@
 		047F29242224551A00FC6A8F /* ESim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ESim.storyboard; sourceTree = "<group>"; };
 		047F29272224558B00FC6A8F /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
 		047F292A222455CF00FC6A8F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		04834D31222EAA7D00A01500 /* Singapore.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Singapore.gpx; sourceTree = "<group>"; };
+		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -249,6 +270,8 @@
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
 				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
+				04834D31222EAA7D00A01500 /* Singapore.gpx */,
+				04834D34222EAB4E00A01500 /* Norway.gpx */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -311,6 +334,11 @@
 				047F29152224520300FC6A8F /* CountryViewController.swift */,
 				041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */,
 				041216AB2228195600455278 /* ChooseCountryViewController.swift */,
+				041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */,
+				041216B1222D6ADC00455278 /* LocationAccessDeniedViewController.swift */,
+				041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */,
+				041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */,
+				041216BA222D7B2B00455278 /* WrongCountryViewController.swift */,
 			);
 			path = country;
 			sourceTree = "<group>";
@@ -566,6 +594,7 @@
 			files = (
 				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
 				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
+				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
@@ -574,6 +603,7 @@
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
+				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
 				04BA349A222587DD000359C4 /* Splash.storyboard in Resources */,
 			);
@@ -592,6 +622,7 @@
 			files = (
 				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
 				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
+				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
@@ -600,6 +631,7 @@
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
+				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
 				04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */,
 			);
@@ -660,6 +692,8 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
@@ -676,6 +710,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
@@ -748,6 +784,8 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleKeychain/SimpleKeychain.framework",
@@ -764,6 +802,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleKeychain.framework",
@@ -857,17 +897,21 @@
 				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
+				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
+				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
+				041216B8222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
+				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */,
@@ -879,6 +923,7 @@
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
+				041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -897,9 +942,11 @@
 			files = (
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
+				041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
+				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
@@ -907,6 +954,7 @@
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
 				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
+				041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
@@ -920,11 +968,13 @@
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
+				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047F29172224520300FC6A8F /* CountryViewController.swift in Sources */,
 			);
