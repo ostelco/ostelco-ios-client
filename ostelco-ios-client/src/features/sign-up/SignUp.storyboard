@@ -235,6 +235,8 @@ I confirm that I act on my own behalf.</string>
                         <viewLayoutGuide key="safeArea" id="yIb-j2-pUN"/>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="ERf-ng-eZR" id="4v5-je-1SK"/>
+                        <outlet property="nameTextField" destination="j3T-mX-GWu" id="oiy-y9-b2k"/>
                         <segue destination="Zr8-YS-ykk" kind="unwind" identifier="unwindFromSignUpViewController" animates="NO" unwindAction="unwindFromSignUpViewControllerWithSender:" id="HXc-Su-v3b"/>
                         <segue destination="ZZg-qT-9FY" kind="show" identifier="showCountry" id="5yS-Nf-uuN"/>
                     </connections>
