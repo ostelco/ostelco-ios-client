@@ -19,3 +19,6 @@ freshchat_app_id = bcd5751d-ad5d-455f-bfba-1da395583e3d
 freshchat_app_key = 2326bd78-855a-47ba-9641-6bf9bb807038
 apple_merchant_id = merchant.sg.redotter.dev.selfcare
 bugsee_token = 636804c2-be5e-4236-bee0-fa92785f7eed
+jumio_token = test_token
+jumio_secret = test_secret
+#include? "debug_overrides.xcconfig"
