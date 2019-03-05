@@ -85,7 +85,7 @@ class MainController: UIViewController {
     }
     
     @IBAction func unwindFromSplashViewController(sender: UIStoryboardSegue) {
-        ll perform(#selector(showLogin), with: nil, afterDelay: 0)
+        // perform(#selector(showLogin), with: nil, afterDelay: 0)
     }
     
     @IBAction func showLoginTapped(_ sender: Any?) {
