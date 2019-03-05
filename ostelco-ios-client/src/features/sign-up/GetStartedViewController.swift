@@ -13,8 +13,4 @@ class GetStartedViewController: UIViewController {
     @IBAction func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "unwindFromSignUpViewController", sender: self)
     }
-    
-    @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }

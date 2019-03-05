@@ -37,10 +37,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-vT-T2w">
-                                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions I confirm that I act on my own behalf.">
-                                                <rect key="frame" x="218.5" y="0.0" width="124.5" height="31"/>
+                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
                                                 <string key="text">I hereby agree to the Terms &amp; Conditions
 I confirm that I act on my own behalf.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -53,10 +53,10 @@ I confirm that I act on my own behalf.</string>
                                         <rect key="frame" x="0.0" y="65" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-rj-S5e">
-                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the  Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H27-wE-pwz">
-                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
+                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -67,10 +67,10 @@ I confirm that I act on my own behalf.</string>
                                         <rect key="frame" x="0.0" y="130" width="343" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOr-C2-rXU">
-                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to recieve OYA updates by email. This consent can be revoked at any time." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN7-Nc-WT8">
-                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="31"/>
+                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -86,21 +86,12 @@ I confirm that I act on my own behalf.</string>
                                     <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5m-EY-WtU">
-                                <rect key="frame" x="320" y="617" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="ZnG-Ww-BDI"/>
-                                    <action selector="closeTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="pkA-Tm-x0T"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="64" id="0cg-Fv-WhP"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="Ds1-xT-bhB"/>
-                            <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="C5m-EY-WtU" secondAttribute="bottom" constant="20" id="G2Z-sD-Thn"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="fny-Oc-nj2" secondAttribute="trailing" constant="16" id="Jnz-lI-pcr"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="OCt-hi-JUp"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
@@ -110,7 +101,6 @@ I confirm that I act on my own behalf.</string>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="fyT-F3-iGV"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="64" id="icc-2j-d81"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="itl-al-8QH"/>
-                            <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="C5m-EY-WtU" secondAttribute="trailing" constant="16" id="tdL-Et-FgF"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="76" id="zO5-Hh-4im"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
@@ -150,14 +140,6 @@ I confirm that I act on my own behalf.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
                                 <rect key="frame" x="52.5" y="241.5" width="270" height="184"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEM-KT-aSl">
-                                <rect key="frame" x="320" y="617" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="l1O-gD-FcX"/>
-                                    <action selector="closeTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="v2w-Vd-AZw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -167,12 +149,10 @@ I confirm that I act on my own behalf.</string>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="top" secondItem="Dam-4t-AgC" secondAttribute="bottom" constant="16" id="KgO-Dk-vjR"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="bottom" secondItem="8Uy-4i-IUw" secondAttribute="bottom" constant="64" id="LZ5-x5-3De"/>
                             <constraint firstItem="8Uy-4i-IUw" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="Myi-vy-Db2"/>
-                            <constraint firstItem="YkK-Vz-Pfa" firstAttribute="bottom" secondItem="EEM-KT-aSl" secondAttribute="bottom" constant="20" id="OFK-Ag-aOk"/>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="top" secondItem="YkK-Vz-Pfa" secondAttribute="top" constant="64" id="QnR-zX-cVK"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="oNg-Ea-ZMf"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="n4R-BI-FHP" secondAttribute="trailing" constant="16" id="oWx-Yd-zdi"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="rxi-J1-ZxQ"/>
-                            <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="EEM-KT-aSl" secondAttribute="trailing" constant="16" id="yyY-SA-UQU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YkK-Vz-Pfa"/>
                     </view>
@@ -218,21 +198,12 @@ I confirm that I act on my own behalf.</string>
                                     <action selector="continueTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="q4Y-zB-0M0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARs-5g-sP5">
-                                <rect key="frame" x="320" y="617" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="3Lx-PV-UQA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="leading" secondItem="eID-ti-S3H" secondAttribute="leadingMargin" id="BtA-Ql-OTN"/>
-                            <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="ARs-5g-sP5" secondAttribute="trailing" constant="16" id="GIc-pi-per"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="IMT-1x-fsB"/>
                             <constraint firstItem="ERf-ng-eZR" firstAttribute="centerX" secondItem="eID-ti-S3H" secondAttribute="centerX" id="LU4-hT-U1x"/>
-                            <constraint firstItem="yIb-j2-pUN" firstAttribute="bottom" secondItem="ARs-5g-sP5" secondAttribute="bottom" constant="20" id="Las-FR-p4D"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="top" secondItem="Nv8-qY-Xwu" secondAttribute="bottom" constant="8" id="Str-oh-hGS"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="bottom" secondItem="ERf-ng-eZR" secondAttribute="bottom" constant="64" id="YFt-BY-fbe"/>
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="top" secondItem="58z-OV-xk5" secondAttribute="bottom" constant="64" id="ZOF-aJ-a5B"/>
