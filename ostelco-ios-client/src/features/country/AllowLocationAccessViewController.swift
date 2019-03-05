@@ -132,7 +132,7 @@ class AllowLocationAccessViewController: UIViewController {
                             if self.selectedCountry == country {
                                 // Location verified
                                 DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "unwindFromCountry", sender: self)
+                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
                                 }
                             } else {
                                 // Location not in correct country
@@ -272,7 +272,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                             if self.selectedCountry == country {
                                 // Location verified
                                 DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "unwindFromCountry", sender: self)
+                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
                                 }
                             } else {
                                 // Location not in correct country

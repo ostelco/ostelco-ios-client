@@ -316,6 +316,7 @@
                         <segue destination="1el-Qe-8Nh" kind="presentation" identifier="showLocationAccessRestricted" id="TTJ-Ir-E5f"/>
                         <segue destination="Zx0-FN-OXz" kind="show" identifier="showWrongCountry" id="chL-QA-klt"/>
                         <segue destination="3AC-7l-Au2" kind="unwind" identifier="unwindFromCountry" unwindAction="unwindFromCountryWithSender:" id="S5h-Mb-XJF"/>
+                        <segue destination="vGc-SK-lCJ" kind="show" identifier="showEKYC" id="7AW-gF-J98"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ao-87-Iid" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -551,6 +552,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E39-CG-NOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4654" y="-150"/>
+        </scene>
+        <!--EKYC-->
+        <scene sceneID="sc9-eh-k4E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EKYC" id="vGc-SK-lCJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y4R-U3-F4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3887" y="155"/>
         </scene>
     </scenes>
     <resources>
