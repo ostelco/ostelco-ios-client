@@ -13,4 +13,9 @@ class GetStartedViewController: UIViewController {
     @IBAction func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "unwindFromSignUpViewController", sender: self)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+    }
 }

@@ -78,6 +78,8 @@
 		04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
 		04834D35222EAB5900A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
 		04834D37222EAB5B00A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
+		04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
+		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -187,6 +189,7 @@
 		047F292A222455CF00FC6A8F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		04834D31222EAA7D00A01500 /* Singapore.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Singapore.gpx; sourceTree = "<group>"; };
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
+		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -405,6 +408,7 @@
 		047F292D2224585600FC6A8F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				047F292F2224589300FC6A8F /* services */,
 				047F29302224589900FC6A8F /* models */,
 				047F2931222458E300FC6A8F /* environments */,
@@ -961,6 +965,7 @@
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
+				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C24EE405222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
@@ -998,6 +1003,7 @@
 				041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				C25A96132227F0B1005958EC /* EKYCViewControllerNetverify.swift in Sources */,
+				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
