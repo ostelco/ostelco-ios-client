@@ -11,10 +11,6 @@ import UIKit
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
     
-    @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func signInTapped(_ sender: Any) {
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
