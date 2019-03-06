@@ -20,66 +20,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The legal stuff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBH-PE-WSS">
-                                <rect key="frame" x="96" y="84" width="183" height="36"/>
+                                <rect key="frame" x="96" y="84" width="183" height="56"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before you can proceed you must read and accept the terms &amp; conditions. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-xy-nGB">
-                                <rect key="frame" x="16" y="136" width="343" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Before you can proceed you must read and accept the terms &amp; conditions. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-xy-nGB">
+                                <rect key="frame" x="16" y="156" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="fny-Oc-nj2">
-                                <rect key="frame" x="16" y="253" width="343" height="161"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-2F-jfY">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUx-vT-T2w">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions I confirm that I act on my own behalf.">
-                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
-                                                <string key="text">I hereby agree to the Terms &amp; Conditions
-I confirm that I act on my own behalf.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FY0-hr-IY5">
-                                        <rect key="frame" x="0.0" y="65" width="343" height="31"/>
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhc-rj-S5e">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the  Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H27-wE-pwz">
-                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jpq-fw-BRv">
-                                        <rect key="frame" x="0.0" y="130" width="343" height="31"/>
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOr-C2-rXU">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to recieve OYA updates by email. This consent can be revoked at any time." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN7-Nc-WT8">
-                                                <rect key="frame" x="57" y="0.0" width="286" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0">
                                 <rect key="frame" x="16" y="553" width="343" height="50"/>
                                 <color key="backgroundColor" name="PeacockBlue"/>
@@ -98,24 +49,74 @@ I confirm that I act on my own behalf.</string>
                                     <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plN-NK-ixG">
+                                <rect key="frame" x="16" y="227" width="343" height="233"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions I confirm that I act on my own behalf.">
+                                        <rect key="frame" x="57" y="3" width="286" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I agree to the  Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H27-wE-pwz">
+                                        <rect key="frame" x="57" y="98" width="343" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="I agree to recieve OYA updates by email. This consent can be revoked at any time." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN7-Nc-WT8">
+                                        <rect key="frame" x="57" y="162" width="278" height="63"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Hg-Jx-6nC">
+                                        <rect key="frame" x="0.0" y="8" width="51" height="31"/>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-W0-1PZ">
+                                        <rect key="frame" x="0.0" y="93" width="51" height="31"/>
+                                    </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-h0-aR9">
+                                        <rect key="frame" x="0.0" y="178" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EKu-W0-1PZ" firstAttribute="leading" secondItem="plN-NK-ixG" secondAttribute="leading" id="0Ld-2x-8LU"/>
+                                    <constraint firstItem="6k7-h0-aR9" firstAttribute="top" secondItem="EKu-W0-1PZ" secondAttribute="bottom" constant="54" id="9IN-m6-i35"/>
+                                    <constraint firstAttribute="bottom" secondItem="MN7-Nc-WT8" secondAttribute="bottom" constant="8" id="9sB-6w-yCF"/>
+                                    <constraint firstItem="H27-wE-pwz" firstAttribute="leading" secondItem="EKu-W0-1PZ" secondAttribute="trailing" constant="8" id="C7e-Rl-rwb"/>
+                                    <constraint firstAttribute="bottom" secondItem="6k7-h0-aR9" secondAttribute="bottom" constant="24" id="Gfh-JG-bdo"/>
+                                    <constraint firstItem="6k7-h0-aR9" firstAttribute="leading" secondItem="plN-NK-ixG" secondAttribute="leading" id="HdF-Xb-x2B"/>
+                                    <constraint firstItem="MN7-Nc-WT8" firstAttribute="centerY" secondItem="6k7-h0-aR9" secondAttribute="centerY" id="Koa-yU-VxM"/>
+                                    <constraint firstItem="HqU-12-Fy1" firstAttribute="centerY" secondItem="6Hg-Jx-6nC" secondAttribute="centerY" id="Qo4-9a-fex"/>
+                                    <constraint firstItem="6Hg-Jx-6nC" firstAttribute="top" secondItem="plN-NK-ixG" secondAttribute="top" constant="8" id="V6q-CI-g30"/>
+                                    <constraint firstItem="6Hg-Jx-6nC" firstAttribute="leading" secondItem="plN-NK-ixG" secondAttribute="leading" id="WIP-Lz-ljT"/>
+                                    <constraint firstItem="MN7-Nc-WT8" firstAttribute="leading" secondItem="plN-NK-ixG" secondAttribute="leading" constant="57" id="nm7-2x-DvH"/>
+                                    <constraint firstItem="EKu-W0-1PZ" firstAttribute="top" secondItem="6Hg-Jx-6nC" secondAttribute="bottom" constant="54" id="t97-hd-Nt6"/>
+                                    <constraint firstAttribute="trailing" secondItem="MN7-Nc-WT8" secondAttribute="trailing" constant="8" id="tZ1-MR-iAb"/>
+                                    <constraint firstItem="H27-wE-pwz" firstAttribute="centerY" secondItem="EKu-W0-1PZ" secondAttribute="centerY" id="v6S-7y-kOg"/>
+                                    <constraint firstItem="HqU-12-Fy1" firstAttribute="leading" secondItem="6Hg-Jx-6nC" secondAttribute="trailing" constant="8" id="z9S-TN-Ead"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="64" id="0cg-Fv-WhP"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="Ds1-xT-bhB"/>
+                            <constraint firstItem="plN-NK-ixG" firstAttribute="centerY" secondItem="lio-dE-X4q" secondAttribute="centerY" id="EFa-yp-PTS"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="MU2-9r-kL0" secondAttribute="trailing" constant="16" id="GNQ-Lg-84S"/>
-                            <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="fny-Oc-nj2" secondAttribute="trailing" constant="16" id="Jnz-lI-pcr"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="OCt-hi-JUp"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="Yf4-EW-e0a"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="BD5-xy-nGB" secondAttribute="trailing" constant="16" id="ZJn-iF-S9D"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="aFU-nu-jr4"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="fyT-F3-iGV"/>
+                            <constraint firstItem="plN-NK-ixG" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="iVi-3n-MbT"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="64" id="icc-2j-d81"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="itl-al-8QH"/>
+                            <constraint firstItem="plN-NK-ixG" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="30" id="r94-Cj-qog"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="tTI-YA-gy5"/>
-                            <constraint firstItem="fny-Oc-nj2" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="76" id="zO5-Hh-4im"/>
+                            <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="plN-NK-ixG" secondAttribute="trailing" constant="16" id="yT4-x0-Me2"/>
+                            <constraint firstItem="plN-NK-ixG" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="yWi-gV-PnL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
                     </view>
