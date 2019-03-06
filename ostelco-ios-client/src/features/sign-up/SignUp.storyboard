@@ -151,8 +151,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-4i-IUw">
-                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
-                                <state key="normal" title="Continue"/>
+                                <rect key="frame" x="16" y="553" width="343" height="50"/>
+                                <color key="backgroundColor" name="PeacockBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VWM-U4-Qp6"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="continueTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="nQi-gx-w4O"/>
                                 </connections>
@@ -191,8 +202,10 @@
                             <constraint firstItem="8Uy-4i-IUw" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="Myi-vy-Db2"/>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="top" secondItem="YkK-Vz-Pfa" secondAttribute="top" constant="64" id="QnR-zX-cVK"/>
                             <constraint firstItem="V8d-4p-ME4" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="gtP-w0-gCu"/>
+                            <constraint firstItem="8Uy-4i-IUw" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="16" id="n3d-vo-OcI"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="oNg-Ea-ZMf"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="n4R-BI-FHP" secondAttribute="trailing" constant="16" id="oWx-Yd-zdi"/>
+                            <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="8Uy-4i-IUw" secondAttribute="trailing" constant="16" id="oZG-Rd-vkN"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="rxi-J1-ZxQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YkK-Vz-Pfa"/>
