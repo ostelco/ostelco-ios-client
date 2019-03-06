@@ -14,6 +14,35 @@ class TheLegalStuffViewController: UIViewController {
     @IBOutlet weak var privacyPolicyLabel: UILabel!
     @IBOutlet weak var oyaUpdatesLabel: UILabel!
     
+    @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
+    @IBOutlet weak var privacyPolicySwitch: UISwitch!
+    @IBOutlet weak var oyaUpdatesSwitch: UISwitch!
+    
+    @IBOutlet weak var continueButton: UIButton!
+    
+    @IBAction func termsAndConditionsToggled(_ sender: Any) {
+        toggleContinueButton()
+    }
+    
+    @IBAction func privacyPolicyToggled(_ sender: Any) {
+        toggleContinueButton()
+    }
+    
+    @IBAction func oyaUpdatesToggled(_ sender: Any) {
+        toggleContinueButton()
+    }
+    
+    private func toggleContinueButton() {
+        
+        if termsAndConditionsSwitch.isOn && privacyPolicySwitch.isOn && oyaUpdatesSwitch.isOn {
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor
+        } else {
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor.withAlphaComponent(CGFloat(0.15))
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +71,8 @@ class TheLegalStuffViewController: UIViewController {
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
             ])
         oyaUpdatesLabel.attributedText = attributedString3
+        
+        toggleContinueButton()
     }
     
     @objc func termsAndConditionsTapped(sender: UITapGestureRecognizer) {

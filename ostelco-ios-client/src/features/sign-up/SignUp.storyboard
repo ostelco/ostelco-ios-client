@@ -33,7 +33,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0">
                                 <rect key="frame" x="16" y="553" width="343" height="50"/>
-                                <color key="backgroundColor" name="PeacockBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ChC-bi-OPW"/>
                                 </constraints>
@@ -72,12 +71,24 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Hg-Jx-6nC">
                                         <rect key="frame" x="0.0" y="8" width="51" height="31"/>
+                                        <color key="onTintColor" name="PeacockBlue"/>
+                                        <connections>
+                                            <action selector="termsAndConditionsToggled:" destination="Q2B-DW-NZJ" eventType="valueChanged" id="uTV-uX-obq"/>
+                                        </connections>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-W0-1PZ">
                                         <rect key="frame" x="0.0" y="93" width="51" height="31"/>
+                                        <color key="onTintColor" name="PeacockBlue"/>
+                                        <connections>
+                                            <action selector="privacyPolicyToggled:" destination="Q2B-DW-NZJ" eventType="valueChanged" id="cib-n7-Utf"/>
+                                        </connections>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-h0-aR9">
                                         <rect key="frame" x="0.0" y="178" width="51" height="31"/>
+                                        <color key="onTintColor" name="PeacockBlue"/>
+                                        <connections>
+                                            <action selector="oyaUpdatesToggled:" destination="Q2B-DW-NZJ" eventType="valueChanged" id="7ah-eR-GxS"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,9 +132,13 @@
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="MU2-9r-kL0" id="0g2-uG-RTP"/>
                         <outlet property="oyaUpdatesLabel" destination="MN7-Nc-WT8" id="VAT-K0-I5j"/>
+                        <outlet property="oyaUpdatesSwitch" destination="6k7-h0-aR9" id="p2t-22-RhX"/>
                         <outlet property="privacyPolicyLabel" destination="H27-wE-pwz" id="ZId-EZ-jq2"/>
+                        <outlet property="privacyPolicySwitch" destination="EKu-W0-1PZ" id="EfV-Ob-HIa"/>
                         <outlet property="termsAndConditionsLabel" destination="HqU-12-Fy1" id="GCn-pO-A4E"/>
+                        <outlet property="termsAndConditionsSwitch" destination="6Hg-Jx-6nC" id="XpG-2s-8Uf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viW-Hm-VzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
