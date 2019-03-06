@@ -61,9 +61,45 @@ class SplashViewController: UIViewController {
     }
 
     @objc private func presentAlert(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+        alert.addAction(UIAlertAction(title: "To login", style: .default, handler: {_ in
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "showLogin", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                sharedAuth.logout()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "New user to sign up", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showSignUp", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "User with no ekyc to choose country", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showCountry", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "User with ekyc in prog to ekyc last screen", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showEKYCLastScreen", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "User with ekyc failed to ekyc oh no screen", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showEKYCOhNo", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "User with ekyc done to esim", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showESim", sender: self)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "User with ekyc done and esim to home", style: .default, handler: {_ in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "showHome", sender: self)
             }
         }))
         DispatchQueue.main.async {

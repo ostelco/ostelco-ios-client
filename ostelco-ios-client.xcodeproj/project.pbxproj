@@ -90,6 +90,8 @@
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D50222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
 		04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
+		04834D592230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
+		04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -205,6 +207,7 @@
 		04834D47222EE97A00A01500 /* EKYCOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
+		04834D582230190800A01500 /* EKYCOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOhNoViewController.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 				C24EE402222831970053937E /* AddAddressTableViewController.swift */,
 				C24EE404222838950053937E /* EKYCWaitViewController.swift */,
 				04834D47222EE97A00A01500 /* EKYCOnBoardingViewController.swift */,
+				04834D582230190800A01500 /* EKYCOhNoViewController.swift */,
 			);
 			path = ekyc;
 			sourceTree = "<group>";
@@ -992,6 +996,7 @@
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
+				04834D592230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				C24EE405222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 				C25A958D2226BA8C005958EC /* SingPassView.swift in Sources */,
@@ -1020,6 +1025,7 @@
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
+				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
