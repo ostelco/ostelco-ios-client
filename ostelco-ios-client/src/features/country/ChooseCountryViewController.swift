@@ -21,9 +21,7 @@ class ChooseCountryViewController: UIViewController {
     }
     
     @IBAction func needHelpTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Halp!!!", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        showNeedHelpActionSheet()
     }
     
     @IBAction func continueTapped(_ sender: Any) {

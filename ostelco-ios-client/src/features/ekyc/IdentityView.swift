@@ -13,5 +13,6 @@ class IdentityView: UIView {
 }
 
 protocol IdentityViewDelegate: AnyObject {
-  func tappedContinue(_ sender: IdentityView)
+    func tappedContinue(_ sender: IdentityView)
+    func tappedNeedHelp(_ sender: IdentityView)
 }

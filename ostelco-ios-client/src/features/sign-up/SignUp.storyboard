@@ -140,16 +140,37 @@ I confirm that I act on my own behalf.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
                                 <rect key="frame" x="52.5" y="241.5" width="270" height="184"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-4p-ME4">
+                                <rect key="frame" x="52.5" y="241.5" width="270" height="184"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOp-bM-pLQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="184"/>
+                                        <connections>
+                                            <action selector="dontAllowTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="xIj-N5-RbH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVg-9t-u6H">
+                                        <rect key="frame" x="135" y="0.0" width="135" height="184"/>
+                                        <connections>
+                                            <action selector="okTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="iGQ-bL-iqT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="2cD-YS-tuP"/>
+                            <constraint firstItem="V8d-4p-ME4" firstAttribute="width" secondItem="upM-ES-Rrr" secondAttribute="width" id="4pq-RW-S3b"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="B2t-Cn-NFx"/>
+                            <constraint firstItem="V8d-4p-ME4" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="INx-z9-LxJ"/>
+                            <constraint firstItem="V8d-4p-ME4" firstAttribute="height" secondItem="upM-ES-Rrr" secondAttribute="height" id="IQq-6c-7sr"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="16" id="IUd-ky-HWL"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="top" secondItem="Dam-4t-AgC" secondAttribute="bottom" constant="16" id="KgO-Dk-vjR"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="bottom" secondItem="8Uy-4i-IUw" secondAttribute="bottom" constant="64" id="LZ5-x5-3De"/>
                             <constraint firstItem="8Uy-4i-IUw" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="Myi-vy-Db2"/>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="top" secondItem="YkK-Vz-Pfa" secondAttribute="top" constant="64" id="QnR-zX-cVK"/>
+                            <constraint firstItem="V8d-4p-ME4" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="gtP-w0-gCu"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="oNg-Ea-ZMf"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="n4R-BI-FHP" secondAttribute="trailing" constant="16" id="oWx-Yd-zdi"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="rxi-J1-ZxQ"/>
@@ -214,6 +235,8 @@ I confirm that I act on my own behalf.</string>
                         <viewLayoutGuide key="safeArea" id="yIb-j2-pUN"/>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="ERf-ng-eZR" id="4v5-je-1SK"/>
+                        <outlet property="nameTextField" destination="j3T-mX-GWu" id="oiy-y9-b2k"/>
                         <segue destination="Zr8-YS-ykk" kind="unwind" identifier="unwindFromSignUpViewController" animates="NO" unwindAction="unwindFromSignUpViewControllerWithSender:" id="HXc-Su-v3b"/>
                         <segue destination="ZZg-qT-9FY" kind="show" identifier="showCountry" id="5yS-Nf-uuN"/>
                     </connections>
