@@ -52,7 +52,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plN-NK-ixG">
                                 <rect key="frame" x="16" y="227" width="343" height="233"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions I confirm that I act on my own behalf.">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-12-Fy1" userLabel="I hereby agree to the Terms &amp; Conditions">
                                         <rect key="frame" x="57" y="3" width="286" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -120,6 +120,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
                     </view>
+                    <connections>
+                        <outlet property="oyaUpdatesLabel" destination="MN7-Nc-WT8" id="VAT-K0-I5j"/>
+                        <outlet property="privacyPolicyLabel" destination="H27-wE-pwz" id="ZId-EZ-jq2"/>
+                        <outlet property="termsAndConditionsLabel" destination="HqU-12-Fy1" id="GCn-pO-A4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viW-Hm-VzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
