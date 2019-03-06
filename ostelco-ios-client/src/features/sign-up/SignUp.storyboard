@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,8 +81,19 @@ I confirm that I act on my own behalf.</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0">
-                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
-                                <state key="normal" title="Continue"/>
+                                <rect key="frame" x="16" y="553" width="343" height="50"/>
+                                <color key="backgroundColor" name="PeacockBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ChC-bi-OPW"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
                                 </connections>
@@ -92,6 +104,7 @@ I confirm that I act on my own behalf.</string>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="64" id="0cg-Fv-WhP"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="centerY" secondItem="zpm-C6-zzH" secondAttribute="centerY" id="Ds1-xT-bhB"/>
+                            <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="MU2-9r-kL0" secondAttribute="trailing" constant="16" id="GNQ-Lg-84S"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="fny-Oc-nj2" secondAttribute="trailing" constant="16" id="Jnz-lI-pcr"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="OCt-hi-JUp"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
@@ -101,6 +114,7 @@ I confirm that I act on my own behalf.</string>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="fyT-F3-iGV"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="64" id="icc-2j-d81"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="itl-al-8QH"/>
+                            <constraint firstItem="MU2-9r-kL0" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="tTI-YA-gy5"/>
                             <constraint firstItem="fny-Oc-nj2" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="76" id="zO5-Hh-4im"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
@@ -256,5 +270,11 @@ I confirm that I act on my own behalf.</string>
     </scenes>
     <resources>
         <image name="fakeModalNotifications" width="270" height="184"/>
+        <namedColor name="PeacockBlue">
+            <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
