@@ -86,6 +86,10 @@
 		04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */; };
 		04834D48222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* EKYCOnBoardingViewController.swift */; };
 		04834D49222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* EKYCOnBoardingViewController.swift */; };
+		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
+		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
+		04834D50222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
+		04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -199,6 +203,8 @@
 		04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIActivityIndicator.swift"; sourceTree = "<group>"; };
 		04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeedHelpActionSheet.swift"; sourceTree = "<group>"; };
 		04834D47222EE97A00A01500 /* EKYCOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOnBoardingViewController.swift; sourceTree = "<group>"; };
+		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
+		04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -402,6 +408,8 @@
 			children = (
 				047F291E222453DA00FC6A8F /* ESimViewController.swift */,
 				047F29242224551A00FC6A8F /* ESim.storyboard */,
+				04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */,
+				04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */,
 			);
 			path = esim;
 			sourceTree = "<group>";
@@ -972,11 +980,13 @@
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
+				04834D50222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				C25A95902226F0E2005958EC /* IdentityView.swift in Sources */,
 				04834D48222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */,
+				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
@@ -1015,6 +1025,7 @@
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
 				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
@@ -1046,6 +1057,7 @@
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				C25A95912226F0E2005958EC /* IdentityView.swift in Sources */,
+				04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */,
 				C24EE406222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047F29172224520300FC6A8F /* CountryViewController.swift in Sources */,

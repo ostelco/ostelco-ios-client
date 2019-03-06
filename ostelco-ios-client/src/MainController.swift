@@ -137,7 +137,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showESim() {
-        let viewController = UIStoryboard(name: "ESim", bundle: nil).instantiateInitialViewController() as! ESimViewController
+        let viewController = UIStoryboard(name: "ESim", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
