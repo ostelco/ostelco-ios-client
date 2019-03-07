@@ -19,6 +19,7 @@ class GetStartedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        continueButton.backgroundColor = ThemeManager.currentTheme().mainColor.withAlphaComponent(CGFloat(0.15))
         continueButton.isEnabled = false
         nameTextField.delegate = self
     }
@@ -31,8 +32,10 @@ extension GetStartedViewController: UITextFieldDelegate {
         
         if !text.isEmpty{
             continueButton.isEnabled = true
+            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor
         } else {
             continueButton.isEnabled = false
+            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor.withAlphaComponent(CGFloat(0.15))
         }
         
         return true

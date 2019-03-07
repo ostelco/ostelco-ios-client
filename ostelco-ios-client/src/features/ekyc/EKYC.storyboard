@@ -881,6 +881,67 @@
             </objects>
             <point key="canvasLocation" x="1089" y="-1213"/>
         </scene>
+        <!--Oh No View Controller-->
+        <scene sceneID="rLD-VX-VAX">
+            <objects>
+                <viewController storyboardIdentifier="EKYCOhNoViewController" id="Hfb-Vu-vjj" customClass="EKYCOhNoViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zPO-te-YFx"/>
+                        <viewControllerLayoutGuide type="bottom" id="bot-Gs-LSz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Goa-MS-zaU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoJ-y0-YXI">
+                                <rect key="frame" x="148.5" y="84" width="78" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHw-X3-W6n">
+                                <rect key="frame" x="97" y="184" width="181" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try again in a while or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnb-JY-yOI">
+                                <rect key="frame" x="105" y="237" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-0N-sat">
+                                <rect key="frame" x="169" y="573" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <segue destination="GWU-ht-SLC" kind="show" id="Urc-WM-hDi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-4V-aGJ">
+                                <rect key="frame" x="132.5" y="274" width="110" height="30"/>
+                                <state key="normal" title="contact support"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YIu-4V-aGJ" firstAttribute="top" secondItem="tnb-JY-yOI" secondAttribute="bottom" constant="16" id="CxZ-U6-XUl"/>
+                            <constraint firstItem="tnb-JY-yOI" firstAttribute="top" secondItem="AHw-X3-W6n" secondAttribute="bottom" constant="32" id="EYb-hx-w54"/>
+                            <constraint firstItem="YIu-4V-aGJ" firstAttribute="centerX" secondItem="Goa-MS-zaU" secondAttribute="centerX" id="F8V-ou-fSt"/>
+                            <constraint firstItem="tnb-JY-yOI" firstAttribute="centerX" secondItem="Goa-MS-zaU" secondAttribute="centerX" id="I9n-5b-pdZ"/>
+                            <constraint firstItem="AHw-X3-W6n" firstAttribute="centerX" secondItem="Goa-MS-zaU" secondAttribute="centerX" id="MZD-Jw-18U"/>
+                            <constraint firstItem="CoJ-y0-YXI" firstAttribute="centerX" secondItem="Goa-MS-zaU" secondAttribute="centerX" id="Zqo-mO-mRn"/>
+                            <constraint firstItem="AHw-X3-W6n" firstAttribute="top" secondItem="CoJ-y0-YXI" secondAttribute="bottom" constant="64" id="b9W-As-yqD"/>
+                            <constraint firstItem="bot-Gs-LSz" firstAttribute="top" secondItem="DDz-0N-sat" secondAttribute="bottom" constant="64" id="cNL-A6-Hr0"/>
+                            <constraint firstItem="CoJ-y0-YXI" firstAttribute="top" secondItem="zPO-te-YFx" secondAttribute="bottom" constant="64" id="onH-Ba-mow"/>
+                            <constraint firstItem="DDz-0N-sat" firstAttribute="centerX" secondItem="Goa-MS-zaU" secondAttribute="centerX" id="raL-Vf-BlK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSU-if-gnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="-1213"/>
+        </scene>
     </scenes>
     <resources>
         <image name="stepArrowIcon" width="25" height="25"/>
