@@ -12,8 +12,8 @@
 #include "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"
 server_url = https:\/\/api.ostelco.org
 stripe_publishable_key = pk_live_TapwcFFxZ4ebhimyTvXSIWPY
-auth0_client_id = bNz2UjqvwtLvLu431zHFOujzDW24wO1f
-auth0_domain = ostelco.eu.auth0.com
+auth0_client_id = ExfkvmnHoRwJfaIq4agVh14hJ5jo3zVO
+auth0_domain = auth.oya.world
 auth0_logo_url = https:\/\/i.imgur.com/kRdkzp2.png
 freshchat_app_id = bcd5751d-ad5d-455f-bfba-1da395583e3d
 freshchat_app_key = 2326bd78-855a-47ba-9641-6bf9bb807038
