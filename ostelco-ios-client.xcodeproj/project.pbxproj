@@ -94,6 +94,10 @@
 		04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
 		04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
 		04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
+		04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
+		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
+		04834D722237B11800A01500 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
+		04834D732237B11800A01500 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -211,6 +215,8 @@
 		04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
 		04834D582230190800A01500 /* EKYCOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOhNoViewController.swift; sourceTree = "<group>"; };
 		04834D64223020DA00A01500 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
+		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -467,6 +473,7 @@
 			children = (
 				04488191217938A300F59758 /* Auth.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
+				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -478,6 +485,7 @@
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
+				04834D712237B11800A01500 /* CustomerModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -978,7 +986,9 @@
 				041216B8222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
+				04834D722237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
+				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
@@ -1028,6 +1038,7 @@
 				04834D49222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
+				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
@@ -1054,6 +1065,7 @@
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
+				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C24EE407222838A30053937E /* AddAddressTableViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,

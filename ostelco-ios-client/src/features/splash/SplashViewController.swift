@@ -20,21 +20,45 @@ class SplashViewController: UIViewController {
             if error == nil, let credentials = credentials {
                 if let accessToken = credentials.accessToken {
                     DispatchQueue.main.async {
-                        if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
+                        let apiManager = APIManager.sharedInstance
+                        if (apiManager.authToken != accessToken && apiManager.authToken != nil) {
                             ostelcoAPI.wipeResources()
                         }
                         
-                        if (ostelcoAPI.authToken != accessToken) {
-                            ostelcoAPI.authToken = "Bearer \(accessToken)"
+                        if (apiManager.authToken != accessToken) {
+                            apiManager.authToken = "Bearer \(accessToken)"
                         }
                         
+                        // TODO: New API does not handle refreshToken yet
+                        /*
                         if let refreshToken = credentials.refreshToken {
                             ostelcoAPI.refreshToken = refreshToken
                         }
+                        */
                         
-                        self.showMessage(loggedIn: true)
-                        // TODO: Handle redirect logic. Remember that this redirect logic should also be handled after you successfully login from the login screen.
-                        // AppDelegate.shared.rootViewController.switchToMainScreen() // Old redirect logic
+                        self.showSpinner(onView: self.view)
+                        apiManager.customer.load()
+                            .onSuccess({ data in
+                                // TODO: Redirect based on user state
+                                print("**************************")
+                                print(data)
+                            })
+                            .onFailure({ error in
+                                if let statusCode = error.httpStatusCode {
+                                    switch statusCode {
+                                    case 404:
+                                        DispatchQueue.main.async {
+                                            self.performSegue(withIdentifier: "showSignUp", sender: self)
+                                        }
+                                    default:
+                                        let alert = UIAlertController(title: "Error", message: error.userMessage, preferredStyle: .alert)
+                                        self.present(alert, animated: true, completion: nil)
+                                    }
+                                }
+                            })
+                            .onCompletion({ _ in
+                                self.removeSpinner()
+                            })
                     }
                     
                     return
