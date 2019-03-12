@@ -15,6 +15,7 @@ target 'dev-ostelco-ios-client' do
   pod 'FreshchatSDK'
   pod 'JumioMobileSDK/Netverify', '~>2.14'
   pod 'RxCoreLocation', '~> 1.3.1'
+  pod 'JWTDecode', '~> 2.2'
 
   target 'dev-ostelco-ios-clientTests' do
     inherit! :search_paths
@@ -37,5 +38,6 @@ target 'ostelco-ios-client' do
   pod 'FreshchatSDK'
   pod 'JumioMobileSDK/Netverify', '~>2.14'
   pod 'RxCoreLocation', '~> 1.3.1'
+  pod 'JWTDecode', '~> 2.2'
 
 end

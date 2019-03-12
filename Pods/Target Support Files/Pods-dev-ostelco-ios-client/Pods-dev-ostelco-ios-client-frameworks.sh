@@ -154,6 +154,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/Netverify.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework"
@@ -169,6 +170,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/Netverify.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework"
