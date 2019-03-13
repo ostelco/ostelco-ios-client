@@ -14,8 +14,43 @@ class LoginViewController2: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
+                
+                // TODO: Duplicated logic from SplashViewController
                 DispatchQueue.main.async {
-                    self.handleLoginSuccess()
+                self.showSpinner(onView: self.view)
+                APIManager.sharedInstance.customer.load()
+                    .onSuccess({ data in
+                        if let user: CustomerModel = data.typedContent(ifNone: nil) {
+                            UserManager.sharedInstance.user = user
+                            // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
+                            DispatchQueue.main.async {
+                                // TODO: For some reason, the afterDelay needs more than 0.0 when we try to navigate from the auth0 callback.
+                                // In the old client, we used to set the root controller instead of performing a segue or using present
+                                self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                            }
+                        } else {
+                            self.showAlert(title: "Error", msg: "Failed to retrieve user.")
+                        }
+                    })
+                    .onFailure({ error in
+                        if let statusCode = error.httpStatusCode {
+                            switch statusCode {
+                            case 404:
+                                DispatchQueue.main.async {
+                                    self.performSegue(withIdentifier: "showSignUp", sender: self)
+                                }
+                            default:
+                                // TODO: Redirect user to generic error screen.
+                                self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
+                            }
+                        } else {
+                            // TODO: Redirect user to generic error screen.
+                            self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
+                        }
+                    })
+                    .onCompletion({ _ in
+                        self.removeSpinner()
+                    })
                 }
             },
             onError: { error in
@@ -26,10 +61,8 @@ class LoginViewController2: UIViewController {
         )
     }
     
-    private func handleLoginSuccess() {
-        // TODO: For some reason, the afterDelay needs more than 0.0 when we try to navigate from the auth0 callback.
-        // In the old client, we used to set the root controller instead of performing a segue or using present
-        perform(#selector(showSignUp), with: nil, afterDelay: 0.5)
+    @objc private func showCountry() {
+        performSegue(withIdentifier: "showCountry", sender: self)
     }
     
     @objc private func showSignUp() {

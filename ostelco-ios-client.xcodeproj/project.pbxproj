@@ -94,6 +94,16 @@
 		04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
 		04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
 		04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
+		04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
+		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
+		04834D722237B11800A01500 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
+		04834D732237B11800A01500 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
+		04834D782237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */; };
+		04834D792237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */; };
+		04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
+		04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
+		04834D7E2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
+		04834D7F2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -211,6 +221,11 @@
 		04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
 		04834D582230190800A01500 /* EKYCOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOhNoViewController.swift; sourceTree = "<group>"; };
 		04834D64223020DA00A01500 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
+		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
+		04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorAlert.swift"; sourceTree = "<group>"; };
+		04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JWT+EmailClaim.swift"; sourceTree = "<group>"; };
+		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -444,6 +459,8 @@
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
+				04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */,
+				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -467,6 +484,8 @@
 			children = (
 				04488191217938A300F59758 /* Auth.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
+				04834D6E2237ACFF00A01500 /* APIManager.swift */,
+				04834D7D2237D53700A01500 /* UserManager.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -478,6 +497,7 @@
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
+				04834D712237B11800A01500 /* CustomerModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -750,6 +770,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/Netverify.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
@@ -768,6 +789,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Netverify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
@@ -842,6 +864,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/Netverify.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
@@ -860,6 +883,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Netverify.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
@@ -960,6 +984,7 @@
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				C25A960F2227E1C2005958EC /* SingPassInfoTableViewController.swift in Sources */,
+				04834D782237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */,
 				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				C25A95962226FF7F005958EC /* SingPassInfoViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
@@ -978,7 +1003,10 @@
 				041216B8222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
+				04834D722237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
+				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
+				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
@@ -1001,6 +1029,7 @@
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
+				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				04834D592230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				C24EE405222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
@@ -1028,6 +1057,7 @@
 				04834D49222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
+				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
@@ -1038,6 +1068,7 @@
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
+				04834D792237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
 				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
@@ -1047,6 +1078,7 @@
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
+				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
@@ -1054,6 +1086,7 @@
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
+				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				C24EE407222838A30053937E /* AddAddressTableViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
@@ -1069,6 +1102,7 @@
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				C25A95912226F0E2005958EC /* IdentityView.swift in Sources */,
+				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */,
 				C24EE406222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
@@ -1321,7 +1355,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";
@@ -1349,7 +1383,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";

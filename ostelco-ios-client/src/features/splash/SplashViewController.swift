@@ -20,21 +20,57 @@ class SplashViewController: UIViewController {
             if error == nil, let credentials = credentials {
                 if let accessToken = credentials.accessToken {
                     DispatchQueue.main.async {
-                        if (ostelcoAPI.authToken != accessToken && ostelcoAPI.authToken != nil) {
-                            ostelcoAPI.wipeResources()
+                        let apiManager = APIManager.sharedInstance
+                        let userManager = UserManager.sharedInstance
+                        if (userManager.authToken != accessToken && userManager.authToken != nil) {
+                            apiManager.wipeResources()
+                            UserManager.sharedInstance.clear()
                         }
                         
-                        if (ostelcoAPI.authToken != accessToken) {
-                            ostelcoAPI.authToken = "Bearer \(accessToken)"
+                        if (userManager.authToken != accessToken) {
+                            apiManager.authHeader = "Bearer \(accessToken)"
+                            UserManager.sharedInstance.authToken = accessToken
                         }
                         
+                        // TODO: New API does not handle refreshToken yet
+                        /*
                         if let refreshToken = credentials.refreshToken {
                             ostelcoAPI.refreshToken = refreshToken
                         }
+                        */
                         
-                        self.showMessage(loggedIn: true)
-                        // TODO: Handle redirect logic. Remember that this redirect logic should also be handled after you successfully login from the login screen.
-                        // AppDelegate.shared.rootViewController.switchToMainScreen() // Old redirect logic
+                        self.showSpinner(onView: self.view)
+                        apiManager.customer.load()
+                            .onSuccess({ data in
+                                if let user: CustomerModel = data.typedContent(ifNone: nil) {
+                                    UserManager.sharedInstance.user = user
+                                    // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
+                                    DispatchQueue.main.async {
+                                        self.performSegue(withIdentifier: "showCountry", sender: self)
+                                    }
+                                } else {
+                                    self.showAlert(title: "Error", msg: "Failed to retrieve user.")
+                                }
+                            })
+                            .onFailure({ error in
+                                if let statusCode = error.httpStatusCode {
+                                    switch statusCode {
+                                    case 404:
+                                        DispatchQueue.main.async {
+                                            self.performSegue(withIdentifier: "showSignUp", sender: self)
+                                        }
+                                    default:
+                                        // TODO: Redirect user to generic error screen.
+                                        self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
+                                    }
+                                } else {
+                                    // TODO: Redirect user to generic error screen.
+                                    self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
+                                }
+                            })
+                            .onCompletion({ _ in
+                                self.removeSpinner()
+                            })
                     }
                     
                     return
