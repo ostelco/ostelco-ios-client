@@ -53,17 +53,6 @@ class MainController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromLoginViewController(sender: UIStoryboardSegue) {
-        // TODO: showSignUp is not called if delay is too small.
-        // If you try to set afterDelay to 0, you will stay on the main screen and see the following warning in the logs:
-        // Warning: Attempt to present <dev_ostelco_ios_client_app.TheLegalStuffViewController: 0x7fece3e24380> on <dev_ostelco_ios_client_app.MainController: 0x7fece38066d0> while a presentation is in progress!
-        perform(#selector(showSignUp), with: nil, afterDelay: 0.5)
-    }
-    
-    @IBAction func unwindFromSignUpViewController(sender: UIStoryboardSegue) {
-        // perform(#selector(showCountry), with: nil, afterDelay: 0)
-    }
-    
     @IBAction func unwindFromCountryViewController(sender: UIStoryboardSegue) {
         // perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
@@ -92,14 +81,6 @@ class MainController: UIViewController {
         self.showLogin()
     }
     
-    @IBAction func showSignUpTapped(_ sender: Any) {
-        self.showSignUp()
-    }
-    
-    @IBAction func showCountryTapped(_ sender: Any) {
-        self.showCountry()
-    }
-    
     @IBAction func showEKYCTapped(_ sender: Any) {
         self.showEKYC()
     }
@@ -118,16 +99,6 @@ class MainController: UIViewController {
     
     @objc private func showLogin() {
         let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() as! LoginViewController2
-        self.presentVC(vc: viewController)
-    }
-    
-    @objc private func showSignUp() {
-        let viewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController()!
-        self.presentVC(vc: viewController)
-    }
-    
-    @objc private func showCountry() {
-        let viewController = UIStoryboard(name: "Country", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     

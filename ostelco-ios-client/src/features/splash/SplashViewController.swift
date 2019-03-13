@@ -21,12 +21,15 @@ class SplashViewController: UIViewController {
                 if let accessToken = credentials.accessToken {
                     DispatchQueue.main.async {
                         let apiManager = APIManager.sharedInstance
-                        if (apiManager.authToken != accessToken && apiManager.authToken != nil) {
-                            ostelcoAPI.wipeResources()
+                        let userManager = UserManager.sharedInstance
+                        if (userManager.authToken != accessToken && userManager.authToken != nil) {
+                            apiManager.wipeResources()
+                            UserManager.sharedInstance.clear()
                         }
                         
-                        if (apiManager.authToken != accessToken) {
-                            apiManager.authToken = "Bearer \(accessToken)"
+                        if (userManager.authToken != accessToken) {
+                            apiManager.authHeader = "Bearer \(accessToken)"
+                            UserManager.sharedInstance.authToken = accessToken
                         }
                         
                         // TODO: New API does not handle refreshToken yet
@@ -39,9 +42,15 @@ class SplashViewController: UIViewController {
                         self.showSpinner(onView: self.view)
                         apiManager.customer.load()
                             .onSuccess({ data in
-                                // TODO: Redirect based on user state
-                                print("**************************")
-                                print(data)
+                                if let user: CustomerModel = data.typedContent(ifNone: nil) {
+                                    UserManager.sharedInstance.user = user
+                                    // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
+                                    DispatchQueue.main.async {
+                                        self.performSegue(withIdentifier: "showCountry", sender: self)
+                                    }
+                                } else {
+                                    self.showAlert(title: "Error", msg: "Failed to retrieve user.")
+                                }
                             })
                             .onFailure({ error in
                                 if let statusCode = error.httpStatusCode {
@@ -51,9 +60,12 @@ class SplashViewController: UIViewController {
                                             self.performSegue(withIdentifier: "showSignUp", sender: self)
                                         }
                                     default:
-                                        let alert = UIAlertController(title: "Error", message: error.userMessage, preferredStyle: .alert)
-                                        self.present(alert, animated: true, completion: nil)
+                                        // TODO: Redirect user to generic error screen.
+                                        self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
                                     }
+                                } else {
+                                    // TODO: Redirect user to generic error screen.
+                                    self.showAlert(title: "Error fetching customer profile", msg: error.userMessage)
                                 }
                             })
                             .onCompletion({ _ in

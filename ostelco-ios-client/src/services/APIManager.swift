@@ -12,7 +12,7 @@ class APIManager: Service {
     
     static let sharedInstance = APIManager()
     let jsonDecoder = JSONDecoder()
-    var authToken: String? {
+    var authHeader: String? {
         didSet {
             invalidateConfiguration()
             wipeResources()
@@ -28,12 +28,12 @@ class APIManager: Service {
         
         super.init(
             baseURL: Environment().configuration(PlistKey.ServerURL),
-            standardTransformers: [.text, .json]
+            standardTransformers: [.text]
         )
         
         configure {
             $0.headers["Content-Type"] = "application/json"
-            $0.headers["Authorization"] = self.authToken
+            $0.headers["Authorization"] = self.authHeader
         }
         
         configureTransformer("/customer") {

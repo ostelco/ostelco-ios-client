@@ -58,12 +58,11 @@
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
-                        <segue destination="CPe-MD-7pH" kind="unwind" identifier="unwindFromLoginViewController" animates="NO" unwindAction="unwindFromLoginViewControllerWithSender:" id="ldJ-Ja-ZI9"/>
                         <segue destination="BTq-n3-cQJ" kind="show" identifier="showSignUp" id="GgF-Xs-zdM"/>
+                        <segue destination="uYv-Rx-W57" kind="show" identifier="showCountry" id="WAP-la-UV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="CPe-MD-7pH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="56.799999999999997" y="30.134932533733135"/>
         </scene>
@@ -74,6 +73,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyQ-fa-sXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="807" y="-60"/>
+        </scene>
+        <!--Country-->
+        <scene sceneID="KG6-S4-M4d">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Country" id="uYv-Rx-W57" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZT-z1-4Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878" y="30"/>
         </scene>
     </scenes>
     <resources>

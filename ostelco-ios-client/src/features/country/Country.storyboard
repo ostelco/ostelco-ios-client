@@ -143,6 +143,7 @@
                         <viewLayoutGuide key="safeArea" id="hM8-XF-g1b"/>
                     </view>
                     <connections>
+                        <outlet property="titleLabel" destination="sCM-Rj-d9a" id="geg-ue-chb"/>
                         <segue destination="qUz-io-xXw" kind="show" identifier="displayChooseCountry" id="KJh-70-h5x"/>
                     </connections>
                 </viewController>

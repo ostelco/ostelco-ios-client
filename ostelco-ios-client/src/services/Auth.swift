@@ -61,6 +61,15 @@ class Auth {
                         os_log("Store credentials with auth0 credentials manager.")
                         self.credentialsManager.store(credentials: credentials)
                         os_log("Successfully logged in with auth0, credential. refreshToken: %{private}@ accessToken: %{private}@ idToken: %{private}@", credentials.refreshToken ?? "none", credentials.accessToken ?? "none", credentials.idToken ?? "none")
+                        if let accessToken = credentials.accessToken {
+                            DispatchQueue.main.async {
+                                APIManager.sharedInstance.authHeader = "Bearer \(accessToken)"
+                                UserManager.sharedInstance.authToken = accessToken
+                            }
+                        } else {
+                            // TODO: How do we handle the case if access token is empty
+                        }
+                        
                         observer.on(.next(credentials))
                         observer.on(.completed)
                     }
