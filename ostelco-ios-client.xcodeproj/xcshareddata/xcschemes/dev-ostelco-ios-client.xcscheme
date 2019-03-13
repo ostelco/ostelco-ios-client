@@ -71,6 +71,12 @@
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled&#10;&#10;-FIRDebugEnabled&#10;&#10;-FIRDebugEnabled&#10;&#10;FIRDebugEnabled&#10;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
