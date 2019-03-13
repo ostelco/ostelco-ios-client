@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChooseCountryOnBoardingViewController: UIViewController {
     
@@ -17,11 +18,13 @@ class ChooseCountryOnBoardingViewController: UIViewController {
         setTitle()
     }
     
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction func needHelpTapped(_ sender: UIButton) {
+        Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         showNeedHelpActionSheet()
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction func continueTapped(_ sender: UIButton) {
+        Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         performSegue(withIdentifier: "displayChooseCountry", sender: self)
     }
     
