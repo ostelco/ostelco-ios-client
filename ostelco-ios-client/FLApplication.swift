@@ -16,7 +16,7 @@ class FLApplication: UIApplication
         if let button = sender as? UIButton {
             Analytics.logEvent("button_tapped", parameters: ["newValue": button.title(for: .normal)!])
         }
-        // print("\nHold up, \(type(of: self)) again! Attempting to send \(action) to \(target)")
+        print("\nHold up, \(type(of: self)) again! Attempting to send \(action) to \(target) from sender \(sender.self)")
         
         return super.sendAction(action, to: target, from: sender, for: event)
     }
