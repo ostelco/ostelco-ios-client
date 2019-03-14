@@ -31,8 +31,12 @@
 		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
 		0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
-		043E7107223964E800E01993 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043E7106223964E800E01993 /* GoogleService-Info.plist */; };
-		043E7108223964E800E01993 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043E7106223964E800E01993 /* GoogleService-Info.plist */; };
+		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
+		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
+		043E71112239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
+		043E71122239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
+		043E71132239F56700E01993 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043E7106223964E800E01993 /* GoogleService-Info.plist */; };
+		043E71142239F56700E01993 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043E7106223964E800E01993 /* GoogleService-Info.plist */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		0448816C217924B700F59758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
 		0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
@@ -182,6 +186,8 @@
 		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
 		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
 		043E7106223964E800E01993 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		043E71102239F1D300E01993 /* FLApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLApplication.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0448816B217924B700F59758 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
 				04834D31222EAA7D00A01500 /* Singapore.gpx */,
 				04834D34222EAB4E00A01500 /* Norway.gpx */,
+				043E710D2239F17200E01993 /* main.swift */,
+				043E71102239F1D300E01993 /* FLApplication.swift */,
 			);
 			path = "ostelco-ios-client";
 			sourceTree = "<group>";
@@ -682,13 +690,13 @@
 			files = (
 				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
 				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
-				043E7107223964E800E01993 /* GoogleService-Info.plist in Resources */,
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
+				043E71132239F56700E01993 /* GoogleService-Info.plist in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
@@ -711,13 +719,13 @@
 			files = (
 				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
 				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
-				043E7108223964E800E01993 /* GoogleService-Info.plist in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
+				043E71142239F56700E01993 /* GoogleService-Info.plist in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
@@ -992,6 +1000,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */,
+				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -999,6 +1008,7 @@
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				C25A960F2227E1C2005958EC /* SingPassInfoTableViewController.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */,
+				043E710E2239F17200E01993 /* main.swift in Sources */,
 				047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				C25A95962226FF7F005958EC /* SingPassInfoViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
@@ -1080,6 +1090,7 @@
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
+				043E710F2239F17200E01993 /* main.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */,
@@ -1102,6 +1113,7 @@
 				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
+				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				C24EE407222838A30053937E /* AddAddressTableViewController.swift in Sources */,
 				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,

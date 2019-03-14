@@ -11,7 +11,6 @@ import Auth0
 import Stripe
 import Firebase
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -77,4 +76,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
