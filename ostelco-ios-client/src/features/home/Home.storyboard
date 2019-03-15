@@ -90,12 +90,32 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LRu-69-U6d">
+                                <rect key="frame" x="0.0" y="556" width="375" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated 2h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkc-rS-fv8">
+                                        <rect key="frame" x="135.5" y="0.0" width="104" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down to refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-5o-vGa">
+                                        <rect key="frame" x="115.5" y="25" width="144.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LIe-WC-Ytc" firstAttribute="leading" secondItem="bJl-FW-G7j" secondAttribute="leading" id="DCd-3s-vEh"/>
+                            <constraint firstItem="bJl-FW-G7j" firstAttribute="bottom" secondItem="LRu-69-U6d" secondAttribute="bottom" constant="20" id="Jof-d0-q49"/>
                             <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="LIe-WC-Ytc" secondAttribute="trailing" id="O3e-Ow-fLn"/>
                             <constraint firstItem="LIe-WC-Ytc" firstAttribute="centerY" secondItem="AzT-p1-iGU" secondAttribute="centerY" id="ZUX-xl-e4m"/>
+                            <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="LRu-69-U6d" secondAttribute="trailing" id="erF-Zd-7Xd"/>
+                            <constraint firstItem="LRu-69-U6d" firstAttribute="leading" secondItem="bJl-FW-G7j" secondAttribute="leading" id="i3f-q8-Yty"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bJl-FW-G7j"/>
                     </view>
@@ -106,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn4-ct-ShT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="-541"/>
+            <point key="canvasLocation" x="1125.5999999999999" y="-541.07946026986508"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eV1-9H-ftb">
