@@ -113,7 +113,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showHome() {
-        let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController() as! HomeViewController2
+        let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
