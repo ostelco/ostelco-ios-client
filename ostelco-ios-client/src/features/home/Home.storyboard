@@ -343,7 +343,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="eV1-9H-ftb">
             <objects>
-                <tabBarController id="BPF-wa-9TJ" sceneMemberID="viewController">
+                <tabBarController id="BPF-wa-9TJ" customClass="TabBarController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xwp-DD-JGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
