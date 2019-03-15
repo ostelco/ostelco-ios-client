@@ -676,8 +676,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="19" height="19"/>
-        <image name="settings" width="19" height="19"/>
+        <image name="home" width="24" height="23"/>
+        <image name="settings" width="23" height="21"/>
         <image name="support" width="19" height="19"/>
     </resources>
 </document>
