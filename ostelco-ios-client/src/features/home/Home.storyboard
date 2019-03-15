@@ -292,6 +292,9 @@
                                                         <real key="value" value="27.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="buyDataTapped:" destination="nTN-zT-UGw" eventType="touchUpInside" id="f6O-hN-iIq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -334,11 +337,80 @@
                     <connections>
                         <outlet property="balanceLabel" destination="T7Z-5F-Y8h" id="Blu-YQ-ilY"/>
                         <outlet property="scrollView" destination="NWm-c7-dac" id="axl-vo-8Qh"/>
+                        <segue destination="HJs-Qd-Tb4" kind="show" identifier="becomeMember" id="J5k-QY-FBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn4-ct-ShT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1125.5999999999999" y="-541.07946026986508"/>
+        </scene>
+        <!--BecomeA Member View Controller-->
+        <scene sceneID="LV8-xQ-L8R">
+            <objects>
+                <viewController id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZFr-gb-dCZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="voL-Jz-klO">
+                                <rect key="frame" x="16" y="219" width="343" height="229"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet">
+                                        <rect key="frame" x="0.0" y="135.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="As an OYA member you keep your data forever." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KD7-fs-MOC">
+                                        <rect key="frame" x="0.0" y="172" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1 = 1 year of membership." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wM-Je-ezv">
+                                        <rect key="frame" x="0.0" y="208.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RGR-am-6U3">
+                                <rect key="frame" x="16" y="487" width="343" height="200"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-ae-gcm">
+                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="HJs-Qd-Tb4" eventType="touchUpInside" id="yG6-fq-hMZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rXv-ae-gcm" firstAttribute="top" secondItem="2dR-KV-ud0" secondAttribute="top" id="0aB-l7-sRn"/>
+                            <constraint firstItem="2dR-KV-ud0" firstAttribute="trailing" secondItem="voL-Jz-klO" secondAttribute="trailing" constant="16" id="Jyv-3k-Kud"/>
+                            <constraint firstItem="RGR-am-6U3" firstAttribute="centerX" secondItem="ZFr-gb-dCZ" secondAttribute="centerX" id="QeP-X9-Fuv"/>
+                            <constraint firstItem="voL-Jz-klO" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="YQp-Pu-T2g"/>
+                            <constraint firstAttribute="bottom" secondItem="RGR-am-6U3" secondAttribute="bottom" constant="64" id="dPt-XE-EJV"/>
+                            <constraint firstItem="rXv-ae-gcm" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="ogT-8P-lEe"/>
+                            <constraint firstItem="voL-Jz-klO" firstAttribute="centerY" secondItem="ZFr-gb-dCZ" secondAttribute="centerY" id="rK8-vD-wE6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2dR-KV-ud0"/>
+                    </view>
+                    <connections>
+                        <outlet property="paymentButtonContainer" destination="RGR-am-6U3" id="gJR-74-gRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-MG-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941.5999999999999" y="-718.29085457271367"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eV1-9H-ftb">

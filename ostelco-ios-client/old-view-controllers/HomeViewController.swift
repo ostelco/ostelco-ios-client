@@ -12,7 +12,7 @@ import Foundation
 import os
 import Stripe
 
-class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthorizationViewControllerDelegate {
+class HomeViewController: UIViewController, ResourceObserver {
 
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var balanceText: UILabel!
@@ -160,7 +160,7 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
         if Stripe.canSubmitPaymentRequest(paymentRequest) {
             // Setup payment authorization view controller
             let paymentAuthorizationViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
-            paymentAuthorizationViewController!.delegate = self
+            // paymentAuthorizationViewController!.delegate = self
             
             // Present payment authorization view controller
             present(paymentAuthorizationViewController!, animated: true)
@@ -183,50 +183,6 @@ class HomeViewController: UIViewController, ResourceObserver, PKPaymentAuthoriza
             #endif
             #endif
         }
-    }
-    
-    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-        STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
-            guard let source = source, error == nil else {
-                // Present error to user...
-                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
-                return
-            }
-            
-            ostelcoAPI.products.child(self.product!.sku).child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onProgress({ progress in
-                    os_log("Progress %{public}@", "\(progress)")
-                })
-                .onSuccess({ result in
-                    os_log("Successfully bought a product %{public}@", "\(result)")
-                    ostelcoAPI.purchases.invalidate()
-                    ostelcoAPI.bundles.invalidate()
-                    ostelcoAPI.bundles.load()
-                    self.paymentSucceeded = true
-                    completion(.success)
-                })
-                .onFailure({ error in
-                    // TODO: Report error to server
-                    // TODO: fix use of insecure unwrapping, can cause application to crash
-                    os_log("Failed to buy product with sku %{public}@, got error: %{public}@", self.product!.sku, "\(error)")
-                    self.showAlert(title: "Failed to buy product with ostelcoAPI", msg: "\(error.localizedDescription)")
-                    self.paymentSucceeded = false
-                    completion(.failure)
-                })
-                .onCompletion({ _ in
-                    // UIViewController.removeSpinner(spinner: sv)
-                })
-        }
-    }
-    
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        // Dismiss payment authorization view controller
-        dismiss(animated: true, completion: {
-            if (self.paymentSucceeded) {
-                // Show a receipt page...
-                os_log("Show receipt page?")
-            }
-        })
     }
 }
 

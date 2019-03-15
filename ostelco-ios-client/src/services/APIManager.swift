@@ -20,6 +20,7 @@ class APIManager: Service {
     }
     
     var customer: Resource { return resource("/customer") }
+    var products: Resource { return resource("/products" )}
     
     fileprivate init() {
         #if DEBUG

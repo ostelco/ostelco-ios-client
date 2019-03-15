@@ -12,7 +12,7 @@ class UserManager {
     static let sharedInstance = UserManager()
     
     var authToken: String?
-    var user: CustomerModel?
+    var user: CustomerModel!
  
     func clear() {
         authToken = nil

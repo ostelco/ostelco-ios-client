@@ -39,7 +39,8 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
                 }
             })
         } else {
-            AppDelegate.shared.rootViewController.switchToLogout()
+            // AppDelegate.shared.rootViewController.switchToLogout()
+            print("Your session has expired?")
             return .useThisResponse
         }
     }
