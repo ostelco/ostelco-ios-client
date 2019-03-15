@@ -9,13 +9,6 @@
 import UIKit
 
 class SettingsTableViewController2: UITableViewController {
-    override func viewDidLoad() {
-        // super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.isUserInteractionEnabled = true
-        self.tableView.allowsSelection = true
-    }
-    
     enum MenuItem: Int {
         case PurchaseHistory = 0
         case ChangeNickname = 1
@@ -25,25 +18,30 @@ class SettingsTableViewController2: UITableViewController {
         case LogOut = 5
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.delegate = self
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let menuItem = MenuItem(rawValue: indexPath.item) else {
             showAlert(title: "Error", msg: "Invalid selection")
             return
         }
-
+        
         switch menuItem {
-            case .PurchaseHistory:
-                print("purchase history")
-            case .ChangeNickname:
-                print("nickname")
-            case .TermsAndConditions:
-                print("terms")
-            case .PrivacyPolicy:
-                print("policy")
-            case .CancelMembership:
-                print("membership")
-            case .LogOut:
-                print("log out")
+        case .PurchaseHistory:
+            performSegue(withIdentifier: "purchaseHistory", sender: self)
+        case .ChangeNickname:
+            performSegue(withIdentifier: "nickname", sender: nil)
+        case .TermsAndConditions:
+            showAlert(title: "Open terms and conditions", msg: "")
+        case .PrivacyPolicy:
+            showAlert(title: "Open privacy policy", msg: "")
+        case .CancelMembership:
+            showDeleteAccountActionSheet()
+        case .LogOut:
+            showLogOutActionSheet()
         }
     }
 }
