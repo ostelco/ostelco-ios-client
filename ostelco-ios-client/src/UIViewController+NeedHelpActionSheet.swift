@@ -13,11 +13,10 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
         
         let supportAction = UIAlertAction(title: "Contact Support", style: .default, handler: {_ in
-            let alert = UIAlertController(title: "Halp!!!", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            DispatchQueue.main.async {
-                self.present(alert, animated: true, completion: nil)
-            }
+            Freshchat.sharedInstance()?.showConversations(self)
+        })
+        let faqAction = UIAlertAction(title: "FAQ", style: .default, handler: {_ in
+            Freshchat.sharedInstance()?.showFAQs(self)
         })
         let startOverAction = UIAlertAction(title: "Start Again", style: .destructive, handler: {_ in
             sharedAuth.logout()
@@ -32,6 +31,7 @@ extension UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertCtrl.addAction(supportAction)
+        alertCtrl.addAction(faqAction)
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
