@@ -14,9 +14,5 @@ class HomeViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        balanceLabel.minimumScaleFactor = 0.1    //you need
-        balanceLabel.adjustsFontSizeToFitWidth = true
-        balanceLabel.lineBreakMode = .byClipping
-        balanceLabel.numberOfLines = 0
     }
 }
