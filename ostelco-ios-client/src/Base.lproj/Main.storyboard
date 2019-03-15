@@ -543,7 +543,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="50" y="-167"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Bof-Lr-M76">
@@ -676,8 +676,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="19" height="19"/>
-        <image name="settings" width="19" height="19"/>
+        <image name="home" width="24" height="23"/>
+        <image name="settings" width="23" height="21"/>
         <image name="support" width="19" height="19"/>
     </resources>
 </document>
