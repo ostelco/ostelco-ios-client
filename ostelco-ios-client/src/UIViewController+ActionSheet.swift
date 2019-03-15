@@ -1,28 +1,33 @@
 //
-//  UIViewController+NeedHelpActionSheet.swift
+//  UIViewController+ActionSheet.swift
 //  ostelco-ios-client
 //
-//  Created by mac on 3/5/19.
+//  Created by mac on 3/15/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
 import UIKit
 
 extension UIViewController {
-    func showNeedHelpActionSheet() {
-        let alertCtrl = UIAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
+    func showDeleteAccountActionSheet() {
+        let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
         
-        let supportAction = UIAlertAction(title: "Contact Support", style: .default, handler: {_ in
-            Freshchat.sharedInstance()?.showConversations(self)
-        })
-        let faqAction = UIAlertAction(title: "FAQ", style: .default, handler: {_ in
-            Freshchat.sharedInstance()?.showFAQs(self)
-        })
-        let startOverAction = UIAlertAction(title: "Start Again", style: .destructive, handler: {_ in
+        let deleteActionAction = UIAlertAction(title: "Delete Account", style: .destructive, handler: {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertCtrl.addAction(deleteActionAction)
+        alertCtrl.addAction(cancelAction)
+        
+        present(alertCtrl, animated: true, completion: nil)
+    }
+    
+    func showLogOutActionSheet() {
+        let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to log out from your account?", preferredStyle: .actionSheet)
+        
         let logOutAction = UIAlertAction(title: "Log Out", style: .destructive, handler: {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
@@ -30,9 +35,6 @@ extension UIViewController {
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertCtrl.addAction(supportAction)
-        alertCtrl.addAction(faqAction)
-        alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
         
