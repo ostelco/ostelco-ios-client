@@ -1,5 +1,5 @@
 //
-//  ChooseCountryOnBoardingViewController.swift
+//  VerifyCountryOnBoardingViewController.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 2/28/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChooseCountryOnBoardingViewController: UIViewController {
+class VerifyCountryOnBoardingViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
