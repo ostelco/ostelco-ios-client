@@ -613,6 +613,7 @@
 				0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */,
 				8BBFABC3E348661E3BAFD07A /* [CP] Embed Pods Frameworks */,
 				4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */,
+				04DE1DC1223D686D001991AB /* Crashlytics script */,
 			);
 			buildRules = (
 			);
@@ -773,6 +774,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/src/environments\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nelse\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi\n";
+		};
+		04DE1DC1223D686D001991AB /* Crashlytics script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Crashlytics script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		375B37515FF6842145E1B208 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

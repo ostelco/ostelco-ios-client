@@ -18,6 +18,8 @@ target 'dev-ostelco-ios-client' do
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
+  pod 'Fabric', '~> 1.9.0'
+  pod 'Crashlytics', '~> 3.12.0'
 
   target 'dev-ostelco-ios-clientTests' do
     inherit! :search_paths
@@ -43,5 +45,7 @@ target 'ostelco-ios-client' do
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
+  pod 'Fabric', '~> 1.9.0'
+  pod 'Crashlytics', '~> 3.12.0'
 
 end

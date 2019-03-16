@@ -1,6 +1,9 @@
 PODS:
   - Auth0 (1.14.1):
     - SimpleKeychain
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
   - Firebase/Core (5.17.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.6.0)
@@ -105,6 +108,8 @@ PODS:
 
 DEPENDENCIES:
   - Auth0 (~> 1.14)
+  - Crashlytics (~> 3.12.0)
+  - Fabric (~> 1.9.0)
   - Firebase/Core
   - Firebase/Performance
   - FreshchatSDK
@@ -120,6 +125,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Auth0
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -146,6 +153,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Auth0: 064dc115cd99eec7334d1cab565f4d974eecac4d
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 59d557e064217fab6a03ff00baa73c06e73832e6
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: 75e4bbc6417d190cc98ec1f17c41a4fad4c2c976
@@ -170,6 +179,6 @@ SPEC CHECKSUMS:
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
 
-PODFILE CHECKSUM: c05bdd9f049d3ad019738610d456082cafea0485
+PODFILE CHECKSUM: 87d7e76f43b3a76d6b891974811c04e663d80166
 
 COCOAPODS: 1.6.1
