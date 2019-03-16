@@ -92,8 +92,6 @@
 		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
 		04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
-		04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */; };
-		04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */; };
 		04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
@@ -222,7 +220,6 @@
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIActivityIndicator.swift"; sourceTree = "<group>"; };
-		04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeedHelpActionSheet.swift"; sourceTree = "<group>"; };
 		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController2.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPendingDownloadViewController.swift; sourceTree = "<group>"; };
@@ -460,7 +457,6 @@
 				047F28FC2224415000FC6A8F /* features */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
-				04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */,
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
@@ -1033,7 +1029,6 @@
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
-				04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
@@ -1077,7 +1072,6 @@
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
-				04834D46222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
