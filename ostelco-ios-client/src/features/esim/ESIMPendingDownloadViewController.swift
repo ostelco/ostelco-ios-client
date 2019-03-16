@@ -1,5 +1,5 @@
 //
-//  ESIMInstructionsViewController.swift
+//  ESIMPendingDownloadViewController.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 3/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ESIMInstructionsViewController: UIViewController {
+class ESIMPendingDownloadViewController: UIViewController {
     
     @IBAction func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "showHome", sender: self)

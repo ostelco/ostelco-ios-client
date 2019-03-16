@@ -74,8 +74,6 @@
 		047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F2913222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
 		047F2914222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
-		047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291E222453DA00FC6A8F /* ESimViewController.swift */; };
-		047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291E222453DA00FC6A8F /* ESimViewController.swift */; };
 		047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2921222453FE00FC6A8F /* EKYC.storyboard */; };
 		047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2921222453FE00FC6A8F /* EKYC.storyboard */; };
 		047F29252224551A00FC6A8F /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F29242224551A00FC6A8F /* ESim.storyboard */; };
@@ -98,8 +96,8 @@
 		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
-		04834D50222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
-		04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */; };
+		04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
+		04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
 		04834D592230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
 		04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D582230190800A01500 /* EKYCOhNoViewController.swift */; };
 		04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
@@ -213,7 +211,6 @@
 		047F2908222447E500FC6A8F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		047F290E22244A9800FC6A8F /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		047F2912222451DF00FC6A8F /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
-		047F291E222453DA00FC6A8F /* ESimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimViewController.swift; sourceTree = "<group>"; };
 		047F2921222453FE00FC6A8F /* EKYC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EKYC.storyboard; sourceTree = "<group>"; };
 		047F29242224551A00FC6A8F /* ESim.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ESim.storyboard; sourceTree = "<group>"; };
 		047F29272224558B00FC6A8F /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
@@ -225,7 +222,7 @@
 		04834D44222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NeedHelpActionSheet.swift"; sourceTree = "<group>"; };
 		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController2.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
-		04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
+		04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPendingDownloadViewController.swift; sourceTree = "<group>"; };
 		04834D582230190800A01500 /* EKYCOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCOhNoViewController.swift; sourceTree = "<group>"; };
 		04834D64223020DA00A01500 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
 		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -430,10 +427,9 @@
 		047F29192224536100FC6A8F /* esim */ = {
 			isa = PBXGroup;
 			children = (
-				047F291E222453DA00FC6A8F /* ESimViewController.swift */,
 				047F29242224551A00FC6A8F /* ESim.storyboard */,
 				04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */,
-				04834D4F222FC2AF00A01500 /* ESIMInstructionsViewController.swift */,
+				04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */,
 			);
 			path = esim;
 			sourceTree = "<group>";
@@ -1027,11 +1023,10 @@
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
-				047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
-				04834D50222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */,
+				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D45222EE27600A01500 /* UIViewController+NeedHelpActionSheet.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
@@ -1110,7 +1105,6 @@
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
-				047F2920222453DA00FC6A8F /* ESimViewController.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
@@ -1118,7 +1112,7 @@
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
-				04834D51222FC2AF00A01500 /* ESIMInstructionsViewController.swift in Sources */,
+				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 			);
