@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="1118" y="48"/>
         </scene>
-        <!--Instructions View Controller-->
+        <!--Pending Download View Controller-->
         <scene sceneID="oPj-wY-cH4">
             <objects>
-                <viewController id="pps-vh-Zol" customClass="ESIMInstructionsViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgR-Xv-prz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,10 +175,10 @@
             </objects>
             <point key="canvasLocation" x="1999" y="47"/>
         </scene>
-        <!--Home-->
+        <!--SignUpCompletedViewController-->
         <scene sceneID="SO1-gJ-JvP">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="KbO-PW-FZS" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="SignUpCompletedViewController" id="KbO-PW-FZS" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjE-qb-0CW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2666" y="34"/>

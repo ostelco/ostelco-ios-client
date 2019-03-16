@@ -7,10 +7,27 @@
 //
 
 import UIKit
+import Firebase
+
+// Use custom classes to get unique class names for Alerts etc
+class NeedHelpAlertController: UIAlertController {
+    
+    // Or override the viewDidAppear to set the current screen name, unfortunately this will trigger two screen_view events
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let screenName = title else {
+            return
+        }
+        let screenClass = classForCoder.description()
+        Analytics.setScreenName(screenName, screenClass: screenClass)
+    }
+    */
+}
 
 extension UIViewController {
     func showNeedHelpActionSheet() {
-        let alertCtrl = UIAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
+        let alertCtrl = NeedHelpAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
         
         let supportAction = UIAlertAction(title: "Contact Support", style: .default, handler: {_ in
             Freshchat.sharedInstance()?.showConversations(self)

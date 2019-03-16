@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
     
-    @IBAction func signInTapped(_ sender: Any) {
+    @IBAction func signInTapped(_ sender: UIButton) {
+        // Trigger custom events to record button clicks
+        Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
                 
