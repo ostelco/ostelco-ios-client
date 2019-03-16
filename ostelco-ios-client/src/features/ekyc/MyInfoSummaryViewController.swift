@@ -1,5 +1,5 @@
 //
-//  SingPassInfoViewController.swift
+//  MyInfoSummaryViewController.swift
 //  ostelco-ios-client
 //
 //  Created by Prasanth Ullattil on 27/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingPassInfoViewController: UIViewController {
+class MyInfoSummaryViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,7 +24,7 @@ class SingPassInfoViewController: UIViewController {
   }
 
   @IBAction func `continue`(_ sender: Any) {
-    performSegue(withIdentifier: "unwindFromSingPassInfoViewController", sender: self)
+    performSegue(withIdentifier: "ESim", sender: self)
   }
 
 }

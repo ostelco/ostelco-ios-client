@@ -15,6 +15,6 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        performSegue(withIdentifier: "showEKYCViewController", sender: self)
+        performSegue(withIdentifier: "selectIdentityVerificationMethod", sender: self)
     }
 }

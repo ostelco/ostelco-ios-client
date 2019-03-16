@@ -1,5 +1,5 @@
 //
-//  SingPassInfoTableViewController.swift
+//  MyInfoAddressTableViewController.swift
 //  ostelco-ios-client
 //
 //  Created by Prasanth Ullattil on 28/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingPassInfoTableViewController: UITableViewController {
+class MyInfoAddressTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

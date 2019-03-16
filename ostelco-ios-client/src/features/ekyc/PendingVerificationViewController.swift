@@ -1,5 +1,5 @@
 //
-//  EKYCWaitViewController.swift
+//  PendingVerificationViewController.swift
 //  ostelco-ios-client
 //
 //  Created by Prasanth Ullattil on 28/02/2019.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class EKYCWaitViewController: UIViewController {
+class PendingVerificationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   @IBAction func `continue`(_ sender: Any) {
-    performSegue(withIdentifier: "unwindFromEKYCWaitViewController", sender: self)
+    performSegue(withIdentifier: "ESim", sender: self)
   }
 }

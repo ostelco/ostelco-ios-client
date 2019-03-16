@@ -1,5 +1,5 @@
 //
-//  AddAddressTableViewController.swift
+//  NRICAddressTableViewController.swift
 //  ostelco-ios-client
 //
 //  Created by Prasanth Ullattil on 28/02/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddAddressTableViewController: UITableViewController {
+class NRICAddressTableViewController: UITableViewController {
   @IBOutlet weak var street: UITextField!
   @IBOutlet weak var house: UITextField!
   @IBOutlet weak var city: UITextField!

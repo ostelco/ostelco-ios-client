@@ -14,7 +14,11 @@ class FLApplication: UIApplication
 {
     override func sendAction(_ action: Selector, to target: Any?, from sender: Any?, for event: UIEvent?) -> Bool {
         if let button = sender as? UIButton {
-            Analytics.logEvent("button_tapped", parameters: ["newValue": button.title(for: .normal)!])
+            if let title = button.title(for: .normal) {
+                Analytics.logEvent("button_tapped", parameters: ["newValue": title])
+            } else {
+                Analytics.logEvent("button_tapped", parameters: ["newValue": button.accessibilityLabel ?? "button has no text"])
+            }
         }
         print("\nHold up, \(type(of: self)) again! Attempting to send \(action) to \(target) from sender \(sender.self)")
         
