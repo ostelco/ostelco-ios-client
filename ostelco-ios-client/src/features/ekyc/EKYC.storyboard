@@ -780,10 +780,10 @@
             </objects>
             <point key="canvasLocation" x="2476" y="570"/>
         </scene>
-        <!--On Boarding View Controller-->
+        <!--Verify Identity On Boarding View Controller-->
         <scene sceneID="FnT-Yi-gYc">
             <objects>
-                <viewController id="GWU-ht-SLC" customClass="EKYCOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EK-0t-Rjt"/>
                         <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>

@@ -1,5 +1,5 @@
 //
-//  EKYCOnBoardingViewController.swift
+//  VerifyIdentityOnBoardingViewController.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 3/5/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EKYCOnBoardingViewController: UIViewController {
+class VerifyIdentityOnBoardingViewController: UIViewController {
     
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
