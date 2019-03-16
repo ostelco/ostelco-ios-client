@@ -17,6 +17,7 @@ target 'dev-ostelco-ios-client' do
   pod 'RxCoreLocation', '~> 1.3.1'
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
+  pod 'Firebase/Performance'
 
   target 'dev-ostelco-ios-clientTests' do
     inherit! :search_paths
@@ -41,5 +42,6 @@ target 'ostelco-ios-client' do
   pod 'RxCoreLocation', '~> 1.3.1'
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
+  pod 'Firebase/Performance'
 
 end
