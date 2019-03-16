@@ -112,6 +112,12 @@
 		04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
 		04834D7E2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
 		04834D7F2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
+		0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
+		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
+		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
+		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
+		048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */; };
+		048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -230,6 +236,9 @@
 		04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorAlert.swift"; sourceTree = "<group>"; };
 		04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JWT+EmailClaim.swift"; sourceTree = "<group>"; };
 		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeAMemberViewController.swift; sourceTree = "<group>"; };
+		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StartApplePay.swift"; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -441,6 +450,7 @@
 				047F292A222455CF00FC6A8F /* Home.storyboard */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
+				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -461,6 +471,7 @@
 				04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */,
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
+				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -498,6 +509,7 @@
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
+				0485339F223C1882007C89F4 /* Product.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1003,12 +1015,14 @@
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
+				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
+				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
@@ -1033,6 +1047,7 @@
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
+				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
@@ -1064,6 +1079,7 @@
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
+				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
 				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -1105,6 +1121,7 @@
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
+				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
 				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
@@ -1114,6 +1131,7 @@
 				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
+				048533A1223C1882007C89F4 /* Product.swift in Sources */,
 				047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1363,7 +1381,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";
@@ -1391,7 +1409,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";

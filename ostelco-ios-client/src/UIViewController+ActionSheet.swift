@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 // Use custom classes to get unique class names for Alerts etc
 class NeedHelpAlertController: UIAlertController {
@@ -90,6 +91,24 @@ extension UIViewController {
         alertCtrl.addAction(faqAction)
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
+    
+        alertCtrl.addAction(cancelAction)
+    
+        present(alertCtrl, animated: true, completion: nil)
+    }
+
+    func showProductListActionSheet(products: [Product], delegate: PKPaymentAuthorizationViewControllerDelegate) {
+        let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for product in products {
+            let buyAction = UIAlertAction(title: product.name, style: .default, handler: {_ in
+                self.startApplePay(product: product, delegate: delegate)
+            })
+            alertCtrl.addAction(buyAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         alertCtrl.addAction(cancelAction)
         
         present(alertCtrl, animated: true, completion: nil)

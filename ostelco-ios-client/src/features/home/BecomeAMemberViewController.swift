@@ -1,54 +1,42 @@
 //
-//  HomeViewController2.swift
+//  BecomeAMemberViewController.swift
 //  ostelco-ios-client
 //
-//  Created by mac on 2/25/19.
+//  Created by mac on 3/15/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
 import UIKit
+import PassKit
 import Stripe
 import Siesta
 
-class HomeViewController2: UIViewController {
+class BecomeAMemberViewController: UIViewController {
     
     var paymentError: RequestError!
+    @IBAction func cancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    var refreshControl: UIRefreshControl!
-    var fakeHasSubscription = false
+    @IBOutlet weak var paymentButtonContainer: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scrollView.alwaysBounceVertical = true
-        scrollView.bounces  = true
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        self.scrollView.addSubview(refreshControl)
+        let paymentButton = PKPaymentButton(paymentButtonType: .buy
+            , paymentButtonStyle: .black)
+        paymentButton.translatesAutoresizingMaskIntoConstraints = false
+        paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.paymentButtonTapped), for: .touchUpInside)
+
+        paymentButtonContainer.addArrangedSubview(paymentButton)
     }
     
-    @objc func didPullToRefresh() {
-        let delayInSeconds = 4.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    @IBAction func buyDataTapped(_ sender: Any) {
-        if fakeHasSubscription {
-            let product = Product(name: "Buy 1GB for $5", amount: 5.0, country: "SG", currency: "SGD", sku: "1234")
-            showProductListActionSheet(products: [product], delegate: self)
-        } else {
-            fakeHasSubscription = true
-            performSegue(withIdentifier: "becomeMember", sender: self)
-        }
+    @objc func paymentButtonTapped() {
+        let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
+        startApplePay(product: product, delegate: self)
     }
 }
 
-extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
+extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in

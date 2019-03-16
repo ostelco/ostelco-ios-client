@@ -45,6 +45,11 @@ class SplashViewController: UIViewController {
                                 if let user: CustomerModel = data.typedContent(ifNone: nil) {
                                     UserManager.sharedInstance.user = user
                                     // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
+                                    apiManager.products.load()
+                                    .onSuccess({ data in
+                                        print(data)
+                                        print("hethetnihetihetih")
+                                    })
                                     DispatchQueue.main.async {
                                         self.performSegue(withIdentifier: "showCountry", sender: self)
                                     }
