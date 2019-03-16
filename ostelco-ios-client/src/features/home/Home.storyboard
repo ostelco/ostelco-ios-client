@@ -340,6 +340,57 @@
             </objects>
             <point key="canvasLocation" x="1125.5999999999999" y="-541.07946026986508"/>
         </scene>
+        <!--Sign Up Completed View Controller-->
+        <scene sceneID="Pnv-YV-qcM">
+            <objects>
+                <viewController storyboardIdentifier="SignUpCompletedViewController" id="JVs-I2-Efe" customClass="SignUpCompletedViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dEV-DC-gXY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="qUv-Mp-Ifn">
+                                <rect key="frame" x="16" y="84" width="375" height="118.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g71-Sf-gpW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using your 2GB of free data!  🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjB-Pp-C2r">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dX7-k0-f6N">
+                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped:" destination="JVs-I2-Efe" eventType="touchUpInside" id="GH6-vK-A7J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jh5-Ox-zNb" firstAttribute="bottom" secondItem="dX7-k0-f6N" secondAttribute="bottom" constant="64" id="87p-yy-grW"/>
+                            <constraint firstItem="qUv-Mp-Ifn" firstAttribute="leading" secondItem="Jh5-Ox-zNb" secondAttribute="leading" constant="16" id="LBm-eE-m4e"/>
+                            <constraint firstItem="dX7-k0-f6N" firstAttribute="centerX" secondItem="dEV-DC-gXY" secondAttribute="centerX" id="oEa-ce-XUR"/>
+                            <constraint firstItem="qUv-Mp-Ifn" firstAttribute="trailing" secondItem="Jh5-Ox-zNb" secondAttribute="trailing" constant="16" id="rvV-MT-VZo"/>
+                            <constraint firstItem="qUv-Mp-Ifn" firstAttribute="top" secondItem="Jh5-Ox-zNb" secondAttribute="top" constant="64" id="yDf-HV-5Kv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jh5-Ox-zNb"/>
+                    </view>
+                    <connections>
+                        <segue destination="BPF-wa-9TJ" kind="show" identifier="home" id="7d1-g5-5Fy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BPe-OC-oDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="174" y="-946"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eV1-9H-ftb">
             <objects>
