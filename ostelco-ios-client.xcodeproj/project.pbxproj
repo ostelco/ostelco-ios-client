@@ -613,6 +613,7 @@
 				0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */,
 				8BBFABC3E348661E3BAFD07A /* [CP] Embed Pods Frameworks */,
 				4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */,
+				04DE1DC1223D686D001991AB /* Crashlytics script */,
 			);
 			buildRules = (
 			);
@@ -774,6 +775,24 @@
 			shellPath = /bin/sh;
 			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/src/environments\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\nif [ \"$CONFIGURATION\" == \"Debug\" ]; then\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nelse\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\nfi\n";
 		};
+		04DE1DC1223D686D001991AB /* Crashlytics script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Crashlytics script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		375B37515FF6842145E1B208 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,6 +803,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
@@ -791,6 +812,7 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
@@ -805,6 +827,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
@@ -812,6 +836,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
@@ -882,6 +907,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
@@ -889,6 +916,7 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
@@ -903,6 +931,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
@@ -910,6 +940,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
@@ -1381,7 +1412,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";
@@ -1409,7 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ostelco-ios-client/src/environments/Development.plist";
