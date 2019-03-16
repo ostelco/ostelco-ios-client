@@ -70,8 +70,6 @@
 		047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F2913222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
 		047F2914222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
-		047F29162224520300FC6A8F /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29152224520300FC6A8F /* CountryViewController.swift */; };
-		047F29172224520300FC6A8F /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29152224520300FC6A8F /* CountryViewController.swift */; };
 		047F291C2224539900FC6A8F /* EKYCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291B2224539900FC6A8F /* EKYCViewController.swift */; };
 		047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291B2224539900FC6A8F /* EKYCViewController.swift */; };
 		047F291F222453DA00FC6A8F /* ESimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F291E222453DA00FC6A8F /* ESimViewController.swift */; };
@@ -219,7 +217,6 @@
 		047F2908222447E500FC6A8F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		047F290E22244A9800FC6A8F /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		047F2912222451DF00FC6A8F /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
-		047F29152224520300FC6A8F /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		047F291B2224539900FC6A8F /* EKYCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCViewController.swift; sourceTree = "<group>"; };
 		047F291E222453DA00FC6A8F /* ESimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimViewController.swift; sourceTree = "<group>"; };
 		047F2921222453FE00FC6A8F /* EKYC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EKYC.storyboard; sourceTree = "<group>"; };
@@ -412,7 +409,6 @@
 			isa = PBXGroup;
 			children = (
 				047F2912222451DF00FC6A8F /* Country.storyboard */,
-				047F29152224520300FC6A8F /* CountryViewController.swift */,
 				041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */,
 				041216AB2228195600455278 /* ChooseCountryViewController.swift */,
 				041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */,
@@ -1042,7 +1038,6 @@
 				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
-				047F29162224520300FC6A8F /* CountryViewController.swift in Sources */,
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
@@ -1144,7 +1139,6 @@
 				C24EE406222838950053937E /* EKYCWaitViewController.swift in Sources */,
 				047F291D2224539900FC6A8F /* EKYCViewController.swift in Sources */,
 				047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
-				047F29172224520300FC6A8F /* CountryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
