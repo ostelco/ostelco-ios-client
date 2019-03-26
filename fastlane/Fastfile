@@ -141,14 +141,14 @@ platform :ios do
     )
   end
 
-  desc "Upload all symbol files to crashlytics"
+  desc "Upload latest symbol file to crashlytics"
   lane :refresh_dsyms_beta do
-#    latest_build_number = latest_testflight_build_number(
-#      version: "1.1"
-#    )
-#    build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number)
-#    download_dsyms(version: "1.1", build_number: build_number)
-    download_dsyms
+    latest_build_number = latest_testflight_build_number(
+      version: "1.1"
+    )
+    build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
+    download_dsyms(version: "1.1", build_number: build_number)
+#   download_dsyms
     upload_symbols_to_crashlytics   # Upload them to Crashlytics
     clean_build_artifacts           # Delete the local dSYM files
   end
