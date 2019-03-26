@@ -9,8 +9,8 @@
 import UIKit
 import Auth0
 import Stripe
+import Firebase
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Freshchat.sharedInstance().initWith(freschatConfig)
         
+        FirebaseApp.configure()
+
         print("App started")
         return true
     }
@@ -74,4 +76,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-

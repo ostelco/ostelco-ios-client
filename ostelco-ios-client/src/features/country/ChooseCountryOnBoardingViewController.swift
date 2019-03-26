@@ -1,5 +1,5 @@
 //
-//  ChooseCountryOnBoardingViewController.swift
+//  VerifyCountryOnBoardingViewController.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 2/28/19.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class ChooseCountryOnBoardingViewController: UIViewController {
+class VerifyCountryOnBoardingViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -17,11 +18,11 @@ class ChooseCountryOnBoardingViewController: UIViewController {
         setTitle()
     }
     
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction func needHelpTapped(_ sender: UIButton) {
         showNeedHelpActionSheet()
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction func continueTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "displayChooseCountry", sender: self)
     }
     

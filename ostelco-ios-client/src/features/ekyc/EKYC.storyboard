@@ -10,192 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="F9x-nj-1r0">
-            <objects>
-                <viewController id="5Jv-ZB-YWH" customClass="EKYCViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vrh-iC-pOG"/>
-                        <viewControllerLayoutGuide type="bottom" id="Zlu-4P-mIg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aQf-51-GjO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mY6-el-MlI">
-                                <rect key="frame" x="16" y="52" width="343" height="29"/>
-                                <segments>
-                                    <segment title="SingPass"/>
-                                    <segment title="NRIC/FIN"/>
-                                </segments>
-                                <connections>
-                                    <action selector="switchedSegment:" destination="5Jv-ZB-YWH" eventType="valueChanged" id="Ilh-6i-MYd"/>
-                                </connections>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meC-ws-pLf">
-                                <rect key="frame" x="16" y="88" width="343" height="579"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="meC-ws-pLf" secondAttribute="trailing" constant="16" id="3jP-Oc-YYX"/>
-                            <constraint firstItem="mY6-el-MlI" firstAttribute="top" secondItem="Vrh-iC-pOG" secondAttribute="bottom" constant="32" id="BBt-Mw-Ciw"/>
-                            <constraint firstItem="meC-ws-pLf" firstAttribute="leading" secondItem="aQf-51-GjO" secondAttribute="leading" constant="16" id="O3o-wM-usC"/>
-                            <constraint firstItem="Zlu-4P-mIg" firstAttribute="top" secondItem="meC-ws-pLf" secondAttribute="bottom" id="fwU-9O-rgw"/>
-                            <constraint firstAttribute="trailing" secondItem="mY6-el-MlI" secondAttribute="trailing" constant="16" id="mG7-gV-PPl"/>
-                            <constraint firstItem="mY6-el-MlI" firstAttribute="leading" secondItem="aQf-51-GjO" secondAttribute="leading" constant="16" id="qhf-Sy-hXB"/>
-                            <constraint firstItem="meC-ws-pLf" firstAttribute="top" secondItem="Vrh-iC-pOG" secondAttribute="bottom" constant="68" id="vFJ-Ht-HvB"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="identitySegments" destination="mY6-el-MlI" id="IGc-em-zcy"/>
-                        <outlet property="nricView" destination="9l8-Li-iWM" id="7ic-Ca-YaV"/>
-                        <outlet property="placeHolderView" destination="meC-ws-pLf" id="DZy-c7-eyc"/>
-                        <outlet property="singPassErrorView" destination="spA-Ur-wtk" id="Oph-hv-FvH"/>
-                        <outlet property="singPassView" destination="ys4-ru-Id5" id="tw9-qT-ElQ"/>
-                        <segue destination="gvs-yG-kvc" kind="presentation" identifier="singPassAddress" id="Bbl-Cv-7cM"/>
-                        <segue destination="RW4-9D-Jnf" kind="unwind" identifier="unwindFromEKYCViewController" unwindAction="unwindFromEKYCViewControllerWithSender:" id="mQb-bl-j48"/>
-                        <segue destination="bUq-oj-8Tu" kind="show" identifier="yourAddress" id="mjH-ZA-mUh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LBV-gy-ZOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view hidden="YES" contentMode="scaleToFill" id="spA-Ur-wtk">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o35-8w-EJQ">
-                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At this moment SingPass service is unavailable.  Try later or continue with NRIC/FIN option above." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af5-UK-aD1">
-                            <rect key="frame" x="0.0" y="142" width="340" height="47"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35W-eV-aHj">
-                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
-                            <state key="normal" title="Continue"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWd-cn-S3R">
-                            <rect key="frame" x="131" y="583" width="78" height="30"/>
-                            <state key="normal" title="Need help?"/>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="o35-8w-EJQ" firstAttribute="top" secondItem="spA-Ur-wtk" secondAttribute="top" constant="77" id="Ctz-2a-Ggg"/>
-                        <constraint firstItem="35W-eV-aHj" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="KXT-fe-CdN"/>
-                        <constraint firstItem="af5-UK-aD1" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="bWw-i3-v0A"/>
-                        <constraint firstItem="35W-eV-aHj" firstAttribute="top" secondItem="YWd-cn-S3R" secondAttribute="bottom" constant="16" id="dH2-6P-2BF"/>
-                        <constraint firstItem="af5-UK-aD1" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="hQP-g8-N8g"/>
-                        <constraint firstItem="o35-8w-EJQ" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="k5n-OL-hJo"/>
-                        <constraint firstAttribute="bottom" secondItem="35W-eV-aHj" secondAttribute="bottom" constant="20" id="kBC-Oc-VZs"/>
-                        <constraint firstItem="YWd-cn-S3R" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="tpB-wi-XxO"/>
-                        <constraint firstItem="35W-eV-aHj" firstAttribute="width" secondItem="spA-Ur-wtk" secondAttribute="width" id="wIQ-f6-Qmh"/>
-                        <constraint firstItem="o35-8w-EJQ" firstAttribute="centerX" secondItem="spA-Ur-wtk" secondAttribute="centerX" id="zK8-NG-fyc"/>
-                        <constraint firstItem="af5-UK-aD1" firstAttribute="top" secondItem="o35-8w-EJQ" secondAttribute="bottom" constant="44" id="zop-aO-dfx"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" id="ys4-ru-Id5" customClass="SingPassView" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your Identity with SingPass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu8-66-MKS">
-                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23j-IH-8ov">
-                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
-                            <state key="normal" title="Continue"/>
-                            <connections>
-                                <action selector="continueSingPass:" destination="ys4-ru-Id5" eventType="touchUpInside" id="WYE-Fh-1IM"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4z3-XB-feo">
-                            <rect key="frame" x="131" y="584" width="78" height="30"/>
-                            <state key="normal" title="Need help?"/>
-                            <connections>
-                                <action selector="needHelpTapped:" destination="ys4-ru-Id5" eventType="touchUpInside" id="CTv-V3-CX6"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="mu8-66-MKS" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="AEZ-dM-56d"/>
-                        <constraint firstItem="mu8-66-MKS" firstAttribute="top" secondItem="ys4-ru-Id5" secondAttribute="top" constant="77" id="Y5a-WW-cgR"/>
-                        <constraint firstAttribute="bottom" secondItem="23j-IH-8ov" secondAttribute="bottom" constant="20" id="Yny-JU-mAv"/>
-                        <constraint firstItem="4z3-XB-feo" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="ZRF-tK-2QR"/>
-                        <constraint firstItem="23j-IH-8ov" firstAttribute="centerX" secondItem="ys4-ru-Id5" secondAttribute="centerX" id="dRD-At-EWS"/>
-                        <constraint firstItem="mu8-66-MKS" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="r37-Q6-lne"/>
-                        <constraint firstItem="23j-IH-8ov" firstAttribute="top" secondItem="4z3-XB-feo" secondAttribute="bottom" constant="16" id="tiv-AH-jlA"/>
-                        <constraint firstItem="23j-IH-8ov" firstAttribute="width" secondItem="ys4-ru-Id5" secondAttribute="width" id="yWP-zk-wsk"/>
-                    </constraints>
-                </view>
-                <view hidden="YES" contentMode="scaleToFill" id="9l8-Li-iWM" customClass="NricView" customModule="dev_ostelco_ios_client_app" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="680"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your NRIC/FIN ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2G-D9-eH8">
-                            <rect key="frame" x="0.0" y="77" width="340" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PbZ-5z-9P0">
-                            <rect key="frame" x="0.0" y="132" width="340" height="30"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PT7-ql-lOR">
-                            <rect key="frame" x="0.0" y="180" width="340" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-In-cja">
-                            <rect key="frame" x="0.0" y="630" width="340" height="30"/>
-                            <state key="normal" title="Continue"/>
-                            <connections>
-                                <action selector="continueNric:" destination="9l8-Li-iWM" eventType="touchUpInside" id="8rs-Gc-TxS"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Bu-56-V10">
-                            <rect key="frame" x="131" y="584" width="78" height="30"/>
-                            <state key="normal" title="Need help?"/>
-                            <connections>
-                                <action selector="needHelpTapped:" destination="9l8-Li-iWM" eventType="touchUpInside" id="h2a-FD-hbX"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="o2G-D9-eH8" firstAttribute="top" secondItem="9l8-Li-iWM" secondAttribute="top" constant="77" id="0ar-4L-vTz"/>
-                        <constraint firstItem="9Bu-56-V10" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="3mT-QE-QnO"/>
-                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="6W4-Y1-jtR"/>
-                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="top" secondItem="o2G-D9-eH8" secondAttribute="bottom" constant="34" id="7Sw-Wb-GDB"/>
-                        <constraint firstItem="o2G-D9-eH8" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="825-Su-1Ch"/>
-                        <constraint firstItem="PT7-ql-lOR" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="9Tx-ug-GIQ"/>
-                        <constraint firstItem="hbJ-In-cja" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="B5s-MN-txZ"/>
-                        <constraint firstItem="PT7-ql-lOR" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="Kdi-Tg-gXm"/>
-                        <constraint firstAttribute="bottom" secondItem="hbJ-In-cja" secondAttribute="bottom" constant="20" id="TL7-sC-f9r"/>
-                        <constraint firstItem="o2G-D9-eH8" firstAttribute="width" secondItem="9l8-Li-iWM" secondAttribute="width" id="aKf-39-apa"/>
-                        <constraint firstItem="hbJ-In-cja" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="fJ3-u6-kdh"/>
-                        <constraint firstItem="hbJ-In-cja" firstAttribute="top" secondItem="9Bu-56-V10" secondAttribute="bottom" constant="16" id="fKE-jq-fpz"/>
-                        <constraint firstItem="PbZ-5z-9P0" firstAttribute="centerX" secondItem="9l8-Li-iWM" secondAttribute="centerX" id="pGT-B4-7Wd"/>
-                        <constraint firstItem="PT7-ql-lOR" firstAttribute="top" secondItem="PbZ-5z-9P0" secondAttribute="bottom" constant="18" id="z5y-KQ-iOq"/>
-                    </constraints>
-                </view>
-                <exit id="RW4-9D-Jnf" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="-196.55172413793105"/>
-        </scene>
-        <!--Sing Pass Info View Controller-->
+        <!--My Info Summary View Controller-->
         <scene sceneID="3mU-yK-PLV">
             <objects>
-                <viewController id="gvs-yG-kvc" customClass="SingPassInfoViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gvs-yG-kvc" customClass="MyInfoSummaryViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQM-7o-Qx8"/>
                         <viewControllerLayoutGuide type="bottom" id="p4c-8F-xgI"/>
@@ -351,17 +169,18 @@
                     </view>
                     <connections>
                         <segue destination="OFz-aP-YwN" kind="unwind" identifier="unwindFromSingPassInfoViewController" unwindAction="unwindFromSingPassInfoViewControllerWithSender:" id="S4a-3T-cW7"/>
+                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="ALh-un-KZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ast-8l-C3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OFz-aP-YwN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-197.45127436281859"/>
+            <point key="canvasLocation" x="1177" y="-997"/>
         </scene>
         <!--Edit Address-->
         <scene sceneID="OT1-Er-1Jm">
             <objects>
-                <tableViewController id="Z4a-hk-Jlp" customClass="SingPassInfoTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Z4a-hk-Jlp" customClass="MyInfoAddressTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Mxf-q3-qWZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -513,7 +332,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMb-GI-6zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524" y="-197"/>
+            <point key="canvasLocation" x="3020" y="-997"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kSQ-5R-375">
@@ -531,12 +350,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWi-gG-ber" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558" y="-197"/>
+            <point key="canvasLocation" x="2108" y="-997"/>
         </scene>
         <!--Edit Address-->
         <scene sceneID="6FI-dE-Kkt">
             <objects>
-                <tableViewController id="GyT-sQ-v0T" customClass="AddAddressTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GyT-sQ-v0T" customClass="NRICAddressTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wyw-FS-46c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -691,7 +510,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8Y-fe-6CE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607.2" y="569.86506746626696"/>
+            <point key="canvasLocation" x="3020" y="-1809"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b5m-fP-vam">
@@ -709,12 +528,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVe-x6-b6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="569.86506746626696"/>
+            <point key="canvasLocation" x="2108" y="-1809"/>
         </scene>
-        <!--Wait View Controller-->
+        <!--Pending Verification View Controller-->
         <scene sceneID="Yb3-dm-dAj">
             <objects>
-                <viewController storyboardIdentifier="EKYCWaitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PEw-c6-lRR" customClass="EKYCWaitViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EKYCWaitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PEw-c6-lRR" customClass="PendingVerificationViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SoL-x3-Nzu"/>
                         <viewControllerLayoutGuide type="bottom" id="iV4-pi-NqU"/>
@@ -773,17 +592,96 @@
                     </view>
                     <connections>
                         <segue destination="eeW-Of-mhh" kind="unwind" identifier="unwindFromEKYCWaitViewController" unwindAction="unwindFromEKYCWaitViewControllerWithSender:" id="IfG-Jp-xgR"/>
+                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="lEw-Lv-iIN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIe-uV-Yux" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eeW-Of-mhh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2476" y="570"/>
+            <point key="canvasLocation" x="3898" y="-1809"/>
         </scene>
-        <!--On Boarding View Controller-->
+        <!--ESim-->
+        <scene sceneID="GQS-FY-mjD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ESim" id="DJz-ge-RMU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIm-iG-RYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3866" y="-533"/>
+        </scene>
+        <!--Select Identity Verification Method View Controller-->
+        <scene sceneID="nqs-MO-FZ3">
+            <objects>
+                <viewController id="OlM-wU-Qkj" customClass="SelectIdentityVerificationMethodViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bzd-Q9-9Aw"/>
+                        <viewControllerLayoutGuide type="bottom" id="2kh-cD-2FL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BiG-lB-MH2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hiY-Vs-u14">
+                                <rect key="frame" x="0.0" y="84" width="375" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity with:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL3-Nv-mN3">
+                                        <rect key="frame" x="81.5" y="0.0" width="212" height="84"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCb-jf-0hH">
+                                        <rect key="frame" x="149.5" y="100" width="76" height="36"/>
+                                        <accessibility key="accessibilityConfiguration" label="singpass"/>
+                                        <state key="normal" image="singpass"/>
+                                        <connections>
+                                            <action selector="singPassTapped:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="FQw-um-wLu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tp-Nd-ZTX">
+                                        <rect key="frame" x="167.5" y="152" width="40" height="42"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPJ-kb-Mip">
+                                        <rect key="frame" x="152" y="210" width="71" height="30"/>
+                                        <state key="normal" title="NRIC / FIN"/>
+                                        <connections>
+                                            <action selector="nricTapped:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="52Q-dL-4Ia"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1J-bp-uX1">
+                                <rect key="frame" x="148.5" y="573" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="wph-HM-hyl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hiY-Vs-u14" firstAttribute="leading" secondItem="BiG-lB-MH2" secondAttribute="leading" id="3Gd-RD-D60"/>
+                            <constraint firstItem="2kh-cD-2FL" firstAttribute="top" secondItem="O1J-bp-uX1" secondAttribute="bottom" constant="64" id="7Zs-Vr-OqB"/>
+                            <constraint firstAttribute="trailing" secondItem="hiY-Vs-u14" secondAttribute="trailing" id="d8h-fW-OkW"/>
+                            <constraint firstItem="hiY-Vs-u14" firstAttribute="top" secondItem="bzd-Q9-9Aw" secondAttribute="bottom" constant="64" id="nWJ-Ca-Ej2"/>
+                            <constraint firstItem="O1J-bp-uX1" firstAttribute="centerX" secondItem="BiG-lB-MH2" secondAttribute="centerX" id="veh-jU-5tE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="6Sh-M6-Cr3" kind="show" identifier="nricVerify" id="TYT-E6-7Al"/>
+                        <segue destination="gvs-yG-kvc" kind="show" identifier="myInfoSummary" id="bEO-EU-hWV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXu-Xb-Er1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="254" y="-1809"/>
+        </scene>
+        <!--Verify Identity On Boarding View Controller-->
         <scene sceneID="FnT-Yi-gYc">
             <objects>
-                <viewController id="GWU-ht-SLC" customClass="EKYCOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EK-0t-Rjt"/>
                         <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>
@@ -874,12 +772,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="5Jv-ZB-YWH" kind="show" identifier="showEKYCViewController" id="jsh-LO-X8W"/>
+                        <segue destination="OlM-wU-Qkj" kind="show" identifier="selectIdentityVerificationMethod" id="NKR-kR-4qw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOV-rO-7eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="-1213"/>
+            <point key="canvasLocation" x="-689" y="-1809"/>
         </scene>
         <!--Oh No View Controller-->
         <scene sceneID="rLD-VX-VAX">
@@ -940,14 +838,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSU-if-gnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="-1213"/>
+            <point key="canvasLocation" x="-690" y="-2725"/>
+        </scene>
+        <!--Verify View Controller-->
+        <scene sceneID="Vhr-RP-qdq">
+            <objects>
+                <viewController id="6Sh-M6-Cr3" customClass="NRCIVerifyViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLB-PI-vfj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tpz-qF-L8m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="jmA-X2-ROD">
+                                <rect key="frame" x="16" y="84" width="343" height="197.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your NRIC/FIN?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEw-Za-1UP">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="84"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g S XXX XXX XXD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MrK-sD-vRV" userLabel="NRIC Text Field">
+                                        <rect key="frame" x="0.0" y="116" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This seems to be an invalid NRIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYU-MR-oD9">
+                                        <rect key="frame" x="0.0" y="178" width="343" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="J4y-Y5-qsj">
+                                <rect key="frame" x="0.0" y="527" width="375" height="76"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv2-1J-Hak">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <state key="normal" title="Need help?"/>
+                                        <connections>
+                                            <action selector="needHelpTapped:" destination="6Sh-M6-Cr3" eventType="touchUpInside" id="0oS-XB-bc9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-Xb-HHw">
+                                        <rect key="frame" x="0.0" y="46" width="375" height="30"/>
+                                        <state key="normal" title="Continue"/>
+                                        <connections>
+                                            <action selector="continueTapped:" destination="6Sh-M6-Cr3" eventType="touchUpInside" id="w4z-TA-JSq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jmA-X2-ROD" firstAttribute="top" secondItem="nLB-PI-vfj" secondAttribute="bottom" constant="64" id="CmI-D9-Hi5"/>
+                            <constraint firstAttribute="trailing" secondItem="J4y-Y5-qsj" secondAttribute="trailing" id="Nuw-n0-cZ1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jmA-X2-ROD" secondAttribute="trailing" id="ReA-9E-CUf"/>
+                            <constraint firstAttribute="bottom" secondItem="J4y-Y5-qsj" secondAttribute="bottom" constant="64" id="gmC-qz-Znd"/>
+                            <constraint firstItem="jmA-X2-ROD" firstAttribute="leading" secondItem="tpz-qF-L8m" secondAttribute="leadingMargin" id="rDh-t4-jtQ"/>
+                            <constraint firstItem="J4y-Y5-qsj" firstAttribute="leading" secondItem="tpz-qF-L8m" secondAttribute="leading" id="rS6-S4-jYT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nricTextField" destination="MrK-sD-vRV" id="xvp-EU-v5f"/>
+                        <segue destination="bUq-oj-8Tu" kind="show" identifier="yourAddress" id="FWX-SL-N9R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-Wf-gOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="-1809"/>
         </scene>
     </scenes>
     <resources>
+        <image name="singpass" width="76" height="36"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <image name="stepDoneIcon" width="25" height="25"/>
         <namedColor name="PeacockBlue">
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ALh-un-KZb"/>
+    </inferredMetricsTieBreakers>
 </document>

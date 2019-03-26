@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Countries Table View Controller-->
+        <!--Verify Country On Boarding View Controller-->
         <scene sceneID="IJh-64-weN">
             <objects>
                 <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="1650" y="-638"/>
         </scene>
-        <!--Choose Country On Boarding View Controller-->
+        <!--Verify Country On Boarding View Controller-->
         <scene sceneID="kRV-OE-jZn">
             <objects>
-                <viewController id="LdJ-hc-ks3" customClass="ChooseCountryOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LdJ-hc-ks3" customClass="VerifyCountryOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GkR-0X-0d9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
