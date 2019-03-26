@@ -22,17 +22,35 @@ class BecomeAMemberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let paymentButton = PKPaymentButton(paymentButtonType: .buy
-            , paymentButtonStyle: .black)
-        paymentButton.translatesAutoresizingMaskIntoConstraints = false
-        paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.paymentButtonTapped), for: .touchUpInside)
+        
+        
+        // 1. Make sure device supports apple pay and that there are no other restrictions preventing payment (like parental control)
+        if PKPaymentAuthorizationViewController.canMakePayments() {
+            
+            let paymentButton: PKPaymentButton
 
-        paymentButtonContainer.addArrangedSubview(paymentButton)
+            // 2. Check if user has a stripe supported card in its wallet
+            if Stripe.deviceSupportsApplePay() {
+                paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
+                paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.buyButtonTapped), for: .touchUpInside)
+            } else {
+                paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+                paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.setUpButtonTapped), for: .touchUpInside)
+            }
+            
+            paymentButton.translatesAutoresizingMaskIntoConstraints = false
+            paymentButtonContainer.addArrangedSubview(paymentButton)
+        }
+        
     }
     
-    @objc func paymentButtonTapped() {
+    @objc func buyButtonTapped() {
         let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
         startApplePay(product: product, delegate: self)
+    }
+    
+    @objc func setUpButtonTapped() {
+        PKPassLibrary().openPaymentSetup()
     }
 }
 
