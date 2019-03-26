@@ -162,7 +162,7 @@ extension UIColor {
         var b: CGFloat = 0.0
         var a: CGFloat = 1.0
         
-        let length = hexSanitized.characters.count
+        let length = hexSanitized.count
         
         guard Scanner(string: hexSanitized).scanHexInt32(&rgb) else { return nil }
         
@@ -274,7 +274,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         Freshchat.sharedInstance().unreadCount { (unreadCount) in
             self.updateBadgeCount(count: unreadCount)
         }
-        if tabBarController.viewControllers!.index(of: viewController) == 1 {
+        if tabBarController.viewControllers!.firstIndex(of: viewController) == 1 {
             updateBadgeCount(count: 0)
             Freshchat.sharedInstance().showConversations(self)
             return false
