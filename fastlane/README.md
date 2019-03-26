@@ -41,6 +41,11 @@ Installs the certificates and profiles locally
 fastlane ios test
 ```
 Runs all the tests
+### ios refresh_dsyms
+```
+fastlane ios refresh_dsyms
+```
+
 
 ----
 
