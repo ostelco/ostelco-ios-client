@@ -11,6 +11,9 @@ for_platform :ios do
   for_lane :tfbeta do
     app_identifier 'sg.redotter.dev.selfcare'
   end
+  for_lane :refresh_dsyms_beta do
+    app_identifier 'sg.redotter.dev.selfcare'
+  end
   for_lane :localbeta do
     app_identifier 'sg.redotter.dev.selfcare'
   end

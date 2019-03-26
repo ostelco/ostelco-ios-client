@@ -41,11 +41,11 @@ Installs the certificates and profiles locally
 fastlane ios test
 ```
 Runs all the tests
-### ios refresh_dsyms
+### ios refresh_dsyms_beta
 ```
-fastlane ios refresh_dsyms
+fastlane ios refresh_dsyms_beta
 ```
-
+Upload latest symbol file to crashlytics
 
 ----
 
