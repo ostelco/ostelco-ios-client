@@ -75,7 +75,7 @@ class SplashViewController: UIViewController {
                 }
             }
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "showSignUp", sender: self)
+                self.performSegue(withIdentifier: "showLogin", sender: self)
             }
         }
         
