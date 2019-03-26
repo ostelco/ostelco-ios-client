@@ -645,6 +645,7 @@
 					};
 					C2236F09218A414C00B135C0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 1;
@@ -653,6 +654,7 @@
 						TestTargetID = C29802A82181EDA800FBC5C3;
 					};
 					C29802A82181EDA800FBC5C3 = {
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 1;
@@ -1375,7 +1377,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.dev-ostelco-ios-clientTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
 			};
@@ -1398,7 +1400,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "sg.redotter.dev-ostelco-ios-clientTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
 			};
@@ -1425,7 +1427,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.dev.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1453,7 +1455,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.dev.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/ostelco-ios-client-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
