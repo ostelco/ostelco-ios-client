@@ -10,7 +10,7 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 #include "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"
 #include "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"
-server_url = https:\/\/api.ostelco.org
+server_url = https:\/\/api.oya.world
 stripe_publishable_key = pk_live_TapwcFFxZ4ebhimyTvXSIWPY
 auth0_client_id = ExfkvmnHoRwJfaIq4agVh14hJ5jo3zVO
 auth0_domain = auth.oya.world
