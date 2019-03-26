@@ -45,7 +45,7 @@ Runs all the tests
 ```
 fastlane ios refresh_dsyms_beta
 ```
-Upload all symbol files to crashlytics
+Upload latest symbol file to crashlytics
 
 ----
 
