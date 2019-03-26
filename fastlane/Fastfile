@@ -140,6 +140,8 @@ platform :ios do
       devices: ["iPhone X"]
     )
   end
+
+  desc "Upload all symbol files to crashlytics"
   lane :refresh_dsyms_beta do
 #    latest_build_number = latest_testflight_build_number(
 #      version: "1.1"
