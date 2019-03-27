@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -37,12 +33,20 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>30</string>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://dl-dev.oya.world/links</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Used for verifying your identity</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -88,17 +92,13 @@
 	<string>$(freshchat_app_id)</string>
 	<key>freshchat_app_key</key>
 	<string>$(freshchat_app_key)</string>
+	<key>jumio_secret</key>
+	<string>$(jumio_secret)</string>
+	<key>jumio_token</key>
+	<string>$(jumio_token)</string>
 	<key>server_url</key>
 	<string>$(server_url)</string>
 	<key>stripe_publishable_key</key>
 	<string>$(stripe_publishable_key)</string>
-	<key>jumio_token</key>
-	<string>$(jumio_token)</string>
-	<key>jumio_secret</key>
-	<string>$(jumio_secret)</string>
-	<key>FirebaseDynamicLinksCustomDomains</key>
-	<array>
-		<string>https://dl-dev.oya.world/dynamiclinks</string>
-	</array>
 </dict>
 </plist>
