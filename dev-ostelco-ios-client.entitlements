@@ -4,6 +4,10 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:dl-dev.oya.world</string>
+	</array>
 	<key>com.apple.developer.in-app-payments</key>
 	<array>
 		<string>merchant.sg.redotter.dev.selfcare</string>

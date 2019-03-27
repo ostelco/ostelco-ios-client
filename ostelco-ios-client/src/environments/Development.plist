@@ -96,5 +96,9 @@
 	<string>$(jumio_token)</string>
 	<key>jumio_secret</key>
 	<string>$(jumio_secret)</string>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://dl-dev.oya.world/dynamiclinks</string>
+	</array>
 </dict>
 </plist>
