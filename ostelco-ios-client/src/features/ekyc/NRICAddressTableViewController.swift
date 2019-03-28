@@ -38,13 +38,11 @@ class NRICAddressTableViewController: UITableViewController {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         APIManager.sharedInstance.regions.child(countryCode).child("kyc/profile")
         .request(.put, urlEncoded: ["address": "", "phoneNumber": ""])
-            .onSuccess { entity in
+            .onSuccess { data in
                 print("------------_")
-                print(entity)
-                print(entity.text)
-                print(entity.content)
-                print(entity.jsonArray)
-                print(entity.jsonDict)
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+                } catch }
                 print("------------_")
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "waitForDocs", sender: self)
