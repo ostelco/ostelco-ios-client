@@ -41,8 +41,9 @@ class NRICAddressTableViewController: UITableViewController {
             .onSuccess { data in
                 print("------------_")
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                } catch }
+                    let json = try JSONSerialization.jsonObject(with: data.content as! Data, options: []) as? [String : Any]
+                    print(json)
+                } catch {}
                 print("------------_")
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "waitForDocs", sender: self)
