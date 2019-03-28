@@ -20,6 +20,9 @@ public enum PlistKey {
   case BugseeToken
   case JumioToken
   case JumioSecret
+  case MyInfoURL
+  case MyInfoClientID
+  case MyInfoCallbackURL
 
   func value() -> String {
     switch self {
@@ -45,6 +48,12 @@ public enum PlistKey {
       return "jumio_token"
     case .JumioSecret:
       return "jumio_secret"
+    case .MyInfoURL:
+      return "myinfo_url"
+    case .MyInfoClientID:
+      return "myinfo_client_id"
+    case .MyInfoCallbackURL:
+      return "myinfo_callback_url"
     }
   }
 }
@@ -85,6 +94,12 @@ public struct Environment {
       dictKey = PlistKey.JumioToken.value()
     case .JumioSecret:
       dictKey = PlistKey.JumioSecret.value()
+    case .MyInfoURL:
+      dictKey = PlistKey.MyInfoURL.value()
+    case .MyInfoClientID:
+      dictKey = PlistKey.MyInfoClientID.value()
+    case .MyInfoCallbackURL:
+      dictKey = PlistKey.MyInfoCallbackURL.value()
     }
     return (infoDict[dictKey] as! String).replacingOccurrences(of: "\\", with: "")
   }

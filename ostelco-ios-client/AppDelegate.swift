@@ -14,6 +14,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var myInfoDelegate: MyInfoCallbackHandler?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -85,20 +86,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print("Incoming link = \(url.absoluteString)")
   }
 
+  func handleMyInfoCallback(_ url: URL) -> Bool {
+    // Check if this is one of the approved URL for MyIfo.
+    if let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: false) {
+      myInfoDelegate?.handleCallback(queryItems: urlComponents.queryItems, error: nil)
+    }
+    return true
+  }
+
   func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     if let incomingURL = userActivity.webpageURL {
       print("Incoming URL is \(incomingURL)")
-      let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
-        guard error == nil else {
-          print("Found an error \(error!.localizedDescription)")
-          return
-        }
-        if let dynamicLink = dynamicLink {
-          self.handleDynamicLink(dynamicLink)
-        }
-      }
-      return linkHandled
+      return handleMyInfoCallback(incomingURL)
+//      let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
+//        guard error == nil else {
+//          print("Found an error \(error!.localizedDescription)")
+//          return
+//        }
+//        if let dynamicLink = dynamicLink {
+//          self.handleDynamicLink(dynamicLink)
+//        }
+//      }
+//      return linkHandled
     }
     return false
   }
+
+}
+
+protocol MyInfoCallbackHandler {
+  func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
 }
