@@ -42,8 +42,12 @@ class APIManager: Service {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
         }
         
-        // configureTransformer("/regions/*/kyc/jumio/scans") {
-        //    try self.jsonDecoder.decode(Scan.self, from: $0.content)
-        //}
+        configureTransformer("/regions/*/kyc/jumio/scans") {
+            try self.jsonDecoder.decode(Scan.self, from: $0.content)
+        }
+        
+        configureTransformer("/regions/*") {
+            try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
+        }
     }
 }
