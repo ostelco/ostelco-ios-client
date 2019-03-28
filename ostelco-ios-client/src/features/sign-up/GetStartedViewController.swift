@@ -15,8 +15,8 @@ class GetStartedViewController: UIViewController {
         self.showSpinner(onView: self.view)
         let email = getEmailFromJWT()
         
-        if email != nil {
-            APIManager.sharedInstance.customer.request(.post, json: ["name": nameTextField.text!, "email": email])
+        if let email = email {
+            APIManager.sharedInstance.customer.withParam("nickname", nameTextField.text!).withParam("contactEmail", email).request(.post, json: [:])
                 .onSuccess({ data in
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "showCountry", sender: self)
