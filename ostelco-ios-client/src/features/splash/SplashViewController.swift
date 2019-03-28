@@ -40,16 +40,35 @@ class SplashViewController: UIViewController {
                         */
                         
                         self.showSpinner(onView: self.view)
-                        apiManager.customer.load()
+                        apiManager.context.load()
                             .onSuccess({ data in
-                                if let user: CustomerModel = data.typedContent(ifNone: nil) {
-                                    UserManager.sharedInstance.user = user
-                                    // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
-                                    DispatchQueue.main.async {
-                                        self.performSegue(withIdentifier: "showCountry", sender: self)
+                                if let context: Context = data.typedContent(ifNone: nil) {
+                                    UserManager.sharedInstance.user = context.customer
+                                    
+                                    var segueIdentifier: String
+                                    
+                                    if let region = context.getRegion() {
+                                        switch region.status {
+                                        case "PENDING":
+                                            segueIdentifier = "showEKYCLastScreen"
+                                        case "APPROVED":
+                                            // TODO: Redirect based on sim profiles in region
+                                            segueIdentifier = "showESim"
+                                        case "REJECTED":
+                                            segueIdentifier = "showEKYCOhNo"
+                                        default:
+                                            segueIdentifier = "showCountry"
+                                        }
+                                        DispatchQueue.main.async {
+                                            self.performSegue(withIdentifier: segueIdentifier, sender: self)
+                                        }
+                                    } else {
+                                        DispatchQueue.main.async {
+                                            self.performSegue(withIdentifier: "showCountry", sender: self)
+                                        }
                                     }
                                 } else {
-                                    preconditionFailure("Failed to parse user from server response.")
+                                    preconditionFailure("Failed to parse user context from server response.")
                                 }
                             })
                             .onFailure({ error in
@@ -60,10 +79,10 @@ class SplashViewController: UIViewController {
                                             self.performSegue(withIdentifier: "showSignUp", sender: self)
                                         }
                                     default:
-                                        preconditionFailure("Failed to fetch user profile from server: \(error.userMessage)")
+                                        preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
                                     }
                                 } else {
-                                    preconditionFailure("Failed to fetch user profile from server: \(error.userMessage)")
+                                    preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
                                 }
                             })
                             .onCompletion({ _ in

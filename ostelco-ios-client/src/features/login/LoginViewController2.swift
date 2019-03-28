@@ -21,18 +21,38 @@ class LoginViewController2: UIViewController {
                 // TODO: Duplicated logic from SplashViewController
                 DispatchQueue.main.async {
                     self.showSpinner(onView: self.view)
-                    APIManager.sharedInstance.customer.load()
+                    APIManager.sharedInstance.context.load()
                         .onSuccess({ data in
-                            if let user: CustomerModel = data.typedContent(ifNone: nil) {
-                                UserManager.sharedInstance.user = user
-                                // TODO: Should check user data and redirect based on user state, for now always assume ekyc user is missing ekyc
-                                DispatchQueue.main.async {
-                                    // TODO: For some reason, the afterDelay needs more than 0.0 when we try to navigate from the auth0 callback.
-                                    // In the old client, we used to set the root controller instead of performing a segue or using present
-                                    self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                            if let context: Context = data.typedContent(ifNone: nil) {
+                                UserManager.sharedInstance.user = context.customer
+                                                                
+                                if let region = context.getRegion() {
+                                    switch region.status {
+                                    case "PENDING":
+                                        DispatchQueue.main.async {
+                                            self.perform(#selector(self.showEKYCLastScreen), with: nil, afterDelay: 0.5)
+                                        }
+                                    case "APPROVED":
+                                        // TODO: Redirect based on sim profiles in region
+                                        DispatchQueue.main.async {
+                                            self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
+                                        }
+                                    case "REJECTED":
+                                        DispatchQueue.main.async {
+                                            self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
+                                        }
+                                    default:
+                                        DispatchQueue.main.async {
+                                            self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                                        }
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                                    }
                                 }
                             } else {
-                                preconditionFailure("Failed to parse user from server response.")
+                                preconditionFailure("Failed to parse user context from server response.")
                             }
                         })
                         .onFailure({ error in
@@ -43,10 +63,10 @@ class LoginViewController2: UIViewController {
                                         self.performSegue(withIdentifier: "showSignUp", sender: self)
                                     }
                                 default:
-                                    preconditionFailure("Failed to fetch user profile from server: \(error.userMessage)")
+                                    preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
                                 }
                             } else {
-                                preconditionFailure("Failed to fetch user profile from server: \(error.userMessage)")
+                                preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
                             }
                         })
                         .onCompletion({ _ in
@@ -68,6 +88,18 @@ class LoginViewController2: UIViewController {
     
     @objc private func showSignUp() {
         performSegue(withIdentifier: "showSignUp", sender: nil)
+    }
+    
+    @objc private func showEKYCLastScreen() {
+        performSegue(withIdentifier: "showEKYCLastScreen", sender: nil)
+    }
+    
+    @objc private func showEKYCOhNo() {
+        performSegue(withIdentifier: "showEKYCOhNo", sender: nil)
+    }
+    
+    @objc private func showESim() {
+        performSegue(withIdentifier: "showESim", sender: nil)
     }
     
     private func handleLoginFailure(message: String) {

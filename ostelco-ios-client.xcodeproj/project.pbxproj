@@ -43,6 +43,8 @@
 		0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF82224D1DAE0022A2B8 /* Region.swift */; };
 		0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF85224D1E020022A2B8 /* SimProfile.swift */; };
 		0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF85224D1E020022A2B8 /* SimProfile.swift */; };
+		0437CF89224D3B380022A2B8 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
+		0437CF8A224D3B380022A2B8 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E71112239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
@@ -207,6 +209,7 @@
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
+		0437CF88224D3B380022A2B8 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		043E71102239F1D300E01993 /* FLApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLApplication.swift; sourceTree = "<group>"; };
 		043E711A223AF3CF00E01993 /* OnBoardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingManager.swift; sourceTree = "<group>"; };
@@ -540,6 +543,7 @@
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
+				0437CF88224D3B380022A2B8 /* Context.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1113,6 +1117,7 @@
 				044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
+				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -1195,6 +1200,7 @@
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
+				0437CF8A224D3B380022A2B8 /* Context.swift in Sources */,
 				041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
