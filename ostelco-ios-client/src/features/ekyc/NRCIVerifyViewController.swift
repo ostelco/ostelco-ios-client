@@ -20,7 +20,30 @@ class NRCIVerifyViewController: UIViewController {
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        startNetverify()
+        // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
+        if let nric = nricTextField.text, !nric.isEmpty {
+            let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+            APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
+                .onSuccess { entity in
+                    print("------------_")
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
+                        print(json)
+                    } catch {
+                        
+                    }
+                    print("------------_")
+                    self.startNetverify()
+                }
+                .onFailure { error in
+                    self.showAPIError(error: error) { _ in
+                        self.startNetverify()
+                    }
+                }
+            
+        } else {
+            showAlert(title: "Error", msg: "NRIC field can't be empty")
+        }
     }
 }
 
@@ -28,7 +51,26 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
     func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
         // This method should fetch new scanId from our server
-        completion(UUID().uuidString, nil)
+        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        APIManager.sharedInstance.regions.child(countryCode).child("/kyc/jumio/scans")
+            .request(.post, json: [])
+            .onSuccess { data in
+                if let scan: Scan = data.typedContent(ifNone: nil) {
+                    completion(scan.scanId, nil)
+                } else {
+                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
+                    completion(nil, NSError(domain: "", code: 0, userInfo: nil))
+                }
+            }
+            .onFailure { error in
+                self.showAPIError(error: error)
+                if let cause = error.cause {
+                    completion(nil, cause)
+                } else {
+                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
+                    completion(nil, NSError(domain: "", code: error.httpStatusCode ?? 0, userInfo: nil))
+                }
+            }
     }
     
     func createNetverifyController() {
@@ -70,6 +112,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     }
     
     func startNetverify() -> Void {
+        //self.performSegue(withIdentifier: "yourAddress", sender: self)
         getnewScanId() { (scanId, error) in
             if let scanId: String = scanId {
                 print("Retrieved \(scanId)")

@@ -21,6 +21,7 @@ class APIManager: Service {
     
     var customer: Resource { return resource("/customer") }
     var products: Resource { return resource("/products" )}
+    var regions: Resource { return resource("/regions") }
     
     fileprivate init() {
         #if DEBUG
@@ -39,6 +40,14 @@ class APIManager: Service {
         
         configureTransformer("/customer") {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
+        }
+        
+        configureTransformer("/regions/*/kyc/jumio/scans") {
+            try self.jsonDecoder.decode(Scan.self, from: $0.content)
+        }
+        
+        configureTransformer("/regions/*") {
+            try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
         }
     }
 }

@@ -550,7 +550,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qy-Ku-CsZ">
                                 <rect key="frame" x="24" y="617" width="329" height="30"/>
-                                <state key="normal" title="Continue"/>
+                                <state key="normal" title="Check Again"/>
                                 <connections>
                                     <action selector="continue:" destination="PEw-c6-lRR" eventType="touchUpInside" id="qij-8q-9b2"/>
                                 </connections>
@@ -924,6 +924,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ALh-un-KZb"/>
+        <segue reference="lEw-Lv-iIN"/>
     </inferredMetricsTieBreakers>
 </document>
