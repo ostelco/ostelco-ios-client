@@ -92,5 +92,11 @@
 	<string>$(server_url)</string>
 	<key>stripe_publishable_key</key>
 	<string>$(stripe_publishable_key)</string>
+	<key>myinfo_url</key>
+	<string>https://myinfosgstg.api.gov.sg/test/v2/authorise</string>
+	<key>myinfo_client_id</key>
+	<string>STG2-MYINFO-SELF-TEST</string>
+	<key>myinfo_callback_url</key>
+	<string>http://localhost:3001/callback</string>
 </dict>
 </plist>
