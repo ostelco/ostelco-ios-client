@@ -20,7 +20,29 @@ class NRCIVerifyViewController: UIViewController {
     }
     
     @IBAction func continueTapped(_ sender: Any) {
-        startNetverify()
+        // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
+        if let nric = nricTextField.text, !nric.isEmpty {
+            let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+            APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
+                .onSuccess { entity in
+                    print("------------_")
+                    print(entity)
+                    print(entity.text)
+                    print(entity.content)
+                    print(entity.jsonArray)
+                    print(entity.jsonDict)
+                    print("------------_")
+                    self.startNetverify()
+                }
+                .onFailure { error in
+                    self.showAPIError(error: error) { _ in
+                        self.startNetverify()
+                    }
+                }
+            
+        } else {
+            showAlert(title: "Error", msg: "NRIC field can't be empty")
+        }
     }
 }
 

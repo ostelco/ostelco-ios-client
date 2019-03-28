@@ -10,7 +10,7 @@ import UIKit
 import Siesta
 
 extension UIViewController {
-    func showAPIError(error: RequestError) {
+    func showAPIError(error: RequestError, completion: ((_:UIAlertAction) -> Void)? = nil) {
         var message = ""
         var title = ""
         if let statusCode = error.httpStatusCode {
@@ -28,7 +28,7 @@ extension UIViewController {
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: completion))
         
         present(alert, animated: true, completion: nil)
     }
