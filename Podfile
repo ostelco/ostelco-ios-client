@@ -18,6 +18,7 @@ target 'dev-ostelco-ios-client' do
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
+  pod 'Firebase/DynamicLinks'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
 
@@ -45,6 +46,7 @@ target 'ostelco-ios-client' do
   pod 'JWTDecode', '~> 2.2'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
+  pod 'Firebase/DynamicLinks'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
 

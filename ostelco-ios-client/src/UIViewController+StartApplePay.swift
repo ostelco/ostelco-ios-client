@@ -13,8 +13,13 @@ extension UIViewController {
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
         
+        if (!PKPaymentAuthorizationViewController.canMakePayments()) {
+            self.showAlert(title: "Payment Error", msg: "Your device does not support apple pay")
+            return
+        }
+        
         if (!Stripe.deviceSupportsApplePay()) {
-            self.showAlert(title: "Payment Error", msg: "Device not supported.")
+            self.showAlert(title: "Payment Error", msg: "You need to setup a card in your wallet, we support the following cards: American Express, Visa, Mastercard, Discover")
             return
         }
         

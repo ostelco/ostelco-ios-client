@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      print("URL = \(url.absoluteString)")
         return Auth0.resumeAuth(url, options: options)
     }
  
@@ -75,4 +76,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Freshchat.sharedInstance().handleRemoteNotification(userInfo, andAppstate: application.applicationState)
         }
     }
+  func handleDynamicLink( _ dynamicLink: DynamicLink) {
+    guard let url = dynamicLink.url else {
+      print("No dynamic link object")
+      return
+    }
+    print("Dynamic link = \(dynamicLink)")
+    print("Incoming link = \(url.absoluteString)")
+  }
+
+  func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    if let incomingURL = userActivity.webpageURL {
+      print("Incoming URL is \(incomingURL)")
+      let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
+        guard error == nil else {
+          print("Found an error \(error!.localizedDescription)")
+          return
+        }
+        if let dynamicLink = dynamicLink {
+          self.handleDynamicLink(dynamicLink)
+        }
+      }
+      return linkHandled
+    }
+    return false
+  }
 }
