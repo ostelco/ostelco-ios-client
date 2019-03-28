@@ -11,15 +11,14 @@ import CoreLocation
 import RxSwift
 import RxCoreLocation
 
-class LocationAccessRestrictedViewController: UIViewController, WithCountryFieldProtocol {
-    var country: String = ""
+class LocationAccessRestrictedViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
     
     @IBOutlet weak var descriptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = "We need to verify that you are in \(country) in order to continue"
+        descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"
         manager.rx
             .didChangeAuthorization
             .debug("didChangeAuthorization")
