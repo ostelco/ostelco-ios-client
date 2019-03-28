@@ -28,7 +28,22 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
     func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
         // This method should fetch new scanId from our server
-        completion(UUID().uuidString, nil)
+        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        APIManager.sharedInstance.regions.child(countryCode).child("/kyc/jumio/scans")
+            .request(.post, json: [])
+            .onSuccess { entity in
+                // TODO: Configure transformer in APIManager and use Scan model to fetch scanId when API returns non empty response.
+                completion(UUID().uuidString, nil)
+            }
+            .onFailure { error in
+                self.showAPIError(error: error)
+                if let cause = error.cause {
+                    completion(nil, cause)
+                } else {
+                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
+                    completion(nil, NSError(domain: "", code: error.httpStatusCode ?? 0, userInfo: nil))
+                }
+            }
     }
     
     func createNetverifyController() {
