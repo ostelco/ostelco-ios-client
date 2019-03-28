@@ -9,12 +9,10 @@
 
 import UIKit
 
-class WrongCountryViewController: UIViewController, WithCountryFieldProtocol {
-    var country: String = ""
-    
+class WrongCountryViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = "It seems like you are not in \(country)"
+        descriptionLabel.text = "It seems like you are not in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY")"
     }
 }

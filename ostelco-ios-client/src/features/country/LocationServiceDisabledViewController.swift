@@ -11,9 +11,7 @@ import CoreLocation
 import RxCoreLocation
 import RxSwift
 
-class LocationServiceDisabledViewController: UIViewController, WithCountryFieldProtocol {
-    var country: String = ""
-    
+class LocationServiceDisabledViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
     
@@ -25,7 +23,7 @@ class LocationServiceDisabledViewController: UIViewController, WithCountryFieldP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = "We need to verify that you are in \(country) in order to continue"
+        descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"
     }
     
     private func checkLocationServiceStatus() {

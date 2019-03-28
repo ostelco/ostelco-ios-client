@@ -31,6 +31,14 @@
 		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
 		0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
+		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
+		043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
+		043E711E223AF61600E01993 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
+		043E711F223AF61600E01993 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
+		043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
+		043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
+		043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
+		043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
@@ -187,6 +195,10 @@
 		041216BA222D7B2B00455278 /* WrongCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongCountryViewController.swift; sourceTree = "<group>"; };
 		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
 		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
+		043E711A223AF3CF00E01993 /* OnBoardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingManager.swift; sourceTree = "<group>"; };
+		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		043E7120223AFFA800E01993 /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
+		043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+CountryListActionSheet.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCIVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +427,7 @@
 				041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */,
 				041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */,
 				041216BA222D7B2B00455278 /* WrongCountryViewController.swift */,
+				043E7120223AFFA800E01993 /* CountriesTableViewController.swift */,
 			);
 			path = country;
 			sourceTree = "<group>";
@@ -472,6 +485,7 @@
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+ErrorAlert.swift */,
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
+				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 			);
@@ -499,6 +513,7 @@
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
+				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -511,6 +526,7 @@
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
+				043E711D223AF61600E01993 /* Country.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 			);
 			path = models;
@@ -1085,6 +1101,7 @@
 				044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */,
 				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
+				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
@@ -1101,6 +1118,7 @@
 				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
+				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1113,6 +1131,7 @@
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				04834D722237B11800A01500 /* CustomerModel.swift in Sources */,
+				043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
 				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
@@ -1128,6 +1147,9 @@
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
+				C25A95902226F0E2005958EC /* IdentityView.swift in Sources */,
+				04834D48222EE97A00A01500 /* EKYCOnBoardingViewController.swift in Sources */,
+				043E711E223AF61600E01993 /* Country.swift in Sources */,
 				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
@@ -1157,6 +1179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */,
+				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
 				041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
@@ -1169,6 +1192,7 @@
 				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
+				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
@@ -1186,6 +1210,7 @@
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
+				043E711F223AF61600E01993 /* Country.swift in Sources */,
 				C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
@@ -1193,6 +1218,7 @@
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */,
+				043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,

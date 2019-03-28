@@ -19,19 +19,20 @@ class AllowLocationAccessViewController: UIViewController {
     @IBOutlet weak var locationServiceLabel: UILabel!
     @IBOutlet weak var locationAccessLabel: UILabel!
     
-    var selectedCountry: String = ""
     var bag = DisposeBag()
     var userLocation: CLLocation!
     
     var locationManager = CLLocationManager()
 
     var descriptionText: String = ""
+    var selectedCountry: Country?
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = "We need to verify that you are in \(selectedCountry) in order to continue"
+        selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
+        descriptionLabel.text = "We need to verify that you are in \(selectedCountry?.name ?? "NO COUNTRY") in order to continue"
         updateViewLabels()
     }
     
@@ -236,16 +237,6 @@ class AllowLocationAccessViewController: UIViewController {
          */
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "showLocationAccessDenied", "showLocationServiceDisabed", "showLocationAccessRestricted", "showWrongCountry":
-            let vc = segue.destination as! WithCountryFieldProtocol
-            vc.country = selectedCountry
-        default:
-            break
-        }
-    }
-    
     private func showWrongCountry() {
         performSegue(withIdentifier: "showWrongCountry", sender: self)
     }
@@ -264,12 +255,12 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                     if let error = error {
                         print("Unable to Reverse Geocode Location (\(error))")
                         // locationLabel.text = "Unable to Find Address for Location"
-                        self.failedToGetLocationAlert()
+                        self.failedToGetLocationAlert() 
                         
                     } else {
                         if let placemarks = placemarks, let placemark = placemarks.first, let country = placemark.country, let isoCountryCode = placemark.isoCountryCode {
-                            print("country: \(country)")
-                            if self.selectedCountry == country {
+                            print("country: \(country) isoCountryCode: \(isoCountryCode)")
+                            if self.selectedCountry?.countryCode == isoCountryCode {
                                 // Location verified
                                 DispatchQueue.main.async {
                                     self.performSegue(withIdentifier: "showEKYC", sender: self)
@@ -305,8 +296,4 @@ class DismissSegue: UIStoryboardSegue {
         }
     }
     
-}
-
-protocol WithCountryFieldProtocol: AnyObject {
-    var country: String { get set }
 }
