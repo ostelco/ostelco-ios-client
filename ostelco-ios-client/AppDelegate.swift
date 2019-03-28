@@ -77,37 +77,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Freshchat.sharedInstance().handleRemoteNotification(userInfo, andAppstate: application.applicationState)
         }
     }
-  func handleDynamicLink( _ dynamicLink: DynamicLink) {
+  func handleDynamicLink(dynamicLink: DynamicLink, incomingURL: URL) -> Bool {
     guard let url = dynamicLink.url else {
       print("No dynamic link object")
-      return
+      return false
     }
-    print("Dynamic link = \(dynamicLink)")
     print("Incoming link = \(url.absoluteString)")
+    // We can assume that this is an approved dynamic link.
+    return handleMyInfoCallback(incomingURL)
   }
 
   func handleMyInfoCallback(_ url: URL) -> Bool {
-    // Check if this is one of the approved URL for MyIfo.
-    if let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: false) {
-      myInfoDelegate?.handleCallback(queryItems: urlComponents.queryItems, error: nil)
+    if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+        myInfoDelegate?.handleCallback(queryItems: urlComponents.queryItems, error: nil)
+        return true
     }
-    return true
+    return false
   }
 
   func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     if let incomingURL = userActivity.webpageURL {
       print("Incoming URL is \(incomingURL)")
-      return handleMyInfoCallback(incomingURL)
-//      let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
-//        guard error == nil else {
-//          print("Found an error \(error!.localizedDescription)")
-//          return
-//        }
-//        if let dynamicLink = dynamicLink {
-//          self.handleDynamicLink(dynamicLink)
-//        }
-//      }
-//      return linkHandled
+      let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
+        guard error == nil else {
+          print("Found an error \(error!.localizedDescription)")
+          return
+        }
+        if let dynamicLink = dynamicLink {
+          let handled = self.handleDynamicLink(dynamicLink: dynamicLink, incomingURL: incomingURL)
+          print("handleDynamicLink ? = \(handled)")
+        }
+      }
+      return linkHandled
     }
     return false
   }
