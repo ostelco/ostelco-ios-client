@@ -26,11 +26,12 @@ class NRCIVerifyViewController: UIViewController {
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
                     print("------------_")
-                    print(entity)
-                    print(entity.text)
-                    print(entity.content)
-                    print(entity.jsonArray)
-                    print(entity.jsonDict)
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
+                        print(json)
+                    } catch {
+                        
+                    }
                     print("------------_")
                     self.startNetverify()
                 }
@@ -53,9 +54,13 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         APIManager.sharedInstance.regions.child(countryCode).child("/kyc/jumio/scans")
             .request(.post, json: [])
-            .onSuccess { entity in
-                // TODO: Configure transformer in APIManager and use Scan model to fetch scanId when API returns non empty response.
-                completion(UUID().uuidString, nil)
+            .onSuccess { data in
+                if let scan: Scan = data.typedContent(ifNone: nil) {
+                    completion(scan.scanId, nil)
+                } else {
+                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
+                    completion(nil, NSError(domain: "", code: 0, userInfo: nil))
+                }
             }
             .onFailure { error in
                 self.showAPIError(error: error)
@@ -107,6 +112,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     }
     
     func startNetverify() -> Void {
+        //self.performSegue(withIdentifier: "yourAddress", sender: self)
         getnewScanId() { (scanId, error) in
             if let scanId: String = scanId {
                 print("Retrieved \(scanId)")

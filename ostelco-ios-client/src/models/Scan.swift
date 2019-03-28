@@ -7,11 +7,11 @@
 //
 
 struct Scan: Codable {
-    let regionCode: String
+    let countryCode: String
     let scanId: String
     let status: String
     
     enum CodingKeys: String, CodingKey {
-        case regionCode, scanId, status
+        case countryCode, scanId, status
     }
 }
