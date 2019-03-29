@@ -41,6 +41,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
 
   func getMyInfoToken() {
     if let url = getMyInfoURL() {
+      print("URL for API \(url.absoluteString)")
       webView = SFSafariViewController(url: url)
       webView!.delegate = self
       present(webView!, animated: true)

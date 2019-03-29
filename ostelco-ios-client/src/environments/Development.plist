@@ -97,7 +97,7 @@
 	<key>jumio_token</key>
 	<string>$(jumio_token)</string>
 	<key>myinfo_callback_url</key>
-	<string>https://dl-dev.oya.world/links/myinfo</string>
+	<string>http://localhost:3001/callback</string>
 	<key>myinfo_client_id</key>
 	<string>STG-201817245Z-REDOTTER-POSTPAID</string>
 	<key>myinfo_url</key>
