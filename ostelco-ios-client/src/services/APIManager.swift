@@ -46,7 +46,11 @@ class APIManager: Service {
         configureTransformer("/regions/*/kyc/jumio/scans") {
             try self.jsonDecoder.decode(Scan.self, from: $0.content)
         }
-        
+
+        configureTransformer("/regions/sg/kyc/myInfo/*") {
+            try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
+        }
+
         configureTransformer("/regions/*") {
             try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
         }
@@ -54,6 +58,5 @@ class APIManager: Service {
         configureTransformer("/context") {
             try self.jsonDecoder.decode(Context.self, from: $0.content)
         }
-
     }
 }
