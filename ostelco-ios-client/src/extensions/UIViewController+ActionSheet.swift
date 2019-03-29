@@ -25,14 +25,6 @@ class NeedHelpAlertController: UIAlertController {
      */
 }
 
-class LogOutActionShee: UIAlertController {
-    
-}
-
-class DeleteAccountActionSheet: UIAlertController {
-    
-}
-
 extension UIViewController {
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
