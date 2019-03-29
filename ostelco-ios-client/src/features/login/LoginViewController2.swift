@@ -83,7 +83,8 @@ class LoginViewController2: UIViewController {
     }
     
     @objc private func showCountry() {
-        performSegue(withIdentifier: "showCountry", sender: self)
+//        performSegue(withIdentifier: "showCountry", sender: self)
+        performSegue(withIdentifier: "showEKYC", sender: nil)
     }
     
     @objc private func showSignUp() {
