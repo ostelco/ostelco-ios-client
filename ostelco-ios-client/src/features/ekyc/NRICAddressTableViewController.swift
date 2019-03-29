@@ -35,7 +35,28 @@ class NRICAddressTableViewController: UITableViewController {
       alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
       self.present(alert, animated: true, completion: nil)
     } else {
-      performSegue(withIdentifier: "waitForDocs", sender: self)
+        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        APIManager.sharedInstance.regions.child(countryCode).child("kyc/profile")
+        .request(.put, urlEncoded: ["address": "", "phoneNumber": ""])
+            .onSuccess { data in
+                print("------------_")
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data.content as! Data, options: []) as? [String : Any]
+                    print(json)
+                } catch {}
+                print("------------_")
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "waitForDocs", sender: self)
+                }
+            }
+            .onFailure { error in
+                self.showAPIError(error: error) { _ in
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "waitForDocs", sender: self)
+                    }
+                }
+            }
+      
 //      dismiss(animated: true) {
 //        print("Continue with the new Address")
 //      }

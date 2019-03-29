@@ -16,7 +16,9 @@ let sharedAuth = Auth()
 
 class Auth {
     let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
-
+    
+    // force show the login screen after user logs out without using the auth0 logout url
+    var forceLoginPrompt = false
     func clear() {
         os_log("Clear credentials in auth0 credentials manager.")
         self.credentialsManager.clear()
@@ -25,12 +27,18 @@ class Auth {
     func logout() {
         os_log("Logout user")
         self.clear()
+        forceLoginPrompt = true
         // AppDelegate.shared.rootViewController.switchToLogout() // Old way of logging out
     }
     
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
-        // let params: [String:String] = [:]
+        var params: [String:String] = [:]
+        
+        if forceLoginPrompt {
+            params["prompt"] = "login"
+        }
+        
         return Observable.create { observer in
             Auth0
                 .webAuth()
@@ -38,7 +46,7 @@ class Auth {
                 .audience("http://google_api")
                 .scope("openid email profile offline_access")
                 // .connection("google-oauth2")
-                // .parameters(params)
+                .parameters(params)
                 .start {
                     switch $0 {
                     case .failure(let error):
@@ -70,6 +78,7 @@ class Auth {
                             // TODO: How do we handle the case if access token is empty
                         }
                         
+                        self.forceLoginPrompt = false
                         observer.on(.next(credentials))
                         observer.on(.completed)
                     }
