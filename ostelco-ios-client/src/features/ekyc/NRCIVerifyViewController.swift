@@ -8,6 +8,7 @@
 
 import UIKit
 import Netverify
+import Crashlytics
 
 class NRCIVerifyViewController: UIViewController {
     
@@ -25,19 +26,21 @@ class NRCIVerifyViewController: UIViewController {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
-                    print("------------_")
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
-                        print(json)
-                    } catch {
-                        
-                    }
-                    print("------------_")
                     self.startNetverify()
                 }
-                .onFailure { error in
-                    self.showAPIError(error: error) { _ in
-                        self.startNetverify()
+                .onFailure { requestError in
+                    do {
+                        let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: requestError.entity!.content as! Data)
+                        switch jsonRequestError.errorCode {
+                        case "INVALID_NRIC_FIN_ID":
+                            self.showAlert(title: "Error", msg: "This seems to be an invalid NRIC")
+                        default:
+                            Crashlytics.sharedInstance().recordError(requestError)
+                            self.showAPIError(error: requestError)
+                        }
+                    } catch let error {
+                        Crashlytics.sharedInstance().recordError(error)
+                        self.showAlert(title: "Error", msg: "Please try again later.")
                     }
                 }
             
