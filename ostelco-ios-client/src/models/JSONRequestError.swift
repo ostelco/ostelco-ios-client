@@ -6,8 +6,6 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import Foundation
-
 struct JSONRequestError: Codable {
     let errorCode: String
     let httpStatusCode: Int

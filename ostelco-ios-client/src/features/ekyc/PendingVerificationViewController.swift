@@ -17,12 +17,13 @@ class PendingVerificationViewController: UIViewController {
     APIManager.sharedInstance.regions.child(countryCode).load()
         .onSuccess { data in
             if let regionResponse: RegionResponse = data.typedContent(ifNone: nil) {
+                // if let regionRespons.kycStatusMap.NR
                 // TODO: Convert status to enum
-                if regionResponse.status == "APPROVED" {
+                if regionResponse.status == .APPROVED {
                     self.performSegue(withIdentifier: "ESim", sender: self)
                 } else {
                     // TODO: Make feedback more user friendly
-                    self.showAlert(title: "Status", msg: regionResponse.status)
+                    self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
                 }
             } else {
                 // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
@@ -31,6 +32,6 @@ class PendingVerificationViewController: UIViewController {
         }
         .onFailure { error in
             self.showAPIError(error: error)
-        }
+    }
   }
 }

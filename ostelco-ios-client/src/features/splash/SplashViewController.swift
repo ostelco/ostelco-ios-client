@@ -54,15 +54,26 @@ class SplashViewController: UIViewController {
                                     
                                     if let region = context.getRegion() {
                                         switch region.status {
-                                        case "PENDING":
-                                            segueIdentifier = "showEKYCLastScreen"
-                                        case "APPROVED":
+                                        case .PENDING:
+                                            if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
+                                                switch (jumio, addressAndPhoneNumber, nricFin) {
+                                                case (.APPROVED, .APPROVED, .APPROVED):
+                                                    segueIdentifier = "showEKYCLastScreen"
+                                                case (.REJECTED, _, _):
+                                                    segueIdentifier = "showEKYCOhNo"
+                                                case (.PENDING, .APPROVED, .APPROVED):
+                                                    segueIdentifier = "showEKYCLastScreen"
+                                                default:
+                                                    segueIdentifier = "showCountry"
+                                                }
+                                            } else {
+                                                segueIdentifier = "showCountry"
+                                            }
+                                        case .APPROVED:
                                             // TODO: Redirect based on sim profiles in region
                                             segueIdentifier = "showESim"
-                                        case "REJECTED":
+                                        case .REJECTED:
                                             segueIdentifier = "showEKYCOhNo"
-                                        default:
-                                            segueIdentifier = "showCountry"
                                         }
                                         DispatchQueue.main.async {
                                             self.performSegue(withIdentifier: segueIdentifier, sender: self)

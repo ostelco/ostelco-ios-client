@@ -25,19 +25,40 @@ class LoginViewController2: UIViewController {
                         .onSuccess({ data in
                             if let context: Context = data.typedContent(ifNone: nil) {
                                 UserManager.sharedInstance.user = context.customer
-                                                                
+                                
                                 if let region = context.getRegion() {
                                     switch region.status {
-                                    case "PENDING":
-                                        DispatchQueue.main.async {
-                                            self.perform(#selector(self.showEKYCLastScreen), with: nil, afterDelay: 0.5)
+                                    case .PENDING:
+                                        if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
+                                            switch (jumio, addressAndPhoneNumber, nricFin) {
+                                            case (.APPROVED, .APPROVED, .APPROVED):
+                                                DispatchQueue.main.async {
+                                                    self.perform(#selector(self.showEKYCLastScreen), with: nil, afterDelay: 0.5)
+                                                }
+                                            case (.REJECTED, _, _):
+                                                DispatchQueue.main.async {
+                                                    self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
+                                                }
+                                            case (.PENDING, .APPROVED, .APPROVED):
+                                                DispatchQueue.main.async {
+                                                    self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
+                                                }
+                                            default:
+                                                DispatchQueue.main.async {
+                                                    self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                                                }
+                                            }
+                                        } else {
+                                            DispatchQueue.main.async {
+                                                self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+                                            }
                                         }
-                                    case "APPROVED":
+                                    case .APPROVED:
                                         // TODO: Redirect based on sim profiles in region
                                         DispatchQueue.main.async {
                                             self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
                                         }
-                                    case "REJECTED":
+                                    case .REJECTED:
                                         DispatchQueue.main.async {
                                             self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
                                         }

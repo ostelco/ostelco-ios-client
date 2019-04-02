@@ -25,17 +25,17 @@ struct Context: Codable {
         
         for region in regions {
             switch region.status {
-            case "PENDING":
+            case .PENDING:
                 if !hasRejectetStatus && !hasApprovedStatus {
                     ret = region
                 }
                 hasPendingStatus = true
-            case "REJECTED":
+            case .REJECTED:
                 if !hasApprovedStatus {
                     ret = region
                 }
                 hasRejectetStatus = true
-            case "APPROVED":
+            case .APPROVED:
                 ret = region
                 hasApprovedStatus = true
             default:

@@ -44,6 +44,7 @@ class NRCIVerifyViewController: UIViewController {
                             self.showAPIError(error: requestError)
                         }
                     } catch let error {
+                        print(error)
                         Crashlytics.sharedInstance().recordError(error)
                         self.showAlert(title: "Error", msg: "Please try again later.")
                     }
