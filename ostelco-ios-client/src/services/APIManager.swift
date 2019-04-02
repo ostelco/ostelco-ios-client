@@ -18,12 +18,12 @@ class APIManager: Service {
             wipeResources()
         }
     }
-    
+
     var customer: Resource { return resource("/customer") }
     var products: Resource { return resource("/products") }
     var context: Resource { return resource("/context") }
     var regions: Resource { return resource("/regions") }
-    
+
     fileprivate init() {
         #if DEBUG
         SiestaLog.Category.enabled = .all
@@ -44,7 +44,7 @@ class APIManager: Service {
         configureTransformer("/customer") {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
         }
-        
+
         configureTransformer("/regions/*/kyc/jumio/scans") {
             try self.jsonDecoder.decode(Scan.self, from: $0.content)
         }
