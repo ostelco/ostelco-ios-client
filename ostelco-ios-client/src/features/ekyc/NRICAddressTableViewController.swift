@@ -10,22 +10,20 @@ import UIKit
 import Crashlytics
 
 class NRICAddressTableViewController: UITableViewController {
-  @IBOutlet weak var street: UITextField!
-  @IBOutlet weak var house: UITextField!
-  @IBOutlet weak var city: UITextField!
-  @IBOutlet weak var postcode: UITextField!
-  @IBOutlet weak var country: UITextField!
+    @IBOutlet weak var street: UITextField!
+    @IBOutlet weak var house: UITextField!
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var postcode: UITextField!
+    @IBOutlet weak var country: UITextField!
 
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
-  }
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+    }
+  
   @IBAction func `continue`(_ sender: Any) {
     if (validateAddress() == false) {
       let alert = UIAlertController(
@@ -62,7 +60,6 @@ class NRICAddressTableViewController: UITableViewController {
             self.removeSpinner()
         }
     }
-  }
 
   private func validateAddress() -> Bool {
     if
@@ -82,5 +79,4 @@ class NRICAddressTableViewController: UITableViewController {
         }
         return nil
     }
-
 }

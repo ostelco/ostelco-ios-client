@@ -10,10 +10,10 @@ import Foundation
 
 class UserManager {
     static let sharedInstance = UserManager()
-    
+
     var authToken: String?
     var user: CustomerModel!
- 
+
     func clear() {
         authToken = nil
     }

@@ -9,6 +9,7 @@
 import UIKit
 
 class PendingVerificationViewController: UIViewController {
+
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -28,10 +29,13 @@ class PendingVerificationViewController: UIViewController {
                         self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
                     }
                 }
-            } else {
-                // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
-                self.showAlert(title: "Error", msg: "Failed to parse user from server response.")
+              } else {
+                  // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
+                  self.showAlert(title: "Error", msg: "Failed to parse user from server response.")
+              }
             }
+            .onFailure { error in
+                self.showAPIError(error: error)
         }
         .onFailure { error in
             self.showAPIError(error: error)
