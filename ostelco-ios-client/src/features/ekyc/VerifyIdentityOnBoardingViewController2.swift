@@ -13,7 +13,7 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-    
+
     @IBAction func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "selectIdentityVerificationMethod", sender: self)
     }
