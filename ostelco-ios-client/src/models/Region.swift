@@ -6,6 +6,17 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+enum KycStatus: String, Codable {
+    case APPROVED, REJECTED, PENDING
+}
+
+struct KYCStatusMap: Codable {
+    let JUMIO: KycStatus?
+    let MY_INFO: KycStatus?
+    let NRIC_FIN: KycStatus?
+    let ADDRESS_AND_PHONE_NUMBER: KycStatus?
+}
+
 struct Region: Codable {
     let id: String
     let name: String
@@ -17,12 +28,9 @@ struct Region: Codable {
 
 struct RegionResponse: Codable {
     let region: Region
-    let status: String
+    let status: KycStatus
     let simProfiles: [SimProfile]?
-    
-    enum CodingKeys: String, CodingKey {
-        case region, status, simProfiles
-    }
+    let kycStatusMap: KYCStatusMap
 }
 
 struct MyInfoDetails: Codable {

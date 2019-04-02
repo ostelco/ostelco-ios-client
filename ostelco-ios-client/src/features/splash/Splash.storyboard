@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MAv-rn-oJO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MAv-rn-oJO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,6 +39,7 @@
                         <segue destination="gaJ-w0-cam" kind="show" identifier="showHome" id="dJT-0s-e6q"/>
                         <segue destination="Af1-H5-cct" kind="show" identifier="showEKYCLastScreen" id="S8a-f4-wu0"/>
                         <segue destination="7EC-KQ-GFl" kind="show" identifier="showEKYCOhNo" id="T6z-ca-e68"/>
+                        <segue destination="lZm-Bx-3oh" kind="show" identifier="showEKYCNRICAddress" id="v2p-TB-Jkk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEL-B7-INL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,6 +93,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sg-Z0-Z7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-923" y="-343"/>
+        </scene>
+        <!--NRICAddressTable-->
+        <scene sceneID="Jvt-4A-kf4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="NRICAddressTable" id="lZm-Bx-3oh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I06-ae-MP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-978" y="-255"/>
         </scene>
         <!--EKYCWaitViewController-->
         <scene sceneID="V1g-Sw-l6w">

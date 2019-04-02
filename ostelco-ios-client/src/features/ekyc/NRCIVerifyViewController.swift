@@ -8,13 +8,19 @@
 
 import UIKit
 import Netverify
+import Crashlytics
 
 class NRCIVerifyViewController: UIViewController {
 
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
     @IBOutlet weak var nricTextField: UITextField!
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+    }
+    
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
@@ -23,24 +29,30 @@ class NRCIVerifyViewController: UIViewController {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+            showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
-                    print("------------_")
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
-                        print(json)
-                    } catch {
-                        
-                    }
-                    print("------------_")
                     self.startNetverify()
                 }
-                .onFailure { error in
-                    self.showAPIError(error: error) { _ in
-                        self.startNetverify()
+                .onFailure { requestError in
+                    do {
+                        let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: requestError.entity!.content as! Data)
+                        switch jsonRequestError.errorCode {
+                        case "INVALID_NRIC_FIN_ID":
+                            self.showAlert(title: "Error", msg: "This seems to be an invalid NRIC")
+                        default:
+                            Crashlytics.sharedInstance().recordError(requestError)
+                            self.showAPIError(error: requestError)
+                        }
+                    } catch let error {
+                        print(error)
+                        Crashlytics.sharedInstance().recordError(error)
+                        self.showAlert(title: "Error", msg: "Please try again later.")
                     }
-            }
-            
+                }
+                .onCompletion { _ in
+                    self.removeSpinner()
+               }
         } else {
             showAlert(title: "Error", msg: "NRIC field can't be empty")
         }
