@@ -10,6 +10,7 @@ import UIKit
 import Auth0
 import Stripe
 import Firebase
+import Siesta
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,11 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
             if bundleIndentifier.contains("dev") {
                 ThemeManager.applyTheme(theme: .TurquoiseTheme)
+                SiestaLog.Category.enabled = .all
             } else {
                 ThemeManager.applyTheme(theme: .BlueTheme)
             }
         } else {
             ThemeManager.applyTheme(theme: .TurquoiseTheme)
+            SiestaLog.Category.enabled = .all
         }
 
         let freschatConfig:FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))

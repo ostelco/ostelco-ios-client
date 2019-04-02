@@ -25,13 +25,6 @@ class APIManager: Service {
     var regions: Resource { return resource("/regions") }
 
     fileprivate init() {
-        if let bundleIndentifier = Bundle.main.bundleIdentifier {
-            if bundleIndentifier.contains("dev") {
-                SiestaLog.Category.enabled = .all
-            }
-        } else {
-            SiestaLog.Category.enabled = .all
-        }
         let networking = URLSessionConfiguration.ephemeral
         networking.timeoutIntervalForRequest = 300
         super.init(
