@@ -29,6 +29,7 @@ class NRCIVerifyViewController: UIViewController {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+            showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
                     self.startNetverify()
@@ -48,6 +49,9 @@ class NRCIVerifyViewController: UIViewController {
                         Crashlytics.sharedInstance().recordError(error)
                         self.showAlert(title: "Error", msg: "Please try again later.")
                     }
+                }
+                .onCompletion { _ in
+                    self.removeSpinner()
                 }
             
         } else {
