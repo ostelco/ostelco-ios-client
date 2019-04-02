@@ -140,6 +140,8 @@
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80B2252BE0900989F40 /* JSONRequestError.swift */; };
 		0493B80D2252BE0900989F40 /* JSONRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80B2252BE0900989F40 /* JSONRequestError.swift */; };
+		0493B80F2253943900989F40 /* PutProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80E2253943900989F40 /* PutProfileError.swift */; };
+		0493B8102253943900989F40 /* PutProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80E2253943900989F40 /* PutProfileError.swift */; };
 		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -271,6 +273,7 @@
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
+		0493B80E2253943900989F40 /* PutProfileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutProfileError.swift; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -540,6 +543,7 @@
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 				0437CF88224D3B380022A2B8 /* Context.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
+				0493B80E2253943900989F40 /* PutProfileError.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1146,6 +1150,7 @@
 				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
+				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
 				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
@@ -1230,6 +1235,7 @@
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
+				0493B8102253943900989F40 /* PutProfileError.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
