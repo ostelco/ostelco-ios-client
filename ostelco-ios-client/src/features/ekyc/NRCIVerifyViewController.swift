@@ -10,15 +10,15 @@ import UIKit
 import Netverify
 
 class NRCIVerifyViewController: UIViewController {
-    
+
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
     @IBOutlet weak var nricTextField: UITextField!
-    
+
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-    
+
     @IBAction func continueTapped(_ sender: Any) {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
@@ -39,7 +39,7 @@ class NRCIVerifyViewController: UIViewController {
                     self.showAPIError(error: error) { _ in
                         self.startNetverify()
                     }
-                }
+            }
             
         } else {
             showAlert(title: "Error", msg: "NRIC field can't be empty")
@@ -48,7 +48,7 @@ class NRCIVerifyViewController: UIViewController {
 }
 
 extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
-    
+
     func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
         // This method should fetch new scanId from our server
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
@@ -70,9 +70,9 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
                     // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
                     completion(nil, NSError(domain: "", code: error.httpStatusCode ?? 0, userInfo: nil))
                 }
-            }
+        }
     }
-    
+
     func createNetverifyController() {
         // Prevent SDK to be initialized on Jailbroken devices
         if JMDeviceInfo.isJailbrokenDevice() {
@@ -82,7 +82,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         var message = "JumioToken: \(Environment().configuration(.JumioToken)) \n"
         message += "JumioSecret: \(Environment().configuration(.JumioSecret))"
         //self.showAlert(title: "Jumio Settings", msg: message)
-        
+
         // Setup the Configuration for Netverify
         let config:NetverifyConfiguration = NetverifyConfiguration()
         config.merchantApiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
@@ -91,7 +91,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         config.requireVerification = true
         config.requireFaceMatch = true
         config.delegate = self
-        
+
         // General appearance - deactivate blur
         NetverifyBaseView.netverifyAppearance().disableBlur = true
         // General appearance - background color
@@ -102,7 +102,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             UIColor(red: 47/255.0, green: 22/255.0, blue: 232/255.0, alpha: 1),
             for: .normal
         )
-        
+
         // Create the verification view
         self.netverifyViewController = NetverifyViewController(configuration: config)
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
@@ -110,7 +110,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             self.netverifyViewController?.modalPresentationStyle = UIModalPresentationStyle.formSheet;
         }
     }
-    
+
     func startNetverify() -> Void {
         //self.performSegue(withIdentifier: "yourAddress", sender: self)
         getnewScanId() { (scanId, error) in
@@ -128,8 +128,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             }
         }
     }
-    
-    
+
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
         print("NetverifyViewController finished successfully with scan reference: %@", scanReference);
         let message = documentDataToString(documentData)
@@ -141,10 +140,9 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             self.performSegue(withIdentifier: "yourAddress", sender: self)
         })
     }
-    
+
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didCancelWithError error: NetverifyError?, scanReference: String?) {
         print("NetverifyViewController cancelled with error: " + "\(error?.message ?? "")" + "scanReference: " + "\(scanReference ?? "")")
-        
         // Dismiss the SDK
         self.dismiss(animated: true) {
             self.netverifyViewController?.destroy()
@@ -155,7 +153,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             self.performSegue(withIdentifier: "yourAddress", sender: self)
         }
     }
-    
+
     func documentDataToString(_ documentData: NetverifyDocumentData) -> String {
         let selectedCountry:String = documentData.selectedCountry
         let selectedDocumentType:NetverifyDocumentType = documentData.selectedDocumentType
@@ -177,7 +175,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             documentTypeStr = ""
             break;
         }
-        
+
         //id
         let idNumber:String? = documentData.idNumber
         let personalNumber:String? = documentData.personalNumber
@@ -186,7 +184,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         let issuingCountry:String? = documentData.issuingCountry
         let optionalData1:String? = documentData.optionalData1
         let optionalData2:String? = documentData.optionalData2
-        
+
         //person
         let lastName:String? = documentData.lastName
         let firstName:String? = documentData.firstName
@@ -196,31 +194,27 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         switch (gender) {
         case .unknown:
             genderStr = "Unknown"
-            
         case .F:
             genderStr = "female"
-            
         case .M:
             genderStr = "male"
-            
         case .X:
             genderStr = "Unspecified"
-            
         default:
             genderStr = "Unknown"
         }
-        
+
         let originatingCountry:String? = documentData.originatingCountry
-        
+
         //address
         let street:String? = documentData.addressLine
         let city:String? = documentData.city
         let state:String? = documentData.subdivision
         let postalCode:String? = documentData.postCode
-        
+
         // Raw MRZ data
         let mrzData:NetverifyMrzData? = documentData.mrzData
-        
+
         let message:NSMutableString = NSMutableString.init()
         message.appendFormat("Selected Country: %@", selectedCountry)
         message.appendFormat("\nDocument Type: %@", documentTypeStr)

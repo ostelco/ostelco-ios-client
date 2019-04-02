@@ -25,7 +25,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
             os_log("Non 401 error, continue as normal")
             return .useThisResponse
         }
-        
+
         if let refreshToken = refreshToken {
             os_log("Refresh access token...")
             return .passTo(refreshTokenHandler(refreshToken: refreshToken).chained {
@@ -63,9 +63,9 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
 class Auth0API: Service {
     fileprivate init() {
         #if DEBUG
-            SiestaLog.Category.enabled = .all
+        SiestaLog.Category.enabled = .all
         #endif
-        
+
         super.init(
             baseURL: "https://\(Environment().configuration(.Auth0Domain))"
         )
@@ -73,12 +73,12 @@ class Auth0API: Service {
         self.configure("oauth/token") {
             $0.headers["content-Type"] = "application/json"
         }
-        
+
         self.configureTransformer("oauth/token") {
             Credentials(json: $0.content)
         }
     }
-    
+
     var token: Resource { return resource("oauth/token") }
 }
 
@@ -86,14 +86,14 @@ class OstelcoAPI: Service {
     
     fileprivate init() {
         #if DEBUG
-            SiestaLog.Category.enabled = .all
+        SiestaLog.Category.enabled = .all
         #endif
-        
+
         super.init(
             baseURL: Environment().configuration(PlistKey.ServerURL),
             standardTransformers: [.text, .image]
         )
-        
+
         configure {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
@@ -102,34 +102,34 @@ class OstelcoAPI: Service {
                 return refreshTokenOnAuthFailure(request: req, refreshToken: self.refreshToken)
             }
         }
-        
+
         let jsonDecoder = JSONDecoder()
         self.configureTransformer("/bundles") {
             try jsonDecoder.decode([BundleModel].self, from: $0.content)
         }
-        
+
         self.configure("/bundles") {
             $0.expirationTime = 5
         }
-        
+
         self.configureTransformer("/profile") {
             try jsonDecoder.decode(ProfileModel.self, from: $0.content)
         }
-        
+
         self.configureTransformer("/purchases*") {
             try jsonDecoder.decode([PurchaseModel].self, from: $0.content)
         }
-        
+
         self.configureTransformer("/products") {
             try jsonDecoder.decode([ProductModel].self, from: $0.content)
         }
     }
-    
+
     var bundles: Resource { return resource("/bundles") }
     var profile: Resource { return resource("/profile") }
     var purchases: Resource { return resource("/purchases") }
     var products: Resource { return resource("/products") }
-    
+
     var authToken: String? {
         didSet {
             // Rerun existing configuration closure using new value
@@ -140,6 +140,6 @@ class OstelcoAPI: Service {
             // wipeResources()
         }
     }
-    
+
     var refreshToken: String?
 }

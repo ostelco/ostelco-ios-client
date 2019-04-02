@@ -11,13 +11,13 @@ import Firebase
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
-    
+
     @IBAction func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
         Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
-                
+
                 // TODO: Duplicated logic from SplashViewController
                 DispatchQueue.main.async {
                     self.showSpinner(onView: self.view)
@@ -25,7 +25,7 @@ class LoginViewController2: UIViewController {
                         .onSuccess({ data in
                             if let context: Context = data.typedContent(ifNone: nil) {
                                 UserManager.sharedInstance.user = context.customer
-                                                                
+
                                 if let region = context.getRegion() {
                                     switch region.status {
                                     case "PENDING":
@@ -73,35 +73,36 @@ class LoginViewController2: UIViewController {
                             self.removeSpinner()
                         })
                 }
-            },
+        },
             onError: { error in
                 DispatchQueue.main.async {
                     self.handleLoginFailure(message: "\(error)")
                 }
-            }
-        )
+        })
     }
-    
+
     @objc private func showCountry() {
         performSegue(withIdentifier: "showCountry", sender: self)
+        //performSegue(withIdentifier: "showEKYC", sender: nil)
     }
-    
+
     @objc private func showSignUp() {
         performSegue(withIdentifier: "showSignUp", sender: nil)
     }
-    
+
     @objc private func showEKYCLastScreen() {
         performSegue(withIdentifier: "showEKYCLastScreen", sender: nil)
     }
-    
+
     @objc private func showEKYCOhNo() {
         performSegue(withIdentifier: "showEKYCOhNo", sender: nil)
     }
-    
+
     @objc private func showESim() {
         performSegue(withIdentifier: "showESim", sender: nil)
+        //performSegue(withIdentifier: "showEKYC", sender: nil)
     }
-    
+
     private func handleLoginFailure(message: String) {
         let alert = UIAlertController(title: "Failed to login", message: "Please try again later.\nIf this problem persists, contact customer support.\n Error: \(message)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

@@ -99,7 +99,7 @@
 	<key>myinfo_callback_url</key>
 	<string>http://localhost:3001/callback</string>
 	<key>myinfo_client_id</key>
-	<string>STG-201817245Z-REDOTTER-POSTPAID</string>
+	<string>STG2-MYINFO-SELF-TEST</string>
 	<key>myinfo_url</key>
 	<string>https://myinfosgstg.api.gov.sg/test/v2/authorise</string>
 	<key>server_url</key>
