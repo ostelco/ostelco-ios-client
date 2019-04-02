@@ -35,7 +35,7 @@ class APIManager: Service {
             standardTransformers: [.text],
             networking: networking
         )
-        
+
         configure {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authHeader
