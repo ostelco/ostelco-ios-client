@@ -28,17 +28,19 @@ class APIManager: Service {
         #if DEBUG
         SiestaLog.Category.enabled = .all
         #endif
-        
+        let networking = URLSessionConfiguration.ephemeral
+        networking.timeoutIntervalForRequest = 300
         super.init(
             baseURL: Environment().configuration(PlistKey.ServerURL),
-            standardTransformers: [.text]
+            standardTransformers: [.text],
+            networking: networking
         )
         
         configure {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authHeader
         }
-        
+
         configureTransformer("/customer") {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
         }

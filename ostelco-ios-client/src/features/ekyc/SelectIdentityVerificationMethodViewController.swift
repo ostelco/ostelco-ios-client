@@ -33,7 +33,8 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         components.queryItems = [
             URLQueryItem(name: "client_id", value: Environment().configuration(PlistKey.MyInfoClientID)),
             //TODO: Find the right values for the query parameters.
-            URLQueryItem(name: "attributes", value: "name,nationality,dob,email,mobileno,regadd"),
+            //URLQueryItem(name: "attributes", value: "name,nationality,dob,email,mobileno,regadd"),
+            URLQueryItem(name: "attributes", value: "name,sex,race,nationality,dob,email,mobileno,regadd,housingtype,hdbtype,marital,edulevel,assessableincome,ownerprivate,assessyear,cpfcontributions,cpfbalances"),
             URLQueryItem(name: "purpose", value: "eKYC"),
             URLQueryItem(name: "state", value: "123"),
             URLQueryItem(name: "redirect_uri", value: Environment().configuration(PlistKey.MyInfoCallbackURL)),
