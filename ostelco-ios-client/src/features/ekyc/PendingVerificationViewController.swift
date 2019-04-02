@@ -22,8 +22,11 @@ class PendingVerificationViewController: UIViewController {
                 if regionResponse.status == .APPROVED {
                     self.performSegue(withIdentifier: "ESim", sender: self)
                 } else {
-                    // TODO: Make feedback more user friendly
-                    self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
+                    if let status = regionResponse.kycStatusMap.JUMIO {
+                        self.showAlert(title: "Status", msg: status.rawValue)
+                    } else {
+                        self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
+                    }
                 }
             } else {
                 // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
