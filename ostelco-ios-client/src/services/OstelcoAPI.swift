@@ -62,10 +62,6 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
 // TODO: Refactor to separate file, could also move the refresh token functions above inside the Auth0API class
 class Auth0API: Service {
     fileprivate init() {
-        #if DEBUG
-        SiestaLog.Category.enabled = .all
-        #endif
-
         super.init(
             baseURL: "https://\(Environment().configuration(.Auth0Domain))"
         )
@@ -85,10 +81,6 @@ class Auth0API: Service {
 class OstelcoAPI: Service {
     
     fileprivate init() {
-        #if DEBUG
-        SiestaLog.Category.enabled = .all
-        #endif
-
         super.init(
             baseURL: Environment().configuration(PlistKey.ServerURL),
             standardTransformers: [.text, .image]

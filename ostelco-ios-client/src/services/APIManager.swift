@@ -25,9 +25,6 @@ class APIManager: Service {
     var regions: Resource { return resource("/regions") }
 
     fileprivate init() {
-        #if DEBUG
-        SiestaLog.Category.enabled = .all
-        #endif
         let networking = URLSessionConfiguration.ephemeral
         networking.timeoutIntervalForRequest = 300
         super.init(

@@ -10,6 +10,7 @@ import UIKit
 import Auth0
 import Stripe
 import Firebase
+import Siesta
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,12 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
         STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
-        #if DEBUG
+        if let bundleIndentifier = Bundle.main.bundleIdentifier {
+            if bundleIndentifier.contains("dev") {
+                ThemeManager.applyTheme(theme: .TurquoiseTheme)
+                SiestaLog.Category.enabled = .all
+            } else {
+                ThemeManager.applyTheme(theme: .BlueTheme)
+            }
+        } else {
             ThemeManager.applyTheme(theme: .TurquoiseTheme)
-        #else
-            ThemeManager.applyTheme(theme: .BlueTheme)
-        #endif
-      
+            SiestaLog.Category.enabled = .all
+        }
+
         let freschatConfig:FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery

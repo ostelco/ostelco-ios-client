@@ -87,11 +87,15 @@ class LaunchScreenViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
-        #if DEBUG
+        if let bundleIndentifier = Bundle.main.bundleIdentifier {
+            if bundleIndentifier.contains("dev") {
+                self.imageView.image = UIImage(named: "StoryboardLaunchScreenDevelopment")!
+            } else {
+                self.imageView.image = UIImage(named: "StoryboardLaunchScreenProduction")!
+            }
+        } else {
             self.imageView.image = UIImage(named: "StoryboardLaunchScreenDevelopment")!
-        #else
-            self.imageView.image = UIImage(named: "StoryboardLaunchScreenProduction")!
-        #endif
+        }
     }
 }
 
