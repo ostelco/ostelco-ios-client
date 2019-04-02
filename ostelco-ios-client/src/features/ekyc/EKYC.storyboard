@@ -515,7 +515,7 @@
         <!--Navigation Controller-->
         <scene sceneID="b5m-fP-vam">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bUq-oj-8Tu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NRICAddressTable" automaticallyAdjustsScrollViewInsets="NO" id="bUq-oj-8Tu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bwf-ck-so0">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

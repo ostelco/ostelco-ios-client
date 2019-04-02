@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class NRICAddressTableViewController: UITableViewController {
   @IBOutlet weak var street: UITextField!
@@ -35,45 +36,51 @@ class NRICAddressTableViewController: UITableViewController {
       alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
       self.present(alert, animated: true, completion: nil)
     } else {
+        showSpinner(onView: self.view)
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         APIManager.sharedInstance.regions.child(countryCode).child("kyc/profile")
-        .request(.put, urlEncoded: ["address": "", "phoneNumber": ""])
-            .onSuccess { data in
-                print("------------_")
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data.content as! Data, options: []) as? [String : Any]
-                    print(json)
-                } catch {}
-                print("------------_")
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "waitForDocs", sender: self)
-                }
+            .withParam("address", self.buildAddressString())
+            .withParam("phoneNumber", "12345678")
+        .request(.put)
+        .onSuccess { data in
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "waitForDocs", sender: self)
             }
-            .onFailure { error in
-                self.showAPIError(error: error) { _ in
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "waitForDocs", sender: self)
-                    }
-                }
+        }
+        .onFailure { requestError in
+            do {
+                let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: requestError.entity!.content as! Data)
+                self.showAlert(title: "Error", msg: "\(putProfileError.errors)")
+            } catch let error {
+                print(error)
+                Crashlytics.sharedInstance().recordError(requestError)
+                self.showAPIError(error: requestError)
             }
-      
-//      dismiss(animated: true) {
-//        print("Continue with the new Address")
-//      }
+            
+        }
+        .onCompletion { _ in
+            self.removeSpinner()
+        }
     }
   }
 
   private func validateAddress() -> Bool {
-    guard
-      let _ = street.text,
-      let _ = house.text,
-      let _ = city.text,
-      let _ = postcode.text,
-      let _ = country.text
-      else {
-        return false
+    if
+      let street = street.text, !street.isEmpty,
+      let house = house.text, !house.isEmpty,
+      let city = city.text, !city.isEmpty,
+      let postcode = postcode.text, !postcode.isEmpty,
+        let country = country.text, !country.isEmpty {
+        return true
     }
-    return true
+    return false
   }
+    
+    private func buildAddressString() -> String? {
+        if validateAddress() {
+            return "\(street.text);;;\(house.text);;;\(city.text);;;\(postcode.text);;;\(country.text)"
+        }
+        return nil
+    }
 
 }
