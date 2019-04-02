@@ -1426,7 +1426,7 @@
 		};
 		0448817B217924B800F59758 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
+			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1555,7 +1555,7 @@
 		};
 		C29802CA2181EDA800FBC5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
+			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
