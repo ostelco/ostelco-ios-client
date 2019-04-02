@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Is anyone even reading this?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -44,9 +46,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used for verifying your identity</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
+	<string>Is anyone even reading this?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>FakeApp tracks your position to verify that you have an esim for the country you are in.</string>
+	<string>Is anyone even reading this?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
