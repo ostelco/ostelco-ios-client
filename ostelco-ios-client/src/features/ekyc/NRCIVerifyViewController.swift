@@ -16,6 +16,11 @@ class NRCIVerifyViewController: UIViewController {
     var merchantScanReference:String = ""
     @IBOutlet weak var nricTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+    }
+    
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
