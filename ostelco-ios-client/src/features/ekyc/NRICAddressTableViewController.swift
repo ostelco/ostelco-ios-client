@@ -60,6 +60,7 @@ class NRICAddressTableViewController: UITableViewController {
             self.removeSpinner()
         }
     }
+    }
 
   private func validateAddress() -> Bool {
     if
