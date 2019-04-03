@@ -9,4 +9,5 @@
 class OnBoardingManager {
     static let sharedInstance = OnBoardingManager()
     var selectedCountry = Country(countryCode: "SG")
+    var region: RegionResponse!
 }

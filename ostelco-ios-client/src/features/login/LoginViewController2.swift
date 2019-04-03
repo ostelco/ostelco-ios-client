@@ -28,6 +28,9 @@ class LoginViewController2: UIViewController {
                                     UserManager.sharedInstance.user = context.customer
                                 }
                                 if let region = context.getRegion() {
+                                    DispatchQueue.main.async {
+                                        OnBoardingManager.sharedInstance.region = region
+                                    }
                                     switch region.status {
                                     case .PENDING:
                                         if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
