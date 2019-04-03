@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Is anyone even reading this?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -34,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>34</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
 		<string>https://dl-dev.oya.world/links</string>
@@ -47,12 +45,16 @@
 	<string>Used for verifying your identity</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Is anyone even reading this?</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Is anyone even reading this?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Is anyone even reading this?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Is anyone even reading this?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Splash</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

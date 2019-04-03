@@ -24,7 +24,9 @@ class LoginViewController2: UIViewController {
                     APIManager.sharedInstance.context.load()
                         .onSuccess({ data in
                             if let context: Context = data.typedContent(ifNone: nil) {
-                                UserManager.sharedInstance.user = context.customer
+                                DispatchQueue.main.async {
+                                    UserManager.sharedInstance.user = context.customer
+                                }
                                 if let region = context.getRegion() {
                                     switch region.status {
                                     case .PENDING:
@@ -80,7 +82,7 @@ class LoginViewController2: UIViewController {
                                 switch statusCode {
                                 case 404:
                                     DispatchQueue.main.async {
-                                        self.performSegue(withIdentifier: "showSignUp", sender: self)
+                                        self.perform(#selector(self.showSignUp), with: nil, afterDelay: 0.5)
                                     }
                                 default:
                                     preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")

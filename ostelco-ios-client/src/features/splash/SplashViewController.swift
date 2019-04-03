@@ -48,7 +48,9 @@ class SplashViewController: UIViewController {
                         apiManager.context.load()
                             .onSuccess({ data in
                                 if let context: Context = data.typedContent(ifNone: nil) {
-                                    UserManager.sharedInstance.user = context.customer
+                                    DispatchQueue.main.async {
+                                        UserManager.sharedInstance.user = context.customer
+                                    }
                                     
                                     var segueIdentifier: String
                                     
