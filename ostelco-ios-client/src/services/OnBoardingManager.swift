@@ -16,7 +16,7 @@ class OnBoardingManager {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("region", withValue: region.region.name)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-Status", withValue: region.status.rawValue)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-JumioStatus", withValue: region.kycStatusMap.JUMIO?.rawValue)
-                Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-AddressAndPhoneNumberStatus", withValue: region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER?.rawValue)
+                Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-addrAndPhone", withValue: region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER?.rawValue)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-MyInfoStatus", withValue: region.kycStatusMap.MY_INFO?.rawValue)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-NricFinStatus", withValue: region.kycStatusMap.NRIC_FIN?.rawValue)
             }
