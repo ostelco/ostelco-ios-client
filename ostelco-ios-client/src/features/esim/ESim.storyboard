@@ -119,23 +119,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFQ-XE-Rr2">
-                                <rect key="frame" x="64" y="152" width="247" height="61"/>
-                                <string key="text">We just sent an email with a QR code to you. Send it again
-</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="We just sent an email with a QR code to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFQ-XE-Rr2">
+                                <rect key="frame" x="64" y="152" width="247" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please follow these steps:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-bW-vSe">
-                                <rect key="frame" x="64" y="245" width="247" height="21"/>
+                                <rect key="frame" x="64" y="239" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-Vm-dCb">
-                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
-                                <state key="normal" title="Continue"/>
+                                <rect key="frame" x="145" y="573" width="85" height="30"/>
+                                <state key="normal" title="Check again"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="c1S-Dv-Jls"/>
                                 </connections>
@@ -147,14 +145,27 @@
                                     <action selector="needHelpTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="3Fu-gf-xr0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-1A-jtX">
+                                <rect key="frame" x="143" y="193" width="89" height="30"/>
+                                <state key="normal" title="Send it again"/>
+                                <connections>
+                                    <action selector="sendAgainTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="hC0-td-dwc"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructionsESim" translatesAutoresizingMaskIntoConstraints="NO" id="8u4-Ju-0Et">
+                                <rect key="frame" x="50.5" y="231" width="274" height="205"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HlS-bW-vSe" firstAttribute="top" secondItem="b1j-1A-jtX" secondAttribute="bottom" constant="16" id="7Tu-QJ-Xxg"/>
                             <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="Biu-P3-rBL" secondAttribute="trailing" constant="64" id="BlV-YQ-Ula"/>
                             <constraint firstAttribute="trailing" secondItem="HlS-bW-vSe" secondAttribute="trailing" constant="64" id="Ood-B8-Gke"/>
+                            <constraint firstItem="b1j-1A-jtX" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="UL7-IO-VKA"/>
                             <constraint firstItem="Biu-P3-rBL" firstAttribute="top" secondItem="MFX-5Q-Pxo" secondAttribute="top" constant="64" id="WOp-bX-94S"/>
+                            <constraint firstItem="8u4-Ju-0Et" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="agt-SE-cl4"/>
+                            <constraint firstItem="8u4-Ju-0Et" firstAttribute="centerY" secondItem="PgR-Xv-prz" secondAttribute="centerY" id="cOo-VA-nfC"/>
                             <constraint firstItem="RFQ-XE-Rr2" firstAttribute="top" secondItem="Biu-P3-rBL" secondAttribute="bottom" constant="32" id="eAn-91-rHO"/>
-                            <constraint firstItem="HlS-bW-vSe" firstAttribute="top" secondItem="RFQ-XE-Rr2" secondAttribute="bottom" constant="32" id="f77-NE-TiT"/>
                             <constraint firstItem="HuT-Vm-dCb" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="hOI-ei-6a1"/>
                             <constraint firstAttribute="trailing" secondItem="RFQ-XE-Rr2" secondAttribute="trailing" constant="64" id="jyS-Uh-Nef"/>
                             <constraint firstItem="HlS-bW-vSe" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="64" id="kT8-DX-JSp"/>
@@ -162,19 +173,21 @@
                             <constraint firstItem="Biu-P3-rBL" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="64" id="ncF-ll-Hqy"/>
                             <constraint firstItem="HuT-Vm-dCb" firstAttribute="top" secondItem="qmZ-bE-GzB" secondAttribute="bottom" constant="32" id="pTM-ex-jWB"/>
                             <constraint firstItem="RFQ-XE-Rr2" firstAttribute="leading" secondItem="PgR-Xv-prz" secondAttribute="leading" constant="64" id="sOQ-M2-YeB"/>
+                            <constraint firstItem="b1j-1A-jtX" firstAttribute="top" secondItem="RFQ-XE-Rr2" secondAttribute="bottom" id="sqx-ds-5SL"/>
                             <constraint firstItem="qmZ-bE-GzB" firstAttribute="centerX" secondItem="MFX-5Q-Pxo" secondAttribute="centerX" id="xER-QQ-RYZ"/>
                             <constraint firstItem="RFQ-XE-Rr2" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="zLF-eV-bIx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MFX-5Q-Pxo"/>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="HuT-Vm-dCb" id="UEH-nt-qFV"/>
                         <segue destination="KbO-PW-FZS" kind="show" identifier="showHome" id="zBC-tI-grw"/>
                         <segue destination="y8z-sI-v85" kind="show" identifier="showGenericOhNo" id="g7o-Sq-6Cf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wE5-Lr-JxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="47"/>
+            <point key="canvasLocation" x="1997.5999999999999" y="46.326836581709152"/>
         </scene>
         <!--SignUpCompletedViewController-->
         <scene sceneID="SO1-gJ-JvP">
@@ -194,6 +207,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="instructionsESim" width="274" height="205"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <image name="stepDoneIcon" width="25" height="25"/>
     </resources>
