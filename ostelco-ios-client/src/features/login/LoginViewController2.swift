@@ -24,7 +24,9 @@ class LoginViewController2: UIViewController {
                     APIManager.sharedInstance.context.load()
                         .onSuccess({ data in
                             if let context: Context = data.typedContent(ifNone: nil) {
-                                UserManager.sharedInstance.user = context.customer
+                                DispatchQueue.main.async {
+                                    UserManager.sharedInstance.user = context.customer
+                                }
                                 if let region = context.getRegion() {
                                     switch region.status {
                                     case .PENDING:
