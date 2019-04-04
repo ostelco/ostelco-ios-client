@@ -11,7 +11,17 @@ import Crashlytics
 
 class ESIMPendingDownloadViewController: UIViewController {
     
-    var simProfile: SimProfile!
+    var simProfile: SimProfile! {
+        didSet {
+            let region = OnBoardingManager.sharedInstance.region!
+            if simProfile != nil {
+                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: simProfile.status.rawValue)
+            } else {
+                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: "")
+            }
+            
+        }
+    }
     
     @IBOutlet weak var continueButton: UIButton!
     
@@ -33,8 +43,8 @@ class ESIMPendingDownloadViewController: UIViewController {
                         self.simProfile = simProfile
                     
                         switch simProfile.status {
-                        case .AVAILABLE_FOR_DOWNLOAD:
-                            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet.")
+                        case .AVAILABLE_FOR_DOWNLOAD, .INSTALLED, .DOWNLOADED:
+                            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(simProfile.status.rawValue)")
                         default:
                             DispatchQueue.main.async {
                                 self.performSegue(withIdentifier: "showHome", sender: self)
@@ -68,12 +78,12 @@ class ESIMPendingDownloadViewController: UIViewController {
         let countryCode = region.region.id
         
         if let simProfiles = region.simProfiles, simProfiles.count > 0 {
-            if let simProfile = simProfiles.first(where: { [.ENABLED, .DOWNLOADED, .INSTALLED].contains($0.status) }) {
+            if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "showHome", sender: self)
                 }
             } else {
-                simProfile = simProfiles.first(where: { $0.status == .AVAILABLE_FOR_DOWNLOAD })
+                simProfile = simProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) })
             }
         } else {
             showSpinner(onView: self.view)
