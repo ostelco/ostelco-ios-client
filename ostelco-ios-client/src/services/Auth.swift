@@ -21,7 +21,12 @@ class Auth {
     var forceLoginPrompt = false
     func clear() {
         os_log("Clear credentials in auth0 credentials manager.")
-        self.credentialsManager.clear()
+        Auth0
+            .webAuth()
+            .clearSession(federated: true) {
+                print($0)
+                _ = self.credentialsManager.clear()
+        }
     }
 
     func logout() {
