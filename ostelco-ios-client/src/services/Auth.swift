@@ -21,7 +21,12 @@ class Auth {
     var forceLoginPrompt = false
     func clear() {
         os_log("Clear credentials in auth0 credentials manager.")
-        self.credentialsManager.clear()
+        Auth0
+            .webAuth()
+            .clearSession(federated: true) {
+                print("Clear Session: ", $0)
+                _ = self.credentialsManager.clear()
+        }
     }
 
     func logout() {
@@ -34,18 +39,17 @@ class Auth {
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
         var params: [String:String] = [:]
-        
+
         if forceLoginPrompt {
             params["prompt"] = "login"
         }
-        
+
         return Observable.create { observer in
             Auth0
                 .webAuth()
                 .logging(enabled: true)
                 .audience("http://google_api")
                 .scope("openid email profile offline_access")
-                // .connection("google-oauth2")
                 .parameters(params)
                 .start {
                     switch $0 {
@@ -64,10 +68,10 @@ class Auth {
                             os_log("Failed to login with auth0, got non web auth error: %{public}@", "\(error)")
                             observer.on(.error(error))
                         }
-                        
+
                     case .success(let credentials):
                         os_log("Store credentials with auth0 credentials manager.")
-                        self.credentialsManager.store(credentials: credentials)
+                        _ = self.credentialsManager.store(credentials: credentials)
                         os_log("Successfully logged in with auth0, credential. refreshToken: %{private}@ accessToken: %{private}@ idToken: %{private}@", credentials.refreshToken ?? "none", credentials.accessToken ?? "none", credentials.idToken ?? "none")
                         if let accessToken = credentials.accessToken {
                             DispatchQueue.main.async {
@@ -77,7 +81,7 @@ class Auth {
                         } else {
                             // TODO: How do we handle the case if access token is empty
                         }
-                        
+
                         self.forceLoginPrompt = false
                         observer.on(.next(credentials))
                         observer.on(.completed)
