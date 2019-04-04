@@ -10,7 +10,7 @@ struct Scan: Codable {
     let countryCode: String
     let scanId: String
     let status: String
-    
+
     enum CodingKeys: String, CodingKey {
         case countryCode, scanId, status
     }
