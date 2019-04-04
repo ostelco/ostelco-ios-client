@@ -11,6 +11,8 @@ import Crashlytics
 
 class ESIMPendingDownloadViewController: UIViewController {
     
+    var simProfile: SimProfile!
+    
     @IBOutlet weak var continueButton: UIButton!
     
     @IBAction func sendAgainTapped(_ sender: Any) {
@@ -24,13 +26,23 @@ class ESIMPendingDownloadViewController: UIViewController {
         showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
             .onSuccess { data in
-                if let simProfile: SimProfile = data.typedContent(ifNone: nil) {
-                    // TODO: Check sim proflie status and act accordingly
-                    /*
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "showHome", sender: self)
+                if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
+                    if let simProfile = simProfiles.first(where: {
+                        $0.eSimActivationCode == self.simProfile.eSimActivationCode
+                    }) {
+                        self.simProfile = simProfile
+                    
+                        switch simProfile.status {
+                        case .AVAILABLE_FOR_DOWNLOAD:
+                            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet.")
+                        default:
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "showHome", sender: self)
+                            }
+                        }
+                    } else {
+                        self.showAlert(title: "Error", msg: "Could not find which esim profile ")
                     }
-                    */
                 } else {
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
@@ -56,13 +68,19 @@ class ESIMPendingDownloadViewController: UIViewController {
         let countryCode = region.region.id
         
         if let simProfiles = region.simProfiles, simProfiles.count > 0 {
-            let simProfile = simProfiles[0]
+            if let simProfile = simProfiles.first(where: { [.ENABLED, .DOWNLOADED, .INSTALLED].contains($0.status) }) {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "showHome", sender: self)
+                }
+            } else {
+                simProfile = simProfiles.first(where: { $0.status == .AVAILABLE_FOR_DOWNLOAD })
+            }
         } else {
             showSpinner(onView: self.view)
-            APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").request(.post)
+            APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").withParam("profileType", "iphone").request(.post)
                 .onSuccess { data in
                     if let simProfile: SimProfile = data.typedContent(ifNone: nil) {
-                        // TODO: Check sim proflie status and act accordingly
+                        self.simProfile = simProfile
                     } else {
                         DispatchQueue.main.async {
                             self.performSegue(withIdentifier: "showGenericOhNo", sender: self)

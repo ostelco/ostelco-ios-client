@@ -6,13 +6,13 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+enum SimProfileStatus: String, Codable {
+    case AVAILABLE_FOR_DOWNLOAD, DOWNLOADED, INSTALLED, ENABLED
+}
+
 struct SimProfile: Codable {
-    let activationCode: String
+    let eSimActivationCode: String
     let alias: String
     let iccId: String
-    let status: String
-    
-    enum CodingKeys: String, CodingKey {
-        case activationCode, alias, iccId, status
-    }
+    let status: SimProfileStatus
 }
