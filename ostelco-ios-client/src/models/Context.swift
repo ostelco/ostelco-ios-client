@@ -11,18 +11,18 @@
 struct Context: Codable {
     let customer: CustomerModel?
     let regions: [RegionResponse]
-    
+
     enum CodingKeys: String, CodingKey {
         case customer, regions
     }
-    
+
     func getRegion() -> RegionResponse? {
-        
+
         var ret: RegionResponse? = nil
         var hasPendingStatus = false
         var hasRejectetStatus = false
         var hasApprovedStatus = false
-        
+
         for region in regions {
             switch region.status {
             case .PENDING:
@@ -38,14 +38,12 @@ struct Context: Codable {
             case .APPROVED:
                 ret = region
                 hasApprovedStatus = true
-            default:
-                break
             }
             if hasApprovedStatus {
                 break
             }
         }
-        
+
         return ret
     }
 }

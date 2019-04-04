@@ -11,7 +11,7 @@ struct SimProfile: Codable {
     let alias: String
     let iccId: String
     let status: String
-    
+
     enum CodingKeys: String, CodingKey {
         case activationCode, alias, iccId, status
     }

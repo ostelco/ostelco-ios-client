@@ -11,7 +11,7 @@ import Foundation
 struct BundleModel: Codable {
     let id: String
     let balance: Int64
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case balance
