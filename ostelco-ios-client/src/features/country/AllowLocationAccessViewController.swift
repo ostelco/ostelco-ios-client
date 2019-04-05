@@ -13,13 +13,8 @@ import RxCoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
 
-    @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var fakeModalNotificationImage: UIImageView!
-
-    @IBOutlet weak var locationServiceLabel: UILabel!
-    @IBOutlet weak var locationAccessLabel: UILabel!
     var spinnerView: UIView?
-
     var bag = DisposeBag()
     var userLocation: CLLocation!
     
@@ -34,49 +29,19 @@ class AllowLocationAccessViewController: UIViewController {
         super.viewDidLoad()
         selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
         descriptionLabel.text = "We need to verify that you are in \(selectedCountry?.name ?? "NO COUNTRY") in order to continue"
-        updateViewLabels()
+        locationManager.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateViewLabels()
-    }
-    
-    private func updateViewLabels() {
-        locationManager.rx
-            .isEnabled
-            .debug("isEnabled")
-            .subscribe(onNext: { isEnabled in
-                self.locationServiceLabel.text = "\(isEnabled)"
-            })
-            .disposed(by: bag)
-        
-        locationManager.rx
-            .didChangeAuthorization
-            .debug("didChangeAuthorization")
-            .subscribe(onNext: {_, status in
-                var msg = ""
-                switch status {
-                case .denied:
-                    msg = "Authorization denied"
-                case .notDetermined:
-                    msg = "Authorization: not determined"
-                case .restricted:
-                    msg = "Authorization: restricted"
-                case .authorizedAlways, .authorizedWhenInUse:
-                    msg = "All good fire request"
-                }
-                
-                self.locationAccessLabel.text = msg
-            })
-            .disposed(by: bag)
-        
-        locationManager.delegate = self
+        verifyLocation(ignoreNotDetermined: true)
     }
     
     @IBAction func dontAllowTapped(_ sender: Any) {
         let alert = UIAlertController(title: "We're sorry but...", message: "You have to allow location access to be able to continue so that you can start using your free 2GB.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.verifyLocation()
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -110,20 +75,29 @@ class AllowLocationAccessViewController: UIViewController {
         
     }
     
-    private func verifyLocation() {
+    @IBAction func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
+        verifyLocation()
+    }
+    
+    private func verifyLocation(ignoreNotDetermined: Bool = false) {
         if CLLocationManager.locationServicesEnabled() {
             let status = CLLocationManager.authorizationStatus()
             
             switch status {
             case .notDetermined:
-                locationManager.requestAlwaysAuthorization()
+                if !ignoreNotDetermined {
+                    locationManager.requestAlwaysAuthorization()
+                }
             case .restricted:
                 showLocationAccessRestricted()
             case .denied:
                 showLocationAccessDenied()
             case .authorizedAlways, .authorizedWhenInUse:
                 userLocation = nil
-                spinnerView = showSpinner(onView: view)
+                // TODO: Spinner is added twice for some reason in some cases
+                if spinnerView == nil {
+                    spinnerView = showSpinner(onView: view)
+                }
                 locationManager.requestLocation()
                 /*
                 TODO: Did not get the location part to work using RxCoreLocation. the subscription never returned a value thus nothing happened. Could be related to simulator only when faking locations.
@@ -248,6 +222,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     {
         if userLocation == nil {
             removeSpinner(spinnerView)
+            spinnerView = nil
             if let location = locations.first {
                 userLocation = location
                 print("Location: \(location)")
@@ -284,8 +259,13 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         removeSpinner(spinnerView)
+        spinnerView = nil
         print("Failed to find user's location: \(error.localizedDescription)")
         failedToGetLocationAlert()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        verifyLocation(ignoreNotDetermined: true)
     }
 }
 

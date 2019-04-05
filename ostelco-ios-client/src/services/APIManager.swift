@@ -37,8 +37,8 @@ class APIManager: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authHeader
         }
-
-        configureTransformer("/customer") {
+        
+        configureTransformer("/customer", requestMethods: [.get, .post, .put]) {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
         }
 
@@ -50,6 +50,14 @@ class APIManager: Service {
             try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
         }
 
+        configureTransformer("/regions/*/simProfiles") {
+            try self.jsonDecoder.decode([SimProfile].self, from: $0.content)
+        }
+        
+        self.configure("/reginos/*/simProfiles") {
+            $0.expirationTime = 5
+        }
+        
         configureTransformer("/regions/*") {
             try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
         }

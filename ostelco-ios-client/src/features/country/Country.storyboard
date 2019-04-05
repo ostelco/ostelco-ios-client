@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Verify Country On Boarding View Controller-->
+        <!--Countries Table View Controller-->
         <scene sceneID="IJh-64-weN">
             <objects>
                 <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -274,30 +274,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Service:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mo7-5s-f7w">
-                                <rect key="frame" x="16" y="626.5" width="131.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Access:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5G-Ji-10F">
-                                <rect key="frame" x="16" y="602" width="129.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JJ-Zj-UAo">
-                                <rect key="frame" x="151.5" y="626.5" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9D-tS-sVB">
-                                <rect key="frame" x="151.5" y="602" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -306,21 +282,13 @@
                             <constraint firstItem="ArC-fV-zjg" firstAttribute="height" secondItem="rfg-Yo-QL8" secondAttribute="height" id="1Qd-G7-Afw"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="u9V-Ch-8LS" secondAttribute="trailing" constant="64" id="2iY-Do-M8J"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="leading" secondItem="q3Q-44-Cly" secondAttribute="leading" constant="64" id="FQj-gX-sGt"/>
-                            <constraint firstItem="7JJ-Zj-UAo" firstAttribute="top" secondItem="d9D-tS-sVB" secondAttribute="bottom" constant="4" id="G2p-mw-rVh"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="top" secondItem="9nq-pm-G8D" secondAttribute="top" constant="64" id="JBb-lV-fcV"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="64" id="Maw-Xq-FcE"/>
                             <constraint firstItem="ArC-fV-zjg" firstAttribute="centerX" secondItem="rfg-Yo-QL8" secondAttribute="centerX" id="N2l-7G-WMY"/>
-                            <constraint firstItem="mo7-5s-f7w" firstAttribute="top" secondItem="c5G-Ji-10F" secondAttribute="bottom" constant="4" id="T7u-pA-hLU"/>
-                            <constraint firstItem="7JJ-Zj-UAo" firstAttribute="leading" secondItem="mo7-5s-f7w" secondAttribute="trailing" constant="4" id="UcE-od-wF2"/>
-                            <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="7JJ-Zj-UAo" secondAttribute="bottom" constant="20" id="UxR-Zh-dtg"/>
-                            <constraint firstItem="mo7-5s-f7w" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="16" id="VQm-qz-faz"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="WeR-Pz-Va6"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="XDb-0K-VUH"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerY" secondItem="q3Q-44-Cly" secondAttribute="centerY" id="ZEM-DY-ZHQ"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="64" id="aa4-Jm-7BO"/>
-                            <constraint firstItem="c5G-Ji-10F" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="16" id="awn-ub-KKl"/>
-                            <constraint firstItem="d9D-tS-sVB" firstAttribute="leading" secondItem="c5G-Ji-10F" secondAttribute="trailing" constant="6" id="eXt-vj-QZe"/>
-                            <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="mo7-5s-f7w" secondAttribute="bottom" constant="20" id="shq-JZ-mXd"/>
                             <constraint firstItem="ArC-fV-zjg" firstAttribute="centerY" secondItem="rfg-Yo-QL8" secondAttribute="centerY" id="tjR-OB-hv1"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="tzd-69-KCB"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="top" secondItem="u9V-Ch-8LS" secondAttribute="bottom" constant="32" id="yFE-Yl-DKK"/>
@@ -331,9 +299,6 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="iZq-29-s8v" id="LrR-IP-Zc3"/>
                         <outlet property="fakeModalNotificationImage" destination="rfg-Yo-QL8" id="cHe-ya-Zxp"/>
-                        <outlet property="locationAccessLabel" destination="d9D-tS-sVB" id="Nva-we-eGt"/>
-                        <outlet property="locationServiceLabel" destination="7JJ-Zj-UAo" id="uKw-fi-awD"/>
-                        <outlet property="stateLabel" destination="mo7-5s-f7w" id="H9h-eY-R9a"/>
                         <segue destination="CPG-f2-Vgd" kind="presentation" identifier="showLocationAccessDenied" id="CHL-aw-MdZ"/>
                         <segue destination="qci-Lo-7Ap" kind="presentation" identifier="showLocationServiceDisabled" id="EpQ-fY-7ip"/>
                         <segue destination="1el-Qe-8Nh" kind="presentation" identifier="showLocationAccessRestricted" id="TTJ-Ir-E5f"/>
@@ -399,9 +364,11 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="gj0-b2-7aj" id="bPy-CI-bZx"/>
+                        <segue destination="5C2-IW-M83" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="cDO-mx-Hkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Eb-gI-Li9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5C2-IW-M83" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3294" y="-922"/>
         </scene>
@@ -457,9 +424,11 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="smW-PN-EFs" id="Ltf-Sm-bTt"/>
+                        <segue destination="J9O-1P-Q6V" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="VWk-di-34y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27c-1j-J8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="J9O-1P-Q6V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4032.8000000000002" y="-922.48875562218893"/>
         </scene>

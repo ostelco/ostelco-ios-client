@@ -19,20 +19,26 @@ class Auth {
 
     // force show the login screen after user logs out without using the auth0 logout url
     var forceLoginPrompt = false
-    func clear() {
+    func clear(callback: (() -> Void)?) {
         os_log("Clear credentials in auth0 credentials manager.")
         Auth0
             .webAuth()
             .clearSession(federated: true) {
                 print("Clear Session: ", $0)
                 _ = self.credentialsManager.clear()
+                if let callback = callback {
+                    callback()
+                }
         }
     }
 
-    func logout() {
+    func logout(callback: (() -> Void)? = nil) {
         os_log("Logout user")
-        self.clear()
         forceLoginPrompt = true
+        OnBoardingManager.sharedInstance.region = nil
+        UserManager.sharedInstance.user = nil
+        self.clear(callback: callback)
+        
         // AppDelegate.shared.rootViewController.switchToLogout() // Old way of logging out
     }
 

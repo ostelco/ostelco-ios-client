@@ -159,10 +159,9 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         self.dismiss(animated: true) {
             self.netverifyViewController?.destroy()
             self.netverifyViewController = nil
-            let alert = UIAlertController(title: "Jumio failed", message: "somehow?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Info", message: "\(error?.message)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            // self.present(alert, animated: true)
-            self.performSegue(withIdentifier: "yourAddress", sender: self)
+            self.present(alert, animated: true)
         }
     }
 

@@ -19,8 +19,13 @@ class GetStartedViewController: UIViewController {
         if let email = email {
             APIManager.sharedInstance.customer.withParam("nickname", nameTextField.text!).withParam("contactEmail", email).request(.post, json: [:])
                 .onSuccess({ data in
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "showCountry", sender: self)
+                    if let customer: CustomerModel = data.typedContent(ifNone: nil) {
+                        DispatchQueue.main.async {
+                            UserManager.sharedInstance.user = customer
+                            self.performSegue(withIdentifier: "showCountry", sender: self)
+                        }
+                    } else {
+                        self.showAlert(title: "Error", msg: "Something unexpected happened. Try again later.")
                     }
                 })
                 .onFailure({ error in

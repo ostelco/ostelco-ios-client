@@ -1,14 +1,14 @@
 //
-//  EKYCOhNoViewController.swift
+//  GenericOhNoViewController.swift
 //  ostelco-ios-client
 //
-//  Created by mac on 3/6/19.
+//  Created by mac on 4/3/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
 import UIKit
 
-class EKYCOhNoViewController: UIViewController {
+class GenericOhNoViewController: UIViewController {
     @IBAction func contactSupportTapped(_ sender: Any) {
         Freshchat.sharedInstance()?.showConversations(self)
     }
