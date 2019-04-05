@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Could be a good idea to not have a global variable. Rather return the view from showSpinner, then use that as a parameter to removeSpinner
 // ref: http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
 
 extension UIViewController {
