@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpCompletedViewController: UIViewController {
-    
+
     @IBAction func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "home", sender: self)
     }

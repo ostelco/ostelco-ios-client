@@ -12,18 +12,18 @@ import Stripe
 import Siesta
 
 class BecomeAMemberViewController: UIViewController {
-    
+
     var paymentError: RequestError!
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBOutlet weak var paymentButtonContainer: UIStackView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+
         // 1. Make sure device supports apple pay and that there are no other restrictions preventing payment (like parental control)
         if PKPaymentAuthorizationViewController.canMakePayments() {
             
@@ -43,19 +43,19 @@ class BecomeAMemberViewController: UIViewController {
         }
         
     }
-    
+
     @objc func buyButtonTapped() {
         let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
         startApplePay(product: product, delegate: self)
     }
-    
+
     @objc func setUpButtonTapped() {
         PKPassLibrary().openPaymentSetup()
     }
 }
 
 extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
-    
+
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
             guard let source = source, error == nil else {
@@ -63,7 +63,7 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
                 self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
                 return
             }
-            
+
             APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
                 .onProgress({ progress in
                     print("Progress %{public}@", "\(progress)")
@@ -87,7 +87,7 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
                 })
         }
     }
-    
+
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {

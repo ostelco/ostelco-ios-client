@@ -8,7 +8,7 @@
 
 class OnBoardingManager {
     static let sharedInstance = OnBoardingManager()
-    var selectedCountry = Country(countryCode: "SG")
+    var selectedCountry = Country("SG")
     var region: RegionResponse! {
         didSet {
             if region != nil {
@@ -20,7 +20,6 @@ class OnBoardingManager {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-MyInfoStatus", withValue: region.kycStatusMap.MY_INFO?.rawValue)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-NricFinStatus", withValue: region.kycStatusMap.NRIC_FIN?.rawValue)
             }
-            
         }
     }
 }

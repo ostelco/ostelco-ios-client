@@ -10,7 +10,7 @@ struct JSONRequestError: Codable {
     let errorCode: String
     let httpStatusCode: Int
     let message: String
-    
+
     enum CodingKeys: String, CodingKey {
         case errorCode, httpStatusCode = "status", message
     }

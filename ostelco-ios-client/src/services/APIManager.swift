@@ -9,7 +9,7 @@
 import Siesta
 
 class APIManager: Service {
-    
+
     static let sharedInstance = APIManager()
     let jsonDecoder = JSONDecoder()
     var authHeader: String? {
@@ -37,7 +37,7 @@ class APIManager: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authHeader
         }
-        
+
         configureTransformer("/customer", requestMethods: [.get, .post, .put]) {
             try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
         }

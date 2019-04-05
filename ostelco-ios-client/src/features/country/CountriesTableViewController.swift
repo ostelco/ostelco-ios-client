@@ -8,30 +8,21 @@
 
 import UIKit
 
+fileprivate let countryCodes = ["DE", "IE", "NO", "SG", "SE", "GB", "US"]
+
 class CountriesTableViewController: UITableViewController {
-    
+
     @IBOutlet weak var selectedCountryLabel: UILabel!
-    let countries: [Country] = {
-        var countries: [Country] = []
-        countries.append(Country(countryCode: "DE"))
-        countries.append(Country(countryCode: "IE"))
-        countries.append(Country(countryCode: "NO"))
-        countries.append(Country(countryCode: "SG"))
-        countries.append(Country(countryCode: "SE"))
-        countries.append(Country(countryCode: "GB"))
-        countries.append(Country(countryCode: "US"))
-        return countries
-    }()
-    
+    let countries: [Country] = countryCodes.map { Country($0) }
+
     override func viewDidLoad() {
         selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
         self.tableView.delegate = self
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCountryListActionSheet(countries: countries, completion: {
             self.selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
         })
     }
 }
-

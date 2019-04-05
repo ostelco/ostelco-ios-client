@@ -17,18 +17,18 @@ class SettingsTableViewController2: UITableViewController {
         case CancelMembership = 4
         case LogOut = 5
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let menuItem = MenuItem(rawValue: indexPath.item) else {
             showAlert(title: "Error", msg: "Invalid selection")
             return
         }
-        
+
         switch menuItem {
         case .PurchaseHistory:
             performSegue(withIdentifier: "purchaseHistory", sender: self)
