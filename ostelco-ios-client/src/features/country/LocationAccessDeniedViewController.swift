@@ -37,7 +37,7 @@ class LocationAccessDeniedViewController: UIViewController {
             })
             .subscribe(onNext: {_ in
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "unwind", sender: self)
                 }
             })
             .disposed(by: bag)
