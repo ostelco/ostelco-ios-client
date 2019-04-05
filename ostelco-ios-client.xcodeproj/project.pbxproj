@@ -482,8 +482,8 @@
 		047F291A2224538000FC6A8F /* home */ = {
 			isa = PBXGroup;
 			children = (
-				047F29272224558B00FC6A8F /* HomeViewController2.swift */,
 				047F292A222455CF00FC6A8F /* Home.storyboard */,
+				047F29272224558B00FC6A8F /* HomeViewController2.swift */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
