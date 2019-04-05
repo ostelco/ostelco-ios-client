@@ -11,7 +11,6 @@ import Stripe
 
 // Use custom classes to get unique class names for Alerts etc
 class NeedHelpAlertController: UIAlertController {
-    
     // Or override the viewDidAppear to set the current screen name, unfortunately this will trigger two screen_view events
     /*
      override func viewDidAppear(_ animated: Bool) {
@@ -21,6 +20,7 @@ class NeedHelpAlertController: UIAlertController {
      }
      let screenClass = classForCoder.description()
      Analytics.setScreenName(screenName, screenClass: screenClass)
+
      }
      */
 }
@@ -28,81 +28,79 @@ class NeedHelpAlertController: UIAlertController {
 extension UIViewController {
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
-        
-        let deleteActionAction = UIAlertAction(title: "Delete Account", style: .destructive, handler: {_ in
+
+        let deleteActionAction = UIAlertAction(title: "Delete Account", style: .destructive) { _ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
         alertCtrl.addAction(deleteActionAction)
         alertCtrl.addAction(cancelAction)
-        
+
         present(alertCtrl, animated: true, completion: nil)
     }
-    
+
     func showLogOutActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to log out from your account?", preferredStyle: .actionSheet)
         
-        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive, handler: {_ in
+        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
-        
+
         present(alertCtrl, animated: true, completion: nil)
     }
-    
+
     func showNeedHelpActionSheet() {
         let alertCtrl = NeedHelpAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
-        
-        let supportAction = UIAlertAction(title: "Contact Support", style: .default, handler: {_ in
+
+        let supportAction = UIAlertAction(title: "Contact Support", style: .default) {_ in
             Freshchat.sharedInstance()?.showConversations(self)
-        })
-        let faqAction = UIAlertAction(title: "FAQ", style: .default, handler: {_ in
+        }
+        let faqAction = UIAlertAction(title: "FAQ", style: .default) {_ in
             Freshchat.sharedInstance()?.showFAQs(self)
-        })
-        let startOverAction = UIAlertAction(title: "Start Again", style: .destructive, handler: {_ in
+        }
+        let startOverAction = UIAlertAction(title: "Start Again", style: .destructive) {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
-        })
-        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive, handler: {_ in
+        }
+        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
         alertCtrl.addAction(supportAction)
         alertCtrl.addAction(faqAction)
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
-    
         alertCtrl.addAction(cancelAction)
-    
+
         present(alertCtrl, animated: true, completion: nil)
     }
 
     func showProductListActionSheet(products: [Product], delegate: PKPaymentAuthorizationViewControllerDelegate) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
+
         for product in products {
-            let buyAction = UIAlertAction(title: product.name, style: .default, handler: {_ in
+            let buyAction = UIAlertAction(title: product.name, style: .default) {_ in
                 self.startApplePay(product: product, delegate: delegate)
-            })
+            }
             alertCtrl.addAction(buyAction)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
         alertCtrl.addAction(cancelAction)
-        
+
         present(alertCtrl, animated: true, completion: nil)
     }
 }

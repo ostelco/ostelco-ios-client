@@ -53,7 +53,10 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
             let credentials = $0.typedContent()! as Credentials
             let accessToken = credentials.accessToken;
             ostelcoAPI.authToken = "Bearer \(accessToken!)"
-            // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating the accessToken with auth0 is that auth0 will again refresh the access token next time you open the app or the app comes into forground from background.
+            // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required
+            // by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating
+            // the accessToken with auth0 is that auth0 will again refresh the access token next time you open the app or the
+            // app comes into forground from background.
             // sharedAuth.credentialsManager.store(credentials: credentials)
             os_log("Successfully fetched new access token.")
     }
@@ -65,7 +68,7 @@ class Auth0API: Service {
         super.init(
             baseURL: "https://\(Environment().configuration(.Auth0Domain))"
         )
-        
+
         self.configure("oauth/token") {
             $0.headers["content-Type"] = "application/json"
         }
@@ -89,7 +92,7 @@ class OstelcoAPI: Service {
         configure {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
-            
+
             $0.decorateRequests { res,req in
                 return refreshTokenOnAuthFailure(request: req, refreshToken: self.refreshToken)
             }
@@ -126,7 +129,7 @@ class OstelcoAPI: Service {
         didSet {
             // Rerun existing configuration closure using new value
             invalidateConfiguration()
-            
+
             // Wipe any cached state if auth token changes
             // Note: If we wipe resources, the purchase history list becomes blank after we repeate a request after a 401 from ostelcoAPI
             // wipeResources()
