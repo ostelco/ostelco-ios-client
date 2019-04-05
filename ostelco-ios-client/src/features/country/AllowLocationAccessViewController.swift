@@ -13,11 +13,7 @@ import RxCoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
     
-    @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var fakeModalNotificationImage: UIImageView!
-    
-    @IBOutlet weak var locationServiceLabel: UILabel!
-    @IBOutlet weak var locationAccessLabel: UILabel!
     
     var bag = DisposeBag()
     var userLocation: CLLocation!
