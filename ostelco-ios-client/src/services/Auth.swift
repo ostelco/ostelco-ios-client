@@ -33,6 +33,8 @@ class Auth {
         os_log("Logout user")
         self.clear()
         forceLoginPrompt = true
+        OnBoardingManager.sharedInstance.region = nil
+        UserManager.sharedInstance.user = nil
         // AppDelegate.shared.rootViewController.switchToLogout() // Old way of logging out
     }
 
