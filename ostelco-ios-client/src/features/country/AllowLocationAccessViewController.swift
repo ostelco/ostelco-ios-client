@@ -12,9 +12,9 @@ import RxSwift
 import RxCoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
-    
+
     @IBOutlet weak var fakeModalNotificationImage: UIImageView!
-    
+    var spinnerView: UIView?
     var bag = DisposeBag()
     var userLocation: CLLocation!
     
@@ -22,11 +22,7 @@ class AllowLocationAccessViewController: UIViewController {
 
     var descriptionText: String = ""
     var selectedCountry: Country?
-    
-    let manager = CLLocationManager()
-    
-    var spinner: UIView?
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
@@ -99,10 +95,9 @@ class AllowLocationAccessViewController: UIViewController {
             case .authorizedAlways, .authorizedWhenInUse:
                 userLocation = nil
                 // TODO: Spinner is added twice for some reason in some cases
-                if spinner == nil {
-                    self.spinner = showSpinner(onView: self.view)
+                if spinnerView == nil {
+                    spinnerView = showSpinner(onView: view)
                 }
-                
                 locationManager.requestLocation()
                 /*
                 TODO: Did not get the location part to work using RxCoreLocation. the subscription never returned a value thus nothing happened. Could be related to simulator only when faking locations.
@@ -226,7 +221,8 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         if userLocation == nil {
-            removeSpinner()
+            removeSpinner(spinnerView)
+            spinnerView = nil
             if let location = locations.first {
                 userLocation = location
                 print("Location: \(location)")
@@ -262,7 +258,8 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        removeSpinner()
+        removeSpinner(spinnerView)
+        spinnerView = nil
         print("Failed to find user's location: \(error.localizedDescription)")
         failedToGetLocationAlert()
     }

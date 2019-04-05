@@ -10,7 +10,7 @@ import UIKit
 import Crashlytics
 
 class ESIMPendingDownloadViewController: UIViewController {
-    
+    var spinnerView: UIView?
     var simProfile: SimProfile! {
         didSet {
             let region = OnBoardingManager.sharedInstance.region!
@@ -33,7 +33,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
         
-        showSpinner(onView: self.view)
+        spinnerView = showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
             .onSuccess { data in
                 if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
@@ -65,7 +65,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                 self.showAPIError(error: requestError)
             }
             .onCompletion { _ in
-                self.removeSpinner()
+                self.removeSpinner(self.spinnerView)
             }
     }
     
@@ -86,7 +86,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                 simProfile = simProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) })
             }
         } else {
-            showSpinner(onView: self.view)
+            spinnerView = showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").withParam("profileType", "iphone").request(.post)
                 .onSuccess { data in
                     if let simProfile: SimProfile = data.typedContent(ifNone: nil) {
@@ -112,7 +112,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                     }
                 }
                 .onCompletion { _ in
-                    self.removeSpinner()
+                    self.removeSpinner(self.spinnerView)
                 }
         }
     }

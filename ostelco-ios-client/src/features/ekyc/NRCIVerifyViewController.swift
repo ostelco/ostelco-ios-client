@@ -11,7 +11,7 @@ import Netverify
 import Crashlytics
 
 class NRCIVerifyViewController: UIViewController {
-
+    var spinnerView: UIView?
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
     @IBOutlet weak var nricTextField: UITextField!
@@ -29,7 +29,7 @@ class NRCIVerifyViewController: UIViewController {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
-            showSpinner(onView: self.view)
+            spinnerView = showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
                     self.startNetverify()
@@ -51,7 +51,7 @@ class NRCIVerifyViewController: UIViewController {
                     }
                 }
                 .onCompletion { _ in
-                    self.removeSpinner()
+                    self.removeSpinner(self.spinnerView)
                }
         } else {
             showAlert(title: "Error", msg: "NRIC field can't be empty")

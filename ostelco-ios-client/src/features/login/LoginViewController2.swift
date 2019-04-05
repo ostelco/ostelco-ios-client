@@ -11,16 +11,16 @@ import Firebase
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
+    var spinnerView:UIView?
 
     @IBAction func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
         Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
-
                 // TODO: Duplicated logic from SplashViewController
                 DispatchQueue.main.async {
-                    self.showSpinner(onView: self.view)
+                    self.spinnerView = self.showSpinner(onView: self.view)
                     APIManager.sharedInstance.context.load()
                         .onSuccess({ data in
                             if let context: Context = data.typedContent(ifNone: nil) {
@@ -95,7 +95,7 @@ class LoginViewController2: UIViewController {
                             }
                         })
                         .onCompletion({ _ in
-                            self.removeSpinner()
+                            self.removeSpinner(self.spinnerView)
                         })
                 }
         },

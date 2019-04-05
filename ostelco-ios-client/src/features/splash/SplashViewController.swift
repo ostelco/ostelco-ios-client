@@ -10,7 +10,7 @@ import UIKit
 
 class SplashViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    
+    var spinnerView: UIView?
     override func viewDidLoad() {
         view.backgroundColor = ThemeManager.currentTheme().mainColor
     }
@@ -44,7 +44,7 @@ class SplashViewController: UIViewController {
                         }
                         */
                         
-                        self.showSpinner(onView: self.view)
+                        self.spinnerView = self.showSpinner(onView: self.view)
                         apiManager.context.load()
                             .onSuccess({ data in
                                 if let context: Context = data.typedContent(ifNone: nil) {
@@ -107,7 +107,7 @@ class SplashViewController: UIViewController {
                                 }
                             })
                             .onCompletion({ _ in
-                                self.removeSpinner()
+                                self.removeSpinner(self.spinnerView)
                             })
                     }
                     

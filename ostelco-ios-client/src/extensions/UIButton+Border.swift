@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable extension UIButton {
-    
+
     @IBInspectable var borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue
@@ -18,7 +18,7 @@ import UIKit
             return layer.borderWidth
         }
     }
-    
+
     @IBInspectable var cornerRadius: CGFloat {
         set {
             layer.cornerRadius = newValue
@@ -27,7 +27,7 @@ import UIKit
             return layer.cornerRadius
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor? {
         set {
             guard let uiColor = newValue else { return }
