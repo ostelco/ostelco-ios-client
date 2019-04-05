@@ -55,7 +55,7 @@ class TheLegalStuffViewController: UIViewController {
         termsAndConditionsLabel.isUserInteractionEnabled = true
         let termsAndConditionsTapHandler = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTapped))
         termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTapHandler)
-        
+
         let attributedString2 = NSMutableAttributedString(string: "I agree to the  Privacy Policy", attributes: [
             .font: UIFont.systemFont(ofSize: 16.0, weight: .regular),
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
@@ -65,7 +65,7 @@ class TheLegalStuffViewController: UIViewController {
         privacyPolicyLabel.isUserInteractionEnabled = true
         let privacyPolicyTapHandler = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
         privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapHandler)
-        
+
         let attributedString3 = NSMutableAttributedString(string: "I agree to recieve OYA updates by email. This consent can be revoked at any time.", attributes: [
             .font: UIFont.systemFont(ofSize: 16, weight: .regular),
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
