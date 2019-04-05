@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Verify Country On Boarding View Controller-->
+        <!--Countries Table View Controller-->
         <scene sceneID="IJh-64-weN">
             <objects>
                 <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -399,9 +399,11 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="gj0-b2-7aj" id="bPy-CI-bZx"/>
+                        <segue destination="5C2-IW-M83" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="cDO-mx-Hkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Eb-gI-Li9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5C2-IW-M83" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3294" y="-922"/>
         </scene>
@@ -457,9 +459,11 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="smW-PN-EFs" id="Ltf-Sm-bTt"/>
+                        <segue destination="J9O-1P-Q6V" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="VWk-di-34y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27c-1j-J8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="J9O-1P-Q6V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4032.8000000000002" y="-922.48875562218893"/>
         </scene>
