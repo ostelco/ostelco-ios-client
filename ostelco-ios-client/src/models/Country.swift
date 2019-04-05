@@ -16,7 +16,7 @@ public class Country {
         return current.localizedString(forRegionCode: countryCode) ?? nil
     }
 
-    init(countryCode: String) {
+    init(_ countryCode: String) {
         self.countryCode = countryCode
     }
 }
