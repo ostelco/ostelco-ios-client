@@ -30,9 +30,22 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
         
         let deleteActionAction = UIAlertAction(title: "Delete Account", style: .destructive, handler: {_ in
-            sharedAuth.logout()
-            let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-            self.present(viewController, animated: true)
+            self.showSpinner(onView: self.view)
+            APIManager.sharedInstance.customer.request(.delete)
+                .onSuccess { _ in
+                        sharedAuth.logout(callback: {
+                            DispatchQueue.main.async {
+                                let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
+                                self.present(viewController, animated: true)
+                            }
+                        })
+                }
+                .onFailure { requestError in
+                    self.showAPIError(error: requestError)
+                }
+                .onCompletion { _ in
+                    self.removeSpinner()
+                }
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -68,9 +81,22 @@ extension UIViewController {
             Freshchat.sharedInstance()?.showFAQs(self)
         })
         let startOverAction = UIAlertAction(title: "Start Again", style: .destructive, handler: {_ in
-            sharedAuth.logout()
-            let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-            self.present(viewController, animated: true)
+            self.showSpinner(onView: self.view)
+            APIManager.sharedInstance.customer.request(.delete)
+                .onSuccess { _ in
+                    sharedAuth.logout(callback: {
+                        DispatchQueue.main.async {
+                            let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
+                            self.present(viewController, animated: true)
+                        }
+                    })
+                }
+                .onFailure { requestError in
+                    self.showAPIError(error: requestError)
+                }
+                .onCompletion { _ in
+                    self.removeSpinner()
+            }
         })
         let logOutAction = UIAlertAction(title: "Log Out", style: .destructive, handler: {_ in
             sharedAuth.logout()
