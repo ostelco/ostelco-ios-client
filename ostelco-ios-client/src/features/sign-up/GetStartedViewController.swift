@@ -10,9 +10,10 @@ import UIKit
 import JWTDecode
 
 class GetStartedViewController: UIViewController {
-    
+    var spinnerView: UIView?
+
     @IBAction func continueTapped(_ sender: Any) {
-        self.showSpinner(onView: self.view)
+        spinnerView = showSpinner(onView: self.view)
         let email = getEmailFromJWT()
         
         if let email = email {
@@ -26,7 +27,7 @@ class GetStartedViewController: UIViewController {
                     self.showAPIError(error: error)
                 })
                 .onCompletion({ _ in
-                    self.removeSpinner()
+                    self.removeSpinner(self.spinnerView)
                 })
         } else {
             showAlert(title: "Error", msg: "Email is empty or missing in claims")

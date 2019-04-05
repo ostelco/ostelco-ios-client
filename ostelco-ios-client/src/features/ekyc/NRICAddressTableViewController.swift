@@ -15,7 +15,7 @@ class NRICAddressTableViewController: UITableViewController {
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var postcode: UITextField!
     @IBOutlet weak var country: UITextField!
-
+    var spinnerView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class NRICAddressTableViewController: UITableViewController {
       alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
       self.present(alert, animated: true, completion: nil)
     } else {
-        showSpinner(onView: self.view)
+        spinnerView = showSpinner(onView: self.view)
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         APIManager.sharedInstance.regions.child(countryCode).child("kyc/profile")
             .withParam("address", self.buildAddressString())
@@ -57,7 +57,7 @@ class NRICAddressTableViewController: UITableViewController {
             
         }
         .onCompletion { _ in
-            self.removeSpinner()
+            self.removeSpinner(self.spinnerView)
         }
     }
     }

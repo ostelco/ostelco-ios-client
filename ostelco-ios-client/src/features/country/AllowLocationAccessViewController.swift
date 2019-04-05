@@ -12,13 +12,14 @@ import RxSwift
 import RxCoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
-    
+
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var fakeModalNotificationImage: UIImageView!
-    
+
     @IBOutlet weak var locationServiceLabel: UILabel!
     @IBOutlet weak var locationAccessLabel: UILabel!
-    
+    var spinnerView: UIView?
+
     var bag = DisposeBag()
     var userLocation: CLLocation!
     
@@ -26,7 +27,7 @@ class AllowLocationAccessViewController: UIViewController {
 
     var descriptionText: String = ""
     var selectedCountry: Country?
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
@@ -122,7 +123,7 @@ class AllowLocationAccessViewController: UIViewController {
                 showLocationAccessDenied()
             case .authorizedAlways, .authorizedWhenInUse:
                 userLocation = nil
-                showSpinner(onView: self.view)
+                spinnerView = showSpinner(onView: view)
                 locationManager.requestLocation()
                 /*
                 TODO: Did not get the location part to work using RxCoreLocation. the subscription never returned a value thus nothing happened. Could be related to simulator only when faking locations.
@@ -246,7 +247,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         if userLocation == nil {
-            removeSpinner()
+            removeSpinner(spinnerView)
             if let location = locations.first {
                 userLocation = location
                 print("Location: \(location)")
@@ -282,7 +283,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        removeSpinner()
+        removeSpinner(spinnerView)
         print("Failed to find user's location: \(error.localizedDescription)")
         failedToGetLocationAlert()
     }
