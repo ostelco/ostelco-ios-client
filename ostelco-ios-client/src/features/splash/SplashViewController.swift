@@ -14,12 +14,12 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = ThemeManager.currentTheme().mainColor
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         verifyCredentials()
     }
-    
+
     func verifyCredentials() {
         sharedAuth.credentialsManager.credentials { error, credentials in
             if error == nil, let credentials = credentials {
@@ -31,19 +31,19 @@ class SplashViewController: UIViewController {
                             apiManager.wipeResources()
                             UserManager.sharedInstance.clear()
                         }
-                        
+
                         if (userManager.authToken != accessToken) {
                             apiManager.authHeader = "Bearer \(accessToken)"
                             UserManager.sharedInstance.authToken = accessToken
                         }
-                        
+
                         // TODO: New API does not handle refreshToken yet
                         /*
                         if let refreshToken = credentials.refreshToken {
                             ostelcoAPI.refreshToken = refreshToken
                         }
                         */
-                        
+
                         self.spinnerView = self.showSpinner(onView: self.view)
                         apiManager.context.load()
                             .onSuccess({ data in
@@ -51,9 +51,9 @@ class SplashViewController: UIViewController {
                                     DispatchQueue.main.async {
                                         UserManager.sharedInstance.user = context.customer
                                     }
-                                    
+
                                     var segueIdentifier: String
-                                    
+
                                     if let region = context.getRegion() {
                                         DispatchQueue.main.async {
                                             OnBoardingManager.sharedInstance.region = region
@@ -110,7 +110,6 @@ class SplashViewController: UIViewController {
                                 self.removeSpinner(self.spinnerView)
                             })
                     }
-                    
                     return
                 }
             }
@@ -121,4 +120,3 @@ class SplashViewController: UIViewController {
         
     }
 }
-
