@@ -20,7 +20,6 @@ class OnBoardingManager {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-MyInfoStatus", withValue: region.kycStatusMap.MY_INFO?.rawValue)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-NricFinStatus", withValue: region.kycStatusMap.NRIC_FIN?.rawValue)
             }
-            
         }
     }
 }
