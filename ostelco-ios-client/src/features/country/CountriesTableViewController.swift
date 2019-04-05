@@ -9,7 +9,7 @@
 import UIKit
 
 class CountriesTableViewController: UITableViewController {
-    
+
     @IBOutlet weak var selectedCountryLabel: UILabel!
     let countries: [Country] = {
         var countries: [Country] = []
@@ -22,16 +22,15 @@ class CountriesTableViewController: UITableViewController {
         countries.append(Country(countryCode: "US"))
         return countries
     }()
-    
+
     override func viewDidLoad() {
         selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
         self.tableView.delegate = self
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showCountryListActionSheet(countries: countries, completion: {
             self.selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
         })
     }
 }
-

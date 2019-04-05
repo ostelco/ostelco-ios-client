@@ -14,18 +14,18 @@ import RxSwift
 class LocationServiceDisabledViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+
     @IBAction func retryTapped(_ sender: Any) {
         self.checkLocationServiceStatus()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"
     }
-    
+
     private func checkLocationServiceStatus() {
         manager.rx
             .isEnabled
@@ -35,16 +35,16 @@ class LocationServiceDisabledViewController: UIViewController {
             })
             .subscribe(onNext: {_ in
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true)
                 }
             })
             .disposed(by: bag)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if CLLocationManager.locationServicesEnabled() {
-           self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
     }
 }

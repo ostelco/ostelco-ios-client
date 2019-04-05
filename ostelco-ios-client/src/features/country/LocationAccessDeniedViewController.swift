@@ -14,13 +14,13 @@ import CoreLocation
 class LocationAccessDeniedViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
-    
+
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+
     @IBAction func settingsTapped(_ sender: Any) {
         UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"

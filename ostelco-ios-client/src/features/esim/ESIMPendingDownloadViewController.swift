@@ -19,20 +19,19 @@ class ESIMPendingDownloadViewController: UIViewController {
             } else {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: "")
             }
-            
         }
     }
-    
+
     @IBOutlet weak var continueButton: UIButton!
-    
+
     @IBAction func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
-    
+
     @IBAction func continueTapped(_ sender: Any) {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
-        
+
         spinnerView = showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
             .onSuccess { data in
@@ -41,7 +40,6 @@ class ESIMPendingDownloadViewController: UIViewController {
                         $0.eSimActivationCode == self.simProfile.eSimActivationCode
                     }) {
                         self.simProfile = simProfile
-                    
                         switch simProfile.status {
                         case .AVAILABLE_FOR_DOWNLOAD, .INSTALLED, .DOWNLOADED:
                             self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(simProfile.status.rawValue)")
@@ -58,7 +56,6 @@ class ESIMPendingDownloadViewController: UIViewController {
                         self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
                     }
                 }
-                
             }
             .onFailure { requestError in
                 Crashlytics.sharedInstance().recordError(requestError)
@@ -66,17 +63,17 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
             .onCompletion { _ in
                 self.removeSpinner(self.spinnerView)
-            }
+        }
     }
-    
+
     @IBAction func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-    
+
     override func viewDidLoad() {
         let region  = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
-        
+
         if let simProfiles = region.simProfiles, simProfiles.count > 0 {
             if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
                 DispatchQueue.main.async {
@@ -113,7 +110,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                 }
                 .onCompletion { _ in
                     self.removeSpinner(self.spinnerView)
-                }
+            }
         }
     }
 }
