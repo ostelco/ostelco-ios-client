@@ -158,7 +158,7 @@ class SplashViewController: UIViewController {
             promise.reject(createError(failure))
         }
         spinnerView = showSpinner(onView: view)
-        APIManager.sharedInstance.context.load().onSuccess { [self]  data in
+        APIManager.sharedInstance.context.load().onSuccess { data in
             if let context: Context = data.typedContent(ifNone: nil) {
                 promise.fulfill(context)
             } else {
@@ -180,7 +180,25 @@ class SplashViewController: UIViewController {
 
     func verifyCredentialsP() {
 
-        let optCredentials = try! await(getCredentials())
+        getCredentials().then { optCredentials in
+            guard let credentials = optCredentials, let accessToken = credentials.accessToken else {
+                self.performSegue(withIdentifier: "showLogin", sender: self)
+            }
+            let apiManager = APIManager.sharedInstance
+            let userManager = UserManager.sharedInstance
+            if (userManager.authToken != accessToken && userManager.authToken != nil) {
+                apiManager.wipeResources()
+                UserManager.sharedInstance.clear()
+            }
+
+            if (userManager.authToken != accessToken) {
+                apiManager.authHeader = "Bearer \(accessToken)"
+                UserManager.sharedInstance.authToken = accessToken
+            }
+            self.getContext()
+            }.then { context in
+
+        }
         guard let credentials = optCredentials, let accessToken = credentials.accessToken else {
             performSegue(withIdentifier: "showLogin", sender: self)
             return

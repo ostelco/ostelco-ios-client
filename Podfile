@@ -21,7 +21,7 @@ target 'dev-ostelco-ios-client' do
   pod 'Firebase/DynamicLinks'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
-  pod 'PromisesSwift', '~> 1.2.7'
+  pod "PromiseKit", "~> 6.8"
 
   target 'dev-ostelco-ios-clientTests' do
     inherit! :search_paths
@@ -50,6 +50,6 @@ target 'ostelco-ios-client' do
   pod 'Firebase/DynamicLinks'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
-  pod 'PromisesSwift', '~> 1.2.7'
+  pod "PromiseKit", "~> 6.8"
 
 end
