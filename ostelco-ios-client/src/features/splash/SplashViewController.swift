@@ -9,7 +9,7 @@
 import UIKit
 import Auth0
 import Siesta
-import Promises
+import PromiseKit
 
 fileprivate func createError(_ message: String) -> NSError {
     return NSError(domain: Bundle.main.bundleIdentifier!,
@@ -26,208 +26,155 @@ class SplashViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        verifyCredentialsP()
-    }
-
-    func verifyCredentials() {
-        sharedAuth.credentialsManager.credentials { error, credentials in
-            if error == nil, let credentials = credentials {
-                if let accessToken = credentials.accessToken {
-                    DispatchQueue.main.async {
-                        let apiManager = APIManager.sharedInstance
-                        let userManager = UserManager.sharedInstance
-                        if (userManager.authToken != accessToken && userManager.authToken != nil) {
-                            apiManager.wipeResources()
-                            UserManager.sharedInstance.clear()
-                        }
-
-                        if (userManager.authToken != accessToken) {
-                            apiManager.authHeader = "Bearer \(accessToken)"
-                            UserManager.sharedInstance.authToken = accessToken
-                        }
-
-                        // TODO: New API does not handle refreshToken yet
-                        /*
-                        if let refreshToken = credentials.refreshToken {
-                            ostelcoAPI.refreshToken = refreshToken
-                        }
-                        */
-
-                        self.spinnerView = self.showSpinner(onView: self.view)
-                        apiManager.context.load()
-                            .onSuccess({ data in
-                                if let context: Context = data.typedContent(ifNone: nil) {
-                                    DispatchQueue.main.async {
-                                        UserManager.sharedInstance.user = context.customer
-                                    }
-
-                                    var segueIdentifier: String
-
-                                    if let region = context.getRegion() {
-                                        DispatchQueue.main.async {
-                                            OnBoardingManager.sharedInstance.region = region
-                                        }
-                                        switch region.status {
-                                        case .PENDING:
-                                            if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
-                                                switch (jumio, addressAndPhoneNumber, nricFin) {
-                                                case (.APPROVED, .APPROVED, .APPROVED):
-                                                    segueIdentifier = "showEKYCLastScreen"
-                                                case (.REJECTED, _, _):
-                                                    segueIdentifier = "showEKYCOhNo"
-                                                case (.PENDING, .APPROVED, .APPROVED):
-                                                    segueIdentifier = "showEKYCLastScreen"
-                                                default:
-                                                    segueIdentifier = "showCountry"
-                                                }
-                                            } else {
-                                                segueIdentifier = "showCountry"
-                                            }
-                                        case .APPROVED:
-                                            // TODO: Redirect based on sim profiles in region
-                                            segueIdentifier = "showESim"
-                                        case .REJECTED:
-                                            segueIdentifier = "showEKYCOhNo"
-                                        }
-                                        DispatchQueue.main.async {
-                                            self.performSegue(withIdentifier: segueIdentifier, sender: self)
-                                        }
-                                    } else {
-                                        DispatchQueue.main.async {
-                                            self.performSegue(withIdentifier: "showCountry", sender: self)
-                                        }
-                                    }
-                                } else {
-                                    preconditionFailure("Failed to parse user context from server response.")
-                                }
-                            })
-                            .onFailure({ error in
-                                if let statusCode = error.httpStatusCode {
-                                    switch statusCode {
-                                    case 404:
-                                        DispatchQueue.main.async {
-                                            self.performSegue(withIdentifier: "showSignUp", sender: self)
-                                        }
-                                    default:
-                                        preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
-                                    }
-                                } else {
-                                    preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
-                                }
-                            })
-                            .onCompletion({ _ in
-                                self.removeSpinner(self.spinnerView)
-                            })
-                    }
-                    return
-                }
-            }
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "showLogin", sender: self)
-            }
-        }
-        
+        verifyCredentials()
     }
 
     // Fetches the credentials, in case of error, value will be nil
     func getCredentials() -> Promise<Credentials?> {
-        let promise = Promise<Credentials?>.pending()
+        let empty: Credentials? = nil
         // Check if we have credentials
-        guard sharedAuth.credentialsManager.hasValid() else {
-            promise.fulfill(nil)
-            return promise
-        }
-        sharedAuth.credentialsManager.credentials { [self] error, credentials in
-            if error == nil, let credentials = credentials {
-                promise.fulfill(credentials)
-            } else {
-                print("Error fetching credentials from credentialsManager :", error ?? "No Error" )
-                // In case of error allow to show login.
-                promise.fulfill(nil)
+        return Promise<Credentials?> { seal in
+            guard sharedAuth.credentialsManager.hasValid() else {
+                seal.resolve(empty, nil)
+                return
+            }
+            sharedAuth.credentialsManager.credentials { error, credentials in
+                if error == nil, let credentials = credentials {
+                    seal.resolve(credentials, nil)
+                } else {
+                    print("Error fetching credentials from credentialsManager :", error ?? "No Error" )
+                    // In case of error allow to show login.
+                    seal.resolve(empty, nil)
+                }
             }
         }
-        return promise
     }
 
 
     // Fetches the context, in case of error the promise is rejected
     func getContext() -> Promise<Context?> {
-        let promise = Promise<Context?>.pending()
-        func rejectPromise(_ error: RequestError) {
-            let failure = "Failed to fetch user context from server: \(error.userMessage)"
-            promise.reject(createError(failure))
-        }
-        spinnerView = showSpinner(onView: view)
-        APIManager.sharedInstance.context.load().onSuccess { data in
-            if let context: Context = data.typedContent(ifNone: nil) {
-                promise.fulfill(context)
-            } else {
-                let failure = "Failed to parse user context from server response."
-                promise.reject(createError(failure))
+        let empty: Context? = nil
+        return Promise<Context?> { seal in
+            func rejectPromise(_ error: RequestError) {
+                let failure = "Failed to fetch user context from server: \(error.userMessage)"
+                seal.reject(createError(failure))
             }
-        }.onFailure { error in
-            if let statusCode = error.httpStatusCode, statusCode == 404 {
-                // not found, assume user dosen't exist
-                promise.fulfill(nil)
-            } else {
-                rejectPromise(error)
+            spinnerView = showSpinner(onView: view)
+            APIManager.sharedInstance.context.load().onSuccess { data in
+                if let context: Context = data.typedContent(ifNone: nil) {
+                    seal.resolve(context, nil)
+                } else {
+                    let failure = "Failed to parse user context from server response."
+                    seal.reject(createError(failure))
+                }
+            }.onFailure { error in
+                if let statusCode = error.httpStatusCode, statusCode == 404 {
+                    // not found, assume user dosen't exist
+                    seal.resolve(empty, nil)
+                } else {
+                    rejectPromise(error)
+                }
+            }.onCompletion { _ in
+                self.removeSpinner(self.spinnerView)
             }
-        }.onCompletion { _ in
-            self.removeSpinner(self.spinnerView)
         }
-        return promise
     }
 
-    func verifyCredentialsP() {
-
-        getCredentials().then { optCredentials in
-            guard let credentials = optCredentials, let accessToken = credentials.accessToken else {
-                self.performSegue(withIdentifier: "showLogin", sender: self)
-            }
+    func setCredentials(_ credentials: Credentials?) -> Bool {
+        if let credentials = credentials, let accessToken = credentials.accessToken {
             let apiManager = APIManager.sharedInstance
             let userManager = UserManager.sharedInstance
             if (userManager.authToken != accessToken && userManager.authToken != nil) {
                 apiManager.wipeResources()
                 UserManager.sharedInstance.clear()
             }
-
             if (userManager.authToken != accessToken) {
                 apiManager.authHeader = "Bearer \(accessToken)"
                 UserManager.sharedInstance.authToken = accessToken
             }
-            self.getContext()
-            }.then { context in
-
+            return true
         }
-        guard let credentials = optCredentials, let accessToken = credentials.accessToken else {
+        return false
+    }
+
+    func getContextFromCredentials(_ credentials: Credentials?) -> Promise<Context?> {
+        if setCredentials(credentials) {
+            print("setCredentials, calling getContext")
+            return self.getContext()
+        } else {
             performSegue(withIdentifier: "showLogin", sender: self)
-            return
+            // Stop further processing of the promise chain
+            let rejected: Promise<Context?> = getRejectedPromise()
+            return rejected
         }
-        let apiManager = APIManager.sharedInstance
-        let userManager = UserManager.sharedInstance
-        if (userManager.authToken != accessToken && userManager.authToken != nil) {
-            apiManager.wipeResources()
-            UserManager.sharedInstance.clear()
-        }
+    }
 
-        if (userManager.authToken != accessToken) {
-            apiManager.authHeader = "Bearer \(accessToken)"
-            UserManager.sharedInstance.authToken = accessToken
-        }
-        let optContext = try! await(getContext())
-        guard let context = optContext else {
+    func handleContext(_ context: Context?) -> Promise<Void?> {
+        if let context = context {
+            print("handleContext")
+            UserManager.sharedInstance.user = context.customer
+            if let region = context.getRegion() {
+                OnBoardingManager.sharedInstance.region = region
+                let segueIdentifier = getSegueFromRegionResponse(region: region)
+                print("handleContext switch to segue \(segueIdentifier)")
+                performSegue(withIdentifier: segueIdentifier, sender: self)
+            } else {
+                print("handleContext switch to showCountry")
+                performSegue(withIdentifier: "showCountry", sender: self)
+            }
+        } else {
             // for 404 the context will be empty
+            print("handleContext empty context 404")
             performSegue(withIdentifier: "showSignUp", sender: self)
-            return
         }
-        UserManager.sharedInstance.user = context.customer
+        let resolved: Promise<Void?> = getFullfilledPromise()
+        return resolved
+    }
 
-        var segueIdentifier: String
-        guard let region = context.getRegion() else {
-            performSegue(withIdentifier: "showCountry", sender: self)
-            return
+    func getRejectedPromise<T>() -> Promise<T?> {
+        return Promise<T?> { seal in
+            let message = "Terminating promise chain, ignore"
+            seal.reject(createError(message))
         }
-        OnBoardingManager.sharedInstance.region = region
+    }
+
+    func getFullfilledPromise<T>() -> Promise<T?> {
+        let empty:T? = nil
+        return Promise<T?> { seal in
+            seal.resolve(empty, nil)
+        }
+    }
+
+    func getRejectedContext() -> Promise<Context?> {
+        let empty: Context? = nil
+        return Promise<Context?> { seal in
+            func rejectPromise(_ error: RequestError) {
+                let failure = "Failed to fetch user context from server: \(error.userMessage)"
+                seal.reject(createError(failure))
+            }
+            spinnerView = showSpinner(onView: view)
+            APIManager.sharedInstance.context.load().onSuccess { data in
+                if let context: Context = data.typedContent(ifNone: nil) {
+                    seal.resolve(context, nil)
+                } else {
+                    let failure = "Failed to parse user context from server response."
+                    seal.reject(createError(failure))
+                }
+                }.onFailure { error in
+                    if let statusCode = error.httpStatusCode, statusCode == 404 {
+                        // not found, assume user dosen't exist
+                        seal.resolve(empty, nil)
+                    } else {
+                        rejectPromise(error)
+                    }
+                }.onCompletion { _ in
+                    self.removeSpinner(self.spinnerView)
+            }
+        }
+    }
+
+    func getSegueFromRegionResponse(region: RegionResponse) -> String {
+        var segueIdentifier: String
         switch region.status {
         case .PENDING:
             if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
@@ -250,6 +197,14 @@ class SplashViewController: UIViewController {
         case .REJECTED:
             segueIdentifier = "showEKYCOhNo"
         }
-        self.performSegue(withIdentifier: segueIdentifier, sender: self)
+        return segueIdentifier
+    }
+
+    func verifyCredentials() -> Promise<Void> {
+        return getCredentials().then { credentials in
+            return self.getContextFromCredentials(credentials)
+        }.done { context in
+            self.handleContext(context)
+        }
     }
 }
