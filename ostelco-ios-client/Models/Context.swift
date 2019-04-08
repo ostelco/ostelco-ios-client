@@ -19,7 +19,9 @@ struct Context: Codable {
     func getRegion() -> RegionResponse? {
 
         var ret: RegionResponse? = nil
-        var hasPendingStatus = false
+        
+        #warning("Figure out what this is for before deleting it entirely")
+//        var hasPendingStatus = false
         var hasRejectetStatus = false
         var hasApprovedStatus = false
 
@@ -29,7 +31,7 @@ struct Context: Codable {
                 if !hasRejectetStatus && !hasApprovedStatus {
                     ret = region
                 }
-                hasPendingStatus = true
+//                hasPendingStatus = true
             case .REJECTED:
                 if !hasApprovedStatus {
                     ret = region
