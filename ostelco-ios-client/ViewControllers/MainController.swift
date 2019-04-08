@@ -36,7 +36,6 @@ class MainController: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             let status = CLLocationManager.authorizationStatus()
             switch status {
-                
             case .notDetermined:
                 self.locationStatusLabel.text = "Location Status: Not Determined"
             case .restricted:
@@ -47,6 +46,8 @@ class MainController: UIViewController {
                 self.locationStatusLabel.text = "Location Status: Always"
             case .authorizedWhenInUse:
                 self.locationStatusLabel.text = "Location Status: When In Use"
+            @unknown default:
+                assertionFailure("Apple added something! You should update the handling code here.")
             }
         } else {
             self.locationStatusLabel.text = "Location Status: Location Service is disabled"

@@ -9,7 +9,7 @@
 import UserNotifications
 
 extension UNAuthorizationStatus {
-    var description : String {
+    var description: String {
         get {
             switch (self) {
             case .notDetermined:
@@ -20,6 +20,9 @@ extension UNAuthorizationStatus {
                 return "authorized"
             case .provisional:
                 return "provisional"
+            @unknown default:
+                assertionFailure("Apple added something! You should handle it here.")
+                return ""
             }
         }
     }

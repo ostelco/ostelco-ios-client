@@ -91,7 +91,8 @@ class AllowLocationAccessViewController: UIViewController {
                 showLocationAccessRestricted()
             case .denied:
                 showLocationAccessDenied()
-            case .authorizedAlways, .authorizedWhenInUse:
+            case .authorizedAlways,
+                 .authorizedWhenInUse:
                 userLocation = nil
                 // TODO: Spinner is added twice for some reason in some cases
                 if spinnerView == nil {
@@ -122,6 +123,8 @@ class AllowLocationAccessViewController: UIViewController {
                         }
                     })
             */
+            @unknown default:
+                assertionFailure("Apple added another case to this! You should update your handling.")
             }
         } else {
             showLocationServiceDisabled()

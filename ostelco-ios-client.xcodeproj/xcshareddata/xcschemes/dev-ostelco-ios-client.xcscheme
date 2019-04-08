@@ -20,6 +20,20 @@
                ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C2236F09218A414C00B135C0"
+               BuildableName = "dev-ostelco-ios-clientTests.xctest"
+               BlueprintName = "dev-ostelco-ios-clientTests"
+               ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

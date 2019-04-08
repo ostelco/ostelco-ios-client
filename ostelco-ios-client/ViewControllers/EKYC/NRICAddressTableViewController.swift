@@ -76,7 +76,16 @@ class NRICAddressTableViewController: UITableViewController {
     
     private func buildAddressString() -> String? {
         if validateAddress() {
-            return "\(street.text);;;\(house.text);;;\(city.text);;;\(postcode.text);;;\(country.text)"
+            guard
+                let street = street.text,
+                let house = house.text,
+                let city = city.text,
+                let postcode = postcode.text,
+                let country = country.text else {
+                    fatalError("Somehow validation passed but one of these was null")
+            }
+            
+            return "\(street);;;\(house);;;\(city);;;\(postcode);;;\(country)"
         }
         return nil
     }

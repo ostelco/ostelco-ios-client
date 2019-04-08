@@ -13,8 +13,8 @@ class MyInfoSummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Query Items", myInfoQueryItems)
-        self.showSpinner(onView: self.view)
+        debugPrint("Query Items: \(String(describing: myInfoQueryItems))")
+        _ = self.showSpinner(onView: self.view)
         if let code = getMyInfoCode() {
             print("Code = \(code)")
             //            APIManager.sharedInstance.regions.child("/sg/kyc/myInfo").child(code).load()

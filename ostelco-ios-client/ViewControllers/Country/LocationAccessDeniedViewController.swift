@@ -29,10 +29,16 @@ class LocationAccessDeniedViewController: UIViewController {
             .debug("didChangeAuthorization")
             .filter({_,status in
                 switch status {
-                case .restricted, .denied:
+                case .restricted,
+                     .denied:
                     return false
-                case .authorizedAlways, .authorizedWhenInUse, .notDetermined:
+                case .authorizedAlways,
+                     .authorizedWhenInUse,
+                     .notDetermined:
                     return true
+                @unknown default:
+                    assertionFailure("Apple added a new status here! You should update this handling.")
+                    return false
                 }
             })
             .subscribe(onNext: {_ in
