@@ -8,8 +8,8 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-#include "Pods/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"
-#include "Pods/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"
+#include "Pods/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig"
+#include "Pods/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig"
 server_url = https:\/\/api.dev.oya.world
 stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z
 auth0_client_id = 0bzNsf2RAXlvQgFuTcrNXco85TzI5bJq
@@ -21,4 +21,4 @@ apple_merchant_id = merchant.sg.redotter.dev.selfcare
 bugsee_token = 636804c2-be5e-4236-bee0-fa92785f7eed
 jumio_token = test_token
 jumio_secret = test_secret
-#include? "debug_overrides.xcconfig"
+#include? "development_overrides.xcconfig"

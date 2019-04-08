@@ -286,8 +286,8 @@
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
-		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
-		04EC5AE521887137000C2EC3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		04EC5AE321887123000C2EC3 /* Production-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Production-release.xcconfig"; sourceTree = "<group>"; };
+		04EC5AE521887137000C2EC3 /* Development-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Development-debug.xcconfig"; sourceTree = "<group>"; };
 		04EC5AE7218872BA000C2EC3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		04EC5AEA2188743B000C2EC3 /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
@@ -336,6 +336,8 @@
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
 		C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-prod.plist"; sourceTree = "<group>"; };
+		C2D9D9AE225BDD8100C92835 /* Development-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Development-release.xcconfig"; sourceTree = "<group>"; };
+		C2D9D9AF225BDE0C00C92835 /* Production-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Production-debug.xcconfig"; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -605,8 +607,10 @@
 				04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */,
 				04488177217924B800F59758 /* Production.plist */,
 				04EC5AEA2188743B000C2EC3 /* Development.plist */,
-				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
-				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
+				04EC5AE521887137000C2EC3 /* Development-debug.xcconfig */,
+				C2D9D9AE225BDD8100C92835 /* Development-release.xcconfig */,
+				C2D9D9AF225BDE0C00C92835 /* Production-debug.xcconfig */,
+				04EC5AE321887123000C2EC3 /* Production-release.xcconfig */,
 				04834D34222EAB4E00A01500 /* Norway.gpx */,
 				04834D31222EAA7D00A01500 /* Singapore.gpx */,
 			);
@@ -1485,7 +1489,7 @@
 		};
 		0448817B217924B800F59758 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */;
+			baseConfigurationReference = C2D9D9AF225BDE0C00C92835 /* Production-debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1512,7 +1516,7 @@
 		};
 		0448817C217924B800F59758 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */;
+			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production-release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1586,7 +1590,7 @@
 		};
 		C29802C82181EDA800FBC5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11590A3AA9935032698D67A6 /* Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig */;
+			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development-debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
@@ -1614,7 +1618,7 @@
 		};
 		C29802CA2181EDA800FBC5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */;
+			baseConfigurationReference = C2D9D9AE225BDD8100C92835 /* Development-release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";

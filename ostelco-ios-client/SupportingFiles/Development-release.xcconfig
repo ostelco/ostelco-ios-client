@@ -1,0 +1,25 @@
+//
+//  Development-release.xcconfig
+//  ostelco-ios-client
+//
+//  Created by Prasanth Ullattil on 08/04/2019.
+//  Copyright © 2019 mac. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig"
+#include "Pods/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"
+server_url = https:\/\/api.dev.oya.world
+stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z
+auth0_client_id = 0bzNsf2RAXlvQgFuTcrNXco85TzI5bJq
+auth0_domain = auth-dev.oya.world
+auth0_logo_url = https:\/\/i.imgur.com/8iFdkBD.png
+freshchat_app_id = bac5e183-2868-4e75-b443-a6db161965d9
+freshchat_app_key = 82573f6a-6494-4cde-a77a-b882092e93ff
+apple_merchant_id = merchant.sg.redotter.dev.selfcare
+bugsee_token = 636804c2-be5e-4236-bee0-fa92785f7eed
+jumio_token = test_token
+jumio_secret = test_secret
+#include? "development_overrides.xcconfig"
