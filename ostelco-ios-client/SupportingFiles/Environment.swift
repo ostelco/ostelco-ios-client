@@ -13,7 +13,6 @@ public enum PlistKey: String {
     case StripePublishableKey = "stripe_publishable_key"
     case Auth0ClientID = "auth0_client_id"
     case Auth0Domain = "auth0_domain"
-    case Auth0LogoURL = "auth0_logo_url"
     case FreshchatAppID = "freshchat_app_id"
     case FreshchatAppKey = "freshchat_app_key"
     case AppleMerchantId = "apple_merchant_id"
