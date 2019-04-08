@@ -60,24 +60,15 @@
 		04434C932254D23800B1A48A /* GenericOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04434C922254D23800B1A48A /* GenericOhNoViewController.swift */; };
 		04434C942254D23800B1A48A /* GenericOhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04434C922254D23800B1A48A /* GenericOhNoViewController.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		0448816C217924B700F59758 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
-		0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
 		04488171217924B700F59758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
-		0448817E2179287600F59758 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
-		044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
 		044881A2217B896800F59758 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
-		044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */; };
 		044881A6217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
 		044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		044881AA217BA35C00F59758 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		044881AF217BFBD800F59758 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
-		045D743B2195D30700F01D57 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743A2195D30700F01D57 /* RootViewController.swift */; };
-		045D743C2195D30700F01D57 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743A2195D30700F01D57 /* RootViewController.swift */; };
-		045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
-		045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */; };
 		047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */; };
@@ -150,12 +141,11 @@
 		04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
 		04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
-		04EC5AE221886316000C2EC3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE021886316000C2EC3 /* Payment.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
-		56FE9137DE36BFD0335B44BE /* Pods_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE1475F6B08D2E66766E194 /* Pods_dev_ostelco_ios_client.framework */; };
+		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
-		8A43EA1A7FBDE4087F9E2C1A /* Pods_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */; };
+		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
 		C2236F0D218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */; };
 		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
@@ -166,17 +156,12 @@
 		C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */; };
 		C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */; };
 		C29802AB2181EDA800FBC5C3 /* PurchaseHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */; };
-		C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448817D2179287600F59758 /* LoginViewController.swift */; };
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
-		C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816D217924B700F59758 /* SettingsTableViewController.swift */; };
 		C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		C29802B02181EDA800FBC5C3 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881AE217BFBD800F59758 /* UIHelpers.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		C29802B22181EDA800FBC5C3 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
 		C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
-		C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819F217B7CA100F59758 /* ProfileTableViewController.swift */; };
-		C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448816B217924B700F59758 /* HomeViewController.swift */; };
-		C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */; };
 		C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
@@ -225,24 +210,17 @@
 		04434C922254D23800B1A48A /* GenericOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericOhNoViewController.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0448816B217924B700F59758 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0448816D217924B700F59758 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488177217924B800F59758 /* Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
-		0448817D2179287600F59758 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
-		0448819F217B7CA100F59758 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
-		044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
 		044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		044881AE217BFBD800F59758 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
-		045D743A2195D30700F01D57 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController2.swift; sourceTree = "<group>"; };
 		047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActionSheet.swift"; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -282,20 +260,25 @@
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
-		04EC5AE021886316000C2EC3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		04EC5AE521887137000C2EC3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		04EC5AE7218872BA000C2EC3 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		04EC5AEA2188743B000C2EC3 /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
+		0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		11590A3AA9935032698D67A6 /* Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		2B98E57A7CC87BB6FE88C8ED /* Pods-dev-ostelco-ios-clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54481E43E5F97B274104A748 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-clientTests.release.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests.release.xcconfig"; sourceTree = "<group>"; };
 		5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7C72DE1ACA69795E6069C3 /* Pods-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE1475F6B08D2E66766E194 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		B4F3E55DDB2B8E1BAE28F0A6 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0C218A414C00B135C0 /* dev_ostelco_ios_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dev_ostelco_ios_clientTests.swift; sourceTree = "<group>"; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -319,7 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A43EA1A7FBDE4087F9E2C1A /* Pods_ostelco_ios_client.framework in Frameworks */,
+				B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56FE9137DE36BFD0335B44BE /* Pods_dev_ostelco_ios_client.framework in Frameworks */,
+				3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,14 +350,12 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
-				047F292E2224587400FC6A8F /* old-view-controllers */,
 				047F292D2224585600FC6A8F /* src */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
 				04488169217924B700F59758 /* AppDelegate.swift */,
 				04488172217924B800F59758 /* Assets.xcassets */,
 				044881A5217BA1B900F59758 /* PurchaseHistoryTableViewCell.swift */,
 				044881AE217BFBD800F59758 /* UIHelpers.swift */,
-				04EC5AE021886316000C2EC3 /* Payment.swift */,
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
 				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
@@ -399,6 +380,8 @@
 				7AE1475F6B08D2E66766E194 /* Pods_dev_ostelco_ios_client.framework */,
 				5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */,
 				6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */,
+				6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */,
+				C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -506,20 +489,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		047F292E2224587400FC6A8F /* old-view-controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0448816B217924B700F59758 /* HomeViewController.swift */,
-				0448816D217924B700F59758 /* SettingsTableViewController.swift */,
-				045D743D2195D3C200F01D57 /* SplashScreenViewController.swift */,
-				045D743A2195D30700F01D57 /* RootViewController.swift */,
-				0448819F217B7CA100F59758 /* ProfileTableViewController.swift */,
-				044881A3217BA15100F59758 /* PurchaseHistoryTableViewController.swift */,
-				0448817D2179287600F59758 /* LoginViewController.swift */,
-			);
-			path = "old-view-controllers";
-			sourceTree = "<group>";
-		};
 		047F292F2224589300FC6A8F /* services */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +580,10 @@
 				54481E43E5F97B274104A748 /* Pods-dev-ostelco-ios-clientTests.release.xcconfig */,
 				8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */,
 				6A7C72DE1ACA69795E6069C3 /* Pods-ostelco-ios-client.release.xcconfig */,
+				11590A3AA9935032698D67A6 /* Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig */,
+				2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */,
+				0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */,
+				82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -869,10 +842,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
@@ -880,8 +851,7 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -895,8 +865,6 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
@@ -904,8 +872,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -916,7 +883,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-frameworks.sh\"\n";
 		};
 		4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -926,7 +893,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-resources.sh",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCResources.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FreshchatModels.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCLocalization.bundle",
@@ -941,7 +908,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-resources.sh\"\n";
 		};
 		7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -958,7 +925,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-dev-ostelco-ios-client-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-dev-ostelco-ios-client-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -973,10 +940,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/JumioCore.framework",
@@ -984,8 +949,7 @@
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/MicroBlink.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/NetverifyFace.framework",
 				"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-2.15.0/ZoomAuthenticationHybrid.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -999,8 +963,6 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Auth0.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JumioCore.framework",
@@ -1008,8 +970,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicroBlink.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetverifyFace.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomAuthenticationHybrid.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -1020,7 +981,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh\"\n";
 		};
 		BF22A82EA6F2E48D31C9F95D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1030,7 +991,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCResources.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FreshchatModels.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCLocalization.bundle",
@@ -1045,7 +1006,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh\"\n";
 		};
 		C2B516A2224BAC14005C2065 /* Copy GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1120,7 +1081,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-client-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-ostelco-ios-client-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1139,10 +1100,8 @@
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
-				045D743B2195D30700F01D57 /* RootViewController.swift in Sources */,
 				0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
-				0448817E2179287600F59758 /* LoginViewController.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+ErrorAlert.swift in Sources */,
@@ -1157,7 +1116,6 @@
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
 				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
-				0448816E217924B700F59758 /* SettingsTableViewController.swift in Sources */,
 				044881AA217BA35C00F59758 /* ProductModel.swift in Sources */,
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
@@ -1177,17 +1135,14 @@
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
 				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
-				045D743E2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
-				044881A0217B7CA100F59758 /* ProfileTableViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
-				0448816C217924B700F59758 /* HomeViewController.swift in Sources */,
 				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				0437CF83224D1DAE0022A2B8 /* Region.swift in Sources */,
 				043E711E223AF61600E01993 /* Country.swift in Sources */,
@@ -1195,7 +1150,6 @@
 				0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
-				044881A4217BA15100F59758 /* PurchaseHistoryTableViewController.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
@@ -1230,8 +1184,6 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
-				045D743C2195D30700F01D57 /* RootViewController.swift in Sources */,
-				C29802AC2181EDA800FBC5C3 /* LoginViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
@@ -1243,7 +1195,6 @@
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0493B8102253943900989F40 /* PutProfileError.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
-				C29802AE2181EDA800FBC5C3 /* SettingsTableViewController.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -1252,7 +1203,6 @@
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,
-				04EC5AE221886316000C2EC3 /* Payment.swift in Sources */,
 				041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
@@ -1268,12 +1218,9 @@
 				043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
-				C29802B42181EDA800FBC5C3 /* ProfileTableViewController.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
-				C29802B52181EDA800FBC5C3 /* HomeViewController.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
-				C29802B62181EDA800FBC5C3 /* PurchaseHistoryTableViewController.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1281,7 +1228,6 @@
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
-				045D743F2195D3C200F01D57 /* SplashScreenViewController.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
@@ -1432,7 +1378,7 @@
 		};
 		0448817B217924B800F59758 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
+			baseConfigurationReference = 0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1459,7 +1405,7 @@
 		};
 		0448817C217924B800F59758 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE321887123000C2EC3 /* Production.xcconfig */;
+			baseConfigurationReference = 82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1533,7 +1479,7 @@
 		};
 		C29802C82181EDA800FBC5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
+			baseConfigurationReference = 11590A3AA9935032698D67A6 /* Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";
@@ -1561,7 +1507,7 @@
 		};
 		C29802CA2181EDA800FBC5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5AE521887137000C2EC3 /* Development.xcconfig */;
+			baseConfigurationReference = 2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CODE_SIGN_ENTITLEMENTS = "dev-ostelco-ios-client.entitlements";

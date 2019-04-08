@@ -1,53 +1,41 @@
-# Uncomment the next line to define a global platform for your project
+# The minimum supported iOS version for your project
 platform :ios, '12.1'
 
-target 'dev-ostelco-ios-client' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+# Enable everything to be compiled into frameworks
+use_frameworks!
 
-  # Pods for dev-ostelco-ios-client
-  pod 'Stripe'
-  pod 'Auth0', '~> 1.14'
-  pod "SimpleKeychain"
-  pod 'RxSwift',    '~> 4.0'
+# Don't show warnings from frameworks to prevent polluting warnings
+inhibit_all_warnings!
+
+
+abstract_target 'ostelco-ios' do
+  pod 'Auth0', '~> 1.14.2'
+  pod 'Crashlytics', '~> 3.12.0'
+  pod 'Fabric', '~> 1.9.0'
+  pod 'FreshchatSDK', '~> 2.4.3'
+  pod 'Firebase/Core'
+  pod 'Firebase/DynamicLinks'
+  pod 'JumioMobileSDK/Netverify', '~> 2.15.0'
+  pod 'JWTDecode', '~> 2.2'
+  pod 'PromiseKit', '~> 6.8.4'
+  pod 'RxCoreLocation', '~> 1.3.1'
+  pod 'RxSwift', '~> 4.5.0'
   pod 'Siesta', '~> 1.0'
   pod 'Siesta/UI', '~> 1.0'
-  pod 'FreshchatSDK'
-  pod 'JumioMobileSDK/Netverify', '~>2.14'
-  pod 'RxCoreLocation', '~> 1.3.1'
-  pod 'JWTDecode', '~> 2.2'
-  pod 'Firebase/Core'
-  pod 'Firebase/Performance'
-  pod 'Firebase/DynamicLinks'
-  pod 'Fabric', '~> 1.9.0'
-  pod 'Crashlytics', '~> 3.12.0'
+  pod 'SimpleKeychain', '~> 0.8.1'
+  pod 'Stripe', '~> 14.0.0'
 
-  target 'dev-ostelco-ios-clientTests' do
-    inherit! :search_paths
-    # Pods for testing
+
+  # Dev app target
+  target 'dev-ostelco-ios-client' do
+    
+    # Test target
+    target 'dev-ostelco-ios-clientTests' do
+      inherit! :search_paths
+    end
   end
-
-end
-
-target 'ostelco-ios-client' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for ostelco-ios-client
-  pod 'Stripe'
-  pod 'Auth0', '~> 1.14'
-  pod "SimpleKeychain"
-  pod 'RxSwift',    '~> 4.0'
-  pod 'Siesta', '~> 1.0'
-  pod 'Siesta/UI', '~> 1.0'
-  pod 'FreshchatSDK'
-  pod 'JumioMobileSDK/Netverify', '~>2.14'
-  pod 'RxCoreLocation', '~> 1.3.1'
-  pod 'JWTDecode', '~> 2.2'
-  pod 'Firebase/Core'
-  pod 'Firebase/Performance'
-  pod 'Firebase/DynamicLinks'
-  pod 'Fabric', '~> 1.9.0'
-  pod 'Crashlytics', '~> 3.12.0'
-
+  
+  # Prod app target
+  target 'ostelco-ios-client' do
+  end
 end

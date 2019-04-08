@@ -31,7 +31,7 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
             return .passTo(refreshTokenHandler(refreshToken: refreshToken).chained {
                 if case .failure = $0.response {
                     os_log("Failed to refresh access token. Should send user back to login screen.")
-                    AppDelegate.shared.rootViewController.switchToLogout()
+                    #warning("Switch back to login screen here")
                     return .useThisResponse
                 } else {
                     os_log("Repeat the original failed request.")
