@@ -98,27 +98,27 @@ class MainController: UIViewController {
     }
     
     @objc private func showLogin() {
-        let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() as! LoginViewController2
+        let viewController: LoginViewController2 = Storyboard.login.initialViewController()
         self.presentVC(vc: viewController)
     }
     
     @objc private func showEKYC() {
-        let viewController = UIStoryboard(name: "EKYC", bundle: nil).instantiateInitialViewController()!
+        let viewController = Storyboard.ekyc.asUIStoryboard.instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
     @objc private func showESim() {
-        let viewController = UIStoryboard(name: "ESim", bundle: nil).instantiateInitialViewController()!
+        let viewController = Storyboard.esim.asUIStoryboard.instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
     @objc private func showHome() {
-        let viewController = UIStoryboard(name: "Home", bundle: nil).instantiateInitialViewController()!
+        let viewController = Storyboard.home.asUIStoryboard.instantiateInitialViewController()!
         self.presentVC(vc: viewController)
     }
     
     private func showSplash() {
-        let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController() as! SplashViewController
+        let viewController: SplashViewController = Storyboard.splash.initialViewController()
         self.presentVC(vc: viewController)
     }
     

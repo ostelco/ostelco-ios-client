@@ -1,5 +1,5 @@
 //
-//  UIViewController+APIErrorAlert.swift
+//  UIViewController+Alerts.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 3/12/19.
@@ -10,6 +10,7 @@ import UIKit
 import Siesta
 
 extension UIViewController {
+    
     func showAPIError(error: RequestError, completion: ((_:UIAlertAction) -> Void)? = nil) {
         var message = ""
         if let statusCode = error.httpStatusCode {
@@ -36,5 +37,12 @@ extension UIViewController {
         let message = "Client crashed: \(error)"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
