@@ -143,6 +143,10 @@
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
+		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
+		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
+		9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
+		9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D444225B5DD900B51999 /* UIViewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */; };
 		9BE2D445225B5DD900B51999 /* UIViewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */; };
@@ -299,6 +303,8 @@
 		7AE1475F6B08D2E66766E194 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Spinner.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -391,6 +397,7 @@
 				9BE2D440225B5CB700B51999 /* Assets */,
 				C2F6A3C4224E087900AF5087 /* Extensions */,
 				047F29302224589900FC6A8F /* Models */,
+				9B920F60225B8C51001EF9CD /* ModelControllers */,
 				047F292F2224589300FC6A8F /* Network */,
 				9BE2D43C225B5A8400B51999 /* Protocols */,
 				9BE2D43E225B5BE000B51999 /* Storyboards */,
@@ -520,10 +527,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9B920F60225B8C51001EF9CD /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
 		9BE2D43B225B5A8000B51999 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
+				9B920F64225B8EC6001EF9CD /* Theme.swift */,
 				9BE2D450225B609100B51999 /* TopUpButton.swift */,
 			);
 			path = Views;
@@ -1190,12 +1206,14 @@
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
+				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				044881A2217B896800F59758 /* ProfileModel.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
+				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				041216B8222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */,
 				9BE2D444225B5DD900B51999 /* UIViewController+Spinner.swift in Sources */,
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
@@ -1277,12 +1295,14 @@
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
+				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
+				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				C29802AF2181EDA800FBC5C3 /* ProductModel.swift in Sources */,

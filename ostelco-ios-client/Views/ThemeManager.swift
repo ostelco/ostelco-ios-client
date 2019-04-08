@@ -10,61 +10,19 @@
 import UIKit
 import Foundation
 
-enum Theme: Int {
-    case BlueTheme, TurquoiseTheme
-    
-    var mainColor: UIColor {
-        switch self {
-        case .BlueTheme:
-            return UIColor(named: "PeacockBlue")!
-        case .TurquoiseTheme:
-            return UIColor(named: "TurquoiseBlue")!
-        }
-    }
-    
-    var textOnMainColor: UIColor {
-        return UIColor(named: "White")!
-    }
-    
-    var logo: UIImage {
-        switch self {
-        case .BlueTheme:
-            return #imageLiteral(resourceName: "StoryboardLaunchScreenProduction")
-        case .TurquoiseTheme:
-            return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
-        }
-    }
-    
-    var splash: UIImage {
-        switch self {
-        case .BlueTheme:
-            return #imageLiteral(resourceName: "StoryboardLaunchScreenProduction")
-        case .TurquoiseTheme:
-            return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
-        }
-    }
-}
 
-// Enum declaration
-let SelectedThemeKey = "SelectedTheme"
 
 // This will let you use a theme in the app.
 class ThemeManager {
     
     // ThemeManager
     static func currentTheme() -> Theme {
-        if let storedTheme = (UserDefaults.standard.value(forKey: SelectedThemeKey) as AnyObject).integerValue {
-            return Theme(rawValue: storedTheme)!
-        } else {
-            return .TurquoiseTheme
-        }
+        return UserDefaultsWrapper.storedTheme ?? .TurquoiseTheme
     }
     
     static func applyTheme(theme: Theme) {
         // First persist the selected theme using NSUserDefaults.
-        UserDefaults.standard.setValue(theme.rawValue, forKey: SelectedThemeKey)
-        UserDefaults.standard.synchronize()
-        
+        UserDefaultsWrapper.storedTheme = theme
         
         UITabBar.appearance().tintColor = theme.mainColor
         UIToolbar.appearance().tintColor = theme.mainColor
