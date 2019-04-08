@@ -401,8 +401,8 @@
 				047F292F2224589300FC6A8F /* Network */,
 				9BE2D43C225B5A8400B51999 /* Protocols */,
 				9BE2D43E225B5BE000B51999 /* Storyboards */,
-				9BE2D43B225B5A8000B51999 /* Views */,
 				9BE2D43D225B5ACA00B51999 /* ViewControllers */,
+				9BE2D43B225B5A8000B51999 /* Views */,
 				9BE2D43F225B5C9900B51999 /* SupportingFiles */,
 			);
 			path = "ostelco-ios-client";
@@ -498,11 +498,11 @@
 		047F292F2224589300FC6A8F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				04488191217938A300F59758 /* Auth.swift */,
-				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
-				04834D7D2237D53700A01500 /* UserManager.swift */,
+				04488191217938A300F59758 /* Auth.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
+				04488198217B42C200F59758 /* OstelcoAPI.swift */,
+				04834D7D2237D53700A01500 /* UserManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -511,18 +511,18 @@
 			isa = PBXGroup;
 			children = (
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
+				0437CF88224D3B380022A2B8 /* Context.swift */,
+				043E711D223AF61600E01993 /* Country.swift */,
+				04834D712237B11800A01500 /* CustomerModel.swift */,
+				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
+				0485339F223C1882007C89F4 /* Product.swift */,
+				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
-				044881A9217BA35C00F59758 /* ProductModel.swift */,
-				04834D712237B11800A01500 /* CustomerModel.swift */,
-				043E711D223AF61600E01993 /* Country.swift */,
-				0485339F223C1882007C89F4 /* Product.swift */,
-				0437CF7F224D08660022A2B8 /* Scan.swift */,
-				0437CF82224D1DAE0022A2B8 /* Region.swift */,
-				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
-				0437CF88224D3B380022A2B8 /* Context.swift */,
-				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				0493B80E2253943900989F40 /* PutProfileError.swift */,
+				0437CF82224D1DAE0022A2B8 /* Region.swift */,
+				0437CF7F224D08660022A2B8 /* Scan.swift */,
+				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -538,8 +538,8 @@
 		9BE2D43B225B5A8000B51999 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				9B920F64225B8EC6001EF9CD /* Theme.swift */,
+				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				9BE2D450225B609100B51999 /* TopUpButton.swift */,
 			);
 			path = Views;
@@ -558,15 +558,15 @@
 			children = (
 				04BA349B222587F6000359C4 /* SplashViewController.swift */,
 				04434C922254D23800B1A48A /* GenericOhNoViewController.swift */,
+				9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */,
 				047F2908222447E500FC6A8F /* MainController.swift */,
+				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
+				047F2911222451D000FC6A8F /* Country */,
 				047F29192224536100FC6A8F /* ESim */,
 				047F29182224535300FC6A8F /* EKYC */,
-				047F2911222451D000FC6A8F /* Country */,
-				047F2901222441A900FC6A8F /* SignUp */,
-				047F28FD2224415E00FC6A8F /* Login */,
 				047F291A2224538000FC6A8F /* Home */,
-				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
-				9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */,
+				047F28FD2224415E00FC6A8F /* Login */,
+				047F2901222441A900FC6A8F /* SignUp */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -595,20 +595,20 @@
 			isa = PBXGroup;
 			children = (
 				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
-				C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */,
-				C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */,
+				043E710D2239F17200E01993 /* main.swift */,
+				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
 				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
 				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
-				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
-				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
+				C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */,
+				C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */,
+				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
+				04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */,
 				04488177217924B800F59758 /* Production.plist */,
 				04EC5AEA2188743B000C2EC3 /* Development.plist */,
-				04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */,
-				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
-				04834D31222EAA7D00A01500 /* Singapore.gpx */,
+				04EC5AE521887137000C2EC3 /* Development.xcconfig */,
+				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
 				04834D34222EAB4E00A01500 /* Norway.gpx */,
-				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
-				043E710D2239F17200E01993 /* main.swift */,
+				04834D31222EAA7D00A01500 /* Singapore.gpx */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -634,19 +634,19 @@
 			isa = PBXGroup;
 			children = (
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
-				04834D64223020DA00A01500 /* UIButton+Border.swift */,
-				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
+				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
 				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
-				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
+				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
+				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
