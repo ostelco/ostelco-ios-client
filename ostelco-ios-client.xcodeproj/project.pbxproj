@@ -166,6 +166,12 @@
 		9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D45B225B634100B51999 /* TestAppDelegate.swift */; };
 		9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D462225B696400B51999 /* StoryboardLoadable.swift */; };
 		9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D462225B696400B51999 /* StoryboardLoadable.swift */; };
+		9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D465225B7A3700B51999 /* TabController.storyboard */; };
+		9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D467225B7A6600B51999 /* Settings.storyboard */; };
+		9BE2D46A225B7BCE00B51999 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D469225B7BCE00B51999 /* Support.storyboard */; };
+		9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D465225B7A3700B51999 /* TabController.storyboard */; };
+		9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D469225B7BCE00B51999 /* Support.storyboard */; };
+		9BE2D46D225B7FFA00B51999 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D467225B7A6600B51999 /* Settings.storyboard */; };
 		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
 		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
@@ -305,6 +311,9 @@
 		9BE2D45B225B634100B51999 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplicaiton+Testing.swift"; sourceTree = "<group>"; };
 		9BE2D462225B696400B51999 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
+		9BE2D465225B7A3700B51999 /* TabController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabController.storyboard; sourceTree = "<group>"; };
+		9BE2D467225B7A6600B51999 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		9BE2D469225B7BCE00B51999 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
 		B4F3E55DDB2B8E1BAE28F0A6 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,8 +565,11 @@
 				047F292A222455CF00FC6A8F /* Home.storyboard */,
 				047F28FE2224419700FC6A8F /* Login.storyboard */,
 				0448816F217924B700F59758 /* Main.storyboard */,
+				9BE2D467225B7A6600B51999 /* Settings.storyboard */,
 				047F290E22244A9800FC6A8F /* SignUp.storyboard */,
 				04BA3499222587DD000359C4 /* Splash.storyboard */,
+				9BE2D469225B7BCE00B51999 /* Support.storyboard */,
+				9BE2D465225B7A3700B51999 /* TabController.storyboard */,
 				9BE2D456225B61CF00B51999 /* Storyboard.swift */,
 			);
 			path = Storyboards;
@@ -782,6 +794,7 @@
 			files = (
 				C2B516A8224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */,
 				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
+				9BE2D46A225B7BCE00B51999 /* Support.storyboard in Resources */,
 				C2B516A6224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */,
 				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
@@ -789,11 +802,13 @@
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
+				9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
+				9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
 				04BA349A222587DD000359C4 /* Splash.storyboard in Resources */,
 			);
@@ -811,14 +826,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B516A9224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */,
+				9BE2D46D225B7FFA00B51999 /* Settings.storyboard in Resources */,
 				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
 				C2B516A7224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */,
 				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
+				9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
+				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,

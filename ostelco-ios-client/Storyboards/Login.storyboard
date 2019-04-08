@@ -22,8 +22,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
                                 <rect key="frame" x="46" y="279.5" width="283" height="108"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-Tc-iUy">
-                                <rect key="frame" x="16" y="543" width="343" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="loX-Ww-Z88">
+                                <rect key="frame" x="90" y="85" width="195" height="57"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-Tc-iUy">
+                                <rect key="frame" x="16" y="553" width="343" height="50"/>
                                 <color key="backgroundColor" name="PeacockBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4py-51-FiM"/>
@@ -40,9 +43,6 @@
                                     <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="H3m-OH-Ihp"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="loX-Ww-Z88">
-                                <rect key="frame" x="90" y="85" width="195" height="57"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -76,7 +76,7 @@
                 <viewControllerPlaceholder storyboardName="SignUp" id="BTq-n3-cQJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyQ-fa-sXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="-60"/>
+            <point key="canvasLocation" x="803" y="-174"/>
         </scene>
         <!--Country-->
         <scene sceneID="KG6-S4-M4d">
@@ -84,7 +84,7 @@
                 <viewControllerPlaceholder storyboardName="Country" id="uYv-Rx-W57" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZT-z1-4Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="-18"/>
+            <point key="canvasLocation" x="809" y="-85"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="DBT-7s-2nc">
@@ -92,7 +92,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" id="q2N-Ki-5Zu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thH-gt-YwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="30"/>
+            <point key="canvasLocation" x="804" y="-4"/>
         </scene>
         <!--EKYCOhNoViewController-->
         <scene sceneID="aqy-x2-7xn">
@@ -100,7 +100,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCOhNoViewController" id="sp6-vz-WBC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QnT-pP-Z9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895" y="117"/>
+            <point key="canvasLocation" x="895" y="184"/>
         </scene>
         <!--ESim-->
         <scene sceneID="vcv-Jk-phk">
@@ -108,7 +108,7 @@
                 <viewControllerPlaceholder storyboardName="ESim" id="BEa-Hu-JHR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="157"/>
+            <point key="canvasLocation" x="793" y="295"/>
         </scene>
         <!--EKYCWaitViewController-->
         <scene sceneID="rzq-ff-CsV">
@@ -116,7 +116,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCWaitViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2c6-W1-478" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="75"/>
+            <point key="canvasLocation" x="888" y="90"/>
         </scene>
     </scenes>
     <resources>

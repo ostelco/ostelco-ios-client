@@ -15,8 +15,11 @@ enum Storyboard: String, CaseIterable {
     case home = "Home"
     case login = "Login"
     case main = "Main"
+    case settings = "Settings"
     case signUp = "SignUp"
     case splash = "Splash"
+    case support = "Support"
+    case tabController = "TabController"
     
     var asUIStoryboard: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)
