@@ -30,48 +30,33 @@ class LoginViewController2: UIViewController {
                                 DispatchQueue.main.async {
                                     UserManager.sharedInstance.user = context.customer
                                 }
+                                
                                 if let region = context.getRegion() {
                                     DispatchQueue.main.async {
                                         OnBoardingManager.sharedInstance.region = region
-                                    }
-                                    switch region.status {
-                                    case .PENDING:
-                                        if let jumio = region.kycStatusMap.JUMIO, let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, let nricFin = region.kycStatusMap.NRIC_FIN {
-                                            switch (jumio, addressAndPhoneNumber, nricFin) {
-                                            case (.APPROVED, .APPROVED, .APPROVED):
-                                                DispatchQueue.main.async {
+                                        switch region.status {
+                                        case .PENDING:
+                                            if let jumio = region.kycStatusMap.JUMIO,
+                                                let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
+                                                let nricFin = region.kycStatusMap.NRIC_FIN {
+                                                switch (jumio, addressAndPhoneNumber, nricFin) {
+                                                case (.APPROVED, .APPROVED, .APPROVED):
                                                     self.perform(#selector(self.showEKYCLastScreen), with: nil, afterDelay: 0.5)
-                                                }
-                                            case (.REJECTED, _, _):
-                                                DispatchQueue.main.async {
+                                                case (.REJECTED, _, _):
                                                     self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
-                                                }
-                                            case (.PENDING, .APPROVED, .APPROVED):
-                                                DispatchQueue.main.async {
+                                                case (.PENDING, .APPROVED, .APPROVED):
                                                     self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                                }
-                                            default:
-                                                DispatchQueue.main.async {
+                                                default:
                                                     self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
                                                 }
-                                            }
-                                        } else {
-                                            DispatchQueue.main.async {
+                                            } else {
                                                 self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
                                             }
-                                        }
-                                    case .APPROVED:
-                                        // TODO: Redirect based on sim profiles in region
-                                        DispatchQueue.main.async {
+                                        case .APPROVED:
+                                            // TODO: Redirect based on sim profiles in region
                                             self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                        }
-                                    case .REJECTED:
-                                        DispatchQueue.main.async {
+                                        case .REJECTED:
                                             self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
-                                        }
-                                    default:
-                                        DispatchQueue.main.async {
-                                            self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
                                         }
                                     }
                                 } else {
