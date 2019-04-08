@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import RxSwift
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
     var spinnerView:UIView?
+    
+    let disposeBag = DisposeBag()
 
     @IBAction func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
@@ -104,6 +107,7 @@ class LoginViewController2: UIViewController {
                     self.handleLoginFailure(message: "\(error)")
                 }
         })
+        .disposed(by: self.disposeBag)
     }
 
     @objc private func showCountry() {
