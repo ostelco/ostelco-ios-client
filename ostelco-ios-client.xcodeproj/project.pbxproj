@@ -97,7 +97,6 @@
 		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
 		04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
-		04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
@@ -143,6 +142,7 @@
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
+		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D444225B5DD900B51999 /* UIViewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */; };
 		9BE2D445225B5DD900B51999 /* UIViewController+Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D443225B5DD900B51999 /* UIViewController+Spinner.swift */; };
@@ -726,7 +726,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = mac;
 				TargetAttributes = {
 					04488165217924B700F59758 = {
@@ -1218,11 +1218,10 @@
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
-				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
+				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				0437CF83224D1DAE0022A2B8 /* Region.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				043E711E223AF61600E01993 /* Country.swift in Sources */,
-				04834D48222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
