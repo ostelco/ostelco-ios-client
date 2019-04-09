@@ -110,9 +110,39 @@ class SecretsTests: XCTestCase {
         do {
             try FirebaseUpdater.run(secrets: minusLast, sourceRoot: self.testSourceRoot)
         } catch Secrets.Error.missingSecrets(let keyNames) {
-            XCTAssertEqual(keyNames.count, FirebaseUpdater.KeyToUpdate.allCases.count - 1)
+            XCTAssertEqual(keyNames.count, 1)
         } catch {
             XCTFail("Unexpected error: \(error)")
+        }
+    }
+    
+    func testFirebaseIncludingAllKeysSucceeds() {
+        var secrets = [String: String]()
+        for (index, key) in FirebaseUpdater.KeyToUpdate.allCases.enumerated() {
+            secrets[key.rawValue] = "Test\(index)"
+        }
+        
+        XCTAssertNoThrow(try FirebaseUpdater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
+        
+        let dict: [String: AnyHashable]
+        do {
+            let file = try FirebaseUpdater.outputFile(in: self.testSourceRoot)
+            dict = try PlistUpdater.loadAsDictionary(file: file)
+        } catch {
+            XCTFail("Error loading firebase plist: \(error)")
+            return
+        }
+        
+        for (index, key) in FirebaseUpdater.KeyToUpdate.allCases.enumerated() {
+            guard let storedValue = dict[key.rawValue] else {
+                XCTFail("Couldn't access updated key for \(key.rawValue)")
+                return
+            }
+            
+            let expected = "Test\(index)"
+            XCTAssertEqual(storedValue,
+                           expected,
+                           "Incorrect value for \(key.rawValue) - expected \(expected), got \(storedValue)")
         }
     }
 
@@ -120,6 +150,6 @@ class SecretsTests: XCTestCase {
         ("testAuth0NotIncludingAllKeysFails", testAuth0NotIncludingAllKeysFails),
         ("testAuth0IncludingAllKeysSucceeds", testAuth0IncludingAllKeysSucceeds),
         ("testFirebaseNotIncludingAllKeysFails", testFirebaseNotIncludingAllKeysFails),
-        
+        ("testFirebaseIncludingAllKeysSucceeds", testFirebaseIncludingAllKeysSucceeds)
     ]
 }
