@@ -16,7 +16,6 @@ public enum PlistKey: String {
     case FreshchatAppID = "freshchat_app_id"
     case FreshchatAppKey = "freshchat_app_key"
     case AppleMerchantId = "apple_merchant_id"
-    case BugseeToken = "bugsee_token"
     case JumioToken = "jumio_token"
     case JumioSecret = "jumio_secret"
     case MyInfoURL = "myinfo_url"

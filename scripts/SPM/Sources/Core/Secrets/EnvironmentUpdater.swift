@@ -13,7 +13,6 @@ struct EnvironmentUpdater {
         case appleMerchantId = "apple_merchant_id"
         case auth0ClientID = "auth0_client_id"
         case auth0Domain = "auth0_domain"
-        case bugseeToken = "bugsee_token"
         case jumioToken = "jumio_token"
         case jumioSecret = "jumio_secret"
         case freshchatAppID = "freshchat_app_id"

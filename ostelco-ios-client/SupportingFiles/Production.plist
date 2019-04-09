@@ -82,8 +82,6 @@
 	<string>$(auth0_domain)</string>
 	<key>auth0_logo_url</key>
 	<string>$(auth0_logo_url)</string>
-	<key>bugsee_token</key>
-	<string>$(bugsee_token)</string>
 	<key>freshchat_app_id</key>
 	<string>$(freshchat_app_id)</string>
 	<key>freshchat_app_key</key>
