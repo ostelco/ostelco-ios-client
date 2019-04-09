@@ -64,6 +64,7 @@ class SecretsTests: XCTestCase {
     override func tearDown() {
         self.tearDownAuth0AndValidate()
         self.tearDownFirebaseAndValidate()
+        self.tearDownEnvironmentAndValidate()
         
         super.tearDown()
     }
