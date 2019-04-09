@@ -27,14 +27,10 @@ struct Secrets {
     }
     
     static func run(sourceRoot: Folder, forProd: Bool) throws {
-        guard let gitRoot = sourceRoot.parent else {
-            throw Error.couldNotAccessGitRoot
-        }
-        
         let secrets: [String: AnyHashable]
-        if self.localJSONExists(gitRoot: gitRoot, forProd: forProd) {
+        if self.localJSONExists(sourceRoot: sourceRoot, forProd: forProd) {
             print("Secrets file exists locally, loading from that...")
-            secrets = try self.loadSecretsFromJSON(gitRoot: gitRoot, forProd: forProd)
+            secrets = try self.loadSecretsFromJSON(sourceRoot: sourceRoot, forProd: forProd)
         } else {
             print("No local secrets file, attempting to load from environment variables...")
             secrets = ProcessInfo.processInfo.environment
@@ -51,16 +47,16 @@ struct Secrets {
         try EnvironmentUpdater.reset(sourceRoot: sourceRoot)
     }
     
-    private static func loadSecretsFromJSON(gitRoot: Folder, forProd: Bool) throws -> [String: AnyHashable] {
-        let secretsFolder = try gitRoot.subfolder(named: self.folderName)
+    private static func loadSecretsFromJSON(sourceRoot: Folder, forProd: Bool) throws -> [String: AnyHashable] {
+        let secretsFolder = try sourceRoot.subfolder(named: self.folderName)
         let iosFile = try secretsFolder.file(named: self.fileName(forProd: forProd))
         
         return try JSONLoader.loadJSONDictionary(from: iosFile)
     }
     
-    private static func localJSONExists(gitRoot: Folder, forProd: Bool) -> Bool {
+    private static func localJSONExists(sourceRoot: Folder, forProd: Bool) -> Bool {
         do {
-            let secretsFolder = try gitRoot.subfolder(named: self.folderName)
+            let secretsFolder = try sourceRoot.subfolder(named: self.folderName)
             return secretsFolder.containsFile(named: self.fileName(forProd: forProd))
         } catch {
             debugPrint("Error checking if export script exists: \(error)")
