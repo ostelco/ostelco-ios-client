@@ -12,12 +12,12 @@ public struct Core {
     public static func runPreBuild(sourceRootPath: String,
                                    forProd: Bool) throws {
         let srcRootFolder = try Folder(path: sourceRootPath)
-        print("Root path: \(srcRootFolder.path)")
+        try Secrets.run(sourceRoot: srcRootFolder, forProd: forProd)
     }
     
     public static func runPostBuild(sourceRootPath: String,
                                     forProd: Bool) throws {
         let srcRootFolder = try Folder(path: sourceRootPath)
-
+        try Secrets.reset(sourceRoot: srcRootFolder)
     }
 }

@@ -58,5 +58,6 @@ struct FirebaseUpdater {
     
     static func reset(sourceRoot: Folder) throws {
         let file = try self.outputFile(in: sourceRoot)
+        try file.resetToGitHEAD()
     }
 }

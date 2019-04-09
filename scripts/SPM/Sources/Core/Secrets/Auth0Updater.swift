@@ -60,5 +60,6 @@ struct Auth0Updater {
     
     static func reset(sourceRoot: Folder) throws {
         let plistFile = try self.outputFile(in: sourceRoot)
+        try plistFile.resetToGitHEAD()
     }
 }

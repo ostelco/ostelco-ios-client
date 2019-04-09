@@ -42,9 +42,9 @@ class SecretsTests: XCTestCase {
         
         XCTAssertNoThrow(try Auth0Updater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
         
-        // TODO: Reload
+        // TODO: Validate it changed
         
-        
+        XCTAssertNoThrow(try Auth0Updater.reset(sourceRoot: self.testSourceRoot))
     }
 
     static var allTests = [
