@@ -37,14 +37,16 @@ struct Secrets {
             secrets = try self.loadSecretsFromJSON(gitRoot: gitRoot, forProd: forProd)
         } else {
             print("No local secrets file, attempting to load from environment variables...")
-            secrets = self.loadSecretsFromEnvironment()
-            guard !secrets.isEmpty else {
-                throw Error.noSecretsFileOrSecrets(errorMessage: "You don't have a secrets file or secrets set up in the environment - this ain't gonna work. Please make sure to set up secrets in Circle CI." )
-            }
+            secrets = ProcessInfo.processInfo.environment
         }
         
         try FirebaseUpdater.run(secrets: secrets, sourceRoot: sourceRoot)
         try Auth0Updater.run(secrets: secrets, sourceRoot: sourceRoot)
+    }
+    
+    static func reset(sourceRoot: Folder) throws {
+        try FirebaseUpdater.reset(sourceRoot: sourceRoot)
+        try Auth0Updater.reset(sourceRoot: sourceRoot)
     }
     
     private static func loadSecretsFromJSON(gitRoot: Folder, forProd: Bool) throws -> [String: String] {
@@ -61,15 +63,6 @@ struct Secrets {
         } catch {
             debugPrint("Error checking if export script exists: \(error)")
             return false
-        }
-    }
-    
-    
-    private static func loadSecretsFromEnvironment() -> [String: String] {
-        let envDict = ProcessInfo.processInfo.environment
-        
-        return envDict.filter { key, _ in
-            return key.hasPrefix("FIR_")
         }
     }
 }

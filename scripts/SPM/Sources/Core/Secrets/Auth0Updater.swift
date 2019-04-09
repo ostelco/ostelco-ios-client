@@ -25,6 +25,11 @@ struct Auth0Updater {
     
     private static let plistFileName = "Auth0.plist"
 
+    private static func outputFile(in sourceRoot: Folder) throws -> File {
+        let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
+        let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
+        return try supportingFilesFolder.file(named: self.plistFileName)
+    }
     
     static func run(secrets: [String: String],
                     sourceRoot: Folder) throws {
@@ -43,9 +48,7 @@ struct Auth0Updater {
             throw Secrets.Error.missingSecrets(keyNames: missingKeys)
         }
         
-        let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
-        let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
-        let plistFile = try supportingFilesFolder.file(named: self.plistFileName)
+        let plistFile = try self.outputFile(in: sourceRoot)
         
         try auth0Secrets.forEach { (entry) in
             let key = JSONKeyToUpdate(rawValue: entry.key)!
@@ -53,5 +56,9 @@ struct Auth0Updater {
         }
         
         try PlistUpdater.save(file: plistFile)
+    }
+    
+    static func reset(sourceRoot: Folder) throws {
+        let plistFile = try self.outputFile(in: sourceRoot)
     }
 }

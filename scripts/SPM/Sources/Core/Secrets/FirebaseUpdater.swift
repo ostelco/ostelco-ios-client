@@ -23,6 +23,12 @@ struct FirebaseUpdater {
     
     private static let plistFileName = "GoogleService-Info.plist"
     
+    private static func outputFile(in sourceRoot: Folder) throws -> File {
+        let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
+        let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
+        return try supportingFilesFolder.file(named: self.plistFileName)
+    }
+    
     static func run(secrets: [String: String],
                     sourceRoot: Folder) throws {
         
@@ -41,14 +47,16 @@ struct FirebaseUpdater {
             throw Secrets.Error.missingSecrets(keyNames: missingKeys)
         }
         
-        let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
-        let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
-        let plistFile = try supportingFilesFolder.file(named: self.plistFileName)
+        let plistFile = try self.outputFile(in: sourceRoot)
         
         try firebaseSecrets.forEach { (entry) in
             try PlistUpdater.setValue(entry.value, for: entry.key, in: plistFile)
         }
         
         try PlistUpdater.save(file: plistFile)
+    }
+    
+    static func reset(sourceRoot: Folder) throws {
+        let file = try self.outputFile(in: sourceRoot)
     }
 }
