@@ -20,7 +20,7 @@ class FLApplication: UIApplication
                 Analytics.logEvent("button_tapped", parameters: ["newValue": button.accessibilityLabel ?? "button has no text"])
             }
         }
-        print("\nHold up, \(type(of: self)) again! Attempting to send \(action) to \(target) from sender \(sender.self)")
+        print("\nHold up, \(type(of: self)) again! Attempting to send \(action) to \(String(describing: target)) from sender \(String(describing: sender.self))")
         
         return super.sendAction(action, to: target, from: sender, for: event)
     }
