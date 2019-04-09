@@ -10,20 +10,22 @@ import Files
 
 struct FirebaseUpdater {
     enum KeyToUpdate: String, CaseIterable {
-        case adUnitForBannerTest = "FIR_AD_UNIT_ID_FOR_BANNER_TEST"
-        case apiKey = "FIR_API_KEY"
-        case clientID = "FIR_CLIENT_ID"
-        case databaseURL = "FIR_DATABASE_URL"
-        case gcmSenderID = "FIR_GCM_SENDER_ID"
-        case googleAppID = "FIR_GOOGLE_APP_ID"
-        case projectID = "FIR_PROJECT_ID"
-        case reversedClientID = "FIR_REVERSED_CLIENT_ID"
-        case storageBucket = "FIR_STORAGE_BUCKET"
+        case adUnitForBannerTest = "AD_UNIT_ID_FOR_BANNER_TEST"
+        case adUnitForInterstitialTest = "AD_UNIT_ID_FOR_INTERSTITIAL_TEST"
+        case apiKey = "API_KEY"
+        case bundleID = "BUNDLE_ID"
+        case clientID = "CLIENT_ID"
+        case databaseURL = "DATABASE_URL"
+        case gcmSenderID = "GCM_SENDER_ID"
+        case googleAppID = "GOOGLE_APP_ID"
+        case projectID = "PROJECT_ID"
+        case reversedClientID = "REVERSED_CLIENT_ID"
+        case storageBucket = "STORAGE_BUCKET"
     }
     
     private static let plistFileName = "GoogleService-Info.plist"
     
-    private static func outputFile(in sourceRoot: Folder) throws -> File {
+    static func outputFile(in sourceRoot: Folder) throws -> File {
         let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
         let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
         return try supportingFilesFolder.file(named: self.plistFileName)

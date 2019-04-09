@@ -25,7 +25,7 @@ struct Auth0Updater {
     
     private static let plistFileName = "Auth0.plist"
 
-    private static func outputFile(in sourceRoot: Folder) throws -> File {
+    static func outputFile(in sourceRoot: Folder) throws -> File {
         let appFolder = try sourceRoot.subfolder(named: "ostelco-ios-client")
         let supportingFilesFolder = try appFolder.subfolder(named: "SupportingFiles")
         return try supportingFilesFolder.file(named: self.plistFileName)

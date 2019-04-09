@@ -350,6 +350,7 @@
 /* Begin PBXFileReference section */
 		9B921096225CBE7A001EF9CD /* SecretsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsTests.swift; sourceTree = "<group>"; };
 		9B92109F225CC6C6001EF9CD /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		9B9210A0225CD737001EF9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		"Files::Files::Product" /* Files.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Files.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* File+Reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Reset.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
@@ -569,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				9B92109F225CC6C6001EF9CD /* Auth0.plist */,
+				9B9210A0225CD737001EF9CD /* GoogleService-Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -815,7 +817,7 @@
 			path = ".build/checkouts/swift-package-manager/Sources/Basic";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -825,7 +827,6 @@
 				OBJ_124 /* Products */,
 				OBJ_135 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_61 /* Build */ = {
@@ -1241,7 +1242,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_124 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
