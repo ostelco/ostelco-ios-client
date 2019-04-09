@@ -27,10 +27,6 @@
 		041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */; };
 		041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
 		041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
-		0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
-		0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
-		0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5D92193BB0400FF6AEC /* Auth0Development.plist */; };
-		0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
@@ -176,6 +172,12 @@
 		9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D465225B7A3700B51999 /* TabController.storyboard */; };
 		9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D469225B7BCE00B51999 /* Support.storyboard */; };
 		9BE2D46D225B7FFA00B51999 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2D467225B7A6600B51999 /* Settings.storyboard */; };
+		9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */; };
+		9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */; };
+		9BF27782225D15FE006428D5 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777E225D15FE006428D5 /* Environment.plist */; };
+		9BF27783225D15FE006428D5 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777E225D15FE006428D5 /* Environment.plist */; };
+		9BF27784225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
+		9BF27785225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
 		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
 		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
@@ -193,10 +195,6 @@
 		C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
-		C2B516A6224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */; };
-		C2B516A7224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */; };
-		C2B516A8224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */; };
-		C2B516A9224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,8 +218,6 @@
 		041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDisabledViewController.swift; sourceTree = "<group>"; };
 		041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessRestrictedViewController.swift; sourceTree = "<group>"; };
 		041216BA222D7B2B00455278 /* WrongCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongCountryViewController.swift; sourceTree = "<group>"; };
-		0420C5D92193BB0400FF6AEC /* Auth0Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Development.plist; sourceTree = "<group>"; };
-		0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0Production.plist; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCIVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +316,9 @@
 		9BE2D465225B7A3700B51999 /* TabController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabController.storyboard; sourceTree = "<group>"; };
 		9BE2D467225B7A6600B51999 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		9BE2D469225B7BCE00B51999 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
+		9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BF2777E225D15FE006428D5 /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
+		9BF2777F225D15FE006428D5 /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		B4F3E55DDB2B8E1BAE28F0A6 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -334,8 +333,6 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-dev.plist"; sourceTree = "<group>"; };
-		C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-prod.plist"; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -594,13 +591,12 @@
 		9BE2D43F225B5C9900B51999 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				9BF2777F225D15FE006428D5 /* Auth0.plist */,
+				9BF2777E225D15FE006428D5 /* Environment.plist */,
+				9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */,
 				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
 				043E710D2239F17200E01993 /* main.swift */,
 				0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */,
-				0420C5D92193BB0400FF6AEC /* Auth0Development.plist */,
-				0420C5DB2193BB1B00FF6AEC /* Auth0Production.plist */,
-				C2B516A4224BAD51005C2065 /* GoogleService-Info-dev.plist */,
-				C2B516A5224BAD51005C2065 /* GoogleService-Info-prod.plist */,
 				04EC5AEB21887935000C2EC3 /* ostelco-ios-client.entitlements */,
 				04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */,
 				04488177217924B800F59758 /* Production.plist */,
@@ -716,15 +712,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */;
 			buildPhases = (
+				9BF2777B225D10B6006428D5 /* SPM Pre-build */,
 				7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */,
 				C29802A92181EDA800FBC5C3 /* Sources */,
 				C29802B92181EDA800FBC5C3 /* Frameworks */,
 				C29802BF2181EDA800FBC5C3 /* Resources */,
-				0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */,
-				C2B516A2224BAC14005C2065 /* Copy GoogleService-Info.plist */,
 				8BBFABC3E348661E3BAFD07A /* [CP] Embed Pods Frameworks */,
 				4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */,
 				04DE1DC1223D686D001991AB /* Crashlytics script */,
+				9BF2777C225D10DC006428D5 /* SPM Post-build */,
 			);
 			buildRules = (
 			);
@@ -808,11 +804,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B516A8224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */,
-				0420C5DC2193BB1B00FF6AEC /* Auth0Production.plist in Resources */,
 				9BE2D46A225B7BCE00B51999 /* Support.storyboard in Resources */,
-				C2B516A6224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */,
-				0420C5DA2193BB0400FF6AEC /* Auth0Development.plist in Resources */,
 				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
@@ -821,8 +813,11 @@
 				9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
+				9BF27782225D15FE006428D5 /* Environment.plist in Resources */,
+				9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
+				9BF27784225D15FE006428D5 /* Auth0.plist in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
@@ -841,10 +836,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B516A9224BAD51005C2065 /* GoogleService-Info-prod.plist in Resources */,
 				9BE2D46D225B7FFA00B51999 /* Settings.storyboard in Resources */,
-				0420C5DE2193BB4200FF6AEC /* Auth0Production.plist in Resources */,
-				C2B516A7224BAD51005C2065 /* GoogleService-Info-dev.plist in Resources */,
 				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
 				9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
@@ -853,10 +845,12 @@
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
 				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
+				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
+				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
+				9BF27785225D15FE006428D5 /* Auth0.plist in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
-				0420C5DD2193BB4000FF6AEC /* Auth0Development.plist in Resources */,
 				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
 				04BA349E22258DC5000359C4 /* Splash.storyboard in Resources */,
@@ -883,24 +877,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/SupportingFiles\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n";
-		};
-		0420C5D82193BA8400FF6AEC /* Copy Auth0 environment to Auth0.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Auth0 environment to Auth0.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/SupportingFiles\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\ncp $RESOURCE_PATH/Auth0Development.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n";
 		};
 		04DE1DC1223D686D001991AB /* Crashlytics script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1069,6 +1045,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh\"\n";
 		};
+		9BF2777B225D10B6006428D5 /* SPM Pre-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SPM Pre-build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -src=\"$SRCROOT\"\n";
+		};
+		9BF2777C225D10DC006428D5 /* SPM Post-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SPM Post-build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		BF22A82EA6F2E48D31C9F95D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1093,24 +1105,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh\"\n";
-		};
-		C2B516A2224BAC14005C2065 /* Copy GoogleService-Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy GoogleService-Info.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/SupportingFiles\n\nFILENAME_IN_BUNDLE=GoogleService-Info.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\ncp $RESOURCE_PATH/GoogleService-Info-dev.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n";
 		};
 		C2B516A3224BAD0A005C2065 /* Copy GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;

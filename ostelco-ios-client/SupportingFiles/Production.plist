@@ -74,27 +74,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>apple_merchant_id</key>
-	<string>$(apple_merchant_id)</string>
-	<key>auth0_client_id</key>
-	<string>$(auth0_client_id)</string>
-	<key>auth0_domain</key>
-	<string>$(auth0_domain)</string>
-	<key>auth0_logo_url</key>
-	<string>$(auth0_logo_url)</string>
-	<key>freshchat_app_id</key>
-	<string>$(freshchat_app_id)</string>
-	<key>freshchat_app_key</key>
-	<string>$(freshchat_app_key)</string>
-	<key>server_url</key>
-	<string>$(server_url)</string>
-	<key>stripe_publishable_key</key>
-	<string>$(stripe_publishable_key)</string>
-	<key>myinfo_url</key>
-	<string>https://myinfosgstg.api.gov.sg/test/v2/authorise</string>
-	<key>myinfo_client_id</key>
-	<string>STG2-MYINFO-SELF-TEST</string>
-	<key>myinfo_callback_url</key>
-	<string>http://localhost:3001/callback</string>
 </dict>
 </plist>

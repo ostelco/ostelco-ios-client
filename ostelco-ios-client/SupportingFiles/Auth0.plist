@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Domain</key>
-	<string>auth.oya.world</string>
 	<key>ClientId</key>
-	<string>ExfkvmnHoRwJfaIq4agVh14hJ5jo3zVO</string>
+	<string>SCRIPT_ME</string>
+	<key>Domain</key>
+	<string>SCRIPT_ME</string>
 </dict>
 </plist>
