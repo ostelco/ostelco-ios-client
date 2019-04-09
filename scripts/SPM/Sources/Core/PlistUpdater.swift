@@ -21,7 +21,7 @@ public struct PlistUpdater {
         try shellOut(to: "/usr/libexec/Plistbuddy -c \(command) \(file.path)")
     }
     
-    public static func setValue(_ value: String, for key: String, in file: File) throws  {
+    public static func setValue(_ value: AnyHashable, for key: String, in file: File) throws  {
         try self.runPlistBuddyCommand("\"Set :\(key) \"\(value)\"\"", for: file)
     }
     

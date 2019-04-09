@@ -31,7 +31,7 @@ struct Secrets {
             throw Error.couldNotAccessGitRoot
         }
         
-        let secrets: [String: String]
+        let secrets: [String: AnyHashable]
         if self.localJSONExists(gitRoot: gitRoot, forProd: forProd) {
             print("Secrets file exists locally, loading from that...")
             secrets = try self.loadSecretsFromJSON(gitRoot: gitRoot, forProd: forProd)
@@ -42,18 +42,20 @@ struct Secrets {
         
         try FirebaseUpdater.run(secrets: secrets, sourceRoot: sourceRoot)
         try Auth0Updater.run(secrets: secrets, sourceRoot: sourceRoot)
+        try EnvironmentUpdater.run(secrets: secrets, sourceRoot: sourceRoot)
     }
     
     static func reset(sourceRoot: Folder) throws {
         try FirebaseUpdater.reset(sourceRoot: sourceRoot)
         try Auth0Updater.reset(sourceRoot: sourceRoot)
+        try EnvironmentUpdater.reset(sourceRoot: sourceRoot)
     }
     
-    private static func loadSecretsFromJSON(gitRoot: Folder, forProd: Bool) throws -> [String: String] {
+    private static func loadSecretsFromJSON(gitRoot: Folder, forProd: Bool) throws -> [String: AnyHashable] {
         let secretsFolder = try gitRoot.subfolder(named: self.folderName)
         let iosFile = try secretsFolder.file(named: self.fileName(forProd: forProd))
         
-        return try JSONLoader.loadStringJSON(from: iosFile)
+        return try JSONLoader.loadJSONDictionary(from: iosFile)
     }
     
     private static func localJSONExists(gitRoot: Folder, forProd: Bool) -> Bool {

@@ -35,13 +35,26 @@ class SecretsTests: XCTestCase {
         }
     }
     
+    private func tearDownEnvironmentAndValidate() {
+        do {
+            try EnvironmentUpdater.reset(sourceRoot: self.testSourceRoot)
+            let file = try EnvironmentUpdater.outputFile(in: self.testSourceRoot)
+            let dict = try PlistUpdater.loadAsDictionary(file: file)
+            EnvironmentUpdater.EnvironmentKey.allCases.forEach { key in
+                XCTAssertEqual(dict[key.plistKey], self.garbageValue)
+            }
+        } catch {
+            XCTFail("Unexpected error resetting environment: \(error)")
+        }
+    }
+    
     private func tearDownFirebaseAndValidate() {
         do {
             try FirebaseUpdater.reset(sourceRoot: self.testSourceRoot)
             let file = try FirebaseUpdater.outputFile(in: self.testSourceRoot)
             let dict = try PlistUpdater.loadAsDictionary(file: file)
-            FirebaseUpdater.KeyToUpdate.allCases.forEach { key in
-                XCTAssertEqual(dict[key.rawValue], self.garbageValue)
+            FirebaseUpdater.FirebaseKey.allCases.forEach { key in
+                XCTAssertEqual(dict[key.plistKey], self.garbageValue)
             }
         } catch {
             XCTFail("Unexpected error resetting Firebase plist: \(error)")
@@ -57,13 +70,13 @@ class SecretsTests: XCTestCase {
     
     func testAuth0NotIncludingAllKeysFails() {
         let secrets = [
-            Auth0Updater.JSONKeyToUpdate.clientID.rawValue: "TEST",
+            Auth0Updater.Auth0Key.clientID.rawValue: "TEST",
         ]
         
         do {
             try Auth0Updater.run(secrets: secrets, sourceRoot: self.testSourceRoot)
         } catch Secrets.Error.missingSecrets(let keyNames) {
-            XCTAssertEqual(keyNames.count, Auth0Updater.JSONKeyToUpdate.allCases.count - 1)
+            XCTAssertEqual(keyNames.count, Auth0Updater.Auth0Key.allCases.count - 1)
         } catch {
             XCTFail("Unexpected error: \(error)")
         }
@@ -71,8 +84,8 @@ class SecretsTests: XCTestCase {
     
     func testAuth0IncludingAllKeysSucceeds() {
         var secrets = [String: String]()
-        for (index, key) in Auth0Updater.JSONKeyToUpdate.allCases.enumerated() {
-            secrets[key.rawValue] = "Test\(index)"
+        for (index, key) in Auth0Updater.Auth0Key.allCases.enumerated() {
+            secrets[key.jsonKey] = "Test\(index)"
         }
         
         XCTAssertNoThrow(try Auth0Updater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
@@ -86,23 +99,23 @@ class SecretsTests: XCTestCase {
             return
         }
         
-        for (index, key) in Auth0Updater.JSONKeyToUpdate.allCases.enumerated() {
+        for (index, key) in Auth0Updater.Auth0Key.allCases.enumerated() {
             guard let storedValue = dict[key.plistKey] else {
-                XCTFail("Couldn't access updated value in plist for \(key.plistKey)")
+                XCTFail("Couldn't access updated value in for plist key \(key.plistKey)")
                 return
             }
             
             let expected = "Test\(index)"
             XCTAssertEqual(storedValue,
                            expected,
-                           "Value for \(key.plistKey) was incorrect. Expecting \(expected), got \(storedValue)")
+                           "Value for plist key \(key.plistKey) was incorrect. Expecting \(expected), got \(storedValue)")
         }
     }
     
     func testFirebaseNotIncludingAllKeysFails() {
         var secrets = [String: String]()
-        for (index, key) in FirebaseUpdater.KeyToUpdate.allCases.enumerated() {
-            secrets[key.rawValue] = "Test\(index)"
+        for (index, key) in FirebaseUpdater.FirebaseKey.allCases.enumerated() {
+            secrets[key.jsonKey] = "Test\(index)"
         }
         
         let minusLast = Dictionary(uniqueKeysWithValues: secrets.dropLast())
@@ -118,8 +131,8 @@ class SecretsTests: XCTestCase {
     
     func testFirebaseIncludingAllKeysSucceeds() {
         var secrets = [String: String]()
-        for (index, key) in FirebaseUpdater.KeyToUpdate.allCases.enumerated() {
-            secrets[key.rawValue] = "Test\(index)"
+        for (index, key) in FirebaseUpdater.FirebaseKey.allCases.enumerated() {
+            secrets[key.jsonKey] = "Test\(index)"
         }
         
         XCTAssertNoThrow(try FirebaseUpdater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
@@ -133,23 +146,64 @@ class SecretsTests: XCTestCase {
             return
         }
         
-        for (index, key) in FirebaseUpdater.KeyToUpdate.allCases.enumerated() {
-            guard let storedValue = dict[key.rawValue] else {
-                XCTFail("Couldn't access updated key for \(key.rawValue)")
+        for (index, key) in FirebaseUpdater.FirebaseKey.allCases.enumerated() {
+            guard let storedValue = dict[key.plistKey] else {
+                XCTFail("Couldn't access updated value for plist key \(key.plistKey)")
                 return
             }
             
             let expected = "Test\(index)"
             XCTAssertEqual(storedValue,
                            expected,
-                           "Incorrect value for \(key.rawValue) - expected \(expected), got \(storedValue)")
+                           "Incorrect value for \(key.plistKey) - expected \(expected), got \(storedValue)")
+        }
+    }
+    
+    func testEnvironmentNotIncludingAllKeysFails() {
+        var secrets = [String: String]()
+        for (index, key) in EnvironmentUpdater.EnvironmentKey.allCases.enumerated() {
+            secrets[key.jsonKey] = "Test\(index)"
+        }
+        
+        let minusLast = Dictionary(uniqueKeysWithValues: secrets.dropLast())
+        
+        do {
+            try EnvironmentUpdater.run(secrets: minusLast, sourceRoot: self.testSourceRoot)
+        } catch Secrets.Error.missingSecrets(let keyNames) {
+            XCTAssertEqual(keyNames.count, 1)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
+    
+    func testEnvironmentIncludingAllKeysSucceeds() {
+        var secrets = [String: String]()
+        for (index, key) in EnvironmentUpdater.EnvironmentKey.allCases.enumerated() {
+            secrets[key.jsonKey] = "Test\(index)"
+        }
+        
+        XCTAssertNoThrow(try EnvironmentUpdater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
+        
+        let dict: [String: AnyHashable]
+        do {
+            let file = try EnvironmentUpdater.outputFile(in: self.testSourceRoot)
+            dict = try PlistUpdater.loadAsDictionary(file: file)
+        } catch {
+            XCTFail("Error loading environment plist: \(error)")
+            return
+        }
+        
+        for (index, key) in EnvironmentUpdater.EnvironmentKey.allCases.enumerated() {
+            guard let storedValue = dict[key.plistKey] else {
+                XCTFail("Couldn't access updated value for plist key \(key.plistKey)")
+                return
+            }
+            
+            let expected = "Test\(index)"
+            XCTAssertEqual(storedValue,
+                           expected,
+                           "Incorrect value for \(key.plistKey) - expected \(expected), got \(storedValue)")
         }
     }
 
-    static var allTests = [
-        ("testAuth0NotIncludingAllKeysFails", testAuth0NotIncludingAllKeysFails),
-        ("testAuth0IncludingAllKeysSucceeds", testAuth0IncludingAllKeysSucceeds),
-        ("testFirebaseNotIncludingAllKeysFails", testFirebaseNotIncludingAllKeysFails),
-        ("testFirebaseIncludingAllKeysSucceeds", testFirebaseIncludingAllKeysSucceeds)
-    ]
 }

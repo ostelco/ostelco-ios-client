@@ -2,8 +2,6 @@ import XCTest
 
 #if !canImport(ObjectiveC)
 public func allTests() -> [XCTestCaseEntry] {
-    return [
-        testCase(SecretsTests.allTests),
-    ]
+    fatalError("This test suite should not be run on linux!")
 }
 #endif

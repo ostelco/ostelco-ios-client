@@ -15,7 +15,7 @@ enum JSONLoaderError: Error {
 
 struct JSONLoader {
     
-    static func loadStringJSON(from file: File) throws -> [String: String] {
+    static func loadJSONDictionary(from file: File) throws -> [String: AnyHashable] {
         let jsonString = try file.readAsString()
         guard let jsonData = jsonString.data(using: .utf8) else {
             throw JSONLoaderError.couldntConvertToData
@@ -23,10 +23,10 @@ struct JSONLoader {
         
         guard
             let dict = try? JSONSerialization.jsonObject(with: jsonData, options: []),
-            let stringDict = dict as? [String: String] else {
+            let typedDict = dict as? [String: AnyHashable] else {
                 throw JSONLoaderError.couldntConvertToProperDictionaryType
         }
         
-        return stringDict
+        return typedDict
     }
 }
