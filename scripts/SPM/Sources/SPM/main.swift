@@ -53,6 +53,14 @@ do {
         print("Running post-build scripts...")
         try Core.runPostBuild(sourceRootPath: srcRoot, forProd: forProd)
     }
+    
+    // You need to pick one of pre or post build
+    if (!runPrebuild && !runPostBuild) {
+        throw ArgumentParserError.expectedArguments(argParser, [
+            "--prebuild",
+            "--postbuild"
+        ])
+    }
 } catch {
     debugPrint("Error: \(error)")
     exit(1)
