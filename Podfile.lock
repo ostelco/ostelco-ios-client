@@ -94,8 +94,8 @@ DEPENDENCIES:
   - Auth0 (~> 1.14.2)
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
-  - Firebase/Core
-  - Firebase/DynamicLinks
+  - Firebase/Core (~> 5.20.1)
+  - Firebase/DynamicLinks (~> 5.20.1)
   - FreshchatSDK (~> 2.4.3)
   - JumioMobileSDK/Netverify (~> 2.15.0)
   - JWTDecode (~> 2.2)
@@ -156,6 +156,6 @@ SPEC CHECKSUMS:
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
 
-PODFILE CHECKSUM: e421d37d7e4be9202b2c9524af14cc6f862991a3
+PODFILE CHECKSUM: e3f5ec02167084a2bc2c5da554d88f8512339692
 
 COCOAPODS: 1.6.1

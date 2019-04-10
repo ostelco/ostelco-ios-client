@@ -671,8 +671,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "ostelco-ios-client" */;
 			buildPhases = (
-				9B851AB4225DD91D0076ABF3 /* SPM Pre-build */,
 				D6F283764D7DDE1CE8184A08 /* [CP] Check Pods Manifest.lock */,
+				9B851AB4225DD91D0076ABF3 /* SPM Pre-build */,
 				04488162217924B700F59758 /* Sources */,
 				04488163217924B700F59758 /* Frameworks */,
 				04488164217924B700F59758 /* Resources */,
@@ -712,8 +712,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */;
 			buildPhases = (
-				9BF2777B225D10B6006428D5 /* SPM Pre-build */,
 				7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */,
+				9BF2777B225D10B6006428D5 /* SPM Pre-build */,
 				C29802A92181EDA800FBC5C3 /* Sources */,
 				C29802B92181EDA800FBC5C3 /* Frameworks */,
 				C29802BF2181EDA800FBC5C3 /* Resources */,

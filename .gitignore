@@ -53,7 +53,8 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
-Pods/JumioMobileSDK/ # has a binary over 100mb, the github file limit
+# has a binary over 100mb, the github file limit
+Pods/JumioMobileSDK/
 
 # Carthage
 #
