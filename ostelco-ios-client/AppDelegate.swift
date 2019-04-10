@@ -191,11 +191,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         completionHandler(UIBackgroundFetchResult.newData)
     }
-    // [END receive_message]
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Function: \(#function), line: \(#line)")
-
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
 
@@ -204,7 +202,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // the FCM registration token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Function: \(#function), line: \(#line)")
-
         print("APNs token retrieved: \(deviceToken)")
         Freshchat.sharedInstance().setPushRegistrationToken(deviceToken)
 
@@ -256,7 +253,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler()
     }
 }
-
 
 extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
