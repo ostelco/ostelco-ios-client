@@ -10,6 +10,7 @@ inhibit_all_warnings!
 # Framework target
 target 'ostelco-core' do
   pod 'KeychainAccess', '~>3.2.0'
+  pod 'PromiseKit', '~> 6.8.4'
 end
 
 abstract_target 'ostelco-ios' do
@@ -22,7 +23,6 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/Messaging', '~>5.20.1'
   pod 'JumioMobileSDK/Netverify', '~> 2.15.0'
   pod 'JWTDecode', '~> 2.2'
-  pod 'PromiseKit', '~> 6.8.4'
   pod 'RxCoreLocation', '~> 1.3.1'
   pod 'RxSwift', '~> 4.5.0'
   pod 'Siesta', '~> 1.0'
