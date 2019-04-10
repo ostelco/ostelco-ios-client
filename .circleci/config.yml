@@ -13,12 +13,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Fetch CocoaPods Specs
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+          name: Update CocoaPods Specs
+          command: pod outdated
       - run:
           name: Install CocoaPods
-          command: pod install --verbose     
+          command: pod install --verbose
       - run: bundle install
       - run:
           name: Fastlane
@@ -38,11 +37,10 @@ jobs:
       - checkout
       - run:
           name: Fetch CocoaPods Specs
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+          command: pod outdated
       - run:
           name: Install CocoaPods
-          command: pod install --verbose     
+          command: pod install --verbose
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.0) [" || true
