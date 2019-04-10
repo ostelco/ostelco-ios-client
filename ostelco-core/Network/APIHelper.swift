@@ -12,6 +12,11 @@ import PromiseKit
 /// Reusable helper to handle validation across APIs
 struct APIHelper {
     
+    /// Errors thrown by the API helper
+    ///
+    /// - invalidResponseType: The response received was not an HTTP Response. Includes the data returned as a parameter.
+    /// - invalidResponseCode: The response received did not have a code between 200-300. Includes the data returned as a parameter.
+    /// - dataWasEmpty: The data in the response was empty.
     enum Error: Swift.Error {
         case invalidResponseType(data: Data)
         case invalidResponseCode(_ code: Int, data: Data)

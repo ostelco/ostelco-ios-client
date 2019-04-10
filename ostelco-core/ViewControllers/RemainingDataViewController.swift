@@ -8,18 +8,22 @@
 
 import UIKit
 
+/// A view controller showing the user's remaining data.
+/// Designed to be embedded in other view controllers across both the app and extensions.
 @IBDesignable
 public final class RemainingDataViewController: UIViewController, NibLoadable {
     
     @IBOutlet private var amountLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     
+    /// How many gigs of data does the user have remaining?
     public var dataRemainingInGigabytes: Double = 0.0 {
         didSet {
             self.configureAmountLabel()
         }
     }
     
+    /// What color should all the labels' text be?
     @IBInspectable
     public var textColor: UIColor = .blue {
         didSet {

@@ -10,7 +10,7 @@ import Foundation
 
 public extension Collection {
     
-    /// Inverts the `isEmpty` check for readability.
+    /// Inverts the `isEmpty` check. Mostly for readability in `guard` statements.
     var isNotEmpty: Bool {
         return !isEmpty
     }
