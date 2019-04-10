@@ -9,7 +9,7 @@ inhibit_all_warnings!
 
 # Framework target
 target 'ostelco-core' do
-  pod 'SimpleKeychain', '~> 0.8.1'
+  pod 'KeychainAccess', '~>3.2.0'
 end
 
 abstract_target 'ostelco-ios' do

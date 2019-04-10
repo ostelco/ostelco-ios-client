@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SimpleKeychain
+import KeychainAccess
 
 public enum KeychainKey: String, CaseIterable {
     case Auth0
@@ -24,24 +24,29 @@ public protocol SecureStorage {
 public class KeychainWrapper: SecureStorage {
     
     private let accessGroup: String = "CREATE ACCESS GROUP"
-    private let service: String = "Auth0"
+    private let service: String = "ostelco"
     
-    private lazy var keychain: A0SimpleKeychain = {
-       return A0SimpleKeychain(service: self.service, accessGroup: self.accessGroup)
+    private lazy var keychain: Keychain = {
+       return Keychain(service: self.service, accessGroup: self.accessGroup)
+            .accessibility(.afterFirstUnlock)
     }()
     
     // MARK: - SecureStorage
     
     public func setString(_ string: String, for key: KeychainKey) {
-        self.keychain.setString(string, forKey: key.rawValue)
+        self.keychain[key.rawValue] = string
     }
     
     public func getString(for key: KeychainKey) -> String? {
-        return self.keychain.string(forKey: key.rawValue)
+        return self.keychain[key.rawValue]
     }
     
     public func clearValue(for key: KeychainKey) {
-        self.keychain.deleteEntry(forKey: key.rawValue)
+        do {
+            try self.keychain.remove(key.rawValue)
+        } catch {
+            debugPrint("- [KEYCHAIN WRAPPER]: Error removing value for key \(key.rawValue): \(error)")
+        }
     }
     
     public func clearSecureStorage() {
