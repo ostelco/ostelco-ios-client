@@ -15,6 +15,7 @@ abstract_target 'ostelco-ios' do
   pod 'FreshchatSDK', '~> 2.4.3'
   pod 'Firebase/Core', '~>5.20.1'
   pod 'Firebase/DynamicLinks', '~>5.20.1'
+  pod 'Firebase/Messaging', '~>5.20.1'
   pod 'JumioMobileSDK/Netverify', '~> 2.15.0'
   pod 'JWTDecode', '~> 2.2'
   pod 'PromiseKit', '~> 6.8.4'
