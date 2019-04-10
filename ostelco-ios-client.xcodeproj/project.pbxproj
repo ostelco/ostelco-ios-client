@@ -140,6 +140,9 @@
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */; };
+		9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */; };
+		9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE3225E33620076ABF3 /* NibLoadable.swift */; };
+		9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -345,6 +348,9 @@
 		9B851ABD225E29BE0076ABF3 /* ostelco_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ostelco_core.h; sourceTree = "<group>"; };
 		9B851ABE225E29BE0076ABF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDataViewController.swift; sourceTree = "<group>"; };
+		9B851AE3225E33620076ABF3 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -597,9 +603,19 @@
 				9B851ADF225E331D0076ABF3 /* ModelControllers */,
 				9B9B3244225E3C6500227EA3 /* Models */,
 				9B851ADE225E33010076ABF3 /* Network */,
+				9B851ADD225E32E90076ABF3 /* ViewControllers */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
 			);
 			path = "ostelco-core";
+			sourceTree = "<group>";
+		};
+		9B851ADD225E32E90076ABF3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */,
+				9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9B851ADE225E33010076ABF3 /* Network */ = {
@@ -622,6 +638,7 @@
 		9B851AE2225E334C0076ABF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B851AE3225E33620076ABF3 /* NibLoadable.swift */,
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
 			);
 			path = Extensions;
@@ -991,6 +1008,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,11 +1471,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
+				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
