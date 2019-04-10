@@ -20,23 +20,20 @@ struct Context: Codable {
 
         var ret: RegionResponse? = nil
         
-        #warning("Figure out what this is for before deleting it entirely")
-//        var hasPendingStatus = false
-        var hasRejectetStatus = false
+        var hasRejectedStatus = false
         var hasApprovedStatus = false
 
         for region in regions {
             switch region.status {
             case .PENDING:
-                if !hasRejectetStatus && !hasApprovedStatus {
+                if !hasRejectedStatus && !hasApprovedStatus {
                     ret = region
                 }
-//                hasPendingStatus = true
             case .REJECTED:
                 if !hasApprovedStatus {
                     ret = region
                 }
-                hasRejectetStatus = true
+                hasRejectedStatus = true
             case .APPROVED:
                 ret = region
                 hasApprovedStatus = true
