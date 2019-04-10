@@ -587,10 +587,19 @@
 			isa = PBXGroup;
 			children = (
 				9B851ABD225E29BE0076ABF3 /* ostelco_core.h */,
+				9B851ADF225E331D0076ABF3 /* ModelControllers */,
+				9B9B3244225E3C6500227EA3 /* Models */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
-				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
 			);
 			path = "ostelco-core";
+			sourceTree = "<group>";
+		};
+		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
+			);
+			path = ModelControllers;
 			sourceTree = "<group>";
 		};
 		9B920F60225B8C51001EF9CD /* ModelControllers */ = {
@@ -601,7 +610,7 @@
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
-		9B9B3244225E3C6500227EA3 /* Model */ = {
+		9B9B3244225E3C6500227EA3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
@@ -609,7 +618,7 @@
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9BE2D43B225B5A8000B51999 /* Views */ = {
