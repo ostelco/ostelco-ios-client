@@ -6,7 +6,6 @@
 //  Copyright © 2018 mac. All rights reserved.
 //
 
-import SimpleKeychain
 import Auth0
 import UIKit
 import RxSwift
