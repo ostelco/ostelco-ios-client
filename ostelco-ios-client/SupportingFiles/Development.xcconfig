@@ -14,11 +14,9 @@ server_url = https:\/\/api.dev.oya.world
 stripe_publishable_key = pk_test_4XDOdDMQvGeW9fr31gIlcg5z
 auth0_client_id = 0bzNsf2RAXlvQgFuTcrNXco85TzI5bJq
 auth0_domain = auth-dev.oya.world
-auth0_logo_url = https:\/\/i.imgur.com/8iFdkBD.png
 freshchat_app_id = bac5e183-2868-4e75-b443-a6db161965d9
 freshchat_app_key = 82573f6a-6494-4cde-a77a-b882092e93ff
 apple_merchant_id = merchant.sg.redotter.dev.selfcare
-bugsee_token = 636804c2-be5e-4236-bee0-fa92785f7eed
 jumio_token = test_token
 jumio_secret = test_secret
 #include? "debug_overrides.xcconfig"

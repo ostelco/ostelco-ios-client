@@ -12,14 +12,25 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: "v2-gems"
       - run:
-          name: Fetch CocoaPods Specs
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
+      - save_cache:
+          key: "v2-gems"
+          paths: ["./.bundle"]
+      # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
+      - run:
+          name: Update CocoaPods Specs
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
           name: Install CocoaPods
-          command: pod install --verbose     
-      - run: bundle install
+          command: bundle exec pod install --verbose
+      - run:
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
@@ -36,17 +47,25 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: "v2-gems"
       - run:
-          name: Fetch CocoaPods Specs
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
+      - save_cache:
+          key: "v2-gems"
+          paths: ["./.bundle"]
+      # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
+      - run:
+          name: Update CocoaPods Specs
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
           name: Install CocoaPods
-          command: pod install --verbose     
+          command: bundle exec pod install --verbose
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.0) [" || true
-      - run: bundle install
       - run:
           name: Fastlane
           command: bundle exec fastlane test
@@ -66,6 +85,6 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: 
+              only:
                 - /feature/.*/
                 - /release/.*/
