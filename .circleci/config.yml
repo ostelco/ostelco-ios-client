@@ -12,6 +12,13 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose     
       - run: bundle install
       - run:
           name: Fastlane
@@ -29,6 +36,13 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --verbose     
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.0) [" || true
