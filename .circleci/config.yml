@@ -12,13 +12,23 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: "v2-gems"
+      - run:
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
+      - save_cache:
+          key: "v2-gems"
+          paths: ["./.bundle"]
       - run:
           name: Update CocoaPods Specs
-          command: pod outdated
+          command: bundle exec pod outdated
       - run:
           name: Install CocoaPods
-          command: pod install --verbose
-      - run: bundle install
+          command: bundle exec pod install --verbose
+      - run:
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
@@ -38,20 +48,20 @@ jobs:
       - restore_cache:
           key: "v2-gems"
       - run:
-          name: Fetch CocoaPods Specs
-          command: pod outdated
-      - run:
-          name: Install CocoaPods
-          command: pod install --verbose
-      - run:
-          name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.0) [" || true
-      - run:
           name: Install with bundler
           command: bundle check || bundle install --path .bundle
       - save_cache:
           key: "v2-gems"
           paths: ["./.bundle"]
+      - run:
+          name: Fetch CocoaPods Specs
+          command: bundle exec pod outdated
+      - run:
+          name: Install CocoaPods
+          command: bundle exec pod install --verbose
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone X (12.0) [" || true
       - run:
           name: Fastlane
           command: bundle exec fastlane test
@@ -71,6 +81,6 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: 
+              only:
                 - /feature/.*/
                 - /release/.*/
