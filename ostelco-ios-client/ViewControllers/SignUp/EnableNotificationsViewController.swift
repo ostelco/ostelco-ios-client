@@ -34,11 +34,22 @@ class EnableNotificationsViewController: UIViewController {
         }
     }
 
+    private func registerAndContinue() {
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.enableNotifications()
+            self.showGetStarted()
+        }
+    }
+
     private func enableNotifications() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch (settings.authorizationStatus) {
             case .notDetermined:
                 self.requestNotificationAuthorization()
+            case.authorized:
+                print("Already authorized to show notifications, continue")
+                self.registerAndContinue()
             default:
                 self.showNotificationAlreadySetAlert(status: settings.authorizationStatus.description)
             }
