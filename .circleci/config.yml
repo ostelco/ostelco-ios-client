@@ -35,6 +35,8 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - restore_cache:
+          key: "v2-gems"
       - run:
           name: Fetch CocoaPods Specs
           command: pod outdated
@@ -44,7 +46,12 @@ jobs:
       - run:
           name: pre-start simulator
           command: xcrun instruments -w "iPhone X (12.0) [" || true
-      - run: bundle install
+      - run:
+          name: Install with bundler
+          command: bundle check || bundle install --path .bundle
+      - save_cache:
+          key: "v2-gems"
+          paths: ["./.bundle"]
       - run:
           name: Fastlane
           command: bundle exec fastlane test
