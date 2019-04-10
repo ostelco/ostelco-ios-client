@@ -20,9 +20,11 @@ jobs:
       - save_cache:
           key: "v2-gems"
           paths: ["./.bundle"]
+      # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
       - run:
           name: Update CocoaPods Specs
-          command: bundle exec pod outdated
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
           name: Install CocoaPods
           command: bundle exec pod install --verbose
@@ -53,9 +55,11 @@ jobs:
       - save_cache:
           key: "v2-gems"
           paths: ["./.bundle"]
+      # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
       - run:
-          name: Fetch CocoaPods Specs
-          command: bundle exec pod outdated
+          name: Update CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
           name: Install CocoaPods
           command: bundle exec pod install --verbose
