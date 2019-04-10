@@ -671,14 +671,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "ostelco-ios-client" */;
 			buildPhases = (
+				9B851AB4225DD91D0076ABF3 /* SPM Pre-build */,
 				D6F283764D7DDE1CE8184A08 /* [CP] Check Pods Manifest.lock */,
 				04488162217924B700F59758 /* Sources */,
 				04488163217924B700F59758 /* Frameworks */,
 				04488164217924B700F59758 /* Resources */,
-				040B85C02195FB2800EAF86F /* Copy Auth0 environment to Auth0.plist */,
-				C2B516A3224BAD0A005C2065 /* Copy GoogleService-Info.plist */,
 				375B37515FF6842145E1B208 /* [CP] Embed Pods Frameworks */,
 				BF22A82EA6F2E48D31C9F95D /* [CP] Copy Pods Resources */,
+				9B851AB5225DD93F0076ABF3 /* SPM Post-build */,
 			);
 			buildRules = (
 			);
@@ -860,24 +860,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		040B85C02195FB2800EAF86F /* Copy Auth0 environment to Auth0.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Auth0 environment to Auth0.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/SupportingFiles\n\nFILENAME_IN_BUNDLE=Auth0.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\ncp $RESOURCE_PATH/Auth0Production.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n";
-		};
 		04DE1DC1223D686D001991AB /* Crashlytics script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1045,6 +1027,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh\"\n";
 		};
+		9B851AB4225DD91D0076ABF3 /* SPM Pre-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SPM Pre-build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -prod -src=\"$SRCROOT\"\n";
+		};
+		9B851AB5225DD93F0076ABF3 /* SPM Post-build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SPM Post-build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -prod -src=\"$SRCROOT\"\n";
+		};
 		9BF2777B225D10B6006428D5 /* SPM Pre-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1079,7 +1097,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -src=\"$SRCROOT\"\n";
 		};
 		BF22A82EA6F2E48D31C9F95D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1105,24 +1123,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh\"\n";
-		};
-		C2B516A3224BAD0A005C2065 /* Copy GoogleService-Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy GoogleService-Info.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "RESOURCE_PATH=${SRCROOT}/ostelco-ios-client/SupportingFiles\n\nFILENAME_IN_BUNDLE=GoogleService-Info.plist\n\nBUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\ncp $RESOURCE_PATH/GoogleService-Info-prod.plist $BUILD_APP_DIR/$FILENAME_IN_BUNDLE\n";
 		};
 		CC8EE19833175CB429C7CA9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
