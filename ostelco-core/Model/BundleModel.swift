@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BundleModel: Codable {
+public struct BundleModel: Codable {
     let id: String
     let balance: Int64
 
