@@ -116,7 +116,6 @@ class ESIMPendingDownloadViewController: UIViewController {
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-            #warning("RegionResponse contains simProfile so we don't need to fetch the simProfiles for region in this case.")
             APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
                 if let regionResponse = regionResponse {
                     self.getSimProfileForRegion(region: regionResponse)
