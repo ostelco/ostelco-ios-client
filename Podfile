@@ -25,6 +25,7 @@ abstract_target 'ostelco-ios' do
   pod 'Siesta/UI', '~> 1.0'
   pod 'SimpleKeychain', '~> 0.8.1'
   pod 'Stripe', '~> 14.0.0'
+  pod 'SwiftyJSON', '~> 4.3.0'
 
 
   # Dev app target

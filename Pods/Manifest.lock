@@ -101,6 +101,7 @@ PODS:
     - Siesta/Core
   - SimpleKeychain (0.8.1)
   - Stripe (14.0.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Auth0 (~> 1.14.2)
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - Siesta/UI (~> 1.0)
   - SimpleKeychain (~> 0.8.1)
   - Stripe (~> 14.0.0)
+  - SwiftyJSON (~> 4.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -146,6 +148,7 @@ SPEC REPOS:
     - Siesta
     - SimpleKeychain
     - Stripe
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Auth0: df9ac013e7850052fea1dcd53fa09bb129121721
@@ -172,7 +175,8 @@ SPEC CHECKSUMS:
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 04db3c28cf051487f1e8d067cf68d10ffb9ccb45
+PODFILE CHECKSUM: c88457aa0fc9200641fc58f1098c0ec1433cc698
 
 COCOAPODS: 1.6.1
