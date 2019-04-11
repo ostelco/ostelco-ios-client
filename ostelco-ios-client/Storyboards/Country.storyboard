@@ -390,19 +390,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-gr-GSL">
-                                <rect key="frame" x="64" y="84" width="247" height="73"/>
+                                <rect key="frame" x="64" y="32" width="247" height="73"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify that you are in Singapore in order to continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smW-PN-EFs">
-                                <rect key="frame" x="64" y="189" width="247" height="41"/>
+                                <rect key="frame" x="64" y="113" width="247" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enable &quot;Location Service&quot; in Settings." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt7-A1-0HS">
-                                <rect key="frame" x="64" y="262" width="247" height="41"/>
+                                <rect key="frame" x="64" y="162" width="247" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -421,18 +421,23 @@
                                     <action selector="needHelpTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="XGZ-dB-Yg8"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-Db-TtI">
+                                <rect key="frame" x="9" y="211" width="357" height="265"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="smW-PN-EFs" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="4PT-ob-oqI"/>
                             <constraint firstItem="cE0-XQ-jBM" firstAttribute="centerX" secondItem="g3I-0e-Gm0" secondAttribute="centerX" id="5si-Kt-Di8"/>
                             <constraint firstAttribute="trailing" secondItem="Mt7-A1-0HS" secondAttribute="trailing" constant="64" id="8ai-9c-qRH"/>
-                            <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="32" id="9xg-ZO-wAf"/>
-                            <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="32" id="EI8-DF-3wX"/>
+                            <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="8" id="9xg-ZO-wAf"/>
+                            <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="8" id="EI8-DF-3wX"/>
+                            <constraint firstItem="4jY-Db-TtI" firstAttribute="centerX" secondItem="g3I-0e-Gm0" secondAttribute="centerX" id="O57-fJ-UhE"/>
+                            <constraint firstItem="4jY-Db-TtI" firstAttribute="centerY" secondItem="g3I-0e-Gm0" secondAttribute="centerY" id="aaH-ay-wm3"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="ijM-x6-cD2"/>
                             <constraint firstItem="yei-TJ-FnV" firstAttribute="top" secondItem="cE0-XQ-jBM" secondAttribute="bottom" constant="32" id="jj9-aZ-OlQ"/>
                             <constraint firstAttribute="trailing" secondItem="smW-PN-EFs" secondAttribute="trailing" constant="64" id="kjc-h1-eGB"/>
-                            <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="64" id="mx4-hZ-Ij5"/>
+                            <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="12" id="mx4-hZ-Ij5"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="WAA-gr-GSL" secondAttribute="trailing" constant="64" id="sdc-ko-Qzq"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="bottom" secondItem="yei-TJ-FnV" secondAttribute="bottom" constant="64" id="wHh-ud-diL"/>
                             <constraint firstItem="yei-TJ-FnV" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="yrr-1J-r4z"/>
@@ -574,6 +579,7 @@
     </scenes>
     <resources>
         <image name="fakeModalNotifications" width="270" height="184"/>
+        <image name="instructionsLocation" width="357" height="265"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="PeacockBlue">
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
