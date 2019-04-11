@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>36</string>
+	<string>37</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
 		<string>https://dl.oya.world/links</string>
