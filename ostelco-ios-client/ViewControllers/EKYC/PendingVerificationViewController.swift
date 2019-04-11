@@ -13,7 +13,12 @@ class PendingVerificationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-  @IBAction func `continue`(_ sender: Any) {
+    
+    @IBAction func needHelpTapped(_ sender: Any) {
+        showNeedHelpActionSheet()
+    }
+    
+    @IBAction func `continue`(_ sender: Any) {
     let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
     APIManager.sharedInstance.regions.child(countryCode).load()
         .onSuccess { data in

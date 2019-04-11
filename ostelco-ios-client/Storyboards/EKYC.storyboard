@@ -555,12 +555,6 @@
                                     <action selector="continue:" destination="PEw-c6-lRR" eventType="touchUpInside" id="qij-8q-9b2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need help?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5S-gG-T6K">
-                                <rect key="frame" x="151" y="566" width="73" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" name="PeacockBlue"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It should take no longer than 5 mins." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7C-ps-86K">
                                 <rect key="frame" x="48.5" y="152.5" width="278" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -573,6 +567,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD3-aa-FLQ">
+                                <rect key="frame" x="148.5" y="555" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="PEw-c6-lRR" eventType="touchUpInside" id="MNI-eQ-D3e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -583,11 +584,11 @@
                             <constraint firstItem="h7C-ps-86K" firstAttribute="centerX" secondItem="rVO-dG-aIs" secondAttribute="centerX" id="QYN-cG-rSX"/>
                             <constraint firstItem="1Qy-Ku-CsZ" firstAttribute="leading" secondItem="rVO-dG-aIs" secondAttribute="leading" constant="24" id="Yac-NN-oL6"/>
                             <constraint firstItem="7Cv-wX-vOS" firstAttribute="leading" secondItem="rVO-dG-aIs" secondAttribute="leading" constant="24" id="YrQ-6P-Mr9"/>
-                            <constraint firstItem="H5S-gG-T6K" firstAttribute="centerX" secondItem="rVO-dG-aIs" secondAttribute="centerX" id="cl8-c1-Tjc"/>
-                            <constraint firstItem="1Qy-Ku-CsZ" firstAttribute="top" secondItem="H5S-gG-T6K" secondAttribute="bottom" constant="34" id="fZA-BO-baI"/>
                             <constraint firstItem="iV4-pi-NqU" firstAttribute="top" secondItem="1Qy-Ku-CsZ" secondAttribute="bottom" constant="20" id="kDM-4v-eEi"/>
                             <constraint firstAttribute="trailing" secondItem="7Cv-wX-vOS" secondAttribute="trailing" constant="22" id="kI0-nD-N2V"/>
                             <constraint firstItem="TGe-r2-sGv" firstAttribute="centerX" secondItem="rVO-dG-aIs" secondAttribute="centerX" id="llb-4n-nuG"/>
+                            <constraint firstItem="KD3-aa-FLQ" firstAttribute="centerX" secondItem="rVO-dG-aIs" secondAttribute="centerX" id="s7n-gn-6cS"/>
+                            <constraint firstItem="1Qy-Ku-CsZ" firstAttribute="top" secondItem="KD3-aa-FLQ" secondAttribute="bottom" constant="32" id="zzX-cc-qZ4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -921,6 +922,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ALh-un-KZb"/>
+        <segue reference="lEw-Lv-iIN"/>
     </inferredMetricsTieBreakers>
 </document>
