@@ -11,6 +11,11 @@ import UserNotifications
 
 class EnableNotificationsViewController: UIViewController {
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enableNotifications(ignoreNotDetermined: true)
+    }
+    
     @IBAction func continueTapped(_ sender: Any) {
         enableNotifications()
     }
@@ -22,25 +27,15 @@ class EnableNotificationsViewController: UIViewController {
         enableNotifications()
     }
 
-    private func showNotificationAlreadySetAlert(status: String) {
-        let alert = UIAlertController(title: "Notification Alert", message: "your notification status is: \(status)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
-        }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-
-    private func enableNotifications() {
+    private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch (settings.authorizationStatus) {
             case .notDetermined:
-                self.requestNotificationAuthorization()
+                if !ignoreNotDetermined {
+                    self.requestNotificationAuthorization()
+                }
             default:
-                self.showNotificationAlreadySetAlert(status: settings.authorizationStatus.description)
+                self.showGetStarted()
             }
         }
     }
@@ -48,13 +43,13 @@ class EnableNotificationsViewController: UIViewController {
     private func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
+            self.showGetStarted()
         }
     }
 
     private func showGetStarted() {
-        performSegue(withIdentifier: "displayGetStarted", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "displayGetStarted", sender: self)
+        }
     }
 }
