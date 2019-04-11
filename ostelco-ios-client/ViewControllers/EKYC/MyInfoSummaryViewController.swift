@@ -10,32 +10,33 @@ import UIKit
 
 class MyInfoSummaryViewController: UIViewController {
     public var myInfoQueryItems: [URLQueryItem]?
+    var spinnerView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         debugPrint("Query Items: \(String(describing: myInfoQueryItems))")
-        _ = self.showSpinner(onView: self.view)
+        spinnerView = self.showSpinner(onView: self.view)
         if let code = getMyInfoCode() {
             print("Code = \(code)")
-            //            APIManager.sharedInstance.regions.child("/sg/kyc/myInfo").child(code).load()
-            //                .onSuccess { entity in
-            //                    print("------------_")
-            //                    do {
-            //                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
-            //                        print(json)
-            //                    } catch {
-            //                    }
-            //                    print("------------_")
-            //                    DispatchQueue.main.async {
-            //                        self.removeSpinner()
-            //                    }
-            //                }
-            //                .onFailure { error in
-            //                    DispatchQueue.main.async {
-            //                        self.removeSpinner()
-            //                        self.showAPIError(error: error)
-            //                    }
-            //            }
+//            APIManager.sharedInstance.regions.child("/sg/kyc/myInfo").child(code).load()
+//                .onSuccess { entity in
+//                    print("------------_")
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: entity.content as! Data, options: []) as? [String : Any]
+//                        print(json ?? "Empty JSON")
+//                    } catch {
+//                    }
+//                    print("------------_")
+//                    DispatchQueue.main.async {
+//                        self.removeSpinner(self.spinnerView)
+//                    }
+//                }
+//                .onFailure { error in
+//                    DispatchQueue.main.async {
+//                        self.removeSpinner(self.spinnerView)
+//                        self.showAPIError(error: error)
+//                    }
+//            }
         }
         //TODO: Pass the code we retrieved to PRIME
         //TODO: Get the address & phone number form PRIME
