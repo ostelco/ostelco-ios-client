@@ -414,14 +414,23 @@
                                     <action selector="retryTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="Lou-RB-hdz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE0-XQ-jBM">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="XGZ-dB-Yg8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="smW-PN-EFs" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="4PT-ob-oqI"/>
+                            <constraint firstItem="cE0-XQ-jBM" firstAttribute="centerX" secondItem="g3I-0e-Gm0" secondAttribute="centerX" id="5si-Kt-Di8"/>
                             <constraint firstAttribute="trailing" secondItem="Mt7-A1-0HS" secondAttribute="trailing" constant="64" id="8ai-9c-qRH"/>
                             <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="32" id="9xg-ZO-wAf"/>
                             <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="32" id="EI8-DF-3wX"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="ijM-x6-cD2"/>
+                            <constraint firstItem="yei-TJ-FnV" firstAttribute="top" secondItem="cE0-XQ-jBM" secondAttribute="bottom" constant="32" id="jj9-aZ-OlQ"/>
                             <constraint firstAttribute="trailing" secondItem="smW-PN-EFs" secondAttribute="trailing" constant="64" id="kjc-h1-eGB"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="64" id="mx4-hZ-Ij5"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="WAA-gr-GSL" secondAttribute="trailing" constant="64" id="sdc-ko-Qzq"/>
