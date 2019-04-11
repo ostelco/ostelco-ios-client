@@ -244,7 +244,9 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                             } else {
                                 // Location not in correct country
                                 DispatchQueue.main.async {
-                                    self.showWrongCountry()
+                                    // TODO: Fake country verification for MVP
+                                    // self.showWrongCountry()
+                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
                                 }
                             }
                         } else {
