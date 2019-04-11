@@ -15,6 +15,7 @@ class NRCIVerifyViewController: UIViewController {
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
     @IBOutlet weak var nricTextField: UITextField!
+    @IBOutlet weak var nricErrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class NRCIVerifyViewController: UIViewController {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+            nricErrorLabel.isHidden = true
             spinnerView = showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
                 .onSuccess { entity in
@@ -39,7 +41,7 @@ class NRCIVerifyViewController: UIViewController {
                         let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: requestError.entity!.content as! Data)
                         switch jsonRequestError.errorCode {
                         case "INVALID_NRIC_FIN_ID":
-                            self.showAlert(title: "Error", msg: "This seems to be an invalid NRIC")
+                            self.nricErrorLabel.isHidden = false
                         default:
                             Crashlytics.sharedInstance().recordError(requestError)
                             self.showAPIError(error: requestError)
