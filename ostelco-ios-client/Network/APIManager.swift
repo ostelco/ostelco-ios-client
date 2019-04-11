@@ -74,7 +74,22 @@ class APIManager: Service {
 
 extension APIManager {
     
-    #warning("NSError should contain useful information inside onSuccess")
+    // TODO: Move to APIHelper together with the below todo
+    enum APIError: Swift.Error, LocalizedError {
+        case failedToGetRegion
+        case failedToParse
+        
+        var localizedDescription: String {
+            switch self {
+            case .failedToGetRegion: // TODO: This error is specific to the APIManager, not APIHelper, thus should stay here
+                return "Could not find suitable region from region response"
+            case .failedToParse:
+                return "Something went wrong while parsing the API response"
+            }
+        }
+    }
+    
+    // TODO: Abstract the parsing logic into APIHelper using RegionResponse as a generic type. And handle the specific logic of returning one region out of a list inside this function. Also Refactor to use PromiseKit
     func getRegionFromRegions(completion: @escaping (RegionResponse?, Error?) -> Void) {
         regions.load()
             .onSuccess { response in
@@ -86,12 +101,12 @@ extension APIManager {
                         
                     } else {
                         DispatchQueue.main.async {
-                            completion(nil, NSError(domain: "", code: 100, userInfo: nil))
+                            completion(nil, APIError.failedToGetRegion)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completion(nil, NSError(domain: "", code: 100, userInfo: nil))
+                        completion(nil, APIError.failedToParse)
                     }
                 }
             }
