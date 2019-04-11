@@ -50,8 +50,12 @@ class APIManager: Service {
             try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
         }
 
-        configureTransformer("/regions/*/simProfiles") {
+        configureTransformer("/regions/*/simProfiles", requestMethods: [.get]) {
             try self.jsonDecoder.decode([SimProfile].self, from: $0.content)
+        }
+        
+        configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
+            try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
         }
         
         self.configure("/reginos/*/simProfiles") {
