@@ -26,6 +26,12 @@ class NeedHelpAlertController: UIAlertController {
 }
 
 extension UIViewController {
+    
+    @objc func showSplashScreen() {
+        let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
+        self.present(viewController, animated: true)
+    }
+    
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
 
@@ -35,8 +41,7 @@ extension UIViewController {
                 .onSuccess { _ in
                         sharedAuth.logout(callback: {
                             DispatchQueue.main.async {
-                                let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-                                self.present(viewController, animated: true)
+                                self.perform(#selector(self.showSplashScreen), with: nil, afterDelay: 0.5)
                             }
                         })
                 }
@@ -95,8 +100,7 @@ extension UIViewController {
                 .onSuccess { _ in
                     sharedAuth.logout(callback: {
                         DispatchQueue.main.async {
-                            let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-                            self.present(viewController, animated: true)
+                            self.perform(#selector(self.showSplashScreen), with: nil, afterDelay: 0.5)
                         }
                     })
                 }
