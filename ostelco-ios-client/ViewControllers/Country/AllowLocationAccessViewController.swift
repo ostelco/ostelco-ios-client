@@ -93,7 +93,7 @@ class AllowLocationAccessViewController: UIViewController {
                 userLocation = nil
                 // TODO: Spinner is added twice for some reason in some cases
                 if spinnerView == nil {
-                    spinnerView = showSpinner(onView: view)
+                    spinnerView = showSpinner(onView: view, loadingText: "Checking location...")
                 }
                 locationManager.requestLocation()
             @unknown default:
