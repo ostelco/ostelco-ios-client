@@ -481,6 +481,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSD-Ll-USr">
+                                <rect key="frame" x="148.5" y="509" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="1el-Qe-8Nh" eventType="touchUpInside" id="wEP-Vi-Vwc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -489,10 +496,12 @@
                             <constraint firstAttribute="trailing" secondItem="Xjf-wV-tRb" secondAttribute="trailing" constant="64" id="Fbx-KZ-nFz"/>
                             <constraint firstItem="KTc-YA-9vq" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="64" id="Gex-Xj-Ocz"/>
                             <constraint firstItem="Xjf-wV-tRb" firstAttribute="top" secondItem="TMz-Nl-rin" secondAttribute="bottom" constant="32" id="HRm-oo-c8H"/>
+                            <constraint firstItem="bSD-Ll-USr" firstAttribute="centerX" secondItem="Hg4-Of-0v4" secondAttribute="centerX" id="Ism-hr-6py"/>
                             <constraint firstItem="TMz-Nl-rin" firstAttribute="top" secondItem="KTc-YA-9vq" secondAttribute="bottom" constant="32" id="LTo-if-3b8"/>
                             <constraint firstAttribute="trailing" secondItem="TMz-Nl-rin" secondAttribute="trailing" constant="64" id="lCG-HW-gWH"/>
                             <constraint firstItem="Hg4-Of-0v4" firstAttribute="trailing" secondItem="KTc-YA-9vq" secondAttribute="trailing" constant="64" id="mh3-Fb-T7n"/>
                             <constraint firstItem="KTc-YA-9vq" firstAttribute="top" secondItem="Hg4-Of-0v4" secondAttribute="top" constant="64" id="oC0-Yj-liL"/>
+                            <constraint firstItem="Hg4-Of-0v4" firstAttribute="bottom" secondItem="bSD-Ll-USr" secondAttribute="bottom" constant="128" id="tbI-P0-6i5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hg4-Of-0v4"/>
                     </view>
