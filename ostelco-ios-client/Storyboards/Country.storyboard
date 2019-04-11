@@ -345,12 +345,21 @@
                                     <action selector="settingsTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="3RU-7i-ahV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="T4S-bm-Gai"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="64" id="1fp-eg-JvS"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="IAI-Vb-4BI"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="top" secondItem="gj0-b2-7aj" secondAttribute="bottom" constant="32" id="Iuo-6u-x52"/>
+                            <constraint firstItem="qTN-jC-vf4" firstAttribute="top" secondItem="Dsi-HB-ICT" secondAttribute="bottom" constant="32" id="KJl-rM-P8A"/>
+                            <constraint firstItem="Dsi-HB-ICT" firstAttribute="centerX" secondItem="Nly-Oz-x9M" secondAttribute="centerX" id="LPm-Gz-pOj"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Vrl-rx-8Jt"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="trailing" secondItem="qse-GZ-iOp" secondAttribute="trailing" constant="64" id="Vvk-ub-94B"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="Xnp-nN-qfv"/>
