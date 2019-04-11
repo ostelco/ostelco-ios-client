@@ -10,6 +10,11 @@ import UIKit
 
 class TheLegalStuffViewController: UIViewController {
 
+    enum ExternalLinks: String {
+        case privacyPolicy = "https://pi-redirector.firebaseapp.com/privacy-policy"
+        case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
+    }
+    
     @IBOutlet weak var termsAndConditionsLabel: UILabel!
     @IBOutlet weak var privacyPolicyLabel: UILabel!
     @IBOutlet weak var oyaUpdatesLabel: UILabel!
@@ -76,14 +81,12 @@ class TheLegalStuffViewController: UIViewController {
     }
 
     @objc func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: "Open terms and conditions", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        guard let url = URL(string: ExternalLinks.termsAndConditions.rawValue) else { return }
+        UIApplication.shared.open(url)
     }
 
     @objc func privacyPolicyTapped(sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: "Open privacy policy", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        guard let url = URL(string: ExternalLinks.privacyPolicy.rawValue) else { return }
+        UIApplication.shared.open(url)
     }
 }
