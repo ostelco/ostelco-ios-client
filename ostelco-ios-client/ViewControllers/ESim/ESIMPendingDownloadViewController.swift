@@ -24,6 +24,22 @@ class ESIMPendingDownloadViewController: UIViewController {
 
     @IBOutlet weak var continueButton: UIButton!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let region = OnBoardingManager.sharedInstance.region {
+            getSimProfileForRegion(region: region)
+        } else {
+            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
+                if let regionResponse = regionResponse {
+                    self.getSimProfileForRegion(region: regionResponse)
+                } else {
+                    self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+                }
+            }
+            
+        }
+    }
+    
     @IBAction func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
@@ -109,21 +125,6 @@ class ESIMPendingDownloadViewController: UIViewController {
                 .onCompletion { _ in
                     self.removeSpinner(self.spinnerView)
             }
-        }
-    }
-    
-    override func viewDidLoad() {
-        if let region = OnBoardingManager.sharedInstance.region {
-            getSimProfileForRegion(region: region)
-        } else {
-            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
-                if let regionResponse = regionResponse {
-                    self.getSimProfileForRegion(region: regionResponse)
-                } else {
-                    self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                }
-            }
-            
         }
     }
 }
