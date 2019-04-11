@@ -71,3 +71,34 @@ class APIManager: Service {
         }
     }
 }
+
+extension APIManager {
+    
+    #warning("NSError should contain useful information inside onSuccess")
+    func getRegionFromRegions(completion: @escaping (RegionResponse?, Error?) -> Void) {
+        regions.load()
+            .onSuccess { response in
+                if let regionResponseArray: [RegionResponse] = response.typedContent(ifNone: nil) {
+                    if let region = getRegionFromRegionResponseArray(regionResponseArray) {
+                        DispatchQueue.main.async {
+                            completion(region, nil)
+                        }
+                        
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(nil, NSError(domain: "", code: 100, userInfo: nil))
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(nil, NSError(domain: "", code: 100, userInfo: nil))
+                    }
+                }
+            }
+            .onFailure { requestError in
+                DispatchQueue.main.async {
+                    completion(nil, requestError)
+                }
+            }
+    }
+}

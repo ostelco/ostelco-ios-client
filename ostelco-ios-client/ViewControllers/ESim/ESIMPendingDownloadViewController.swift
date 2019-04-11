@@ -70,10 +70,8 @@ class ESIMPendingDownloadViewController: UIViewController {
         showNeedHelpActionSheet()
     }
 
-    override func viewDidLoad() {
-        let region  = OnBoardingManager.sharedInstance.region!
+    func getSimProfileForRegion(region: RegionResponse) {
         let countryCode = region.region.id
-
         if let simProfiles = region.simProfiles, simProfiles.count > 0 {
             if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
                 DispatchQueue.main.async {
@@ -111,6 +109,22 @@ class ESIMPendingDownloadViewController: UIViewController {
                 .onCompletion { _ in
                     self.removeSpinner(self.spinnerView)
             }
+        }
+    }
+    
+    override func viewDidLoad() {
+        if let region = OnBoardingManager.sharedInstance.region {
+            getSimProfileForRegion(region: region)
+        } else {
+            #warning("RegionResponse contains simProfile so we don't need to fetch the simProfiles for region in this case.")
+            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
+                if let regionResponse = regionResponse {
+                    self.getSimProfileForRegion(region: regionResponse)
+                } else {
+                    self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+                }
+            }
+            
         }
     }
 }
