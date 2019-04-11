@@ -44,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
 
+        application.applicationSupportsShakeToEdit = true;
+        
         print("App started")
         return true
     }
