@@ -50,7 +50,7 @@ func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAl
 extension UIViewController {
     
     @objc func showSplashScreen() {
-        let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
+        let viewController = SplashViewController.fromStoryboard()
         self.present(viewController, animated: true)
     }
     
