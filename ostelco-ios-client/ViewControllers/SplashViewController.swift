@@ -43,6 +43,9 @@ class SplashViewController: UIViewController {
                             ostelcoAPI.refreshToken = refreshToken
                         }
                         */
+                        // Send the FCM Token, if it is ready.
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.sendFCMToken()
 
                         self.spinnerView = self.showSpinner(onView: self.view)
                         apiManager.context.load()
