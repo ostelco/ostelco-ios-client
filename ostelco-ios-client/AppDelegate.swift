@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var myInfoDelegate: MyInfoCallbackHandler?
     let gcmMessageIDKey = "gcm.message_id"
+    var fcmToken: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -52,20 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func enableNotifications() {
         DispatchQueue.main.async {
-            if UIApplication.shared.isRegisteredForRemoteNotifications == false {
-                print("Registering for RemoteNotifications")
-                UNUserNotificationCenter.current().delegate = self
+            print("Registering for RemoteNotifications")
+            UNUserNotificationCenter.current().delegate = self
 
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(
-                    options: authOptions,
-                    completionHandler: {_, _ in })
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
 
-                UIApplication.shared.registerForRemoteNotifications()
-                Messaging.messaging().delegate = self
-            } else {
-                print("Already registered for RemoteNotifications")
-            }
+            UIApplication.shared.registerForRemoteNotifications()
+            Messaging.messaging().delegate = self
         }
     }
 
@@ -264,8 +261,10 @@ extension AppDelegate : MessagingDelegate {
 
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
+        // Send token to prime.
+        self.fcmToken = fcmToken
+        sendFCMToken()
     }
 
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
@@ -274,5 +273,24 @@ extension AppDelegate : MessagingDelegate {
         print("Function: \(#function), line: \(#line)")
         print("Received data message: \(remoteMessage.appData)")
     }
+
+    func sendFCMToken() {
+        // TODO: Make sure this is called after getting a valid auth token.
+        guard let _ = APIManager.sharedInstance.authHeader, let token = fcmToken else {
+            // Wait to be authenticated, or the token to be ready.
+            return
+        }
+        // Use tha pplication ID as <BundleId>.<Unique DeviceID or UUID>
+        let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
+        let json = ["token": token, "tokenType": "FCM", "applicationID": appId]
+        APIManager.sharedInstance.resource("/applicationToken").request(.post, json: json)
+            .onSuccess { _ in
+                print("Set new FCM token :\(token)")
+            }
+            .onFailure { error in
+                print("Failed to set FCM token \(error)")
+        }
+    }
+
 }
 
