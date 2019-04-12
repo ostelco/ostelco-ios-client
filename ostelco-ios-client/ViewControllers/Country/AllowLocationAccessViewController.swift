@@ -8,14 +8,11 @@
 
 import UIKit
 import CoreLocation
-import RxSwift
-import RxCoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
 
     @IBOutlet weak var fakeModalNotificationImage: UIImageView!
     var spinnerView: UIView?
-    var bag = DisposeBag()
     var userLocation: CLLocation!
 
     var locationManager = CLLocationManager()
@@ -96,122 +93,15 @@ class AllowLocationAccessViewController: UIViewController {
                 userLocation = nil
                 // TODO: Spinner is added twice for some reason in some cases
                 if spinnerView == nil {
-                    spinnerView = showSpinner(onView: view)
+                    spinnerView = showSpinner(onView: view, loadingText: "Checking location...")
                 }
                 locationManager.requestLocation()
-                /*
-                TODO: Did not get the location part to work using RxCoreLocation. the subscription never returned a value thus nothing happened. Could be related to simulator only when faking locations.
-                locationManager.rx
-                    .placemark
-                    .subscribe(onNext: { placemark in
-                        if let country = placemark.country {
-                            if self.selectedCountry == country {
-                                // Location verified
-                                DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
-                                }
-                            } else {
-                                // Location not in correct country
-                                DispatchQueue.main.async {
-                                    self.showWrongCountry()
-                                }
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.failedToGetLocationAlert()
-                            }
-                        }
-                    })
-            */
             @unknown default:
                 assertionFailure("Apple added another case to this! You should update your handling.")
             }
         } else {
             showLocationServiceDisabled()
         }
-
-        // Alternative code using rxcorelocation
-        /*
-        // TODO: Is subscription a stream of events or just a single event?
-        
-        // Show location service disabled view if service is disabled
-        locationManager.rx
-            .isEnabled
-            .debug("isEnabled")
-            .filter({ isEnabled in
-                return isEnabled == false
-            })
-            .subscribe(onNext: {_ in
-                DispatchQueue.main.async {
-                    self.showLocationServiceDisabled()
-                }
-            })
-            .disposed(by: bag)
-        
-        // Show location access views if service is enabled and authorization is restricted or denied
-        locationManager.rx
-            .isEnabled
-            .debug("isEnabled")
-            .filter({ isEnabled in
-                return isEnabled == true
-            })
-            .flatMapLatest{_ in
-                self.locationManager.rx
-                    .didChangeAuthorization
-            }
-            .filter({_,status in
-                switch status {
-                case .denied, .restricted:
-                    return true
-                default:
-                    return false
-                }
-            })
-            .subscribe(onNext: {_,status in
-                switch status {
-                case .denied:
-                    DispatchQueue.main.async {
-                        self.showLocationAccessDenied()
-                    }
-                case .restricted:
-                    DispatchQueue.main.async {
-                        self.showLocationAccessRestricted()
-                    }
-                default:
-                    break
-                }
-            })
-            .disposed(by: bag)
-        
-        // Verify location service is enabled and authorization is authorizedAlways or authorizedWhenInUse
-        locationManager.rx
-            .isEnabled
-            .debug("isEnabled")
-            .filter({ isEnabled in
-                return isEnabled == true
-            })
-            .flatMapLatest{_ in
-                self.locationManager.rx
-                    .didChangeAuthorization
-            }
-            .filter({_,status in
-                switch status {
-                case .authorizedAlways, .authorizedWhenInUse:
-                    return true
-                default:
-                    return false
-                }
-            })
-            .flatMapLatest{_ in return self.locationManager.rx.placemark.debug("placemark")}
-            .subscribe(onNext: {placemark in
-                guard let country = placemark.country else {
-                    // TODO: Handle error
-                }
-                
-                print("country: \(country)")
-            })
-            .disposed(by: bag)
-         */
     }
 
     private func showWrongCountry() {
