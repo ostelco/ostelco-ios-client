@@ -32,12 +32,3 @@ struct RegionResponse: Codable {
     let simProfiles: [SimProfile]?
     let kycStatusMap: KYCStatusMap
 }
-
-struct MyInfoDetails: Codable {
-    let id: String
-    let name: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-    }
-}

@@ -24,6 +24,22 @@ class ESIMPendingDownloadViewController: UIViewController {
 
     @IBOutlet weak var continueButton: UIButton!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let region = OnBoardingManager.sharedInstance.region {
+            getSimProfileForRegion(region: region)
+        } else {
+            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
+                if let regionResponse = regionResponse {
+                    self.getSimProfileForRegion(region: regionResponse)
+                } else {
+                    self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+                }
+            }
+            
+        }
+    }
+    
     @IBAction func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
@@ -70,10 +86,8 @@ class ESIMPendingDownloadViewController: UIViewController {
         showNeedHelpActionSheet()
     }
 
-    override func viewDidLoad() {
-        let region  = OnBoardingManager.sharedInstance.region!
+    func getSimProfileForRegion(region: RegionResponse) {
         let countryCode = region.region.id
-
         if let simProfiles = region.simProfiles, simProfiles.count > 0 {
             if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
                 DispatchQueue.main.async {
