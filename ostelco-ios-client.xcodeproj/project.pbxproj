@@ -179,6 +179,8 @@
 		9BF27784225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
 		9BF27785225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
 		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
+		C224D920225FADFC00AE10FD /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
+		C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
 		C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
@@ -323,6 +325,7 @@
 		C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoDetails.swift; sourceTree = "<group>"; };
 		C24EE402222831970053937E /* NRICAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICAddressTableViewController.swift; sourceTree = "<group>"; };
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
@@ -520,6 +523,7 @@
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
+				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1247,6 +1251,7 @@
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
+				C224D920225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
 				0448819E217B4E4E00F59758 /* BundleModel.swift in Sources */,
 				044881A8217BA32B00F59758 /* PurchaseModel.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
@@ -1336,6 +1341,7 @@
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */,
+				C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
