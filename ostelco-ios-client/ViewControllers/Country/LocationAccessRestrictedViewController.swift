@@ -16,6 +16,7 @@ class LocationAccessRestrictedViewController: UIViewController {
     let manager = CLLocationManager()
 
     @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"
@@ -42,5 +43,9 @@ class LocationAccessRestrictedViewController: UIViewController {
                 }
             })
             .disposed(by: bag)
+    }
+    
+    @IBAction func needHelpTapped(_ sender: Any) {
+        showNeedHelpActionSheet()
     }
 }
