@@ -47,7 +47,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
         //TODO: Pass the code we retrieved to PRIME
         //TODO: Get the address & phone number form PRIME
-        updateUI(getTempData()) // TODO: Remove this when API is stable.
+        // updateUI(getTempData()) // TODO: Remove this when API is stable.
     }
 
     private func getMyInfoCode() -> String? {
