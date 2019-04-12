@@ -345,12 +345,21 @@
                                     <action selector="settingsTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="3RU-7i-ahV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="T4S-bm-Gai"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="64" id="1fp-eg-JvS"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="IAI-Vb-4BI"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="top" secondItem="gj0-b2-7aj" secondAttribute="bottom" constant="32" id="Iuo-6u-x52"/>
+                            <constraint firstItem="qTN-jC-vf4" firstAttribute="top" secondItem="Dsi-HB-ICT" secondAttribute="bottom" constant="32" id="KJl-rM-P8A"/>
+                            <constraint firstItem="Dsi-HB-ICT" firstAttribute="centerX" secondItem="Nly-Oz-x9M" secondAttribute="centerX" id="LPm-Gz-pOj"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Vrl-rx-8Jt"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="trailing" secondItem="qse-GZ-iOp" secondAttribute="trailing" constant="64" id="Vvk-ub-94B"/>
                             <constraint firstItem="qse-GZ-iOp" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="64" id="Xnp-nN-qfv"/>
@@ -381,19 +390,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-gr-GSL">
-                                <rect key="frame" x="64" y="84" width="247" height="73"/>
+                                <rect key="frame" x="64" y="32" width="247" height="73"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify that you are in Singapore in order to continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smW-PN-EFs">
-                                <rect key="frame" x="64" y="189" width="247" height="41"/>
+                                <rect key="frame" x="64" y="113" width="247" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enable &quot;Location Service&quot; in Settings." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt7-A1-0HS">
-                                <rect key="frame" x="64" y="262" width="247" height="41"/>
+                                <rect key="frame" x="64" y="162" width="247" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -405,16 +414,30 @@
                                     <action selector="retryTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="Lou-RB-hdz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE0-XQ-jBM">
+                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="XGZ-dB-Yg8"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-Db-TtI">
+                                <rect key="frame" x="9" y="211" width="357" height="265"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="smW-PN-EFs" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="4PT-ob-oqI"/>
+                            <constraint firstItem="cE0-XQ-jBM" firstAttribute="centerX" secondItem="g3I-0e-Gm0" secondAttribute="centerX" id="5si-Kt-Di8"/>
                             <constraint firstAttribute="trailing" secondItem="Mt7-A1-0HS" secondAttribute="trailing" constant="64" id="8ai-9c-qRH"/>
-                            <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="32" id="9xg-ZO-wAf"/>
-                            <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="32" id="EI8-DF-3wX"/>
+                            <constraint firstItem="smW-PN-EFs" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="8" id="9xg-ZO-wAf"/>
+                            <constraint firstItem="Mt7-A1-0HS" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="8" id="EI8-DF-3wX"/>
+                            <constraint firstItem="4jY-Db-TtI" firstAttribute="centerX" secondItem="g3I-0e-Gm0" secondAttribute="centerX" id="O57-fJ-UhE"/>
+                            <constraint firstItem="4jY-Db-TtI" firstAttribute="centerY" secondItem="g3I-0e-Gm0" secondAttribute="centerY" id="aaH-ay-wm3"/>
                             <constraint firstItem="WAA-gr-GSL" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="64" id="ijM-x6-cD2"/>
+                            <constraint firstItem="yei-TJ-FnV" firstAttribute="top" secondItem="cE0-XQ-jBM" secondAttribute="bottom" constant="32" id="jj9-aZ-OlQ"/>
                             <constraint firstAttribute="trailing" secondItem="smW-PN-EFs" secondAttribute="trailing" constant="64" id="kjc-h1-eGB"/>
-                            <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="64" id="mx4-hZ-Ij5"/>
+                            <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="12" id="mx4-hZ-Ij5"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="WAA-gr-GSL" secondAttribute="trailing" constant="64" id="sdc-ko-Qzq"/>
                             <constraint firstItem="g3I-0e-Gm0" firstAttribute="bottom" secondItem="yei-TJ-FnV" secondAttribute="bottom" constant="64" id="wHh-ud-diL"/>
                             <constraint firstItem="yei-TJ-FnV" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="yrr-1J-r4z"/>
@@ -452,12 +475,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your phone is restricted in a way that prevents us from accessing your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-wV-tRb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Location Service&quot; is disabled due to Parental Control Settings on this phone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-wV-tRb">
                                 <rect key="frame" x="64" y="262" width="247" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSD-Ll-USr">
+                                <rect key="frame" x="148.5" y="509" width="78" height="30"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="1el-Qe-8Nh" eventType="touchUpInside" id="wEP-Vi-Vwc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -466,10 +496,12 @@
                             <constraint firstAttribute="trailing" secondItem="Xjf-wV-tRb" secondAttribute="trailing" constant="64" id="Fbx-KZ-nFz"/>
                             <constraint firstItem="KTc-YA-9vq" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="64" id="Gex-Xj-Ocz"/>
                             <constraint firstItem="Xjf-wV-tRb" firstAttribute="top" secondItem="TMz-Nl-rin" secondAttribute="bottom" constant="32" id="HRm-oo-c8H"/>
+                            <constraint firstItem="bSD-Ll-USr" firstAttribute="centerX" secondItem="Hg4-Of-0v4" secondAttribute="centerX" id="Ism-hr-6py"/>
                             <constraint firstItem="TMz-Nl-rin" firstAttribute="top" secondItem="KTc-YA-9vq" secondAttribute="bottom" constant="32" id="LTo-if-3b8"/>
                             <constraint firstAttribute="trailing" secondItem="TMz-Nl-rin" secondAttribute="trailing" constant="64" id="lCG-HW-gWH"/>
                             <constraint firstItem="Hg4-Of-0v4" firstAttribute="trailing" secondItem="KTc-YA-9vq" secondAttribute="trailing" constant="64" id="mh3-Fb-T7n"/>
                             <constraint firstItem="KTc-YA-9vq" firstAttribute="top" secondItem="Hg4-Of-0v4" secondAttribute="top" constant="64" id="oC0-Yj-liL"/>
+                            <constraint firstItem="Hg4-Of-0v4" firstAttribute="bottom" secondItem="bSD-Ll-USr" secondAttribute="bottom" constant="128" id="tbI-P0-6i5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hg4-Of-0v4"/>
                     </view>
@@ -556,6 +588,7 @@
     </scenes>
     <resources>
         <image name="fakeModalNotifications" width="270" height="184"/>
+        <image name="instructionsLocation" width="357" height="265"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="PeacockBlue">
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
