@@ -197,6 +197,8 @@
 		C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		C29802B82181EDA800FBC5C3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
+		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
+		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +333,7 @@
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoAddressTableViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Notification.swift"; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
@@ -643,6 +646,7 @@
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
+				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
@@ -1244,6 +1248,7 @@
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				0437CF83224D1DAE0022A2B8 /* Region.swift in Sources */,
+				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				043E711E223AF61600E01993 /* Country.swift in Sources */,
 				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
@@ -1334,6 +1339,7 @@
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
+				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				C29802B72181EDA800FBC5C3 /* BundleModel.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
