@@ -18,25 +18,20 @@ class Auth {
     let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
 
     // force show the login screen after user logs out without using the auth0 logout url
-    var forceLoginPrompt = false
     func clear(callback: (() -> Void)?) {
         os_log("Clear credentials in auth0 credentials manager.")
-        Auth0
-            .webAuth()
-            .clearSession(federated: true) {
-                print("Clear Session: ", $0)
-                _ = self.credentialsManager.clear()
-                if let callback = callback {
-                    callback()
-                }
+        self.credentialsManager.clear()
+        
+        if let callback = callback {
+            callback()
         }
     }
 
     func logout(callback: (() -> Void)? = nil) {
         os_log("Logout user")
-        forceLoginPrompt = true
         OnBoardingManager.sharedInstance.region = nil
         UserManager.sharedInstance.user = nil
+        UserDefaultsWrapper.userLoggedOut = true
         self.clear(callback: callback)
         
         // AppDelegate.shared.rootViewController.switchToLogout() // Old way of logging out
@@ -46,6 +41,7 @@ class Auth {
         os_log("Start login with auth0...")
         var params: [String:String] = [:]
 
+        let forceLoginPrompt = UserDefaultsWrapper.userLoggedOut
         if forceLoginPrompt {
             params["prompt"] = "login"
         }
@@ -88,7 +84,7 @@ class Auth {
                             // TODO: How do we handle the case if access token is empty
                         }
 
-                        self.forceLoginPrompt = false
+                        UserDefaultsWrapper.userLoggedOut = false
                         observer.on(.next(credentials))
                         observer.on(.completed)
                     }

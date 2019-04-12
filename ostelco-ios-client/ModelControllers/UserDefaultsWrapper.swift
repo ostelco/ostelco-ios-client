@@ -13,6 +13,7 @@ struct UserDefaultsWrapper {
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
         case selectedTheme = "SelectedTheme"
+        case userLoggedOutKey = "UserLoggedOut"
     }
     
     private static var defaults: UserDefaults {
@@ -55,6 +56,19 @@ struct UserDefaultsWrapper {
             } else {
                 self.removeValue(for: .selectedTheme)
             }
+        }
+    }
+    
+    static var userLoggedOut: Bool {
+        set {
+            self.setValue(newValue, for: .userLoggedOutKey)
+        }
+        get {
+            guard let value: Bool = self.value(for: .userLoggedOutKey) else {
+                return false
+            }
+            
+            return value
         }
     }
 }
