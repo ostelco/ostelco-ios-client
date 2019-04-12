@@ -336,6 +336,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="city" destination="bGB-ZW-prc" id="x6n-fi-azz"/>
+                        <outlet property="country" destination="wDa-9J-MEB" id="p9F-k0-l4m"/>
+                        <outlet property="postcode" destination="qDP-xa-u1e" id="3Cv-5v-ZTe"/>
+                        <outlet property="street" destination="lV2-K6-O7a" id="c93-yG-H0U"/>
+                        <outlet property="unit" destination="Phg-bf-QMU" id="gM0-Yw-ims"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMb-GI-6zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
