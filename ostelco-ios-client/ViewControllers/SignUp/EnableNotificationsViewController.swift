@@ -11,6 +11,11 @@ import UserNotifications
 
 class EnableNotificationsViewController: UIViewController {
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enableNotifications(ignoreNotDetermined: true)
+    }
+    
     @IBAction func continueTapped(_ sender: Any) {
         enableNotifications()
     }
@@ -42,16 +47,18 @@ class EnableNotificationsViewController: UIViewController {
         }
     }
 
-    private func enableNotifications() {
+    private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch (settings.authorizationStatus) {
             case .notDetermined:
-                self.requestNotificationAuthorization()
+                if !ignoreNotDetermined {
+                    self.requestNotificationAuthorization()
+                }
             case.authorized:
                 print("Already authorized to show notifications, continue")
                 self.registerAndContinue()
             default:
-                self.showNotificationAlreadySetAlert(status: settings.authorizationStatus.description)
+                self.showGetStarted()
             }
         }
     }
@@ -59,13 +66,13 @@ class EnableNotificationsViewController: UIViewController {
     private func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
+            self.registerAndContinue()
         }
     }
 
     private func showGetStarted() {
-        performSegue(withIdentifier: "displayGetStarted", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "displayGetStarted", sender: self)
+        }
     }
 }
