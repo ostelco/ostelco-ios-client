@@ -12,6 +12,9 @@ PODS:
   - Firebase/DynamicLinks (5.20.1):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (= 3.4.3)
+  - Firebase/Messaging (5.20.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.5.0)
   - FirebaseAnalytics (5.8.0):
     - FirebaseCore (~> 5.4)
     - FirebaseInstanceID (~> 3.8)
@@ -33,6 +36,14 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseMessaging (3.5.0):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.2)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/Reachability (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+    - Protobuf (~> 3.1)
   - FreshchatSDK (2.4.3)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -74,6 +85,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
+  - Protobuf (3.7.0)
   - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
   - RxCoreLocation (1.3.2):
@@ -89,6 +101,7 @@ PODS:
     - Siesta/Core
   - SimpleKeychain (0.8.1)
   - Stripe (14.0.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Auth0 (~> 1.14.2)
@@ -96,6 +109,7 @@ DEPENDENCIES:
   - Fabric (~> 1.9.0)
   - Firebase/Core (~> 5.20.1)
   - Firebase/DynamicLinks (~> 5.20.1)
+  - Firebase/Messaging (~> 5.20.1)
   - FreshchatSDK (~> 2.4.3)
   - JumioMobileSDK/Netverify (~> 2.15.0)
   - JWTDecode (~> 2.2)
@@ -106,6 +120,7 @@ DEPENDENCIES:
   - Siesta/UI (~> 1.0)
   - SimpleKeychain (~> 0.8.1)
   - Stripe (~> 14.0.0)
+  - SwiftyJSON (~> 4.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -118,6 +133,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FreshchatSDK
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -125,12 +141,14 @@ SPEC REPOS:
     - JWTDecode
     - nanopb
     - PromiseKit
+    - Protobuf
     - RxCocoa
     - RxCoreLocation
     - RxSwift
     - Siesta
     - SimpleKeychain
     - Stripe
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Auth0: df9ac013e7850052fea1dcd53fa09bb129121721
@@ -142,6 +160,7 @@ SPEC CHECKSUMS:
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   FreshchatSDK: a7432bc1cb0ecd54d9a618158d1c8d0271176e00
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
@@ -149,13 +168,15 @@ SPEC CHECKSUMS:
   JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxCoreLocation: 23d0f2f06fba5af57f2fa9064a5c165e75eb4c33
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: e3f5ec02167084a2bc2c5da554d88f8512339692
+PODFILE CHECKSUM: c88457aa0fc9200641fc58f1098c0ec1433cc698
 
 COCOAPODS: 1.6.1

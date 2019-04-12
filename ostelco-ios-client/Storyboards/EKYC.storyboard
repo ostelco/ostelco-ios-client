@@ -168,6 +168,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="address" destination="5ky-Ux-hgl" id="6KJ-E5-cBn"/>
+                        <outlet property="dob" destination="cRB-FC-L17" id="1V4-x2-pwW"/>
+                        <outlet property="mobileNumber" destination="ezZ-Tl-4XW" id="FLb-HM-461"/>
+                        <outlet property="name" destination="zb4-Ah-ciY" id="noF-Ub-Z5q"/>
+                        <outlet property="nationality" destination="tFe-dh-cCO" id="mI8-ZV-uvd"/>
+                        <outlet property="residentialStatus" destination="qlL-EN-MCH" id="b49-5U-bQU"/>
+                        <outlet property="sex" destination="RpD-51-Wtt" id="c3V-LP-tgY"/>
                         <segue destination="OFz-aP-YwN" kind="unwind" identifier="unwindFromSingPassInfoViewController" unwindAction="unwindFromSingPassInfoViewControllerWithSender:" id="S4a-3T-cW7"/>
                         <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="ALh-un-KZb"/>
                     </connections>
