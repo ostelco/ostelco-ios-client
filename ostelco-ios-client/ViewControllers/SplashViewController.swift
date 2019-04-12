@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+class SplashViewController: UIViewController, StoryboardLoadable {
+    static var storyboard: Storyboard = Storyboard(rawValue: "Splash")!
+    static var isInitialViewController = true
+    
     @IBOutlet weak var imageView: UIImageView!
     var spinnerView: UIView?
     override func viewDidLoad() {

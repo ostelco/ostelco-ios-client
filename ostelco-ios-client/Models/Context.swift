@@ -8,6 +8,35 @@
 
 // TODO: Use Region struct from Region.swift when feature/ekyc-api-integration branch is merged into develop
 
+func getRegionFromRegionResponseArray(_ regionResponses: [RegionResponse]) -> RegionResponse? {
+    var ret: RegionResponse? = nil
+    
+    var hasRejectedStatus = false
+    var hasApprovedStatus = false
+    
+    for region in regionResponses {
+        switch region.status {
+        case .PENDING:
+            if !hasRejectedStatus && !hasApprovedStatus {
+                ret = region
+            }
+        case .REJECTED:
+            if !hasApprovedStatus {
+                ret = region
+            }
+            hasRejectedStatus = true
+        case .APPROVED:
+            ret = region
+            hasApprovedStatus = true
+        }
+        if hasApprovedStatus {
+            break
+        }
+    }
+    
+    return ret
+}
+
 struct Context: Codable {
     let customer: CustomerModel?
     let regions: [RegionResponse]
@@ -17,32 +46,6 @@ struct Context: Codable {
     }
 
     func getRegion() -> RegionResponse? {
-
-        var ret: RegionResponse? = nil
-        
-        var hasRejectedStatus = false
-        var hasApprovedStatus = false
-
-        for region in regions {
-            switch region.status {
-            case .PENDING:
-                if !hasRejectedStatus && !hasApprovedStatus {
-                    ret = region
-                }
-            case .REJECTED:
-                if !hasApprovedStatus {
-                    ret = region
-                }
-                hasRejectedStatus = true
-            case .APPROVED:
-                ret = region
-                hasApprovedStatus = true
-            }
-            if hasApprovedStatus {
-                break
-            }
-        }
-
-        return ret
+        return getRegionFromRegionResponseArray(regions)
     }
 }
