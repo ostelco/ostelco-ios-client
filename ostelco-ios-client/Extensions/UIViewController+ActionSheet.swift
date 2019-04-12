@@ -25,28 +25,39 @@ class NeedHelpAlertController: UIAlertController {
      */
 }
 
+func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAlertAction {
+    let alertAction = UIAlertAction(title: title, style: .destructive) {_ in
+        let spinnerView = vc.showSpinner(onView: vc.view)
+        APIManager.sharedInstance.customer.request(.delete)
+            .onSuccess { _ in
+                sharedAuth.logout(callback: {
+                    DispatchQueue.main.async {
+                        vc.perform(#selector(vc.showSplashScreen), with: nil, afterDelay: 0.5)
+                    }
+                })
+            }
+            .onFailure { requestError in
+                vc.showAPIError(error: requestError)
+            }
+            .onCompletion { _ in
+                vc.removeSpinner(spinnerView)
+        }
+    }
+    
+    return alertAction
+}
+
 extension UIViewController {
+    
+    @objc func showSplashScreen() {
+        let viewController = SplashViewController.fromStoryboard()
+        self.present(viewController, animated: true)
+    }
+    
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
 
-        let deleteAction = UIAlertAction(title: "Delete Account", style: .destructive) {_ in
-            let spinnerView = self.showSpinner(onView: self.view)
-            APIManager.sharedInstance.customer.request(.delete)
-                .onSuccess { _ in
-                        sharedAuth.logout(callback: {
-                            DispatchQueue.main.async {
-                                let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-                                self.present(viewController, animated: true)
-                            }
-                        })
-                }
-                .onFailure { requestError in
-                    self.showAPIError(error: requestError)
-                }
-                .onCompletion { _ in
-                    self.removeSpinner(spinnerView)
-                }
-        }
+        let deleteAction = createDeleteAccountAlertAction(title: "Delete Account", vc: self)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         alertCtrl.addAction(deleteAction)
@@ -89,24 +100,7 @@ extension UIViewController {
         let faqAction = UIAlertAction(title: "FAQ", style: .default) {_ in
             Freshchat.sharedInstance()?.showFAQs(self)
         }
-        let startOverAction = UIAlertAction(title: "Start Again", style: .destructive) {_ in
-            let spinnerView = self.showSpinner(onView: self.view)
-            APIManager.sharedInstance.customer.request(.delete)
-                .onSuccess { _ in
-                    sharedAuth.logout(callback: {
-                        DispatchQueue.main.async {
-                            let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
-                            self.present(viewController, animated: true)
-                        }
-                    })
-                }
-                .onFailure { requestError in
-                    self.showAPIError(error: requestError)
-                }
-                .onCompletion { _ in
-                    self.removeSpinner(spinnerView)
-            }
-        }
+        let startOverAction = createDeleteAccountAlertAction(title: "Start Again", vc: self)
         let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!

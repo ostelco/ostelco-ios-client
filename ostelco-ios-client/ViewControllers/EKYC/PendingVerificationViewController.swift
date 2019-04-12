@@ -13,8 +13,14 @@ class PendingVerificationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-  @IBAction func `continue`(_ sender: Any) {
+    
+    @IBAction func needHelpTapped(_ sender: Any) {
+        showNeedHelpActionSheet()
+    }
+    
+    @IBAction func `continue`(_ sender: Any) {
     let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        let spinnerView = showSpinner(onView: self.view)
     APIManager.sharedInstance.regions.child(countryCode).load()
         .onSuccess { data in
             if let regionResponse: RegionResponse = data.typedContent(ifNone: nil) {
@@ -37,8 +43,8 @@ class PendingVerificationViewController: UIViewController {
             .onFailure { error in
                 self.showAPIError(error: error)
         }
-        .onFailure { error in
-            self.showAPIError(error: error)
-    }
+        .onCompletion { _ in
+            self.removeSpinner(spinnerView)
+        }
   }
 }
