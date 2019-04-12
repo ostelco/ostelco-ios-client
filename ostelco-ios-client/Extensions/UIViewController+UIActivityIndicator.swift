@@ -8,21 +8,50 @@
 
 import UIKit
 
-// ref: http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
+// ref: https://github.com/vincechan/SwiftLoadingIndicator/blob/master/SwiftLoadingIndicator/LoadingIndicatorView.swift
 
 extension UIViewController {
-    func showSpinner(onView : UIView) -> UIView {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
+    func showSpinner(onView : UIView, loadingText: String? = nil) -> UIView {
+        
+        // Create the overlay
+        let overlay = UIView()
+        overlay.alpha = 0
+        overlay.backgroundColor = UIColor.white
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        onView.addSubview(overlay)
+        onView.bringSubviewToFront(overlay)
+        
+        overlay.widthAnchor.constraint(equalTo: onView.widthAnchor).isActive = true
+        overlay.heightAnchor.constraint(equalTo: onView.heightAnchor).isActive = true
+        
+        // Create and animate the activity indicator
+        let indicator = UIActivityIndicatorView(style: .whiteLarge)
+        indicator.color = .black
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.startAnimating()
+        overlay.addSubview(indicator)
+        
+        indicator.centerXAnchor.constraint(equalTo: overlay.centerXAnchor).isActive = true
+        indicator.centerYAnchor.constraint(equalTo: overlay.centerYAnchor).isActive = true
+        
+        // Create label
+        if let textString = loadingText {
+            let label = UILabel()
+            label.text = textString
+            label.textColor = UIColor.black
+            overlay.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.bottomAnchor.constraint(equalTo: indicator.topAnchor, constant: -32).isActive = true
+            label.centerXAnchor.constraint(equalTo: indicator.centerXAnchor).isActive = true
         }
-        return spinnerView
+        
+        // Animate the overlay to show
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(0.5)
+        overlay.alpha = overlay.alpha > 0 ? 0 : 0.88
+        UIView.commitAnimations()
+        
+        return overlay
     }
 
     func removeSpinner(_ spinnerView: UIView?) {
