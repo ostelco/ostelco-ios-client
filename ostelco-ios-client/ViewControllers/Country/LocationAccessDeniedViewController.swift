@@ -21,6 +21,10 @@ class LocationAccessDeniedViewController: UIViewController {
         UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
     }
 
+    @IBAction func needHelpTapped(_ sender: Any) {
+        showNeedHelpActionSheet()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = "We need to verify that you are in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY") in order to continue"

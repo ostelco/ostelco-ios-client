@@ -105,6 +105,9 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         config.requireVerification = true
         config.requireFaceMatch = true
         config.delegate = self
+        // TODO: Replace preselected country with previously selected country when supporting multiple countries. Note that Preselected country below has to be on the following format https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+        // while we use alpha-2
+        config.preselectedCountry = "SGP"
 
         // General appearance - deactivate blur
         NetverifyBaseView.netverifyAppearance().disableBlur = true

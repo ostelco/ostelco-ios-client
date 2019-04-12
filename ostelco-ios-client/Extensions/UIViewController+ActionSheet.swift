@@ -50,7 +50,7 @@ func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAl
 extension UIViewController {
     
     @objc func showSplashScreen() {
-        let viewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
+        let viewController = SplashViewController.fromStoryboard()
         self.present(viewController, animated: true)
     }
     
@@ -92,16 +92,13 @@ extension UIViewController {
     }
 
     func showNeedHelpActionSheet() {
-        let alertCtrl = NeedHelpAlertController(title: "Do we want a title?", message: "We can also have a message", preferredStyle: .actionSheet)
+        let alertCtrl = NeedHelpAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         let supportAction = UIAlertAction(title: "Contact Support", style: .default) {_ in
             Freshchat.sharedInstance()?.showConversations(self)
         }
-        let faqAction = UIAlertAction(title: "FAQ", style: .default) {_ in
-            Freshchat.sharedInstance()?.showFAQs(self)
-        }
         let startOverAction = createDeleteAccountAlertAction(title: "Start Again", vc: self)
-        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
+        let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
             sharedAuth.logout()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
@@ -109,7 +106,7 @@ extension UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
         alertCtrl.addAction(supportAction)
-        alertCtrl.addAction(faqAction)
+        
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
