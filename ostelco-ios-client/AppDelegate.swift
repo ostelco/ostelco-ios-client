@@ -53,20 +53,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func enableNotifications() {
         DispatchQueue.main.async {
-            if UIApplication.shared.isRegisteredForRemoteNotifications == false {
-                print("Registering for RemoteNotifications")
-                UNUserNotificationCenter.current().delegate = self
+            print("Registering for RemoteNotifications")
+            UNUserNotificationCenter.current().delegate = self
 
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(
-                    options: authOptions,
-                    completionHandler: {_, _ in })
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
 
-                UIApplication.shared.registerForRemoteNotifications()
-                Messaging.messaging().delegate = self
-            } else {
-                print("Already registered for RemoteNotifications")
-            }
+            UIApplication.shared.registerForRemoteNotifications()
+            Messaging.messaging().delegate = self
         }
     }
 
