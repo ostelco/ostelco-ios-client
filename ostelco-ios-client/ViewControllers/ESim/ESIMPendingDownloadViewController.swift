@@ -127,4 +127,17 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        removeNotificationObserver()
+    }
+
+    @objc func onDidReceiveData(_ notification: Notification) {
+        print(#function,  "Notification didReceivePushNotification arrived")
+    }
+
 }

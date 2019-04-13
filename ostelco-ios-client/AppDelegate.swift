@@ -233,6 +233,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
         // Print full message.
         print(userInfo)
+        sendDidReceivePushNotification(userInfo)
         // Change this to your preferred presentation option
         completionHandler([])
     }
@@ -250,7 +251,12 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
         // Print full message.
         print(userInfo)
+        sendDidReceivePushNotification(userInfo)
         completionHandler()
+    }
+
+    func sendDidReceivePushNotification(_ userInfo:[AnyHashable : Any]) {
+        NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
     }
 }
 
