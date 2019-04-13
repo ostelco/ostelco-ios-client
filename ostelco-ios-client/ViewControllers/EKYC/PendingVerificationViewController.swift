@@ -57,6 +57,6 @@ class PendingVerificationViewController: UIViewController {
     }
 
     @objc func onDidReceiveData(_ notification: Notification) {
-        print("Notification didReceivePushNotification arrived")
+        print(#function, "Notification didReceivePushNotification arrived")
     }
 }
