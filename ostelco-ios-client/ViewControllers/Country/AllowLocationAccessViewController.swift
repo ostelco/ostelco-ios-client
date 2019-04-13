@@ -34,22 +34,10 @@ class AllowLocationAccessViewController: UIViewController {
         verifyLocation(ignoreNotDetermined: true)
     }
 
-    @IBAction func dontAllowTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "We're sorry but...", message: "You have to allow location access to be able to continue so that you can start using your free 2GB.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.verifyLocation()
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-
     private func failedToGetLocationAlert() {
         let alert = UIAlertController(title: "We're sorry but...", message: "We were unable to get your current location.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-
-    @IBAction func okTapped(_ sender: Any) {
-        verifyLocation()
     }
 
     @IBAction func continueTapped(_ sender: Any) {

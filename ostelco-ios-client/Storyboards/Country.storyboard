@@ -247,8 +247,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-Yo-QL8">
-                                <rect key="frame" x="52.5" y="241.5" width="270" height="184"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-Yo-QL8">
+                                <rect key="frame" x="23" y="199.5" width="329" height="268"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-vY-7gZ">
                                 <rect key="frame" x="156.5" y="573" width="62" height="30"/>
@@ -257,39 +257,18 @@
                                     <action selector="continueTapped:" destination="51P-Xu-Q3s" eventType="touchUpInside" id="JSC-mg-opc"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ArC-fV-zjg">
-                                <rect key="frame" x="52.5" y="241.5" width="270" height="184"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73W-FS-iQP" userLabel="Don't Allow">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="184"/>
-                                        <connections>
-                                            <action selector="dontAllowTapped:" destination="51P-Xu-Q3s" eventType="touchUpInside" id="g6l-fP-GjE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wff-hw-P3e" userLabel="Ok">
-                                        <rect key="frame" x="135" y="0.0" width="135" height="184"/>
-                                        <connections>
-                                            <action selector="okTapped:" destination="51P-Xu-Q3s" eventType="touchUpInside" id="GjR-8g-NMv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ArC-fV-zjg" firstAttribute="width" secondItem="rfg-Yo-QL8" secondAttribute="width" id="05W-z8-BmN"/>
                             <constraint firstAttribute="trailing" secondItem="iZq-29-s8v" secondAttribute="trailing" constant="64" id="0Cq-B4-voF"/>
-                            <constraint firstItem="ArC-fV-zjg" firstAttribute="height" secondItem="rfg-Yo-QL8" secondAttribute="height" id="1Qd-G7-Afw"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="u9V-Ch-8LS" secondAttribute="trailing" constant="64" id="2iY-Do-M8J"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="leading" secondItem="q3Q-44-Cly" secondAttribute="leading" constant="64" id="FQj-gX-sGt"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="top" secondItem="9nq-pm-G8D" secondAttribute="top" constant="64" id="JBb-lV-fcV"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="64" id="Maw-Xq-FcE"/>
-                            <constraint firstItem="ArC-fV-zjg" firstAttribute="centerX" secondItem="rfg-Yo-QL8" secondAttribute="centerX" id="N2l-7G-WMY"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="WeR-Pz-Va6"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="XDb-0K-VUH"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerY" secondItem="q3Q-44-Cly" secondAttribute="centerY" id="ZEM-DY-ZHQ"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="64" id="aa4-Jm-7BO"/>
-                            <constraint firstItem="ArC-fV-zjg" firstAttribute="centerY" secondItem="rfg-Yo-QL8" secondAttribute="centerY" id="tjR-OB-hv1"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="tzd-69-KCB"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="top" secondItem="u9V-Ch-8LS" secondAttribute="bottom" constant="32" id="yFE-Yl-DKK"/>
                             <constraint firstItem="1eB-vY-7gZ" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="zqq-WG-f1Z"/>
@@ -587,7 +566,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fakeModalNotifications" width="270" height="184"/>
+        <image name="fakeModalLocation" width="329" height="268"/>
         <image name="instructionsLocation" width="357" height="265"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="PeacockBlue">
