@@ -44,9 +44,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used for verifying your identity</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Is anyone even reading this?</string>
+	<string>Location services must be allowed in order to issue an eSIM</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Is anyone even reading this?</string>
+	<string>Location services must be allowed in order to issue an eSIM</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Is anyone even reading this?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
