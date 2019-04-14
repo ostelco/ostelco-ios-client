@@ -1630,7 +1630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
