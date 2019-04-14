@@ -41,12 +41,20 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Used for verifying your identity</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Used for verifying your identity</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Is anyone even reading this?</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Is anyone even reading this?</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Is anyone even reading this?</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Is anyone even reading this?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Splash</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
