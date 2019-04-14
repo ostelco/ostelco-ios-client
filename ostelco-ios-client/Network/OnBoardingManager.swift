@@ -9,9 +9,9 @@
 class OnBoardingManager {
     static let sharedInstance = OnBoardingManager()
     var selectedCountry = Country("SG")
-    var region: RegionResponse! {
+    var region: RegionResponse? {
         didSet {
-            if region != nil {
+            if let region = region {
                 let countryName = region.region.name
                 Freshchat.sharedInstance()?.setUserPropertyforKey("region", withValue: region.region.name)
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(countryName)-Status", withValue: region.status.rawValue)

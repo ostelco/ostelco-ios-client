@@ -31,6 +31,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         } else {
             APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
                 if let regionResponse = regionResponse {
+                    OnBoardingManager.sharedInstance.region = regionResponse
                     self.getSimProfileForRegion(region: regionResponse)
                 } else {
                     self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
