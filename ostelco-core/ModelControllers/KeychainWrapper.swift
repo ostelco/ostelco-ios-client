@@ -11,10 +11,17 @@ import KeychainAccess
 
 /// A concrete wrapper around the iOS Keychain implementing SecureStorage.
 public class KeychainWrapper: SecureStorage {
-
-    // TODO: Get access group set up on the dev center
-    private let accessGroup: String = "CREATE ACCESS GROUP"
-    private let service: String = "ostelco"
+    
+    private let service = "ostelco"
+    private let accessGroupPrefix = "2R8HFAXUXD" // App identifer
+    private let accessGroup: String
+    
+    /// Designated initializer
+    ///
+    /// - Parameter accessGroup: The access group for the current application.
+    public init(appBundleID: String) {
+        self.accessGroup = self.accessGroupPrefix + appBundleID
+    }
     
     private lazy var keychain: Keychain = {
        return Keychain(service: self.service, accessGroup: self.accessGroup)

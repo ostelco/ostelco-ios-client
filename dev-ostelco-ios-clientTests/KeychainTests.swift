@@ -11,7 +11,10 @@ import XCTest
 
 class KeychainTests: XCTestCase {
     
-    private lazy var keychainWrapper = KeychainWrapper()
+    private lazy var keychainWrapper: KeychainWrapper = {
+        let bundleID = Bundle.main.bundleIdentifier
+        return KeychainWrapper(appBundleID: bundleID!)
+    }()
     
     override func setUp() {
         super.setUp()
