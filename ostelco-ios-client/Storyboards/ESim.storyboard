@@ -227,7 +227,7 @@
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Pmf-Pt-KCB" eventType="touchUpInside" id="It5-su-1Qf"/>
-                                    <segue destination="OQO-eA-Bde" kind="show" id="wBK-hG-VDL"/>
+                                    <segue destination="OQO-eA-Bde" kind="show" identifier="home" id="wBK-hG-VDL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -246,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="2855" y="255"/>
         </scene>
-        <!--TabController-->
+        <!--TabBarController-->
         <scene sceneID="pDd-CG-mcN">
             <objects>
-                <viewControllerPlaceholder storyboardName="TabController" id="OQO-eA-Bde" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TabController" referencedIdentifier="TabBarController" id="OQO-eA-Bde" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqP-Tt-cfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3471" y="254"/>
