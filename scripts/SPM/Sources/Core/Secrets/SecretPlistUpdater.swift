@@ -8,39 +8,6 @@
 import Foundation
 import Files
 
-protocol KeyToUpdate {
-    var rawValue: String { get }
-    init?(rawValue: String)
-    init?(jsonKey: String)
-
-    var jsonKey: String { get }
-    var plistKey: String { get }
-    static var count: Int { get }
-    
-    static func missingJSONKeys(in jsonDictionary: [String: AnyHashable]) -> [String]
-}
-
-extension KeyToUpdate where Self: CaseIterable {
-    
-    init?(jsonKey: String) {
-        self.init(rawValue: jsonKey)
-    }
-
-    static var count: Int {
-        return self.allCases.count
-    }
-    
-    static func missingJSONKeys(in jsonDictionary: [String: AnyHashable]) -> [String] {
-        let missing = self.allCases
-            // Missing keys are ones where no value is present
-            .filter { jsonDictionary[$0.jsonKey] == nil }
-            // Return the JSON key which is missing, not the raw object.
-            .map { $0.jsonKey }
-        
-        return missing
-    }
-}
-
 protocol SecretPlistUpdater {
     static var keyType: KeyToUpdate.Type { get }
     static var outputFileName: String { get }
