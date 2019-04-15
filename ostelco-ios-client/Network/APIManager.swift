@@ -66,6 +66,10 @@ class APIManager: Service {
         configureTransformer("/regions/*") {
             try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
         }
+        
+        configureTransformer("/regions") {
+            try self.jsonDecoder.decode([RegionResponse].self, from: $0.content)
+        }
 
         configureTransformer("/context") {
             try self.jsonDecoder.decode(Context.self, from: $0.content)
@@ -94,7 +98,7 @@ extension APIManager {
     func getRegionFromRegions(completion: @escaping (RegionResponse?, Error?) -> Void) {
         regions.load()
             .onSuccess { response in
-                if let regionResponseArray: [RegionResponse] = response.typedContent(ifNone: nil) {
+                if let regionResponseArray: [RegionResponse] = response.typedContent(ifNone: []) {
                     if let region = getRegionFromRegionResponseArray(regionResponseArray) {
                         DispatchQueue.main.async {
                             completion(region, nil)

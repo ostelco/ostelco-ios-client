@@ -8,7 +8,10 @@
 import Foundation
 import Files
 
+/// Updates the `GoogleService-Info.plist` file with information for our Firebase install.
 struct FirebaseUpdater {
+    
+    /// Required keys which should be provided in either a `secrets.json` file or in the CI environment.
     enum FirebaseKey: String, CaseIterable, KeyToUpdate {
         case adUnitForBannerTest = "AD_UNIT_ID_FOR_BANNER_TEST"
         case adUnitForInterstitialTest = "AD_UNIT_ID_FOR_INTERSTITIAL_TEST"

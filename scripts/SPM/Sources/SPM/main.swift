@@ -2,7 +2,9 @@ import Foundation
 import Core
 import Utility
 
-print("HALLO SCRIPTING")
+/// Here, we let the SPM script do all the argument parsing using the `ArgumentParser` from
+/// Swift Package Manager's `Utility` package. This will then call into the `Core` framework,
+/// allowing it to do the actual work under the hood.
 do {
     let argParser = ArgumentParser(usage: "<command> <options>", overview: "Commands to run various tasks on the command line")
     
@@ -54,7 +56,7 @@ do {
         try Core.runPostBuild(sourceRootPath: srcRoot, forProd: forProd)
     }
     
-    // You need to pick one of pre or post build
+    // You need to pick one of pre- or post-build, otherwise this basically does nothing.
     if (!runPrebuild && !runPostBuild) {
         throw ArgumentParserError.expectedArguments(argParser, [
             "--prebuild",
@@ -62,6 +64,7 @@ do {
         ])
     }
 } catch {
+    // An error has occurred somewhere along the way.
     debugPrint("Error: \(error)")
     exit(1)
 }

@@ -8,7 +8,10 @@
 import Foundation
 import Files
 
+/// Updates the `Auth0.plist` file.
 struct Auth0Updater {
+    
+    /// Required keys which should be provided in either a `secrets.json` file or in the CI environment.
     enum Auth0Key: String, CaseIterable, KeyToUpdate {
         case clientID = "auth0_client_id"
         case domain = "auth0_domain"
