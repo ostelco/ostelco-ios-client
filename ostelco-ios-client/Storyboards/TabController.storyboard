@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oMk-l7-Qvt">
             <objects>
-                <tabBarController id="zSU-e2-tmu" customClass="TabBarController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="zSU-e2-tmu" customClass="TabBarController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rgL-ab-CN8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
