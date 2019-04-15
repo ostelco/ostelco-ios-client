@@ -8,44 +8,17 @@
 import Foundation
 import Files
 
-protocol KeyToUpdate {
-    var rawValue: String { get }
-    init?(rawValue: String)
-    init?(jsonKey: String)
-
-    var jsonKey: String { get }
-    var plistKey: String { get }
-    static var count: Int { get }
-    
-    static func missingJSONKeys(in jsonDictionary: [String: AnyHashable]) -> [String]
-}
-
-extension KeyToUpdate where Self: CaseIterable {
-    
-    init?(jsonKey: String) {
-        self.init(rawValue: jsonKey)
-    }
-
-    static var count: Int {
-        return self.allCases.count
-    }
-    
-    static func missingJSONKeys(in jsonDictionary: [String: AnyHashable]) -> [String] {
-        let missing = self.allCases
-            // Missing keys are ones where no value is present
-            .filter { jsonDictionary[$0.jsonKey] == nil }
-            // Return the JSON key which is missing, not the raw object.
-            .map { $0.jsonKey }
-        
-        return missing
-    }
-}
-
+/// A protocol representing a class which will update a single Plist file
 protocol SecretPlistUpdater {
+    
+    /// The type of the KeyToUpdate. Should usually be a `CaseIterable` `String` enum.
     static var keyType: KeyToUpdate.Type { get }
+    
+    /// The name of the file where secrets should be output.
     static var outputFileName: String { get }
 }
 
+// MARK: - Default implementation
 extension SecretPlistUpdater {
     
     static func outputFile(in sourceRoot: Folder) throws -> File {
@@ -54,6 +27,20 @@ extension SecretPlistUpdater {
         return try supportingFilesFolder.file(named: self.outputFileName)
     }
     
+    /// Resets the `Plist` updated by the conforming instance using git.
+    /// NOTE: Only resets the specified output file, no other files will be reset.
+    ///
+    /// - Parameter sourceRoot: The main iOS project's source root
+    static func reset(sourceRoot: Folder) throws {
+        let plistFile = try self.outputFile(in: sourceRoot)
+        try plistFile.resetToGitHEAD()
+    }
+    
+    /// Updates the specified plist with the specified keys.
+    ///
+    /// - Parameters:
+    ///   - secrets: An array of secrets to update
+    ///   - sourceRoot: The main iOS project's source root
     static func run(secrets: [String: AnyHashable],
                     sourceRoot: Folder) throws {
         let relevantSecrets = secrets.filter { (entry) in
@@ -72,10 +59,5 @@ extension SecretPlistUpdater {
         }
         
         try PlistUpdater.save(file: outputFile)
-    }
-    
-    static func reset(sourceRoot: Folder) throws {
-        let plistFile = try self.outputFile(in: sourceRoot)
-        try plistFile.resetToGitHEAD()
     }
 }

@@ -8,7 +8,10 @@
 import Foundation
 import Files
 
+/// Updates the `Environment.plist` file.
 struct EnvironmentUpdater {
+    
+    /// Required keys which should be provided in either a `secrets.json` file or in the CI environment.
     enum EnvironmentKey: String, CaseIterable, KeyToUpdate {
         case appleMerchantId = "apple_merchant_id"
         case auth0ClientID = "auth0_client_id"
