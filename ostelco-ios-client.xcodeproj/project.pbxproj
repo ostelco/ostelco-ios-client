@@ -237,7 +237,7 @@
 		043E7120223AFFA800E01993 /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
 		043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+CountryListActionSheet.swift"; sourceTree = "<group>"; };
 		04434C922254D23800B1A48A /* GenericOhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericOhNoViewController.swift; sourceTree = "<group>"; };
-		04488166217924B700F59758 /* ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04488166217924B700F59758 /* Oya app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoAddressTableViewController.swift; sourceTree = "<group>"; };
-		C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dev-ostelco-ios-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29802CC2181EDA800FBC5C3 /* Oya development app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya development app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Notification.swift"; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
@@ -386,8 +386,8 @@
 		04488167217924B700F59758 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04488166217924B700F59758 /* ostelco-ios-client.app */,
-				C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */,
+				04488166217924B700F59758 /* Oya app.app */,
+				C29802CC2181EDA800FBC5C3 /* Oya development app.app */,
 				C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */,
 			);
 			name = Products;
@@ -677,9 +677,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04488165217924B700F59758 /* ostelco-ios-client */ = {
+		04488165217924B700F59758 /* Oya app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "ostelco-ios-client" */;
+			buildConfigurationList = 0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "Oya app" */;
 			buildPhases = (
 				D6F283764D7DDE1CE8184A08 /* [CP] Check Pods Manifest.lock */,
 				9B851AB4225DD91D0076ABF3 /* SPM Pre-build */,
@@ -694,9 +694,9 @@
 			);
 			dependencies = (
 			);
-			name = "ostelco-ios-client";
+			name = "Oya app";
 			productName = "ostelco-ios-client";
-			productReference = 04488166217924B700F59758 /* ostelco-ios-client.app */;
+			productReference = 04488166217924B700F59758 /* Oya app.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C2236F09218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
@@ -718,9 +718,9 @@
 			productReference = C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */ = {
+		C29802A82181EDA800FBC5C3 /* Oya development app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */;
+			buildConfigurationList = C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "Oya development app" */;
 			buildPhases = (
 				7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */,
 				9BF2777B225D10B6006428D5 /* SPM Pre-build */,
@@ -736,9 +736,9 @@
 			);
 			dependencies = (
 			);
-			name = "dev-ostelco-ios-client";
+			name = "Oya development app";
 			productName = "ostelco-ios-client";
-			productReference = C29802CC2181EDA800FBC5C3 /* dev-ostelco-ios-client.app */;
+			productReference = C29802CC2181EDA800FBC5C3 /* Oya development app.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -802,8 +802,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04488165217924B700F59758 /* ostelco-ios-client */,
-				C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */,
+				04488165217924B700F59758 /* Oya app */,
+				C29802A82181EDA800FBC5C3 /* Oya development app */,
 				C2236F09218A414C00B135C0 /* dev-ostelco-ios-clientTests */,
 			);
 		};
@@ -1368,7 +1368,7 @@
 /* Begin PBXTargetDependency section */
 		C2236F10218A414C00B135C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C29802A82181EDA800FBC5C3 /* dev-ostelco-ios-client */;
+			target = C29802A82181EDA800FBC5C3 /* Oya development app */;
 			targetProxy = C2236F0F218A414C00B135C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1573,7 +1573,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oya development app.app/Oya development app";
 			};
 			name = Debug;
 		};
@@ -1596,7 +1596,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dev-ostelco-ios-client.app/dev-ostelco-ios-client";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oya development app.app/Oya development app";
 			};
 			name = Release;
 		};
@@ -1668,7 +1668,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "ostelco-ios-client" */ = {
+		0448817A217924B800F59758 /* Build configuration list for PBXNativeTarget "Oya app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0448817B217924B800F59758 /* Debug */,
@@ -1686,7 +1686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "dev-ostelco-ios-client" */ = {
+		C29802C72181EDA800FBC5C3 /* Build configuration list for PBXNativeTarget "Oya development app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C29802C82181EDA800FBC5C3 /* Debug */,

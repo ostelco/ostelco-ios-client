@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-               BuildableName = "dev-ostelco-ios-client.app"
-               BlueprintName = "dev-ostelco-ios-client"
+               BuildableName = "Oya development app.app"
+               BlueprintName = "Oya development app"
                ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
-            BlueprintName = "dev-ostelco-ios-client"
+            BuildableName = "Oya development app.app"
+            BlueprintName = "Oya development app"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
-            BlueprintName = "dev-ostelco-ios-client"
+            BuildableName = "Oya development app.app"
+            BlueprintName = "Oya development app"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -113,8 +113,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
-            BlueprintName = "dev-ostelco-ios-client"
+            BuildableName = "Oya development app.app"
+            BlueprintName = "Oya development app"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
