@@ -10,7 +10,6 @@ import UIKit
 
 /// A view controller showing the user's remaining data.
 /// Designed to be embedded in other view controllers across both the app and extensions.
-@IBDesignable
 public final class RemainingDataViewController: UIViewController, NibLoadable {
     
     @IBOutlet private var amountLabel: UILabel!
@@ -24,7 +23,6 @@ public final class RemainingDataViewController: UIViewController, NibLoadable {
     }
     
     /// What color should all the labels' text be?
-    @IBInspectable
     public var textColor: UIColor = .blue {
         didSet {
             self.updateTextColor()
