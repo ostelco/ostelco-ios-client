@@ -1,0 +1,6 @@
+framework module Pods_ostelco_ios_Oya_development_app {
+  umbrella header "Pods-ostelco-ios-Oya development app-umbrella.h"
+
+  export *
+  module * { export * }
+}

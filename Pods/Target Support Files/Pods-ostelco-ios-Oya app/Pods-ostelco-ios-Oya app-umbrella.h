@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ostelco_ios_ostelco_ios_clientVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ostelco_ios_ostelco_ios_clientVersionString[];
+FOUNDATION_EXPORT double Pods_ostelco_ios_Oya_appVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_ostelco_ios_Oya_appVersionString[];
 

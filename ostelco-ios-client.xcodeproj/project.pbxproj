@@ -138,6 +138,8 @@
 		04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
+		08BB5BE18DD5E3A9B16D28F3 /* Pods_ostelco_ios_Oya_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE53A44D25F4FEA36BBCBEC /* Pods_ostelco_ios_Oya_app.framework */; };
+		3A2DC9E2F4B57A5875F44A59 /* Pods_ostelco_ios_Oya_development_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC789D2DD835D0FEC911960 /* Pods_ostelco_ios_Oya_development_app.framework */; };
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
@@ -300,10 +302,13 @@
 		5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7C72DE1ACA69795E6069C3 /* Pods-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
+		6B51715092A2C5CD744FB818 /* Pods-ostelco-ios-Oya app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-Oya app.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app.release.xcconfig"; sourceTree = "<group>"; };
 		6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE1475F6B08D2E66766E194 /* Pods_dev_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dev_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		9A3BFC661E8C19FEB430A709 /* Pods-ostelco-ios-Oya app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-Oya app.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app.debug.xcconfig"; sourceTree = "<group>"; };
+		9B5D9EFE250F2AB6A56AEF1C /* Pods-ostelco-ios-Oya development app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-Oya development app.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app.debug.xcconfig"; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -340,7 +345,10 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		D19734EDD04030D1F2B6C6E2 /* Pods-ostelco-ios-Oya development app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-Oya development app.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app.release.xcconfig"; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
+		ECE53A44D25F4FEA36BBCBEC /* Pods_ostelco_ios_Oya_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_Oya_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFC789D2DD835D0FEC911960 /* Pods_ostelco_ios_Oya_development_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_Oya_development_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */,
+				08BB5BE18DD5E3A9B16D28F3 /* Pods_ostelco_ios_Oya_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */,
+				3A2DC9E2F4B57A5875F44A59 /* Pods_ostelco_ios_Oya_development_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +438,8 @@
 				6676C2A3C37E9F77197C79FF /* Pods_ostelco_ios_client.framework */,
 				6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */,
 				C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */,
+				ECE53A44D25F4FEA36BBCBEC /* Pods_ostelco_ios_Oya_app.framework */,
+				FFC789D2DD835D0FEC911960 /* Pods_ostelco_ios_Oya_development_app.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -670,6 +682,10 @@
 				2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */,
 				0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */,
 				82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */,
+				9A3BFC661E8C19FEB430A709 /* Pods-ostelco-ios-Oya app.debug.xcconfig */,
+				6B51715092A2C5CD744FB818 /* Pods-ostelco-ios-Oya app.release.xcconfig */,
+				9B5D9EFE250F2AB6A56AEF1C /* Pods-ostelco-ios-Oya development app.debug.xcconfig */,
+				D19734EDD04030D1F2B6C6E2 /* Pods-ostelco-ios-Oya development app.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -896,7 +912,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
@@ -941,7 +957,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app-frameworks.sh\"\n";
 		};
 		4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -951,7 +967,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app-resources.sh",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCResources.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FreshchatModels.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCLocalization.bundle",
@@ -966,7 +982,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app-resources.sh\"\n";
 		};
 		7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -983,7 +999,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-dev-ostelco-ios-client-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-Oya development app-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -998,7 +1014,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Auth0/Auth0.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
@@ -1043,7 +1059,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya development app/Pods-ostelco-ios-Oya development app-frameworks.sh\"\n";
 		};
 		9B851AB4225DD91D0076ABF3 /* SPM Pre-build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1125,7 +1141,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app-resources.sh",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCResources.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FreshchatModels.bundle",
 				"${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCLocalization.bundle",
@@ -1140,7 +1156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-Oya app/Pods-ostelco-ios-Oya app-resources.sh\"\n";
 		};
 		CC8EE19833175CB429C7CA9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1179,7 +1195,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-ostelco-ios-client-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ostelco-ios-Oya app-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1501,7 +1517,7 @@
 		};
 		0448817B217924B800F59758 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DFD53717ECD8CD36FD2711B /* Pods-ostelco-ios-ostelco-ios-client.debug.xcconfig */;
+			baseConfigurationReference = 9A3BFC661E8C19FEB430A709 /* Pods-ostelco-ios-Oya app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1528,7 +1544,7 @@
 		};
 		0448817C217924B800F59758 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */;
+			baseConfigurationReference = 6B51715092A2C5CD744FB818 /* Pods-ostelco-ios-Oya app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconProduction;
 				CLANG_ENABLE_MODULES = YES;
@@ -1602,7 +1618,7 @@
 		};
 		C29802C82181EDA800FBC5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11590A3AA9935032698D67A6 /* Pods-ostelco-ios-dev-ostelco-ios-client.debug.xcconfig */;
+			baseConfigurationReference = 9B5D9EFE250F2AB6A56AEF1C /* Pods-ostelco-ios-Oya development app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
@@ -1630,7 +1646,7 @@
 		};
 		C29802CA2181EDA800FBC5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B3C2D874060542A4DEDD511 /* Pods-ostelco-ios-dev-ostelco-ios-client.release.xcconfig */;
+			baseConfigurationReference = D19734EDD04030D1F2B6C6E2 /* Pods-ostelco-ios-Oya development app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDevelopment;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";

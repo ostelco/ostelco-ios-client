@@ -29,7 +29,7 @@ abstract_target 'ostelco-ios' do
 
 
   # Dev app target
-  target 'dev-ostelco-ios-client' do
+  target 'Oya development app' do
     
     # Test target
     target 'dev-ostelco-ios-clientTests' do
@@ -38,6 +38,6 @@ abstract_target 'ostelco-ios' do
   end
   
   # Prod app target
-  target 'ostelco-ios-client' do
+  target 'Oya app' do
   end
 end
