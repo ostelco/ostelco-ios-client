@@ -12,12 +12,22 @@ class CountriesTableViewController: UITableViewController {
     
     private lazy var dataSource: CountryDataSource = {
         return CountryDataSource(tableView: self.tableView,
-                                 items: Country.defaultCountries)
+                                 countries: Country.defaultCountries,
+                                 delegate: self)
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.addEmptyFooter()
         self.dataSource.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
+    }
+    
+    
+}
+
+extension CountriesTableViewController: CountrySelectionDelegate {
+    
+    func selected(country: Country) {
+        OnBoardingManager.sharedInstance.selectedCountry = country
     }
 }
