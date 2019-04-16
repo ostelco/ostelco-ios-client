@@ -18,7 +18,7 @@ class BecomeAMemberViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBOutlet weak var paymentButtonContainer: UIStackView!
+    @IBOutlet weak var buttonContainer: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,17 @@ class BecomeAMemberViewController: UIViewController {
                 paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.setUpButtonTapped), for: .touchUpInside)
             }
-            
+
             paymentButton.translatesAutoresizingMaskIntoConstraints = false
-            paymentButtonContainer.addArrangedSubview(paymentButton)
+            buttonContainer.addSubview(paymentButton)
+
+            paymentButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor).isActive = true
+            paymentButton.heightAnchor.constraint(equalTo: buttonContainer.heightAnchor).isActive = true
+            paymentButton.centerXAnchor.constraint(equalTo: buttonContainer.centerXAnchor).isActive = true
+            paymentButton.centerYAnchor.constraint(equalTo: buttonContainer.centerYAnchor).isActive = true
+            if #available(iOS 12.0, *) {
+                paymentButton.cornerRadius = 8.0
+            }
         }
         
     }
