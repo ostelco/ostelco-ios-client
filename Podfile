@@ -7,6 +7,11 @@ use_frameworks!
 # Don't show warnings from frameworks to prevent polluting warnings
 inhibit_all_warnings!
 
+# Framework target
+target 'ostelco-core' do
+  pod 'KeychainAccess', '~>3.2.0'
+  pod 'PromiseKit', '~> 6.8.4'
+end
 
 abstract_target 'ostelco-ios' do
   pod 'Auth0', '~> 1.14.2'
@@ -18,15 +23,12 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/Messaging', '~>5.20.1'
   pod 'JumioMobileSDK/Netverify', '~> 2.15.0'
   pod 'JWTDecode', '~> 2.2'
-  pod 'PromiseKit', '~> 6.8.4'
   pod 'RxCoreLocation', '~> 1.3.1'
   pod 'RxSwift', '~> 4.5.0'
   pod 'Siesta', '~> 1.0'
   pod 'Siesta/UI', '~> 1.0'
-  pod 'SimpleKeychain', '~> 0.8.1'
   pod 'Stripe', '~> 14.0.0'
   pod 'SwiftyJSON', '~> 4.3.0'
-
 
   # Dev app target
   target 'dev-ostelco-ios-client' do

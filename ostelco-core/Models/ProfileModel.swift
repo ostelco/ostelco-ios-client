@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProfileModel: Codable {
+public struct ProfileModel: Codable {
     let name: String
     let email: String
     let address: String

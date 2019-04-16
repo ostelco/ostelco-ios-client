@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PurchaseModel: Codable {
+public struct PurchaseModel: Codable {
     let id: String
     let timestamp: Int64
     let product: ProductModel

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PresentationModel: Codable {
+public struct PresentationModel: Codable {
     let label: String
     let price: String
     let isDefault: String?
@@ -20,7 +20,7 @@ struct PresentationModel: Codable {
     }
 }
 
-struct PriceModel: Codable {
+public struct PriceModel: Codable {
     let amount: Int
     let currency: String
 
@@ -29,7 +29,7 @@ struct PriceModel: Codable {
     }
 }
 
-struct ProductModel: Codable {
+public struct ProductModel: Codable {
     let sku: String
     let presentation: PresentationModel
     let price: PriceModel

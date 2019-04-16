@@ -10,6 +10,7 @@ import Siesta
 import Foundation
 import os
 import Auth0
+import ostelco_core
 
 let ostelcoAPI = OstelcoAPI()
 let auth0API = Auth0API();
