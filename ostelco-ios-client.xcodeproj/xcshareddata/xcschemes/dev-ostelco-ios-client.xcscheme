@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-               BuildableName = "dev-ostelco-ios-client.app"
+               BuildableName = "Oya-Development.app"
                BlueprintName = "dev-ostelco-ios-client"
                ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
+            BuildableName = "Oya-Development.app"
             BlueprintName = "dev-ostelco-ios-client"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
+            BuildableName = "Oya-Development.app"
             BlueprintName = "dev-ostelco-ios-client"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
@@ -113,7 +113,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
-            BuildableName = "dev-ostelco-ios-client.app"
+            BuildableName = "Oya-Development.app"
             BlueprintName = "dev-ostelco-ios-client"
             ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
          </BuildableReference>
