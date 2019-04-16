@@ -173,6 +173,8 @@
 		9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */; };
 		9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
 		9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
+		9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */; };
+		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -394,6 +396,8 @@
 		9BBF705C2265F04200E4B9B4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
+		9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
+		9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -677,6 +681,7 @@
 		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */,
 				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
 				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
 			);
@@ -688,6 +693,7 @@
 			children = (
 				9B851AE3225E33620076ABF3 /* NibLoadable.swift */,
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
+				9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1540,10 +1546,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
+				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
+				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
