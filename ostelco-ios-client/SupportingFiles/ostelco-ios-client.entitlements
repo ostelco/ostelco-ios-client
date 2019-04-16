@@ -8,5 +8,9 @@
 	</array>
 	<key>com.apple.developer.in-app-payments</key>
 	<array/>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)sg.redotter.selfcare</string>
+	</array>
 </dict>
 </plist>

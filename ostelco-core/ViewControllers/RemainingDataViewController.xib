@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="2S7-zL-qZF" customClass="RemainingDataViewController" customModule="ostelco_core" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="3Kn-Th-6c5">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2GB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-Cg-2bY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="84"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWr-3T-YvI">
+                        <rect key="frame" x="0.0" y="120.5" width="375" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="2Fy-Cg-2bY" firstAttribute="top" secondItem="XhZ-h6-a6Y" secondAttribute="top" id="86M-LF-m8n"/>
+                    <constraint firstAttribute="trailing" secondItem="2Fy-Cg-2bY" secondAttribute="trailing" id="GL9-vr-9Oi"/>
+                    <constraint firstItem="xWr-3T-YvI" firstAttribute="bottom" secondItem="XhZ-h6-a6Y" secondAttribute="bottom" id="I7w-6Y-zbr"/>
+                    <constraint firstItem="xWr-3T-YvI" firstAttribute="top" secondItem="2Fy-Cg-2bY" secondAttribute="bottom" constant="20" id="f3p-qD-OI0"/>
+                    <constraint firstItem="2Fy-Cg-2bY" firstAttribute="leading" secondItem="3Kn-Th-6c5" secondAttribute="leading" id="ogx-aa-XiT"/>
+                    <constraint firstItem="XhZ-h6-a6Y" firstAttribute="trailing" secondItem="xWr-3T-YvI" secondAttribute="trailing" id="pRj-3V-FRA"/>
+                    <constraint firstItem="xWr-3T-YvI" firstAttribute="leading" secondItem="XhZ-h6-a6Y" secondAttribute="leading" id="zRJ-Op-KrX"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="XhZ-h6-a6Y"/>
+            </view>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="375" height="135"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                    <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-730.39999999999998" y="42.278860569715143"/>
+        </viewController>
+    </objects>
+</document>

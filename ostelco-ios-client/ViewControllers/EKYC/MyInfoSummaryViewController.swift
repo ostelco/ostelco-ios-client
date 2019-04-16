@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class MyInfoSummaryViewController: UIViewController {
     public var myInfoQueryItems: [URLQueryItem]?
@@ -47,7 +46,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
         //TODO: Pass the code we retrieved to PRIME
         //TODO: Get the address & phone number form PRIME
-        // updateUI(getTempData()) // TODO: Remove this when API is stable.
+        // updateUI(MyInfoDetails.testInfo) // TODO: Remove this when API is stable.
     }
 
     private func getMyInfoCode() -> String? {
@@ -74,7 +73,7 @@ class MyInfoSummaryViewController: UIViewController {
         spinnerView = self.showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child("/sg/kyc/profile")
             .withParam("address", address.text!)
-            .withParam("phoneNumber", myInfoDetails!.mobileNumber!).request(.put)
+            .withParam("phoneNumber", myInfoDetails!.mobileNumber!.formattedNumber).request(.put)
             .onSuccess { _ in
                 DispatchQueue.main.async {
                     self.removeSpinner(self.spinnerView)
@@ -102,7 +101,7 @@ class MyInfoSummaryViewController: UIViewController {
         if let residentialStatus = myInfoDetails.residentialStatus {
             self.residentialStatus.text = residentialStatus
         }
-        if let mobileNumber = myInfoDetails.mobileNumber {
+        if let mobileNumber = myInfoDetails.mobileNumber?.formattedNumber {
             self.mobileNumber.text = mobileNumber
         }
         if let sex = myInfoDetails.sex {
@@ -115,80 +114,4 @@ extension MyInfoSummaryViewController: MyInfoDetailsUpdate {
     func handleUpdate(myInfoDetails: MyInfoDetails) {
         self.myInfoDetails = myInfoDetails
     }
-}
-
-// TODO: Remove this when API is stable.
-func getTempData() -> MyInfoDetails? {
-    let testData = """
-{
-    "name": {
-        "lastupdated": "2018-03-20",
-        "source": "1",
-        "classification": "C",
-        "value": "TAN XIAO HUI"
-    },
-    "sex": {
-        "lastupdated": "2018-03-20",
-        "source": "1",
-        "classification": "C",
-        "value": "F"
-    },
-    "dob": {
-        "lastupdated": "2018-03-20",
-        "source": "1",
-        "classification": "C",
-        "value": "1970-05-17"
-    },
-    "residentialstatus": {
-        "lastupdated": "2018-03-23",
-        "source": "1",
-        "classification": "C",
-        "value": "C"
-    },
-    "nationality": {
-        "lastupdated": "2018-03-20",
-        "source": "1",
-        "classification": "C",
-        "value": "SG"
-    },
-    "mobileno": {
-        "lastupdated": "2018-08-23",
-        "code": "65",
-        "source": "4",
-        "classification": "C",
-        "prefix": "+",
-        "nbr": "97399245"
-    },
-    "email": {
-        "lastupdated": "2018-08-23",
-        "source": "4",
-        "classification": "C",
-        "value": "myinfotesting@gmail.com"
-    },
-    "regadd": {
-        "country": "SG",
-        "unit": "128",
-        "street": "BEDOK NORTH AVENUE 4",
-        "lastupdated": "2018-03-20",
-        "block": "102",
-        "postal": "460102",
-        "source": "1",
-        "classification": "C",
-        "floor": "09",
-        "building": "PEARL GARDEN"
-    }
-}
-"""
-    do {
-        let json = try JSON(data: testData.data(using: .utf8)!)
-        if let myInfo = MyInfoDetails.fromJSON(json) {
-            print("MyInfo \(myInfo)")
-            print("Address 1 \(myInfo.address.getAddressLine1())")
-            print("Address 2 \(myInfo.address.getAddressLine2())")
-            return myInfo
-        }
-    } catch {
-        print("Error \(error)")
-    }
-    return nil
 }
