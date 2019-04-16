@@ -14,7 +14,7 @@
         <!--Home-->
         <scene sceneID="tmo-lu-adh">
             <objects>
-                <viewController id="nTN-zT-UGw" customClass="HomeViewController2" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nTN-zT-UGw" customClass="HomeViewController2" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AzT-p1-iGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                                                     <color key="titleColor" name="White"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
                                                         <real key="value" value="27.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -113,7 +113,7 @@
         <!--BecomeA Member View Controller-->
         <scene sceneID="LV8-xQ-L8R">
             <objects>
-                <viewController id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZFr-gb-dCZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,9 +147,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RGR-am-6U3">
-                                <rect key="frame" x="16" y="484.5" width="343" height="162.5"/>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-ae-gcm">
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
@@ -157,24 +154,29 @@
                                     <action selector="cancelButton:" destination="HJs-Qd-Tb4" eventType="touchUpInside" id="yG6-fq-hMZ"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fpO-eF-ZbV">
+                                <rect key="frame" x="16" y="548" width="343" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="9kt-IJ-Xei"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rXv-ae-gcm" firstAttribute="top" secondItem="2dR-KV-ud0" secondAttribute="top" id="0aB-l7-sRn"/>
-                            <constraint firstItem="RGR-am-6U3" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="4sv-cn-KIC"/>
-                            <constraint firstItem="RGR-am-6U3" firstAttribute="top" secondItem="voL-Jz-klO" secondAttribute="bottom" constant="16" id="7uN-cG-yQ9"/>
-                            <constraint firstItem="2dR-KV-ud0" firstAttribute="trailing" secondItem="RGR-am-6U3" secondAttribute="trailing" constant="16" id="JbS-YR-S8i"/>
+                            <constraint firstItem="2dR-KV-ud0" firstAttribute="bottom" secondItem="fpO-eF-ZbV" secondAttribute="bottom" constant="64" id="4kx-qV-icQ"/>
                             <constraint firstItem="2dR-KV-ud0" firstAttribute="trailing" secondItem="voL-Jz-klO" secondAttribute="trailing" constant="16" id="Jyv-3k-Kud"/>
-                            <constraint firstItem="RGR-am-6U3" firstAttribute="centerX" secondItem="ZFr-gb-dCZ" secondAttribute="centerX" id="QeP-X9-Fuv"/>
+                            <constraint firstItem="fpO-eF-ZbV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="voL-Jz-klO" secondAttribute="bottom" constant="75" id="Qhc-5l-pEy"/>
                             <constraint firstItem="voL-Jz-klO" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="YQp-Pu-T2g"/>
-                            <constraint firstAttribute="bottom" secondItem="RGR-am-6U3" secondAttribute="bottom" constant="20" id="dPt-XE-EJV"/>
+                            <constraint firstItem="fpO-eF-ZbV" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="aUx-Kd-f29"/>
+                            <constraint firstItem="2dR-KV-ud0" firstAttribute="trailing" secondItem="fpO-eF-ZbV" secondAttribute="trailing" constant="16" id="bcc-NI-jFC"/>
                             <constraint firstItem="rXv-ae-gcm" firstAttribute="leading" secondItem="2dR-KV-ud0" secondAttribute="leading" constant="16" id="ogT-8P-lEe"/>
                             <constraint firstItem="voL-Jz-klO" firstAttribute="centerY" secondItem="ZFr-gb-dCZ" secondAttribute="centerY" id="rK8-vD-wE6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2dR-KV-ud0"/>
                     </view>
                     <connections>
-                        <outlet property="paymentButtonContainer" destination="RGR-am-6U3" id="gJR-74-gRQ"/>
+                        <outlet property="buttonContainer" destination="fpO-eF-ZbV" id="P8c-M8-5jN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-MG-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>
