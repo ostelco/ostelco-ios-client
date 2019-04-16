@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Where is a UITableViewCell created?
+/// Where is a cell created?
 ///
 /// - code: The cell is created in code.
 /// - nib: The cell is created in a free-floating .xib file. Parameter is a `UINib` pointing to this file.
@@ -21,10 +21,12 @@ public enum CellLocation {
 
 /// A cell which knows where its underlying UI implementation is located.
 public protocol LocatableCell: Identifiable {
+    
+    /// The location of the cell
     static var location: CellLocation { get }
 }
 
-// MARK: - Default implementation
+// MARK: - UITableViewCell Default implementation
 
 public typealias LocatableTableViewCell = LocatableCell & UITableViewCell
 
@@ -41,8 +43,29 @@ public extension LocatableCell where Self: UITableViewCell {
         case .nib(let nib):
             tableView.register(nib, forCellReuseIdentifier: self.identifier)
         case .code:
-            tableView.register(Self.self, forCellReuseIdentifier: self.identifier)
+            tableView.register(self, forCellReuseIdentifier: self.identifier)
         }
     }
 }
 
+// MARK: - UICollectionViewCell Default Implementation
+
+public typealias LocatableCollectionViewCell = LocatableCell & UICollectionViewCell
+
+public extension LocatableCell where Self: UICollectionViewCell {
+    
+    /// Performs any necessary registration of the cell with the collection view based on where it's located.
+    ///
+    /// - Parameter collectionView: The collection view to register with.
+    static func registerIfNeeded(with collectionView: UICollectionView) {
+        switch self.location {
+        case .storyboard:
+            // Not necessary to register
+            break
+        case .nib(let nib):
+            collectionView.register(nib, forCellWithReuseIdentifier: self.identifier)
+        case .code:
+            collectionView.register(self, forCellWithReuseIdentifier: self.identifier)
+        }
+    }
+}

@@ -11,21 +11,25 @@ import UIKit
 
 /// A generic `UITableViewDataSource` superclass which handles registration of cells and selection.
 ///
-/// Subclasses must override indicated methods to configure a cell and handle selection of an item.
+/// Subclasses must override:
+///     GenericDataSource.selectedItem(_)
+///     GenericTableViewDataSource.configureCell(_,for:)
 ///
 /// Generics:
 ///     Item: Can be any type of item.
 ///     Cell: Must be a `UITableViewCell` subclass which conforms to `LocatableCell` and `Identifiable`.
-open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
+open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: GenericDataSource<Item>, UITableViewDataSource, UITableViewDelegate {
     
     private weak var tableView: UITableView?
-    public var items: [Item]
     
+    /// Designated initializer
+    ///
+    /// - Parameters:
+    ///   - tableView: The table view you wish to drive with this data source
+    ///   - items: [Optional] The items to display.
     public init(tableView: UITableView, items: [Item]?) {
         self.tableView = tableView
-        self.items = items ?? []
-        
-        super.init()
+        super.init(items: items)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,19 +37,12 @@ open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: NSObj
         Cell.registerIfNeeded(with: tableView)
     }
     
+    /// Reloads the data in the table view.
     open func reloadData() {
         self.tableView?.reloadData()
     }
-    
-    open func item(at indexPath: IndexPath) -> Item {
-        return self.items[indexPath.row]
-    }
-    
-    // MARK: - Subclasses MUST override these
-    
-    open func selectedItem(_ item: Item) {
-        fatalError("Subclasses must override this method!")
-    }
+
+    // MARK: - Subclasses MUST override
     
     open func configureCell(_ cell: Cell, for item: Item) {
         fatalError("Subclasses must override this method!")
@@ -58,14 +55,11 @@ open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: NSObj
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return self.numberOfItems
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as? Cell else {
-            assertionFailure("Could not dequeue cell with identifier \(Cell.identifier)")
-            return UITableViewCell()
-        }
+        let cell: Cell = tableView.dequeue(at: indexPath)
         
         let item = self.item(at: indexPath)
         self.configureCell(cell, for: item)
