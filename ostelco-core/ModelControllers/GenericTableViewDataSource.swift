@@ -44,6 +44,11 @@ open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: Gener
 
     // MARK: - Subclasses MUST override
     
+    /// Where actual item -> cell hookup happens.
+    ///
+    /// - Parameters:
+    ///   - cell: The cell to configure
+    ///   - item: The item to configure it with.
     open func configureCell(_ cell: Cell, for item: Item) {
         fatalError("Subclasses must override this method!")
     }
