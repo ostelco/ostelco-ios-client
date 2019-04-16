@@ -14,51 +14,26 @@
         <!--Countries Table View Controller-->
         <scene sceneID="IJh-64-weN">
             <objects>
-                <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VRc-vz-Eao">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VRc-vz-Eao">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection id="oEp-AK-fsO">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="M0H-qu-glZ" style="IBUITableViewCellStyleDefault" id="xrU-qr-6Ro">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xrU-qr-6Ro" id="r5C-Uo-crQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Singapore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M0H-qu-glZ" userLabel="Singapore">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="S77-Tv-iN9" id="5F4-sh-MMa"/>
                             <outlet property="delegate" destination="S77-Tv-iN9" id="Q3j-jT-MAo"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="selectedCountryLabel" destination="M0H-qu-glZ" id="6R4-lC-e9D"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zT4-y0-olf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-773"/>
+            <point key="canvasLocation" x="2398" y="-761"/>
         </scene>
         <!--Verify Country On Boarding View Controller-->
         <scene sceneID="kRV-OE-jZn">
             <objects>
-                <viewController id="LdJ-hc-ks3" customClass="VerifyCountryOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LdJ-hc-ks3" customClass="VerifyCountryOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GkR-0X-0d9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +137,7 @@
         <!--Choose Country View Controller-->
         <scene sceneID="PLw-gW-CHP">
             <objects>
-                <viewController id="qUz-io-xXw" customClass="ChooseCountryViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qUz-io-xXw" customClass="ChooseCountryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XbB-Nd-iwA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,10 +169,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0L-Vt-w2C">
-                                <rect key="frame" x="0.0" y="176" width="375" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="7yA-t8-GM3"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="176" width="375" height="315"/>
                                 <connections>
                                     <segue destination="S77-Tv-iN9" kind="embed" id="BAd-iI-grH"/>
                                 </connections>
@@ -213,6 +185,7 @@
                             <constraint firstItem="ihi-S8-29C" firstAttribute="top" secondItem="crC-Wa-ajC" secondAttribute="bottom" constant="32" id="MGk-1f-DO7"/>
                             <constraint firstItem="L0L-Vt-w2C" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" id="VRs-uz-sqA"/>
                             <constraint firstItem="L0L-Vt-w2C" firstAttribute="trailing" secondItem="5Kh-UI-MQa" secondAttribute="trailing" id="XBO-LJ-N7s"/>
+                            <constraint firstItem="crC-Wa-ajC" firstAttribute="top" secondItem="L0L-Vt-w2C" secondAttribute="bottom" constant="20" id="eFS-0i-QVI"/>
                             <constraint firstItem="L0L-Vt-w2C" firstAttribute="top" secondItem="xqT-SW-me3" secondAttribute="bottom" constant="8" id="m7K-rE-2sE"/>
                             <constraint firstItem="Ndf-mv-q3A" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="qAL-SQ-2bQ"/>
                             <constraint firstItem="xqT-SW-me3" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" constant="16" id="tog-QH-uu2"/>
@@ -230,7 +203,7 @@
         <!--Allow Location Access View Controller-->
         <scene sceneID="VCS-Q8-7ym">
             <objects>
-                <viewController storyboardIdentifier="unwindFromCountry" id="51P-Xu-Q3s" customClass="AllowLocationAccessViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="unwindFromCountry" id="51P-Xu-Q3s" customClass="AllowLocationAccessViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q3Q-44-Cly">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +267,7 @@
         <!--Location Access Denied View Controller-->
         <scene sceneID="mfJ-4g-S3x">
             <objects>
-                <viewController id="CPG-f2-Vgd" customClass="LocationAccessDeniedViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CPG-f2-Vgd" customClass="LocationAccessDeniedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s2r-4F-yqD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,7 +336,7 @@
         <!--Location Service Disabled View Controller-->
         <scene sceneID="N7m-9Z-Nkd">
             <objects>
-                <viewController id="qci-Lo-7Ap" customClass="LocationServiceDisabledViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qci-Lo-7Ap" customClass="LocationServiceDisabledViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V22-8q-W7U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,7 +410,7 @@
         <!--Location Access Restricted View Controller-->
         <scene sceneID="HXc-sV-N19">
             <objects>
-                <viewController id="1el-Qe-8Nh" customClass="LocationAccessRestrictedViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1el-Qe-8Nh" customClass="LocationAccessRestrictedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F4a-I9-OyK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,7 +468,7 @@
         <!--Wrong Country View Controller-->
         <scene sceneID="tfF-9M-rWj">
             <objects>
-                <viewController id="Zx0-FN-OXz" customClass="WrongCountryViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zx0-FN-OXz" customClass="WrongCountryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bnK-5S-W5S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,18 +9,15 @@
 import UIKit
 
 class CountriesTableViewController: UITableViewController {
-
-    @IBOutlet weak var selectedCountryLabel: UILabel!
-    let countries: [Country] = countryCodes.map { Country($0) }
+    
+    private lazy var dataSource: CountryDataSource = {
+        return CountryDataSource(tableView: self.tableView,
+                                 items: Country.defaultCountries)
+    }()
 
     override func viewDidLoad() {
-        selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
-        self.tableView.delegate = self
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showCountryListActionSheet(countries: countries, completion: {
-            self.selectedCountryLabel.text = OnBoardingManager.sharedInstance.selectedCountry.name!
-        })
+        super.viewDidLoad()
+        self.tableView.addEmptyFooter()
+        self.dataSource.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
     }
 }
