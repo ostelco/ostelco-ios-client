@@ -75,8 +75,11 @@ extension MyInfoDetails {
     }
     
     static var testInfo: MyInfoDetails? {
+        guard let json = self.testJSONString.data(using: .utf8) else {
+            return nil
+        }
+        
         do {
-            let json = try JSONEncoder().encode(self.testJSONString)
             let myInfo = try JSONDecoder().decode(MyInfoDetails.self, from: json)
             print("MyInfo \(myInfo)")
             print("Address 1 \(myInfo.address.getAddressLine1())")
