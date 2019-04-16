@@ -8,8 +8,6 @@
 
 import UIKit
 
-fileprivate let countryCodes = ["DE", "IE", "NO", "SG", "SE", "GB", "US"]
-
 class CountriesTableViewController: UITableViewController {
 
     @IBOutlet weak var selectedCountryLabel: UILabel!
