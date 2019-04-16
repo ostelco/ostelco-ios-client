@@ -48,7 +48,7 @@ class APIManager: Service {
         }
 
         configureTransformer("/regions/sg/kyc/myInfo/*") {
-            try MyInfoDetails.fromJSON(JSON(data: $0.content))
+            try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
         }
 
         configureTransformer("/regions/*/simProfiles", requestMethods: [.get]) {
