@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import SwiftyJSON
+import Foundation
 
 struct MyInfoAddress: Codable {
     let country: String?

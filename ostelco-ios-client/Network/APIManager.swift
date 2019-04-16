@@ -7,7 +7,6 @@
 //
 
 import Siesta
-import SwiftyJSON
 
 class APIManager: Service {
 
