@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-@testable import dev_ostelco_ios_client_app
+@testable import Oya_Development_app
 import XCTest
 
 class MyInfoTests: XCTestCase {
