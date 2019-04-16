@@ -14,21 +14,21 @@ target 'ostelco-core' do
 end
 
 abstract_target 'ostelco-ios' do
-  pod 'Auth0', '~> 1.14.2'
-  pod 'Crashlytics', '~> 3.12.0'
-  pod 'Fabric', '~> 1.9.0'
-  pod 'FreshchatSDK', '~> 2.4.3'
+  pod 'Auth0', '~>1.14.2'
+  pod 'Crashlytics', '~>3.12.0'
+  pod 'Fabric', '~>1.9.0'
+  pod 'FreshchatSDK', '~>2.4.3'
   pod 'Firebase/Core', '~>5.20.1'
   pod 'Firebase/DynamicLinks', '~>5.20.1'
   pod 'Firebase/Messaging', '~>5.20.1'
-  pod 'JumioMobileSDK/Netverify', '~> 2.15.0'
-  pod 'JWTDecode', '~> 2.2'
-  pod 'RxCoreLocation', '~> 1.3.1'
-  pod 'RxSwift', '~> 4.5.0'
-  pod 'Siesta', '~> 1.0'
-  pod 'Siesta/UI', '~> 1.0'
-  pod 'Stripe', '~> 14.0.0'
-  pod 'SwiftyJSON', '~> 4.3.0'
+  pod 'JumioMobileSDK/Netverify', '~>2.15.0'
+  pod 'JWTDecode', '~>2.2'
+  pod 'RxCoreLocation', '~>1.3.1'
+  pod 'RxSwift', '~>4.5.0'
+  pod 'Siesta', '~>1.0'
+  pod 'Siesta/UI', '~>1.0'
+  pod 'Stripe', '~>14.0.0'
+  pod 'SwiftLint', '~>0.31.0'
 
   # Dev app target
   target 'dev-ostelco-ios-client' do
