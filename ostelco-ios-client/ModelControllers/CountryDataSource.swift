@@ -9,12 +9,25 @@
 import ostelco_core
 import UIKit
 
+protocol CountrySelectionDelegate: class {
+    func selected(country: Country)
+}
+
 class CountryDataSource: GenericTableViewDataSource<Country, CountryCell> {
     
     var selectedCountry: Country? {
         didSet {
             self.reloadData()
         }
+    }
+    
+    private weak var delegate: CountrySelectionDelegate?
+    
+    init(tableView: UITableView,
+         countries: [Country],
+         delegate: CountrySelectionDelegate) {
+        self.delegate = delegate
+        super.init(tableView: tableView, items: countries)
     }
     
     override func configureCell(_ cell: CountryCell, for country: Country) {
@@ -28,5 +41,6 @@ class CountryDataSource: GenericTableViewDataSource<Country, CountryCell> {
     
     override func selectedItem(_ country: Country) {
         self.selectedCountry = country
+        self.delegate?.selected(country: country)
     }
 }
