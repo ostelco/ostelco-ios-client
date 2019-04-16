@@ -8,14 +8,20 @@
 
 import Foundation
 import UIKit
-import ostelco_core
 
-class GenericTableViewDataSource<Item, Cell: LocatableCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
+/// A generic `UITableViewDataSource` superclass which handles registration of cells and selection.
+///
+/// Subclasses must override indicated methods to configure a cell and handle selection of an item.
+///
+/// Generics:
+///     Item: Can be any type of item.
+///     Cell: Must be a `UITableViewCell` subclass which conforms to `LocatableCell` and `Identifiable`.
+open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private weak var tableView: UITableView?
-    var items: [Item]
+    public var items: [Item]
     
-    init(tableView: UITableView, items: [Item]?) {
+    public init(tableView: UITableView, items: [Item]?) {
         self.tableView = tableView
         self.items = items ?? []
         
@@ -27,31 +33,35 @@ class GenericTableViewDataSource<Item, Cell: LocatableCell>: NSObject, UITableVi
         Cell.registerIfNeeded(with: tableView)
     }
     
-    func item(at indexPath: IndexPath) -> Item {
+    open func reloadData() {
+        self.tableView?.reloadData()
+    }
+    
+    open func item(at indexPath: IndexPath) -> Item {
         return self.items[indexPath.row]
     }
     
     // MARK: - Subclasses MUST override these
     
-    func selectedItem(_ item: Item) {
+    open func selectedItem(_ item: Item) {
         fatalError("Subclasses must override this method!")
     }
     
-    func configureCell(_ cell: Cell, for item: Item) {
+    open func configureCell(_ cell: Cell, for item: Item) {
         fatalError("Subclasses must override this method!")
     }
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as? Cell else {
             assertionFailure("Could not dequeue cell with identifier \(Cell.identifier)")
             return UITableViewCell()
@@ -63,9 +73,9 @@ class GenericTableViewDataSource<Item, Cell: LocatableCell>: NSObject, UITableVi
         return cell
     }
     
-    // MARK - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let item = self.item(at: indexPath)

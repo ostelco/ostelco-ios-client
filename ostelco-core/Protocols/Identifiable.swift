@@ -9,7 +9,7 @@
 import Foundation
 
 /// A protocol to represent types which should have an identifier
-protocol Identifiable {
+public protocol Identifiable {
  
     /// A string representing this type
     static var identifier: String { get }
@@ -17,7 +17,7 @@ protocol Identifiable {
 
 // MARK: - Default implementation
 
-extension Identifiable {
+public extension Identifiable {
     
     static var identifier: String {
         // Defaults to the String name of the type itself.

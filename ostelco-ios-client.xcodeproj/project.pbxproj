@@ -162,12 +162,9 @@
 		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
-		9BBF704D2265DD8A00E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericDataSource.swift */; };
-		9BBF704E2265DD8A00E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericDataSource.swift */; };
-		9BBF70502265DE2F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
-		9BBF70512265DE2F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
-		9BBF70532265E0DB00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
-		9BBF70542265E0DB00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
+		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
+		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
+		9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -382,7 +379,7 @@
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTests.swift; sourceTree = "<group>"; };
 		9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoDetails+Testing.swift"; sourceTree = "<group>"; };
-		9BBF704C2265DD8A00E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
+		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
 		9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatableCell.swift; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
@@ -625,6 +622,8 @@
 		9B3FA95622649DBE0001641A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */,
+				9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */,
 				9B3FA95722649DD30001641A /* SecureStorage.swift */,
 			);
 			path = Protocols;
@@ -666,6 +665,7 @@
 		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
 				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
 			);
 			path = ModelControllers;
@@ -684,7 +684,6 @@
 			isa = PBXGroup;
 			children = (
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
-				9BBF704C2265DD8A00E4B9B4 /* GenericDataSource.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -714,8 +713,6 @@
 			isa = PBXGroup;
 			children = (
 				9BE2D462225B696400B51999 /* StoryboardLoadable.swift */,
-				9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */,
-				9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1452,7 +1449,6 @@
 				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
-				9BBF70502265DE2F00E4B9B4 /* Identifiable.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
 				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
@@ -1477,7 +1473,6 @@
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
-				9BBF704D2265DD8A00E4B9B4 /* GenericDataSource.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */,
@@ -1498,7 +1493,6 @@
 				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
-				9BBF70532265E0DB00E4B9B4 /* LocatableCell.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
@@ -1518,13 +1512,16 @@
 			files = (
 				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
+				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
+				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
+				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
 			);
@@ -1563,7 +1560,6 @@
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				04834D5A2230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
-				9BBF70512265DE2F00E4B9B4 /* Identifiable.swift in Sources */,
 				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0493B8102253943900989F40 /* PutProfileError.swift in Sources */,
@@ -1590,7 +1586,6 @@
 				043E711F223AF61600E01993 /* Country.swift in Sources */,
 				9BE2D44F225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
-				9BBF704E2265DD8A00E4B9B4 /* GenericDataSource.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
@@ -1607,7 +1602,6 @@
 				9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
-				9BBF70542265E0DB00E4B9B4 /* LocatableCell.swift in Sources */,
 				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
