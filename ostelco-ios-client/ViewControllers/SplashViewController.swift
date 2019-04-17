@@ -15,6 +15,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private weak var imageView: UIImageView!
     var spinnerView: UIView?
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = ThemeManager.currentTheme().mainColor
     }
 

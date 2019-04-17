@@ -20,6 +20,7 @@ class MainController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         checkNotificationStatus()
         checkLocationStatus()
     }

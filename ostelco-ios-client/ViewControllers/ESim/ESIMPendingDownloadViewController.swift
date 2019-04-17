@@ -130,10 +130,12 @@ class ESIMPendingDownloadViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         removeNotificationObserver()
     }
 

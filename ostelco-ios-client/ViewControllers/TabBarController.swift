@@ -17,6 +17,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         Freshchat.sharedInstance().unreadCount { (unreadCount) in
             self.updateBadgeCount(to: unreadCount)
         }
