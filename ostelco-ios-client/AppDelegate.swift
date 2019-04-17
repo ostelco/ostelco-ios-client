@@ -287,7 +287,8 @@ extension AppDelegate: MessagingDelegate {
                 // Wait to be authenticated, or the token to be ready.
                 return
         }
-        // Use tha pplication ID as <BundleId>.<Unique DeviceID or UUID>
+        
+        // Use the application ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
         let json = ["token": token, "tokenType": "FCM", "applicationID": appId]
         APIManager.sharedInstance.resource("/applicationToken").request(.post, json: json)
