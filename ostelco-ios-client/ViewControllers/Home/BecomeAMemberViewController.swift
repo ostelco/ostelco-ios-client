@@ -18,7 +18,7 @@ class BecomeAMemberViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBOutlet weak var buttonContainer: UIImageView!
+    @IBOutlet weak var buttonContainer: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,6 @@ class BecomeAMemberViewController: UIViewController {
                 paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.setUpButtonTapped), for: .touchUpInside)
             }
-
             paymentButton.translatesAutoresizingMaskIntoConstraints = false
             buttonContainer.addSubview(paymentButton)
 
