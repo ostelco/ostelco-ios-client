@@ -17,7 +17,7 @@ class HomeViewController2: UIViewController {
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
 
-    var refreshControl: UIRefreshControl!
+    private lazy var refreshControl = UIRefreshControl()
     var fakeHasSubscription = false
 
     override func viewDidLoad() {
@@ -27,7 +27,6 @@ class HomeViewController2: UIViewController {
 
         scrollView.alwaysBounceVertical = true
         scrollView.bounces  = true
-        refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
     }
@@ -35,7 +34,7 @@ class HomeViewController2: UIViewController {
     @objc func didPullToRefresh() {
         let delayInSeconds = 4.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
     }
 

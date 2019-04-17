@@ -47,7 +47,11 @@ class NRICAddressTableViewController: UITableViewController {
         }
         .onFailure { requestError in
             do {
-                let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: requestError.entity!.content as! Data)
+                guard let errorData = requestError.entity?.content as? Data else {
+                    throw APIManager.APIError.errorCameWithoutData
+                }
+
+                let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: errorData)
                 self.showAlert(title: "Error", msg: "\(putProfileError.errors)")
             } catch let error {
                 print(error)

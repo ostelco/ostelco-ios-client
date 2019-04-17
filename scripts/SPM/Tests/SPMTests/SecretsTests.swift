@@ -19,7 +19,11 @@ class SecretsTests: XCTestCase {
             fatalError("No test root provided! Please add this to the environment variables for the scheme you are using.")
         }
         
-        return try! Folder(path: testRoot)
+        guard let folder = Folder(path: testRoot) else {
+            fatalError("Could not make folder from path \(testRoot)")
+        }
+        
+        return folder
     }()
     
     private func tearDownAuth0AndValidate() {

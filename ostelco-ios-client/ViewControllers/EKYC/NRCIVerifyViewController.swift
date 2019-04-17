@@ -11,6 +11,7 @@ import Netverify
 import Crashlytics
 
 class NRCIVerifyViewController: UIViewController {
+
     var spinnerView: UIView?
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
@@ -38,7 +39,11 @@ class NRCIVerifyViewController: UIViewController {
                 }
                 .onFailure { requestError in
                     do {
-                        let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: requestError.entity!.content as! Data)
+                        guard let errorData = requestError.entity?.content as? Data else {
+                            throw APIManager.APIError.errorCameWithoutData
+                        }
+                        
+                        let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: errorData)
                         switch jsonRequestError.errorCode {
                         case "INVALID_NRIC_FIN_ID":
                             self.nricErrorLabel.isHidden = false
