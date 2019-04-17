@@ -153,7 +153,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
 
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
         debugPrint("NetverifyViewController finished successfully with scan reference: \(scanReference)")
-        let message = documentDataToString(documentData)
+        let message = documentData.toOstelcoString()
         self.dismiss(animated: true, completion: {
             print(message)
             // self.showAlert(title: "Netverify Mobile SDK", msg: message as String)
@@ -173,94 +173,5 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
-    }
-
-    func documentDataToString(_ documentData: NetverifyDocumentData) -> String {
-        let selectedCountry: String = documentData.selectedCountry
-        let selectedDocumentType: NetverifyDocumentType = documentData.selectedDocumentType
-        var documentTypeStr: String
-        switch selectedDocumentType {
-        case .driverLicense:
-            documentTypeStr = "DL"
-        case .identityCard:
-            documentTypeStr = "ID"
-        case .passport:
-            documentTypeStr = "PP"
-        case .visa:
-            documentTypeStr = "Visa"
-        default:
-            documentTypeStr = ""
-        }
-
-        //id
-        let idNumber: String? = documentData.idNumber
-        let personalNumber: String? = documentData.personalNumber
-        let issuingDate: Date? = documentData.issuingDate
-        let expiryDate: Date? = documentData.expiryDate
-        let issuingCountry: String? = documentData.issuingCountry
-        let optionalData1: String? = documentData.optionalData1
-        let optionalData2: String? = documentData.optionalData2
-
-        //person
-        let lastName: String? = documentData.lastName
-        let firstName: String? = documentData.firstName
-        let dateOfBirth: Date? = documentData.dob
-        let gender: NetverifyGender = documentData.gender
-        var genderStr: String
-        switch gender {
-        case .unknown:
-            genderStr = "Unknown"
-        case .F:
-            genderStr = "female"
-        case .M:
-            genderStr = "male"
-        case .X:
-            genderStr = "Unspecified"
-        default:
-            genderStr = "Unknown"
-        }
-
-        let originatingCountry: String? = documentData.originatingCountry
-
-        //address
-        let street: String? = documentData.addressLine
-        let city: String? = documentData.city
-        let state: String? = documentData.subdivision
-        let postalCode: String? = documentData.postCode
-
-        // Raw MRZ data
-        let mrzData: NetverifyMrzData? = documentData.mrzData
-
-        let message: NSMutableString = NSMutableString()
-        message.appendFormat("Selected Country: %@", selectedCountry)
-        message.appendFormat("\nDocument Type: %@", documentTypeStr)
-        if idNumber != nil { message.appendFormat("\nID Number: %@", idNumber!) }
-        if personalNumber != nil { message.appendFormat("\nPersonal Number: %@", personalNumber!) }
-        if issuingDate != nil { message.appendFormat("\nIssuing Date: %@", issuingDate! as CVarArg) }
-        if expiryDate != nil { message.appendFormat("\nExpiry Date: %@", expiryDate! as CVarArg) }
-        if issuingCountry != nil { message.appendFormat("\nIssuing Country: %@", issuingCountry!) }
-        if optionalData1 != nil { message.appendFormat("\nOptional Data 1: %@", optionalData1!) }
-        if optionalData2 != nil { message.appendFormat("\nOptional Data 2: %@", optionalData2!) }
-        if lastName != nil { message.appendFormat("\nLast Name: %@", lastName!) }
-        if firstName != nil { message.appendFormat("\nFirst Name: %@", firstName!) }
-        if dateOfBirth != nil { message.appendFormat("\ndob: %@", dateOfBirth! as CVarArg) }
-        message.appendFormat("\nGender: %@", genderStr)
-        if originatingCountry != nil { message.appendFormat("\nOriginating Country: %@", originatingCountry!) }
-        if street != nil { message.appendFormat("\nStreet: %@", street!) }
-        if city != nil { message.appendFormat("\nCity: %@", city!) }
-        if state != nil { message.appendFormat("\nState: %@", state!) }
-        if postalCode != nil { message.appendFormat("\nPostal Code: %@", postalCode!) }
-        if mrzData != nil {
-            if mrzData?.line1 != nil {
-                message.appendFormat("\nMRZ Data: %@\n", (mrzData?.line1)!)
-            }
-            if mrzData?.line2 != nil {
-                message.appendFormat("%@\n", (mrzData?.line2)!)
-            }
-            if mrzData?.line3 != nil {
-                message.appendFormat("%@\n", (mrzData?.line3)!)
-            }
-        }
-        return message as String
     }
 }
