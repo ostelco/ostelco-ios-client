@@ -25,6 +25,8 @@ enum Theme: Int {
         return UIColor(named: "White")!
     }
     
+    // swiftlint:disable discouraged_object_literal
+    // (we're gonna fix this with codegen later)
     var logo: UIImage {
         switch self {
         case .BlueTheme:
@@ -42,4 +44,5 @@ enum Theme: Int {
             return #imageLiteral(resourceName: "StoryboardLaunchScreenDevelopment")
         }
     }
+    // swiftlint:enable discouraged_object_literal
 }
