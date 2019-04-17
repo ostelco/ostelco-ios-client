@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SiestaLog.Category.enabled = .all
         }
 
-        let freschatConfig: FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
         // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera
         // freschatConfig.teamMemberInfoVisible = true; // set to NO to turn off showing an team member avatar. To customize the avatar shown, use the theme file

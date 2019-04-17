@@ -231,7 +231,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         // Raw MRZ data
         let mrzData: NetverifyMrzData? = documentData.mrzData
 
-        let message: NSMutableString = NSMutableString.init()
+        let message: NSMutableString = NSMutableString()
         message.appendFormat("Selected Country: %@", selectedCountry)
         message.appendFormat("\nDocument Type: %@", documentTypeStr)
         if idNumber != nil { message.appendFormat("\nID Number: %@", idNumber!) }

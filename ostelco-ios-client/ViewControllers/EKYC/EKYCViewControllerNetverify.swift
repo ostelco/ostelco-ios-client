@@ -152,7 +152,7 @@ extension EKYCViewController: NetverifyViewControllerDelegate {
     // Raw MRZ data
     let mrzData: NetverifyMrzData? = documentData.mrzData
 
-    let message: NSMutableString = NSMutableString.init()
+    let message: NSMutableString = NSMutableString()
     message.append("Selected Country: \(selectedCountry)")
     message.append("\nDocument Type: \(documentTypeStr)")
     if idNumber != nil { message.appendFormat("\nID Number: %@", idNumber!) }
