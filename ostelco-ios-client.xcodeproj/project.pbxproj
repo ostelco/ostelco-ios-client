@@ -27,8 +27,8 @@
 		041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */; };
 		041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
 		041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
-		041FAB1B225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */; };
-		041FAB1C225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */; };
+		041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
+		041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
@@ -293,7 +293,7 @@
 		041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDisabledViewController.swift; sourceTree = "<group>"; };
 		041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessRestrictedViewController.swift; sourceTree = "<group>"; };
 		041216BA222D7B2B00455278 /* WrongCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongCountryViewController.swift; sourceTree = "<group>"; };
-		041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Gesture.swift"; sourceTree = "<group>"; };
+		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCIVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
@@ -844,6 +844,7 @@
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
 				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
+				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
@@ -852,8 +853,7 @@
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
-				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
-				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
+				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1519,7 +1519,7 @@
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
-				041FAB1B225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */,
+				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -1637,7 +1637,7 @@
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
-				041FAB1C225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */,
+				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
