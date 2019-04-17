@@ -10,7 +10,9 @@
 import UIKit
 
 class WrongCountryViewController: UIViewController {
-    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = "It seems like you are not in \(OnBoardingManager.sharedInstance.selectedCountry.name ?? "NO COUNTRY")"

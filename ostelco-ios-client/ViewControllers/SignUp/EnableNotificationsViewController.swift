@@ -16,14 +16,14 @@ class EnableNotificationsViewController: UIViewController {
         enableNotifications(ignoreNotDetermined: true)
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         enableNotifications()
     }
 
-    @IBAction func dontAllowTapped(_ sender: Any) {
+    @IBAction private func dontAllowTapped(_ sender: Any) {
         enableNotifications()
     }
-    @IBAction func okTapped(_ sender: Any) {
+    @IBAction private func okTapped(_ sender: Any) {
         enableNotifications()
     }
 

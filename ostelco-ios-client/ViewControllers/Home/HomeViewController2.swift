@@ -14,8 +14,8 @@ class HomeViewController2: UIViewController {
 
     var paymentError: RequestError!
 
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var scrollView: UIScrollView!
 
     var refreshControl: UIRefreshControl!
     var fakeHasSubscription = false
@@ -40,7 +40,7 @@ class HomeViewController2: UIViewController {
         }
     }
 
-    @IBAction func buyDataTapped(_ sender: Any) {
+    @IBAction private func buyDataTapped(_ sender: Any) {
         if fakeHasSubscription {
             let product = Product(name: "Buy 1GB for $5", amount: 5.0, country: "SG", currency: "SGD", sku: "1234")
             showProductListActionSheet(products: [product], delegate: self)

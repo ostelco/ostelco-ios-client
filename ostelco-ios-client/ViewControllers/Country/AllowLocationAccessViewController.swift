@@ -11,7 +11,9 @@ import CoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
 
-    @IBOutlet weak var fakeModalNotificationImage: UIImageView!
+    @IBOutlet private weak var fakeModalNotificationImage: UIImageView!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+
     var spinnerView: UIView?
     var userLocation: CLLocation!
 
@@ -20,7 +22,6 @@ class AllowLocationAccessViewController: UIViewController {
     var descriptionText: String = ""
     var selectedCountry: Country?
 
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class AllowLocationAccessViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         verifyLocation()
     }
 
@@ -59,7 +60,7 @@ class AllowLocationAccessViewController: UIViewController {
     private func handleDenied() {
     }
 
-    @IBAction func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
+    @IBAction private func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
         verifyLocation()
     }
 

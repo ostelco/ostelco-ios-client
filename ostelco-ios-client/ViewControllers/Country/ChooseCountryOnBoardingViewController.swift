@@ -10,18 +10,18 @@ import UIKit
 
 class VerifyCountryOnBoardingViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTitle()
     }
 
-    @IBAction func needHelpTapped(_ sender: UIButton) {
+    @IBAction private func needHelpTapped(_ sender: UIButton) {
         showNeedHelpActionSheet()
     }
 
-    @IBAction func continueTapped(_ sender: UIButton) {
+    @IBAction private func continueTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "displayChooseCountry", sender: self)
     }
 

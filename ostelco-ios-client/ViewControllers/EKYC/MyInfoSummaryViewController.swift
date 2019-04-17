@@ -13,13 +13,13 @@ class MyInfoSummaryViewController: UIViewController {
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
 
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var sex: UILabel!
-    @IBOutlet weak var dob: UILabel!
-    @IBOutlet weak var nationality: UILabel!
-    @IBOutlet weak var residentialStatus: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var mobileNumber: UILabel!
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var sex: UILabel!
+    @IBOutlet private weak var dob: UILabel!
+    @IBOutlet private weak var nationality: UILabel!
+    @IBOutlet private weak var residentialStatus: UILabel!
+    @IBOutlet private weak var address: UILabel!
+    @IBOutlet private weak var mobileNumber: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
     }
 
-    @IBAction func `continue`(_ sender: Any) {
+    @IBAction private func `continue`(_ sender: Any) {
         spinnerView = self.showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child("/sg/kyc/profile")
             .withParam("address", address.text!)

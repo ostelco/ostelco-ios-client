@@ -15,13 +15,13 @@ class LocationAccessDeniedViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
 
-    @IBAction func settingsTapped(_ sender: Any) {
+    @IBAction private func settingsTapped(_ sender: Any) {
         UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
     

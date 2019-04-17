@@ -12,7 +12,7 @@ import JWTDecode
 class GetStartedViewController: UIViewController {
     var spinnerView: UIView?
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         spinnerView = showSpinner(onView: self.view)
         let email = getEmailFromJWT()
         
@@ -39,8 +39,8 @@ class GetStartedViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet private weak var continueButton: UIButton!
+    @IBOutlet private weak var nameTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()

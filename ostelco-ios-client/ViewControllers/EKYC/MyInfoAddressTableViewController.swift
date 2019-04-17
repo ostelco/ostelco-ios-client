@@ -11,11 +11,11 @@ import UIKit
 class MyInfoAddressTableViewController: UITableViewController {
     var myInfoDetails: MyInfoDetails?
 
-    @IBOutlet weak var street: UITextField!
-    @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var unit: UITextField!
-    @IBOutlet weak var postal: UITextField!
-    @IBOutlet weak var country: UITextField!
+    @IBOutlet private weak var street: UITextField!
+    @IBOutlet private weak var city: UITextField!
+    @IBOutlet private weak var unit: UITextField!
+    @IBOutlet private weak var postal: UITextField!
+    @IBOutlet private weak var country: UITextField!
 
     var updateDelegate: MyInfoDetailsUpdate?
 
@@ -29,12 +29,14 @@ class MyInfoAddressTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         updateUI(myInfoDetails)
     }
-    @IBAction func cancel(_ sender: Any) {
+    
+    @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true) {
             print("Done cancelling the edit")
         }
     }
-    @IBAction func save(_ sender: Any) {
+    
+    @IBAction private func save(_ sender: Any) {
         dismiss(animated: true) {
             print("Done saving the edit")
         }

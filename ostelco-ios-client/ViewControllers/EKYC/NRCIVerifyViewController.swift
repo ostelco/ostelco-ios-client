@@ -14,19 +14,19 @@ class NRCIVerifyViewController: UIViewController {
     var spinnerView: UIView?
     var netverifyViewController:NetverifyViewController?
     var merchantScanReference:String = ""
-    @IBOutlet weak var nricTextField: UITextField!
-    @IBOutlet weak var nricErrorLabel: UILabel!
+    @IBOutlet private weak var nricTextField: UITextField!
+    @IBOutlet private weak var nricErrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
     }
     
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
             let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()

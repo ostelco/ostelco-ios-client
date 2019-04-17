@@ -22,7 +22,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet private weak var continueButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +41,11 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
     
-    @IBAction func sendAgainTapped(_ sender: Any) {
+    @IBAction private func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
 
@@ -83,7 +83,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 

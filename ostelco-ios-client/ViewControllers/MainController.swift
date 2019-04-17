@@ -12,8 +12,8 @@ import CoreLocation
 
 class MainController: UIViewController {
     
-    @IBOutlet weak var notificationStatusLabel: UILabel!
-    @IBOutlet weak var locationStatusLabel: UILabel!
+    @IBOutlet private weak var notificationStatusLabel: UILabel!
+    @IBOutlet private weak var locationStatusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,47 +54,47 @@ class MainController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromCountryViewController(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromCountryViewController(sender: UIStoryboardSegue) {
         // perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
     
-    @IBAction func unwindFromCountry(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromCountry(sender: UIStoryboardSegue) {
         // perform(#selector(showEKYC), with: nil, afterDelay: 0)
     }
     
-    @IBAction func unwindFromEKYCViewController(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromEKYCViewController(sender: UIStoryboardSegue) {
         // perform(#selector(showESim), with: nil, afterDelay: 0)
     }
     
-    @IBAction func unwindFromESimViewController(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromESimViewController(sender: UIStoryboardSegue) {
         // perform(#selector(showHome), with: nil, afterDelay: 0)
     }
     
-    @IBAction func unwindFromHomeViewController(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromHomeViewController(sender: UIStoryboardSegue) {
         
     }
     
-    @IBAction func unwindFromSplashViewController(sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromSplashViewController(sender: UIStoryboardSegue) {
         // perform(#selector(showLogin), with: nil, afterDelay: 0)
     }
     
-    @IBAction func showLoginTapped(_ sender: Any?) {
+    @IBAction private func showLoginTapped(_ sender: Any?) {
         self.showLogin()
     }
     
-    @IBAction func showEKYCTapped(_ sender: Any) {
+    @IBAction private func showEKYCTapped(_ sender: Any) {
         self.showEKYC()
     }
     
-    @IBAction func showESimTapped(_ sender: Any) {
+    @IBAction private func showESimTapped(_ sender: Any) {
         self.showESim()
     }
     
-    @IBAction func showHomeTapped(_ sender: Any) {
+    @IBAction private func showHomeTapped(_ sender: Any) {
         self.showHome()
     }
     
-    @IBAction func appStartTapped(_ sender: Any) {
+    @IBAction private func appStartTapped(_ sender: Any) {
         self.showSplash()
     }
     

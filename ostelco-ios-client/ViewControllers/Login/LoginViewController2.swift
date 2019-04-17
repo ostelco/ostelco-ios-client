@@ -16,7 +16,7 @@ class LoginViewController2: UIViewController {
     
     let disposeBag = DisposeBag()
 
-    @IBAction func signInTapped(_ sender: UIButton) {
+    @IBAction private func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
         Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         sharedAuth.loginWithAuth0().subscribe(

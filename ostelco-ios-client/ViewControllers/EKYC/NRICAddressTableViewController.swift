@@ -10,11 +10,11 @@ import UIKit
 import Crashlytics
 
 class NRICAddressTableViewController: UITableViewController {
-    @IBOutlet weak var street: UITextField!
-    @IBOutlet weak var house: UITextField!
-    @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var postcode: UITextField!
-    @IBOutlet weak var country: UITextField!
+    @IBOutlet private weak var street: UITextField!
+    @IBOutlet private weak var house: UITextField!
+    @IBOutlet private weak var city: UITextField!
+    @IBOutlet private weak var postcode: UITextField!
+    @IBOutlet private weak var country: UITextField!
     var spinnerView: UIView?
 
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class NRICAddressTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
     }
   
-  @IBAction func `continue`(_ sender: Any) {
+  @IBAction private func `continue`(_ sender: Any) {
     if (validateAddress() == false) {
       let alert = UIAlertController(
         title: "Enter valid address",

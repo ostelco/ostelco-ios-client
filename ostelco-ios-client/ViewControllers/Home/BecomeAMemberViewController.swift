@@ -16,9 +16,9 @@ class BecomeAMemberViewController: UIViewController {
     var paymentError: RequestError!
     var paymentAuthorized: Bool = false
 
-    @IBOutlet weak var buttonContainer: UIView!
+    @IBOutlet private weak var buttonContainer: UIView!
 
-    @IBAction func cancelButton(_ sender: Any) {
+    @IBAction private func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
