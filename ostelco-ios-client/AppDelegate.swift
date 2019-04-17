@@ -281,9 +281,11 @@ extension AppDelegate: MessagingDelegate {
 
     func sendFCMToken() {
         // TODO: Make sure this is called after getting a valid auth token.
-        guard let _ = APIManager.sharedInstance.authHeader, let token = fcmToken else {
-            // Wait to be authenticated, or the token to be ready.
-            return
+        guard
+            APIManager.sharedInstance.authHeader != nil,
+            let token = fcmToken else {
+                // Wait to be authenticated, or the token to be ready.
+                return
         }
         // Use tha pplication ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
