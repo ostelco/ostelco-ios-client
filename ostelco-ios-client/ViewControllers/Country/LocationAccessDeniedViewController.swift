@@ -18,7 +18,7 @@ class LocationAccessDeniedViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
 
     @IBAction private func settingsTapped(_ sender: Any) {
-        UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 
     @IBAction private func needHelpTapped(_ sender: Any) {
@@ -31,7 +31,7 @@ class LocationAccessDeniedViewController: UIViewController {
         manager.rx
             .didChangeAuthorization
             .debug("didChangeAuthorization")
-            .filter({_,status in
+            .filter({ _, status in
                 switch status {
                 case .restricted,
                      .denied:

@@ -10,7 +10,6 @@ import UIKit
 
 public extension UIImage {
     
-    //
     /// Tint Image
     ///
     /// - Parameter fillColor: UIColor
@@ -29,4 +28,3 @@ public extension UIImage {
         return imageColored
     }
 }
-

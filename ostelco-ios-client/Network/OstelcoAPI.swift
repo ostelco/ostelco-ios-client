@@ -13,7 +13,7 @@ import Auth0
 import ostelco_core
 
 let ostelcoAPI = OstelcoAPI()
-let auth0API = Auth0API();
+let auth0API = Auth0API()
 
 // var authRequest: Siesta.Request? = nil;
 let serialQueue = DispatchQueue(label: "SerialQueue")
@@ -50,9 +50,9 @@ func refreshTokenOnAuthFailure(request: Siesta.Request, refreshToken: String?) -
 func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
     // TODO: It seems like we send multiple requests to refresh access token if multiple APIs fail with 401. Verify and fix if that's the case.
     return auth0API.token.request(.post, json: ["grant_type": "refresh_token", "client_id": Environment().configuration(.Auth0ClientID), "refresh_token": refreshToken])
-        .onSuccess() {
+        .onSuccess {
             let credentials = $0.typedContent()! as Credentials
-            let accessToken = credentials.accessToken;
+            let accessToken = credentials.accessToken
             ostelcoAPI.authToken = "Bearer \(accessToken!)"
             // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required
             // by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating
@@ -94,7 +94,7 @@ class OstelcoAPI: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
 
-            $0.decorateRequests { res,req in
+            $0.decorateRequests { res, req in
                 return refreshTokenOnAuthFailure(request: req, refreshToken: self.refreshToken)
             }
         }

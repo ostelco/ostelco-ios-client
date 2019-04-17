@@ -36,14 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SiestaLog.Category.enabled = .all
         }
 
-        let freschatConfig:FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        let freschatConfig: FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
         // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera
         // freschatConfig.teamMemberInfoVisible = true; // set to NO to turn off showing an team member avatar. To customize the avatar shown, use the theme file
         freschatConfig.showNotificationBanner = true; // set to NO if you don't want to show the in-app notification banner upon receiving a new message while the app is open
         Freshchat.sharedInstance().initWith(freschatConfig)
 
-        application.applicationSupportsShakeToEdit = true;
+        application.applicationSupportsShakeToEdit = true
         FirebaseApp.configure()
         registerNotifications(authorise: false)
         print("App started")
@@ -67,8 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             DispatchQueue.main.async {
                 if granted {
                     self.enableNotifications()
@@ -80,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerNotifications(authorise: Bool) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notifications Status: \(settings.authorizationStatus.rawValue)")
-            switch (settings.authorizationStatus) {
+            switch settings.authorizationStatus {
             case .notDetermined:
                 if authorise == true {
                     self.requestNotificationAuthorization()
@@ -93,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         print("URL = \(url.absoluteString)")
         return Auth0.resumeAuth(url, options: options)
     }
@@ -214,7 +213,7 @@ protocol MyInfoCallbackHandler {
     func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
 }
 
-extension AppDelegate : UNUserNotificationCenterDelegate {
+extension AppDelegate: UNUserNotificationCenterDelegate {
 
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -255,17 +254,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler()
     }
 
-    func sendDidReceivePushNotification(_ userInfo:[AnyHashable : Any]) {
+    func sendDidReceivePushNotification(_ userInfo: [AnyHashable: Any]) {
         NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
     }
 }
 
-extension AppDelegate : MessagingDelegate {
+extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Function: \(#function), line: \(#line)")
         print("Firebase registration token: \(fcmToken)")
 
-        let dataDict:[String: String] = ["token": fcmToken]
+        let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         // Send token to prime.
@@ -299,4 +298,3 @@ extension AppDelegate : MessagingDelegate {
     }
 
 }
-

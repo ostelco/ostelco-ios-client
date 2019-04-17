@@ -21,7 +21,7 @@ class UserManager {
                 Crashlytics.sharedInstance().setUserIdentifier(nil)
             } else {
                 Freshchat.sharedInstance().identifyUser(withExternalID: user.id, restoreID: nil)
-                let fcUser = FreshchatUser.sharedInstance();
+                let fcUser = FreshchatUser.sharedInstance()
                 fcUser?.firstName = user.name
                 fcUser?.email = user.email
                 Freshchat.sharedInstance().setUser(fcUser)

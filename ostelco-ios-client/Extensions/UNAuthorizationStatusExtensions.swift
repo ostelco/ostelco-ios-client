@@ -11,7 +11,7 @@ import UserNotifications
 extension UNAuthorizationStatus {
     var description: String {
         get {
-            switch (self) {
+            switch self {
             case .notDetermined:
                 return "not determined"
             case .denied:

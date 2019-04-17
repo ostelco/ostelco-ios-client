@@ -66,7 +66,7 @@ class GetStartedViewController: UIViewController {
 extension GetStartedViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        if !text.isEmpty{
+        if !text.isEmpty {
             continueButton.isEnabled = true
             continueButton.backgroundColor = ThemeManager.currentTheme().mainColor
         } else {

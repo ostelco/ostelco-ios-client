@@ -38,7 +38,7 @@ struct UserDefaultsWrapper {
         }
     }
     
-    /// What, if any, is the stored theme for this user? 
+    /// What, if any, is the stored theme for this user?
     static var storedTheme: Theme? {
         get {
             guard

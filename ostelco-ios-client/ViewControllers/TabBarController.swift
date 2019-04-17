@@ -22,8 +22,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    @objc func methodOfReceivedNotification(notification: Notification){
-        Freshchat.sharedInstance().unreadCount { (count:Int) -> Void in
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        Freshchat.sharedInstance().unreadCount { (count: Int) -> Void in
             self.updateBadgeCount(to: count)
         }
     }

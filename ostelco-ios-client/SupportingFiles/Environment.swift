@@ -31,7 +31,7 @@ public class Environment {
             let plistURL = Bundle.main.url(forResource: "Environment", withExtension: "plist"),
             let data = try? Data(contentsOf: plistURL),
             let plist = try? PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: &format),
-            let infoDict =  plist as? [String: AnyHashable] else {
+            let infoDict = plist as? [String: AnyHashable] else {
                 fatalError("Couldn't load environment plist!")
         }
         

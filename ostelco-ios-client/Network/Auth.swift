@@ -43,7 +43,7 @@ class Auth {
 
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
-        var params: [String:String] = [:]
+        var params: [String: String] = [:]
 
         if forceLoginPrompt {
             params["prompt"] = "login"
@@ -64,7 +64,6 @@ class Auth {
                             switch err.errorCode {
                             case WebAuthError.userCancelled.errorCode:
                                 observer.on(.completed)
-                                break
                             default:
                                 os_log("Failed to login with auth0, got error: %{public}@", "\(error)")
                                 observer.on(.error(error))

@@ -25,7 +25,7 @@ class NRICAddressTableViewController: UITableViewController {
     }
   
   @IBAction private func `continue`(_ sender: Any) {
-    if (validateAddress() == false) {
+    if validateAddress() == false {
       let alert = UIAlertController(
         title: "Enter valid address",
         message: "Ensure that you have entered all fields",

@@ -22,7 +22,6 @@ class AllowLocationAccessViewController: UIViewController {
     var descriptionText: String = ""
     var selectedCountry: Country?
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
@@ -99,8 +98,7 @@ class AllowLocationAccessViewController: UIViewController {
 }
 
 extension AllowLocationAccessViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if userLocation == nil {
             removeSpinner(spinnerView)
             spinnerView = nil
@@ -111,7 +109,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                     if let error = error {
                         print("Unable to Reverse Geocode Location (\(error))")
                         // locationLabel.text = "Unable to Find Address for Location"
-                        self.failedToGetLocationAlert() 
+                        self.failedToGetLocationAlert()
                     } else {
                         if let placemarks = placemarks, let placemark = placemarks.first, let country = placemark.country, let isoCountryCode = placemark.isoCountryCode {
                             print("country: \(country) isoCountryCode: \(isoCountryCode)")

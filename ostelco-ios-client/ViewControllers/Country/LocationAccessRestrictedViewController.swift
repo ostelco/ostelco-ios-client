@@ -23,7 +23,7 @@ class LocationAccessRestrictedViewController: UIViewController {
         manager.rx
             .didChangeAuthorization
             .debug("didChangeAuthorization")
-            .filter({_,status in
+            .filter({ _, status in
                 switch status {
                 case .restricted,
                      .denied:

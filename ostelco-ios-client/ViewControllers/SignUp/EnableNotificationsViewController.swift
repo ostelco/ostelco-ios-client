@@ -48,7 +48,7 @@ class EnableNotificationsViewController: UIViewController {
 
     private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            switch (settings.authorizationStatus) {
+            switch settings.authorizationStatus {
             case .notDetermined:
                 if !ignoreNotDetermined {
                     self.requestNotificationAuthorization()
@@ -63,8 +63,7 @@ class EnableNotificationsViewController: UIViewController {
     }
 
     private func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             self.registerAndContinue()
         }
     }

@@ -10,8 +10,6 @@
 import UIKit
 import Foundation
 
-
-
 // This will let you use a theme in the app.
 class ThemeManager {
     

@@ -26,7 +26,7 @@ class HomeViewController2: UIViewController {
         UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
 
         scrollView.alwaysBounceVertical = true
-        scrollView.bounces  = true
+        scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
     }
@@ -86,7 +86,7 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if (self.paymentError == nil) {
+            if self.paymentError == nil {
                 self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             } else {
                 self.showAPIError(error: self.paymentError)

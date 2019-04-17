@@ -32,7 +32,6 @@ do {
                                           usage: "Provides the git source root of the current project",
                                           completion: .none)
     
-    
     let args = Array(CommandLine.arguments.dropFirst())
     let result = try argParser.parse(args)
     print("Result: \(result)")
@@ -43,7 +42,6 @@ do {
     
     let forProd = result.get(forProdOption) ?? false
 
-    
     let runPrebuild = result.get(preBuildOption) ?? false
     if runPrebuild {
         print("Running pre-build scripts...")
@@ -57,7 +55,7 @@ do {
     }
     
     // You need to pick one of pre- or post-build, otherwise this basically does nothing.
-    if (!runPrebuild && !runPostBuild) {
+    if !runPrebuild && !runPostBuild {
         throw ArgumentParserError.expectedArguments(argParser, [
             "--prebuild",
             "--postbuild"
@@ -68,4 +66,3 @@ do {
     debugPrint("Error: \(error)")
     exit(1)
 }
-

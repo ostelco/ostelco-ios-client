@@ -19,6 +19,6 @@ extension UIView {
         
         let backgroundCGColor = self.backgroundColor?.cgColor
         self.backgroundColor = nil
-        self.layer.backgroundColor =  backgroundCGColor
+        self.layer.backgroundColor = backgroundCGColor
     }
 }

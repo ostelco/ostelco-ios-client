@@ -30,12 +30,12 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                     DispatchQueue.main.async {
                         let apiManager = APIManager.sharedInstance
                         let userManager = UserManager.sharedInstance
-                        if (userManager.authToken != accessToken && userManager.authToken != nil) {
+                        if userManager.authToken != accessToken && userManager.authToken != nil {
                             apiManager.wipeResources()
                             UserManager.sharedInstance.clear()
                         }
 
-                        if (userManager.authToken != accessToken) {
+                        if userManager.authToken != accessToken {
                             apiManager.authHeader = "Bearer \(accessToken)"
                             UserManager.sharedInstance.authToken = accessToken
                         }

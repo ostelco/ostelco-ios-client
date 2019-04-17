@@ -25,7 +25,6 @@ class BecomeAMemberViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         // 1. Make sure device supports apple pay and that there are no other restrictions preventing payment (like parental control)
         if PKPaymentAuthorizationViewController.canMakePayments() {
             
@@ -103,9 +102,9 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if (self.paymentAuthorized == false) {
+            if self.paymentAuthorized == false {
                 print("User has cancelled the Payment")
-            } else if (self.paymentError == nil) {
+            } else if self.paymentError == nil {
                 self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             } else {
                 self.showAPIError(error: self.paymentError)

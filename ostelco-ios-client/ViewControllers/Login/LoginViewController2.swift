@@ -12,7 +12,7 @@ import RxSwift
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
-    var spinnerView:UIView?
+    var spinnerView: UIView?
     
     let disposeBag = DisposeBag()
 
