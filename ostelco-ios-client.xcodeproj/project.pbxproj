@@ -161,6 +161,7 @@
 		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
+		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -1465,6 +1466,7 @@
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */,
 				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
