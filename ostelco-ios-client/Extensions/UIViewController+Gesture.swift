@@ -16,8 +16,6 @@ extension UIViewController {
     }
 
     override open var canBecomeFirstResponder: Bool {
-        get {
-            return true
-        }
+        return true
     }
 }
