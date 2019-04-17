@@ -17,7 +17,7 @@ class MyInfoAddressTableViewController: UITableViewController {
     @IBOutlet private weak var postal: UITextField!
     @IBOutlet private weak var country: UITextField!
 
-    var updateDelegate: MyInfoDetailsUpdate?
+    weak var updateDelegate: MyInfoDetailsUpdate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,6 @@ class MyInfoAddressTableViewController: UITableViewController {
     }
 }
 
-protocol MyInfoDetailsUpdate {
+protocol MyInfoDetailsUpdate: class {
     func handleUpdate(myInfoDetails: MyInfoDetails)
 }

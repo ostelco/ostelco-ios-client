@@ -16,7 +16,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var myInfoDelegate: MyInfoCallbackHandler?
+    weak var myInfoDelegate: MyInfoCallbackHandler?
     let gcmMessageIDKey = "gcm.message_id"
     var fcmToken: String?
 
@@ -209,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-protocol MyInfoCallbackHandler {
+protocol MyInfoCallbackHandler: class {
     func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
 }
 
