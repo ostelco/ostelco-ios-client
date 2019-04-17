@@ -13,7 +13,7 @@ import Siesta
 
 class BecomeAMemberViewController: UIViewController {
 
-    var paymentError: RequestError!
+    var paymentError: RequestError?
     var paymentAuthorized: Bool = false
 
     @IBOutlet private weak var buttonContainer: UIView!
@@ -104,10 +104,10 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
         dismiss(animated: true, completion: {
             if self.paymentAuthorized == false {
                 print("User has cancelled the Payment")
-            } else if self.paymentError == nil {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
+            } else if let error = self.paymentError {
+                self.showAPIError(error: error)
             } else {
-                self.showAPIError(error: self.paymentError)
+                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             }
         })
     }

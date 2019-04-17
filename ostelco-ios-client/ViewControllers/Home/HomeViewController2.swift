@@ -12,7 +12,7 @@ import Siesta
 
 class HomeViewController2: UIViewController {
 
-    var paymentError: RequestError!
+    var paymentError: RequestError?
 
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -86,10 +86,10 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if self.paymentError == nil {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
+            if let error = self.paymentError {
+                self.showAPIError(error: error)
             } else {
-                self.showAPIError(error: self.paymentError)
+                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             }
         })
     }

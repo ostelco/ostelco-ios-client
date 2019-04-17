@@ -15,7 +15,7 @@ class AllowLocationAccessViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
 
     var spinnerView: UIView?
-    var userLocation: CLLocation!
+    var userLocation: CLLocation?
 
     var locationManager = CLLocationManager()
 
@@ -148,6 +148,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
     }
 }
 
+#warning("REMOVE")
 class DismissSegue: UIStoryboardSegue {
     override func perform() {
         if let p = source.presentingViewController {

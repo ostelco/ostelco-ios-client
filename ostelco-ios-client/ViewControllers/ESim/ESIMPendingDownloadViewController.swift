@@ -11,11 +11,12 @@ import Crashlytics
 
 class ESIMPendingDownloadViewController: UIViewController {
     var spinnerView: UIView?
-    var simProfile: SimProfile! {
+    var simProfile: SimProfile? {
         didSet {
             let region = OnBoardingManager.sharedInstance.region!
-            if simProfile != nil {
-                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: simProfile.status.rawValue)
+
+            if let profile = self.simProfile {
+                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: profile.status.rawValue)
             } else {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: "")
             }
@@ -54,7 +55,7 @@ class ESIMPendingDownloadViewController: UIViewController {
             .onSuccess { data in
                 if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
                     if let simProfile = simProfiles.first(where: {
-                        $0.eSimActivationCode == self.simProfile.eSimActivationCode
+                        $0.eSimActivationCode == self.simProfile?.eSimActivationCode
                     }) {
                         self.simProfile = simProfile
                         switch simProfile.status {
