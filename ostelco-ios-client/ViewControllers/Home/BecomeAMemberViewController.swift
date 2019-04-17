@@ -14,11 +14,13 @@ import Siesta
 class BecomeAMemberViewController: UIViewController {
 
     var paymentError: RequestError!
+    var paymentAuthorized: Bool = false
+
+    @IBOutlet weak var buttonContainer: UIView!
+
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
-    @IBOutlet weak var buttonContainer: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +55,12 @@ class BecomeAMemberViewController: UIViewController {
 
     @objc func buyButtonTapped() {
         let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
+        paymentAuthorized = false
         startApplePay(product: product, delegate: self)
     }
 
     @objc func setUpButtonTapped() {
+        paymentAuthorized = false
         PKPassLibrary().openPaymentSetup()
     }
 }
@@ -64,6 +68,7 @@ class BecomeAMemberViewController: UIViewController {
 extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        paymentAuthorized = true
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
             guard let source = source, error == nil else {
                 // Present error to user...
@@ -98,7 +103,9 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if (self.paymentError == nil) {
+            if (self.paymentAuthorized == false) {
+                print("User has cancelled the Payment")
+            } else if (self.paymentError == nil) {
                 self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             } else {
                 self.showAPIError(error: self.paymentError)
