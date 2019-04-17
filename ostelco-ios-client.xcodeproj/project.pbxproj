@@ -951,11 +951,12 @@
 				C29802A92181EDA800FBC5C3 /* Sources */,
 				C29802B92181EDA800FBC5C3 /* Frameworks */,
 				C29802BF2181EDA800FBC5C3 /* Resources */,
+				C26BC1A02266446D00BF4F13 /* Embed Frameworks */,
 				8BBFABC3E348661E3BAFD07A /* [CP] Embed Pods Frameworks */,
 				4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */,
 				04DE1DC1223D686D001991AB /* Crashlytics script */,
 				9BF2777C225D10DC006428D5 /* SPM Post-build */,
-				C26BC1A02266446D00BF4F13 /* Embed Frameworks */,
+				9BBF706F226652AC00E4B9B4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1327,6 +1328,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -prod -src=\"$SRCROOT\"\n";
+		};
+		9BBF706F226652AC00E4B9B4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -z $CIRCLECI ]; then\n    ./Pods/SwiftLint/swiftlint\nelse\n    #TODO: Figure out why the hell this isn't working on Circle.\n    echo \"On CI, not trying to run SwiftLint\"\nfi\n";
 		};
 		9BF2777B225D10B6006428D5 /* SPM Pre-build */ = {
 			isa = PBXShellScriptBuildPhase;
