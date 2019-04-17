@@ -21,12 +21,11 @@ extension UIViewController {
             object: nil
         )
     }
-
+    
     func removeNotificationObserver() {
         NotificationCenter.default.removeObserver(
             self,
             name: .didReceivePushNotification,
             object: nil)
     }
-
 }

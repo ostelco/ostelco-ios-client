@@ -12,7 +12,7 @@ class MyInfoSummaryViewController: UIViewController {
     public var myInfoQueryItems: [URLQueryItem]?
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
-
+    
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var sex: UILabel!
     @IBOutlet private weak var dob: UILabel!
@@ -20,7 +20,7 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var residentialStatus: UILabel!
     @IBOutlet private weak var address: UILabel!
     @IBOutlet private weak var mobileNumber: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         debugPrint("Query Items: \(String(describing: myInfoQueryItems))")
@@ -48,7 +48,7 @@ class MyInfoSummaryViewController: UIViewController {
         //TODO: Get the address & phone number form PRIME
         // updateUI(MyInfoDetails.testInfo) // TODO: Remove this when API is stable.
     }
-
+    
     private func getMyInfoCode() -> String? {
         if let queryItems = myInfoQueryItems {
             if let codeItem = queryItems.first(where: { $0.name == "code" }) {
@@ -57,7 +57,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
         return nil
     }
-
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,7 +68,7 @@ class MyInfoSummaryViewController: UIViewController {
             destination.updateDelegate = self
         }
     }
-
+    
     @IBAction private func `continue`(_ sender: Any) {
         spinnerView = self.showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child("/sg/kyc/profile")
@@ -87,7 +87,7 @@ class MyInfoSummaryViewController: UIViewController {
                 }
         }
     }
-
+    
     func updateUI(_ myInfoDetails: MyInfoDetails?) {
         guard let myInfoDetails = myInfoDetails else {
             return

@@ -10,7 +10,7 @@ import Crashlytics
 
 class UserManager {
     static let sharedInstance = UserManager()
-
+    
     var authToken: String?
     var user: CustomerModel? {
         didSet {
@@ -33,7 +33,7 @@ class UserManager {
             Crashlytics.sharedInstance().setUserEmail(user.email)
         }
     }
-
+    
     func clear() {
         authToken = nil
     }

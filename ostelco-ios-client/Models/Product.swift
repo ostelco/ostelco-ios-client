@@ -12,7 +12,7 @@ public class Product {
     let currency: String
     let country: String
     let sku: String
-
+    
     init(name: String, amount: Decimal, country: String, currency: String, sku: String) {
         self.name = name
         self.amount = amount

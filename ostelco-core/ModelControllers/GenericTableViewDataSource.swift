@@ -41,7 +41,7 @@ open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: Gener
     open func reloadData() {
         self.tableView?.reloadData()
     }
-
+    
     // MARK: - Subclasses MUST override
     
     /// Where actual item -> cell hookup happens.

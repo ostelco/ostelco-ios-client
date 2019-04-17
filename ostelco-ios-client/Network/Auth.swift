@@ -15,7 +15,7 @@ let sharedAuth = Auth()
 
 class Auth {
     let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
-
+    
     // force show the login screen after user logs out without using the auth0 logout url
     var forceLoginPrompt = false
     func clear(callback: (() -> Void)?) {
@@ -30,7 +30,7 @@ class Auth {
                 }
         }
     }
-
+    
     func logout(callback: (() -> Void)? = nil) {
         os_log("Logout user")
         forceLoginPrompt = true
@@ -40,15 +40,15 @@ class Auth {
         
         // AppDelegate.shared.rootViewController.switchToLogout() // Old way of logging out
     }
-
+    
     func loginWithAuth0() -> Observable<Credentials> {
         os_log("Start login with auth0...")
         var params: [String: String] = [:]
-
+        
         if forceLoginPrompt {
             params["prompt"] = "login"
         }
-
+        
         return Observable.create { observer in
             Auth0
                 .webAuth()
@@ -72,7 +72,7 @@ class Auth {
                             os_log("Failed to login with auth0, got non web auth error: %{public}@", "\(error)")
                             observer.on(.error(error))
                         }
-
+                        
                     case .success(let credentials):
                         os_log("Store credentials with auth0 credentials manager.")
                         _ = self.credentialsManager.store(credentials: credentials)
@@ -85,7 +85,7 @@ class Auth {
                         } else {
                             // TODO: How do we handle the case if access token is empty
                         }
-
+                        
                         self.forceLoginPrompt = false
                         observer.on(.next(credentials))
                         observer.on(.completed)
@@ -95,5 +95,5 @@ class Auth {
         }
         
     }
-
+    
 }

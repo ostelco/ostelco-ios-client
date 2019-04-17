@@ -14,7 +14,7 @@ import RxCoreLocation
 class LocationAccessRestrictedViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
-
+    
     @IBOutlet private weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {

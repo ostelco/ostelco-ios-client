@@ -11,33 +11,33 @@ import Stripe
 import Siesta
 
 class HomeViewController2: UIViewController {
-
+    
     var paymentError: RequestError?
-
+    
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
-
+    
     private lazy var refreshControl = UIRefreshControl()
     var fakeHasSubscription = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
-
+        
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
     }
-
+    
     @objc func didPullToRefresh() {
         let delayInSeconds = 4.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
             self.refreshControl.endRefreshing()
         }
     }
-
+    
     @IBAction private func buyDataTapped(_ sender: Any) {
         if fakeHasSubscription {
             let product = Product(name: "Buy 1GB for $5", amount: 5.0, country: "SG", currency: "SGD", sku: "1234")
@@ -50,7 +50,7 @@ class HomeViewController2: UIViewController {
 }
 
 extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
-
+    
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
             guard let source = source, error == nil else {
@@ -58,7 +58,7 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
                 self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
                 return
             }
-
+            
             APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
                 .onProgress({ progress in
                     print("Progress %{public}@", "\(progress)")
@@ -82,7 +82,7 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
                 })
         }
     }
-
+    
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {

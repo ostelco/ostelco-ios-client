@@ -27,7 +27,7 @@ open class GenericDataSource<Item>: NSObject {
         self.items = items ?? []
         super.init()
     }
-
+    
     /// Grabs the item at the given index path's row
     /// Note: Will crash if the indexPath is out of bounds.
     ///       If you're not sure whether something will be there, use `optionalItem(at:)`.

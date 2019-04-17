@@ -14,7 +14,7 @@ class ESIMPendingDownloadViewController: UIViewController {
     var simProfile: SimProfile? {
         didSet {
             let region = OnBoardingManager.sharedInstance.region!
-
+            
             if let profile = self.simProfile {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: profile.status.rawValue)
             } else {
@@ -22,9 +22,9 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
         }
     }
-
+    
     @IBOutlet private weak var continueButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let region = OnBoardingManager.sharedInstance.region {
@@ -45,11 +45,11 @@ class ESIMPendingDownloadViewController: UIViewController {
     @IBAction private func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
-
+    
     @IBAction private func continueTapped(_ sender: Any) {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
-
+        
         spinnerView = showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
             .onSuccess { data in
@@ -83,11 +83,11 @@ class ESIMPendingDownloadViewController: UIViewController {
                 self.removeSpinner(self.spinnerView)
         }
     }
-
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-
+    
     func getSimProfileForRegion(region: RegionResponse) {
         let countryCode = region.region.id
         if let simProfiles = region.simProfiles, simProfiles.isNotEmpty {
@@ -129,19 +129,18 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeNotificationObserver()
     }
-
+    
     @objc func onDidReceiveData(_ notification: Notification) {
         print(#function, "Notification didReceivePushNotification arrived")
     }
-
 }

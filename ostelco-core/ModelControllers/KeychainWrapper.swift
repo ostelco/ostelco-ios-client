@@ -24,7 +24,7 @@ public class KeychainWrapper: SecureStorage {
     }
     
     private lazy var keychain: Keychain = {
-       return Keychain(service: self.service, accessGroup: self.accessGroup)
+        return Keychain(service: self.service, accessGroup: self.accessGroup)
             .accessibility(.afterFirstUnlock)
     }()
     

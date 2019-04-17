@@ -20,7 +20,7 @@ struct KYCStatusMap: Codable {
 struct Region: Codable {
     let id: String
     let name: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name
     }

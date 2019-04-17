@@ -20,7 +20,7 @@ class NeedHelpAlertController: UIAlertController {
      }
      let screenClass = classForCoder.description()
      Analytics.setScreenName(screenName, screenClass: screenClass)
-
+     
      }
      */
 }
@@ -56,13 +56,13 @@ extension UIViewController {
     
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
-
+        
         let deleteAction = createDeleteAccountAlertAction(title: "Delete Account", vc: self)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-
+        
         alertCtrl.addAction(deleteAction)
         alertCtrl.addAction(cancelAction)
-
+        
         // Action sheet crashes on iPad: https://medium.com/@nickmeehan/actionsheet-popover-on-ipad-in-swift-5768dfa82094
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             if let popoverController = alertCtrl.popoverPresentationController {
@@ -74,7 +74,7 @@ extension UIViewController {
         
         present(alertCtrl, animated: true, completion: nil)
     }
-
+    
     func showLogOutActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to log out from your account?", preferredStyle: .actionSheet)
         
@@ -84,16 +84,16 @@ extension UIViewController {
             self.present(viewController, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-
+        
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
-
+        
         present(alertCtrl, animated: true, completion: nil)
     }
-
+    
     func showNeedHelpActionSheet() {
         let alertCtrl = NeedHelpAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        
         let supportAction = UIAlertAction(title: "Contact Support", style: .default) {_ in
             Freshchat.sharedInstance()?.showConversations(self)
         }
@@ -104,19 +104,19 @@ extension UIViewController {
             self.present(viewController, animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-
+        
         alertCtrl.addAction(supportAction)
         
         alertCtrl.addAction(startOverAction)
         alertCtrl.addAction(logOutAction)
         alertCtrl.addAction(cancelAction)
-
+        
         present(alertCtrl, animated: true, completion: nil)
     }
-
+    
     func showProductListActionSheet(products: [Product], delegate: PKPaymentAuthorizationViewControllerDelegate) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        
         for product in products {
             let buyAction = UIAlertAction(title: product.name, style: .default) {_ in
                 self.startApplePay(product: product, delegate: delegate)
@@ -124,9 +124,9 @@ extension UIViewController {
             alertCtrl.addAction(buyAction)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-
+        
         alertCtrl.addAction(cancelAction)
-
+        
         present(alertCtrl, animated: true, completion: nil)
     }
 }

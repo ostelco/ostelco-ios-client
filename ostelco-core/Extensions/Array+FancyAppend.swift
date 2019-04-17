@@ -25,5 +25,4 @@ public extension Array {
         
         self.append(closure(unwrapped))
     }
-    
 }

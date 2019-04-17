@@ -15,7 +15,7 @@ class LoginViewController2: UIViewController {
     var spinnerView: UIView?
     
     let disposeBag = DisposeBag()
-
+    
     @IBAction private func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
         Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
@@ -92,29 +92,29 @@ class LoginViewController2: UIViewController {
                     self.handleLoginFailure(message: "\(error)")
                 }
         })
-        .disposed(by: self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
-
+    
     @objc private func showCountry() {
         performSegue(withIdentifier: "showCountry", sender: self)
     }
-
+    
     @objc private func showSignUp() {
         performSegue(withIdentifier: "showSignUp", sender: nil)
     }
-
+    
     @objc private func showEKYCLastScreen() {
         performSegue(withIdentifier: "showEKYCLastScreen", sender: nil)
     }
-
+    
     @objc private func showEKYCOhNo() {
         performSegue(withIdentifier: "showEKYCOhNo", sender: nil)
     }
-
+    
     @objc private func showESim() {
         performSegue(withIdentifier: "showESim", sender: nil)
     }
-
+    
     private func handleLoginFailure(message: String) {
         let alert = UIAlertController(title: "Failed to login", message: "Please try again later.\nIf this problem persists, contact customer support.\n Error: \(message)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

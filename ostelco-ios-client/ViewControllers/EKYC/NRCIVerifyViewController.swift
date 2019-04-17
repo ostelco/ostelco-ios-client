@@ -11,7 +11,7 @@ import Netverify
 import Crashlytics
 
 class NRCIVerifyViewController: UIViewController {
-
+    
     var spinnerView: UIView?
     var netverifyViewController: NetverifyViewController?
     var merchantScanReference: String = ""
@@ -26,7 +26,7 @@ class NRCIVerifyViewController: UIViewController {
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-
+    
     @IBAction private func continueTapped(_ sender: Any) {
         // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
         if let nric = nricTextField.text, !nric.isEmpty {
@@ -59,7 +59,7 @@ class NRCIVerifyViewController: UIViewController {
                 }
                 .onCompletion { _ in
                     self.removeSpinner(self.spinnerView)
-               }
+            }
         } else {
             showAlert(title: "Error", msg: "NRIC field can't be empty")
         }
@@ -67,7 +67,7 @@ class NRCIVerifyViewController: UIViewController {
 }
 
 extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
-
+    
     func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
         // This method should fetch new scanId from our server
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
@@ -91,7 +91,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
                 }
         }
     }
-
+    
     func createNetverifyController() {
         // Prevent SDK to be initialized on Jailbroken devices
         if JMDeviceInfo.isJailbrokenDevice() {
@@ -101,7 +101,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         var message = "JumioToken: \(Environment().configuration(.JumioToken)) \n"
         message += "JumioSecret: \(Environment().configuration(.JumioSecret))"
         //self.showAlert(title: "Jumio Settings", msg: message)
-
+        
         // Setup the Configuration for Netverify
         let config: NetverifyConfiguration = NetverifyConfiguration()
         config.merchantApiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
@@ -113,7 +113,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         // TODO: Replace preselected country with previously selected country when supporting multiple countries. Note that Preselected country below has to be on the following format https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
         // while we use alpha-2
         config.preselectedCountry = "SGP"
-
+        
         // General appearance - deactivate blur
         NetverifyBaseView.netverifyAppearance().disableBlur = true
         // General appearance - background color
@@ -124,7 +124,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             UIColor(red: 47 / 255.0, green: 22 / 255.0, blue: 232 / 255.0, alpha: 1),
             for: .normal
         )
-
+        
         // Create the verification view
         self.netverifyViewController = NetverifyViewController(configuration: config)
         if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
@@ -132,7 +132,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             self.netverifyViewController?.modalPresentationStyle = UIModalPresentationStyle.formSheet
         }
     }
-
+    
     func startNetverify() {
         //self.performSegue(withIdentifier: "yourAddress", sender: self)
         getnewScanId { (scanId, error) in
@@ -150,7 +150,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             }
         }
     }
-
+    
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
         debugPrint("NetverifyViewController finished successfully with scan reference: \(scanReference)")
         let message = documentData.toOstelcoString()
@@ -162,7 +162,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
             self.performSegue(withIdentifier: "yourAddress", sender: self)
         })
     }
-
+    
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didCancelWithError error: NetverifyError?, scanReference: String?) {
         print("NetverifyViewController cancelled with error: " + "\(error?.message ?? "")" + "scanReference: " + "\(scanReference ?? "")")
         // Dismiss the SDK

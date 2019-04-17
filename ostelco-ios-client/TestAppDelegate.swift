@@ -9,7 +9,7 @@
 import UIKit
 
 class TestAppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -19,16 +19,16 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
         let label = UILabel()
         label.text = "TESTING WITHOUT UI!"
         label.textColor = .white
-
+        
         vc.view.addSubview(label)
         label.center = vc.view.center
         
         let window = UIWindow()
         window.rootViewController = vc
-
+        
         window.makeKeyAndVisible()
         self.window = window
-
+        
         return true
     }
 }

@@ -53,7 +53,7 @@ extension UIViewController {
         
         return overlay
     }
-
+    
     func removeSpinner(_ spinnerView: UIView?) {
         guard let spinnerView = spinnerView else { return }
         DispatchQueue.main.async {
