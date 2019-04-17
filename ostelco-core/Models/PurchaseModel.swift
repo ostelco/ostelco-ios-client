@@ -12,8 +12,4 @@ public struct PurchaseModel: Codable {
     let id: String
     let timestamp: Int64
     let product: ProductModel
-    
-    enum CodingKeys: String, CodingKey {
-        case id, timestamp, product
-    }
 }

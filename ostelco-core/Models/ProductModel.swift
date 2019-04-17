@@ -23,18 +23,10 @@ public struct PresentationModel: Codable {
 public struct PriceModel: Codable {
     let amount: Int
     let currency: String
-    
-    enum CodingKeys: String, CodingKey {
-        case amount, currency
-    }
 }
 
 public struct ProductModel: Codable {
     let sku: String
     let presentation: PresentationModel
     let price: PriceModel
-    
-    enum CodingKeys: String, CodingKey {
-        case sku, presentation, price
-    }
 }

@@ -7,7 +7,9 @@
 //
 
 enum KycStatus: String, Codable {
-    case APPROVED, REJECTED, PENDING
+    case APPROVED
+    case REJECTED
+    case PENDING
 }
 
 struct KYCStatusMap: Codable {
@@ -20,10 +22,6 @@ struct KYCStatusMap: Codable {
 struct Region: Codable {
     let id: String
     let name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id, name
-    }
 }
 
 struct RegionResponse: Codable {

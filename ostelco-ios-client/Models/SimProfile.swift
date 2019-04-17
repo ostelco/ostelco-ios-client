@@ -7,7 +7,10 @@
 //
 
 enum SimProfileStatus: String, Codable {
-    case AVAILABLE_FOR_DOWNLOAD, DOWNLOADED, INSTALLED, ENABLED
+    case AVAILABLE_FOR_DOWNLOAD
+    case DOWNLOADED
+    case INSTALLED
+    case ENABLED
 }
 
 struct SimProfile: Codable {

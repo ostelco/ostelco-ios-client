@@ -10,12 +10,12 @@ import UIKit
 
 class SettingsTableViewController2: UITableViewController {
     enum MenuItem: Int {
-        case PurchaseHistory = 0
-        case ChangeNickname = 1
-        case TermsAndConditions = 2
-        case PrivacyPolicy = 3
-        case CancelMembership = 4
-        case LogOut = 5
+        case PurchaseHistory
+        case ChangeNickname
+        case TermsAndConditions
+        case PrivacyPolicy
+        case CancelMembership
+        case LogOut
     }
     
     override func viewDidLoad() {
