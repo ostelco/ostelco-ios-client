@@ -147,12 +147,3 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
         verifyLocation(ignoreNotDetermined: true)
     }
 }
-
-#warning("REMOVE")
-class DismissSegue: UIStoryboardSegue {
-    override func perform() {
-        if let p = source.presentingViewController {
-            p.dismiss(animated: true, completion: nil)
-        }
-    }
-}
