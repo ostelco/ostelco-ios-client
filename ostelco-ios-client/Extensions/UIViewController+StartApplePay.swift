@@ -62,7 +62,3 @@ extension UIViewController {
         }
     }
 }
-
-class PaymentError {
-    var paymentError: RequestError!
-}
