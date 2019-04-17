@@ -22,9 +22,8 @@ class HomeViewController2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.registerNotifications(authorise: true)
+        
+        UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
 
         scrollView.alwaysBounceVertical = true
         scrollView.bounces  = true

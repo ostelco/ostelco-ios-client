@@ -15,8 +15,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
 
     @IBAction private func singPassTapped(_ sender: Any) {
         //performSegue(withIdentifier: "myInfoSummary", sender: self)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.myInfoDelegate = self
+        UIApplication.shared.typedDelegate.myInfoDelegate = self
         getMyInfoToken()
     }
 

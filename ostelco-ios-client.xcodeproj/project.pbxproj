@@ -175,6 +175,8 @@
 		9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
 		9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */; };
 		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
+		9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
+		9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -398,6 +400,7 @@
 		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
 		9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
 		9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
+		9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TypedDelegate.swift"; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -843,6 +846,7 @@
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
+				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1499,6 +1503,7 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
+				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
@@ -1638,6 +1643,7 @@
 				041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
+				9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,

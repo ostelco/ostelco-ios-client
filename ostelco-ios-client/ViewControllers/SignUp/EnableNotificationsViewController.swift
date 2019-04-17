@@ -41,8 +41,7 @@ class EnableNotificationsViewController: UIViewController {
 
     private func registerAndContinue() {
         DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.enableNotifications()
+            UIApplication.shared.typedDelegate.enableNotifications()
             self.showGetStarted()
         }
     }

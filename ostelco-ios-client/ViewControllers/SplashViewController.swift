@@ -47,8 +47,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                         }
                         */
                         // Send the FCM Token, if it is ready.
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.sendFCMToken()
+                        UIApplication.shared.typedDelegate.sendFCMToken()
 
                         self.spinnerView = self.showSpinner(onView: self.view)
                         apiManager.context.load()
