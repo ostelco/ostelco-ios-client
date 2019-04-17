@@ -89,7 +89,7 @@ class ESIMPendingDownloadViewController: UIViewController {
 
     func getSimProfileForRegion(region: RegionResponse) {
         let countryCode = region.region.id
-        if let simProfiles = region.simProfiles, simProfiles.count > 0 {
+        if let simProfiles = region.simProfiles, simProfiles.isNotEmpty {
             if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "showHome", sender: self)
