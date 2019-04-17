@@ -40,7 +40,7 @@ class NRICAddressTableViewController: UITableViewController {
             .withParam("address", self.buildAddressString())
             .withParam("phoneNumber", "12345678")
         .request(.put)
-        .onSuccess { data in
+        .onSuccess { _ in
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "waitForDocs", sender: self)
             }

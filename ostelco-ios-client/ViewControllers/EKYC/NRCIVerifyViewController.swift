@@ -34,7 +34,7 @@ class NRCIVerifyViewController: UIViewController {
             nricErrorLabel.isHidden = true
             spinnerView = showSpinner(onView: self.view)
             APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
-                .onSuccess { entity in
+                .onSuccess { _ in
                     self.startNetverify()
                 }
                 .onFailure { requestError in

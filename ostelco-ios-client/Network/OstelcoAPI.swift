@@ -94,7 +94,7 @@ class OstelcoAPI: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authToken
 
-            $0.decorateRequests { res, req in
+            $0.decorateRequests { _, req in
                 return refreshTokenOnAuthFailure(request: req, refreshToken: self.refreshToken)
             }
         }

@@ -29,7 +29,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
+            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, _) in
                 if let regionResponse = regionResponse {
                     OnBoardingManager.sharedInstance.region = regionResponse
                     self.getSimProfileForRegion(region: regionResponse)
