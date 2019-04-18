@@ -32,7 +32,10 @@ class HomeViewController2: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
+
+        let spinnerView: UIView = showSpinner(onView: view)
         getProducts() { products, error in
+            self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 print("error fetching products \(error)")
