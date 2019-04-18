@@ -32,7 +32,10 @@ class HomeViewController2: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
+
+        let spinnerView: UIView = showSpinner(onView: view)
         getProducts() { products, error in
+            self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 print("error fetching products \(error)")
@@ -42,11 +45,17 @@ class HomeViewController2: UIViewController {
             // TODO: check the if the customer is a member already.
             self.hasSubscription = false
         }
+        didPullToRefresh()
     }
 
     @objc func didPullToRefresh() {
-        let delayInSeconds = 4.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds) {
+        getBundles() { bundles, error in
+            if let bundle = bundles.first {
+                let formatter:ByteCountFormatter = ByteCountFormatter()
+                formatter.countStyle = .binary
+                self.balanceLabel.text = formatter.string(fromByteCount: bundle.balance)
+            }
+            print(bundles)
             self.refreshControl?.endRefreshing()
         }
     }
@@ -75,6 +84,24 @@ class HomeViewController2: UIViewController {
                                 sku: $0.sku)
                         }
                         completionHandler(availableProducts, nil)
+                    } else {
+                        completionHandler([], nil)
+                    }
+                }
+            }
+            .onFailure { error in
+                DispatchQueue.main.async {
+                    completionHandler([], error)
+                }
+        }
+    }
+
+    func getBundles(completionHandler: @escaping ([BundleModel], Error?) -> Void) {
+        APIManager.sharedInstance.bundles.load()
+            .onSuccess { entity in
+                DispatchQueue.main.async {
+                    if let bundles: [BundleModel] = entity.typedContent(ifNone: nil) {
+                        completionHandler(bundles, nil)
                     } else {
                         completionHandler([], nil)
                     }
