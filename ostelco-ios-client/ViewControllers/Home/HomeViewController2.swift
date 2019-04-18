@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import Siesta
+import ostelco_core
 
 class HomeViewController2: UIViewController {
 
@@ -18,11 +19,11 @@ class HomeViewController2: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
 
     var refreshControl: UIRefreshControl!
-    var fakeHasSubscription = false
+    var hasSubscription = false
+    var availableProducts: [Product] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.registerNotifications(authorise: true)
 
@@ -31,6 +32,16 @@ class HomeViewController2: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
+        getProducts() { products, error in
+            self.availableProducts = products
+            if let error = error {
+                print("error fetching products \(error)")
+            } else if products.count == 0 {
+                print("No products available")
+            }
+            // TODO: check the if the customer is a member already.
+            self.hasSubscription = false
+        }
     }
 
     @objc func didPullToRefresh() {
@@ -41,12 +52,38 @@ class HomeViewController2: UIViewController {
     }
 
     @IBAction func buyDataTapped(_ sender: Any) {
-        if fakeHasSubscription {
-            let product = Product(name: "Buy 1GB for $5", amount: 5.0, country: "SG", currency: "SGD", sku: "1234")
-            showProductListActionSheet(products: [product], delegate: self)
+        if hasSubscription {
+            showProductListActionSheet(products: self.availableProducts, delegate: self)
         } else {
-            fakeHasSubscription = true
+            // TODO: Remove this after the logic for subscription check is implemented
+            hasSubscription = true
             performSegue(withIdentifier: "becomeMember", sender: self)
+        }
+    }
+
+    func getProducts(completionHandler: @escaping ([Product], Error?) -> Void) {
+        APIManager.sharedInstance.products.load()
+            .onSuccess { entity in
+                DispatchQueue.main.async {
+                    if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
+                        let availableProducts:[Product] = products.map {
+                            Product(
+                                name: "Buy \($0.presentation.label) for \($0.presentation.price)",
+                                amount: Decimal($0.price.amount),
+                                country: "SG",
+                                currency: $0.price.currency,
+                                sku: $0.sku)
+                        }
+                        completionHandler(availableProducts, nil)
+                    } else {
+                        completionHandler([], nil)
+                    }
+                }
+            }
+            .onFailure { error in
+                DispatchQueue.main.async {
+                    completionHandler([], error)
+                }
         }
     }
 }

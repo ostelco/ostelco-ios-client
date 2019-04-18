@@ -7,6 +7,7 @@
 //
 
 import Siesta
+import ostelco_core
 
 class APIManager: Service {
 
@@ -73,6 +74,11 @@ class APIManager: Service {
         configureTransformer("/context") {
             try self.jsonDecoder.decode(Context.self, from: $0.content)
         }
+
+        configureTransformer("/products") {
+            try self.jsonDecoder.decode([ProductModel].self, from: $0.content)
+        }
+
     }
 }
 
