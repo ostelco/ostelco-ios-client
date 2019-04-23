@@ -17,6 +17,7 @@ public enum OstelcoColor: CaseIterable {
     case greyedOut
     case orangeYellow
     case oyaBlue
+    case oyaBlueDev
     case watermelon
     case white
     
@@ -36,6 +37,8 @@ public enum OstelcoColor: CaseIterable {
             return .from(red: 255, green: 168, blue: 0)
         case .oyaBlue:
             return .from(red: 47, green: 22, blue: 232)
+        case .oyaBlueDev:
+            return .from(red: 0, green: 186, blue: 203)
         case .watermelon:
             return .from(red: 255, green: 56, blue: 125)
         case .white:
