@@ -29,6 +29,7 @@ public enum OstelcoFontType: CaseIterable {
     case heavy
     case medium
     case regular
+    case semibold
     
     var fontName: String {
         switch self {
@@ -42,6 +43,8 @@ public enum OstelcoFontType: CaseIterable {
             return "SFProText-Medium"
         case .regular:
             return "SFProText-Regular"
+        case .semibold:
+            return "SFProText-Semibold"
         }
     }
 }
@@ -55,6 +58,7 @@ public enum OstelcoFontSize: CaseIterable {
     case heading2
     case onboarding
     case secondary
+    case smallButton
 
     var toCGFloat: CGFloat {
         switch self {
@@ -74,6 +78,8 @@ public enum OstelcoFontSize: CaseIterable {
             return 18
         case .secondary:
             return 16
+        case .smallButton:
+            return 14
         }
     }
 }

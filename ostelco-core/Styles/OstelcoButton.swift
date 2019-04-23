@@ -12,6 +12,8 @@ import UIKit
 @IBDesignable
 open class OstelcoButton: UIButton {
     
+    public let defaultCornerRadius: CGFloat = 8
+    
     public var appTitleColor: OstelcoColor = .blackForText {
         didSet {
             self.setTitleColor(self.appTitleColor.toUIColor, for: .normal)
@@ -100,5 +102,82 @@ public class LinkTextButton: OstelcoButton {
         self.appTitleColor = .oyaBlue
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .body)
+    }
+}
+
+public class PrimaryButton: OstelcoButton {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.appBackgroundColor = .oyaBlue
+        self.appTitleColor = .white
+        self.appFont = OstelcoFont(fontType: .semibold,
+                                   fontSize: .secondary)
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = self.defaultCornerRadius
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric,
+                      height: 50)
+    }
+}
+
+public class SmallButton: OstelcoButton {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.contentEdgeInsets = UIEdgeInsets(top: 7,
+                                              left: 14,
+                                              bottom: 7,
+                                              right: 14)
+        
+        self.appBackgroundColor = .oyaBlue
+        self.appTitleColor = .white
+        self.appFont = OstelcoFont(fontType: .semibold,
+                                   fontSize: .smallButton)
+    }
+}
+
+public class BuyButton: OstelcoButton {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.appTitleColor = .white
+        self.addRoundingAndShadow(background: .oyaBlue)
+    }
+    
+    private func addRoundingAndShadow(background color: OstelcoColor) {
+        let cornerRadius = self.intrinsicContentSize.height / 2
+        guard let context = UIGraphicsGetCurrentContext() else {
+            assertionFailure("Could not access graphics context!")
+            // Let's just make it rounded and blue and forget about the damned shadow
+            self.appBackgroundColor = color
+            self.layer.cornerRadius = cornerRadius
+            self.clipsToBounds = true
+            return
+        }
+        
+        context.saveGState()
+        
+        let roundedRectPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        
+        let blurColor = color.toUIColor.withAlphaComponent(0.3)
+        
+        context.setShadow(offset: CGSize(width: 0, height: 7),
+                          blur: 18,
+                          color: blurColor.cgColor)
+        context.addPath(roundedRectPath.cgPath)
+        context.setFillColor(color.toUIColor.cgColor)
+        context.closePath()
+        context.fillPath()
+        
+        context.restoreGState()
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric,
+                      height: 55)
     }
 }
