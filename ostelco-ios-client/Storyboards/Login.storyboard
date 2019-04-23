@@ -24,6 +24,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="16" y="553" width="343" height="50"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="Zy6-fZ-9y6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
