@@ -138,6 +138,11 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
 		9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95722649DD30001641A /* SecureStorage.swift */; };
+		9B46D64B226F00210030A8EB /* OstelcoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D64A226F00210030A8EB /* OstelcoColor.swift */; };
+		9B46D64D226F01D60030A8EB /* OstelcoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */; };
+		9B46D64F226F02C30030A8EB /* OstelcoFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D64E226F02C30030A8EB /* OstelcoFont.swift */; };
+		9B46D651226F0E5D0030A8EB /* OstelcoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */; };
+		9B46D653226F1ADA0030A8EB /* UIColor+Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -161,7 +166,6 @@
 		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
-		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
 		9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
@@ -177,6 +181,7 @@
 		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
 		9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
 		9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
+		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */; };
@@ -379,6 +384,11 @@
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
+		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
+		9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoLabel.swift; sourceTree = "<group>"; };
+		9B46D64E226F02C30030A8EB /* OstelcoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFont.swift; sourceTree = "<group>"; };
+		9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoButton.swift; sourceTree = "<group>"; };
+		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ostelco_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B851ABD225E29BE0076ABF3 /* ostelco_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ostelco_core.h; sourceTree = "<group>"; };
 		9B851ABE225E29BE0076ABF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -653,6 +663,17 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		9B46D649226F00090030A8EB /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				9B46D64A226F00210030A8EB /* OstelcoColor.swift */,
+				9B46D64E226F02C30030A8EB /* OstelcoFont.swift */,
+				9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */,
+				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		9B851ABC225E29BE0076ABF3 /* ostelco-core */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +683,7 @@
 				9B9B3244225E3C6500227EA3 /* Models */,
 				9B851ADE225E33010076ABF3 /* Network */,
 				9B3FA95622649DBE0001641A /* Protocols */,
+				9B46D649226F00090030A8EB /* Styles */,
 				9B851ADD225E32E90076ABF3 /* ViewControllers */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
 			);
@@ -703,6 +725,7 @@
 				9B851AE3225E33620076ABF3 /* NibLoadable.swift */,
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
 				9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */,
+				9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -838,13 +861,11 @@
 			children = (
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
-				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
 				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
-				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
@@ -853,9 +874,8 @@
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
-				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
-				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
+				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 			);
 			path = Extensions;
@@ -1580,14 +1600,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B46D64F226F02C30030A8EB /* OstelcoFont.swift in Sources */,
 				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
 				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */,
+				9B46D64B226F00210030A8EB /* OstelcoColor.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
+				9B46D653226F1ADA0030A8EB /* UIColor+Pixel.swift in Sources */,
+				9B46D64D226F01D60030A8EB /* OstelcoLabel.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
@@ -1595,6 +1619,7 @@
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
 				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
+				9B46D651226F0E5D0030A8EB /* OstelcoButton.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
 			);
