@@ -13,7 +13,7 @@
         <!--Splash View Controller-->
         <scene sceneID="jfV-eI-gIz">
             <objects>
-                <viewController id="MAv-rn-oJO" customClass="SplashViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MAv-rn-oJO" customClass="SplashViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w59-sa-X0F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="-1111" y="-250"/>
         </scene>
-        <!--Home-->
+        <!--TabController-->
         <scene sceneID="ANw-xS-q1w">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="gaJ-w0-cam" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TabController" id="gaJ-w0-cam" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sg-Z0-Z7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1098" y="-189"/>
