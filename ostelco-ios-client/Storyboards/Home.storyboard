@@ -88,6 +88,7 @@
                                     <constraint firstItem="LIe-WC-Ytc" firstAttribute="centerX" secondItem="NWm-c7-dac" secondAttribute="centerX" id="PbK-eY-nef"/>
                                     <constraint firstItem="LRu-69-U6d" firstAttribute="centerX" secondItem="NWm-c7-dac" secondAttribute="centerX" id="aqs-U8-ELk"/>
                                 </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
