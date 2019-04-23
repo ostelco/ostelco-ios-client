@@ -8,7 +8,8 @@
 
 import UIKit
 
-/// NOTE: When adding this in InterfaceBuilder, make sure to use a `Custom` button style.
+/// Base button subclass to facilitate easy IBDesignable subclasses.
+/// NOTE: When adding any of these in InterfaceBuilder, make sure to select a `Custom` button style.
 @IBDesignable
 open class OstelcoButton: UIButton {
     

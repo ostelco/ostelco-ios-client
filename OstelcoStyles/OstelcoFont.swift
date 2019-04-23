@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The combination of a font type and size which makes a font.
 public class OstelcoFont {
     public let fontType: OstelcoFontType
     public let fontSize: OstelcoFontSize
@@ -30,6 +31,9 @@ public class OstelcoFont {
     
     public static var bodyText = OstelcoFont(fontType: .regular, fontSize: .body)
     
+    /// To use fonts from a framework, you have to register them with CoreText
+    /// manually before calling `UIFont(name:size:)`. This method checks if the
+    /// registration has already occurred, and then registers all fonts if it hasn't.
     private static var _fontsRegistered = false
     private static func registerFontsIfNeeded() {
         guard !_fontsRegistered else {
@@ -51,6 +55,7 @@ public class OstelcoFont {
     }
 }
 
+/// The types of font as indicated in https://app.zeplin.io/project/5c8b989f46989524fb0258ac/styleguide
 public enum OstelcoFontType: CaseIterable {
     case alternateBold
     case bold

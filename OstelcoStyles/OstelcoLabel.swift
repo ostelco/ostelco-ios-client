@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Base label subclass to facilitate easy IBDesignable subclasses.
 @IBDesignable
 open class OstelcoLabel: UILabel {
     
