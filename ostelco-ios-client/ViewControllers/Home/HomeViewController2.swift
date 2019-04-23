@@ -69,7 +69,7 @@ class HomeViewController2: UIViewController {
         let integerPart = numberArray[0]
         // If there is a decimal part.
         let decimalPart: String? = (numberArray.count >= 2) ? "\(decimalSeparator)\(numberArray[1])": nil
-        let byteModifier = " \(textArray[1])"
+        let unit = " \(textArray[1])"
 
         // Add integer part with the big font.
         let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont])
@@ -84,7 +84,7 @@ class HomeViewController2: UIViewController {
             attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
         }
         // Add the modifier part with bigger font.
-        attrString.append(NSMutableAttributedString(string: byteModifier, attributes: [.font: bigFont]))
+        attrString.append(NSMutableAttributedString(string: unit, attributes: [.font: bigFont]))
         return attrString
     }
 
