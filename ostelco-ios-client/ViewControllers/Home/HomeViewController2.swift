@@ -72,17 +72,19 @@ class HomeViewController2: UIViewController {
         let byteModifier = " \(textArray[1])"
 
         // Add integer part with the big font.
-        let attrString = NSMutableAttributedString(string: integerPart,
-                                                   attributes: [NSAttributedString.Key.font: bigFont])
+        let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont])
         if let decimalPart = decimalPart {
             // Add decimal part including the decimal character
             // This portion of text is aligned to top with a smaller font
             let offset = bigFont.capHeight - smallFont.capHeight
-            let attributes: [NSAttributedString.Key: Any] =  [NSAttributedString.Key.font: smallFont, NSAttributedString.Key.baselineOffset: offset]
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: smallFont,
+                .baselineOffset: offset
+            ]
             attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
         }
         // Add the modifier part with bigger font.
-        attrString.append(NSMutableAttributedString(string: byteModifier, attributes: [NSAttributedString.Key.font: bigFont]))
+        attrString.append(NSMutableAttributedString(string: byteModifier, attributes: [.font: bigFont]))
         return attrString
     }
 
