@@ -61,7 +61,7 @@ open class OstelcoButton: UIButton {
             if self.isEnabled {
                 self.alpha = 1
             } else {
-                self.alpha = 0.4
+                self.alpha = 0.15
             }
         }
     }
