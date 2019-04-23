@@ -46,13 +46,49 @@ class HomeViewController2: UIViewController {
         }
         didPullToRefresh()
     }
-    
+
+    // Make the string with all the styles required for the balance text
+    class func getStylizeBalanceString(text: String) -> NSMutableAttributedString? {
+        let textArray: [Substring] = text.split(whereSeparator: { $0 == " " })
+        let decimalSeparator = Locale.current.decimalSeparator!.first!
+        let bigFont = UIFont.boldSystemFont(ofSize: 84)
+        let smallFont = UIFont.boldSystemFont(ofSize: 36)
+
+        guard textArray.count >= 2 else {
+            return nil
+        }
+        var decimalPart: String?
+        var integerPart = String(textArray[0])
+        let byteModifier: String = " \(String(textArray[1]))"
+
+        // Check if the numeric value has a decimal point.
+        if let index = textArray[0].firstIndex(of: decimalSeparator) {
+            integerPart = String(textArray[0].prefix(upTo: index))
+            decimalPart = String(textArray[0].suffix(from: index))
+        }
+        // Add integer part with the big font.
+        let attrString = NSMutableAttributedString(string: integerPart,
+                                                   attributes: [NSAttributedString.Key.font: bigFont])
+        if let decimalPart = decimalPart {
+            // Add decimal part including the decimal character
+            // This portion of text is aligned to top with a smaller font
+            let offset = bigFont.capHeight - smallFont.capHeight
+            let attributes: [NSAttributedString.Key: Any] =  [NSAttributedString.Key.font: smallFont, NSAttributedString.Key.baselineOffset: offset]
+            attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
+        }
+        // Add the modifier part with bigger font.
+        attrString.append(NSMutableAttributedString(string: byteModifier, attributes: [NSAttributedString.Key.font: bigFont]))
+        return attrString
+    }
+
     @objc func didPullToRefresh() {
         getBundles { bundles, _ in
             if let bundle = bundles.first {
                 let formatter: ByteCountFormatter = ByteCountFormatter()
                 formatter.countStyle = .binary
-                self.balanceLabel.text = formatter.string(fromByteCount: bundle.balance)
+                if let attributedText = HomeViewController2.getStylizeBalanceString(text: formatter.string(fromByteCount: bundle.balance)) {
+                    self.balanceLabel.attributedText = attributedText
+                }
             }
             print(bundles)
             self.refreshControl.endRefreshing()
