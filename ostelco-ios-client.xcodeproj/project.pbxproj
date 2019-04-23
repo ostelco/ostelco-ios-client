@@ -1509,6 +1509,7 @@
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */,
 				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
