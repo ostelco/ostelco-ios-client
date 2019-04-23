@@ -1,6 +1,6 @@
 //
 //  OstelcoButton.swift
-//  ostelco-core
+//  OstelcoStyles
 //
 //  Created by Ellen Shapiro on 4/23/19.
 //  Copyright © 2019 mac. All rights reserved.
@@ -68,7 +68,7 @@ open class OstelcoButton: UIButton {
     // MARK: - Initializers
     
     open func commonInit() {
-        // Anything which should be happening anytime the label is set up.
+        // Anything which should be happening anytime the button is set up.
     }
     
     convenience init() {
@@ -145,35 +145,24 @@ public class BuyButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         self.appTitleColor = .white
+        self.appFont = OstelcoFont(fontType: .bold, fontSize: .body)
         self.addRoundingAndShadow(background: .oyaBlue)
     }
     
     private func addRoundingAndShadow(background color: OstelcoColor) {
         let cornerRadius = self.intrinsicContentSize.height / 2
-        guard let context = UIGraphicsGetCurrentContext() else {
-            assertionFailure("Could not access graphics context!")
-            // Let's just make it rounded and blue and forget about the damned shadow
-            self.appBackgroundColor = color
-            self.layer.cornerRadius = cornerRadius
-            self.clipsToBounds = true
-            return
-        }
+        let shapeLayer = CAShapeLayer()
         
-        context.saveGState()
+        shapeLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
         
-        let roundedRectPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        shapeLayer.fillColor = color.toUIColor.cgColor
+        shapeLayer.shadowColor = color.toUIColor.cgColor
+        shapeLayer.shadowPath = shapeLayer.path
+        shapeLayer.shadowOpacity = 0.3
+        shapeLayer.shadowOffset = CGSize(width: 0, height: 7)
+        shapeLayer.shadowRadius = 18
         
-        let blurColor = color.toUIColor.withAlphaComponent(0.3)
-        
-        context.setShadow(offset: CGSize(width: 0, height: 7),
-                          blur: 18,
-                          color: blurColor.cgColor)
-        context.addPath(roundedRectPath.cgPath)
-        context.setFillColor(color.toUIColor.cgColor)
-        context.closePath()
-        context.fillPath()
-        
-        context.restoreGState()
+        self.layer.insertSublayer(shapeLayer, at: 0)
     }
     
     public override var intrinsicContentSize: CGSize {

@@ -1,6 +1,6 @@
 //
 //  OstelcoColor.swift
-//  ostelco-core
+//  OstelcoStyles
 //
 //  Created by Ellen Shapiro on 4/23/19.
 //  Copyright © 2019 mac. All rights reserved.
