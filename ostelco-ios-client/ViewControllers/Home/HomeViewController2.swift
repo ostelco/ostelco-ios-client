@@ -17,9 +17,20 @@ class HomeViewController2: UIViewController {
     
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
-    
+    @IBOutlet private weak var buyButton: UIButton!
+
+    let unlockText = "Unlock More Data"
+    let buyText = "Buy Data"
+
     private lazy var refreshControl = UIRefreshControl()
-    var hasSubscription = false
+    var hasSubscription = false {
+        didSet {
+            buyButton.setTitle(
+                (hasSubscription == false) ? unlockText : buyText,
+                for: .normal
+            )
+        }
+    }
     var availableProducts: [Product] = []
 
     override func viewDidLoad() {
