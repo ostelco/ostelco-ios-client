@@ -33,12 +33,12 @@ class HomeViewController2: UIViewController {
         self.scrollView.addSubview(refreshControl)
 
         let spinnerView: UIView = showSpinner(onView: view)
-        getProducts() { products, error in
+        getProducts { products, error in
             self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 print("error fetching products \(error)")
-            } else if products.count == 0 {
+            } else if products.isEmpty {
                 print("No products available")
             }
             // TODO: check the if the customer is a member already.
@@ -48,18 +48,18 @@ class HomeViewController2: UIViewController {
     }
 
     @objc func didPullToRefresh() {
-        getBundles() { bundles, error in
+        getBundles { bundles, _ in
             if let bundle = bundles.first {
-                let formatter:ByteCountFormatter = ByteCountFormatter()
+                let formatter: ByteCountFormatter = ByteCountFormatter()
                 formatter.countStyle = .binary
                 self.balanceLabel.text = formatter.string(fromByteCount: bundle.balance)
             }
             print(bundles)
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
     }
 
-    @IBAction func buyDataTapped(_ sender: Any) {
+    @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             showProductListActionSheet(products: self.availableProducts, delegate: self)
         } else {
@@ -74,7 +74,7 @@ class HomeViewController2: UIViewController {
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        let availableProducts:[Product] = products.map {
+                        let availableProducts: [Product] = products.map {
                             Product(
                                 name: "Buy \($0.presentation.label) for \($0.presentation.price)",
                                 amount: Decimal($0.price.amount),
