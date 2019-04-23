@@ -15,25 +15,25 @@ class TheLegalStuffViewController: UIViewController {
         case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
     }
     
-    @IBOutlet weak var termsAndConditionsLabel: UILabel!
-    @IBOutlet weak var privacyPolicyLabel: UILabel!
-    @IBOutlet weak var oyaUpdatesLabel: UILabel!
+    @IBOutlet private weak var termsAndConditionsLabel: UILabel!
+    @IBOutlet private weak var privacyPolicyLabel: UILabel!
+    @IBOutlet private weak var oyaUpdatesLabel: UILabel!
 
-    @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
-    @IBOutlet weak var privacyPolicySwitch: UISwitch!
-    @IBOutlet weak var oyaUpdatesSwitch: UISwitch!
+    @IBOutlet private weak var termsAndConditionsSwitch: UISwitch!
+    @IBOutlet private weak var privacyPolicySwitch: UISwitch!
+    @IBOutlet private weak var oyaUpdatesSwitch: UISwitch!
 
-    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet private weak var continueButton: UIButton!
 
-    @IBAction func termsAndConditionsToggled(_ sender: Any) {
+    @IBAction private func termsAndConditionsToggled(_ sender: Any) {
         toggleContinueButton()
     }
 
-    @IBAction func privacyPolicyToggled(_ sender: Any) {
+    @IBAction private func privacyPolicyToggled(_ sender: Any) {
         toggleContinueButton()
     }
 
-    @IBAction func oyaUpdatesToggled(_ sender: Any) {
+    @IBAction private func oyaUpdatesToggled(_ sender: Any) {
         toggleContinueButton()
     }
 

@@ -15,13 +15,13 @@ class LocationServiceDisabledViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
 
-    @IBAction func retryTapped(_ sender: Any) {
+    @IBAction private func retryTapped(_ sender: Any) {
         self.checkLocationServiceStatus()
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
     

@@ -12,11 +12,11 @@ import RxSwift
 
 // TODO: Remove "2" when deleting existing LoginViewController
 class LoginViewController2: UIViewController {
-    var spinnerView:UIView?
+    var spinnerView: UIView?
     
     let disposeBag = DisposeBag()
 
-    @IBAction func signInTapped(_ sender: UIButton) {
+    @IBAction private func signInTapped(_ sender: UIButton) {
         // Trigger custom events to record button clicks
         Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
         sharedAuth.loginWithAuth0().subscribe(

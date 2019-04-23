@@ -13,18 +13,17 @@ import Siesta
 
 class BecomeAMemberViewController: UIViewController {
 
-    var paymentError: RequestError!
+    var paymentError: RequestError?
     var paymentAuthorized: Bool = false
 
-    @IBOutlet weak var buttonContainer: UIView!
+    @IBOutlet private weak var buttonContainer: UIView!
 
-    @IBAction func cancelButton(_ sender: Any) {
+    @IBAction private func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // 1. Make sure device supports apple pay and that there are no other restrictions preventing payment (like parental control)
         if PKPaymentAuthorizationViewController.canMakePayments() {
@@ -103,12 +102,12 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if (self.paymentAuthorized == false) {
+            if self.paymentAuthorized == false {
                 print("User has cancelled the Payment")
-            } else if (self.paymentError == nil) {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
+            } else if let error = self.paymentError {
+                self.showAPIError(error: error)
             } else {
-                self.showAPIError(error: self.paymentError)
+                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             }
         })
     }

@@ -14,11 +14,11 @@ class PendingVerificationViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 
-    @IBAction func `continue`(_ sender: Any) {
+    @IBAction private func `continue`(_ sender: Any) {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         let spinnerView = showSpinner(onView: self.view)
         APIManager.sharedInstance.regions.child(countryCode).load()
@@ -49,10 +49,12 @@ class PendingVerificationViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         removeNotificationObserver()
     }
 

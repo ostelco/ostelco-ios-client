@@ -13,18 +13,17 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
 
-    @IBAction func singPassTapped(_ sender: Any) {
+    @IBAction private func singPassTapped(_ sender: Any) {
         //performSegue(withIdentifier: "myInfoSummary", sender: self)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.myInfoDelegate = self
+        UIApplication.shared.typedDelegate.myInfoDelegate = self
         getMyInfoToken()
     }
 
-    @IBAction func nricTapped(_ sender: Any) {
+    @IBAction private func nricTapped(_ sender: Any) {
         performSegue(withIdentifier: "nricVerify", sender: self)
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 

@@ -27,8 +27,8 @@
 		041216B9222D7B1600455278 /* LocationAccessRestrictedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */; };
 		041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
 		041216BC222D7B2B00455278 /* WrongCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216BA222D7B2B00455278 /* WrongCountryViewController.swift */; };
-		041FAB1B225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */; };
-		041FAB1C225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */; };
+		041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
+		041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
@@ -161,6 +161,7 @@
 		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
+		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
 		9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
@@ -174,6 +175,11 @@
 		9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
 		9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */; };
 		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
+		9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
+		9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
+		9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
+		9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
+		9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -287,7 +293,7 @@
 		041216B4222D6B3500455278 /* LocationServiceDisabledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDisabledViewController.swift; sourceTree = "<group>"; };
 		041216B7222D7B1600455278 /* LocationAccessRestrictedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessRestrictedViewController.swift; sourceTree = "<group>"; };
 		041216BA222D7B2B00455278 /* WrongCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongCountryViewController.swift; sourceTree = "<group>"; };
-		041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Gesture.swift"; sourceTree = "<group>"; };
+		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCIVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
@@ -397,6 +403,9 @@
 		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
 		9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
 		9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
+		9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TypedDelegate.swift"; sourceTree = "<group>"; };
+		9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Netverify+Ostelco.swift"; sourceTree = "<group>"; };
+		9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FancyAppend.swift"; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -690,6 +699,7 @@
 		9B851AE2225E334C0076ABF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */,
 				9B851AE3225E33620076ABF3 /* NibLoadable.swift */,
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
 				9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */,
@@ -827,10 +837,14 @@
 			isa = PBXGroup;
 			children = (
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
+				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
+				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
+				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
 				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
+				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
@@ -839,6 +853,7 @@
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
+				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
@@ -950,11 +965,12 @@
 				C29802A92181EDA800FBC5C3 /* Sources */,
 				C29802B92181EDA800FBC5C3 /* Frameworks */,
 				C29802BF2181EDA800FBC5C3 /* Resources */,
+				C26BC1A02266446D00BF4F13 /* Embed Frameworks */,
 				8BBFABC3E348661E3BAFD07A /* [CP] Embed Pods Frameworks */,
 				4CEDD82C09A10FF46826FF72 /* [CP] Copy Pods Resources */,
 				04DE1DC1223D686D001991AB /* Crashlytics script */,
 				9BF2777C225D10DC006428D5 /* SPM Post-build */,
-				C26BC1A02266446D00BF4F13 /* Embed Frameworks */,
+				9BBF706F226652AC00E4B9B4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1327,6 +1343,24 @@
 			shellPath = /bin/sh;
 			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -prod -src=\"$SRCROOT\"\n";
 		};
+		9BBF706F226652AC00E4B9B4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -z $CIRCLECI ]; then\n    ./Pods/SwiftLint/swiftlint\nelse\n    #TODO: Figure out why the hell this isn't working on Circle.\n    echo \"On CI, not trying to run SwiftLint\"\nfi\n";
+		};
 		9BF2777B225D10B6006428D5 /* SPM Pre-build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1466,6 +1500,7 @@
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
+				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
@@ -1479,6 +1514,7 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				041216B2222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
+				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
@@ -1486,7 +1522,7 @@
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
-				041FAB1B225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */,
+				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -1546,6 +1582,7 @@
 			files = (
 				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
 				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
+				9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
@@ -1603,7 +1640,7 @@
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
-				041FAB1C225F19AC00877E72 /* UIViewController+Gesture.swift in Sources */,
+				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
@@ -1618,6 +1655,7 @@
 				041216B3222D6ADC00455278 /* LocationAccessDeniedViewController.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
+				9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
@@ -1629,6 +1667,7 @@
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
+				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,

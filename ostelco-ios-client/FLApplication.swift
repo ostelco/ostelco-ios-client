@@ -9,9 +9,7 @@
 import UIKit
 import Firebase
 
-
-class FLApplication: UIApplication
-{
+class FLApplication: UIApplication {
     override func sendAction(_ action: Selector, to target: Any?, from sender: Any?, for event: UIEvent?) -> Bool {
         if let button = sender as? UIButton {
             if let title = button.title(for: .normal) {

@@ -15,7 +15,6 @@ open class GenericDataSource<Item>: NSObject {
     /// The list of items driving this table view.
     public var items: [Item]
     
-    
     /// The number of items currently in the list.
     open var numberOfItems: Int {
         return self.items.count

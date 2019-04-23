@@ -16,7 +16,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var myInfoDelegate: MyInfoCallbackHandler?
+    weak var myInfoDelegate: MyInfoCallbackHandler?
     let gcmMessageIDKey = "gcm.message_id"
     var fcmToken: String?
 
@@ -36,14 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SiestaLog.Category.enabled = .all
         }
 
-        let freschatConfig:FreshchatConfig = FreshchatConfig.init(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
         // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera
         // freschatConfig.teamMemberInfoVisible = true; // set to NO to turn off showing an team member avatar. To customize the avatar shown, use the theme file
         freschatConfig.showNotificationBanner = true; // set to NO if you don't want to show the in-app notification banner upon receiving a new message while the app is open
         Freshchat.sharedInstance().initWith(freschatConfig)
 
-        application.applicationSupportsShakeToEdit = true;
+        application.applicationSupportsShakeToEdit = true
         FirebaseApp.configure()
         registerNotifications(authorise: false)
         print("App started")
@@ -67,8 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, _) in
             DispatchQueue.main.async {
                 if granted {
                     self.enableNotifications()
@@ -80,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerNotifications(authorise: Bool) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notifications Status: \(settings.authorizationStatus.rawValue)")
-            switch (settings.authorizationStatus) {
+            switch settings.authorizationStatus {
             case .notDetermined:
                 if authorise == true {
                     self.requestNotificationAuthorization()
@@ -93,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         print("URL = \(url.absoluteString)")
         return Auth0.resumeAuth(url, options: options)
     }
@@ -210,11 +209,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-protocol MyInfoCallbackHandler {
+protocol MyInfoCallbackHandler: class {
     func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
 }
 
-extension AppDelegate : UNUserNotificationCenterDelegate {
+extension AppDelegate: UNUserNotificationCenterDelegate {
 
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -255,17 +254,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler()
     }
 
-    func sendDidReceivePushNotification(_ userInfo:[AnyHashable : Any]) {
+    func sendDidReceivePushNotification(_ userInfo: [AnyHashable: Any]) {
         NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
     }
 }
 
-extension AppDelegate : MessagingDelegate {
+extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Function: \(#function), line: \(#line)")
         print("Firebase registration token: \(fcmToken)")
 
-        let dataDict:[String: String] = ["token": fcmToken]
+        let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         // Send token to prime.
@@ -282,11 +281,14 @@ extension AppDelegate : MessagingDelegate {
 
     func sendFCMToken() {
         // TODO: Make sure this is called after getting a valid auth token.
-        guard let _ = APIManager.sharedInstance.authHeader, let token = fcmToken else {
-            // Wait to be authenticated, or the token to be ready.
-            return
+        guard
+            APIManager.sharedInstance.authHeader != nil,
+            let token = fcmToken else {
+                // Wait to be authenticated, or the token to be ready.
+                return
         }
-        // Use tha pplication ID as <BundleId>.<Unique DeviceID or UUID>
+        
+        // Use the application ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
         let json = ["token": token, "tokenType": "FCM", "applicationID": appId]
         APIManager.sharedInstance.resource("/applicationToken").request(.post, json: json)
@@ -297,6 +299,28 @@ extension AppDelegate : MessagingDelegate {
                 print("Failed to set FCM token \(error)")
         }
     }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        
+        switch motion {
+        case .motionShake:
+            guard let vc = self.window?.rootViewController else {
+                // There's no view controller to show.
+                return
+            }
+            
+            if let nav = vc as? UINavigationController {
+                nav.showNeedHelpActionSheet()
+            } else if let tab = vc as? UITabBarController {
+                tab.showNeedHelpActionSheet()
+            } else {
+                vc.topPresentedViewController().showNeedHelpActionSheet()
+            }
+        default:
+            break
+        }
+        
+    }
 
 }
-

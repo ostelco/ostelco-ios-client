@@ -12,9 +12,10 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     static let storyboard: Storyboard = .splash
     static let isInitialViewController = true
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     var spinnerView: UIView?
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = ThemeManager.currentTheme().mainColor
     }
 
@@ -30,12 +31,12 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                     DispatchQueue.main.async {
                         let apiManager = APIManager.sharedInstance
                         let userManager = UserManager.sharedInstance
-                        if (userManager.authToken != accessToken && userManager.authToken != nil) {
+                        if userManager.authToken != accessToken && userManager.authToken != nil {
                             apiManager.wipeResources()
                             UserManager.sharedInstance.clear()
                         }
 
-                        if (userManager.authToken != accessToken) {
+                        if userManager.authToken != accessToken {
                             apiManager.authHeader = "Bearer \(accessToken)"
                             UserManager.sharedInstance.authToken = accessToken
                         }
@@ -47,8 +48,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                         }
                         */
                         // Send the FCM Token, if it is ready.
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.sendFCMToken()
+                        UIApplication.shared.typedDelegate.sendFCMToken()
 
                         self.spinnerView = self.showSpinner(onView: self.view)
                         apiManager.context.load()

@@ -21,7 +21,7 @@ extension UIApplication {
         return NSClassFromString("XCTestCase") != nil
     }
     
-    /// Are non-UI tests being run? 
+    /// Are non-UI tests being run?
     static var isNonUITesting: Bool {
         return self.isTesting && !self.isUITesting
     }

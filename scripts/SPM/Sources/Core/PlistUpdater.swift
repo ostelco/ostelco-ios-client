@@ -33,7 +33,7 @@ public struct PlistUpdater {
     ///   - value: The value to set
     ///   - key: The key to set it for
     ///   - file: The file to set it in.
-    public static func setValue(_ value: AnyHashable, for key: String, in file: File) throws  {
+    public static func setValue(_ value: AnyHashable, for key: String, in file: File) throws {
         try self.runPlistBuddyCommand("\"Set :\(key) \"\(value)\"\"", for: file)
     }
     

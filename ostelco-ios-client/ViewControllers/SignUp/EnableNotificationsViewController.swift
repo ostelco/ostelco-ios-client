@@ -16,14 +16,14 @@ class EnableNotificationsViewController: UIViewController {
         enableNotifications(ignoreNotDetermined: true)
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         enableNotifications()
     }
 
-    @IBAction func dontAllowTapped(_ sender: Any) {
+    @IBAction private func dontAllowTapped(_ sender: Any) {
         enableNotifications()
     }
-    @IBAction func okTapped(_ sender: Any) {
+    @IBAction private func okTapped(_ sender: Any) {
         enableNotifications()
     }
 
@@ -41,15 +41,14 @@ class EnableNotificationsViewController: UIViewController {
 
     private func registerAndContinue() {
         DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.enableNotifications()
+            UIApplication.shared.typedDelegate.enableNotifications()
             self.showGetStarted()
         }
     }
 
     private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            switch (settings.authorizationStatus) {
+            switch settings.authorizationStatus {
             case .notDetermined:
                 if !ignoreNotDetermined {
                     self.requestNotificationAuthorization()
@@ -64,8 +63,7 @@ class EnableNotificationsViewController: UIViewController {
     }
 
     private func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in
             self.registerAndContinue()
         }
     }

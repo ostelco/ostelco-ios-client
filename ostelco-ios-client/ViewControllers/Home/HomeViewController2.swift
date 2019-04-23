@@ -13,33 +13,32 @@ import ostelco_core
 
 class HomeViewController2: UIViewController {
 
-    var paymentError: RequestError!
+    var paymentError: RequestError?
 
-    @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var scrollView: UIScrollView!
 
-    var refreshControl: UIRefreshControl!
+    private lazy var refreshControl = UIRefreshControl()
     var hasSubscription = false
     var availableProducts: [Product] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.registerNotifications(authorise: true)
+        
+        UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
 
         scrollView.alwaysBounceVertical = true
-        scrollView.bounces  = true
-        refreshControl = UIRefreshControl()
+        scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.scrollView.addSubview(refreshControl)
 
         let spinnerView: UIView = showSpinner(onView: view)
-        getProducts() { products, error in
+        getProducts { products, error in
             self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 print("error fetching products \(error)")
-            } else if products.count == 0 {
+            } else if products.isEmpty {
                 print("No products available")
             }
             // TODO: check the if the customer is a member already.
@@ -49,18 +48,18 @@ class HomeViewController2: UIViewController {
     }
 
     @objc func didPullToRefresh() {
-        getBundles() { bundles, error in
+        getBundles { bundles, _ in
             if let bundle = bundles.first {
-                let formatter:ByteCountFormatter = ByteCountFormatter()
+                let formatter: ByteCountFormatter = ByteCountFormatter()
                 formatter.countStyle = .binary
                 self.balanceLabel.text = formatter.string(fromByteCount: bundle.balance)
             }
             print(bundles)
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
     }
 
-    @IBAction func buyDataTapped(_ sender: Any) {
+    @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             showProductListActionSheet(products: self.availableProducts, delegate: self)
         } else {
@@ -75,7 +74,7 @@ class HomeViewController2: UIViewController {
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        let availableProducts:[Product] = products.map {
+                        let availableProducts: [Product] = products.map {
                             Product(
                                 name: "Buy \($0.presentation.label) for \($0.presentation.price)",
                                 amount: Decimal($0.price.amount),
@@ -152,10 +151,10 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
-            if (self.paymentError == nil) {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
+            if let error = self.paymentError {
+                self.showAPIError(error: error)
             } else {
-                self.showAPIError(error: self.paymentError)
+                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
             }
         })
     }

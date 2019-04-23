@@ -10,7 +10,7 @@ import Siesta
 import ostelco_core
 
 class APIManager: Service {
-
+    
     static let sharedInstance = APIManager()
     let jsonDecoder = JSONDecoder()
     var authHeader: String? {
@@ -93,6 +93,7 @@ extension APIManager {
     enum APIError: Swift.Error, LocalizedError {
         case failedToGetRegion
         case failedToParse
+        case errorCameWithoutData
         
         var localizedDescription: String {
             switch self {
@@ -100,6 +101,8 @@ extension APIManager {
                 return "Could not find suitable region from region response"
             case .failedToParse:
                 return "Something went wrong while parsing the API response"
+            case .errorCameWithoutData:
+                return "An error response was received from the server, but no further information is available"
             }
         }
     }

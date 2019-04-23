@@ -14,17 +14,17 @@ extension UIViewController {
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
 
-        if (!PKPaymentAuthorizationViewController.canMakePayments()) {
+        if !PKPaymentAuthorizationViewController.canMakePayments() {
             self.showAlert(title: "Payment Error", msg: "Your device does not support apple pay")
             return
         }
 
-        if (!Stripe.deviceSupportsApplePay()) {
+        if !Stripe.deviceSupportsApplePay() {
             self.showAlert(title: "Payment Error", msg: "You need to setup a card in your wallet, we support the following cards: American Express, Visa, Mastercard, Discover")
             return
         }
 
-        if (!PKPaymentAuthorizationViewController.canMakePayments()) {
+        if !PKPaymentAuthorizationViewController.canMakePayments() {
             self.showAlert(title: "Payment Error", msg: "Wallet empty or does not contain any of the supported card types. Should give user option to open apple wallet to add a card.")
             return
         }
@@ -42,8 +42,7 @@ extension UIViewController {
 
             // Present payment authorization view controller
             present(paymentAuthorizationViewController!, animated: true)
-        }
-        else {
+        } else {
             // There is a problem with your Apple Pay configuration
             print("There is a problem with your Apple Pay configuration")
             // TODO: Report error to bug reporting system
@@ -62,8 +61,4 @@ extension UIViewController {
             #endif
         }
     }
-}
-
-class PaymentError {
-    var paymentError: RequestError!
 }

@@ -10,11 +10,11 @@ import UIKit
 import Crashlytics
 
 class NRICAddressTableViewController: UITableViewController {
-    @IBOutlet weak var street: UITextField!
-    @IBOutlet weak var house: UITextField!
-    @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var postcode: UITextField!
-    @IBOutlet weak var country: UITextField!
+    @IBOutlet private weak var street: UITextField!
+    @IBOutlet private weak var house: UITextField!
+    @IBOutlet private weak var city: UITextField!
+    @IBOutlet private weak var postcode: UITextField!
+    @IBOutlet private weak var country: UITextField!
     var spinnerView: UIView?
 
     override func viewDidLoad() {
@@ -24,8 +24,8 @@ class NRICAddressTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
     }
   
-  @IBAction func `continue`(_ sender: Any) {
-    if (validateAddress() == false) {
+  @IBAction private func `continue`(_ sender: Any) {
+    if validateAddress() == false {
       let alert = UIAlertController(
         title: "Enter valid address",
         message: "Ensure that you have entered all fields",
@@ -40,14 +40,18 @@ class NRICAddressTableViewController: UITableViewController {
             .withParam("address", self.buildAddressString())
             .withParam("phoneNumber", "12345678")
         .request(.put)
-        .onSuccess { data in
+        .onSuccess { _ in
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "waitForDocs", sender: self)
             }
         }
         .onFailure { requestError in
             do {
-                let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: requestError.entity!.content as! Data)
+                guard let errorData = requestError.entity?.content as? Data else {
+                    throw APIManager.APIError.errorCameWithoutData
+                }
+
+                let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: errorData)
                 self.showAlert(title: "Error", msg: "\(putProfileError.errors)")
             } catch let error {
                 print(error)

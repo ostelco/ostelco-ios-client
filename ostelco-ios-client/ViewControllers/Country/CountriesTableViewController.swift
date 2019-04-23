@@ -21,8 +21,6 @@ class CountriesTableViewController: UITableViewController {
         self.tableView.addEmptyFooter()
         self.dataSource.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
     }
-    
-    
 }
 
 extension CountriesTableViewController: CountrySelectionDelegate {

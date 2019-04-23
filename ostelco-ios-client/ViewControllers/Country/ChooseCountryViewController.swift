@@ -9,14 +9,15 @@
 import UIKit
 
 class ChooseCountryViewController: UIViewController {
-    @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var selectedCountryLabel: UILabel!
+    
+    @IBOutlet private weak var picker: UIPickerView!
+    @IBOutlet private weak var selectedCountryLabel: UILabel!
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
     
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         performSegue(withIdentifier: "displayAllowLocationAccess", sender: self)
     }
 }

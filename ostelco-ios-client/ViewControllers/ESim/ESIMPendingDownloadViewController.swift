@@ -11,25 +11,26 @@ import Crashlytics
 
 class ESIMPendingDownloadViewController: UIViewController {
     var spinnerView: UIView?
-    var simProfile: SimProfile! {
+    var simProfile: SimProfile? {
         didSet {
             let region = OnBoardingManager.sharedInstance.region!
-            if simProfile != nil {
-                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: simProfile.status.rawValue)
+
+            if let profile = self.simProfile {
+                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: profile.status.rawValue)
             } else {
                 Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: "")
             }
         }
     }
 
-    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet private weak var continueButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, error) in
+            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, _) in
                 if let regionResponse = regionResponse {
                     OnBoardingManager.sharedInstance.region = regionResponse
                     self.getSimProfileForRegion(region: regionResponse)
@@ -41,11 +42,11 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
     
-    @IBAction func sendAgainTapped(_ sender: Any) {
+    @IBAction private func sendAgainTapped(_ sender: Any) {
         showAlert(title: "Error", msg: "We can't do that yet, sorry for the inconvenience. (It's actually not implemented)")
     }
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
 
@@ -54,7 +55,7 @@ class ESIMPendingDownloadViewController: UIViewController {
             .onSuccess { data in
                 if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
                     if let simProfile = simProfiles.first(where: {
-                        $0.eSimActivationCode == self.simProfile.eSimActivationCode
+                        $0.eSimActivationCode == self.simProfile?.eSimActivationCode
                     }) {
                         self.simProfile = simProfile
                         switch simProfile.status {
@@ -83,14 +84,14 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
 
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 
     func getSimProfileForRegion(region: RegionResponse) {
         let countryCode = region.region.id
-        if let simProfiles = region.simProfiles, simProfiles.count > 0 {
-            if simProfiles.first(where: { $0.status == .ENABLED }) != nil {
+        if let simProfiles = region.simProfiles, simProfiles.isNotEmpty {
+            if simProfiles.contains(where: { $0.status == .ENABLED }) {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "showHome", sender: self)
                 }
@@ -130,15 +131,17 @@ class ESIMPendingDownloadViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         removeNotificationObserver()
     }
 
     @objc func onDidReceiveData(_ notification: Notification) {
-        print(#function,  "Notification didReceivePushNotification arrived")
+        print(#function, "Notification didReceivePushNotification arrived")
     }
 
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a key to update from a `secrets.json` file or the CI environment.
-/// NOTE: Most of the time this should be a `String` enum conforming to `CaseIterable`. 
+/// NOTE: Most of the time this should be a `String` enum conforming to `CaseIterable`.
 protocol KeyToUpdate {
     
     // MARK: Helpers to allow easy use of `String` enums
@@ -33,7 +33,6 @@ protocol KeyToUpdate {
     /// - Returns: An array of keys which do not have values in the passed-in dictionary. Will be empty if no keys are missing.
     static func missingJSONKeys(in jsonDictionary: [String: AnyHashable]) -> [String]
 }
-
 
 // MARK: - CaseIterable default implementations
 extension KeyToUpdate where Self: CaseIterable {

@@ -17,21 +17,22 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         Freshchat.sharedInstance().unreadCount { (unreadCount) in
-            self.updateBadgeCount(count: unreadCount)
+            self.updateBadgeCount(to: unreadCount)
         }
     }
     
-    @objc func methodOfReceivedNotification(notification: Notification){
-        Freshchat.sharedInstance().unreadCount { (count:Int) -> Void in
-            self.updateBadgeCount(count: count)
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        Freshchat.sharedInstance().unreadCount { (count: Int) -> Void in
+            self.updateBadgeCount(to: count)
         }
     }
     
-    func updateBadgeCount(count: Int) {
+    func updateBadgeCount(to badgeCount: Int) {
         if let tabItems = tabBar.items {
-            if count > 0 {
-                tabItems[1].badgeValue = "\(count)"
+            if badgeCount > 0 {
+                tabItems[1].badgeValue = "\(badgeCount)"
             } else {
                 tabItems[1].badgeValue = nil
             }
@@ -41,10 +42,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {
         Freshchat.sharedInstance().unreadCount { (unreadCount) in
-            self.updateBadgeCount(count: unreadCount)
+            self.updateBadgeCount(to: unreadCount)
         }
         if tabBarController.viewControllers!.firstIndex(of: viewController) == 1 {
-            updateBadgeCount(count: 0)
+            updateBadgeCount(to: 0)
             Freshchat.sharedInstance().showConversations(self)
             return false
         }

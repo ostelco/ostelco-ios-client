@@ -11,16 +11,16 @@ import CoreLocation
 
 class AllowLocationAccessViewController: UIViewController {
 
-    @IBOutlet weak var fakeModalNotificationImage: UIImageView!
+    @IBOutlet private weak var fakeModalNotificationImage: UIImageView!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+
     var spinnerView: UIView?
-    var userLocation: CLLocation!
+    var userLocation: CLLocation?
 
     var locationManager = CLLocationManager()
 
     var descriptionText: String = ""
     var selectedCountry: Country?
-
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class AllowLocationAccessViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func continueTapped(_ sender: Any) {
+    @IBAction private func continueTapped(_ sender: Any) {
         verifyLocation()
     }
 
@@ -59,7 +59,7 @@ class AllowLocationAccessViewController: UIViewController {
     private func handleDenied() {
     }
 
-    @IBAction func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
+    @IBAction private func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
         verifyLocation()
     }
 
@@ -98,8 +98,7 @@ class AllowLocationAccessViewController: UIViewController {
 }
 
 extension AllowLocationAccessViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if userLocation == nil {
             removeSpinner(spinnerView)
             spinnerView = nil
@@ -110,7 +109,7 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
                     if let error = error {
                         print("Unable to Reverse Geocode Location (\(error))")
                         // locationLabel.text = "Unable to Find Address for Location"
-                        self.failedToGetLocationAlert() 
+                        self.failedToGetLocationAlert()
                     } else {
                         if let placemarks = placemarks, let placemark = placemarks.first, let country = placemark.country, let isoCountryCode = placemark.isoCountryCode {
                             print("country: \(country) isoCountryCode: \(isoCountryCode)")
@@ -146,13 +145,5 @@ extension AllowLocationAccessViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         verifyLocation(ignoreNotDetermined: true)
-    }
-}
-
-class DismissSegue: UIStoryboardSegue {
-    override func perform() {
-        if let p = source.presentingViewController {
-            p.dismiss(animated: true, completion: nil)
-        }
     }
 }

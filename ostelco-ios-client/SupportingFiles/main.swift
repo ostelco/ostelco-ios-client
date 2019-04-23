@@ -19,4 +19,3 @@ _ = UIApplicationMain(CommandLine.argc,
                       CommandLine.unsafeArgv,
                       NSStringFromClass(FLApplication.self),
                       appDelegateClassName)
-

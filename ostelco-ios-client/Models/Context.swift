@@ -9,7 +9,7 @@
 // TODO: Use Region struct from Region.swift when feature/ekyc-api-integration branch is merged into develop
 
 func getRegionFromRegionResponseArray(_ regionResponses: [RegionResponse]) -> RegionResponse? {
-    var ret: RegionResponse? = nil
+    var ret: RegionResponse?
     
     var hasRejectedStatus = false
     var hasApprovedStatus = false

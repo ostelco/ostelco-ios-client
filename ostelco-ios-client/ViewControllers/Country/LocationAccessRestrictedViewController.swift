@@ -15,7 +15,7 @@ class LocationAccessRestrictedViewController: UIViewController {
     let bag = DisposeBag()
     let manager = CLLocationManager()
 
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class LocationAccessRestrictedViewController: UIViewController {
         manager.rx
             .didChangeAuthorization
             .debug("didChangeAuthorization")
-            .filter({_,status in
+            .filter({ _, status in
                 switch status {
                 case .restricted,
                      .denied:
@@ -45,7 +45,7 @@ class LocationAccessRestrictedViewController: UIViewController {
             .disposed(by: bag)
     }
     
-    @IBAction func needHelpTapped(_ sender: Any) {
+    @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
 }

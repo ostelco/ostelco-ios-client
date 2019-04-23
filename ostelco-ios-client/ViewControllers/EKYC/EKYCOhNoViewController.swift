@@ -9,7 +9,7 @@
 import UIKit
 
 class EKYCOhNoViewController: UIViewController {
-    @IBAction func contactSupportTapped(_ sender: Any) {
+    @IBAction private func contactSupportTapped(_ sender: Any) {
         Freshchat.sharedInstance()?.showConversations(self)
     }
 }

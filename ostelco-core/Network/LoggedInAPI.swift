@@ -9,8 +9,7 @@
 import PromiseKit
 import Foundation
 
-
-/// A class to wrap APIs called once the user is logged in. 
+/// A class to wrap APIs called once the user is logged in.
 open class LoggedInAPI {
     
     private let baseURL: URL
@@ -55,7 +54,7 @@ open class LoggedInAPI {
 
     /// Loads arbitrary data from an endpoint based on the base URL, then validates
     /// that the response is valid.
-    /// 
+    ///
     /// Note: Override this method in a subclass to provide mock data to the other methods.
     ///
     /// - Parameter endpoint: The endpoint to load data from
