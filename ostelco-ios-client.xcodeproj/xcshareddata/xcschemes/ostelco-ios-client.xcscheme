@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9B851ABA225E29BE0076ABF3"
+               BuildableName = "ostelco_core.framework"
+               BlueprintName = "ostelco-core"
+               ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "04488165217924B700F59758"
                BuildableName = "Oya.app"
                BlueprintName = "ostelco-ios-client"
@@ -28,16 +42,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B851AC2225E29BE0076ABF3"
-               BuildableName = "ostelco-coreTests.xctest"
-               BlueprintName = "ostelco-coreTests"
-               ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

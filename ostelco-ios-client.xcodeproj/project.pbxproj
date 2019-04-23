@@ -161,7 +161,19 @@
 		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
-		9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
+		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
+		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
+		9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
+		9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */; };
+		9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF705C2265F04200E4B9B4 /* CountryCell.swift */; };
+		9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */; };
+		9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF705C2265F04200E4B9B4 /* CountryCell.swift */; };
+		9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */; };
+		9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */; };
+		9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
+		9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
+		9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */; };
+		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -376,6 +388,15 @@
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTests.swift; sourceTree = "<group>"; };
 		9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoDetails+Testing.swift"; sourceTree = "<group>"; };
+		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
+		9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatableCell.swift; sourceTree = "<group>"; };
+		9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataSource.swift; sourceTree = "<group>"; };
+		9BBF705C2265F04200E4B9B4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
+		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
+		9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
+		9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -616,6 +637,8 @@
 		9B3FA95622649DBE0001641A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */,
+				9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */,
 				9B3FA95722649DD30001641A /* SecureStorage.swift */,
 			);
 			path = Protocols;
@@ -657,6 +680,8 @@
 		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */,
+				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
 				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
 			);
 			path = ModelControllers;
@@ -667,6 +692,7 @@
 			children = (
 				9B851AE3225E33620076ABF3 /* NibLoadable.swift */,
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
+				9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -674,6 +700,7 @@
 		9B920F60225B8C51001EF9CD /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 			);
 			path = ModelControllers;
@@ -690,9 +717,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9BBF705B2265F03600E4B9B4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9BBF705C2265F04200E4B9B4 /* CountryCell.swift */,
+				9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		9BE2D43B225B5A8000B51999 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF705B2265F03600E4B9B4 /* Cells */,
 				9B920F64225B8EC6001EF9CD /* Theme.swift */,
 				048C787B2191C9660041F135 /* ThemeManager.swift */,
 				9BE2D450225B609100B51999 /* TopUpButton.swift */,
@@ -804,6 +841,7 @@
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
+				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1017,6 +1055,7 @@
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
+				9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
@@ -1057,6 +1096,7 @@
 				9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
+				9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
@@ -1430,6 +1470,7 @@
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
+				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
@@ -1457,11 +1498,13 @@
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
+				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
 				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
+				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				041216B5222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
@@ -1502,14 +1545,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
+				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
+				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
+				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
+				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
+				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
 			);
@@ -1539,6 +1587,7 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
+				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -1561,6 +1610,7 @@
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
+				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */,
@@ -1586,6 +1636,7 @@
 				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
+				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,

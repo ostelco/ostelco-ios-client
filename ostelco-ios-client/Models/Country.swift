@@ -7,16 +7,28 @@
 //
 
 // Inspired from: https://github.com/juanpablofernandez/CountryList
-public class Country {
+class Country {
 
-    public var countryCode: String
+    private static let defaultCodes =  ["DE", "IE", "NO", "SG", "SE", "GB", "US"]
+    
+    static var defaultCountries: [Country] {
+        return self.defaultCodes.map { Country($0) }
+    }
 
-    public var name: String? {
-        let current = Locale(identifier: "en_US")
-        return current.localizedString(forRegionCode: countryCode) ?? nil
+    let countryCode: String
+
+    var name: String? {
+        return Locale.current.localizedString(forRegionCode: self.countryCode)
     }
 
     init(_ countryCode: String) {
         self.countryCode = countryCode
+    }
+}
+
+extension Country: Equatable {
+    
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        return lhs.countryCode == rhs.countryCode
     }
 }
