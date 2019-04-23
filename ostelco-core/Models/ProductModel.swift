@@ -9,10 +9,10 @@
 import Foundation
 
 public struct PresentationModel: Codable {
-    let label: String
-    let price: String
-    let isDefault: String?
-    
+    public let label: String
+    public let price: String
+    public let isDefault: String?
+
     enum CodingKeys: String, CodingKey {
         case label = "productLabel"
         case price = "priceLabel"
@@ -21,12 +21,12 @@ public struct PresentationModel: Codable {
 }
 
 public struct PriceModel: Codable {
-    let amount: Int
-    let currency: String
+    public let amount: Int
+    public let currency: String
 }
 
 public struct ProductModel: Codable {
-    let sku: String
-    let presentation: PresentationModel
-    let price: PriceModel
+    public let sku: String
+    public let presentation: PresentationModel
+    public let price: PriceModel
 }

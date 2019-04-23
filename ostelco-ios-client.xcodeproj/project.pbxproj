@@ -854,6 +854,9 @@
 				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
+				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
+				041FAB1A225F19AC00877E72 /* UIViewController+Gesture.swift */,
+				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
