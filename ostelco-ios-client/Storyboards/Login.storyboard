@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,33 +21,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
                                 <rect key="frame" x="46" y="279.5" width="283" height="108"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEF-Tc-iUy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="16" y="553" width="343" height="50"/>
-                                <color key="backgroundColor" name="PeacockBlue"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="4py-51-FiM"/>
-                                </constraints>
-                                <state key="normal" title="Sign In">
-                                    <color key="titleColor" name="White"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="H3m-OH-Ihp"/>
-                                </connections>
+                                <state key="normal" title="Sign In"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BKf-r6-AsX" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="023-UO-Lbf"/>
-                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="sEF-Tc-iUy" secondAttribute="bottom" constant="64" id="Amx-o4-J2x"/>
-                            <constraint firstItem="sEF-Tc-iUy" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Bq8-eP-J6O"/>
                             <constraint firstItem="BKf-r6-AsX" firstAttribute="centerY" secondItem="Lv7-dN-bZA" secondAttribute="centerY" id="JfO-Gp-Ly8"/>
-                            <constraint firstItem="sEF-Tc-iUy" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="16" id="UeW-BT-kvg"/>
-                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="sEF-Tc-iUy" secondAttribute="trailing" constant="16" id="qgH-vM-N5N"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="64" id="L5N-ce-Ckt"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="DW1-o4-Dgl" secondAttribute="trailing" constant="16" id="MHv-Gk-Rg8"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="16" id="gXH-0I-pmh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
@@ -116,11 +100,5 @@
     </scenes>
     <resources>
         <image name="slogan" width="283" height="108"/>
-        <namedColor name="PeacockBlue">
-            <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="White">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
