@@ -48,24 +48,29 @@ class HomeViewController2: UIViewController {
     }
 
     // Make the string with all the styles required for the balance text
-    class func getStylizeBalanceString(text: String) -> NSMutableAttributedString? {
-        let textArray: [Substring] = text.split(whereSeparator: { $0 == " " })
-        let decimalSeparator = Locale.current.decimalSeparator!.first!
+    // Input text e.g. "54.5 GB"
+    class func getStylizeBalanceString(text: String) -> NSMutableAttributedString {
+        let decimalSeparator: String = Locale.current.decimalSeparator!
         let bigFont = UIFont.boldSystemFont(ofSize: 84)
         let smallFont = UIFont.boldSystemFont(ofSize: 36)
 
+        // Split text to 2 parts, number and units
+        let textArray: [String] = text.components(separatedBy: " ")
         guard textArray.count >= 2 else {
-            return nil
+            return NSMutableAttributedString(string: text)
         }
-        var decimalPart: String?
-        var integerPart = String(textArray[0])
-        let byteModifier: String = " \(String(textArray[1]))"
 
-        // Check if the numeric value has a decimal point.
-        if let index = textArray[0].firstIndex(of: decimalSeparator) {
-            integerPart = String(textArray[0].prefix(upTo: index))
-            decimalPart = String(textArray[0].suffix(from: index))
+        // Split number string to integer and decimal parts.
+        let numberArray: [String] = textArray[0].components(separatedBy: decimalSeparator)
+        guard numberArray.count >= 1 else {
+            return NSMutableAttributedString(string: text)
         }
+
+        let integerPart = numberArray[0]
+        // If there is a decimal part.
+        let decimalPart: String? = (numberArray.count >= 2) ? "\(decimalSeparator)\(numberArray[1])": nil
+        let byteModifier = " \(textArray[1])"
+
         // Add integer part with the big font.
         let attrString = NSMutableAttributedString(string: integerPart,
                                                    attributes: [NSAttributedString.Key.font: bigFont])
@@ -86,9 +91,9 @@ class HomeViewController2: UIViewController {
             if let bundle = bundles.first {
                 let formatter: ByteCountFormatter = ByteCountFormatter()
                 formatter.countStyle = .binary
-                if let attributedText = HomeViewController2.getStylizeBalanceString(text: formatter.string(fromByteCount: bundle.balance)) {
-                    self.balanceLabel.attributedText = attributedText
-                }
+                let formattedBalance = formatter.string(fromByteCount: bundle.balance)
+                let attributedText = HomeViewController2.getStylizeBalanceString(text: formattedBalance)
+                self.balanceLabel.attributedText = attributedText
             }
             print(bundles)
             self.refreshControl.endRefreshing()
