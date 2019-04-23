@@ -170,3 +170,57 @@ public class BuyButton: OstelcoButton {
                       height: 55)
     }
 }
+
+public class CheckButton: OstelcoButton {
+    
+    private let checkSize: CGFloat = 25
+  
+    @IBInspectable
+    var isChecked: Bool = false {
+        didSet {
+            self.configureForChecked()
+        }
+    }
+    
+    private lazy var shapeLayer = CAShapeLayer()
+    
+    public override func commonInit() {
+        super.commonInit()
+        
+        self.appTitleColor = .white
+        self.appFont = OstelcoFont(fontType: .bold,
+                                   fontSize: .body)
+        self.tintColor = .white
+        self.setupRoundedCenter(background: .oyaBlue)
+        self.configureForChecked()
+    }
+    
+    private func configureForChecked() {
+        if self.isChecked {
+            self.setTitle("✓", for: .normal)
+            // TODO: Localize accessibility
+            self.accessibilityLabel = "Checked"
+            self.shapeLayer.fillColor = OstelcoColor.oyaBlue.toUIColor.cgColor
+        } else {
+            self.setTitle(nil, for: .normal)
+            self.accessibilityLabel = "Unchecked"
+            self.shapeLayer.fillColor = nil
+        }
+    }
+    
+    public func setupRoundedCenter(background color: OstelcoColor) {
+        let cornerRadius = self.checkSize / 2
+        let inset = (self.intrinsicContentSize.width - self.checkSize) / 2
+        self.shapeLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: inset, dy: inset),
+                                            cornerRadius: cornerRadius).cgPath
+        self.shapeLayer.strokeColor = color.toUIColor.cgColor
+        self.shapeLayer.lineWidth = 1
+                
+        self.layer.insertSublayer(self.shapeLayer, at: 0)
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 44,
+                      height: 44)
+    }
+}
