@@ -9,11 +9,7 @@
 import Foundation
 
 public struct BundleModel: Codable {
+
     public let id: String
     public let balance: Int64
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case balance
-    }
 }

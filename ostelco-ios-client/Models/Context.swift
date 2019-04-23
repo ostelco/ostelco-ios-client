@@ -40,11 +40,7 @@ func getRegionFromRegionResponseArray(_ regionResponses: [RegionResponse]) -> Re
 struct Context: Codable {
     let customer: CustomerModel?
     let regions: [RegionResponse]
-
-    enum CodingKeys: String, CodingKey {
-        case customer, regions
-    }
-
+    
     func getRegion() -> RegionResponse? {
         return getRegionFromRegionResponseArray(regions)
     }

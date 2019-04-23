@@ -8,8 +8,4 @@
 
 struct PutProfileError: Codable {
     let errors: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case errors
-    }
 }

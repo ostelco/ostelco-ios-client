@@ -10,21 +10,21 @@ import UIKit
 
 class MyInfoAddressTableViewController: UITableViewController {
     var myInfoDetails: MyInfoDetails?
-
+    
     @IBOutlet private weak var street: UITextField!
     @IBOutlet private weak var city: UITextField!
     @IBOutlet private weak var unit: UITextField!
     @IBOutlet private weak var postal: UITextField!
     @IBOutlet private weak var country: UITextField!
-
+    
     weak var updateDelegate: MyInfoDetailsUpdate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         updateUI(myInfoDetails)
@@ -41,7 +41,7 @@ class MyInfoAddressTableViewController: UITableViewController {
             print("Done saving the edit")
         }
     }
-
+    
     func updateUI(_ myInfoDetails: MyInfoDetails?) {
         guard let myInfoDetails = myInfoDetails else {
             return

@@ -16,14 +16,4 @@ public struct ProfileModel: Codable {
     let country: String
     let postCode: String
     let referralId: String
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case email
-        case address
-        case city
-        case country
-        case postCode
-        case referralId
-    }
 }

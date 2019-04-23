@@ -9,7 +9,7 @@
 import UIKit
 
 class TheLegalStuffViewController: UIViewController {
-
+    
     enum ExternalLinks: String {
         case privacyPolicy = "https://pi-redirector.firebaseapp.com/privacy-policy"
         case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
@@ -18,27 +18,27 @@ class TheLegalStuffViewController: UIViewController {
     @IBOutlet private weak var termsAndConditionsLabel: UILabel!
     @IBOutlet private weak var privacyPolicyLabel: UILabel!
     @IBOutlet private weak var oyaUpdatesLabel: UILabel!
-
+    
     @IBOutlet private weak var termsAndConditionsSwitch: UISwitch!
     @IBOutlet private weak var privacyPolicySwitch: UISwitch!
     @IBOutlet private weak var oyaUpdatesSwitch: UISwitch!
-
+    
     @IBOutlet private weak var continueButton: UIButton!
-
+    
     @IBAction private func termsAndConditionsToggled(_ sender: Any) {
         toggleContinueButton()
     }
-
+    
     @IBAction private func privacyPolicyToggled(_ sender: Any) {
         toggleContinueButton()
     }
-
+    
     @IBAction private func oyaUpdatesToggled(_ sender: Any) {
         toggleContinueButton()
     }
-
+    
     private func toggleContinueButton() {
-
+        
         if termsAndConditionsSwitch.isOn && privacyPolicySwitch.isOn && oyaUpdatesSwitch.isOn {
             continueButton.isEnabled = true
             continueButton.backgroundColor = ThemeManager.currentTheme().mainColor
@@ -46,11 +46,11 @@ class TheLegalStuffViewController: UIViewController {
             continueButton.isEnabled = false
             continueButton.backgroundColor = ThemeManager.currentTheme().mainColor.withAlphaComponent(CGFloat(0.15))
         }
-
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let attributedString = NSMutableAttributedString(string: "I hereby agree to the Terms & Conditions", attributes: [
             .font: UIFont.systemFont(ofSize: 16.0, weight: .regular),
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
@@ -60,7 +60,7 @@ class TheLegalStuffViewController: UIViewController {
         termsAndConditionsLabel.isUserInteractionEnabled = true
         let termsAndConditionsTapHandler = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTapped))
         termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTapHandler)
-
+        
         let attributedString2 = NSMutableAttributedString(string: "I agree to the  Privacy Policy", attributes: [
             .font: UIFont.systemFont(ofSize: 16.0, weight: .regular),
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
@@ -70,21 +70,21 @@ class TheLegalStuffViewController: UIViewController {
         privacyPolicyLabel.isUserInteractionEnabled = true
         let privacyPolicyTapHandler = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
         privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapHandler)
-
+        
         let attributedString3 = NSMutableAttributedString(string: "I agree to recieve OYA updates by email. This consent can be revoked at any time.", attributes: [
             .font: UIFont.systemFont(ofSize: 16, weight: .regular),
             .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
             ])
         oyaUpdatesLabel.attributedText = attributedString3
-
+        
         toggleContinueButton()
     }
-
+    
     @objc func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
         guard let url = URL(string: ExternalLinks.termsAndConditions.rawValue) else { return }
         UIApplication.shared.open(url)
     }
-
+    
     @objc func privacyPolicyTapped(sender: UITapGestureRecognizer) {
         guard let url = URL(string: ExternalLinks.privacyPolicy.rawValue) else { return }
         UIApplication.shared.open(url)

@@ -36,7 +36,7 @@ open class LoggedInAPI {
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> Promise<[PurchaseModel]> {
-       return self.loadData(from: "purchases")
+        return self.loadData(from: "purchases")
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
     
@@ -51,7 +51,7 @@ open class LoggedInAPI {
         return self.loadData(from: "products")
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
-
+    
     /// Loads arbitrary data from an endpoint based on the base URL, then validates
     /// that the response is valid.
     ///
@@ -65,6 +65,6 @@ open class LoggedInAPI {
         return URLSession.shared.dataTask(.promise, with: url)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
-            }
+        }
     }
 }

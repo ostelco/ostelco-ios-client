@@ -44,13 +44,13 @@ struct APIHelper {
         default:
             throw Error.invalidResponseCode(httpResponse.statusCode, data: data)
         }
-
+        
         if !dataCanBeEmpty {
             guard data.isNotEmpty else {
                 throw Error.dataWasEmpty
             }
         }
-
+        
         return data
     }
 }

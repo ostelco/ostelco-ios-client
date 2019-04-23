@@ -9,15 +9,15 @@
 import UIKit
 
 class PendingVerificationViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-
+    
     @IBAction private func `continue`(_ sender: Any) {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         let spinnerView = showSpinner(onView: self.view)
@@ -47,17 +47,17 @@ class PendingVerificationViewController: UIViewController {
                 self.removeSpinner(spinnerView)
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeNotificationObserver()
     }
-
+    
     @objc func onDidReceiveData(_ notification: Notification) {
         print(#function, "Notification didReceivePushNotification arrived")
     }

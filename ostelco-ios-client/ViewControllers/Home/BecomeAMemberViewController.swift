@@ -12,24 +12,24 @@ import Stripe
 import Siesta
 
 class BecomeAMemberViewController: UIViewController {
-
+    
     var paymentError: RequestError?
     var paymentAuthorized: Bool = false
-
+    
     @IBOutlet private weak var buttonContainer: UIView!
-
+    
     @IBAction private func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // 1. Make sure device supports apple pay and that there are no other restrictions preventing payment (like parental control)
         if PKPaymentAuthorizationViewController.canMakePayments() {
             
             let paymentButton: PKPaymentButton
-
+            
             // 2. Check if user has a stripe supported card in its wallet
             if Stripe.deviceSupportsApplePay() {
                 paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
@@ -40,7 +40,7 @@ class BecomeAMemberViewController: UIViewController {
             }
             paymentButton.translatesAutoresizingMaskIntoConstraints = false
             buttonContainer.addSubview(paymentButton)
-
+            
             paymentButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor).isActive = true
             paymentButton.heightAnchor.constraint(equalTo: buttonContainer.heightAnchor).isActive = true
             paymentButton.centerXAnchor.constraint(equalTo: buttonContainer.centerXAnchor).isActive = true
@@ -51,13 +51,13 @@ class BecomeAMemberViewController: UIViewController {
         }
         
     }
-
+    
     @objc func buyButtonTapped() {
         let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
         paymentAuthorized = false
         startApplePay(product: product, delegate: self)
     }
-
+    
     @objc func setUpButtonTapped() {
         paymentAuthorized = false
         PKPassLibrary().openPaymentSetup()
@@ -65,7 +65,7 @@ class BecomeAMemberViewController: UIViewController {
 }
 
 extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
-
+    
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         paymentAuthorized = true
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
@@ -74,7 +74,7 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
                 self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
                 return
             }
-
+            
             APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
                 .onProgress({ progress in
                     print("Progress %{public}@", "\(progress)")
@@ -98,7 +98,7 @@ extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDeleg
                 })
         }
     }
-
+    
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {

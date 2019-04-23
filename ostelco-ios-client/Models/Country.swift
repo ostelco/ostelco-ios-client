@@ -8,19 +8,19 @@
 
 // Inspired from: https://github.com/juanpablofernandez/CountryList
 class Country {
-
+    
     private static let defaultCodes =  ["DE", "IE", "NO", "SG", "SE", "GB", "US"]
     
     static var defaultCountries: [Country] {
         return self.defaultCodes.map { Country($0) }
     }
-
+    
     let countryCode: String
-
+    
     var name: String? {
         return Locale.current.localizedString(forRegionCode: self.countryCode)
     }
-
+    
     init(_ countryCode: String) {
         self.countryCode = countryCode
     }

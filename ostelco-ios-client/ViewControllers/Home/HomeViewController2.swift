@@ -12,12 +12,12 @@ import Siesta
 import ostelco_core
 
 class HomeViewController2: UIViewController {
-
+    
     var paymentError: RequestError?
-
+    
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
-
+    
     private lazy var refreshControl = UIRefreshControl()
     var hasSubscription = false
     var availableProducts: [Product] = []
@@ -26,7 +26,7 @@ class HomeViewController2: UIViewController {
         super.viewDidLoad()
         
         UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
-
+        
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
@@ -46,7 +46,7 @@ class HomeViewController2: UIViewController {
         }
         didPullToRefresh()
     }
-
+    
     @objc func didPullToRefresh() {
         getBundles { bundles, _ in
             if let bundle = bundles.first {
@@ -58,7 +58,7 @@ class HomeViewController2: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
-
+    
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             showProductListActionSheet(products: self.availableProducts, delegate: self)
@@ -115,7 +115,7 @@ class HomeViewController2: UIViewController {
 }
 
 extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
-
+    
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
             guard let source = source, error == nil else {
@@ -123,7 +123,7 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
                 self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
                 return
             }
-
+            
             APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
                 .onProgress({ progress in
                     print("Progress %{public}@", "\(progress)")
@@ -147,7 +147,7 @@ extension HomeViewController2: PKPaymentAuthorizationViewControllerDelegate {
                 })
         }
     }
-
+    
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {

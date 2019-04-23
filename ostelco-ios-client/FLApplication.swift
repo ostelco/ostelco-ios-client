@@ -22,23 +22,4 @@ class FLApplication: UIApplication {
         
         return super.sendAction(action, to: target, from: sender, for: event)
     }
-    
-    /*
-    override func sendEvent(_ event: UIEvent) {
-        if let phase = event.allTouches?.first?.phase {
-            print("\nHello from \(type(of: self)), the principal UIApplication class! Dispatched \"\(phase)\" event!")
-        }
-        
-        super.sendEvent(event)
-    }
-    */
-    
-    /*
-     override func nextResponder() -> UIResponder? {
-     let nextResponder = super.nextResponder()
-     printNextResponder(nextResponder)
-     
-     return nextResponder
-     }
-     */
 }

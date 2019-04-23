@@ -11,7 +11,7 @@ import JWTDecode
 
 class GetStartedViewController: UIViewController {
     var spinnerView: UIView?
-
+    
     @IBAction private func continueTapped(_ sender: Any) {
         spinnerView = showSpinner(onView: self.view)
         let email = getEmailFromJWT()
@@ -38,10 +38,10 @@ class GetStartedViewController: UIViewController {
             showAlert(title: "Error", msg: "Email is empty or missing in claims")
         }
     }
-
+    
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var nameTextField: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -49,7 +49,7 @@ class GetStartedViewController: UIViewController {
         continueButton.isEnabled = false
         nameTextField.delegate = self
     }
-
+    
     private func getEmailFromJWT() -> String? {
         do {
             let jwt = try decode(jwt: UserManager.sharedInstance.authToken!)

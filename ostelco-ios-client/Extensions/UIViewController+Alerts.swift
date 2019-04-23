@@ -17,7 +17,7 @@ extension UIViewController {
             message += "\(statusCode): "
         }
         message += error.userMessage
-
+        
         var title = ""
         if error.cause != nil {
             title += "Internal client error"
@@ -25,13 +25,13 @@ extension UIViewController {
         if error.entity != nil {
             title += "Domain specific error"
         }
-
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: completion))
-
+        
         present(alert, animated: true, completion: nil)
     }
-
+    
     func showGenericError(error: Error) {
         let title = "Error"
         let message = "Client crashed: \(error)"

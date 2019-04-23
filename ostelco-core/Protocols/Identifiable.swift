@@ -10,7 +10,7 @@ import Foundation
 
 /// A protocol to represent types which should have an identifier
 public protocol Identifiable {
- 
+    
     /// A string representing this type
     static var identifier: String { get }
 }

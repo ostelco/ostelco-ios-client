@@ -10,23 +10,24 @@ import UIKit
 import SafariServices
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
+    
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
-
+    
     @IBAction private func singPassTapped(_ sender: Any) {
         //performSegue(withIdentifier: "myInfoSummary", sender: self)
         UIApplication.shared.typedDelegate.myInfoDelegate = self
         getMyInfoToken()
     }
-
+    
     @IBAction private func nricTapped(_ sender: Any) {
         performSegue(withIdentifier: "nricVerify", sender: self)
     }
-
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
-
+    
     func getMyInfoURL() -> URL? {
         var components = URLComponents(string: Environment().configuration(PlistKey.MyInfoURL))!
         components.queryItems = [
@@ -40,7 +41,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         ]
         return components.url
     }
-
+    
     func getMyInfoToken() {
         if let url = getMyInfoURL() {
             print("URL for API \(url.absoluteString)")
@@ -49,7 +50,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
             present(webView!, animated: true)
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id = segue.identifier, id == "myInfoSummary",
             let destinationVC = segue.destination as? MyInfoSummaryViewController {

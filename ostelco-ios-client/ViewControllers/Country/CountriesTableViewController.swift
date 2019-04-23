@@ -15,7 +15,7 @@ class CountriesTableViewController: UITableViewController {
                                  countries: Country.defaultCountries,
                                  delegate: self)
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.addEmptyFooter()

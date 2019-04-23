@@ -10,25 +10,25 @@ import UIKit
 
 class SettingsTableViewController2: UITableViewController {
     enum MenuItem: Int {
-        case PurchaseHistory = 0
-        case ChangeNickname = 1
-        case TermsAndConditions = 2
-        case PrivacyPolicy = 3
-        case CancelMembership = 4
-        case LogOut = 5
+        case PurchaseHistory
+        case ChangeNickname
+        case TermsAndConditions
+        case PrivacyPolicy
+        case CancelMembership
+        case LogOut
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let menuItem = MenuItem(rawValue: indexPath.item) else {
             showAlert(title: "Error", msg: "Invalid selection")
             return
         }
-
+        
         switch menuItem {
         case .PurchaseHistory:
             performSegue(withIdentifier: "purchaseHistory", sender: self)

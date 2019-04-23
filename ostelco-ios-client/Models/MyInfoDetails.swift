@@ -16,7 +16,7 @@ struct MyInfoAddress: Codable {
     let postal: String?
     let floor: String?
     let building: String?
-
+    
     func getAddressLine1() -> String {
         var addressLine1: String = ""
         if let block = self.block {

@@ -14,11 +14,15 @@ struct CustomerModel: Codable {
     let email: String
     let analyticsId: String
     let referralId: String
-
+    
     enum CodingKeys: String, CodingKey {
-        case id, name="nickname", email="contactEmail", analyticsId, referralId
+        case id
+        case name = "nickname"
+        case email = "contactEmail"
+        case analyticsId
+        case referralId
     }
-
+    
     func hasSubscription() -> Bool {
         return false
     }
