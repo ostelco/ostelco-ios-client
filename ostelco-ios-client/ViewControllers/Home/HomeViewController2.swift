@@ -14,13 +14,18 @@ import ostelco_core
 class HomeViewController2: UIViewController {
     
     var paymentError: RequestError?
-    
+    var availableProducts: [Product] = []
+
     @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buyButton: UIButton!
 
+    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var welcomeLabel: UILabel!
+
     let unlockText = "Unlock More Data"
     let buyText = "Buy Data"
+    let refreshBalanceText = "Updating data balance..."
 
     private lazy var refreshControl = UIRefreshControl()
     var hasSubscription = false {
@@ -29,18 +34,30 @@ class HomeViewController2: UIViewController {
                 (hasSubscription == false) ? unlockText : buyText,
                 for: .normal
             )
+            if hasSubscription {
+                showWelcomeMessage()
+            }
         }
     }
-    var availableProducts: [Product] = []
+
+    private func showWelcomeMessage() {
+        welcomeLabel.isHidden = false
+        messageLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            self?.welcomeLabel.isHidden = true
+            self?.messageLabel.isHidden = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
-        
+
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refreshControl.attributedTitle = NSMutableAttributedString(string: refreshBalanceText)
         self.scrollView.addSubview(refreshControl)
 
         let spinnerView: UIView = showSpinner(onView: view)
@@ -55,6 +72,7 @@ class HomeViewController2: UIViewController {
             // TODO: check the if the customer is a member already.
             self.hasSubscription = false
         }
+        refreshControl.beginRefreshing()
         didPullToRefresh()
     }
 
@@ -100,6 +118,10 @@ class HomeViewController2: UIViewController {
     }
 
     @objc func didPullToRefresh() {
+        // Hide the Message on top
+        welcomeLabel.isHidden = true
+        messageLabel.isHidden = true
+        // Call the bundles API
         getBundles { bundles, _ in
             if let bundle = bundles.first {
                 let formatter: ByteCountFormatter = ByteCountFormatter()

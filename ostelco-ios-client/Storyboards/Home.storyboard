@@ -65,16 +65,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LRu-69-U6d">
-                                        <rect key="frame" x="115.5" y="20" width="144.5" height="42"/>
+                                        <rect key="frame" x="97.5" y="20" width="180.5" height="42"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated 2h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkc-rS-fv8">
-                                                <rect key="frame" x="20" y="0.0" width="104" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, OYA member! 🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkc-rS-fv8">
+                                                <rect key="frame" x="0.0" y="0.0" width="180.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down to refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-5o-vGa">
-                                                <rect key="frame" x="0.0" y="25" width="144.5" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now buy data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-5o-vGa">
+                                                <rect key="frame" x="19" y="25" width="142" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -104,7 +104,9 @@
                     <connections>
                         <outlet property="balanceLabel" destination="T7Z-5F-Y8h" id="Blu-YQ-ilY"/>
                         <outlet property="buyButton" destination="Pp6-nC-kNd" id="Q3S-X3-8lD"/>
+                        <outlet property="messageLabel" destination="Qse-5o-vGa" id="q9g-PE-vYF"/>
                         <outlet property="scrollView" destination="NWm-c7-dac" id="axl-vo-8Qh"/>
+                        <outlet property="welcomeLabel" destination="qkc-rS-fv8" id="E3f-Fd-HHE"/>
                         <segue destination="HJs-Qd-Tb4" kind="show" identifier="becomeMember" id="J5k-QY-FBi"/>
                     </connections>
                 </viewController>
