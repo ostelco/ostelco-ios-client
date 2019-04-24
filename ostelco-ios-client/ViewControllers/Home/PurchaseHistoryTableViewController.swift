@@ -81,7 +81,8 @@ class PucrhaseHistoryTableViewController: UITableViewController {
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let purchases: [PurchaseModel] = entity.typedContent(ifNone: nil) {
-                        let records: [PurchaseRecord] = purchases.map {
+                        let sortedPurchases = purchases.sorted { $0.timestamp > $1.timestamp }
+                        let records: [PurchaseRecord] = sortedPurchases.map {
                             let date = Date(timeIntervalSince1970: (Double($0.timestamp) / 1000.0))
                             let strDate = dateFormatter.string(from: date)
                             return PurchaseRecord(
