@@ -179,7 +179,7 @@ public class CheckButton: OstelcoButton {
     private let checkSize: CGFloat = 25
   
     @IBInspectable
-    var isChecked: Bool = false {
+    public var isChecked: Bool = false {
         didSet {
             self.configureForChecked()
         }
