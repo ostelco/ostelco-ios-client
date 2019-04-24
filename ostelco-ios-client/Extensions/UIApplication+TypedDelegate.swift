@@ -17,4 +17,12 @@ extension UIApplication {
         
         return typed
     }
+    
+    func openSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            fatalError("Could not construct settings URL!")
+        }
+
+        UIApplication.shared.open(settingsURL)
+    }
 }
