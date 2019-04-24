@@ -144,6 +144,7 @@
 		9B6E3A15226F70070063EBAA /* SFProText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A14226F70070063EBAA /* SFProText-Medium.otf */; };
 		9B6E3A17226F701A0063EBAA /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A16226F701A0063EBAA /* SFProText-Semibold.otf */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
+		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -534,7 +535,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2C3EACE227047AA00585FA4 /* OstelcoStyles.framework in Frameworks */,
+				9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */,
 				3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */,
 				C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */,
 			);
@@ -2143,7 +2144,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2174,7 +2174,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
