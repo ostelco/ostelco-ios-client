@@ -145,6 +145,8 @@
 		9B6E3A17226F701A0063EBAA /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A16226F701A0063EBAA /* SFProText-Semibold.otf */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
+		9B6E3A2222708AB60063EBAA /* CLGeocoder+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A2122708AB60063EBAA /* CLGeocoder+PromiseKit.swift */; };
+		9B6E3A27227094090063EBAA /* CLGeocoder+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A2122708AB60063EBAA /* CLGeocoder+PromiseKit.swift */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -931,6 +933,7 @@
 		C2F6A3C4224E087900AF5087 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B6E3A2122708AB60063EBAA /* CLGeocoder+PromiseKit.swift */,
 				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
@@ -1711,6 +1714,7 @@
 				04834D592230190800A01500 /* EKYCOhNoViewController.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
+				9B6E3A2222708AB60063EBAA /* CLGeocoder+PromiseKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1825,6 +1829,7 @@
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
+				9B6E3A27227094090063EBAA /* CLGeocoder+PromiseKit.swift in Sources */,
 				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
