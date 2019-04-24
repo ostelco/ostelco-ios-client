@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9BB6A792226F6513000D5E13"
+               BuildableName = "OstelcoStyles.framework"
+               BlueprintName = "OstelcoStyles"
+               ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B851ABA225E29BE0076ABF3"
                BuildableName = "ostelco_core.framework"
                BlueprintName = "ostelco-core"
