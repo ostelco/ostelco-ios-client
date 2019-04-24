@@ -80,8 +80,9 @@ class HomeViewController2: UIViewController {
     // Input text e.g. "54.5 GB"
     class func getStylizeBalanceString(text: String) -> NSMutableAttributedString {
         let decimalSeparator: String = Locale.current.decimalSeparator!
+        // TODO Fonts should be Telenor-Bold
         let bigFont = UIFont.boldSystemFont(ofSize: 84)
-        let smallFont = UIFont.boldSystemFont(ofSize: 36)
+        let smallFont = UIFont.boldSystemFont(ofSize: 28)
 
         // Split text to 2 parts, number and units
         let textArray: [String] = text.components(separatedBy: " ")
