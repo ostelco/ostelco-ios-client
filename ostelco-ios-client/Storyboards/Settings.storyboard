@@ -13,7 +13,7 @@
         <!--Settings Table View Controller2-->
         <scene sceneID="EJ1-Gs-hh2">
             <objects>
-                <tableViewController id="ijV-yo-hqd" customClass="SettingsTableViewController2" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ijV-yo-hqd" customClass="SettingsTableViewController2" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fie-8m-6Dm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="719.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,8 +132,8 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="HyT-Fi-Oek" kind="show" identifier="purchaseHistory" id="Um1-qh-OfN"/>
                         <segue destination="TgB-zP-hHJ" kind="show" identifier="nickname" id="zNL-FY-1OY"/>
+                        <segue destination="4fe-ss-wJo" kind="show" identifier="purchaseHistory" id="zzM-OL-FRJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvp-wf-TAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,20 +141,32 @@
             <point key="canvasLocation" x="1132" y="1481"/>
         </scene>
         <!--Purchase History-->
-        <scene sceneID="hCL-u1-g6n">
+        <scene sceneID="t04-Tg-EDU">
             <objects>
-                <viewController id="HyT-Fi-Oek" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jf2-u3-mHC">
+                <tableViewController title="Purchase History" id="4fe-ss-wJo" customClass="PuchaseHistoryTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IpU-sh-K2V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="719.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="q9s-JE-2rB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Purchase History" id="AWZ-Vr-1Dd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aHy-x8-c0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FnA-58-zKa">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FnA-58-zKa" id="2Dl-gj-qZW">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4fe-ss-wJo" id="cLF-xS-hO6"/>
+                            <outlet property="delegate" destination="4fe-ss-wJo" id="9Na-m0-79g"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jUn-uG-WQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="1227"/>
+            <point key="canvasLocation" x="2236" y="1260"/>
         </scene>
         <!--Nickname-->
         <scene sceneID="6RL-1g-M23">
