@@ -23,7 +23,11 @@ class PucrhaseHistoryTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(didPullToRefresh),
+            for: .valueChanged
+        )
         tableView.refreshControl = refreshControl
         didPullToRefresh()
     }
@@ -41,10 +45,7 @@ class PucrhaseHistoryTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return records.count
     }
 
