@@ -10,18 +10,6 @@ import UIKit
 import Siesta
 import ostelco_core
 
-class PurchaseRecord {
-    let name: String
-    let amount: String
-    let date: String
-
-    init(name: String, amount: String, date: String) {
-        self.name = name
-        self.amount = amount
-        self.date = date
-    }
-}
-
 class PurchaseHistoryTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var date: UILabel!
     @IBOutlet fileprivate weak var name: UILabel!
@@ -74,23 +62,12 @@ class PucrhaseHistoryTableViewController: UITableViewController {
     }
 
     func getPurchases(completionHandler: @escaping ([PurchaseRecord], Error?) -> Void) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
         APIManager.sharedInstance.purchases.load()
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let purchases: [PurchaseModel] = entity.typedContent(ifNone: nil) {
                         let sortedPurchases = purchases.sorted { $0.timestamp > $1.timestamp }
-                        let records: [PurchaseRecord] = sortedPurchases.map {
-                            let date = Date(timeIntervalSince1970: (Double($0.timestamp) / 1000.0))
-                            let strDate = dateFormatter.string(from: date)
-                            return PurchaseRecord(
-                                name: $0.product.presentation.label,
-                                amount: $0.product.presentation.price,
-                                date: strDate
-                            )
-                        }
+                        let records = sortedPurchases.map { PurchaseRecord(from: $0) }
                         completionHandler(records, nil)
                     } else {
                         completionHandler([], nil)

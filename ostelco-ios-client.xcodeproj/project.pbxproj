@@ -249,6 +249,9 @@
 		C2C3EACE227047AA00585FA4 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
 		C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
+		C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
+		C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
+		C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -489,6 +492,7 @@
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
+		C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRecord.swift; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -700,6 +704,7 @@
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
+				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1698,6 +1703,7 @@
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				041216BB222D7B2B00455278 /* WrongCountryViewController.swift in Sources */,
+				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
@@ -1749,6 +1755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
+				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */,
 			);
@@ -1831,6 +1838,7 @@
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				041216B6222D6B3500455278 /* LocationServiceDisabledViewController.swift in Sources */,
 				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
