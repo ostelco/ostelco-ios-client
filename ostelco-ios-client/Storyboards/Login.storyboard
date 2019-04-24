@@ -22,7 +22,7 @@
                                 <rect key="frame" x="46" y="279.5" width="283" height="108"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="553" width="343" height="50"/>
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="Zy6-fZ-9y6"/>
@@ -33,9 +33,9 @@
                         <constraints>
                             <constraint firstItem="BKf-r6-AsX" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="023-UO-Lbf"/>
                             <constraint firstItem="BKf-r6-AsX" firstAttribute="centerY" secondItem="Lv7-dN-bZA" secondAttribute="centerY" id="JfO-Gp-Ly8"/>
-                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="64" id="L5N-ce-Ckt"/>
-                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="DW1-o4-Dgl" secondAttribute="trailing" constant="16" id="MHv-Gk-Rg8"/>
-                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="16" id="gXH-0I-pmh"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="44" id="L5N-ce-Ckt"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="DW1-o4-Dgl" secondAttribute="trailing" constant="24" id="MHv-Gk-Rg8"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="gXH-0I-pmh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
