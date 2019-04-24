@@ -147,7 +147,6 @@
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-        9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */; };
 		9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */; };
 		9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE3225E33620076ABF3 /* NibLoadable.swift */; };
@@ -247,6 +246,9 @@
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
+		C2C3EACE227047AA00585FA4 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
+		C2C3EAD022705D9F00585FA4 /* PuchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PuchaseHistoryTableViewController.swift */; };
+		C2C3EAD122705D9F00585FA4 /* PuchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PuchaseHistoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,6 +488,7 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C2C3EACF22705D9F00585FA4 /* PuchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,7 +499,7 @@
 			files = (
 				B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */,
 				9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */,
-                9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */,
+				9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +530,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */,
+				C2C3EACE227047AA00585FA4 /* OstelcoStyles.framework in Frameworks */,
 				3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */,
 				C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */,
 			);
@@ -666,6 +669,7 @@
 				047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
+				C2C3EACF22705D9F00585FA4 /* PuchaseHistoryTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1648,6 +1652,7 @@
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
+				C2C3EAD022705D9F00585FA4 /* PuchaseHistoryTableViewController.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
@@ -1780,6 +1785,7 @@
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
+				C2C3EAD122705D9F00585FA4 /* PuchaseHistoryTableViewController.swift in Sources */,
 				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
