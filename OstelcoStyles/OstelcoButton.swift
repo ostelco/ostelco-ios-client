@@ -129,6 +129,8 @@ public class SmallButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
+        self.layer.cornerRadius = self.defaultCornerRadius
+        self.clipsToBounds = true
         self.contentEdgeInsets = UIEdgeInsets(top: 7,
                                               left: 14,
                                               bottom: 7,
