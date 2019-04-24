@@ -36,9 +36,11 @@ class PucrhaseHistoryTableViewController: UITableViewController {
         getPurchases { purchases, error in
             self.tableView.refreshControl?.endRefreshing()
             if let error = error {
-                print("error fetching purchases \(error)")
+                debugPrint("error fetching purchases \(error)")
+                // TODO: Notify user about this error.
             } else if purchases.isEmpty {
-                print("No purchases available")
+                debugPrint("No purchases available")
+                // TODO: Show a message for empty purchase list.
             }
             self.records = purchases
             self.tableView.reloadData()
