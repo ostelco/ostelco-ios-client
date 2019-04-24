@@ -130,7 +130,7 @@ public class BodyTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .blackForText
-        self.appFont = OstelcoFont(fontType: .bold,
+        self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .body)
     }
 }
