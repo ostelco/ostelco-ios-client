@@ -16,7 +16,7 @@
             <objects>
                 <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VRc-vz-Eao">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="307.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="327.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections/>
@@ -53,14 +53,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="CYM-RT-YcS">
                                 <rect key="frame" x="24" y="187" width="25" height="25"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB6-Fg-o8Z">
-                                <rect key="frame" x="29.5" y="244" width="14" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB6-Fg-o8Z" customClass="StepsTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="28.5" y="244" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="PeacockBlue"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-gL-FXn">
-                                <rect key="frame" x="29.5" y="297" width="14" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-gL-FXn" customClass="StepsTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="28.5" y="297" width="16" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="PeacockBlue"/>
                                 <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-Or-ngz" customClass="PrimaryButton" customModule="OstelcoStyles">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vV-Or-ngz" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="553" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -150,15 +150,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-S8-29C" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="553" width="327" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-S8-29C" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="qUz-io-xXw" eventType="touchUpInside" id="WA6-5b-EZA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crC-Wa-ajC" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="486" width="91" height="33"/>
+                                <rect key="frame" x="142" y="506" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="qUz-io-xXw" eventType="touchUpInside" id="RHk-kZ-MGj"/>
@@ -171,7 +171,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0L-Vt-w2C">
-                                <rect key="frame" x="0.0" y="158.5" width="375" height="307.5"/>
+                                <rect key="frame" x="0.0" y="158.5" width="375" height="327.5"/>
                                 <connections>
                                     <segue destination="S77-Tv-iN9" kind="embed" id="BAd-iI-grH"/>
                                 </connections>
@@ -182,7 +182,7 @@
                             <constraint firstItem="crC-Wa-ajC" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="2DR-cE-ERm"/>
                             <constraint firstItem="xqT-SW-me3" firstAttribute="top" secondItem="Ndf-mv-q3A" secondAttribute="bottom" constant="27" id="9dZ-MF-4sI"/>
                             <constraint firstItem="Ndf-mv-q3A" firstAttribute="top" secondItem="5Kh-UI-MQa" secondAttribute="top" constant="44" id="Byr-b6-noD"/>
-                            <constraint firstItem="5Kh-UI-MQa" firstAttribute="bottom" secondItem="ihi-S8-29C" secondAttribute="bottom" constant="64" id="Cm0-ZC-uFM"/>
+                            <constraint firstItem="5Kh-UI-MQa" firstAttribute="bottom" secondItem="ihi-S8-29C" secondAttribute="bottom" constant="44" id="Cm0-ZC-uFM"/>
                             <constraint firstItem="crC-Wa-ajC" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="Fd7-c6-ovo"/>
                             <constraint firstItem="Ndf-mv-q3A" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" constant="24" id="FnI-NP-o2P"/>
                             <constraint firstItem="ihi-S8-29C" firstAttribute="top" secondItem="crC-Wa-ajC" secondAttribute="bottom" constant="34" id="MGk-1f-DO7"/>
@@ -225,8 +225,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-vY-7gZ" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="553" width="327" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eB-vY-7gZ" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="51P-Xu-Q3s" eventType="touchUpInside" id="JSC-mg-opc"/>
@@ -243,7 +243,7 @@
                             <constraint firstItem="iZq-29-s8v" firstAttribute="leading" secondItem="q3Q-44-Cly" secondAttribute="leading" constant="24" id="FQj-gX-sGt"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="top" secondItem="iZq-29-s8v" secondAttribute="bottom" constant="20" id="GGe-me-ujv"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="top" secondItem="9nq-pm-G8D" secondAttribute="top" constant="44" id="JBb-lV-fcV"/>
-                            <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="64" id="Maw-Xq-FcE"/>
+                            <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="44" id="Maw-Xq-FcE"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="1eB-vY-7gZ" secondAttribute="trailing" constant="24" id="Tom-r8-zng"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="XDb-0K-VUH"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="24" id="aa4-Jm-7BO"/>
@@ -257,10 +257,6 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="iZq-29-s8v" id="LrR-IP-Zc3"/>
                         <outlet property="fakeModalNotificationImage" destination="rfg-Yo-QL8" id="cHe-ya-Zxp"/>
-                        <segue destination="CPG-f2-Vgd" kind="presentation" identifier="showLocationAccessDenied" id="CHL-aw-MdZ"/>
-                        <segue destination="qci-Lo-7Ap" kind="presentation" identifier="showLocationServiceDisabled" id="EpQ-fY-7ip"/>
-                        <segue destination="1el-Qe-8Nh" kind="presentation" identifier="showLocationAccessRestricted" id="TTJ-Ir-E5f"/>
-                        <segue destination="Zx0-FN-OXz" kind="show" identifier="showWrongCountry" id="chL-QA-klt"/>
                         <segue destination="3AC-7l-Au2" kind="unwind" identifier="unwindFromCountry" unwindAction="unwindFromCountryWithSender:" id="S5h-Mb-XJF"/>
                         <segue destination="vGc-SK-lCJ" kind="show" identifier="showEKYC" id="7AW-gF-J98"/>
                     </connections>
@@ -270,10 +266,10 @@
             </objects>
             <point key="canvasLocation" x="3293.5999999999999" y="-222.63868065967017"/>
         </scene>
-        <!--Location Access Denied View Controller-->
+        <!--Location Problem View Controller-->
         <scene sceneID="mfJ-4g-S3x">
             <objects>
-                <viewController id="CPG-f2-Vgd" customClass="LocationAccessDeniedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationProblemViewController" id="CPG-f2-Vgd" customClass="LocationProblemViewController" customModule="Oya_app" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s2r-4F-yqD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,14 +284,14 @@
                                 <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <action selector="settingsTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="3RU-7i-ahV"/>
+                                    <action selector="primaryButtonTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="m8O-3N-uqn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT" customClass="LinkTextButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="142" y="508" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
-                                    <action selector="needHelpTapped:" destination="CPG-f2-Vgd" eventType="touchUpInside" id="T4S-bm-Gai"/>
+                                    <action selector="needHelpTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="Sjw-Zx-XAX"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
@@ -332,205 +328,16 @@ Please enable “Location Access” in Settings.</string>
                         <viewLayoutGuide key="safeArea" id="Nly-Oz-x9M"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="gj0-b2-7aj" id="bPy-CI-bZx"/>
-                        <segue destination="5C2-IW-M83" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="cDO-mx-Hkg"/>
+                        <outlet property="explanationLabel" destination="gj0-b2-7aj" id="UjQ-eR-e6R"/>
+                        <outlet property="imageView" destination="eCD-Rb-UgE" id="wAW-zJ-LZ4"/>
+                        <outlet property="primaryButton" destination="qTN-jC-vf4" id="6t7-IB-gOw"/>
+                        <outlet property="titleLabel" destination="Xri-W8-wUh" id="tdq-fO-azI"/>
+                        <segue destination="vGc-SK-lCJ" kind="show" identifier="locationAccessAllowedAndConfirmed" id="bMg-lB-hOd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Eb-gI-Li9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="5C2-IW-M83" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3292.5" y="-922.18309859154931"/>
-        </scene>
-        <!--Location Service Disabled View Controller-->
-        <scene sceneID="N7m-9Z-Nkd">
-            <objects>
-                <viewController id="qci-Lo-7Ap" customClass="LocationServiceDisabledViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="V22-8q-W7U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-gr-GSL" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="64" width="327" height="76.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yei-TJ-FnV" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="573" width="327" height="50"/>
-                                <state key="normal" title="Retry"/>
-                                <connections>
-                                    <action selector="retryTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="Lou-RB-hdz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE0-XQ-jBM" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="506" width="91" height="33"/>
-                                <state key="normal" title="Need help?"/>
-                                <connections>
-                                    <action selector="needHelpTapped:" destination="qci-Lo-7Ap" eventType="touchUpInside" id="XGZ-dB-Yg8"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationLocation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-Yq-7NR">
-                                <rect key="frame" x="61.5" y="160.5" width="252" height="151"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smW-PN-EFs" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="384.5" width="327" height="101.5"/>
-                                <string key="text">To give you mobile data, by law, we have to verify which country you’re in
-
-Please enable “Location Access” in Settings.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="yei-TJ-FnV" secondAttribute="trailing" constant="24" id="18E-2c-r50"/>
-                            <constraint firstItem="smW-PN-EFs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Wa-Yq-7NR" secondAttribute="bottom" constant="20" id="2Zc-Mx-1R8"/>
-                            <constraint firstItem="smW-PN-EFs" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="24" id="4PT-ob-oqI"/>
-                            <constraint firstItem="6Wa-Yq-7NR" firstAttribute="top" secondItem="WAA-gr-GSL" secondAttribute="bottom" constant="20" id="hcc-vd-7Hq"/>
-                            <constraint firstItem="WAA-gr-GSL" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="24" id="ijM-x6-cD2"/>
-                            <constraint firstItem="yei-TJ-FnV" firstAttribute="top" secondItem="cE0-XQ-jBM" secondAttribute="bottom" constant="34" id="jj9-aZ-OlQ"/>
-                            <constraint firstAttribute="trailing" secondItem="smW-PN-EFs" secondAttribute="trailing" constant="24" id="kjc-h1-eGB"/>
-                            <constraint firstItem="6Wa-Yq-7NR" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="kqG-JF-eaU"/>
-                            <constraint firstItem="WAA-gr-GSL" firstAttribute="top" secondItem="g3I-0e-Gm0" secondAttribute="top" constant="44" id="mx4-hZ-Ij5"/>
-                            <constraint firstItem="g3I-0e-Gm0" firstAttribute="trailing" secondItem="WAA-gr-GSL" secondAttribute="trailing" constant="24" id="sdc-ko-Qzq"/>
-                            <constraint firstItem="cE0-XQ-jBM" firstAttribute="top" secondItem="smW-PN-EFs" secondAttribute="bottom" constant="20" id="u4K-vX-gkQ"/>
-                            <constraint firstItem="g3I-0e-Gm0" firstAttribute="bottom" secondItem="yei-TJ-FnV" secondAttribute="bottom" constant="44" id="wHh-ud-diL"/>
-                            <constraint firstItem="cE0-XQ-jBM" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="wOt-nl-z8h"/>
-                            <constraint firstItem="yei-TJ-FnV" firstAttribute="centerX" secondItem="V22-8q-W7U" secondAttribute="centerX" id="yrr-1J-r4z"/>
-                            <constraint firstItem="yei-TJ-FnV" firstAttribute="leading" secondItem="g3I-0e-Gm0" secondAttribute="leading" constant="24" id="z5r-pl-r9G"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="g3I-0e-Gm0"/>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="smW-PN-EFs" id="Ltf-Sm-bTt"/>
-                        <segue destination="J9O-1P-Q6V" kind="unwind" identifier="unwind" unwindAction="unwindToAllowLocationAccessViewControllerWithSegue:" id="VWk-di-34y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="27c-1j-J8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="J9O-1P-Q6V" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4031.25" y="-923.23943661971828"/>
-        </scene>
-        <!--Location Access Restricted View Controller-->
-        <scene sceneID="HXc-sV-N19">
-            <objects>
-                <viewController id="1el-Qe-8Nh" customClass="LocationAccessRestrictedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="F4a-I9-OyK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTc-YA-9vq" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="64" width="327" height="76.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify that you are in Singapore in order to continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMz-Nl-rin" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="172.5" width="327" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Location Service&quot; is disabled due to Parental Control Settings on this phone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-wV-tRb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="34" y="245.5" width="317" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSD-Ll-USr" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="506" width="91" height="33"/>
-                                <state key="normal" title="Need help?"/>
-                                <connections>
-                                    <action selector="needHelpTapped:" destination="1el-Qe-8Nh" eventType="touchUpInside" id="wEP-Vi-Vwc"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Xjf-wV-tRb" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="34" id="C2D-iR-2mt"/>
-                            <constraint firstItem="TMz-Nl-rin" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="24" id="Eo7-d5-EKA"/>
-                            <constraint firstAttribute="trailing" secondItem="Xjf-wV-tRb" secondAttribute="trailing" constant="24" id="Fbx-KZ-nFz"/>
-                            <constraint firstItem="KTc-YA-9vq" firstAttribute="leading" secondItem="Hg4-Of-0v4" secondAttribute="leading" constant="24" id="Gex-Xj-Ocz"/>
-                            <constraint firstItem="Xjf-wV-tRb" firstAttribute="top" secondItem="TMz-Nl-rin" secondAttribute="bottom" constant="32" id="HRm-oo-c8H"/>
-                            <constraint firstItem="bSD-Ll-USr" firstAttribute="centerX" secondItem="Hg4-Of-0v4" secondAttribute="centerX" id="Ism-hr-6py"/>
-                            <constraint firstItem="TMz-Nl-rin" firstAttribute="top" secondItem="KTc-YA-9vq" secondAttribute="bottom" constant="32" id="LTo-if-3b8"/>
-                            <constraint firstAttribute="trailing" secondItem="TMz-Nl-rin" secondAttribute="trailing" constant="24" id="lCG-HW-gWH"/>
-                            <constraint firstItem="Hg4-Of-0v4" firstAttribute="trailing" secondItem="KTc-YA-9vq" secondAttribute="trailing" constant="24" id="mh3-Fb-T7n"/>
-                            <constraint firstItem="KTc-YA-9vq" firstAttribute="top" secondItem="Hg4-Of-0v4" secondAttribute="top" constant="44" id="oC0-Yj-liL"/>
-                            <constraint firstItem="Hg4-Of-0v4" firstAttribute="bottom" secondItem="bSD-Ll-USr" secondAttribute="bottom" constant="128" id="tbI-P0-6i5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Hg4-Of-0v4"/>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="TMz-Nl-rin" id="TxF-xf-ItS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f4E-Gy-1Dl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4778" y="-922"/>
-        </scene>
-        <!--Wrong Country View Controller-->
-        <scene sceneID="tfF-9M-rWj">
-            <objects>
-                <viewController id="Zx0-FN-OXz" customClass="WrongCountryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bnK-5S-W5S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong country selected?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1e-no-SVO" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="64" width="327" height="76.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-3n-2A7" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="404.5" width="327" height="81.5"/>
-                                <string key="text">It seems like you are in Norway
-
-To give you mobile data, by law, we have to verify that you’re in Singapore</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzE-uN-C7y" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="506" width="91" height="33"/>
-                                <state key="normal" title="Need help?"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzV-k3-0h6" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="573" width="327" height="50"/>
-                                <state key="normal" title="Retry"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationLocation" translatesAutoresizingMaskIntoConstraints="NO" id="1P7-X3-eSl">
-                                <rect key="frame" x="61.5" y="160.5" width="252" height="151"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="rHG-u5-2NJ" firstAttribute="trailing" secondItem="H1e-no-SVO" secondAttribute="trailing" constant="24" id="64m-DV-2QZ"/>
-                            <constraint firstItem="rHG-u5-2NJ" firstAttribute="bottom" secondItem="dzV-k3-0h6" secondAttribute="bottom" constant="44" id="7hp-hO-h5N"/>
-                            <constraint firstItem="uzE-uN-C7y" firstAttribute="top" secondItem="fYI-3n-2A7" secondAttribute="bottom" constant="20" id="7sa-qT-eyq"/>
-                            <constraint firstItem="uzE-uN-C7y" firstAttribute="centerX" secondItem="bnK-5S-W5S" secondAttribute="centerX" id="N5s-wc-yyT"/>
-                            <constraint firstItem="fYI-3n-2A7" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="24" id="Qb3-2V-VaG"/>
-                            <constraint firstItem="H1e-no-SVO" firstAttribute="top" secondItem="rHG-u5-2NJ" secondAttribute="top" constant="44" id="R0n-Zl-tIP"/>
-                            <constraint firstItem="H1e-no-SVO" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="24" id="c0J-yz-xCP"/>
-                            <constraint firstItem="fYI-3n-2A7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1P7-X3-eSl" secondAttribute="bottom" constant="20" id="dDH-Ki-BrN"/>
-                            <constraint firstItem="1P7-X3-eSl" firstAttribute="centerX" secondItem="bnK-5S-W5S" secondAttribute="centerX" id="djG-m1-kz4"/>
-                            <constraint firstItem="rHG-u5-2NJ" firstAttribute="trailing" secondItem="dzV-k3-0h6" secondAttribute="trailing" constant="24" id="ig4-bC-QXC"/>
-                            <constraint firstItem="dzV-k3-0h6" firstAttribute="top" secondItem="uzE-uN-C7y" secondAttribute="bottom" constant="34" id="lAo-nK-80g"/>
-                            <constraint firstItem="dzV-k3-0h6" firstAttribute="leading" secondItem="rHG-u5-2NJ" secondAttribute="leading" constant="24" id="xiU-Kl-Q41"/>
-                            <constraint firstItem="rHG-u5-2NJ" firstAttribute="trailing" secondItem="fYI-3n-2A7" secondAttribute="trailing" constant="24" id="xof-t3-Woz"/>
-                            <constraint firstItem="1P7-X3-eSl" firstAttribute="top" secondItem="H1e-no-SVO" secondAttribute="bottom" constant="20" id="yxx-tX-Z6D"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="rHG-u5-2NJ"/>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="fYI-3n-2A7" id="akP-Mu-HVS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E39-CG-NOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4788" y="-223"/>
+            <point key="canvasLocation" x="4108" y="-224"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="sc9-eh-k4E">
@@ -538,7 +345,7 @@ To give you mobile data, by law, we have to verify that you’re in Singapore</s
                 <viewControllerPlaceholder storyboardName="EKYC" id="vGc-SK-lCJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4R-U3-F4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3294" y="272"/>
+            <point key="canvasLocation" x="3332" y="275"/>
         </scene>
     </scenes>
     <resources>
@@ -549,4 +356,7 @@ To give you mobile data, by law, we have to verify that you’re in Singapore</s
             <color red="0.0" green="0.2627450980392157" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bMg-lB-hOd"/>
+    </inferredMetricsTieBreakers>
 </document>
