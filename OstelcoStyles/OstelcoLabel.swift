@@ -133,6 +133,26 @@ public class BodyTextLabel: OstelcoLabel {
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .body)
     }
+    
+    public func setFullText(_ fullText: String, withBoldedPortion boldedPortion: String) {
+        guard let range = fullText.range(of: boldedPortion) else {
+            assertionFailure("You're trying to set bolded text that's not in the full text!")
+            // In prod: Fall back to just setting the text normally.
+            self.text = fullText
+            return
+        }
+        
+        let attributed = NSMutableAttributedString(string: fullText, attributes: [
+            .font: self.appFont.toUIFont,
+            .foregroundColor: self.appTextColor.toUIColor
+        ])
+        
+        attributed.addAttributes([
+            .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
+        ], range: NSRange(range, in: fullText))
+        
+        self.attributedText = attributed
+    }
 }
 
 public class StepsTextLabel: OstelcoLabel {
