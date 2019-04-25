@@ -8,142 +8,76 @@
 
 import UIKit
 import CoreLocation
+import ostelco_core
 
 class AllowLocationAccessViewController: UIViewController {
     
-    @IBOutlet private weak var fakeModalNotificationImage: UIImageView!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
+    /// For the `LocationChecking` protocol
     var spinnerView: UIView?
-    var userLocation: CLLocation?
     
-    var locationManager = CLLocationManager()
+    private var hasRequestedAuthorization = false
     
-    var descriptionText: String = ""
-    var selectedCountry: Country?
+    // This is set in viewDidLoad
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    private var selectedCountry: Country!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
-        descriptionLabel.text = "We need to verify that you are in \(selectedCountry?.name ?? "NO COUNTRY") in order to continue"
-        locationManager.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        verifyLocation(ignoreNotDetermined: true)
-    }
-    
-    private func failedToGetLocationAlert() {
-        let alert = UIAlertController(title: "We're sorry but...", message: "We were unable to get your current location.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
+        self.descriptionLabel.text = "We need to verify that you are in \(self.selectedCountry.name ?? "(Unknown)") in order to continue"
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        verifyLocation()
+        self.requestAuthorization()
+        self.hasRequestedAuthorization = true
     }
     
-    private func showLocationServiceDisabled() {
-        performSegue(withIdentifier: "showLocationServiceDisabled", sender: self)
+    private func showLocationProblemViewController(for problem: LocationProblem) {
+        let problemVC = LocationProblemViewController.fromStoryboard()
+        problemVC.locationProblem = problem
+        self.present(problemVC, animated: true)
     }
     
-    private func showLocationAccessDenied() {
-        performSegue(withIdentifier: "showLocationAccessDenied", sender: self)
-    }
-    
-    private func showLocationAccessRestricted() {
-        performSegue(withIdentifier: "showLocationAccessRestricted", sender: self)
-    }
-    
-    private func handleDenied() {
-    }
-    
-    @IBAction private func unwindToAllowLocationAccessViewController(segue: UIStoryboardSegue) {
-        verifyLocation()
-    }
-    
-    private func verifyLocation(ignoreNotDetermined: Bool = false) {
-        if CLLocationManager.locationServicesEnabled() {
-            let status = CLLocationManager.authorizationStatus()
-            
-            switch status {
-            case .notDetermined:
-                if !ignoreNotDetermined {
-                    locationManager.requestAlwaysAuthorization()
-                }
-            case .restricted:
-                showLocationAccessRestricted()
-            case .denied:
-                showLocationAccessDenied()
-            case .authorizedAlways,
-                 .authorizedWhenInUse:
-                userLocation = nil
-                // TODO: Spinner is added twice for some reason in some cases
-                if spinnerView == nil {
-                    spinnerView = showSpinner(onView: view, loadingText: "Checking location...")
-                }
-                locationManager.requestLocation()
-            @unknown default:
-                assertionFailure("Apple added another case to this! You should update your handling.")
-            }
-        } else {
-            showLocationServiceDisabled()
+    private func requestAuthorization() {
+        let locationController = LocationController.shared
+        guard locationController.locationServicesEnabled else {
+            self.showLocationProblemViewController(for: .disabledInSettings)
+            return
         }
+        
+        let status = LocationController.shared.authorizationStatus
+        self.handleAuthorizationStatus(status)
     }
     
-    private func showWrongCountry() {
-        performSegue(withIdentifier: "showWrongCountry", sender: self)
+    private func handleAuthorizationStatus(_ status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            LocationController.shared.requestAuthorization()
+            LocationController.shared.authChangeCallback = { [weak self] status in
+                self?.handleAuthorizationStatus(status)
+            }
+        case .restricted:
+            self.showLocationProblemViewController(for: .restrictedByParentalControls)
+        case .denied:
+            self.showLocationProblemViewController(for: .deniedByUser)
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            self.checkLocation()
+        @unknown default:
+            assertionFailure("Apple added another case to this! You should update your handling.")
+        }
     }
 }
 
-extension AllowLocationAccessViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if userLocation == nil {
-            removeSpinner(spinnerView)
-            spinnerView = nil
-            if let location = locations.first {
-                userLocation = location
-                print("Location: \(location)")
-                CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-                    if let error = error {
-                        print("Unable to Reverse Geocode Location (\(error))")
-                        // locationLabel.text = "Unable to Find Address for Location"
-                        self.failedToGetLocationAlert()
-                    } else {
-                        if let placemarks = placemarks, let placemark = placemarks.first, let country = placemark.country, let isoCountryCode = placemark.isoCountryCode {
-                            print("country: \(country) isoCountryCode: \(isoCountryCode)")
-                            if self.selectedCountry?.countryCode == isoCountryCode {
-                                // Location verified
-                                DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
-                                }
-                            } else {
-                                // Location not in correct country
-                                DispatchQueue.main.async {
-                                    // TODO: Fake country verification for MVP
-                                    // self.showWrongCountry()
-                                    self.performSegue(withIdentifier: "showEKYC", sender: self)
-                                }
-                            }
-                        } else {
-                            print("No Matching Addresses Found")
-                            self.failedToGetLocationAlert()
-                        }
-                    }
-                }
-            }
-        }
+extension AllowLocationAccessViewController: LocationChecking {
+    
+    func locationCheckSucceeded() {
+        self.performSegue(withIdentifier: "showEKYC", sender: self)
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        removeSpinner(spinnerView)
-        spinnerView = nil
-        print("Failed to find user's location: \(error.localizedDescription)")
-        failedToGetLocationAlert()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        verifyLocation(ignoreNotDetermined: true)
+    func handleLocationProblem(_ problem: LocationProblem) {
+        self.showLocationProblemViewController(for: problem)
     }
 }

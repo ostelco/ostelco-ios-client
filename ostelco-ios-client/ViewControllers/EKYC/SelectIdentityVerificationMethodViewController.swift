@@ -8,20 +8,50 @@
 
 import UIKit
 import SafariServices
+import OstelcoStyles
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
+    
+    @IBOutlet private var singPassCheck: CheckButton!
+    @IBOutlet private var scanICCheck: CheckButton!
+    @IBOutlet private var continueButton: UIButton!
     
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
     
-    @IBAction private func singPassTapped(_ sender: Any) {
-        //performSegue(withIdentifier: "myInfoSummary", sender: self)
-        UIApplication.shared.typedDelegate.myInfoDelegate = self
-        getMyInfoToken()
+    @IBAction private func checkTapped(_ check: CheckButton) {
+        check.isChecked.toggle()
+        
+        switch check {
+        case self.singPassCheck:
+            self.scanICCheck.isChecked = false
+        case self.scanICCheck:
+            self.singPassCheck.isChecked = false
+        default:
+            assertionFailure("Unknown option toggled!")
+        }
+        
+        self.updateContinue()
     }
     
-    @IBAction private func nricTapped(_ sender: Any) {
-        performSegue(withIdentifier: "nricVerify", sender: self)
+    @IBAction private func continueTapped() {
+        if self.singPassCheck.isChecked {
+            //performSegue(withIdentifier: "myInfoSummary", sender: self)
+            UIApplication.shared.typedDelegate.myInfoDelegate = self
+            getMyInfoToken()
+        } else if self.scanICCheck.isChecked {
+            performSegue(withIdentifier: "nricVerify", sender: self)
+        } else {
+            assertionFailure("At least one of these should be checked if continue is enabled!")
+        }
+    }
+    
+    private func updateContinue() {
+        if self.singPassCheck.isChecked || self.scanICCheck.isChecked {
+            self.continueButton.isEnabled = true
+        } else {
+            self.continueButton.isEnabled = false
+        }
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {

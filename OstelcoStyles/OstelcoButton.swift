@@ -129,6 +129,8 @@ public class SmallButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
+        self.layer.cornerRadius = self.defaultCornerRadius
+        self.clipsToBounds = true
         self.contentEdgeInsets = UIEdgeInsets(top: 7,
                                               left: 14,
                                               bottom: 7,
@@ -177,7 +179,7 @@ public class CheckButton: OstelcoButton {
     private let checkSize: CGFloat = 25
   
     @IBInspectable
-    var isChecked: Bool = false {
+    public var isChecked: Bool = false {
         didSet {
             self.configureForChecked()
         }
