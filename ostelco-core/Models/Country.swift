@@ -21,6 +21,10 @@ public class Country: Equatable {
         return Locale.current.localizedString(forRegionCode: self.countryCode)
     }
     
+    public var nameOrPlaceholder: String {
+        return self.name ?? "(Unknown)"
+    }
+    
     public init(_ countryCode: String) {
         self.countryCode = countryCode
     }

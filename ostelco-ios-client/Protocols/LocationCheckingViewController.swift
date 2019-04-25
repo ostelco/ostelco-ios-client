@@ -51,8 +51,12 @@ extension LocationChecking {
         }
         
         self.spinnerView = showSpinner(onView: view, loadingText: "Checking location...")
+        var isDebug = false
+        #if DEBUG
+            isDebug = true
+        #endif
         
-        LocationController.shared.checkInCorrectCountry(country)
+        LocationController.shared.checkInCorrectCountry(country, isDebug: isDebug)
             .done { [weak self] in
                 // Hooray, this is the correct location!
                 self?.locationCheckSucceeded()

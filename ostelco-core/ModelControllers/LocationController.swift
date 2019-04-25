@@ -58,7 +58,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    public func checkInCorrectCountry(_ country: Country) -> Promise<Void> {
+    public func checkInCorrectCountry(_ country: Country, isDebug: Bool = false) -> Promise<Void> {
         return self.requestLocation()
             .then { CLGeocoder().reverseGeocode(location: $0) }
             .done { placemarks in
@@ -70,10 +70,22 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
                     throw Error.couldntGetCountryCode(from: placemark)
                 }
                 
-                let actualCountry = Country(isoCountryCode)
+                if isDebug {
+                    // We don't actually care if we're in the correct country, we just need to validate the user is
+                    // "in singapore," by which we mean they've selected Singapore from the list.
+                    guard country.countryCode.lowercased() == "sg" else {
+                        let problem = LocationProblem.authorizedButWrongCountry(expected: "Singapore", actual: country.nameOrPlaceholder)
+                        throw Error.locationProblem(problem: problem)
+                    }
+                    
+                    // If we got here, they picked Singapore from the list, and we're skipping validation of the
+                    // actual country for debugging purposes.
+                    return
+                }
                 
+                let actualCountry = Country(isoCountryCode)
                 guard country == actualCountry else {
-                    let expected = country.name ?? "(Unknown)"
+                    let expected = country.nameOrPlaceholder
                     let actual = placemark.country ?? "(Unknown)"
                     let problem = LocationProblem.authorizedButWrongCountry(expected: expected, actual: actual)
                     throw Error.locationProblem(problem: problem)
