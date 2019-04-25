@@ -229,13 +229,13 @@ Scan the QR code with this phone</string>
             </objects>
             <point key="canvasLocation" x="1997.5999999999999" y="46.326836581709152"/>
         </scene>
-        <!--GenericOhNoViewController-->
+        <!--OhNo-->
         <scene sceneID="fYj-Ko-N6l">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GenericOhNoViewController" id="y8z-sI-v85" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="OhNo" id="y8z-sI-v85" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoR-KN-9Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="-195"/>
+            <point key="canvasLocation" x="2606" y="-214"/>
         </scene>
         <!--Sign Up Completed View Controller-->
         <scene sceneID="bMQ-md-hBk">

@@ -71,7 +71,10 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                                                 case (.APPROVED, .APPROVED, .APPROVED):
                                                     segueIdentifier = "showEKYCLastScreen"
                                                 case (.REJECTED, _, _):
-                                                    segueIdentifier = "showEKYCOhNo"
+                                                    DispatchQueue.main.async {
+                                                        self.showOhNo()
+                                                    }
+                                                    return
                                                 case (.PENDING, .APPROVED, .APPROVED):
                                                     segueIdentifier = "showEKYCLastScreen"
                                                 default:
@@ -124,5 +127,14 @@ class SplashViewController: UIViewController, StoryboardLoadable {
             }
         }
         
+    }
+    
+    private func showOhNo() {
+        let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
+        ohNo.primaryButtonAction = {
+            // TODO: What are we actually retrying when this fails?
+            return
+        }
+        self.present(ohNo, animated: true)
     }
 }

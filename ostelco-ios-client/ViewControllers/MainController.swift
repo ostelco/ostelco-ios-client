@@ -100,7 +100,7 @@ class MainController: UIViewController {
     }
     
     @objc private func showLogin() {
-        let viewController: LoginViewController2 = Storyboard.login.initialViewController()
+        let viewController: LoginViewController = Storyboard.login.initialViewController()
         self.presentVC(vc: viewController)
     }
     

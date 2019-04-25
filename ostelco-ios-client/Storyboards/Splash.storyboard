@@ -22,7 +22,7 @@
                                 <rect key="frame" x="124" y="164" width="127" height="339"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ROJ-9a-odl" firstAttribute="centerX" secondItem="w59-sa-X0F" secondAttribute="centerX" id="gI3-ii-nzM"/>
                             <constraint firstItem="ROJ-9a-odl" firstAttribute="centerY" secondItem="w59-sa-X0F" secondAttribute="centerY" id="oJr-RD-a2b"/>
@@ -38,7 +38,6 @@
                         <segue destination="cU3-me-yQc" kind="show" identifier="showESim" id="0bq-wL-eDf"/>
                         <segue destination="gaJ-w0-cam" kind="show" identifier="showHome" id="dJT-0s-e6q"/>
                         <segue destination="Af1-H5-cct" kind="show" identifier="showEKYCLastScreen" id="S8a-f4-wu0"/>
-                        <segue destination="7EC-KQ-GFl" kind="show" identifier="showEKYCOhNo" id="T6z-ca-e68"/>
                         <segue destination="lZm-Bx-3oh" kind="show" identifier="showEKYCNRICAddress" id="v2p-TB-Jkk"/>
                     </connections>
                 </viewController>
@@ -76,7 +75,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" id="UQi-ey-2zr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZc-oo-O7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1110" y="-423"/>
+            <point key="canvasLocation" x="-1113" y="-398"/>
         </scene>
         <!--ESim-->
         <scene sceneID="PIV-nG-7ht">
@@ -109,14 +108,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzN-jH-ff1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1016" y="-314"/>
-        </scene>
-        <!--EKYCOhNoViewController-->
-        <scene sceneID="Dfj-1a-RK7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCOhNoViewController" id="7EC-KQ-GFl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LAb-ru-o8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1010" y="-364"/>
         </scene>
     </scenes>
     <resources>
