@@ -71,7 +71,9 @@ extension LocationChecking {
                     switch locationError {
                     case .locationProblem(let problem):
                         self?.handleLocationProblem(problem)
+                        return
                     default:
+                        // Handled below
                         break
                     }
                 }
