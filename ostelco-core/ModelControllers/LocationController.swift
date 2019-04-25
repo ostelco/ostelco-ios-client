@@ -70,7 +70,9 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
                     throw Error.couldntGetCountryCode(from: placemark)
                 }
                 
-                guard country.countryCode == isoCountryCode else {
+                let actualCountry = Country(isoCountryCode)
+                
+                guard country == actualCountry else {
                     let expected = country.name ?? "(Unknown)"
                     let actual = placemark.country ?? "(Unknown)"
                     let problem = LocationProblem.authorizedButWrongCountry(expected: expected, actual: actual)
