@@ -9,7 +9,7 @@
 import Foundation
 
 public struct PurchaseModel: Codable {
-    let id: String
-    let timestamp: Int64
-    let product: ProductModel
+    public let id: String
+    public let timestamp: Int64
+    public let product: ProductModel
 }

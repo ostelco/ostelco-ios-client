@@ -25,6 +25,7 @@ class APIManager: Service {
     var context: Resource { return resource("/context") }
     var regions: Resource { return resource("/regions") }
     var bundles: Resource { return resource("/bundles") }
+    var purchases: Resource { return resource("/purchases") }
 
     fileprivate init() {
         let networking = URLSessionConfiguration.ephemeral
@@ -82,6 +83,10 @@ class APIManager: Service {
 
         configureTransformer("/bundles") {
             try self.jsonDecoder.decode([BundleModel].self, from: $0.content)
+        }
+
+        configureTransformer("/purchases") {
+            try self.jsonDecoder.decode([PurchaseModel].self, from: $0.content)
         }
 
     }
