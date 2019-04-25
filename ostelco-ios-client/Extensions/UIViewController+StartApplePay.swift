@@ -9,7 +9,6 @@
 import Stripe
 import Siesta
 
-
 extension UIViewController {
     func startApplePay(product: Product, delegate: PKPaymentAuthorizationViewControllerDelegate) {
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
