@@ -65,10 +65,11 @@ class HomeViewController2: UIViewController {
             self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
-                print("error fetching products \(error)")
+                debugPrint("error fetching products \(error)")
             } else if products.isEmpty {
-                print("No products available")
+                debugPrint("No products available")
             }
+            self.availableProducts.forEach {debugPrint($0.name, $0.amount, $0.currency, $0.country, $0.sku)}
             // TODO: check the if the customer is a member already.
             self.hasSubscription = false
         }

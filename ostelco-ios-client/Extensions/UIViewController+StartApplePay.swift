@@ -9,6 +9,7 @@
 import Stripe
 import Siesta
 
+
 extension UIViewController {
     func startApplePay(product: Product, delegate: PKPaymentAuthorizationViewControllerDelegate) {
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
@@ -28,10 +29,11 @@ extension UIViewController {
             self.showAlert(title: "Payment Error", msg: "Wallet empty or does not contain any of the supported card types. Should give user option to open apple wallet to add a card.")
             return
         }
-        
+        // Convert to acutal amount (prime uses currency’s smallest unit)
+        let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: product.name, amount: product.amount as NSDecimalNumber),
+            PKPaymentSummaryItem(label: product.name, amount: applePayAmount),
         ]
         
         // Continued in next step
@@ -59,6 +61,23 @@ extension UIViewController {
                     self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode failed for unknown reason.")
                 #endif
             #endif
+        }
+    }
+
+    // Stripe (& Prime) expects amounts to be provided in currency's smallest unit.
+    // https://stripe.com/docs/currencies#zero-decimal
+    // https://github.com/stripe/stripe-ios/blob/v15.0.1/Stripe/NSDecimalNumber%2BStripe_Currency.m
+    func convertStripeToNormalCurrency(amount: Decimal, currency: String) -> NSDecimalNumber {
+        let zeroDecimalCountries = [
+            "bif", "clp", "djf", "gnf", "jpy",
+            "kmf", "krw", "mga", "pyg", "rwf",
+            "vnd", "vuv", "xaf", "xof", "xpf"
+        ]
+        let amountInCurrency = NSDecimalNumber(decimal: amount)
+        if zeroDecimalCountries.contains(currency.lowercased()) {
+            return amountInCurrency
+        } else {
+            return amountInCurrency.multiplying(byPowerOf10: -2)
         }
     }
 }
