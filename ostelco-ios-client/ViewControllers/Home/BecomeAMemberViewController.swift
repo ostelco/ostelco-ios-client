@@ -53,7 +53,14 @@ class BecomeAMemberViewController: UIViewController {
     }
     
     @objc func buyButtonTapped() {
-        let product = Product(name: "membership fee, 1 year", amount: 1.0, country: "SG", currency: "SGD", sku: "123")
+        let product = Product(
+            name: "membership fee, 1 year",
+            label: "membership fee, 1 year for $1",
+            amount: 100.0,
+            country: "SG",
+            currency: "SGD",
+            sku: "123"
+        )
         paymentAuthorized = false
         startApplePay(product: product, delegate: self)
     }

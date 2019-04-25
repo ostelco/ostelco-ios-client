@@ -65,10 +65,11 @@ class HomeViewController2: UIViewController {
             self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
-                print("error fetching products \(error)")
+                debugPrint("error fetching products \(error)")
             } else if products.isEmpty {
-                print("No products available")
+                debugPrint("No products available")
             }
+            self.availableProducts.forEach {debugPrint($0.name, $0.amount, $0.currency, $0.country, $0.sku)}
             // TODO: check the if the customer is a member already.
             self.hasSubscription = false
         }
@@ -151,14 +152,7 @@ class HomeViewController2: UIViewController {
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        let availableProducts: [Product] = products.map {
-                            Product(
-                                name: "Buy \($0.presentation.label) for \($0.presentation.price)",
-                                amount: Decimal($0.price.amount),
-                                country: "SG",
-                                currency: $0.price.currency,
-                                sku: $0.sku)
-                        }
+                        let availableProducts: [Product] = products.map { Product(from: $0, countryCode: "SG") }
                         completionHandler(availableProducts, nil)
                     } else {
                         completionHandler([], nil)

@@ -118,7 +118,7 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         for product in products {
-            let buyAction = UIAlertAction(title: product.name, style: .default) {_ in
+            let buyAction = UIAlertAction(title: product.label, style: .default) {_ in
                 self.startApplePay(product: product, delegate: delegate)
             }
             alertCtrl.addAction(buyAction)
