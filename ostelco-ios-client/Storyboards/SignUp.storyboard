@@ -60,8 +60,8 @@
                                     <action selector="checkButtonTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="Vba-gs-8vx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhX-lv-Abz" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="139" y="284.66666666666669" width="171" height="40.666666666666686"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhX-lv-Abz" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="132" y="284.66666666666669" width="178" height="40.666666666666686"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -70,8 +70,8 @@
                                     <outletCollection property="gestureRecognizers" destination="cvp-aj-9ib" appends="YES" id="PC0-Se-Drb"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="I agree to the Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-C6-Ngo" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="139" y="345.33333333333331" width="171" height="40.666666666666686"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="I agree to the Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-C6-Ngo" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="132" y="345.33333333333331" width="178" height="40.666666666666686"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
