@@ -28,6 +28,6 @@ public class Country: Equatable {
     // MARK: - Equatable
     
     public static func == (lhs: Country, rhs: Country) -> Bool {
-        return lhs.countryCode == rhs.countryCode
+        return lhs.countryCode.lowercased() == rhs.countryCode.lowercased()
     }
 }
