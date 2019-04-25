@@ -136,8 +136,6 @@
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
-		9B6E3A24227091EF0063EBAA /* LocationProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A23227091EF0063EBAA /* LocationProblem.swift */; };
-		9B6E3A25227093700063EBAA /* LocationProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A23227091EF0063EBAA /* LocationProblem.swift */; };
 		9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
 		9B6E3A292270A8950063EBAA /* CLGeocoder+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A282270A8950063EBAA /* CLGeocoder+PromiseKit.swift */; };
 		9B6E3A2A2270A8950063EBAA /* CLGeocoder+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A282270A8950063EBAA /* CLGeocoder+PromiseKit.swift */; };
@@ -193,6 +191,9 @@
 		9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */; };
 		9BC465392271ACC3001951BF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
+		9BC4653A2271AD5A001951BF /* LocationProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A23227091EF0063EBAA /* LocationProblem.swift */; };
+		9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */; };
+		9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -454,6 +455,7 @@
 		9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TypedDelegate.swift"; sourceTree = "<group>"; };
 		9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Netverify+Ostelco.swift"; sourceTree = "<group>"; };
 		9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FancyAppend.swift"; sourceTree = "<group>"; };
+		9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationProblem+UserFacingCopy.swift"; sourceTree = "<group>"; };
 		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -690,7 +692,7 @@
 				0437CF88224D3B380022A2B8 /* Context.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
-				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
+				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
@@ -793,6 +795,7 @@
 			children = (
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 				043E711D223AF61600E01993 /* Country.swift */,
+				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
@@ -1627,6 +1630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE2D44E225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
+				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
@@ -1719,6 +1723,7 @@
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
+				9BC4653A2271AD5A001951BF /* LocationProblem.swift in Sources */,
 				9BC465392271ACC3001951BF /* Country.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
@@ -1770,8 +1775,8 @@
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
 				9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
+				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
-				9B6E3A25227093700063EBAA /* LocationProblem.swift in Sources */,
 				9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				9B6E3A2A2270A8950063EBAA /* CLGeocoder+PromiseKit.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
