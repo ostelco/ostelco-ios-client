@@ -152,14 +152,7 @@ class HomeViewController2: UIViewController {
             .onSuccess { entity in
                 DispatchQueue.main.async {
                     if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        let availableProducts: [Product] = products.map {
-                            Product(
-                                name: "Buy \($0.presentation.label) for \($0.presentation.price)",
-                                amount: Decimal($0.price.amount),
-                                country: "SG",
-                                currency: $0.price.currency,
-                                sku: $0.sku)
-                        }
+                        let availableProducts: [Product] = products.map { Product(from: $0, countryCode: "SG") }
                         completionHandler(availableProducts, nil)
                     } else {
                         completionHandler([], nil)
