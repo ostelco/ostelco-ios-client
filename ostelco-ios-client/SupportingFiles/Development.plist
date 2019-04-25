@@ -44,11 +44,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used for verifying your identity</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location services must be allowed in order to issue an eSIM</string>
+	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location services must be allowed in order to issue an eSIM</string>
+	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Is anyone even reading this?</string>
+	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Is anyone even reading this?</string>
 	<key>UILaunchStoryboardName</key>
