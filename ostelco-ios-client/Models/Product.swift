@@ -26,7 +26,7 @@ public class Product {
     }
 
     init(from: ProductModel, countryCode: String) {
-        name = from.presentation.label
+        name = "\(from.presentation.label) of Data"
         label = "Buy \(from.presentation.label) for \(from.presentation.price)"
         amount = Decimal(from.price.amount)
         country = countryCode
