@@ -7,8 +7,6 @@
 //
 
 import CoreLocation
-import RxSwift
-import RxCoreLocation
 import ostelco_core
 import UIKit
 
@@ -19,8 +17,8 @@ class LocationProblemViewController: UIViewController {
     @IBOutlet private var explanationLabel: UILabel!
     @IBOutlet private var primaryButton: UIButton!
     
-    private let bag = DisposeBag()
-    private let manager = CLLocationManager()
+    /// For the `LocationChecking` protocol
+    var spinnerView: UIView?
     
     var locationProblem: LocationProblem? {
         didSet {
@@ -62,45 +60,43 @@ class LocationProblemViewController: UIViewController {
         }
         
         switch problem {
-        case .notDetermined,
-             .disabledInSettings,
+        case .notDetermined:
+            LocationController.shared.requestAuthorization()
+        case .disabledInSettings,
              .deniedByUser:
             UIApplication.shared.openSettings()
         case .authorizedButWrongCountry:
-            // TODO: Refetch user's location.
-            break
+            // Re-check the user's location
+            self.checkLocation()
         case .restrictedByParentalControls:
             assertionFailure("You shouldn't be able to get here, this button should be gone!")
         }
     }
     
     private func listenForChanges() {
-        manager.rx
-            .didChangeAuthorization
-            .debug("didChangeAuthorization")
-            .filter({ _, status in
-                switch status {
-                case .restricted,
-                     .denied:
-                    return false
-                case .authorizedAlways,
-                     .authorizedWhenInUse,
-                     .notDetermined:
-                    return true
-                @unknown default:
-                    assertionFailure("Apple added a new status here! You should update this handling.")
-                    return false
-                }
-            })
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {_ in
-                self.performSegue(withIdentifier: "locationAccessAllowedAndConfirmed", sender: self)
-            })
-            .disposed(by: bag)
+        LocationController.shared.authChangeCallback = { [weak self] status in
+            self?.handleAuthorzationStatusChange(to: status)
+        }
     }
     
     @IBAction private func needHelpTapped() {
         self.showNeedHelpActionSheet()
+    }
+    
+    private func handleAuthorzationStatusChange(to status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            self.locationProblem = .restrictedByParentalControls
+        case .denied:
+            self.locationProblem = .deniedByUser
+        case .notDetermined:
+            self.locationProblem = .notDetermined
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            self.checkLocation()
+        @unknown default:
+            assertionFailure("Apple added a new status here! You should update this handling.")
+        }
     }
 }
 
@@ -113,5 +109,16 @@ extension LocationProblemViewController: StoryboardLoadable {
     
     static var storyboard: Storyboard {
         return .country
+    }
+}
+
+extension LocationProblemViewController: LocationChecking {
+    
+    func locationCheckSucceeded() {
+        self.performSegue(withIdentifier: "locationAccessAllowedAndConfirmed", sender: self)
+    }
+    
+    func handleLocationProblem(_ problem: LocationProblem) {
+        self.locationProblem = problem
     }
 }
