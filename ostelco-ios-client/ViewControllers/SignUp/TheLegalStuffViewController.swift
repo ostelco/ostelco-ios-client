@@ -50,6 +50,7 @@ class TheLegalStuffViewController: UIViewController {
 
     @IBAction private func checkButtonTapped(_ check: CheckButton) {
         check.isChecked.toggle()
+        self.updateContinueButtonState()
     }
     
     private func updateContinueButtonState() {
