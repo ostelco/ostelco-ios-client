@@ -24,7 +24,6 @@ class GetStartedViewController: UIViewController {
         self.nameTextField.delegate = self
     }
     
-    
     @IBAction private func continueTapped(_ sender: Any) {
         self.spinnerView = showSpinner(onView: self.view)
         let email = self.getEmailFromJWT()

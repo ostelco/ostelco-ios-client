@@ -11,9 +11,17 @@ import UIKit
 
 class TheLegalStuffViewController: UIViewController {
     
-    enum ExternalLinks: String {
+    enum ExternalLink: String {
         case privacyPolicy = "https://pi-redirector.firebaseapp.com/privacy-policy"
         case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
+
+        var url: URL {
+            guard let url = URL(string: self.rawValue) else {
+                fatalError("Could not create URL from \(self.rawValue)")
+            }
+
+            return url
+        }
     }
     
     @IBOutlet private weak var termsAndConditionsLabel: BodyTextLabel!
@@ -22,20 +30,20 @@ class TheLegalStuffViewController: UIViewController {
     @IBOutlet private weak var termsAndConditionsCheck: CheckButton!
     @IBOutlet private weak var privacyPolicyCheck: CheckButton!
     
+    private var allChecks: [CheckButton] {
+        return [
+            self.termsAndConditionsCheck,
+            self.privacyPolicyCheck
+        ]
+    }
+    
     @IBOutlet private weak var continueButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.termsAndConditionsLabel.setFullText("I hereby agree to the Terms & Conditions", withBoldedPortion: "Terms & Conditions")
-        self.termsAndConditionsLabel.isUserInteractionEnabled = true
-        let termsAndConditionsTapHandler = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTapped))
-        self.termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTapHandler)
-
         self.privacyPolicyLabel.setFullText("I agree to the Privacy Policy", withBoldedPortion: "Privacy Policy")
-        self.privacyPolicyLabel.isUserInteractionEnabled = true
-        let privacyPolicyTapHandler = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
-        self.privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapHandler)
 
         self.updateContinueButtonState()
     }
@@ -45,20 +53,20 @@ class TheLegalStuffViewController: UIViewController {
     }
     
     private func updateContinueButtonState() {
-        if self.termsAndConditionsCheck.isChecked && self.privacyPolicyCheck.isChecked {
-            self.continueButton.isEnabled = true
-        } else {
+        if self.allChecks.contains(where: { !$0.isChecked }) {
+            // At least one item is not checked.
             self.continueButton.isEnabled = false
+        } else {
+            // Everything is checked!
+            self.continueButton.isEnabled = true
         }
     }
     
-    @objc func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
-        guard let url = URL(string: ExternalLinks.termsAndConditions.rawValue) else { return }
-        UIApplication.shared.open(url)
+    @IBAction private func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
+        UIApplication.shared.open(ExternalLink.termsAndConditions.url)
     }
     
-    @objc func privacyPolicyTapped(sender: UITapGestureRecognizer) {
-        guard let url = URL(string: ExternalLinks.privacyPolicy.rawValue) else { return }
-        UIApplication.shared.open(url)
+    @IBAction private func privacyPolicyTapped(sender: UITapGestureRecognizer) {
+        UIApplication.shared.open(ExternalLink.privacyPolicy.url)
     }
 }
