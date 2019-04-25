@@ -21,6 +21,10 @@ class EnableNotificationsViewController: UIViewController {
         self.showGetStarted()
     }
     
+    @IBAction private func continueTapped() {
+        self.requestNotificationAuthorization()
+    }
+    
     private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {

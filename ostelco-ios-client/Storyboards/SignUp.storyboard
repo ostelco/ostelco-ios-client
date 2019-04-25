@@ -154,7 +154,7 @@
                                     <color key="titleColor" name="White"/>
                                 </state>
                                 <connections>
-                                    <action selector="continueTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="nQi-gx-w4O"/>
+                                    <action selector="continueTapped" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="USN-HI-rjY"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
@@ -224,7 +224,6 @@
                                 </state>
                                 <connections>
                                     <action selector="continueTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="QEI-Mx-3pr"/>
-                                    <action selector="continueTapped:" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="q4Y-zB-0M0"/>
                                 </connections>
                             </button>
                         </subviews>
