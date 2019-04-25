@@ -6,6 +6,8 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import ostelco_core
+
 class OnBoardingManager {
     static let sharedInstance = OnBoardingManager()
     var selectedCountry = Country("SG")

@@ -41,8 +41,6 @@
 		043E71122239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
 		043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
-		043E711E223AF61600E01993 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
-		043E711F223AF61600E01993 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
 		043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
 		043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
 		043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
@@ -194,6 +192,7 @@
 		9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */; };
+		9BC465392271ACC3001951BF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711D223AF61600E01993 /* Country.swift */; };
 		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
@@ -689,7 +688,6 @@
 			isa = PBXGroup;
 			children = (
 				0437CF88224D3B380022A2B8 /* Context.swift */,
-				043E711D223AF61600E01993 /* Country.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
@@ -793,8 +791,9 @@
 		9B9B3244225E3C6500227EA3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
+				043E711D223AF61600E01993 /* Country.swift */,
+				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 			);
@@ -1692,7 +1691,6 @@
 				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
-				043E711E223AF61600E01993 /* Country.swift in Sources */,
 				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
@@ -1721,6 +1719,7 @@
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
+				9BC465392271ACC3001951BF /* Country.swift in Sources */,
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
@@ -1807,7 +1806,6 @@
 				047F29042224460B00FC6A8F /* LoginViewController2.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
-				043E711F223AF61600E01993 /* Country.swift in Sources */,
 				9BE2D44F225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,

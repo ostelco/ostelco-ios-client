@@ -9,6 +9,7 @@
 import CoreLocation
 import RxSwift
 import RxCoreLocation
+import ostelco_core
 import UIKit
 
 class LocationProblemViewController: UIViewController {

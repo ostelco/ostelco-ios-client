@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import ostelco_core
 
 class AllowLocationAccessViewController: UIViewController {
     
