@@ -29,10 +29,10 @@ class BecomeAMemberViewController: ApplePayViewController {
             
             // 2. Check if user has a stripe supported card in its wallet
             if Stripe.deviceSupportsApplePay() {
-                paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
+                paymentButton = PKPaymentButton(paymentButtonType: .checkout, paymentButtonStyle: .whiteOutline)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.buyButtonTapped), for: .touchUpInside)
             } else {
-                paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+                paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .whiteOutline)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.setUpButtonTapped), for: .touchUpInside)
             }
             paymentButton.translatesAutoresizingMaskIntoConstraints = false
