@@ -31,9 +31,13 @@ public class PageControllerDataSource: NSObject, UIPageViewControllerDataSource,
     /// - Parameters:
     ///   - pageController: The UIPageViewController you're using to display your vc's
     ///   - viewControllers: The actual VCs you wish to display
+    ///   - pageIndicatorTintColor: The tint color for unselected pages. Defaults to `UIColor.lightGray`.
+    ///   - currentPageIndicatorTintColor: The tint color for selected pages. Defaults to `UIColor.black`.
     ///   - delegate: The delegate to notify of relevant changes.
     public init(pageController: UIPageViewController,
                 viewControllers: [UIViewController],
+                pageIndicatorTintColor: UIColor = .lightGray,
+                currentPageIndicatorTintColor: UIColor = .black,
                 delegate: PageControllerDataSourceDelegate) {
         self.pageController = pageController
         self.viewControllers = viewControllers
@@ -47,6 +51,10 @@ public class PageControllerDataSource: NSObject, UIPageViewControllerDataSource,
         if let firstVC = viewControllers.first {
             pageController.setViewControllers([firstVC], direction: .forward, animated: false)
         }
+        
+        let appearance = UIPageControl.appearance(whenContainedInInstancesOf: [UIPageViewController.self])
+        appearance.pageIndicatorTintColor = pageIndicatorTintColor
+        appearance.currentPageIndicatorTintColor = currentPageIndicatorTintColor
     }
     
     private func indexOf(viewController: UIViewController) -> Int {
