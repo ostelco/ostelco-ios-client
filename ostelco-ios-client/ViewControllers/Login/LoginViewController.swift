@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 import RxSwift
 
-// TODO: Remove "2" when deleting existing LoginViewController
-class LoginViewController2: UIViewController {
+class LoginViewController: UIViewController {
     var spinnerView: UIView?
     
     let disposeBag = DisposeBag()
@@ -108,7 +107,18 @@ class LoginViewController2: UIViewController {
     }
     
     @objc private func showEKYCOhNo() {
-        performSegue(withIdentifier: "showEKYCOhNo", sender: nil)
+        let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
+                self.present(selectVerificationMethodVC, animated: true)
+            })
+        }
+        self.present(ohNo, animated: true)
     }
     
     @objc private func showESim() {

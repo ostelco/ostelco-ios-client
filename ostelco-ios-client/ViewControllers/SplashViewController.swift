@@ -71,7 +71,10 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                                                 case (.APPROVED, .APPROVED, .APPROVED):
                                                     segueIdentifier = "showEKYCLastScreen"
                                                 case (.REJECTED, _, _):
-                                                    segueIdentifier = "showEKYCOhNo"
+                                                    DispatchQueue.main.async {
+                                                        self.showOhNo()
+                                                    }
+                                                    return
                                                 case (.PENDING, .APPROVED, .APPROVED):
                                                     segueIdentifier = "showEKYCLastScreen"
                                                 default:
@@ -124,5 +127,20 @@ class SplashViewController: UIViewController, StoryboardLoadable {
             }
         }
         
+    }
+    
+    private func showOhNo() {
+        let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
+                self.present(selectVerificationMethodVC, animated: true)
+            })
+        }
+        self.present(ohNo, animated: true)
     }
 }

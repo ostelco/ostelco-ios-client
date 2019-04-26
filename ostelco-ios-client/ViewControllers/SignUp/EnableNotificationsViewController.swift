@@ -13,64 +13,45 @@ class EnableNotificationsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        enableNotifications(ignoreNotDetermined: true)
-    }
-    
-    @IBAction private func continueTapped(_ sender: Any) {
-        enableNotifications()
-    }
-    
-    @IBAction private func dontAllowTapped(_ sender: Any) {
-        enableNotifications()
-    }
-    @IBAction private func okTapped(_ sender: Any) {
-        enableNotifications()
-    }
-    
-    private func showNotificationAlreadySetAlert(status: String) {
-        let alert = UIAlertController(title: "Notification Alert", message: "your notification status is: \(status)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            DispatchQueue.main.async {
-                self.showGetStarted()
-            }
-        }))
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
+        self.enableNotifications(ignoreNotDetermined: true)
     }
     
     private func registerAndContinue() {
-        DispatchQueue.main.async {
-            UIApplication.shared.typedDelegate.enableNotifications()
-            self.showGetStarted()
-        }
+        UIApplication.shared.typedDelegate.enableNotifications()
+        self.showGetStarted()
+    }
+    
+    @IBAction private func continueTapped() {
+        self.requestNotificationAuthorization()
     }
     
     private func enableNotifications(ignoreNotDetermined: Bool = false) {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                if !ignoreNotDetermined {
-                    self.requestNotificationAuthorization()
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                switch settings.authorizationStatus {
+                case .notDetermined:
+                    if !ignoreNotDetermined {
+                        self.requestNotificationAuthorization()
+                    }
+                case.authorized:
+                    print("Already authorized to show notifications, continue")
+                    self.registerAndContinue()
+                default:
+                    self.showGetStarted()
                 }
-            case.authorized:
-                print("Already authorized to show notifications, continue")
-                self.registerAndContinue()
-            default:
-                self.showGetStarted()
             }
         }
     }
     
     private func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in
-            self.registerAndContinue()
+            DispatchQueue.main.async {
+                self.registerAndContinue()
+            }
         }
     }
     
     private func showGetStarted() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "displayGetStarted", sender: self)
-        }
+        self.performSegue(withIdentifier: "displayGetStarted", sender: self)
     }
 }

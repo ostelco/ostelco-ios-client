@@ -6,87 +6,68 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import OstelcoStyles
 import UIKit
 
 class TheLegalStuffViewController: UIViewController {
     
-    enum ExternalLinks: String {
+    enum ExternalLink: String {
         case privacyPolicy = "https://pi-redirector.firebaseapp.com/privacy-policy"
         case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
+
+        var url: URL {
+            guard let url = URL(string: self.rawValue) else {
+                fatalError("Could not create URL from \(self.rawValue)")
+            }
+
+            return url
+        }
     }
     
-    @IBOutlet private weak var termsAndConditionsLabel: UILabel!
-    @IBOutlet private weak var privacyPolicyLabel: UILabel!
-    @IBOutlet private weak var oyaUpdatesLabel: UILabel!
+    @IBOutlet private weak var termsAndConditionsLabel: BodyTextLabel!
+    @IBOutlet private weak var privacyPolicyLabel: BodyTextLabel!
     
-    @IBOutlet private weak var termsAndConditionsSwitch: UISwitch!
-    @IBOutlet private weak var privacyPolicySwitch: UISwitch!
-    @IBOutlet private weak var oyaUpdatesSwitch: UISwitch!
+    @IBOutlet private weak var termsAndConditionsCheck: CheckButton!
+    @IBOutlet private weak var privacyPolicyCheck: CheckButton!
+    
+    private var allChecks: [CheckButton] {
+        return [
+            self.termsAndConditionsCheck,
+            self.privacyPolicyCheck
+        ]
+    }
     
     @IBOutlet private weak var continueButton: UIButton!
     
-    @IBAction private func termsAndConditionsToggled(_ sender: Any) {
-        toggleContinueButton()
-    }
-    
-    @IBAction private func privacyPolicyToggled(_ sender: Any) {
-        toggleContinueButton()
-    }
-    
-    @IBAction private func oyaUpdatesToggled(_ sender: Any) {
-        toggleContinueButton()
-    }
-    
-    private func toggleContinueButton() {
-        
-        if termsAndConditionsSwitch.isOn && privacyPolicySwitch.isOn && oyaUpdatesSwitch.isOn {
-            continueButton.isEnabled = true
-            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor
-        } else {
-            continueButton.isEnabled = false
-            continueButton.backgroundColor = ThemeManager.currentTheme().mainColor.withAlphaComponent(CGFloat(0.15))
-        }
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let attributedString = NSMutableAttributedString(string: "I hereby agree to the Terms & Conditions", attributes: [
-            .font: UIFont.systemFont(ofSize: 16.0, weight: .regular),
-            .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
-            ])
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16.0, weight: .bold), range: NSRange(location: 22, length: 18))
-        termsAndConditionsLabel.attributedText = attributedString
-        termsAndConditionsLabel.isUserInteractionEnabled = true
-        let termsAndConditionsTapHandler = UITapGestureRecognizer(target: self, action: #selector(termsAndConditionsTapped))
-        termsAndConditionsLabel.addGestureRecognizer(termsAndConditionsTapHandler)
-        
-        let attributedString2 = NSMutableAttributedString(string: "I agree to the  Privacy Policy", attributes: [
-            .font: UIFont.systemFont(ofSize: 16.0, weight: .regular),
-            .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
-            ])
-        attributedString2.addAttribute(.font, value: UIFont.systemFont(ofSize: 16.0, weight: .bold), range: NSRange(location: 16, length: 14))
-        privacyPolicyLabel.attributedText = attributedString2
-        privacyPolicyLabel.isUserInteractionEnabled = true
-        let privacyPolicyTapHandler = UITapGestureRecognizer(target: self, action: #selector(privacyPolicyTapped))
-        privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapHandler)
-        
-        let attributedString3 = NSMutableAttributedString(string: "I agree to recieve OYA updates by email. This consent can be revoked at any time.", attributes: [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor(white: 50.0 / 255.0, alpha: 1.0)
-            ])
-        oyaUpdatesLabel.attributedText = attributedString3
-        
-        toggleContinueButton()
+        self.termsAndConditionsLabel.setFullText("I hereby agree to the Terms & Conditions", withBoldedPortion: "Terms & Conditions")
+        self.privacyPolicyLabel.setFullText("I agree to the Privacy Policy", withBoldedPortion: "Privacy Policy")
+
+        self.updateContinueButtonState()
+    }
+
+    @IBAction private func checkButtonTapped(_ check: CheckButton) {
+        check.isChecked.toggle()
+        self.updateContinueButtonState()
     }
     
-    @objc func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
-        guard let url = URL(string: ExternalLinks.termsAndConditions.rawValue) else { return }
-        UIApplication.shared.open(url)
+    private func updateContinueButtonState() {
+        if self.allChecks.contains(where: { !$0.isChecked }) {
+            // At least one item is not checked.
+            self.continueButton.isEnabled = false
+        } else {
+            // Everything is checked!
+            self.continueButton.isEnabled = true
+        }
     }
     
-    @objc func privacyPolicyTapped(sender: UITapGestureRecognizer) {
-        guard let url = URL(string: ExternalLinks.privacyPolicy.rawValue) else { return }
-        UIApplication.shared.open(url)
+    @IBAction private func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
+        UIApplication.shared.open(ExternalLink.termsAndConditions.url)
+    }
+    
+    @IBAction private func privacyPolicyTapped(sender: UITapGestureRecognizer) {
+        UIApplication.shared.open(ExternalLink.privacyPolicy.url)
     }
 }

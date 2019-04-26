@@ -10,54 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Generic Oh No View Controller-->
-        <scene sceneID="gMu-19-HRg">
-            <objects>
-                <viewController storyboardIdentifier="GenericOhNoViewController" id="KbL-XF-5NE" customClass="GenericOhNoViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y2Q-6e-Z8d">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxE-iF-PO9">
-                                <rect key="frame" x="139.5" y="84" width="96" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aW-QC-mAl">
-                                <rect key="frame" x="97" y="190" width="181" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9w-ms-56e">
-                                <rect key="frame" x="131" y="243" width="113" height="30"/>
-                                <state key="normal" title="Contact support"/>
-                                <connections>
-                                    <action selector="contactSupportTapped:" destination="KbL-XF-5NE" eventType="touchUpInside" id="dlA-PG-xyq"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="4aW-QC-mAl" firstAttribute="top" secondItem="kxE-iF-PO9" secondAttribute="bottom" constant="64" id="3C4-2K-82b"/>
-                            <constraint firstItem="P9w-ms-56e" firstAttribute="centerX" secondItem="Y2Q-6e-Z8d" secondAttribute="centerX" id="BE9-um-2vv"/>
-                            <constraint firstItem="kxE-iF-PO9" firstAttribute="centerX" secondItem="K8b-to-Lmn" secondAttribute="centerX" id="HXu-AC-f1c"/>
-                            <constraint firstItem="kxE-iF-PO9" firstAttribute="top" secondItem="K8b-to-Lmn" secondAttribute="top" constant="64" id="PzY-Ma-UZc"/>
-                            <constraint firstItem="4aW-QC-mAl" firstAttribute="centerX" secondItem="Y2Q-6e-Z8d" secondAttribute="centerX" id="bvg-Dk-DZr"/>
-                            <constraint firstItem="P9w-ms-56e" firstAttribute="top" secondItem="4aW-QC-mAl" secondAttribute="bottom" constant="32" id="pwT-UZ-WZF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="K8b-to-Lmn"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QEO-f6-ROQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5615" y="-800"/>
-        </scene>
         <!--Main Controller-->
         <scene sceneID="fSn-xi-1kx">
             <objects>
-                <viewController id="u5N-nF-og5" customClass="MainController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="u5N-nF-og5" customClass="MainController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k57-jY-BUQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

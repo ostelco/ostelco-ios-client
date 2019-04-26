@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3r-5k-dV9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Oh No View Controller-->
+        <scene sceneID="0vT-If-W27">
+            <objects>
+                <viewController id="O3r-5k-dV9" customClass="OhNoViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LYf-aK-g1x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f8-jn-WWp" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
+                                <state key="normal" title="Fix it fix it fix it!"/>
+                                <connections>
+                                    <action selector="primaryButtonTapped" destination="O3r-5k-dV9" eventType="touchUpInside" id="gNq-7S-PXl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-bZ-tBx" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="506" width="91" height="33"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped" destination="O3r-5k-dV9" eventType="touchUpInside" id="obY-ED-bg9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6O-Yd-Zwn" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="64" width="327" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationGhost" translatesAutoresizingMaskIntoConstraints="NO" id="AV7-Q3-B39">
+                                <rect key="frame" x="77" y="142.5" width="221" height="191"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNV-H2-eGR" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="373.5" width="327" height="101.5"/>
+                                <string key="text">Something went wrong. Try again in a while.
+
+If you contact customer support, please use this error code: E333</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="U6O-Yd-Zwn" secondAttribute="trailing" constant="24" id="07L-90-ArN"/>
+                            <constraint firstItem="AV7-Q3-B39" firstAttribute="top" secondItem="U6O-Yd-Zwn" secondAttribute="bottom" constant="40" id="18F-cz-EZa"/>
+                            <constraint firstItem="RNV-H2-eGR" firstAttribute="top" secondItem="AV7-Q3-B39" secondAttribute="bottom" constant="40" id="99e-uk-LXc"/>
+                            <constraint firstItem="U6O-Yd-Zwn" firstAttribute="top" secondItem="sEh-h0-R7g" secondAttribute="top" constant="44" id="I4I-bF-BiW"/>
+                            <constraint firstItem="sEh-h0-R7g" firstAttribute="bottom" secondItem="2f8-jn-WWp" secondAttribute="bottom" constant="44" id="JKc-CB-BrW"/>
+                            <constraint firstItem="U6O-Yd-Zwn" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="Oa1-mJ-n4M"/>
+                            <constraint firstItem="2f8-jn-WWp" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="Ruh-ii-o1p"/>
+                            <constraint firstItem="HH9-bZ-tBx" firstAttribute="centerX" secondItem="LYf-aK-g1x" secondAttribute="centerX" id="YfT-s8-QF1"/>
+                            <constraint firstItem="AV7-Q3-B39" firstAttribute="centerX" secondItem="LYf-aK-g1x" secondAttribute="centerX" id="dQO-cT-939"/>
+                            <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="RNV-H2-eGR" secondAttribute="trailing" constant="24" id="fz7-03-vEA"/>
+                            <constraint firstItem="RNV-H2-eGR" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="gvD-Up-qje"/>
+                            <constraint firstItem="2f8-jn-WWp" firstAttribute="top" secondItem="HH9-bZ-tBx" secondAttribute="bottom" constant="34" id="mG4-vp-Tl1"/>
+                            <constraint firstItem="HH9-bZ-tBx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RNV-H2-eGR" secondAttribute="bottom" constant="24" id="oGu-cx-SDA"/>
+                            <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="2f8-jn-WWp" secondAttribute="trailing" constant="24" id="sPZ-YE-B6a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sEh-h0-R7g"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="RNV-H2-eGR" id="xU7-y4-R2f"/>
+                        <outlet property="imageView" destination="AV7-Q3-B39" id="nfx-2h-42r"/>
+                        <outlet property="primaryButton" destination="2f8-jn-WWp" id="eDn-jN-F0x"/>
+                        <outlet property="titleLabel" destination="U6O-Yd-Zwn" id="Lci-fO-UcZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RFY-3q-hnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="-248"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="illustrationGhost" width="221" height="191"/>
+    </resources>
+</document>

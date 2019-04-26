@@ -15,6 +15,7 @@ enum Storyboard: String, CaseIterable {
     case home = "Home"
     case login = "Login"
     case main = "Main"
+    case ohNo = "OhNo"
     case settings = "Settings"
     case signUp = "SignUp"
     case splash = "Splash"

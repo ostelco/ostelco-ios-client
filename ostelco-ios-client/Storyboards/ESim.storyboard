@@ -13,59 +13,59 @@
         <!--On Boarding View Controller-->
         <scene sceneID="OKx-hg-ozQ">
             <objects>
-                <viewController id="Lsf-aj-zcC" customClass="ESIMOnBoardingViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Lsf-aj-zcC" customClass="ESIMOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3f0-SH-REC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-aQ-DYw">
-                                <rect key="frame" x="16" y="84" width="79.5" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-aQ-DYw" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="64" width="327" height="38.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-xd-unb">
-                                <rect key="frame" x="16" y="152" width="308.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-xd-unb" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="136.5" width="327" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepDoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lHf-a4-RCd">
-                                <rect key="frame" x="16" y="205" width="25" height="25"/>
+                                <rect key="frame" x="24" y="189" width="25" height="25"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepDoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-wI-seC">
-                                <rect key="frame" x="16" y="262" width="25" height="25"/>
+                                <rect key="frame" x="24" y="246" width="25" height="25"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-xm-Fnb">
-                                <rect key="frame" x="16" y="319" width="25" height="25"/>
+                                <rect key="frame" x="24" y="303" width="25" height="25"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-UT-kpb">
-                                <rect key="frame" x="57" y="207" width="122" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-UT-kpb" customClass="StepsTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="65" y="191" width="130.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-f2-C0l">
-                                <rect key="frame" x="57" y="264" width="144" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-f2-C0l" customClass="StepsTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="65" y="248" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-iQ-nVD">
-                                <rect key="frame" x="57" y="321" width="146" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-iQ-nVD" customClass="StepsTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="65" y="305" width="155.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Sv-hb7">
-                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Sv-hb7" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Lsf-aj-zcC" eventType="touchUpInside" id="ruS-j3-ll7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clz-Qn-znE">
-                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clz-Qn-znE" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="506" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="Lsf-aj-zcC" eventType="touchUpInside" id="kGy-ht-bq2"/>
@@ -74,26 +74,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="zAV-xd-unb" secondAttribute="trailing" constant="24" id="4S2-Uj-PU4"/>
                             <constraint firstItem="lHf-a4-RCd" firstAttribute="top" secondItem="zAV-xd-unb" secondAttribute="bottom" constant="32" id="ALY-q0-dkL"/>
                             <constraint firstItem="FFx-xm-Fnb" firstAttribute="top" secondItem="sfy-wI-seC" secondAttribute="bottom" constant="32" id="Ahv-xY-k4m"/>
-                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="top" secondItem="fki-HZ-HBP" secondAttribute="top" constant="64" id="EqN-Nf-DUo"/>
-                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="16" id="MN0-MU-nyL"/>
+                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="top" secondItem="fki-HZ-HBP" secondAttribute="top" constant="44" id="EqN-Nf-DUo"/>
+                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="MN0-MU-nyL"/>
                             <constraint firstItem="zPQ-UT-kpb" firstAttribute="centerY" secondItem="lHf-a4-RCd" secondAttribute="centerY" id="N9l-xR-vHc"/>
-                            <constraint firstItem="lHf-a4-RCd" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="16" id="QFE-lN-Dnt"/>
+                            <constraint firstItem="lHf-a4-RCd" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="QFE-lN-Dnt"/>
                             <constraint firstItem="sfy-wI-seC" firstAttribute="top" secondItem="lHf-a4-RCd" secondAttribute="bottom" constant="32" id="QbM-3h-O7k"/>
                             <constraint firstItem="CHa-f2-C0l" firstAttribute="centerY" secondItem="sfy-wI-seC" secondAttribute="centerY" id="QsI-8n-2sz"/>
                             <constraint firstItem="zPQ-UT-kpb" firstAttribute="leading" secondItem="lHf-a4-RCd" secondAttribute="trailing" constant="16" id="RAM-vT-j8C"/>
-                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="top" secondItem="clz-Qn-znE" secondAttribute="bottom" constant="32" id="W8r-mu-LsO"/>
-                            <constraint firstItem="FFx-xm-Fnb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="16" id="WsV-Fc-OaR"/>
+                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="TN0-sT-rmy"/>
+                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="top" secondItem="clz-Qn-znE" secondAttribute="bottom" constant="34" id="W8r-mu-LsO"/>
+                            <constraint firstItem="FFx-xm-Fnb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="WsV-Fc-OaR"/>
+                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="N1r-Sv-hb7" secondAttribute="trailing" constant="24" id="X2V-hr-Vbj"/>
                             <constraint firstItem="CHa-f2-C0l" firstAttribute="leading" secondItem="zPQ-UT-kpb" secondAttribute="leading" id="YKK-0b-tuz"/>
-                            <constraint firstItem="zAV-xd-unb" firstAttribute="top" secondItem="H3z-aQ-DYw" secondAttribute="bottom" constant="32" id="YSo-aa-2GN"/>
+                            <constraint firstItem="zAV-xd-unb" firstAttribute="top" secondItem="H3z-aQ-DYw" secondAttribute="bottom" constant="34" id="YSo-aa-2GN"/>
                             <constraint firstItem="clz-Qn-znE" firstAttribute="centerX" secondItem="3f0-SH-REC" secondAttribute="centerX" id="dGt-vs-hAg"/>
                             <constraint firstItem="6zE-iQ-nVD" firstAttribute="centerY" secondItem="FFx-xm-Fnb" secondAttribute="centerY" id="dKV-Dj-K2d"/>
-                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="centerX" secondItem="3f0-SH-REC" secondAttribute="centerX" id="dW0-UY-pCi"/>
-                            <constraint firstItem="sfy-wI-seC" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="16" id="dyJ-Jk-XRl"/>
+                            <constraint firstItem="sfy-wI-seC" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="dyJ-Jk-XRl"/>
+                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="H3z-aQ-DYw" secondAttribute="trailing" constant="24" id="no6-6o-6ny"/>
                             <constraint firstItem="6zE-iQ-nVD" firstAttribute="leading" secondItem="CHa-f2-C0l" secondAttribute="leading" id="oUN-Wv-rie"/>
-                            <constraint firstItem="zAV-xd-unb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="16" id="ssp-UB-cfe"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="bottom" secondItem="N1r-Sv-hb7" secondAttribute="bottom" constant="64" id="yPz-ys-rZ1"/>
+                            <constraint firstItem="zAV-xd-unb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="ssp-UB-cfe"/>
+                            <constraint firstItem="fki-HZ-HBP" firstAttribute="bottom" secondItem="N1r-Sv-hb7" secondAttribute="bottom" constant="44" id="yPz-ys-rZ1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fki-HZ-HBP"/>
                     </view>
@@ -108,72 +111,109 @@
         <!--Pending Download View Controller-->
         <scene sceneID="oPj-wY-cH4">
             <objects>
-                <viewController id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgR-Xv-prz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-P3-rBL">
-                                <rect key="frame" x="32" y="84" width="311" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-P3-rBL" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="32" y="64" width="311" height="38.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just sent an email with a QR code to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFQ-XE-Rr2">
-                                <rect key="frame" x="64" y="152" width="247" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just sent an email with a QR code to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFQ-XE-Rr2" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="122.5" width="327" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please follow these steps:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-bW-vSe">
-                                <rect key="frame" x="64" y="239" width="247" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please follow these steps:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-bW-vSe" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="212.5" width="327" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-Vm-dCb">
-                                <rect key="frame" x="145" y="573" width="85" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-Vm-dCb" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Check again"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="c1S-Dv-Jls"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-bE-GzB">
-                                <rect key="frame" x="148.5" y="511" width="78" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-bE-GzB" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="506" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="3Fu-gf-xr0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-1A-jtX">
-                                <rect key="frame" x="143" y="193" width="89" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-1A-jtX" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="135" y="163.5" width="105" height="33"/>
                                 <state key="normal" title="Send it again"/>
                                 <connections>
                                     <action selector="sendAgainTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="hC0-td-dwc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructionsESim" translatesAutoresizingMaskIntoConstraints="NO" id="8u4-Ju-0Et">
-                                <rect key="frame" x="50.5" y="231" width="274" height="205"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laptop" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-Mq-ang">
+                                <rect key="frame" x="32" y="253" width="79" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="BjY-Sa-gLh"/>
+                                    <constraint firstAttribute="height" constant="63" id="Qdq-IA-wHq"/>
+                                </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="XYI-u4-iDU">
+                                <rect key="frame" x="35" y="336" width="65" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="cOk-cZ-b5h"/>
+                                    <constraint firstAttribute="height" constant="82" id="zkG-9l-6Bk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-Vf-ZGV" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="131" y="336" width="212" height="122"/>
+                                <string key="text">On your phone, go to: 
+Settings - Mobile Data - Add Data Plan
+
+Scan the QR code with this phone</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Open the email on your laptop/tablet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-eO-Xdc" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="131" y="253" width="212" height="41"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="top" secondItem="HlS-bW-vSe" secondAttribute="bottom" constant="20" id="0YF-jx-nm5"/>
+                            <constraint firstItem="XYI-u4-iDU" firstAttribute="top" secondItem="tRS-Mq-ang" secondAttribute="bottom" constant="20" id="2E6-Pg-CmN"/>
+                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="leading" secondItem="tRS-Mq-ang" secondAttribute="trailing" constant="20" id="4mQ-bn-VyQ"/>
                             <constraint firstItem="HlS-bW-vSe" firstAttribute="top" secondItem="b1j-1A-jtX" secondAttribute="bottom" constant="16" id="7Tu-QJ-Xxg"/>
+                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="top" secondItem="XYI-u4-iDU" secondAttribute="top" id="7zU-q9-srV"/>
                             <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="Biu-P3-rBL" secondAttribute="trailing" constant="32" id="BlV-YQ-Ula"/>
-                            <constraint firstAttribute="trailing" secondItem="HlS-bW-vSe" secondAttribute="trailing" constant="64" id="Ood-B8-Gke"/>
+                            <constraint firstAttribute="trailing" secondItem="HlS-bW-vSe" secondAttribute="trailing" constant="24" id="Ood-B8-Gke"/>
+                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="HuT-Vm-dCb" secondAttribute="trailing" constant="24" id="SS2-6y-CTK"/>
                             <constraint firstItem="b1j-1A-jtX" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="UL7-IO-VKA"/>
-                            <constraint firstItem="Biu-P3-rBL" firstAttribute="top" secondItem="MFX-5Q-Pxo" secondAttribute="top" constant="64" id="WOp-bX-94S"/>
-                            <constraint firstItem="8u4-Ju-0Et" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="agt-SE-cl4"/>
-                            <constraint firstItem="8u4-Ju-0Et" firstAttribute="centerY" secondItem="PgR-Xv-prz" secondAttribute="centerY" id="cOo-VA-nfC"/>
-                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="top" secondItem="Biu-P3-rBL" secondAttribute="bottom" constant="32" id="eAn-91-rHO"/>
+                            <constraint firstItem="Biu-P3-rBL" firstAttribute="top" secondItem="MFX-5Q-Pxo" secondAttribute="top" constant="44" id="WOp-bX-94S"/>
+                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="Mgc-eO-Xdc" secondAttribute="trailing" constant="32" id="X5y-NW-8QD"/>
+                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="top" secondItem="tRS-Mq-ang" secondAttribute="top" id="cxY-Po-SKf"/>
+                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="top" secondItem="Biu-P3-rBL" secondAttribute="bottom" constant="20" id="eAn-91-rHO"/>
+                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="trailing" secondItem="Mgc-eO-Xdc" secondAttribute="trailing" id="eM3-SS-nrH"/>
+                            <constraint firstItem="tRS-Mq-ang" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="32" id="fx3-pd-zHz"/>
                             <constraint firstItem="HuT-Vm-dCb" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="hOI-ei-6a1"/>
-                            <constraint firstAttribute="trailing" secondItem="RFQ-XE-Rr2" secondAttribute="trailing" constant="64" id="jyS-Uh-Nef"/>
-                            <constraint firstItem="HlS-bW-vSe" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="64" id="kT8-DX-JSp"/>
-                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="bottom" secondItem="HuT-Vm-dCb" secondAttribute="bottom" constant="64" id="kam-dT-UBT"/>
+                            <constraint firstAttribute="trailing" secondItem="RFQ-XE-Rr2" secondAttribute="trailing" constant="24" id="jyS-Uh-Nef"/>
+                            <constraint firstItem="XYI-u4-iDU" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="35" id="k0T-CL-sJu"/>
+                            <constraint firstItem="HuT-Vm-dCb" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="24" id="k2b-JQ-3Up"/>
+                            <constraint firstItem="HlS-bW-vSe" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="24" id="kT8-DX-JSp"/>
+                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="bottom" secondItem="HuT-Vm-dCb" secondAttribute="bottom" constant="44" id="kam-dT-UBT"/>
                             <constraint firstItem="Biu-P3-rBL" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="32" id="ncF-ll-Hqy"/>
-                            <constraint firstItem="HuT-Vm-dCb" firstAttribute="top" secondItem="qmZ-bE-GzB" secondAttribute="bottom" constant="32" id="pTM-ex-jWB"/>
-                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="leading" secondItem="PgR-Xv-prz" secondAttribute="leading" constant="64" id="sOQ-M2-YeB"/>
+                            <constraint firstItem="HuT-Vm-dCb" firstAttribute="top" secondItem="qmZ-bE-GzB" secondAttribute="bottom" constant="34" id="pTM-ex-jWB"/>
+                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="leading" secondItem="PgR-Xv-prz" secondAttribute="leading" constant="24" id="sOQ-M2-YeB"/>
                             <constraint firstItem="b1j-1A-jtX" firstAttribute="top" secondItem="RFQ-XE-Rr2" secondAttribute="bottom" id="sqx-ds-5SL"/>
+                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="leading" secondItem="Mgc-eO-Xdc" secondAttribute="leading" id="wTt-U9-jO0"/>
                             <constraint firstItem="qmZ-bE-GzB" firstAttribute="centerX" secondItem="MFX-5Q-Pxo" secondAttribute="centerX" id="xER-QQ-RYZ"/>
                             <constraint firstItem="RFQ-XE-Rr2" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="zLF-eV-bIx"/>
                         </constraints>
@@ -189,55 +229,60 @@
             </objects>
             <point key="canvasLocation" x="1997.5999999999999" y="46.326836581709152"/>
         </scene>
-        <!--GenericOhNoViewController-->
+        <!--OhNo-->
         <scene sceneID="fYj-Ko-N6l">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GenericOhNoViewController" id="y8z-sI-v85" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="OhNo" id="y8z-sI-v85" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoR-KN-9Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="-195"/>
+            <point key="canvasLocation" x="2606" y="-214"/>
         </scene>
         <!--Sign Up Completed View Controller-->
         <scene sceneID="bMQ-md-hBk">
             <objects>
-                <viewController storyboardIdentifier="SignUpCompletedViewController" id="Pmf-Pt-KCB" customClass="SignUpCompletedViewController" customModule="dev_ostelco_ios_client_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpCompletedViewController" id="Pmf-Pt-KCB" customClass="SignUpCompletedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UFf-7M-WzA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="rZb-gR-Jwd">
-                                <rect key="frame" x="16" y="84" width="375" height="118.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-02-cHf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using your 2GB of free data!  🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-4d-Nbm">
-                                        <rect key="frame" x="0.0" y="98" width="375" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-gp-JLF">
-                                <rect key="frame" x="156.5" y="573" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-gp-JLF" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="573" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Pmf-Pt-KCB" eventType="touchUpInside" id="It5-su-1Qf"/>
                                     <segue destination="OQO-eA-Bde" kind="show" identifier="home" id="wBK-hG-VDL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using your 2GB of free data!  🎉" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-4d-Nbm" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="389" width="327" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-02-cHf" customClass="Heading1Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="64" width="327" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationRocket" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-ZT-mCw">
+                                <rect key="frame" x="79.5" y="179" width="216" height="155"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="rZb-gR-Jwd" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="16" id="8Wv-S4-QIp"/>
-                            <constraint firstItem="rZb-gR-Jwd" firstAttribute="trailing" secondItem="f60-ZU-6eq" secondAttribute="trailing" constant="16" id="BDr-A0-gcZ"/>
-                            <constraint firstItem="zu4-gp-JLF" firstAttribute="centerX" secondItem="UFf-7M-WzA" secondAttribute="centerX" id="PLf-ww-oW2"/>
-                            <constraint firstItem="f60-ZU-6eq" firstAttribute="bottom" secondItem="zu4-gp-JLF" secondAttribute="bottom" constant="64" id="cHG-7p-e7T"/>
-                            <constraint firstItem="rZb-gR-Jwd" firstAttribute="top" secondItem="f60-ZU-6eq" secondAttribute="top" constant="64" id="yfJ-HG-7ia"/>
+                            <constraint firstItem="XNS-02-cHf" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="3ZS-45-m0B"/>
+                            <constraint firstItem="f60-ZU-6eq" firstAttribute="trailing" secondItem="zu4-gp-JLF" secondAttribute="trailing" constant="24" id="9oq-ep-LVV"/>
+                            <constraint firstAttribute="trailing" secondItem="XNS-02-cHf" secondAttribute="trailing" constant="24" id="COx-Ha-Hl1"/>
+                            <constraint firstItem="KBj-ZT-mCw" firstAttribute="centerX" secondItem="UFf-7M-WzA" secondAttribute="centerX" id="Gf8-Yw-ziq"/>
+                            <constraint firstItem="UYk-4d-Nbm" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="LCj-Mf-FSW"/>
+                            <constraint firstItem="zu4-gp-JLF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UYk-4d-Nbm" secondAttribute="bottom" constant="20" id="PLF-ZP-bHw"/>
+                            <constraint firstItem="zu4-gp-JLF" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="Vqs-X9-cKY"/>
+                            <constraint firstAttribute="trailing" secondItem="UYk-4d-Nbm" secondAttribute="trailing" constant="24" id="Vzc-rM-CPL"/>
+                            <constraint firstItem="f60-ZU-6eq" firstAttribute="bottom" secondItem="zu4-gp-JLF" secondAttribute="bottom" constant="44" id="cHG-7p-e7T"/>
+                            <constraint firstItem="UYk-4d-Nbm" firstAttribute="top" secondItem="KBj-ZT-mCw" secondAttribute="bottom" constant="55" id="kLM-tF-dW0"/>
+                            <constraint firstItem="XNS-02-cHf" firstAttribute="top" secondItem="f60-ZU-6eq" secondAttribute="top" constant="44" id="lBa-0K-BDg"/>
+                            <constraint firstItem="KBj-ZT-mCw" firstAttribute="top" secondItem="XNS-02-cHf" secondAttribute="bottom" constant="55" id="wBM-q0-qBm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f60-ZU-6eq"/>
                     </view>
@@ -256,7 +301,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="instructionsESim" width="274" height="205"/>
+        <image name="illustrationRocket" width="216" height="155"/>
+        <image name="laptop" width="79" height="63"/>
+        <image name="phone" width="65" height="82"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <image name="stepDoneIcon" width="25" height="25"/>
     </resources>

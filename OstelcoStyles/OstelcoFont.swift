@@ -20,7 +20,7 @@ public class OstelcoFont {
         self.fontSize = fontSize
     }
     
-    var toUIFont: UIFont {
+    public var toUIFont: UIFont {
         guard let font = UIFont(name: self.fontType.fontName, size: self.fontSize.toCGFloat) else {
             debugPrint("- OstelcoFont: Couldn't find font named \(self.fontType.fontName)")
             return UIFont.systemFont(ofSize: self.fontSize.toCGFloat)
