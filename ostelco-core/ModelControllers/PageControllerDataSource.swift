@@ -9,17 +9,22 @@
 import UIKit
 
 public protocol PageControllerDataSourceDelegate: class {
+    
+    /// Called when the current page has changed to a given index.
+    ///
+    /// - Parameter index: The updated index of the page.
     func pageChanged(to index: Int)
 }
 
-public class PageControllerDataSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+/// A data source to allow navigating back and forth with some dots between a bunch of view controllers.
+open class PageControllerDataSource: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    private let viewControllers: [UIViewController]
-    private weak var pageController: UIPageViewController?
-    private weak var delegate: PageControllerDataSourceDelegate?
+    let viewControllers: [UIViewController]
+    private(set) weak var pageController: UIPageViewController?
+    private(set) weak var delegate: PageControllerDataSourceDelegate?
     
     /// The index of the currently showing view controller
-    public var currentIndex: Int {
+    open var currentIndex: Int {
         guard let currentVC = self.pageController?.viewControllers?.first else {
             return -1
         }
@@ -73,44 +78,65 @@ public class PageControllerDataSource: NSObject, UIPageViewControllerDataSource,
         return self.viewControllers[targetIndex]
     }
     
-    public func goToNextPage(animated: Bool = true) {
+    /// Navigates to the next view controller, if it exists. No-ops if it doesn't.
+    ///
+    /// - Parameter animated: Should this navigation be animated? Defaults to true.
+    open func goToNextPage(animated: Bool = true) {
         let nextIndex = self.currentIndex + 1
         guard let nextVC = self.viewController(at: nextIndex) else {
             // There is no next VC
             return
         }
         
-        self.pageController?.setViewControllers([nextVC], direction: .forward, animated: true)
+        self.goToPage(nextVC,
+                      direction: .forward,
+                      animated: animated)
     }
     
-    public func goToPreviousPage(animated: Bool = true) {
+    /// Navigates to the previous view controller, if it exists. No-ops if it doesn't.
+    ///
+    /// - Parameter animated: Should this navigation be animated? Defaults to true.
+    open func goToPreviousPage(animated: Bool = true) {
         let previousIndex = self.currentIndex - 1
         guard let previousVC = self.viewController(at: previousIndex) else {
             // there is no previous VC
             return
         }
         
-        self.pageController?.setViewControllers([previousVC], direction: .reverse, animated: animated)
-        
+        self.goToPage(previousVC,
+                      direction: .reverse,
+                      animated: animated)
+    }
+    
+    private func goToPage(_ viewController: UIViewController,
+                          direction: UIPageViewController.NavigationDirection,
+                          animated: Bool) {
+        self.pageController?.setViewControllers(
+            [viewController],
+            direction: direction,
+            animated: animated,
+            completion: { _ in
+                self.delegate?.pageChanged(to: self.currentIndex)
+        })
     }
     
     // MARK: - UIPageViewControllerDataSource
     
-    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    open func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.viewControllers.count
     }
     
-    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+    open func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return self.currentIndex
     }
     
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let index = self.indexOf(viewController: viewController)
         let targetIndex = index - 1
         return self.viewController(at: targetIndex)
     }
     
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let index = self.indexOf(viewController: viewController)
         let targetIndex = index + 1
         return self.viewController(at: targetIndex)
@@ -118,7 +144,7 @@ public class PageControllerDataSource: NSObject, UIPageViewControllerDataSource,
     
     // MARK: - UIPageViewControllerDelegate
     
-    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             self.delegate?.pageChanged(to: self.currentIndex)
         }
