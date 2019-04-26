@@ -84,7 +84,6 @@ class PendingVerificationViewController: UIViewController {
             case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
                 // If any of the statuses have been rejected, send user to ekyc oh no screen, they need to complete the whole ekyc again to continue
                 self.showEKYCOhNo()
-                break
             case (.APPROVED, .APPROVED, .APPROVED):
                 // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
                 self.performSegue(withIdentifier: "ESim", sender: self)
