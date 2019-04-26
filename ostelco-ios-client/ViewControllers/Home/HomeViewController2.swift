@@ -10,13 +10,14 @@ import UIKit
 import Stripe
 import Siesta
 import ostelco_core
+import OstelcoStyles
 
 class HomeViewController2: ApplePayViewController {
 
     var paymentError: RequestError?
     var availableProducts: [Product] = []
 
-    @IBOutlet private weak var balanceLabel: UILabel!
+    @IBOutlet private weak var balanceLabel: DataAmountOnHomeLabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buyButton: UIButton!
 
@@ -82,8 +83,11 @@ class HomeViewController2: ApplePayViewController {
     class func getStylizeBalanceString(text: String) -> NSMutableAttributedString {
         let decimalSeparator: String = Locale.current.decimalSeparator!
         // TODO Fonts should be Telenor-Bold
-        let bigFont = UIFont.boldSystemFont(ofSize: 84)
-        let smallFont = UIFont.boldSystemFont(ofSize: 28)
+        let bigFont = OstelcoFont(fontType: .alternateBold,
+                                  fontSize: .data).toUIFont
+        let smallFont = OstelcoFont(fontType: .alternateBold,
+                                    fontSize: .dataDecimals).toUIFont
+        let color = OstelcoColor.oyaBlue.toUIColor
 
         // Split text to 2 parts, number and units
         let textArray: [String] = text.components(separatedBy: " ")
@@ -103,19 +107,20 @@ class HomeViewController2: ApplePayViewController {
         let unit = " \(textArray[1])"
 
         // Add integer part with the big font.
-        let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont])
+        let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont, .foregroundColor: color])
         if let decimalPart = decimalPart {
             // Add decimal part including the decimal character
             // This portion of text is aligned to top with a smaller font
             let offset = bigFont.capHeight - smallFont.capHeight
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: smallFont,
-                .baselineOffset: offset
+                .baselineOffset: offset,
+                .foregroundColor: color
             ]
             attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
         }
         // Add the modifier part with bigger font.
-        attrString.append(NSMutableAttributedString(string: unit, attributes: [.font: bigFont]))
+        attrString.append(NSMutableAttributedString(string: unit, attributes: [.font: bigFont, .foregroundColor: color]))
         return attrString
     }
 

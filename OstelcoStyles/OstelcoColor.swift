@@ -21,7 +21,7 @@ public enum OstelcoColor: CaseIterable {
     case watermelon
     case white
     
-    var toUIColor: UIColor {
+    public var toUIColor: UIColor {
         switch self {
         case .aquamarine:
             return .from(red: 0, green: 206, blue: 181)
