@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller2-->
+        <!--Login View Controller-->
         <scene sceneID="pTL-ZI-GD4">
             <objects>
-                <viewController id="iNM-8Q-weE" customClass="LoginViewController2" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iNM-8Q-weE" customClass="LoginViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lv7-dN-bZA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
-                                <rect key="frame" x="46" y="279.5" width="283" height="108"/>
+                                <rect key="frame" x="179.5" y="325.5" width="16" height="16"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="573" width="327" height="50"/>
@@ -43,7 +43,6 @@
                         <segue destination="BTq-n3-cQJ" kind="show" identifier="showSignUp" id="GgF-Xs-zdM"/>
                         <segue destination="uYv-Rx-W57" kind="show" identifier="showCountry" id="WAP-la-UV7"/>
                         <segue destination="q2N-Ki-5Zu" kind="show" identifier="showEKYC" id="h2n-iC-Cyi"/>
-                        <segue destination="sp6-vz-WBC" kind="show" identifier="showEKYCOhNo" id="fMY-sl-naW"/>
                         <segue destination="JOm-7Z-w9R" kind="show" identifier="showEKYCLastScreen" id="OSX-Xe-maR"/>
                         <segue destination="BEa-Hu-JHR" kind="show" identifier="showESim" id="6nE-9E-D5q"/>
                     </connections>
@@ -76,21 +75,13 @@
             </objects>
             <point key="canvasLocation" x="804" y="-4"/>
         </scene>
-        <!--EKYCOhNoViewController-->
-        <scene sceneID="aqy-x2-7xn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCOhNoViewController" id="sp6-vz-WBC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QnT-pP-Z9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="895" y="184"/>
-        </scene>
         <!--ESim-->
         <scene sceneID="vcv-Jk-phk">
             <objects>
                 <viewControllerPlaceholder storyboardName="ESim" id="BEa-Hu-JHR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="295"/>
+            <point key="canvasLocation" x="793" y="280"/>
         </scene>
         <!--EKYCWaitViewController-->
         <scene sceneID="rzq-ff-CsV">

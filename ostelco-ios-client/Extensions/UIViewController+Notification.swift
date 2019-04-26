@@ -28,4 +28,12 @@ extension UIViewController {
             name: .didReceivePushNotification,
             object: nil)
     }
+    
+    func addWillEnterForegroundObserver(selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    func removeWillEnterForegroundObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
 }
