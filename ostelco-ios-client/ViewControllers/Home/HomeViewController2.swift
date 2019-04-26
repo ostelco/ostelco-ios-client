@@ -78,52 +78,6 @@ class HomeViewController2: ApplePayViewController {
         didPullToRefresh()
     }
 
-    // Make the string with all the styles required for the balance text
-    // Input text e.g. "54.5 GB"
-    class func getStylizeBalanceString(text: String) -> NSMutableAttributedString {
-        let decimalSeparator: String = Locale.current.decimalSeparator!
-        // TODO Fonts should be Telenor-Bold
-        let bigFont = OstelcoFont(fontType: .alternateBold,
-                                  fontSize: .data).toUIFont
-        let smallFont = OstelcoFont(fontType: .alternateBold,
-                                    fontSize: .dataDecimals).toUIFont
-        let color = OstelcoColor.oyaBlue.toUIColor
-
-        // Split text to 2 parts, number and units
-        let textArray: [String] = text.components(separatedBy: " ")
-        guard textArray.count >= 2 else {
-            return NSMutableAttributedString(string: text)
-        }
-
-        // Split number string to integer and decimal parts.
-        let numberArray: [String] = textArray[0].components(separatedBy: decimalSeparator)
-        guard numberArray.count >= 1 else {
-            return NSMutableAttributedString(string: text)
-        }
-
-        let integerPart = numberArray[0]
-        // If there is a decimal part.
-        let decimalPart: String? = (numberArray.count >= 2) ? "\(decimalSeparator)\(numberArray[1])": nil
-        let unit = " \(textArray[1])"
-
-        // Add integer part with the big font.
-        let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont, .foregroundColor: color])
-        if let decimalPart = decimalPart {
-            // Add decimal part including the decimal character
-            // This portion of text is aligned to top with a smaller font
-            let offset = bigFont.capHeight - smallFont.capHeight
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: smallFont,
-                .baselineOffset: offset,
-                .foregroundColor: color
-            ]
-            attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
-        }
-        // Add the modifier part with bigger font.
-        attrString.append(NSMutableAttributedString(string: unit, attributes: [.font: bigFont, .foregroundColor: color]))
-        return attrString
-    }
-
     @objc func didPullToRefresh() {
         // Hide the Message on top
         welcomeLabel.isHidden = true
@@ -134,8 +88,7 @@ class HomeViewController2: ApplePayViewController {
                 let formatter: ByteCountFormatter = ByteCountFormatter()
                 formatter.countStyle = .binary
                 let formattedBalance = formatter.string(fromByteCount: bundle.balance)
-                let attributedText = HomeViewController2.getStylizeBalanceString(text: formattedBalance)
-                self.balanceLabel.attributedText = attributedText
+                self.balanceLabel.text = formattedBalance
             }
             print(bundles)
             self.refreshControl.endRefreshing()
