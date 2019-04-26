@@ -106,3 +106,14 @@ extension SelectIdentityVerificationMethodViewController: MyInfoCallbackHandler 
         webView = nil
     }
 }
+
+extension SelectIdentityVerificationMethodViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}

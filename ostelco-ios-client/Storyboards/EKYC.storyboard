@@ -629,7 +629,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Select Identity Verification Method View Controller-->
         <scene sceneID="nqs-MO-FZ3">
             <objects>
-                <viewController id="OlM-wU-Qkj" customClass="SelectIdentityVerificationMethodViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectIdentityVerificationMethodViewController" id="OlM-wU-Qkj" customClass="SelectIdentityVerificationMethodViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bzd-Q9-9Aw"/>
                         <viewControllerLayoutGuide type="bottom" id="2kh-cD-2FL"/>
@@ -796,7 +796,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQM-f2-0Z1" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="290.33333333333331" width="156" height="20.666666666666686"/>
+                                <rect key="frame" x="65" y="290.66666666666669" width="156" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

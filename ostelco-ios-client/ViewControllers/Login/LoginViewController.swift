@@ -109,8 +109,14 @@ class LoginViewController: UIViewController {
     @objc private func showEKYCOhNo() {
         let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
         ohNo.primaryButtonAction = {
-            // TODO: What are we actually retrying when this fails?
-            return
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
+                self.present(selectVerificationMethodVC, animated: true)
+            })
         }
         self.present(ohNo, animated: true)
     }
