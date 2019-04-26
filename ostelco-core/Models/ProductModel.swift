@@ -29,4 +29,5 @@ public struct ProductModel: Codable {
     public let sku: String
     public let presentation: PresentationModel
     public let price: PriceModel
+    public let properties: [String: String]
 }
