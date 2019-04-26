@@ -185,4 +185,3 @@ class HomeViewController2: ApplePayViewController {
         }
     }
 }
-
