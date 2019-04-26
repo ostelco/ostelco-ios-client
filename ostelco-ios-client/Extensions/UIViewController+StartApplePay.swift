@@ -9,25 +9,80 @@
 import Stripe
 import Siesta
 
+enum ApplePayError: Swift.Error {
+    // Apple pay support related Errors
+    case unsupportedDevice
+    case noSupportedCards
+    case otherRestrictions
+    // Other errors during payment
+    case userCancelled
+    case primeAPIError(RequestError)
+}
+
+extension ApplePayError: RawRepresentable {
+    typealias RawValue = String
+
+    // Dont allow to construct using string
+    public init?(rawValue: RawValue) {
+        return nil;
+    }
+
+    public var rawValue: RawValue {
+        switch self {
+        case .unsupportedDevice:
+            return "Your device does not support apple pay"
+        case .noSupportedCards:
+            return "You need to setup a card in your wallet, we support the following cards: American Express, Visa, Mastercard, Discover"
+        case .otherRestrictions:
+            return "Your device has some restrictions preventing payment (such as parental controls)"
+        // Other errors during payment
+        case .userCancelled:
+            return "User has cancelled the payment"
+        case .primeAPIError(_):
+            return "Prime API Error"
+        }
+    }
+}
+
+protocol ApplePayDelegate: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+    var shownApplePay: Bool { get set }
+    var authorizedApplePay: Bool { get set }
+    var purchasingProduct: Product? { get set }
+    var applePayError: ApplePayError? { get set }
+
+    func paymentError(_ error: ApplePayError)
+    func paymentSuccessful(_ product: Product)
+}
+
 extension UIViewController {
-    func startApplePay(product: Product, delegate: PKPaymentAuthorizationViewControllerDelegate) {
+
+    func canMakePayments() -> ApplePayError? {
+        let deviceAllowed = PKPaymentAuthorizationViewController.canMakePayments()
+        let cardNetworks: [PKPaymentNetwork] = [.amex, .visa, .masterCard, .discover]
+        let cardsAllowed = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: cardNetworks)
+        let stripeAllowed = Stripe.deviceSupportsApplePay()
+        switch (deviceAllowed, cardsAllowed, stripeAllowed) {
+        case (true, true, false):
+            return ApplePayError.otherRestrictions
+        case (true, false, _):
+            return ApplePayError.noSupportedCards
+        case (false, _, _):
+            return ApplePayError.unsupportedDevice
+        case (true, true, true):
+            return nil
+        }
+    }
+
+    func startApplePay(product: Product, delegate: ApplePayDelegate) {
+        delegate.shownApplePay = false
+        delegate.authorizedApplePay = false
+        delegate.purchasingProduct = product
         let merchantIdentifier = Environment().configuration(.AppleMerchantId)
         // TODO: Consult with Payment Service Provider (Stripe in our case) to determine which country code value to use
         // https://developer.apple.com/documentation/passkit/pkpaymentrequest/1619246-countrycode
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
-
-        if !PKPaymentAuthorizationViewController.canMakePayments() {
-            self.showAlert(title: "Payment Error", msg: "Your device does not support apple pay")
-            return
-        }
-
-        if !Stripe.deviceSupportsApplePay() {
-            self.showAlert(title: "Payment Error", msg: "You need to setup a card in your wallet, we support the following cards: American Express, Visa, Mastercard, Discover")
-            return
-        }
-
-        if !PKPaymentAuthorizationViewController.canMakePayments() {
-            self.showAlert(title: "Payment Error", msg: "Wallet empty or does not contain any of the supported card types. Should give user option to open apple wallet to add a card.")
+        if let paymentError = canMakePayments() {
+            delegate.paymentError(paymentError)
             return
         }
         // Convert to acutal amount (prime uses currency’s smallest unit)
@@ -45,10 +100,11 @@ extension UIViewController {
             paymentAuthorizationViewController!.delegate = delegate
 
             // Present payment authorization view controller
+            delegate.shownApplePay = true
             present(paymentAuthorizationViewController!, animated: true)
         } else {
             // There is a problem with your Apple Pay configuration
-            print("There is a problem with your Apple Pay configuration")
+            debugPrint("There is a problem with your Apple Pay configuration, we should have caught this before...")
             // TODO: Report error to bug reporting system
             #if DEBUG
                 #if targetEnvironment(simulator)

@@ -247,7 +247,8 @@
 		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
-		C2C3EACE227047AA00585FA4 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
+		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
+		C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
 		C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
 		C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
@@ -494,6 +495,7 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C2BC662022733C75008BBC4E /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRecord.swift; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
@@ -669,10 +671,11 @@
 		047F291A2224538000FC6A8F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
 				047F29272224558B00FC6A8F /* HomeViewController2.swift */,
+				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
-				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 			);
 			path = Home;
@@ -700,7 +703,7 @@
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
-                C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
+				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
 				0493B80E2253943900989F40 /* PutProfileError.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
@@ -1702,6 +1705,7 @@
 				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				0437CF86224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
+				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
@@ -1839,6 +1843,7 @@
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
+				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,

@@ -114,7 +114,7 @@ extension UIViewController {
         present(alertCtrl, animated: true, completion: nil)
     }
     
-    func showProductListActionSheet(products: [Product], delegate: PKPaymentAuthorizationViewControllerDelegate) {
+    func showProductListActionSheet(products: [Product], delegate: ApplePayDelegate) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         for product in products {

@@ -11,13 +11,10 @@ import PassKit
 import Stripe
 import Siesta
 
-class BecomeAMemberViewController: UIViewController {
-    
-    var paymentError: RequestError?
-    var paymentAuthorized: Bool = false
-    
+class BecomeAMemberViewController: ApplePayViewController {
+
     @IBOutlet private weak var buttonContainer: UIView!
-    
+
     @IBAction private func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -61,61 +58,10 @@ class BecomeAMemberViewController: UIViewController {
             currency: "SGD",
             sku: "123"
         )
-        paymentAuthorized = false
         startApplePay(product: product, delegate: self)
     }
     
     @objc func setUpButtonTapped() {
-        paymentAuthorized = false
         PKPassLibrary().openPaymentSetup()
-    }
-}
-
-extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
-    
-    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-        paymentAuthorized = true
-        STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
-            guard let source = source, error == nil else {
-                // Present error to user...
-                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
-                return
-            }
-            
-            APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onProgress({ progress in
-                    print("Progress %{public}@", "\(progress)")
-                })
-                .onSuccess({ result in
-                    print("Successfully bought a product %{public}@", "\(result)")
-                    // ostelcoAPI.purchases.invalidate()
-                    // ostelcoAPI.bundles.invalidate()
-                    // ostelcoAPI.bundles.load()
-                    self.paymentError = nil
-                    completion(.success)
-                })
-                .onFailure({ error in
-                    // TODO: Report error to server
-                    print("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
-                    self.paymentError = error
-                    completion(.failure)
-                })
-                .onCompletion({ _ in
-                    
-                })
-        }
-    }
-    
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        // Dismiss payment authorization view controller
-        dismiss(animated: true, completion: {
-            if self.paymentAuthorized == false {
-                print("User has cancelled the Payment")
-            } else if let error = self.paymentError {
-                self.showAPIError(error: error)
-            } else {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
-            }
-        })
     }
 }
