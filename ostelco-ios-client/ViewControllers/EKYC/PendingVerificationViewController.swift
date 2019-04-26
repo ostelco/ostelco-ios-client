@@ -81,14 +81,16 @@ class PendingVerificationViewController: UIViewController {
     func handleRegionPendingOrRejected(silentCheck: Bool = false, regionResponse: RegionResponse) {
         if let jumioStatus = regionResponse.kycStatusMap.JUMIO, let nricStatus = regionResponse.kycStatusMap.NRIC_FIN, let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
             switch (jumioStatus, nricStatus, addressStatus) {
-            case (let jumioStatus, let nricStatus, let addressStatus) where jumioStatus == .REJECTED || nricStatus == .REJECTED || addressStatus == .REJECTED:
+            // case (let jumioStatus, let nricStatus, let addressStatus) where jumioStatus == .REJECTED || nricStatus == .REJECTED || addressStatus == .REJECTED:
+            case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
                 // If any of the statuses have been rejected, send user to ekyc oh no screen, they need to complete the whole ekyc again to continue
                 self.showEKYCOhNo()
                 break
             case (.APPROVED, .APPROVED, .APPROVED):
                 // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
                 self.performSegue(withIdentifier: "ESim", sender: self)
-            case (let jumioStatus, let nricStatus, let addressStatus) where jumioStatus == .PENDING || nricStatus == .PENDING || addressStatus == .PENDING:
+            // case (let jumioStatus, let nricStatus, let addressStatus) where jumioStatus == .PENDING || nricStatus == .PENDING || addressStatus == .PENDING:
+            case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
                 // This case means any of the above is pending, thus user has to wait
