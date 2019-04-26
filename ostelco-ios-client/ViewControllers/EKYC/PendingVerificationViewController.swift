@@ -49,38 +49,17 @@ class PendingVerificationViewController: UIViewController {
             .onSuccess { data in
                 if let regionResponse: RegionResponse = data.typedContent(ifNone: nil) {
                     // if let regionRespons.kycStatusMap.NR
-                    // TODO: Convert status to enum
                     switch regionResponse.status {
                     case .APPROVED:
-                        self.performSegue(withIdentifier: "ESim", sender: self)
+                        self.handleRegionApproved()
                     case .PENDING:
-                        if !silentCheck {
-                            self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
-                        }
+                        self.handleRegionPending(silentCheck: silentCheck)
                     case .REJECTED:
-                        if let jumioStatus = regionResponse.kycStatusMap.JUMIO, let nricStatus = regionResponse.kycStatusMap.NRIC_FIN, let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
-                            switch (jumioStatus, nricStatus, addressStatus) {
-                            case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
-                                // If any of the statuses have been rejected, send user to ekyc oh no screen, they need to complete the whole ekyc again to continue
-                                // TODO: segue to ekyc oh no screen
-                                break
-                            case (.APPROVED, .APPROVED, .APPROVED):
-                                // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
-                                self.performSegue(withIdentifier: "ESim", sender: self)
-                            default:
-                                // This case means any of the above is pending, thus user has to wait
-                                if !silentCheck {
-                                    self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
-                                }
-                            }
-                        } else {
-                            // If none of the variables above are set in the kycStatusMap, something weird has happened, send user to generic contact support screen
-                            // TODO: segue to generic oh no screen
-                        }
+                        self.handleRegionRejected(silentCheck: silentCheck, regionResponse: regionResponse)
                     }
                 } else {
-                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
-                    self.showAlert(title: "Error", msg: "Failed to parse region from server response.")
+                    // TODO: Need to figure out what error code we should pass to generic error screen here
+                    self.showGenericOhNo()
                 }
             }
             .onFailure { error in
@@ -89,5 +68,67 @@ class PendingVerificationViewController: UIViewController {
             .onCompletion { _ in
                 self.removeSpinner(spinnerView)
         }
+    }
+    
+    func handleRegionApproved() {
+        performSegue(withIdentifier: "ESim", sender: nil)
+    }
+    
+    func handleRegionPending(silentCheck: Bool = false) {
+        if !silentCheck {
+            showAlert(title: "Status", msg: "Please hold on! We are still checking your docs.")
+        }
+    }
+    
+    func handleRegionRejected(silentCheck: Bool = false, regionResponse: RegionResponse) {
+        if let jumioStatus = regionResponse.kycStatusMap.JUMIO, let nricStatus = regionResponse.kycStatusMap.NRIC_FIN, let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
+            switch (jumioStatus, nricStatus, addressStatus) {
+            case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
+                // If any of the statuses have been rejected, send user to ekyc oh no screen, they need to complete the whole ekyc again to continue
+                self.showEKYCOhNo()
+                break
+            case (.APPROVED, .APPROVED, .APPROVED):
+                // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
+                self.performSegue(withIdentifier: "ESim", sender: self)
+            default:
+                // This case means any of the above is pending, thus user has to wait
+                if !silentCheck {
+                    self.showAlert(title: "Status", msg: regionResponse.status.rawValue)
+                }
+            }
+        } else {
+            // If none of the variables above are set in the kycStatusMap, something weird has happened, send user to generic contact support screen
+            // TODO: Need to figure out what error code we should pass to generic error screen here
+            showGenericOhNo()
+        }
+    }
+    
+    func showEKYCOhNo() {
+        let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
+                self.present(selectVerificationMethodVC, animated: true)
+            })
+        }
+        self.present(ohNo, animated: true)
+    }
+    
+    func showGenericOhNo() {
+        let ohNo = OhNoViewController.fromStoryboard(type: .generic(code: nil))
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+              
+                self.checkVerificationStatus()
+            })
+        }
+        self.present(ohNo, animated: true)
     }
 }
