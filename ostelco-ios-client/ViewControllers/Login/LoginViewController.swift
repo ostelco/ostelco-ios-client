@@ -6,6 +6,8 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import ostelco_core
+import OstelcoStyles
 import UIKit
 import Firebase
 import RxSwift
@@ -15,9 +17,58 @@ class LoginViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    @IBAction private func signInTapped(_ sender: UIButton) {
-        // Trigger custom events to record button clicks
-        Analytics.logEvent("button_tapped", parameters: ["newValue": sender.title(for: .normal)!])
+    @IBOutlet private var primaryButton: UIButton!
+    
+    /// Has to be set up through `prepareForSegue` when this VC is loaded
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    private var pageController: UIPageViewController!
+    
+    private lazy var dataSource: PageControllerDataSource = {
+        let pages = OnboardingPage.allCases.map { $0.viewController }
+        return PageControllerDataSource(pageController: self.pageController,
+                                        viewControllers: pages,
+                                        pageIndicatorTintColor: OstelcoColor.paleGrey.toUIColor,
+                                        currentPageIndicatorTintColor: OstelcoColor.oyaBlue.toUIColor,
+                                        delegate: self)
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let index = self.dataSource.currentIndex
+        self.configureButtonTitle(for: index)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pageController = segue.destination as? UIPageViewController {
+            self.pageController = pageController
+        }
+    }
+    
+    private func configureButtonTitle(for index: Int) {
+        if index == (OnboardingPage.allCases.count - 1) {
+            // This is the last page.
+            self.primaryButton.setTitle("Sign In", for: .normal)
+        } else {
+            self.primaryButton.setTitle("Next", for: .normal)
+        }
+    }
+    
+    @IBAction private func primaryButtonTapped(_ sender: UIButton) {
+        Analytics.logEvent("button_tapped", parameters: [
+            "newValue": sender.title(for: .normal)!
+            ])
+        
+        let index = self.dataSource.currentIndex
+        if index == (OnboardingPage.allCases.count - 1) {
+            self.signInTapped()
+        } else {
+            self.dataSource.goToNextPage()
+        }
+    }
+    
+    private func signInTapped() {
+        
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
                 // TODO: Duplicated logic from SplashViewController
@@ -129,5 +180,12 @@ class LoginViewController: UIViewController {
         let alert = UIAlertController(title: "Failed to login", message: "Please try again later.\nIf this problem persists, contact customer support.\n Error: \(message)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: PageControllerDataSourceDelegate {
+ 
+    func pageChanged(to index: Int) {
+        self.configureButtonTitle(for: index)
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iNM-8Q-weE">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,36 +10,97 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Onboarding Page View Controller-->
+        <scene sceneID="fKG-UW-GXI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1E-3y-6hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="OnboardingPageViewController" id="yuo-1M-ISX" customClass="OnboardingPageViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c2K-zq-Gas">
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationArrowsUp" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-Sp-Qeh">
+                                <rect key="frame" x="42.666666666666657" y="44" width="241.99999999999997" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="vYu-IK-YyS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="280" width="279" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="top" secondItem="7HN-dF-OAG" secondAttribute="top" id="DBg-5q-7L3"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" constant="68" id="Zux-NZ-a6Q"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="leading" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="b9Z-vb-jbZ"/>
+                            <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" secondItem="I3U-ge-2P9" secondAttribute="trailing" constant="24" id="bEl-Gu-9rj"/>
+                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="centerX" secondItem="c2K-zq-Gas" secondAttribute="centerX" id="dWc-hl-azr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7HN-dF-OAG"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="327" height="400"/>
+                    <connections>
+                        <outlet property="copyLabel" destination="I3U-ge-2P9" id="wHk-oo-9aq"/>
+                        <outlet property="imageView" destination="pBa-Sp-Qeh" id="Voj-zJ-efJ"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-604" y="604"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="gMy-AL-sBh">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4V-WV-295" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fe6-qF-yAH" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="600"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="pTL-ZI-GD4">
             <objects>
                 <viewController id="iNM-8Q-weE" customClass="LoginViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lv7-dN-bZA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan" translatesAutoresizingMaskIntoConstraints="NO" id="BKf-r6-AsX">
-                                <rect key="frame" x="179.5" y="325.5" width="16" height="16"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="573" width="327" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
-                                    <action selector="signInTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="Zy6-fZ-9y6"/>
+                                    <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
+                                <rect key="frame" x="24" y="248" width="327" height="400"/>
+                                <connections>
+                                    <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
+                                </connections>
+                            </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="X7G-Yi-Yav">
+                                <rect key="frame" x="90" y="104" width="195" height="57"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BKf-r6-AsX" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="023-UO-Lbf"/>
-                            <constraint firstItem="BKf-r6-AsX" firstAttribute="centerY" secondItem="Lv7-dN-bZA" secondAttribute="centerY" id="JfO-Gp-Ly8"/>
+                            <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="rXU-Gj-qtX" secondAttribute="trailing" constant="24" id="9yk-5K-rbD"/>
+                            <constraint firstItem="X7G-Yi-Yav" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Ibj-rF-wPS"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="44" id="L5N-ce-Ckt"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="DW1-o4-Dgl" secondAttribute="trailing" constant="24" id="MHv-Gk-Rg8"/>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="OBh-M6-3mZ"/>
+                            <constraint firstItem="X7G-Yi-Yav" firstAttribute="top" secondItem="bOq-mn-xOP" secondAttribute="top" constant="60" id="YNK-jN-mAx"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="gXH-0I-pmh"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="top" secondItem="rXU-Gj-qtX" secondAttribute="bottom" constant="36" id="jyp-zk-gMS"/>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="87" id="q8k-XS-GFM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
+                        <outlet property="primaryButton" destination="DW1-o4-Dgl" id="cY2-xt-orS"/>
                         <segue destination="BTq-n3-cQJ" kind="show" identifier="showSignUp" id="GgF-Xs-zdM"/>
                         <segue destination="uYv-Rx-W57" kind="show" identifier="showCountry" id="WAP-la-UV7"/>
                         <segue destination="q2N-Ki-5Zu" kind="show" identifier="showEKYC" id="h2n-iC-Cyi"/>
@@ -93,6 +154,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="slogan" width="283" height="108"/>
+        <image name="illustrationArrowsUp" width="242" height="149"/>
+        <image name="oyaHorizontal" width="195" height="57"/>
     </resources>
 </document>
