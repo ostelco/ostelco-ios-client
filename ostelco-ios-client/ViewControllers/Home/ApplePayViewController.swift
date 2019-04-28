@@ -58,7 +58,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
             if let applePayError = self.applePayError {
                 self.paymentError(applePayError)
             } else if self.authorizedApplePay {
-                self.paymentSuccessful(self.purchasingProduct!)
+                self.paymentSuccessful(self.purchasingProduct)
             } else {
                 self.paymentError(ApplePayError.userCancelled)
             }
@@ -76,8 +76,8 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
         }
     }
 
-    func paymentSuccessful(_ product: Product) {
-        self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(product.name)")
+    func paymentSuccessful(_ product: Product?) {
+        self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(String(describing: product?.name))")
     }
 
     func startApplePay(product: Product) {
