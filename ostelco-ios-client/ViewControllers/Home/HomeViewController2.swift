@@ -97,7 +97,7 @@ class HomeViewController2: ApplePayViewController {
     
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
-            showProductListActionSheet(products: self.availableProducts, delegate: self)
+            showProductListActionSheet(products: self.availableProducts)
         } else {
             // TODO: Remove this after the logic for subscription check is implemented
             hasSubscription = true

@@ -58,7 +58,7 @@ class BecomeAMemberViewController: ApplePayViewController {
             currency: "SGD",
             sku: "123"
         )
-        startApplePay(product: product, delegate: self)
+        startApplePay(product: product)
     }
     
     @objc func setUpButtonTapped() {

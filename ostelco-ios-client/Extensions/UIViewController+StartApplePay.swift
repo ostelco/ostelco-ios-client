@@ -8,7 +8,7 @@
 
 import Stripe
 import Siesta
-
+/*
 enum ApplePayError: Error {
     // Apple pay support related Errors
     case unsupportedDevice
@@ -65,54 +65,54 @@ extension UIViewController {
         }
     }
 
-    func startApplePay(product: Product, delegate: ApplePayDelegate) {
-        delegate.shownApplePay = false
-        delegate.authorizedApplePay = false
-        delegate.purchasingProduct = product
-        let merchantIdentifier = Environment().configuration(.AppleMerchantId)
-        // TODO: Consult with Payment Service Provider (Stripe in our case) to determine which country code value to use
-        // https://developer.apple.com/documentation/passkit/pkpaymentrequest/1619246-countrycode
-        let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
-        if let paymentError = canMakePayments() {
-            delegate.paymentError(paymentError)
-            return
-        }
-        // Convert to acutal amount (prime uses currency’s smallest unit)
-        let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
-        // Configure the line items on the payment request
-        paymentRequest.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: product.name, amount: applePayAmount),
-            PKPaymentSummaryItem(label: "Red Otter", amount: applePayAmount),
-        ]
-
-        // Continued in next step
-        if Stripe.canSubmitPaymentRequest(paymentRequest) {
-            // Setup payment authorization view controller
-            let paymentAuthorizationViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
-            paymentAuthorizationViewController!.delegate = delegate
-
-            // Present payment authorization view controller
-            delegate.shownApplePay = true
-            present(paymentAuthorizationViewController!, animated: true)
-        } else {
-            // There is a problem with your Apple Pay configuration
-            debugPrint("There is a problem with your Apple Pay configuration, we should have caught this before...")
-            // TODO: Report error to bug reporting system
-            #if DEBUG
-                #if targetEnvironment(simulator)
-                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in test mode on simulator is supposed to work. Don't know why it failed.")
-                #else
-                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in test mode on real devices has not been tested yet.")
-                #endif
-            #else
-                #if targetEnvironment(simulator)
-                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode on simulator does not work.")
-                #else
-                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode failed for unknown reason.")
-                #endif
-            #endif
-        }
-    }
+//    func startApplePay(product: Product, delegate: ApplePayDelegate) {
+//        delegate.shownApplePay = false
+//        delegate.authorizedApplePay = false
+//        delegate.purchasingProduct = product
+//        let merchantIdentifier = Environment().configuration(.AppleMerchantId)
+//        // TODO: Consult with Payment Service Provider (Stripe in our case) to determine which country code value to use
+//        // https://developer.apple.com/documentation/passkit/pkpaymentrequest/1619246-countrycode
+//        let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
+//        if let paymentError = canMakePayments() {
+//            delegate.paymentError(paymentError)
+//            return
+//        }
+//        // Convert to acutal amount (prime uses currency’s smallest unit)
+//        let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
+//        // Configure the line items on the payment request
+//        paymentRequest.paymentSummaryItems = [
+//            PKPaymentSummaryItem(label: product.name, amount: applePayAmount),
+//            PKPaymentSummaryItem(label: "Red Otter", amount: applePayAmount),
+//        ]
+//
+//        // Continued in next step
+//        if Stripe.canSubmitPaymentRequest(paymentRequest) {
+//            // Setup payment authorization view controller
+//            let paymentAuthorizationViewController = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)
+//            paymentAuthorizationViewController!.delegate = delegate
+//
+//            // Present payment authorization view controller
+//            delegate.shownApplePay = true
+//            present(paymentAuthorizationViewController!, animated: true)
+//        } else {
+//            // There is a problem with your Apple Pay configuration
+//            debugPrint("There is a problem with your Apple Pay configuration, we should have caught this before...")
+//            // TODO: Report error to bug reporting system
+//            #if DEBUG
+//                #if targetEnvironment(simulator)
+//                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in test mode on simulator is supposed to work. Don't know why it failed.")
+//                #else
+//                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in test mode on real devices has not been tested yet.")
+//                #endif
+//            #else
+//                #if targetEnvironment(simulator)
+//                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode on simulator does not work.")
+//                #else
+//                    self.showAlert(title: "There is a problem with your Apple Pay configuration", msg: "Apple pay in production mode failed for unknown reason.")
+//                #endif
+//            #endif
+//        }
+//    }
 
     // Stripe (& Prime) expects amounts to be provided in currency's smallest unit.
     // https://stripe.com/docs/currencies#zero-decimal
@@ -131,3 +131,4 @@ extension UIViewController {
         }
     }
 }
+*/

@@ -234,6 +234,8 @@
 		9BF27785225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
 		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
 		C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
+		C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
+		C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
 		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
 		C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
@@ -489,6 +491,7 @@
 		C2236F0A218A414C00B135C0 /* dev-ostelco-ios-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dev-ostelco-ios-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoDetails.swift; sourceTree = "<group>"; };
+		C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayDelegate.swift; sourceTree = "<group>"; };
 		C24EE402222831970053937E /* NRICAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICAddressTableViewController.swift; sourceTree = "<group>"; };
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
@@ -857,6 +860,7 @@
 		9BE2D43C225B5A8400B51999 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */,
 				9BE2D462225B696400B51999 /* StoryboardLoadable.swift */,
 				9BC4653E2271B396001951BF /* LocationCheckingViewController.swift */,
 			);
@@ -955,10 +959,10 @@
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
+				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
-				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
@@ -1703,6 +1707,7 @@
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
+				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
@@ -1842,6 +1847,7 @@
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
+				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
