@@ -99,8 +99,6 @@
 		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
-		048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */; };
-		048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */; };
 		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -384,7 +382,6 @@
 		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeAMemberViewController.swift; sourceTree = "<group>"; };
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+StartApplePay.swift"; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -959,7 +956,6 @@
 				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
-				048533A2223C1ACA007C89F4 /* UIViewController+StartApplePay.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
@@ -1673,7 +1669,6 @@
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
-				048533A3223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1856,7 +1851,6 @@
 				9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
-				048533A4223C1ACA007C89F4 /* UIViewController+StartApplePay.swift in Sources */,
 				C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
