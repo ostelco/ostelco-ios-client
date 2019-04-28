@@ -10,7 +10,6 @@ import UIKit
 import Stripe
 import Siesta
 
-// Default implementaion for the PKPaymentAuthorizationViewControllerDelegate methods.
 
 // This class coudn't be avoided due to the issue described in the following link.
 // TL;DR: @objc functions may not currently be in protocol extensions.
@@ -18,11 +17,14 @@ import Siesta
 // https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
 class ApplePayViewController: UIViewController, ApplePayDelegate {
 
-    // Properties for ApplePayDelegate protocol
+    // MARK: - Properties for ApplePayDelegate.
+
     var shownApplePay = false
     var authorizedApplePay = false
     var purchasingProduct: Product?
     var applePayError: ApplePayError?
+
+    // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
                                             didAuthorizePayment payment: PKPayment,
@@ -65,6 +67,8 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
         })
     }
 
+    // MARK: - Default implementaion of ApplePayDelegate.
+
     func paymentError(_ error: ApplePayError) {
         switch error {
         case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
@@ -79,6 +83,8 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     func paymentSuccessful(_ product: Product?) {
         self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(String(describing: product?.name))")
     }
+
+    // MARK: - Helpers for starting Apple Pay.
 
     func startApplePay(product: Product) {
         shownApplePay = false
@@ -117,6 +123,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
         }
     }
 
+    // Shows the list of products in a sheet
     func showProductListActionSheet(products: [Product]) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
@@ -130,6 +137,9 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
         present(alertCtrl, animated: true, completion: nil)
     }
 
+    // MARK: - Other Helpers.
+
+    // Findout if we can make payments on this device.
     func canMakePayments() -> ApplePayError? {
         let deviceAllowed = PKPaymentAuthorizationViewController.canMakePayments()
         let cardNetworks: [PKPaymentNetwork] = [.amex, .visa, .masterCard, .discover]
