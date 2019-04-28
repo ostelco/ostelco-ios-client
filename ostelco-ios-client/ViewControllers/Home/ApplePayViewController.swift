@@ -34,9 +34,6 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
             }
             // Call Prime API to buy the product.
             APIManager.sharedInstance.products.child(product.sku).child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onProgress({ progress in
-                    debugPrint("Progress %{public}@", "\(progress)")
-                })
                 .onSuccess({ result in
                     debugPrint("Successfully bought a product %{public}@", "\(result)")
                     completion(PKPaymentAuthorizationResult(status: .success, errors: []))
