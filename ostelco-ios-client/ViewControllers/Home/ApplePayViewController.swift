@@ -11,6 +11,11 @@ import Stripe
 import Siesta
 
 // Default implementaion for the PKPaymentAuthorizationViewControllerDelegate methods.
+
+// This class coudn't be avoided due to the issue described in the following link.
+// TL;DR: @objc functions may not currently be in protocol extensions.
+// You could create a base class instead, though that's not an ideal solution.
+// https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
 class ApplePayViewController: UIViewController, ApplePayDelegate {
 
     // Properties for ApplePayDelegate protocol
