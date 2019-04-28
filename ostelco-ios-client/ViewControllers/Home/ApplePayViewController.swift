@@ -66,9 +66,9 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     func paymentError(_ error: ApplePayError) {
         switch error {
         case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
-            self.showAlert(title: "Payment Error", msg: error.rawValue)
+            self.showAlert(title: "Payment Error", msg: error.localizedDescription)
         case .userCancelled:
-            debugPrint(error.rawValue, "Payment was cancelled after showing Apple Pay screen")
+            debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
         case .primeAPIError(let requestError):
             showAPIError(error: requestError)
         }

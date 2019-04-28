@@ -9,7 +9,7 @@
 import Stripe
 import Siesta
 
-enum ApplePayError: Swift.Error {
+enum ApplePayError: Error {
     // Apple pay support related Errors
     case unsupportedDevice
     case noSupportedCards
@@ -19,15 +19,8 @@ enum ApplePayError: Swift.Error {
     case primeAPIError(RequestError)
 }
 
-extension ApplePayError: RawRepresentable {
-    typealias RawValue = String
-
-    // Dont allow to construct using string
-    public init?(rawValue: RawValue) {
-        return nil;
-    }
-
-    public var rawValue: RawValue {
+extension ApplePayError: LocalizedError {
+    public var errorDescription: String? {
         switch self {
         case .unsupportedDevice:
             return "Your device does not support apple pay"
@@ -38,7 +31,7 @@ extension ApplePayError: RawRepresentable {
         // Other errors during payment
         case .userCancelled:
             return "User has cancelled the payment"
-        case .primeAPIError(_):
+        case .primeAPIError:
             return "Prime API Error"
         }
     }
@@ -55,7 +48,6 @@ protocol ApplePayDelegate: UIViewController, PKPaymentAuthorizationViewControlle
 }
 
 extension UIViewController {
-
     func canMakePayments() -> ApplePayError? {
         let deviceAllowed = PKPaymentAuthorizationViewController.canMakePayments()
         let cardNetworks: [PKPaymentNetwork] = [.amex, .visa, .masterCard, .discover]
