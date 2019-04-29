@@ -11,7 +11,7 @@ import UIKit
 class ESIMOnBoardingViewController: UIViewController {
     
     @IBAction private func continueTapped(_ sender: Any) {
-        ROAnalytics.logEvent(.DownloadingESIM)
+        OstelcoAnalytics.logEvent(.DownloadingESIM)
         performSegue(withIdentifier: "showESIMInstructions", sender: self)
     }
     
@@ -19,3 +19,4 @@ class ESIMOnBoardingViewController: UIViewController {
         showNeedHelpActionSheet()
     }
 }
+

@@ -1,5 +1,5 @@
 //
-//  Analytics.swift
+//  OstelcoAnalytics.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 4/29/19.
@@ -10,7 +10,7 @@ import Foundation
 import ostelco_core
 import FirebaseAnalytics
 
-class ROAnalytics {
+class OstelcoAnalytics {
     static func logEvent(_ event: AnalyticsEvent) {
         Analytics.logEvent(event.name, parameters: event.metadata)
     }

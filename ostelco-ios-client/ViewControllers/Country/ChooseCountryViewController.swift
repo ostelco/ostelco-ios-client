@@ -18,7 +18,7 @@ class ChooseCountryViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        ROAnalytics.logEvent(.ChosenCountry(country: OnBoardingManager.sharedInstance.selectedCountry))
+        OstelcoAnalytics.logEvent(.ChosenCountry(country: OnBoardingManager.sharedInstance.selectedCountry))
         performSegue(withIdentifier: "displayAllowLocationAccess", sender: self)
     }
 }
