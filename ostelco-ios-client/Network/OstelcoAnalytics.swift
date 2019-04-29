@@ -9,10 +9,31 @@
 import Foundation
 import ostelco_core
 import FirebaseAnalytics
+import Crashlytics
 
 class OstelcoAnalytics {
+    
+    enum AnalyticsError: Swift.Error, LocalizedError {
+        case eventNameIsEmpty
+        
+        var localizedDescription: String {
+            switch self {
+            case .eventNameIsEmpty:
+                return "Event name in analytics event is empty"
+            }
+        }
+    }
+    
     static func logEvent(_ event: AnalyticsEvent) {
-        Analytics.logEvent(event.name, parameters: event.metadata)
+        
+        if event.name.isEmpty {
+            var meta = event.metadata
+            meta["name"] = event.name
+            meta["className"] = String(describing: event)
+            Crashlytics.sharedInstance().recordError(AnalyticsError.eventNameIsEmpty, withAdditionalUserInfo: meta)
+        } else {
+            Analytics.logEvent(event.name, parameters: event.metadata)
+        }
     }
 }
 
@@ -32,7 +53,7 @@ extension AnalyticsEvent {
         case .ChosenIDMethod:
             return "chosen_id_method"
         default:
-            return String(describing: self).snakeCased()! // TODO: Is this safe enough to force unwrap?
+            return String(describing: self).snakeCased() ?? ""
         }
     }
     
