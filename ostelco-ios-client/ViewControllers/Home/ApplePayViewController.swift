@@ -18,11 +18,28 @@ import PassKit
 // https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
 class ApplePayViewController: UIViewController, ApplePayDelegate {
     // MARK: - Properties for ApplePayDelegate.
+
     var shownApplePay = false
     var authorizedApplePay = false
     var purchasingProduct: Product?
     var applePayError: ApplePayError?
 
+    // MARK: - Default implementaion of ApplePayDelegate.
+
+    func paymentError(_ error: ApplePayError) {
+        switch error {
+        case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
+            self.showAlert(title: "Payment Error", msg: error.localizedDescription)
+        case .userCancelled:
+            debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
+        case .primeAPIError(let requestError):
+            showAPIError(error: requestError)
+        }
+    }
+
+    func paymentSuccessful(_ product: Product?) {
+        self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(String(describing: product?.name))")
+    }
 }
 
 extension ApplePayViewController: PKPaymentAuthorizationViewControllerDelegate {
