@@ -87,6 +87,11 @@ class HomeViewController: ApplePayViewController {
         didPullToRefresh()
     }
 
+    override func paymentSuccessful(_ product: Product?) {
+        refreshControl.beginRefreshing()
+        didPullToRefresh()
+    }
+
     @objc func didPullToRefresh() {
         // Hide the Message on top
         welcomeLabel.isHidden = true

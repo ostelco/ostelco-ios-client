@@ -98,23 +98,6 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         })
     }
 
-    // MARK: - Default implementaion of ApplePayDelegate.
-
-    func paymentError(_ error: ApplePayError) {
-        switch error {
-        case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
-            self.showAlert(title: "Payment Error", msg: error.localizedDescription)
-        case .userCancelled:
-            debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
-        case .primeAPIError(let requestError):
-            showAPIError(error: requestError)
-        }
-    }
-
-    func paymentSuccessful(_ product: Product?) {
-        self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(String(describing: product?.name))")
-    }
-
     // MARK: - Helpers for starting Apple Pay.
 
     func startApplePay(product: Product) {
