@@ -10,10 +10,6 @@ import UIKit
 
 class PendingVerificationViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
