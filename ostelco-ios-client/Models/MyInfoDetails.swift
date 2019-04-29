@@ -70,7 +70,7 @@ struct MyInfoDetails: Codable {
         return _nationality?.value
     }
     
-    let address: MyInfoAddress
+    var address: MyInfoAddress
     let mobileNumber: MyInfoMobileNumber?
     
     enum CodingKeys: String, CodingKey {
