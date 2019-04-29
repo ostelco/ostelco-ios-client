@@ -201,22 +201,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Jolly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-mX-GWu">
-                                <rect key="frame" x="0.0" y="206.33333333333334" width="375" height="44"/>
-                                <accessibility key="accessibilityConfiguration" hint="test"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="oZa-C5-QRG"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT SHOULD WE CALL YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-qY-Xwu">
                                 <rect key="frame" x="16" y="182.33333333333334" width="193" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g Jolly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-mX-GWu" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
+                                <rect key="frame" x="0.0" y="206.33333333333334" width="375" height="44"/>
+                                <accessibility key="accessibilityConfiguration" hint="test"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kSR-PZ-JWA" id="5Y0-uq-FP6"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERf-ng-eZR" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue">
@@ -231,7 +231,9 @@
                         <constraints>
                             <constraint firstItem="58z-OV-xk5" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" constant="24" id="1Wu-Dg-Cmr"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="58z-OV-xk5" secondAttribute="trailing" constant="24" id="8uo-gA-6i3"/>
+                            <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="AT6-UJ-y5m"/>
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="leading" secondItem="eID-ti-S3H" secondAttribute="leadingMargin" id="BtA-Ql-OTN"/>
+                            <constraint firstItem="j3T-mX-GWu" firstAttribute="trailing" secondItem="yIb-j2-pUN" secondAttribute="trailing" id="Hgi-yj-bkc"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="IMT-1x-fsB"/>
                             <constraint firstItem="ERf-ng-eZR" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" constant="24" id="N8X-j4-0cH"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="top" secondItem="Nv8-qY-Xwu" secondAttribute="bottom" constant="8" id="Str-oh-hGS"/>

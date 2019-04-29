@@ -21,7 +21,6 @@ class GetStartedViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
         self.continueButton.isEnabled = false
-        self.nameTextField.delegate = self
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -77,5 +76,12 @@ extension GetStartedViewController: UITextFieldDelegate {
         
         // Yes, we should allow these changes.
         return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        // We should not allow the input of a return
+        return false
     }
 }
