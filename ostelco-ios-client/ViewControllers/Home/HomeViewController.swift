@@ -1,5 +1,5 @@
 //
-//  HomeViewController2.swift
+//  HomeViewController.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 2/25/19.
@@ -12,7 +12,7 @@ import Siesta
 import ostelco_core
 import OstelcoStyles
 
-class HomeViewController2: ApplePayViewController {
+class HomeViewController: ApplePayViewController {
 
     var paymentError: RequestError?
     var availableProducts: [Product] = []
@@ -113,6 +113,20 @@ class HomeViewController2: ApplePayViewController {
             hasSubscription = true
             performSegue(withIdentifier: "becomeMember", sender: self)
         }
+    }
+
+    // Shows the list of products in a sheet
+    private func showProductListActionSheet(products: [Product]) {
+        let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for product in products {
+            let buyAction = UIAlertAction(title: product.label, style: .default) {_ in
+                self.startApplePay(product: product)
+            }
+            alertCtrl.addAction(buyAction)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertCtrl.addAction(cancelAction)
+        present(alertCtrl, animated: true, completion: nil)
     }
 
     func getProducts(completionHandler: @escaping ([Product], Error?) -> Void) {
