@@ -134,7 +134,6 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     }
     
     func startNetverify() {
-        //self.performSegue(withIdentifier: "yourAddress", sender: self)
         getnewScanId { (scanId, error) in
             if let scanId: String = scanId {
                 print("Retrieved \(scanId)")
