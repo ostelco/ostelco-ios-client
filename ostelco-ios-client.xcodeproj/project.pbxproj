@@ -124,6 +124,8 @@
 		13590E50313513F4967C8381 /* Pods_ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DCE29F29767B2734BF3223 /* Pods_ostelco_core.framework */; };
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
+		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
+		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
 		9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95722649DD30001641A /* SecureStorage.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
@@ -418,6 +420,7 @@
 		82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
+		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
@@ -666,6 +669,7 @@
 				C24EE404222838950053937E /* PendingVerificationViewController.swift */,
 				04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */,
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
+				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
 			);
 			path = EKYC;
 			sourceTree = "<group>";
@@ -1672,6 +1676,7 @@
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
+				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
 				047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
@@ -1813,6 +1818,7 @@
 				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
+				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
