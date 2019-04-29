@@ -22,12 +22,4 @@ final class CountryCell: UITableViewCell {
 // MARK: - Mix-in extensions
 
 extension CountryCell: NibLoadable { /* mix-in */ }
-
-// MARK: - LocatableCell
-
-extension CountryCell: LocatableCell {
-    
-    static var location: CellLocation {
-        return .nib(self.nib)
-    }
-}
+extension CountryCell: LocatableCell { /* mix-in */ }

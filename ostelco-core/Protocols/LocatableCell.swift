@@ -26,6 +26,15 @@ public protocol LocatableCell: Identifiable {
     static var location: CellLocation { get }
 }
 
+// MARK: - NibLoadable Default Implementation
+
+public extension LocatableCell where Self: NibLoadable {
+    
+    static var location: CellLocation {
+        return .nib(self.nib)
+    }
+}
+
 // MARK: - UITableViewCell Default implementation
 
 public typealias LocatableTableViewCell = LocatableCell & UITableViewCell
