@@ -38,6 +38,7 @@ extension ApplePayError: LocalizedError {
     }
 }
 
+// swiftlint:disable:next class_delegate_protocol
 protocol ApplePayDelegate: UIViewController {
     var shownApplePay: Bool { get set }
     var authorizedApplePay: Bool { get set }
@@ -48,8 +49,8 @@ protocol ApplePayDelegate: UIViewController {
     func paymentSuccessful(_ product: Product?)
 
     func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
-                                            didAuthorizePayment payment: PKPayment,
-                                            handler completion: @escaping (PKPaymentAuthorizationResult) -> Void)
+                                 didAuthorizePayment payment: PKPayment,
+                                 handler completion: @escaping (PKPaymentAuthorizationResult) -> Void)
     func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController)
 }
 
@@ -57,8 +58,8 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
 
     func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
-                                            didAuthorizePayment payment: PKPayment,
-                                            handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+                                 didAuthorizePayment payment: PKPayment,
+                                 handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         authorizedApplePay = true
         let product = purchasingProduct!
         // Create Stripe Source.
