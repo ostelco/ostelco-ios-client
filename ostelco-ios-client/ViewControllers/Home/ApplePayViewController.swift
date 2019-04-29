@@ -24,14 +24,14 @@ class ApplePayViewController: UIViewController {
     var applePayError: ApplePayError?
 
 }
-extension ApplePayViewController: ApplePayDelegate {
+extension ApplePayViewController: ApplePayDelegate, PKPaymentAuthorizationViewControllerDelegate {
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
                                             didAuthorizePayment payment: PKPayment,
                                             handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-        self.paymentAuthorizationViewController(controller, didAuthorizePayment: payment, handler: completion)
+        handlePaymentAuthorized(controller, didAuthorizePayment: payment, handler: completion)
     }
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        self.paymentAuthorizationViewControllerDidFinish(controller)
+        handlePaymentFinished(controller)
     }
 }

@@ -38,7 +38,7 @@ extension ApplePayError: LocalizedError {
     }
 }
 
-protocol ApplePayDelegate: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+protocol ApplePayDelegate: UIViewController {
     var shownApplePay: Bool { get set }
     var authorizedApplePay: Bool { get set }
     var purchasingProduct: Product? { get set }
@@ -46,12 +46,17 @@ protocol ApplePayDelegate: UIViewController, PKPaymentAuthorizationViewControlle
 
     func paymentError(_ error: ApplePayError)
     func paymentSuccessful(_ product: Product?)
+
+    func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
+                                            didAuthorizePayment payment: PKPayment,
+                                            handler completion: @escaping (PKPaymentAuthorizationResult) -> Void)
+    func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController)
 }
 
 extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDelegate {
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
 
-    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
+    func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
                                             didAuthorizePayment payment: PKPayment,
                                             handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         authorizedApplePay = true
@@ -79,7 +84,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         }
     }
 
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+    func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
             if let applePayError = self.applePayError {
