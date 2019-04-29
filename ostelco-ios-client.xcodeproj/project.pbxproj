@@ -119,6 +119,8 @@
 		04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */; };
 		04D6C9852276E32700AE13DD /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9842276E32700AE13DD /* Analytics.swift */; };
 		04D6C9862276E32700AE13DD /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9842276E32700AE13DD /* Analytics.swift */; };
+		04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */; };
+		04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		13590E50313513F4967C8381 /* Pods_ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DCE29F29767B2734BF3223 /* Pods_ostelco_core.framework */; };
@@ -394,6 +396,7 @@
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04D6C9842276E32700AE13DD /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SnakeCase.swift"; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		04EC5AE521887137000C2EC3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
@@ -963,6 +966,7 @@
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
+				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1696,6 +1700,7 @@
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
 				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
 				9BBF7073226746E500E4B9B4 /* MyInfoDetails.swift in Sources */,
 				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
@@ -1835,6 +1840,7 @@
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
+				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController2.swift in Sources */,
 				043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
