@@ -25,7 +25,6 @@ class OstelcoAnalytics {
     }
     
     static func logEvent(_ event: AnalyticsEvent) {
-        
         if event.name.isEmpty {
             var meta = event.metadata
             meta["name"] = event.name
