@@ -63,10 +63,10 @@ class AddressEditDataSource: NSObject {
     ///
     /// - Parameters:
     ///   - tableView: The table view to use to edit various pieces of address information.
-    ///   - sections: Which `AddressEditSection`s are included in this data source? Defaults to `allCases`.
+    ///   - sections: Which `AddressEditSection`s are included in this data source?
     ///   - delegate: The delegate to notify of any changes
     init(tableView: UITableView,
-         sections: [AddressEditSection] = AddressEditSection.allCases,
+         sections: [AddressEditSection],
          delegate: AddressEditDataSourceDelegate) {
         self.tableView = tableView
         self.sections = sections

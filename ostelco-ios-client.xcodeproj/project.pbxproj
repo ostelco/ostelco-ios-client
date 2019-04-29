@@ -126,12 +126,16 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
+		9B1745712276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
+		9B1745722276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
 		9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745732276F64B00CF321B /* TextEditCell.swift */; };
 		9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745732276F64B00CF321B /* TextEditCell.swift */; };
 		9B1745772276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
 		9B1745782276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
 		9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745792276F6E900CF321B /* AddressEditDataSource.swift */; };
 		9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745792276F6E900CF321B /* AddressEditDataSource.swift */; };
+		9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457C2277033300CF321B /* AddressEditViewController.swift */; };
+		9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457C2277033300CF321B /* AddressEditViewController.swift */; };
 		9B174580227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
@@ -248,14 +252,10 @@
 		C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
 		C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
-		C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
 		C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
-		C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE402222831970053937E /* NRICAddressTableViewController.swift */; };
 		C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
 		C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
-		C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */; };
-		C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */; };
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -429,9 +429,11 @@
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
+		9B1745702276F60000CF321B /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
 		9B1745762276F66400CF321B /* TextEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditCell.xib; sourceTree = "<group>"; };
 		9B1745792276F6E900CF321B /* AddressEditDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditDataSource.swift; sourceTree = "<group>"; };
+		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
@@ -510,10 +512,8 @@
 		C2236F0E218A414C00B135C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoDetails.swift; sourceTree = "<group>"; };
 		C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayDelegate.swift; sourceTree = "<group>"; };
-		C24EE402222831970053937E /* NRICAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICAddressTableViewController.swift; sourceTree = "<group>"; };
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
-		C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoAddressTableViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Notification.swift"; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
@@ -674,9 +674,8 @@
 		047F29182224535300FC6A8F /* EKYC */ = {
 			isa = PBXGroup;
 			children = (
+				9B17457C2277033300CF321B /* AddressEditViewController.swift */,
 				C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */,
-				C25A960E2227E1C2005958EC /* MyInfoAddressTableViewController.swift */,
-				C24EE402222831970053937E /* NRICAddressTableViewController.swift */,
 				042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */,
 				C24EE404222838950053937E /* PendingVerificationViewController.swift */,
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
@@ -913,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				048C78D82191F46D0041F135 /* LaunchScreen.storyboard */,
+				9B1745702276F60000CF321B /* Address.storyboard */,
 				047F2912222451DF00FC6A8F /* Country.storyboard */,
 				047F2921222453FE00FC6A8F /* EKYC.storyboard */,
 				047F29242224551A00FC6A8F /* ESim.storyboard */,
@@ -1239,6 +1239,7 @@
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */,
 				04488171217924B700F59758 /* Main.storyboard in Resources */,
+				9B1745712276F60000CF321B /* Address.storyboard in Resources */,
 				9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
@@ -1294,6 +1295,7 @@
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
+				9B1745722276F60000CF321B /* Address.storyboard in Resources */,
 				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
 				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
@@ -1688,19 +1690,18 @@
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
-				C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
+				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
 				047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
-				C24EE403222831970053937E /* NRICAddressTableViewController.swift in Sources */,
 				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
@@ -1840,6 +1841,7 @@
 				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
+				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
@@ -1884,7 +1886,6 @@
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
-				C24EE407222838A30053937E /* NRICAddressTableViewController.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				0437CF84224D1DAE0022A2B8 /* Region.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
@@ -1895,7 +1896,6 @@
 				0437CF87224D1E020022A2B8 /* SimProfile.swift in Sources */,
 				C224D921225FADFC00AE10FD /* MyInfoDetails.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
-				C25A96102227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
