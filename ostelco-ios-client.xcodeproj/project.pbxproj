@@ -126,6 +126,10 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
+		9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745732276F64B00CF321B /* TextEditCell.swift */; };
+		9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745732276F64B00CF321B /* TextEditCell.swift */; };
+		9B1745772276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
+		9B1745782276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
 		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
 		9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95722649DD30001641A /* SecureStorage.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
@@ -421,6 +425,8 @@
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
+		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
+		9B1745762276F66400CF321B /* TextEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditCell.xib; sourceTree = "<group>"; };
 		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
@@ -850,6 +856,8 @@
 			children = (
 				9BBF705C2265F04200E4B9B4 /* CountryCell.swift */,
 				9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */,
+				9B1745732276F64B00CF321B /* TextEditCell.swift */,
+				9B1745762276F66400CF321B /* TextEditCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1227,6 +1235,7 @@
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				9BF27782225D15FE006428D5 /* Environment.plist in Resources */,
+				9B1745772276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
@@ -1281,6 +1290,7 @@
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
 				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
+				9B1745782276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
@@ -1696,6 +1706,7 @@
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
+				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
 				04488192217938A300F59758 /* Auth.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
@@ -1839,6 +1850,7 @@
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
+				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
