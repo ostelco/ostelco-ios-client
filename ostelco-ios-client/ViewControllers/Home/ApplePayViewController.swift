@@ -24,8 +24,6 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     var purchasingProduct: Product?
     var applePayError: ApplePayError?
 
-    // MARK: - Default implementaion of ApplePayDelegate.
-
     func paymentError(_ error: ApplePayError) {
         switch error {
         case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
