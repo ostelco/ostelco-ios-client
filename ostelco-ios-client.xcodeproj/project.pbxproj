@@ -79,7 +79,7 @@
 		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
 		04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
-		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
+		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
@@ -147,7 +147,7 @@
 		9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */; };
 		9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE3225E33620076ABF3 /* NibLoadable.swift */; };
 		9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */; };
-		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */; };
+		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
@@ -377,7 +377,7 @@
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIActivityIndicator.swift"; sourceTree = "<group>"; };
-		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController2.swift; sourceTree = "<group>"; };
+		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPendingDownloadViewController.swift; sourceTree = "<group>"; };
 		04834D64223020DA00A01500 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
@@ -667,9 +667,9 @@
 				C24EE402222831970053937E /* NRICAddressTableViewController.swift */,
 				042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */,
 				C24EE404222838950053937E /* PendingVerificationViewController.swift */,
-				04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift */,
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
 				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
+				04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */,
 			);
 			path = EKYC;
 			sourceTree = "<group>";
@@ -1720,7 +1720,7 @@
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
-				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
+				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B9B324C225E3D4400227EA3 /* CustomerModel.swift in Sources */,
 				0437CF83224D1DAE0022A2B8 /* Region.swift in Sources */,
 				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
@@ -1808,7 +1808,7 @@
 				0493B80D2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				9BE2D452225B609100B51999 /* TopUpButton.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
-				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController2.swift in Sources */,
+				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
