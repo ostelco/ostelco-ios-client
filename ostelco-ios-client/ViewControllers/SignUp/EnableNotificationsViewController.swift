@@ -11,6 +11,10 @@ import UserNotifications
 
 class EnableNotificationsViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ROAnalytics.logEvent(.LegalStuffAgreed)
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.enableNotifications(ignoreNotDetermined: true)
