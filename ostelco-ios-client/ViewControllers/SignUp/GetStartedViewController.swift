@@ -32,6 +32,7 @@ class GetStartedViewController: UIViewController {
             APIManager.sharedInstance.customer.withParam("nickname", nameTextField.text!).withParam("contactEmail", email).request(.post, json: [:])
                 .onSuccess({ data in
                     if let customer: CustomerModel = data.typedContent(ifNone: nil) {
+                        OstelcoAnalytics.logEvent(.EnteredNickname)
                         DispatchQueue.main.async {
                             UserManager.sharedInstance.user = customer
                             self.performSegue(withIdentifier: "showCountry", sender: self)

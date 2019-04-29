@@ -36,10 +36,12 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     @IBAction private func continueTapped() {
         if self.singPassCheck.isChecked {
+            OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             //performSegue(withIdentifier: "myInfoSummary", sender: self)
             UIApplication.shared.typedDelegate.myInfoDelegate = self
             getMyInfoToken()
         } else if self.scanICCheck.isChecked {
+            OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             performSegue(withIdentifier: "nricVerify", sender: self)
         } else {
             assertionFailure("At least one of these should be checked if continue is enabled!")

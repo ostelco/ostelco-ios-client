@@ -11,6 +11,7 @@ import UIKit
 class ESIMOnBoardingViewController: UIViewController {
     
     @IBAction private func continueTapped(_ sender: Any) {
+        OstelcoAnalytics.logEvent(.DownloadingESIM)
         performSegue(withIdentifier: "showESIMInstructions", sender: self)
     }
     
