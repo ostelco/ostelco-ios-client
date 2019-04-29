@@ -14,15 +14,17 @@ public class Product {
     let currency: String
     let country: String
     let sku: String
+    let type: String
 
     @available(*, deprecated, message: "Construct a Product object from ProdctModel")
-    init(name: String, label: String, amount: Decimal, country: String, currency: String, sku: String) {
+    init(name: String, label: String, amount: Decimal, country: String, currency: String, sku: String, type: String) {
         self.name = name
         self.label = label
         self.amount = amount
         self.country = country
         self.currency = currency
         self.sku = sku
+        self.type = type
     }
 
     init(from: ProductModel, countryCode: String) {
@@ -32,5 +34,6 @@ public class Product {
         country = countryCode
         currency = from.price.currency
         sku = from.sku
+        type = from.type
     }
 }

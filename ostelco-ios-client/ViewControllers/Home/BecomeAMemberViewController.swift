@@ -11,13 +11,10 @@ import PassKit
 import Stripe
 import Siesta
 
-class BecomeAMemberViewController: UIViewController {
-    
-    var paymentError: RequestError?
-    var paymentAuthorized: Bool = false
-    
+class BecomeAMemberViewController: ApplePayViewController {
+
     @IBOutlet private weak var buttonContainer: UIView!
-    
+
     @IBAction private func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -32,10 +29,10 @@ class BecomeAMemberViewController: UIViewController {
             
             // 2. Check if user has a stripe supported card in its wallet
             if Stripe.deviceSupportsApplePay() {
-                paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
+                paymentButton = PKPaymentButton(paymentButtonType: .checkout, paymentButtonStyle: .whiteOutline)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.buyButtonTapped), for: .touchUpInside)
             } else {
-                paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .black)
+                paymentButton = PKPaymentButton(paymentButtonType: .setUp, paymentButtonStyle: .whiteOutline)
                 paymentButton.addTarget(self, action: #selector(BecomeAMemberViewController.setUpButtonTapped), for: .touchUpInside)
             }
             paymentButton.translatesAutoresizingMaskIntoConstraints = false
@@ -59,63 +56,13 @@ class BecomeAMemberViewController: UIViewController {
             amount: 100.0,
             country: "SG",
             currency: "SGD",
-            sku: "123"
+            sku: "123",
+            type: "plan"
         )
-        paymentAuthorized = false
-        startApplePay(product: product, delegate: self)
+        startApplePay(product: product)
     }
     
     @objc func setUpButtonTapped() {
-        paymentAuthorized = false
         PKPassLibrary().openPaymentSetup()
-    }
-}
-
-extension BecomeAMemberViewController: PKPaymentAuthorizationViewControllerDelegate {
-    
-    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
-        paymentAuthorized = true
-        STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
-            guard let source = source, error == nil else {
-                // Present error to user...
-                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
-                return
-            }
-            
-            APIManager.sharedInstance.products.child("123").child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onProgress({ progress in
-                    print("Progress %{public}@", "\(progress)")
-                })
-                .onSuccess({ result in
-                    print("Successfully bought a product %{public}@", "\(result)")
-                    // ostelcoAPI.purchases.invalidate()
-                    // ostelcoAPI.bundles.invalidate()
-                    // ostelcoAPI.bundles.load()
-                    self.paymentError = nil
-                    completion(.success)
-                })
-                .onFailure({ error in
-                    // TODO: Report error to server
-                    print("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
-                    self.paymentError = error
-                    completion(.failure)
-                })
-                .onCompletion({ _ in
-                    
-                })
-        }
-    }
-    
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        // Dismiss payment authorization view controller
-        dismiss(animated: true, completion: {
-            if self.paymentAuthorized == false {
-                print("User has cancelled the Payment")
-            } else if let error = self.paymentError {
-                self.showAPIError(error: error)
-            } else {
-                self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it!")
-            }
-        })
     }
 }
