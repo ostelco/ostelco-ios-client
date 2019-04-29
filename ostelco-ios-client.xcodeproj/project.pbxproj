@@ -130,6 +130,8 @@
 		9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745732276F64B00CF321B /* TextEditCell.swift */; };
 		9B1745772276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
 		9B1745782276F66400CF321B /* TextEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745762276F66400CF321B /* TextEditCell.xib */; };
+		9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745792276F6E900CF321B /* AddressEditDataSource.swift */; };
+		9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745792276F6E900CF321B /* AddressEditDataSource.swift */; };
 		9B174580227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
@@ -429,6 +431,7 @@
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
 		9B1745762276F66400CF321B /* TextEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditCell.xib; sourceTree = "<group>"; };
+		9B1745792276F6E900CF321B /* AddressEditDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditDataSource.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
@@ -820,6 +823,7 @@
 		9B920F60225B8C51001EF9CD /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 			);
@@ -1682,6 +1686,7 @@
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				C25A960F2227E1C2005958EC /* MyInfoAddressTableViewController.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
@@ -1826,6 +1831,7 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
+				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
