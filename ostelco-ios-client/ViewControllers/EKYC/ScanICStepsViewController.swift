@@ -10,6 +10,7 @@ import UIKit
 
 class ScanICStepsViewController: UIViewController {
     
+    // TODO: Rip this out when we use nav controllers
     @IBAction private func backTapped() {
         self.dismiss(animated: true)
     }
