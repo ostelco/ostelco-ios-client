@@ -108,7 +108,7 @@ class HomeViewController: ApplePayViewController {
             self.refreshControl.endRefreshing()
         }
     }
-    
+
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             // TODO: Should we show the plans here ?
@@ -132,26 +132,6 @@ class HomeViewController: ApplePayViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertCtrl.addAction(cancelAction)
         present(alertCtrl, animated: true, completion: nil)
-    }
-
-    func getProducts(completionHandler: @escaping ([Product], Error?) -> Void) {
-        APIManager.sharedInstance.products.load()
-            .onSuccess { entity in
-                DispatchQueue.main.async {
-                    if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        products.forEach {debugPrint($0.sku, $0.properties)}
-                        let availableProducts: [Product] = products.map { Product(from: $0, countryCode: "SG") }
-                        completionHandler(availableProducts, nil)
-                    } else {
-                        completionHandler([], nil)
-                    }
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    completionHandler([], error)
-                }
-        }
     }
 
     func getBundles(completionHandler: @escaping ([BundleModel], Error?) -> Void) {
