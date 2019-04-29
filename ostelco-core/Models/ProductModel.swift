@@ -29,4 +29,15 @@ public struct ProductModel: Codable {
     public let sku: String
     public let presentation: PresentationModel
     public let price: PriceModel
+    public let properties: [String: String]
+
+    public var type:String {
+        get {
+            if let productType = properties["productType"] {
+                return productType.lowercased()
+            }
+            // default type is offer
+            return "offer"
+        }
+    }
 }

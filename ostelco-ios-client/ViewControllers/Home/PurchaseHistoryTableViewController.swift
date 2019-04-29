@@ -29,6 +29,7 @@ class PucrhaseHistoryTableViewController: UITableViewController {
             for: .valueChanged
         )
         tableView.refreshControl = refreshControl
+        refreshControl.beginRefreshing()
         didPullToRefresh()
     }
 
