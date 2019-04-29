@@ -67,10 +67,17 @@ class HomeViewController: ApplePayViewController {
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         refreshControl.attributedTitle = NSMutableAttributedString(string: refreshBalanceText)
         self.scrollView.addSubview(refreshControl)
+        refreshControl.beginRefreshing()
+        didPullToRefresh()
+    }
 
-        let spinnerView: UIView = showSpinner(onView: view)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchProducts()
+    }
+
+    private func fetchProducts() {
         getProducts { products, error in
-            self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 debugPrint("error fetching products \(error)")
@@ -83,8 +90,6 @@ class HomeViewController: ApplePayViewController {
             // TODO: Remove this after the subscription purchase is implemented
             self.hasSubscription = false
         }
-        refreshControl.beginRefreshing()
-        didPullToRefresh()
     }
 
     override func paymentSuccessful(_ product: Product?) {

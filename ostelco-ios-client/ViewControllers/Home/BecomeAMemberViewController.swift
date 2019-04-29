@@ -90,6 +90,6 @@ class BecomeAMemberViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
-        cancelButtonTapped(product as Any)
+        cancelButtonTapped(self)
     }
 }
