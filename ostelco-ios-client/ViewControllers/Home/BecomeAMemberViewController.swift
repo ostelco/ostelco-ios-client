@@ -56,7 +56,8 @@ class BecomeAMemberViewController: ApplePayViewController {
             amount: 100.0,
             country: "SG",
             currency: "SGD",
-            sku: "123"
+            sku: "123",
+            type: "plan"
         )
         startApplePay(product: product)
     }

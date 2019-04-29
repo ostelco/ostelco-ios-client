@@ -50,6 +50,13 @@ class HomeViewController2: ApplePayViewController {
         }
     }
 
+    private func checkForSubscription(_ products: [Product]) -> Bool {
+        // See if the list contains offers.
+        let hasOffers = products.contains { $0.type == "offer" }
+        // If we have offers, user is already a member
+        return hasOffers
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,7 +78,9 @@ class HomeViewController2: ApplePayViewController {
                 debugPrint("No products available")
             }
             self.availableProducts.forEach {debugPrint($0.name, $0.amount, $0.currency, $0.country, $0.sku)}
-            // TODO: check the if the customer is a member already.
+            // Check if the customer is a member already.
+            self.hasSubscription = self.checkForSubscription(products)
+            // TODO: Remove this after the subscription purchase is implemented
             self.hasSubscription = false
         }
         refreshControl.beginRefreshing()
@@ -97,9 +106,10 @@ class HomeViewController2: ApplePayViewController {
     
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
+            // TODO: Should we show the plans here ?
             showProductListActionSheet(products: self.availableProducts)
         } else {
-            // TODO: Remove this after the logic for subscription check is implemented
+            // TODO: Remove this after the subscription purchase is implemented
             hasSubscription = true
             performSegue(withIdentifier: "becomeMember", sender: self)
         }
