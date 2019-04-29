@@ -57,7 +57,7 @@ extension AnalyticsEvent {
         }
     }
     
-    var metadata: [String : String] {
+    var metadata: [String: String] {
         switch self {
         case .ChosenCountry(let country):
             return ["country": country.countryCode]
