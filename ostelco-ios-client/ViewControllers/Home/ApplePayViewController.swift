@@ -16,7 +16,7 @@ import PassKit
 // TL;DR: @objc functions may not currently be in protocol extensions.
 // You could create a base class instead, though that's not an ideal solution.
 // https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
-class ApplePayViewController: UIViewController {
+class ApplePayViewController: UIViewController, ApplePayDelegate {
     // MARK: - Properties for ApplePayDelegate.
     var shownApplePay = false
     var authorizedApplePay = false
@@ -24,7 +24,8 @@ class ApplePayViewController: UIViewController {
     var applePayError: ApplePayError?
 
 }
-extension ApplePayViewController: ApplePayDelegate, PKPaymentAuthorizationViewControllerDelegate {
+
+extension ApplePayViewController: PKPaymentAuthorizationViewControllerDelegate {
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
                                             didAuthorizePayment payment: PKPayment,
