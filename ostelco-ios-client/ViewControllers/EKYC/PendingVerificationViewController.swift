@@ -10,10 +10,6 @@ import UIKit
 
 class PendingVerificationViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }
@@ -129,5 +125,18 @@ class PendingVerificationViewController: UIViewController {
             })
         }
         self.present(ohNo, animated: true)
+    }
+}
+
+// MARK: - StoryboardLoadable
+
+extension PendingVerificationViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
     }
 }
