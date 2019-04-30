@@ -23,6 +23,10 @@ class GetStartedViewController: UIViewController {
         self.continueButton.isEnabled = false
     }
     
+    @IBAction private func needHelpTapped() {
+        self.showNeedHelpActionSheet()
+    }
+    
     @IBAction private func continueTapped(_ sender: Any) {
         self.spinnerView = showSpinner(onView: self.view)
         let email = self.getEmailFromJWT()

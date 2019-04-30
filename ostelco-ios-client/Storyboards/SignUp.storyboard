@@ -80,6 +80,13 @@
                                     <outletCollection property="gestureRecognizers" destination="g2e-DE-Bi4" appends="YES" id="ptm-8D-CdV"/>
                                 </connections>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-hs-GvP" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="Jcv-PQ-0I3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -96,9 +103,11 @@
                             <constraint firstItem="4ct-C6-Ngo" firstAttribute="centerY" secondItem="oKo-ag-iar" secondAttribute="centerY" id="LbA-yV-Ff1"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
                             <constraint firstItem="oKo-ag-iar" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="65" id="VFI-OQ-ZEj"/>
+                            <constraint firstItem="IDd-hs-GvP" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="W8Z-E6-2jP"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="BD5-xy-nGB" secondAttribute="trailing" constant="16" id="ZJn-iF-S9D"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="aFU-nu-jr4"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="44" id="icc-2j-d81"/>
+                            <constraint firstItem="MU2-9r-kL0" firstAttribute="top" secondItem="IDd-hs-GvP" secondAttribute="bottom" constant="34" id="sKh-zY-Lq2"/>
                             <constraint firstItem="fhX-lv-Abz" firstAttribute="centerY" secondItem="5XH-1y-ENz" secondAttribute="centerY" id="t7m-si-hg8"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="24" id="tTI-YA-gy5"/>
                             <constraint firstItem="5XH-1y-ENz" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="65" id="vNj-e6-gl9"/>
@@ -160,6 +169,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
                                 <rect key="frame" x="56" y="304" width="291" height="204"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-Zm-rhZ" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="WQL-DB-YsR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -167,6 +183,7 @@
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="B2t-Cn-NFx"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="16" id="IUd-ky-HWL"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="top" secondItem="Dam-4t-AgC" secondAttribute="bottom" constant="16" id="KgO-Dk-vjR"/>
+                            <constraint firstItem="8Uy-4i-IUw" firstAttribute="top" secondItem="DAB-Zm-rhZ" secondAttribute="bottom" constant="34" id="KlT-2F-F8W"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="bottom" secondItem="8Uy-4i-IUw" secondAttribute="bottom" constant="44" id="LZ5-x5-3De"/>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="top" secondItem="YkK-Vz-Pfa" secondAttribute="top" constant="44" id="QnR-zX-cVK"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="Dam-4t-AgC" secondAttribute="trailing" constant="24" id="Z0l-G2-Btl"/>
@@ -176,6 +193,7 @@
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="8Uy-4i-IUw" secondAttribute="trailing" constant="24" id="oZG-Rd-vkN"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="rxi-J1-ZxQ"/>
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="24" id="tn4-XQ-2Jn"/>
+                            <constraint firstItem="DAB-Zm-rhZ" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="y3j-ga-grk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YkK-Vz-Pfa"/>
                     </view>
@@ -226,6 +244,13 @@
                                     <action selector="continueTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="QEI-Mx-3pr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-En-ghf" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped" destination="kSR-PZ-JWA" eventType="touchUpInside" id="uXb-1v-ADe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -233,6 +258,7 @@
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="58z-OV-xk5" secondAttribute="trailing" constant="24" id="8uo-gA-6i3"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="AT6-UJ-y5m"/>
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="leading" secondItem="eID-ti-S3H" secondAttribute="leadingMargin" id="BtA-Ql-OTN"/>
+                            <constraint firstItem="ERf-ng-eZR" firstAttribute="top" secondItem="uVN-En-ghf" secondAttribute="bottom" constant="34" id="HQ8-em-omm"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="trailing" secondItem="yIb-j2-pUN" secondAttribute="trailing" id="Hgi-yj-bkc"/>
                             <constraint firstItem="j3T-mX-GWu" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" id="IMT-1x-fsB"/>
                             <constraint firstItem="ERf-ng-eZR" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" constant="24" id="N8X-j4-0cH"/>
@@ -242,6 +268,7 @@
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="top" secondItem="58z-OV-xk5" secondAttribute="bottom" constant="56" id="ZOF-aJ-a5B"/>
                             <constraint firstItem="58z-OV-xk5" firstAttribute="top" secondItem="yIb-j2-pUN" secondAttribute="top" constant="44" id="Zhj-7d-zln"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="j3T-mX-GWu" secondAttribute="trailing" id="qtX-g0-1QM"/>
+                            <constraint firstItem="uVN-En-ghf" firstAttribute="centerX" secondItem="eID-ti-S3H" secondAttribute="centerX" id="syx-oh-LRn"/>
                             <constraint firstItem="58z-OV-xk5" firstAttribute="centerX" secondItem="eID-ti-S3H" secondAttribute="centerX" id="wnc-3b-8gi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yIb-j2-pUN"/>
@@ -262,7 +289,7 @@
                 <viewControllerPlaceholder storyboardName="Country" id="ZZg-qT-9FY" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ok-gH-vfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="466"/>
+            <point key="canvasLocation" x="2274" y="28"/>
         </scene>
     </scenes>
     <resources>
