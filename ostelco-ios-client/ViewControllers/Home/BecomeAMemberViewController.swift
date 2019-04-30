@@ -15,8 +15,8 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     @IBOutlet private weak var buttonContainer: UIView!
 
-    var paymentButton: PKPaymentButton? = nil
-    var plan: Product? = nil
+    var paymentButton: PKPaymentButton?
+    var plan: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,9 @@ class BecomeAMemberViewController: ApplePayViewController {
         let spinnerView: UIView = showSpinner(onView: view)
         getProducts { products, error in
             self.removeSpinner(spinnerView)
+            if let error = error {
+                ApplicationErrors.log(error)
+            }
             self.plan = self.getFirstPlan(products)
         }
     }
@@ -38,7 +41,8 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     func setupPaymentButton() {
         var showSetupButton = false
-        let applePayError:ApplePayError? = canMakePayments()
+        // Find out what kind of Apple Pay button we should show.
+        let applePayError: ApplePayError? = canMakePayments()
         switch applePayError {
         case .unsupportedDevice?:
             debugPrint("Apple Pay is not supported on this device")
@@ -49,19 +53,23 @@ class BecomeAMemberViewController: ApplePayViewController {
         default:
             showSetupButton = false
         }
-        // Properties to Setup Apple Pay.
-        var action = #selector(BecomeAMemberViewController.setUpButtonTapped)
-        var paymentButtonType: PKPaymentButtonType =  .setUp
-        let paymentButton: PKPaymentButton
-        if showSetupButton == false {
+        let action: Selector
+        let paymentButtonType: PKPaymentButtonType
+        if showSetupButton {
+            // Properties to Setup Apple Pay.
+            action = #selector(BecomeAMemberViewController.setUpButtonTapped)
+            paymentButtonType = .setUp
+        } else {
+            // Properties to Checkout using Apple Pay.
             action = #selector(BecomeAMemberViewController.buyButtonTapped)
-            paymentButtonType =  .checkout
+            paymentButtonType = .checkout
         }
-        paymentButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: .whiteOutline)
+        // Create the right type of Apple Pay button based on the checks above.
+        let paymentButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: .whiteOutline)
         paymentButton.addTarget(self, action: action, for: .touchUpInside)
         paymentButton.translatesAutoresizingMaskIntoConstraints = false
         buttonContainer.addSubview(paymentButton)
-        // Layout the Payment button.
+        // Layout the Apple Pay button.
         paymentButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor).isActive = true
         paymentButton.heightAnchor.constraint(equalTo: buttonContainer.heightAnchor).isActive = true
         paymentButton.centerXAnchor.constraint(equalTo: buttonContainer.centerXAnchor).isActive = true
@@ -76,8 +84,9 @@ class BecomeAMemberViewController: ApplePayViewController {
         if let plan = plan {
             startApplePay(product: plan)
         } else {
-            debugPrint("No subscription plan found.")
-            self.showAlert(title: "Subscription Error", msg: "Did not find a valid subscription plan.")
+            let error = ApplicationErrors.General.noValidPlansFound
+            ApplicationErrors.log(error)
+            self.showAlert(title: "Subscription Error", msg: error.localizedDescription)
         }
     }
 
