@@ -29,6 +29,10 @@ class EnableNotificationsViewController: UIViewController {
         self.requestNotificationAuthorization()
     }
     
+    @IBAction private func needHelpTapped() {
+        self.showNeedHelpActionSheet()
+    }
+    
     private func enableNotifications(ignoreNotDetermined: Bool = false) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {
