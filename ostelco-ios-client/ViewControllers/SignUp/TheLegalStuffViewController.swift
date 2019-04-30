@@ -48,6 +48,10 @@ class TheLegalStuffViewController: UIViewController {
         self.updateContinueButtonState()
     }
 
+    @IBAction private func needHelpTapped() {
+        self.showNeedHelpActionSheet()
+    }
+    
     @IBAction private func checkButtonTapped(_ check: CheckButton) {
         check.isChecked.toggle()
         self.updateContinueButtonState()
