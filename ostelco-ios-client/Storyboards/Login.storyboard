@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="327" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationArrowsUp" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-Sp-Qeh">
-                                <rect key="frame" x="42.666666666666657" y="44" width="241.99999999999997" height="168"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationArrowsUp" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-Sp-Qeh">
+                                <rect key="frame" x="42.666666666666657" y="0.0" width="241.99999999999997" height="168"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="168" id="vYu-IK-YyS"/>
+                                    <constraint firstAttribute="height" priority="999" constant="168" id="96h-bN-D0K"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="280" width="279" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="236" width="279" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,8 +33,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="top" secondItem="7HN-dF-OAG" secondAttribute="top" id="DBg-5q-7L3"/>
-                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" constant="68" id="Zux-NZ-a6Q"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I3U-ge-2P9" secondAttribute="bottom" id="Awe-Tb-ylc"/>
+                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="top" secondItem="c2K-zq-Gas" secondAttribute="top" id="DBg-5q-7L3"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" priority="750" constant="68" id="Zux-NZ-a6Q"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" id="adb-SO-yot"/>
                             <constraint firstItem="I3U-ge-2P9" firstAttribute="leading" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="b9Z-vb-jbZ"/>
                             <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" secondItem="I3U-ge-2P9" secondAttribute="trailing" constant="24" id="bEl-Gu-9rj"/>
                             <constraint firstItem="pBa-Sp-Qeh" firstAttribute="centerX" secondItem="c2K-zq-Gas" secondAttribute="centerX" id="dWc-hl-azr"/>
@@ -69,14 +71,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="700" width="327" height="34"/>
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
-                                <rect key="frame" x="24" y="248" width="327" height="416"/>
+                                <rect key="frame" x="24" y="248" width="327" height="400"/>
                                 <connections>
                                     <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
                                 </connections>
@@ -87,6 +89,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="20" id="2ZI-Pi-Ryd"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="rXU-Gj-qtX" secondAttribute="trailing" constant="24" id="9yk-5K-rbD"/>
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Ibj-rF-wPS"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="44" id="L5N-ce-Ckt"/>
@@ -95,7 +98,7 @@
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="top" secondItem="bOq-mn-xOP" secondAttribute="top" constant="60" id="YNK-jN-mAx"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="gXH-0I-pmh"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="top" secondItem="rXU-Gj-qtX" secondAttribute="bottom" constant="36" id="jyp-zk-gMS"/>
-                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="87" id="q8k-XS-GFM"/>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" priority="999" constant="87" id="q8k-XS-GFM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
