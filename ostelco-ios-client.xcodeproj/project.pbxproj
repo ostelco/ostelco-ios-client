@@ -46,7 +46,6 @@
 		043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
 		043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		04488171217924B700F59758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */; };
@@ -57,8 +56,6 @@
 		047F29002224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
 		047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
 		047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
-		047F2909222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
-		047F290A222447E500FC6A8F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F2908222447E500FC6A8F /* MainController.swift */; };
 		047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F290E22244A9800FC6A8F /* SignUp.storyboard */; };
 		047F2913222451DF00FC6A8F /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F2912222451DF00FC6A8F /* Country.storyboard */; };
@@ -262,7 +259,6 @@
 		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
-		C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0448816F217924B700F59758 /* Main.storyboard */; };
 		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
@@ -362,7 +358,6 @@
 		043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+CountryListActionSheet.swift"; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04488170217924B700F59758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488177217924B800F59758 /* Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		04488191217938A300F59758 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
@@ -375,7 +370,6 @@
 		047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActionSheet.swift"; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		047F2908222447E500FC6A8F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		047F290E22244A9800FC6A8F /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		047F2912222451DF00FC6A8F /* Country.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Country.storyboard; sourceTree = "<group>"; };
 		047F2921222453FE00FC6A8F /* EKYC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EKYC.storyboard; sourceTree = "<group>"; };
@@ -897,7 +891,6 @@
 			isa = PBXGroup;
 			children = (
 				9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */,
-				047F2908222447E500FC6A8F /* MainController.swift */,
 				9BC465442271DC98001951BF /* OhNoViewController.swift */,
 				04BA349B222587F6000359C4 /* SplashViewController.swift */,
 				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
@@ -921,7 +914,6 @@
 				047F29242224551A00FC6A8F /* ESim.storyboard */,
 				047F292A222455CF00FC6A8F /* Home.storyboard */,
 				047F28FE2224419700FC6A8F /* Login.storyboard */,
-				0448816F217924B700F59758 /* Main.storyboard */,
 				9BC465412271DAD4001951BF /* OhNo.storyboard */,
 				9BE2D467225B7A6600B51999 /* Settings.storyboard */,
 				047F290E22244A9800FC6A8F /* SignUp.storyboard */,
@@ -1241,7 +1233,6 @@
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */,
-				04488171217924B700F59758 /* Main.storyboard in Resources */,
 				9B1745712276F60000CF321B /* Address.storyboard in Resources */,
 				9BE2D466225B7A3700B51999 /* TabController.storyboard in Resources */,
 				047F28FF2224419700FC6A8F /* Login.storyboard in Resources */,
@@ -1299,7 +1290,6 @@
 				9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */,
 				047F29262224551A00FC6A8F /* ESim.storyboard in Resources */,
 				9B1745722276F60000CF321B /* Address.storyboard in Resources */,
-				C29802C22181EDA800FBC5C3 /* Main.storyboard in Resources */,
 				047F29002224419700FC6A8F /* Login.storyboard in Resources */,
 				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
@@ -1697,7 +1687,6 @@
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
-				047F2909222447E500FC6A8F /* MainController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
@@ -1828,7 +1817,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
-				047F290A222447E500FC6A8F /* MainController.swift in Sources */,
 				0437CF8A224D3B380022A2B8 /* Context.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				0493B80D2252BE0900989F40 /* JSONRequestError.swift in Sources */,
@@ -1943,17 +1931,6 @@
 			targetProxy = C2236F0F218A414C00B135C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0448816F217924B700F59758 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04488170217924B700F59758 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04488178217924B800F59758 /* Debug */ = {
