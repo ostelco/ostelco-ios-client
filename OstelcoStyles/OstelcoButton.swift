@@ -101,6 +101,7 @@ public class LinkTextButton: OstelcoButton {
         super.commonInit()
         
         self.appTitleColor = .oyaBlue
+        self.tintColor = self.appTitleColor.toUIColor
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .body)
     }

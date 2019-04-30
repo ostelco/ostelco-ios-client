@@ -13,20 +13,19 @@
         <!--Onboarding Page View Controller-->
         <scene sceneID="fKG-UW-GXI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1E-3y-6hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="OnboardingPageViewController" id="yuo-1M-ISX" customClass="OnboardingPageViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c2K-zq-Gas">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationArrowsUp" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-Sp-Qeh">
-                                <rect key="frame" x="42.666666666666657" y="44" width="241.99999999999997" height="168"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationArrowsUp" translatesAutoresizingMaskIntoConstraints="NO" id="pBa-Sp-Qeh">
+                                <rect key="frame" x="42.666666666666657" y="0.0" width="241.99999999999997" height="168"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="168" id="vYu-IK-YyS"/>
+                                    <constraint firstAttribute="height" priority="999" constant="168" id="96h-bN-D0K"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="280" width="279" height="21.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="236" width="279" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -34,8 +33,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="top" secondItem="7HN-dF-OAG" secondAttribute="top" id="DBg-5q-7L3"/>
-                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" constant="68" id="Zux-NZ-a6Q"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I3U-ge-2P9" secondAttribute="bottom" id="Awe-Tb-ylc"/>
+                            <constraint firstItem="pBa-Sp-Qeh" firstAttribute="top" secondItem="c2K-zq-Gas" secondAttribute="top" id="DBg-5q-7L3"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" priority="750" constant="68" id="Zux-NZ-a6Q"/>
+                            <constraint firstItem="I3U-ge-2P9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pBa-Sp-Qeh" secondAttribute="bottom" id="adb-SO-yot"/>
                             <constraint firstItem="I3U-ge-2P9" firstAttribute="leading" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="b9Z-vb-jbZ"/>
                             <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" secondItem="I3U-ge-2P9" secondAttribute="trailing" constant="24" id="bEl-Gu-9rj"/>
                             <constraint firstItem="pBa-Sp-Qeh" firstAttribute="centerX" secondItem="c2K-zq-Gas" secondAttribute="centerX" id="dWc-hl-azr"/>
@@ -49,14 +50,15 @@
                         <outlet property="imageView" destination="pBa-Sp-Qeh" id="Voj-zJ-efJ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1E-3y-6hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-604" y="604"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="gMy-AL-sBh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s4V-WV-295" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fe6-qF-yAH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4V-WV-295" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="57" y="600"/>
         </scene>
@@ -87,6 +89,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="20" id="2ZI-Pi-Ryd"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="rXU-Gj-qtX" secondAttribute="trailing" constant="24" id="9yk-5K-rbD"/>
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Ibj-rF-wPS"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="44" id="L5N-ce-Ckt"/>
@@ -95,7 +98,7 @@
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="top" secondItem="bOq-mn-xOP" secondAttribute="top" constant="60" id="YNK-jN-mAx"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="gXH-0I-pmh"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="top" secondItem="rXU-Gj-qtX" secondAttribute="bottom" constant="36" id="jyp-zk-gMS"/>
-                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="87" id="q8k-XS-GFM"/>
+                            <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" priority="999" constant="87" id="q8k-XS-GFM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
@@ -126,7 +129,7 @@
                 <viewControllerPlaceholder storyboardName="Country" id="uYv-Rx-W57" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZT-z1-4Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-85"/>
+            <point key="canvasLocation" x="806" y="-88"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="DBT-7s-2nc">
@@ -134,7 +137,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" id="q2N-Ki-5Zu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thH-gt-YwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="-4"/>
+            <point key="canvasLocation" x="793" y="-14"/>
         </scene>
         <!--ESim-->
         <scene sceneID="vcv-Jk-phk">
@@ -142,15 +145,15 @@
                 <viewControllerPlaceholder storyboardName="ESim" id="BEa-Hu-JHR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="280"/>
+            <point key="canvasLocation" x="791" y="186"/>
         </scene>
-        <!--EKYCWaitViewController-->
+        <!--PendingVerificationViewController-->
         <scene sceneID="rzq-ff-CsV">
             <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCWaitViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="PendingVerificationViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2c6-W1-478" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="90"/>
+            <point key="canvasLocation" x="934" y="93"/>
         </scene>
     </scenes>
     <resources>

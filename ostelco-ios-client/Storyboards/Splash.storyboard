@@ -51,7 +51,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="2aJ-o5-cpM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slB-eY-9FO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1110" y="-631"/>
+            <point key="canvasLocation" x="-1114" y="-624"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="tnp-RD-X9o">
@@ -59,7 +59,7 @@
                 <viewControllerPlaceholder storyboardName="SignUp" id="Tgx-1t-0cu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNE-na-XbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="-560"/>
+            <point key="canvasLocation" x="-1106" y="-544"/>
         </scene>
         <!--Country-->
         <scene sceneID="fUa-Qx-Y4L">
@@ -67,7 +67,7 @@
                 <viewControllerPlaceholder storyboardName="Country" id="8Y7-rt-WYr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gq5-Aw-QhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1097" y="-477"/>
+            <point key="canvasLocation" x="-1102" y="-465"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="3Fg-8z-fxK">
@@ -83,7 +83,7 @@
                 <viewControllerPlaceholder storyboardName="ESim" id="cU3-me-yQc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GsC-lN-lcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1111" y="-250"/>
+            <point key="canvasLocation" x="-1116" y="-251"/>
         </scene>
         <!--TabController-->
         <scene sceneID="ANw-xS-q1w">
@@ -91,23 +91,23 @@
                 <viewControllerPlaceholder storyboardName="TabController" id="gaJ-w0-cam" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sg-Z0-Z7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="-189"/>
+            <point key="canvasLocation" x="-1074" y="-192"/>
         </scene>
-        <!--NRICAddressTable-->
+        <!--Address-->
         <scene sceneID="Jvt-4A-kf4">
             <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="NRICAddressTable" id="lZm-Bx-3oh" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Address" id="lZm-Bx-3oh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I06-ae-MP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1046" y="-90"/>
+            <point key="canvasLocation" x="-1102" y="-128"/>
         </scene>
-        <!--EKYCWaitViewController-->
+        <!--PendingVerificationViewController-->
         <scene sceneID="V1g-Sw-l6w">
             <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCWaitViewController" id="Af1-H5-cct" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="PendingVerificationViewController" id="Af1-H5-cct" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzN-jH-ff1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1016" y="-314"/>
+            <point key="canvasLocation" x="-974" y="-315"/>
         </scene>
     </scenes>
     <resources>

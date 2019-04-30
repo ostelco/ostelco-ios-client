@@ -63,9 +63,19 @@ class MyInfoSummaryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "editAddress", let destination: MyInfoAddressTableViewController = segue.destination as? MyInfoAddressTableViewController {
-            destination.myInfoDetails = self.myInfoDetails
-            destination.updateDelegate = self
+        switch segue.identifier {
+        case "editAddress":
+            guard
+                let nav = segue.destination as? UINavigationController,
+                let addressVC = nav.topViewController as? AddressEditViewController else {
+                    assertionFailure("Could not access correct view controller!")
+                    return
+            }
+            
+            addressVC.mode = .myInfoVerify(myInfo: self.myInfoDetails?.address)
+            addressVC.myInfoDelegate = self
+        default:
+            break
         }
     }
     
@@ -110,8 +120,10 @@ class MyInfoSummaryViewController: UIViewController {
     }
 }
 
-extension MyInfoSummaryViewController: MyInfoDetailsUpdate {
-    func handleUpdate(myInfoDetails: MyInfoDetails) {
-        self.myInfoDetails = myInfoDetails
+extension MyInfoSummaryViewController: MyInfoAddressUpdateDelegate {
+    
+    func addressUpdated(to address: MyInfoAddress) {
+        self.myInfoDetails?.address = address
+        self.updateUI(self.myInfoDetails)
     }
 }
