@@ -13,7 +13,6 @@
         <!--Onboarding Page View Controller-->
         <scene sceneID="fKG-UW-GXI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1E-3y-6hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="OnboardingPageViewController" id="yuo-1M-ISX" customClass="OnboardingPageViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c2K-zq-Gas">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="400"/>
@@ -26,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="280" width="279" height="21.666666666666686"/>
+                                <rect key="frame" x="24" y="280" width="279" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,14 +48,15 @@
                         <outlet property="imageView" destination="pBa-Sp-Qeh" id="Voj-zJ-efJ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1E-3y-6hE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-604" y="604"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="gMy-AL-sBh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s4V-WV-295" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fe6-qF-yAH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4V-WV-295" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="57" y="600"/>
         </scene>
@@ -69,14 +69,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="700" width="327" height="34"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
-                                <rect key="frame" x="24" y="248" width="327" height="400"/>
+                                <rect key="frame" x="24" y="248" width="327" height="416"/>
                                 <connections>
                                     <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
                                 </connections>
@@ -126,7 +126,7 @@
                 <viewControllerPlaceholder storyboardName="Country" id="uYv-Rx-W57" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZT-z1-4Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-85"/>
+            <point key="canvasLocation" x="806" y="-88"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="DBT-7s-2nc">
@@ -134,7 +134,7 @@
                 <viewControllerPlaceholder storyboardName="EKYC" id="q2N-Ki-5Zu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thH-gt-YwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="-4"/>
+            <point key="canvasLocation" x="793" y="-14"/>
         </scene>
         <!--ESim-->
         <scene sceneID="vcv-Jk-phk">
@@ -142,15 +142,15 @@
                 <viewControllerPlaceholder storyboardName="ESim" id="BEa-Hu-JHR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="280"/>
+            <point key="canvasLocation" x="791" y="186"/>
         </scene>
-        <!--EKYCWaitViewController-->
+        <!--PendingVerificationViewController-->
         <scene sceneID="rzq-ff-CsV">
             <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="EKYCWaitViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="PendingVerificationViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2c6-W1-478" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="90"/>
+            <point key="canvasLocation" x="934" y="93"/>
         </scene>
     </scenes>
     <resources>

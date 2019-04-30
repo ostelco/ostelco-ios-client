@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L8G-yR-gsb">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Your Address-->
+        <scene sceneID="DAU-ju-9Rl">
+            <objects>
+                <tableViewController id="RH1-NC-1gY" customClass="AddressEditViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="SPO-DP-NQK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="esD-A0-CbQ">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5R-HW-dfj" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                    <rect key="frame" x="24" y="72" width="366" height="30"/>
+                                    <state key="normal" title="Continue"/>
+                                    <connections>
+                                        <action selector="continueTapped" destination="RH1-NC-1gY" eventType="touchUpInside" id="htj-Uo-bBf"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUz-qS-RwR" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                    <rect key="frame" x="168" y="8" width="78" height="30"/>
+                                    <state key="normal" title="Need help?"/>
+                                    <connections>
+                                        <action selector="needHelpTapped" destination="RH1-NC-1gY" eventType="touchUpInside" id="pG1-75-BMr"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="P5R-HW-dfj" firstAttribute="leading" secondItem="esD-A0-CbQ" secondAttribute="leading" constant="24" id="3j2-Aw-YcV"/>
+                                <constraint firstAttribute="trailing" secondItem="P5R-HW-dfj" secondAttribute="trailing" constant="24" id="9s2-CH-dFS"/>
+                                <constraint firstAttribute="bottom" secondItem="P5R-HW-dfj" secondAttribute="bottom" constant="44" id="Abv-1E-5pl"/>
+                                <constraint firstItem="P5R-HW-dfj" firstAttribute="top" secondItem="VUz-qS-RwR" secondAttribute="bottom" constant="34" id="LaI-NI-ep2"/>
+                                <constraint firstItem="VUz-qS-RwR" firstAttribute="centerX" secondItem="esD-A0-CbQ" secondAttribute="centerX" id="a6X-bg-sEE"/>
+                            </constraints>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="RH1-NC-1gY" id="zZj-cy-0Gr"/>
+                            <outlet property="delegate" destination="RH1-NC-1gY" id="hIf-oG-9TY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Address" id="IrC-jP-xIt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="huH-cn-x6x">
+                            <connections>
+                                <action selector="cancelBarButtonTapped" destination="RH1-NC-1gY" id="npf-pj-pNb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Eaa-hp-sG2">
+                            <connections>
+                                <action selector="saveBarButtonTapped" destination="RH1-NC-1gY" id="VWB-2Y-Zox"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="huH-cn-x6x" id="EZQ-AP-30Y"/>
+                        <outlet property="footerView" destination="esD-A0-CbQ" id="tzd-GF-oMY"/>
+                        <outlet property="primaryButton" destination="P5R-HW-dfj" id="KA4-DH-njc"/>
+                        <outlet property="saveBarButtton" destination="Eaa-hp-sG2" id="0lV-Qt-cvw"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ogx-1f-h5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385.50724637681162" y="107.8125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oza-Yu-fnJ">
+            <objects>
+                <navigationController id="L8G-yR-gsb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SSN-k2-xRc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RH1-NC-1gY" kind="relationship" relationship="rootViewController" id="Ymi-ey-q7n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCo-kk-muW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-533" y="108"/>
+        </scene>
+    </scenes>
+</document>
