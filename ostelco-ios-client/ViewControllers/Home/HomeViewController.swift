@@ -67,10 +67,17 @@ class HomeViewController: ApplePayViewController {
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         refreshControl.attributedTitle = NSMutableAttributedString(string: refreshBalanceText)
         self.scrollView.addSubview(refreshControl)
+        refreshControl.beginRefreshing()
+        didPullToRefresh()
+    }
 
-        let spinnerView: UIView = showSpinner(onView: view)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchProducts()
+    }
+
+    private func fetchProducts() {
         getProducts { products, error in
-            self.removeSpinner(spinnerView)
             self.availableProducts = products
             if let error = error {
                 debugPrint("error fetching products \(error)")
@@ -83,8 +90,6 @@ class HomeViewController: ApplePayViewController {
             // TODO: Remove this after the subscription purchase is implemented
             self.hasSubscription = false
         }
-        refreshControl.beginRefreshing()
-        didPullToRefresh()
     }
 
     override func paymentSuccessful(_ product: Product?) {
@@ -108,7 +113,7 @@ class HomeViewController: ApplePayViewController {
             self.refreshControl.endRefreshing()
         }
     }
-    
+
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             // TODO: Should we show the plans here ?
@@ -132,26 +137,6 @@ class HomeViewController: ApplePayViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertCtrl.addAction(cancelAction)
         present(alertCtrl, animated: true, completion: nil)
-    }
-
-    func getProducts(completionHandler: @escaping ([Product], Error?) -> Void) {
-        APIManager.sharedInstance.products.load()
-            .onSuccess { entity in
-                DispatchQueue.main.async {
-                    if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
-                        products.forEach {debugPrint($0.sku, $0.properties)}
-                        let availableProducts: [Product] = products.map { Product(from: $0, countryCode: "SG") }
-                        completionHandler(availableProducts, nil)
-                    } else {
-                        completionHandler([], nil)
-                    }
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    completionHandler([], error)
-                }
-        }
     }
 
     func getBundles(completionHandler: @escaping ([BundleModel], Error?) -> Void) {

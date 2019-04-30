@@ -8,6 +8,7 @@
 
 import UIKit
 import PassKit
+import ostelco_core
 
 // This is the base class for both HomeViewController and BecomeAMemberViewController
 // 1) Adds properties defined by the ApplePayDelegate protocol
@@ -24,8 +25,6 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     var purchasingProduct: Product?
     var applePayError: ApplePayError?
 
-    // MARK: - Default implementaion of ApplePayDelegate.
-
     func paymentError(_ error: ApplePayError) {
         switch error {
         case .unsupportedDevice, .noSupportedCards, .otherRestrictions:
@@ -39,6 +38,26 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
 
     func paymentSuccessful(_ product: Product?) {
         self.showAlert(title: "Yay!", msg: "Imaginary confetti, and lots of it! \(String(describing: product?.name))")
+    }
+
+    func getProducts(completionHandler: @escaping ([Product], Error?) -> Void) {
+        APIManager.sharedInstance.products.load()
+            .onSuccess { entity in
+                DispatchQueue.main.async {
+                    if let products: [ProductModel] = entity.typedContent(ifNone: nil) {
+                        products.forEach {debugPrint($0.sku, $0.properties)}
+                        let availableProducts: [Product] = products.map { Product(from: $0, countryCode: "SG") }
+                        completionHandler(availableProducts, nil)
+                    } else {
+                        completionHandler([], nil)
+                    }
+                }
+            }
+            .onFailure { error in
+                DispatchQueue.main.async {
+                    completionHandler([], error)
+                }
+        }
     }
 }
 
