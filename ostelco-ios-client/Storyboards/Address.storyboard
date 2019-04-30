@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L8G-yR-gsb">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,22 +14,22 @@
             <objects>
                 <tableViewController id="RH1-NC-1gY" customClass="AddressEditViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="SPO-DP-NQK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="esD-A0-CbQ">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5R-HW-dfj" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                    <rect key="frame" x="24" y="72" width="366" height="30"/>
+                                    <rect key="frame" x="24" y="52" width="327" height="50"/>
                                     <state key="normal" title="Continue"/>
                                     <connections>
                                         <action selector="continueTapped" destination="RH1-NC-1gY" eventType="touchUpInside" id="htj-Uo-bBf"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUz-qS-RwR" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                    <rect key="frame" x="168" y="8" width="78" height="30"/>
+                                    <rect key="frame" x="142" y="-15" width="91" height="33"/>
                                     <state key="normal" title="Need help?"/>
                                     <connections>
                                         <action selector="needHelpTapped" destination="RH1-NC-1gY" eventType="touchUpInside" id="pG1-75-BMr"/>
@@ -78,7 +78,7 @@
             <objects>
                 <navigationController id="L8G-yR-gsb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SSN-k2-xRc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
