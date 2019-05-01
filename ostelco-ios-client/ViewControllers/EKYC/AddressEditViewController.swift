@@ -7,6 +7,7 @@
 //
 
 import Crashlytics
+import ostelco_core
 import RxSwift
 import UIKit
 
@@ -128,7 +129,7 @@ class AddressEditViewController: UITableViewController {
             .onFailure { requestError in
                 do {
                     guard let errorData = requestError.entity?.content as? Data else {
-                        throw APIManager.APIError.errorCameWithoutData
+                        throw APIHelper.Error.errorCameWithoutData
                     }
                     
                     let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: errorData)

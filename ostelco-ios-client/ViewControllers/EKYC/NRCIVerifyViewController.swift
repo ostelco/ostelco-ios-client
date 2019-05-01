@@ -6,9 +6,10 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
-import Netverify
 import Crashlytics
+import Netverify
+import ostelco_core
+import UIKit
 
 class NRCIVerifyViewController: UIViewController {
     
@@ -40,7 +41,7 @@ class NRCIVerifyViewController: UIViewController {
                 .onFailure { requestError in
                     do {
                         guard let errorData = requestError.entity?.content as? Data else {
-                            throw APIManager.APIError.errorCameWithoutData
+                            throw APIHelper.Error.errorCameWithoutData
                         }
                         
                         let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: errorData)
