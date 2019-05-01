@@ -14,7 +14,7 @@ open class LoggedInAPI {
     
     private let baseURL: URL
     private let decoder = JSONDecoder()
-    private let keychain: KeychainWrapper
+    private let secureStorage: SecureStorage
     
     /// Designated Initializer.
     ///
@@ -22,15 +22,15 @@ open class LoggedInAPI {
     ///   - baseURL: The URL string to use to construct the base URL. If
     ///              the passed in string does not resolve to a valid URL,
     ///              a fatal error will be thrown
-    ///   - keychain: The keychain instance to use to access user creds.
+    ///   - secureStorage: The `SecureStorage` instance to use to access user creds.
     public init(baseURL: String,
-                keychain: KeychainWrapper) {
+                secureStorage: SecureStorage) {
         guard let url = URL(string: baseURL) else {
             fatalError("Could not create base URL from passed-in string \(baseURL)")
         }
         
         self.baseURL = url
-        self.keychain = keychain
+        self.secureStorage = keychain
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
@@ -69,7 +69,7 @@ open class LoggedInAPI {
         var request = URLRequest(url: url)
         
         do {
-            let defaultHeaders = try Headers(loggedIn: true, secureStorage: self.keychain)
+            let defaultHeaders = try Headers(loggedIn: true, secureStorage: self.secureStorage)
             request.allHTTPHeaderFields = defaultHeaders.toStringDict
         } catch {
             return Promise(error: error)
