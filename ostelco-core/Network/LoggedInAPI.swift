@@ -30,7 +30,7 @@ open class LoggedInAPI {
         }
         
         self.baseURL = url
-        self.secureStorage = keychain
+        self.secureStorage = secureStorage
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
