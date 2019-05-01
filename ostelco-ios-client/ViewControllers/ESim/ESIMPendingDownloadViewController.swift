@@ -54,8 +54,9 @@ class ESIMPendingDownloadViewController: UIViewController {
         APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
             .onSuccess { data in
                 if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
+                    #warning("Make sure prime returns a valid eSimActivationCode")
                     if let simProfile = simProfiles.first(where: {
-                        $0.eSimActivationCode == self.simProfile?.eSimActivationCode
+                        $0.iccId == self.simProfile?.iccId
                     }) {
                         self.simProfile = simProfile
                         switch simProfile.status {
