@@ -105,10 +105,13 @@ class LocationProblemViewController: UIViewController {
         switch status {
         case .restricted:
             self.locationProblem = .restrictedByParentalControls
+            self.listenForChanges()
         case .denied:
             self.locationProblem = .deniedByUser
+            self.listenForChanges()
         case .notDetermined:
             self.locationProblem = .notDetermined
+            self.listenForChanges()
         case .authorizedAlways,
              .authorizedWhenInUse:
             self.checkLocation()
