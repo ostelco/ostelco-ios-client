@@ -153,6 +153,8 @@
 		9B8215832279DF8700DC6B64 /* SimProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF85224D1E020022A2B8 /* SimProfile.swift */; };
 		9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */; };
 		9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */; };
+		9B8215892279FDB000DC6B64 /* CredentialSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */; };
+		9B82158A2279FDCC00DC6B64 /* CredentialSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -459,6 +461,7 @@
 		9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSecureStorage.swift; sourceTree = "<group>"; };
 		9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegionResponse+Testing.swift"; sourceTree = "<group>"; };
 		9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionResponseTests.swift; sourceTree = "<group>"; };
+		9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialSecureStorage.swift; sourceTree = "<group>"; };
 		9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ostelco_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B851ABD225E29BE0076ABF3 /* ostelco_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ostelco_core.h; sourceTree = "<group>"; };
 		9B851ABE225E29BE0076ABF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -724,6 +727,7 @@
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
+				9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1771,6 +1775,7 @@
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
+				9B8215892279FDB000DC6B64 /* CredentialSecureStorage.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
@@ -1921,6 +1926,7 @@
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				9B82158A2279FDCC00DC6B64 /* CredentialSecureStorage.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
