@@ -29,4 +29,34 @@ public struct RegionResponse: Codable {
     public let status: KycStatus
     public let simProfiles: [SimProfile]?
     public let kycStatusMap: KYCStatusMap
+    
+    public static func getRegionFromRegionResponseArray(_ regionResponses: [RegionResponse]) -> RegionResponse? {
+        var ret: RegionResponse?
+        
+        var hasRejectedStatus = false
+        var hasApprovedStatus = false
+        
+        for region in regionResponses {
+            switch region.status {
+            case .PENDING:
+                if !hasRejectedStatus && !hasApprovedStatus {
+                    ret = region
+                }
+            case .REJECTED:
+                if !hasApprovedStatus {
+                    ret = region
+                }
+                hasRejectedStatus = true
+            case .APPROVED:
+                ret = region
+                hasApprovedStatus = true
+            }
+            
+            if hasApprovedStatus {
+                break
+            }
+        }
+        
+        return ret
+    }
 }

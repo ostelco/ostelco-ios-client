@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ostelco_core
 
 class PendingVerificationViewController: UIViewController {
     

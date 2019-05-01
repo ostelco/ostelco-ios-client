@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import ostelco_core
 
 class ESIMPendingDownloadViewController: UIViewController {
     var spinnerView: UIView?

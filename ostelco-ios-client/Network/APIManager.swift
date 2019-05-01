@@ -117,7 +117,7 @@ extension APIManager {
         regions.load()
             .onSuccess { response in
                 if let regionResponseArray: [RegionResponse] = response.typedContent(ifNone: []) {
-                    if let region = getRegionFromRegionResponseArray(regionResponseArray) {
+                    if let region = RegionResponse.getRegionFromRegionResponseArray(regionResponseArray) {
                         DispatchQueue.main.async {
                             completion(region, nil)
                         }
