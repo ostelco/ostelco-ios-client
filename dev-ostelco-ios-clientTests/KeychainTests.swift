@@ -28,9 +28,9 @@ class KeychainTests: XCTestCase {
     
     func testStoringAndRetrievingValueInKeychain() {
         let value = "Hello tests!"
-        self.keychainWrapper.setString(value, for: .Auth0)
+        self.keychainWrapper.setString(value, for: .Auth0Token)
         
-        guard let retrievedValue = self.keychainWrapper.getString(for: .Auth0) else {
+        guard let retrievedValue = self.keychainWrapper.getString(for: .Auth0Token) else {
             XCTFail("Coudldn't retrieve value from the keychain!")
             return
         }
