@@ -55,7 +55,7 @@ class ESIMPendingDownloadViewController: UIViewController {
             .onSuccess { data in
                 if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
                     if let simProfile = simProfiles.first(where: {
-                        $0.eSimActivationCode == self.simProfile?.eSimActivationCode
+                        $0.iccId == self.simProfile?.iccId
                     }) {
                         self.simProfile = simProfile
                         switch simProfile.status {
