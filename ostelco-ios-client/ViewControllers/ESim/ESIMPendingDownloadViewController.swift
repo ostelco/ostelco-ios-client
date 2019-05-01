@@ -31,15 +31,17 @@ class ESIMPendingDownloadViewController: UIViewController {
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-            APIManager.sharedInstance.getRegionFromRegions { (regionResponse, _) in
-                if let regionResponse = regionResponse {
-                    OnBoardingManager.sharedInstance.region = regionResponse
-                    self.getSimProfileForRegion(region: regionResponse)
-                } else {
-                    self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                }
+           APIManager.sharedInstance
+            .loggedInAPI
+            .getRegionFromRegions()
+            .done { [weak self] regionResponse in
+                OnBoardingManager.sharedInstance.region = regionResponse
+                self?.getSimProfileForRegion(region: regionResponse)
             }
-            
+            .catch { [weak self] error in
+                debugPrint("Error getting region: \(error)")
+                self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+            }
         }
     }
     

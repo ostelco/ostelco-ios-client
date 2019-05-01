@@ -12,6 +12,17 @@ import Foundation
 /// A class to wrap APIs called once the user is logged in.
 open class LoggedInAPI {
     
+    enum Error: Swift.Error, LocalizedError {
+        case failedToGetRegion
+        
+        var localizedDescription: String {
+            switch self {
+            case .failedToGetRegion:
+                return "Could not find suitable region from region response"
+            }
+        }
+    }
+    
     private let baseURL: URL
     private let decoder = JSONDecoder()
     private let secureStorage: SecureStorage
@@ -55,6 +66,24 @@ open class LoggedInAPI {
     public func loadProducts() -> Promise<[ProductModel]> {
         return self.loadData(from: "products")
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
+    }
+
+    /// - Returns: A promise which when fulfilled will contain all region responses for this user
+    public func loadRegions() -> Promise<[RegionResponse]> {
+        return self.loadData(from: "regions")
+            .map { try self.decoder.decode([RegionResponse].self, from: $0) }
+    }
+
+    /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
+    public func getRegionFromRegions() -> Promise<RegionResponse> {
+        return self.loadRegions()
+            .map { regions -> RegionResponse in
+                guard let region = RegionResponse.getRegionFromRegionResponseArray(regions) else {
+                    throw Error.failedToGetRegion
+                }
+                
+                return region
+            }
     }
     
     /// Loads arbitrary data from an endpoint based on the base URL, then validates
