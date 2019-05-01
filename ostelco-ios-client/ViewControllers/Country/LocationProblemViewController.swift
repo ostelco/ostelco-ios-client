@@ -31,6 +31,24 @@ class LocationProblemViewController: UIViewController {
         
         self.configureForCurrentProblem()
         self.listenForChanges()
+        
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(applicationEnteredForeground),
+                         name: UIApplication.willEnterForegroundNotification,
+                         object: nil)
+    }
+    
+    @objc private func applicationEnteredForeground() {
+        switch self.locationProblem {
+        case .disabledInSettings?:
+            if LocationController.shared.locationServicesEnabled {
+                LocationController.shared.requestAuthorization()
+            }
+        default:
+            // Other situations should be handled by the permission change callback.
+            break
+        }
     }
     
     private func configureForCurrentProblem() {
