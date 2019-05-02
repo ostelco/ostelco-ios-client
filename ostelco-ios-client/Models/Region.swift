@@ -7,11 +7,7 @@
 //
 
 func getSimProfileFromSimProfilesArray(_ simProfiles: [SimProfile]) -> SimProfile? {
-    if simProfiles.isNotEmpty {
-        return simProfiles[0]
-    }
-    
-    return nil
+    return simProfiles.first
 }
 
 enum KycStatus: String, Codable {
