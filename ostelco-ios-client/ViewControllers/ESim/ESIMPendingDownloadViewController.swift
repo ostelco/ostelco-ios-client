@@ -83,7 +83,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                 }
             }
             .onFailure { requestError in
-                Crashlytics.sharedInstance().recordError(requestError)
+                ApplicationErrors.log(requestError)
                 self.showAPIError(error: requestError)
             }
             .onCompletion { _ in
