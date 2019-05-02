@@ -148,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="791" y="186"/>
         </scene>
-        <!--Home-->
+        <!--TabController-->
         <scene sceneID="jmb-zZ-jRl">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="lQn-Sf-TiT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TabController" id="lQn-Sf-TiT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82C-NX-gEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="799" y="254"/>
