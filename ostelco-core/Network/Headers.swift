@@ -25,7 +25,7 @@ public enum HeaderValue {
         case .applicationJSON:
             return "application/json"
         case .token(let token):
-            return token
+            return "Bearer \(token)"
         }
     }
 }

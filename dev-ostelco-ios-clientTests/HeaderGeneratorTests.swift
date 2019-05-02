@@ -62,7 +62,7 @@ class HeaderGeneratorTests: XCTestCase {
             let headerDict = headers.toStringDict
             XCTAssertEqual(headerDict.count, 2)
             XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], HeaderValue.applicationJSON.toString)
-            XCTAssertEqual(headerDict[HeaderKey.authorization.rawValue], testToken)
+            XCTAssertEqual(headerDict[HeaderKey.authorization.rawValue], "Bearer \(testToken)")
 
         } catch {
             XCTFail("Unexpected error creating headers: \(error)")
