@@ -10,7 +10,8 @@ import Foundation
 
 // Keys to use for storing and retrieving objects from the keychain
 public enum KeychainKey: String, CaseIterable {
-    case Auth0
+    case Auth0Token
+    case Auth0RefreshToken
 }
 
 /// Protocol representing things which should be stored securely
