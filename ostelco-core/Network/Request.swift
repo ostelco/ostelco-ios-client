@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import PromiseKit
 
 public struct Request {
     
@@ -32,26 +31,22 @@ public struct Request {
     public var additionalHeaders: [HeaderKey: HeaderValue]?
     public var bodyData: Data?
     
-    public func generateRequest() -> Promise<URLRequest> {
+    public func toURLRequest() throws -> URLRequest {
         let url = self.baseURL.appendingPathComponent(self.path)
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
         
-        do {
-            var headers = try Headers(loggedIn: self.loggedIn, secureStorage: self.secureStorage)
-            
-            if let additional = self.additionalHeaders {
-                additional.forEach { key, value in headers.addValue(value, for: key) }
-            }
-            
-            request.allHTTPHeaderFields = headers.toStringDict
-            if let body = self.bodyData {
-                request.httpBody = body
-            }
-            
-            return .value(request)
-        } catch {
-            return Promise(error: error)
+        var headers = try Headers(loggedIn: self.loggedIn, secureStorage: self.secureStorage)
+        
+        if let additional = self.additionalHeaders {
+            additional.forEach { key, value in headers.addValue(value, for: key) }
         }
+        
+        request.allHTTPHeaderFields = headers.toStringDict
+        if let body = self.bodyData {
+            request.httpBody = body
+        }
+        
+        return request
     }
 }
