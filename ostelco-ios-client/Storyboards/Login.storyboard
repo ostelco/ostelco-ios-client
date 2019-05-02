@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3U-ge-2P9" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="236" width="279" height="21.666666666666686"/>
+                                <rect key="frame" x="24" y="236" width="279" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -71,14 +71,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="700" width="327" height="34"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
-                                <rect key="frame" x="24" y="248" width="327" height="400"/>
+                                <rect key="frame" x="24" y="248" width="327" height="416"/>
                                 <connections>
                                     <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
                                 </connections>
@@ -109,6 +109,7 @@
                         <segue destination="q2N-Ki-5Zu" kind="show" identifier="showEKYC" id="h2n-iC-Cyi"/>
                         <segue destination="JOm-7Z-w9R" kind="show" identifier="showEKYCLastScreen" id="OSX-Xe-maR"/>
                         <segue destination="BEa-Hu-JHR" kind="show" identifier="showESim" id="6nE-9E-D5q"/>
+                        <segue destination="lQn-Sf-TiT" kind="show" identifier="showHome" id="jb5-M9-12O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,6 +147,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="186"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="jmb-zZ-jRl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="lQn-Sf-TiT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="82C-NX-gEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="254"/>
         </scene>
         <!--PendingVerificationViewController-->
         <scene sceneID="rzq-ff-CsV">

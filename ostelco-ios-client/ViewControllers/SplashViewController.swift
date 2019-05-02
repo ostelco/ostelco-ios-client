@@ -84,8 +84,17 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                                                 segueIdentifier = "showCountry"
                                             }
                                         case .APPROVED:
-                                            // TODO: Redirect based on sim profiles in region
-                                            segueIdentifier = "showESim"
+                                            if let simProfile = region.getSimProfile() {
+                                                switch simProfile.status {
+                                                // TODO: NOT_READY should probably send user to one of our error screens
+                                                case .AVAILABLE_FOR_DOWNLOAD, .NOT_READY:
+                                                    segueIdentifier = "showESim"
+                                                default:
+                                                    segueIdentifier = "showHome"
+                                                }
+                                            } else {
+                                                segueIdentifier = "showESim"
+                                            }
                                         case .REJECTED:
                                             segueIdentifier = "showEKYCOhNo"
                                         }

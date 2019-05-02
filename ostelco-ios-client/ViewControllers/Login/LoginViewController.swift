@@ -104,7 +104,19 @@ class LoginViewController: UIViewController {
                                             }
                                         case .APPROVED:
                                             // TODO: Redirect based on sim profiles in region
-                                            self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
+                                            if let simProfile = region.getSimProfile() {
+                                                switch simProfile.status {
+                                                // TODO: NOT_READY should probably send user to one of our error screens
+                                                case .AVAILABLE_FOR_DOWNLOAD, .NOT_READY:
+                                                    self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
+                                                default:
+                                                    self.perform(#selector(self.showHome), with: nil, afterDelay: 0.5)
+                                                }
+                                            } else {
+                                                self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
+                                            }
+                                            
+                                            
                                         case .REJECTED:
                                             self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
                                         }
@@ -174,6 +186,10 @@ class LoginViewController: UIViewController {
     
     @objc private func showESim() {
         performSegue(withIdentifier: "showESim", sender: nil)
+    }
+    
+    @objc private func showHome() {
+        performSegue(withIdentifier: "showHome", sender: nil)
     }
     
     private func handleLoginFailure(message: String) {
