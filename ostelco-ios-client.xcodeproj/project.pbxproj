@@ -150,6 +150,9 @@
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
 		9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
+		9B8215762279B0F800DC6B64 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215752279B0F800DC6B64 /* Headers.swift */; };
+		9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */; };
+		9B82157D2279B98000DC6B64 /* MockSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -451,6 +454,9 @@
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
 		9B6E3A23227091EF0063EBAA /* LocationProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblem.swift; sourceTree = "<group>"; };
 		9B6E3A282270A8950063EBAA /* CLGeocoder+PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLGeocoder+PromiseKit.swift"; sourceTree = "<group>"; };
+		9B8215752279B0F800DC6B64 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
+		9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGeneratorTests.swift; sourceTree = "<group>"; };
+		9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSecureStorage.swift; sourceTree = "<group>"; };
 		9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ostelco_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B851ABD225E29BE0076ABF3 /* ostelco_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ostelco_core.h; sourceTree = "<group>"; };
 		9B851ABE225E29BE0076ABF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -762,6 +768,14 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		9B82157B2279B97700DC6B64 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		9B851ABC225E29BE0076ABF3 /* ostelco-core */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,8 +803,9 @@
 		9B851ADE225E33010076ABF3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */,
 				9B9B324D225E411700227EA3 /* APIHelper.swift */,
+				9B8215752279B0F800DC6B64 /* Headers.swift */,
+				9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -961,10 +976,12 @@
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				9B82157B2279B97700DC6B64 /* Mocks */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
 				9B3FA95422649BD70001641A /* KeychainTests.swift */,
+				9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */,
 			);
 			path = "dev-ostelco-ios-clientTests";
 			sourceTree = "<group>";
@@ -1788,6 +1805,7 @@
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9BC465372270AD56001951BF /* LocationController.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
+				9B8215762279B0F800DC6B64 /* Headers.swift in Sources */,
 				9BC465382270BAE9001951BF /* CLGeocoder+PromiseKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1810,10 +1828,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */,
+				9B82157D2279B98000DC6B64 /* MockSecureStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
