@@ -98,10 +98,6 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
-		0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80B2252BE0900989F40 /* JSONRequestError.swift */; };
-		0493B80D2252BE0900989F40 /* JSONRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80B2252BE0900989F40 /* JSONRequestError.swift */; };
-		0493B80F2253943900989F40 /* PutProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80E2253943900989F40 /* PutProfileError.swift */; };
-		0493B8102253943900989F40 /* PutProfileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80E2253943900989F40 /* PutProfileError.swift */; };
 		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -161,7 +157,9 @@
 		9B821594227ADA1000DC6B64 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B821593227ADA1000DC6B64 /* Request.swift */; };
 		9B821596227ADCE000DC6B64 /* BasicNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B821595227ADCE000DC6B64 /* BasicNetwork.swift */; };
 		9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B821597227AEE1400DC6B64 /* RequestGeneratorTests.swift */; };
+		9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80E2253943900989F40 /* ServerError.swift */; };
 		9B82159B227B225400DC6B64 /* String+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82159A227B225400DC6B64 /* String+Static.swift */; };
+		9B82159C227B254B00DC6B64 /* JSONRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493B80B2252BE0900989F40 /* JSONRequestError.swift */; };
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -410,7 +408,7 @@
 		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
-		0493B80E2253943900989F40 /* PutProfileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutProfileError.swift; sourceTree = "<group>"; };
+		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -736,12 +734,12 @@
 			children = (
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				04488191217938A300F59758 /* Auth.swift */,
+				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
+				9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
-				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
-				9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -751,13 +749,11 @@
 			children = (
 				0437CF88224D3B380022A2B8 /* Context.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
-				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
-				0493B80E2253943900989F40 /* PutProfileError.swift */,
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
 			);
@@ -824,11 +820,11 @@
 			children = (
 				9B82158B227A2F4100DC6B64 /* APIEndpoint.swift */,
 				9B9B324D225E411700227EA3 /* APIHelper.swift */,
+				9B821595227ADCE000DC6B64 /* BasicNetwork.swift */,
 				9B8215752279B0F800DC6B64 /* Headers.swift */,
 				9B821591227AD9EA00DC6B64 /* HTTPMethod.swift */,
 				9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */,
 				9B821593227ADA1000DC6B64 /* Request.swift */,
-				9B821595227ADCE000DC6B64 /* BasicNetwork.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -874,11 +870,13 @@
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 				043E711D223AF61600E01993 /* Country.swift */,
 				9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */,
+				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
+				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 			);
 			path = Models;
@@ -1729,7 +1727,6 @@
 				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
-				0493B80C2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
@@ -1744,7 +1741,6 @@
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
-				0493B80F2253943900989F40 /* PutProfileError.swift in Sources */,
 				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1818,6 +1814,7 @@
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9B82158C227A2F4100DC6B64 /* APIEndpoint.swift in Sources */,
+				9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
@@ -1835,6 +1832,7 @@
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
 				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
 				9B821590227AD6D200DC6B64 /* EKYCAddress.swift in Sources */,
+				9B82159C227B254B00DC6B64 /* JSONRequestError.swift in Sources */,
 				9B82159B227B225400DC6B64 /* String+Static.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9BC465372270AD56001951BF /* LocationController.swift in Sources */,
@@ -1883,7 +1881,6 @@
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				0437CF8A224D3B380022A2B8 /* Context.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
-				0493B80D2252BE0900989F40 /* JSONRequestError.swift in Sources */,
 				9BE2D452225B609100B51999 /* TopUpButton.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
@@ -1902,7 +1899,6 @@
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
-				0493B8102253943900989F40 /* PutProfileError.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,

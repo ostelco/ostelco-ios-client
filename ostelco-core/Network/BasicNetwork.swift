@@ -14,6 +14,8 @@ open class BasicNetwork {
     /// Performs a request and hands back the data and response it gets. Only if a system-level error
     /// occurs will this be piped into an Error.
     ///
+    /// Note: Override this method in a subclass to provide mock data to the other methods.
+    ///
     /// - Parameter request: The request to execute
     /// - Returns: The promise, which when fulfilled, will return the data and the URLResponse received.
     open func performRequest(_ request: Request) -> Promise<(data: Data, response: URLResponse)> {

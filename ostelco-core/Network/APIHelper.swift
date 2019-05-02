@@ -13,23 +13,60 @@ import PromiseKit
 public struct APIHelper {
     
     /// Errors thrown by the API helper
-    ///
-    /// - invalidResponseType: The response received was not an HTTP Response. Includes the data returned as a parameter.
-    /// - invalidResponseCode: The response received did not have a code between 200-300. Includes the data returned as a parameter.
-    /// - dataWasEmpty: The data in the response was empty.
-    /// - errorCameWithoutData: An expected error came without data to back it up
-    public enum Error: Swift.Error {
+    public enum Error: Swift.Error, LocalizedError {
+        case dataWasEmpty
+        case expectedServerErrorNotFound(data: Data)
         case invalidResponseType(data: Data)
         case invalidResponseCode(_ code: Int, data: Data)
-        case dataWasEmpty
-        case errorCameWithoutData
+        case jsonError(_ error: JSONRequestError)
+        case serverError(_ error: ServerError)
+        
+        var localizedDescription: String {
+            switch self {
+            case .dataWasEmpty:
+                return "Data was empty when we expected it to not be empty."
+            case .expectedServerErrorNotFound(let data):
+                let dataString = String(bytes: data, encoding: .utf8)
+                return """
+                We expected an error, but did not recieve one.
+                Data received as string:
+                \(String(describing: dataString))
+                """
+            case .invalidResponseType(let data):
+                let dataString = String(bytes: data, encoding: .utf8)
+                return """
+                The response received was not an HTTP response.
+                Data receieved as string:
+                \(String(describing: dataString))
+                """
+            case .invalidResponseCode(let code, let data):
+                let dataString = String(bytes: data, encoding: .utf8)
+                return """
+                Received invalid \(code) status code from the server.
+                Data received as string:
+                \(String(describing: dataString))
+                """
+            case .jsonError(let error):
+                return """
+                Received server error:
+                - Status Code: \(error.httpStatusCode)
+                - Error Code: \(error.errorCode)
+                - Message: \(error.message)
+                """
+            case .serverError(let error):
+                return """
+                Received server error(s):
+                - \(error.errors.joined(separator: "\n- "))
+                """
+            }
+        }
     }
     
-    /// Validates the data and URLResponse received from NSURLSession
+    /// Validates the data and URLResponse received from URLSession
     ///
     /// - Parameters:
-    ///   - data: The data received from NSURLSession
-    ///   - response: The response received from NSURLSession
+    ///   - data: The data received from URLSession
+    ///   - response: The response received from URLSession
     ///   - dataCanBeEmpty: True if the data can be empty, false if not. Defaults to false.
     /// - Returns: The valid data.
     /// - Throws: Throws an error if the URLResponse is not an HTTPURLResponse, the status
@@ -56,6 +93,55 @@ public struct APIHelper {
         return data
     }
     
+    /// Creates an error based on the returned data. Should only be used if error JSON is expected
+    ///
+    /// - Parameters:
+    ///   - data: The data returned from the server
+    ///   - decoder: The JSONDecoder to use to parse the JSON
+    /// - Returns: An error to be thrown
+    public static func createError(from data: Data, decoder: JSONDecoder) -> Error {
+        if let serverError = try? decoder.decode(ServerError.self, from: data) {
+            return APIHelper.Error.serverError(serverError)
+        } else if let jsonError = try? decoder.decode(JSONRequestError.self, from: data) {
+            return APIHelper.Error.jsonError(jsonError)
+        } else {
+            return APIHelper.Error.expectedServerErrorNotFound(data: data)
+        }
+    }
+    
+    /// Validates received data, then searches for a server-returned error type if validation fails.
+    ///
+    /// - Parameters:
+    ///   - data: The data to validate
+    ///   - response: The response to validate
+    ///   - decoder: The decoder to use to try to parse server errors
+    ///   - dataCanBeEmpty: If the data is valid if it's empty. Defaults to true.
+    /// - Throws: If the response is not valid.
+    public static func validateAndLookForServerError(data: Data,
+                                                     response: URLResponse,
+                                                     decoder: JSONDecoder,
+                                                     dataCanBeEmpty: Bool = true) throws {
+        do {
+            _ = try APIHelper.validateResponse(data: data, response: response, dataCanBeEmpty: true)
+        } catch {
+            switch error {
+            case APIHelper.Error.invalidResponseCode(_, let data):
+                throw self.createError(from: data, decoder: decoder)
+            case APIHelper.Error.invalidResponseType(let data):
+                throw self.createError(from: data, decoder: decoder)
+            default:
+                throw error
+            }
+        }
+    }
+    
+    /// Encodes a `Codable` object to be sent and returns it as a Promise.
+    /// Note that if encoding fails, the promise will be rejected.
+    ///
+    /// - Parameters:
+    ///   - object: The object to encode
+    ///   - encoder: The encoder to use to encode it
+    /// - Returns: A promise, which when fulfilled will contain the encoded data.
     public static func encode<T: Codable>(_ object: T, with encoder: JSONEncoder) -> Promise<Data> {
         do {
             let data = try encoder.encode(object)
