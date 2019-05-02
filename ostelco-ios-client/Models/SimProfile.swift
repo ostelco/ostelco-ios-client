@@ -14,7 +14,7 @@ enum SimProfileStatus: String, Codable {
 }
 
 struct SimProfile: Codable {
-    let eSimActivationCode: String?
+    let eSimActivationCode: String
     let alias: String
     let iccId: String
     let status: SimProfileStatus
