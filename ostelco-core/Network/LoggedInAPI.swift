@@ -14,18 +14,23 @@ open class LoggedInAPI {
     
     private let baseURL: URL
     private let decoder = JSONDecoder()
+    private let secureStorage: SecureStorage
     
     /// Designated Initializer.
     ///
-    /// - Parameter baseURL: The URL string to use to construct the base URL. If
-    ///                      the passed in string does not resolve to a valid URL,
-    ///                      a fatal error will be thrown
-    public init(baseURL: String) {
+    /// - Parameters:
+    ///   - baseURL: The URL string to use to construct the base URL. If
+    ///              the passed in string does not resolve to a valid URL,
+    ///              a fatal error will be thrown
+    ///   - secureStorage: The `SecureStorage` instance to use to access user creds.
+    public init(baseURL: String,
+                secureStorage: SecureStorage) {
         guard let url = URL(string: baseURL) else {
             fatalError("Could not create base URL from passed-in string \(baseURL)")
         }
         
         self.baseURL = url
+        self.secureStorage = secureStorage
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
@@ -61,10 +66,18 @@ open class LoggedInAPI {
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
     open func loadData(from endpoint: String) -> Promise<Data> {
         let url = self.baseURL.appendingPathComponent(endpoint)
-        // TODO: Figure out how to get the user's token here
+        var request = URLRequest(url: url)
+        
+        do {
+            let defaultHeaders = try Headers(loggedIn: true, secureStorage: self.secureStorage)
+            request.allHTTPHeaderFields = defaultHeaders.toStringDict
+        } catch {
+            return Promise(error: error)
+        }
+        
         return URLSession.shared.dataTask(.promise, with: url)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
-        }
+            }
     }
 }
