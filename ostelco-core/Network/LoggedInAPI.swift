@@ -10,7 +10,7 @@ import PromiseKit
 import Foundation
 
 /// A class to wrap APIs called once the user is logged in.
-open class LoggedInAPI {
+open class LoggedInAPI: BasicNetwork {
     
     enum Error: Swift.Error, LocalizedError {
         case failedToGetRegion
@@ -25,6 +25,7 @@ open class LoggedInAPI {
     
     private let baseURL: URL
     private let decoder = JSONDecoder()
+    private let encoder = JSONEncoder()
     private let secureStorage: SecureStorage
     
     /// Designated Initializer.
@@ -94,19 +95,28 @@ open class LoggedInAPI {
     /// - Parameter endpoint: The endpoint to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
     open func loadData(from endpoint: String) -> Promise<Data> {
-        let url = self.baseURL.appendingPathComponent(endpoint)
-        var request = URLRequest(url: url)
+        let request = Request(baseURL: self.baseURL,
+                              endpoint: endpoint,
+                              loggedIn: true,
+                              secureStorage: self.secureStorage)
         
-        do {
-            let defaultHeaders = try Headers(loggedIn: true, secureStorage: self.secureStorage)
-            request.allHTTPHeaderFields = defaultHeaders.toStringDict
-        } catch {
-            return Promise(error: error)
-        }
-        
-        return URLSession.shared.dataTask(.promise, with: url)
-            .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response)
+        return self.performValidatedRequest(request)
+    }
+    
+    open func sendObject<T: Codable>(_ object: T, to endpoint: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+        return APIHelper.encode(object, with: self.encoder)
+            .map { data -> Request in
+                var request = Request(baseURL: self.baseURL,
+                                      endpoint: endpoint,
+                                      method: method,
+                                      loggedIn: true,
+                                      secureStorage: self.secureStorage)
+                
+                request.bodyData = data
+                return request
+            }
+            .then {
+                self.performRequest($0)
             }
     }
 }

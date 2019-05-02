@@ -55,4 +55,13 @@ public struct APIHelper {
         
         return data
     }
+    
+    public static func encode<T: Codable>(_ object: T, with encoder: JSONEncoder) -> Promise<Data> {
+        do {
+            let data = try encoder.encode(object)
+            return .value(data)
+        } catch {
+            return Promise(error: error)
+        }
+    }
 }
