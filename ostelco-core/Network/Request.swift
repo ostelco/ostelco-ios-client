@@ -12,18 +12,18 @@ import PromiseKit
 public struct Request {
     
     public let baseURL: URL
-    public let endpoint: String
+    public let path: String
     public let loggedIn: Bool
     public let secureStorage: SecureStorage
     public let method: HTTPMethod
     
     public init(baseURL: URL,
-                endpoint: String,
+                path: String,
                 method: HTTPMethod = .GET,
                 loggedIn: Bool,
                 secureStorage: SecureStorage) {
         self.baseURL = baseURL
-        self.endpoint = endpoint
+        self.path = path
         self.method = method
         self.loggedIn = loggedIn
         self.secureStorage = secureStorage
@@ -33,7 +33,7 @@ public struct Request {
     public var bodyData: Data?
     
     public func generateRequest() -> Promise<URLRequest> {
-        let url = self.baseURL.appendingPathComponent(endpoint)
+        let url = self.baseURL.appendingPathComponent(self.path)
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
         

@@ -47,31 +47,31 @@ open class LoggedInAPI: BasicNetwork {
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> Promise<[BundleModel]> {
-        return self.loadData(from: "bundles")
+        return self.loadData(from: RootEndpoint.bundles.rawValue)
             .map { try self.decoder.decode([BundleModel].self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> Promise<[PurchaseModel]> {
-        return self.loadData(from: "purchases")
+        return self.loadData(from: RootEndpoint.purchases.rawValue)
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's proile model
     public func loadProfile() -> Promise<ProfileModel> {
-        return self.loadData(from: "profile")
+        return self.loadData(from: RootEndpoint.profile.rawValue)
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> Promise<[ProductModel]> {
-        return self.loadData(from: "products")
+        return self.loadData(from: RootEndpoint.products.rawValue)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions() -> Promise<[RegionResponse]> {
-        return self.loadData(from: "regions")
+        return self.loadData(from: RootEndpoint.regions.rawValue)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
 
@@ -94,20 +94,20 @@ open class LoggedInAPI: BasicNetwork {
     ///
     /// - Parameter endpoint: The endpoint to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
-    open func loadData(from endpoint: String) -> Promise<Data> {
+    open func loadData(from path: String) -> Promise<Data> {
         let request = Request(baseURL: self.baseURL,
-                              endpoint: endpoint,
+                              path: path,
                               loggedIn: true,
                               secureStorage: self.secureStorage)
         
         return self.performValidatedRequest(request)
     }
     
-    open func sendObject<T: Codable>(_ object: T, to endpoint: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+    open func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
         return APIHelper.encode(object, with: self.encoder)
             .map { data -> Request in
                 var request = Request(baseURL: self.baseURL,
-                                      endpoint: endpoint,
+                                      path: path,
                                       method: method,
                                       loggedIn: true,
                                       secureStorage: self.secureStorage)
