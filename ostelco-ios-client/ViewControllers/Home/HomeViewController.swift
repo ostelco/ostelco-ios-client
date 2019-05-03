@@ -6,15 +6,13 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
-import Stripe
-import Siesta
 import ostelco_core
 import OstelcoStyles
+import PromiseKit
+import UIKit
 
 class HomeViewController: ApplePayViewController {
 
-    var paymentError: RequestError?
     var availableProducts: [Product] = []
 
     @IBOutlet private weak var balanceLabel: DataAmountOnHomeLabel!
@@ -40,6 +38,12 @@ class HomeViewController: ApplePayViewController {
             }
         }
     }
+    
+    private lazy var byteCountFormatter: ByteCountFormatter = {
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .binary
+        return formatter
+    }()
 
     private func showWelcomeMessage() {
         welcomeLabel.isHidden = false
@@ -104,17 +108,20 @@ class HomeViewController: ApplePayViewController {
         // Hide the Message on top
         welcomeLabel.isHidden = true
         messageLabel.isHidden = true
+        
         // Call the bundles API
-        getBundles { bundles, _ in
-            if let bundle = bundles.first {
-                let formatter: ByteCountFormatter = ByteCountFormatter()
-                formatter.countStyle = .binary
-                let formattedBalance = formatter.string(fromByteCount: bundle.balance)
-                self.balanceLabel.text = formattedBalance
+        APIManager.sharedInstance.loggedInAPI
+            .loadBundles()
+            .ensure { [weak self] in
+                self?.refreshControl.endRefreshing()
             }
-            print(bundles)
-            self.refreshControl.endRefreshing()
-        }
+            .done { [weak self] bundles in
+                debugPrint(bundles)
+                self?.updateBalance(from: bundles)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
@@ -128,7 +135,15 @@ class HomeViewController: ApplePayViewController {
         }
     }
 
-    // Shows the list of products in a sheet
+    private func updateBalance(from bundles: [BundleModel]) {
+        guard let bundle = bundles.first else {
+            return
+        }
+        
+        let formattedBalance = self.byteCountFormatter.string(fromByteCount: bundle.balance)
+        self.balanceLabel.text = formattedBalance
+    }
+    
     private func showProductListActionSheet(products: [Product]) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
@@ -140,23 +155,5 @@ class HomeViewController: ApplePayViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertCtrl.addAction(cancelAction)
         present(alertCtrl, animated: true, completion: nil)
-    }
-
-    func getBundles(completionHandler: @escaping ([BundleModel], Error?) -> Void) {
-        APIManager.sharedInstance.bundles.load()
-            .onSuccess { entity in
-                DispatchQueue.main.async {
-                    if let bundles: [BundleModel] = entity.typedContent(ifNone: nil) {
-                        completionHandler(bundles, nil)
-                    } else {
-                        completionHandler([], nil)
-                    }
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    completionHandler([], error)
-                }
-        }
     }
 }
