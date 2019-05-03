@@ -38,8 +38,10 @@ public enum RootEndpoint: String, APIEndpoint {
 }
 
 public enum RegionEndpoint: APIEndpoint {
+    case dave
     case jumio
     case kyc
+    case nric(number: String)
     case region(code: String)
     case profile
     case simProfiles
@@ -47,8 +49,13 @@ public enum RegionEndpoint: APIEndpoint {
     
     var value: String {
         switch self {
+        case .dave:
+            // I can't let you do that,
+            return "dave"
         case .jumio:
             return "jumio"
+        case .nric(let number):
+            return number
         case .kyc:
             return "kyc"
         case .region(let code):

@@ -68,6 +68,8 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: RootEndpoint.products.rawValue)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
+    
+    // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions() -> Promise<[RegionResponse]> {
@@ -87,14 +89,52 @@ open class LoggedInAPI: BasicNetwork {
             }
     }
     
-    /// Loads arbitrary data from an endpoint based on the base URL, then validates
+    /// Adds the given address for the user in the given region
+    ///
+    /// - Parameters:
+    ///   - address: The `EKYCAddress` to add.
+    ///   - regionCode: The region to add the address for.
+    /// - Returns: A promise which, when fulfilled, indicates successful completion of the operation.
+    public func addAddress(_ address: EKYCAddress,
+                           forRegion regionCode: String) -> Promise<Void> {
+        let profileEndpoints: [RegionEndpoint] = [
+            .region(code: regionCode),
+            .kyc,
+            .profile
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(profileEndpoints)
+        
+        return self.sendObject(address, to: path, method: .PUT)
+            .done { data, response in
+
+            }
+    }
+    
+    public func callNRICEndpoint(with nric: String,
+                                 forRegion regionCode: String) -> Promise<Void> {
+        let nricEndpoints: [RegionEndpoint] = [
+            .region(code: regionCode),
+            .kyc,
+            .dave,
+            .nric(number: nric)
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
+        
+        return self.loadData(from: path)
+            .done { data in
+                let dataString = String(bytes: data, encoding: .utf8)
+                debugPrint("Got: \(String(describing: dataString))")
+            }
+    }
+    
+    /// Loads arbitrary data from a path based on the base URL, then validates
     /// that the response is valid.
     ///
-    /// Note: Override this method in a subclass to provide mock data to the other methods.
-    ///
-    /// - Parameter endpoint: The endpoint to load data from
+    /// - Parameter path: The path to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
-    open func loadData(from path: String) -> Promise<Data> {
+    public func loadData(from path: String) -> Promise<Data> {
         let request = Request(baseURL: self.baseURL,
                               path: path,
                               loggedIn: true,
@@ -103,7 +143,15 @@ open class LoggedInAPI: BasicNetwork {
         return self.performValidatedRequest(request)
     }
     
-    open func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+    /// Sends `Codable` object to the given path based on the base URL.
+    /// NOTE: Does not validate directly, since we may need to parse error data which comes back.
+    ///
+    /// - Parameters:
+    ///   - object: The object to send
+    ///   - path: The path to send it to
+    ///   - method: The `HTTPMethod` to use to send it.
+    /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
+    public func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
         return APIHelper.encode(object, with: self.encoder)
             .map { data -> Request in
                 var request = Request(baseURL: self.baseURL,
