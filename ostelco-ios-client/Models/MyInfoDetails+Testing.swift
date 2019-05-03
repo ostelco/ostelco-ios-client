@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ostelco_core
 
 // TODO: Move this to test package once stabilized
 extension MyInfoDetails {

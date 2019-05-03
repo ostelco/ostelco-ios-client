@@ -8,16 +8,32 @@
 
 import Foundation
 
-struct MyInfoAddress: Codable {
-    let country: String?
-    let unit: String?
-    let street: String?
-    let block: String?
-    let postal: String?
-    let floor: String?
-    let building: String?
+public struct MyInfoAddress: Codable {
+    public let country: String?
+    public let unit: String?
+    public let street: String?
+    public let block: String?
+    public let postal: String?
+    public let floor: String?
+    public let building: String?
     
-    func getAddressLine1() -> String {
+    public init(country: String?,
+                unit: String?,
+                street: String?,
+                block: String?,
+                postal: String?,
+                floor: String?,
+                building: String?) {
+        self.country = country
+        self.unit = unit
+        self.street = street
+        self.block = block
+        self.postal = postal
+        self.floor = floor
+        self.building = building
+    }
+    
+    public func getAddressLine1() -> String {
         var addressLine1: String = ""
         if let block = self.block {
             addressLine1 = "\(block) "
@@ -28,7 +44,7 @@ struct MyInfoAddress: Codable {
         return addressLine1
     }
     
-    func getAddressLine2() -> String {
+    public func getAddressLine2() -> String {
         var addressLine2: String = ""
         if let postal = self.postal {
             addressLine2 = "\(postal) "
@@ -40,38 +56,38 @@ struct MyInfoAddress: Codable {
     }
 }
 
-struct MyInfoDetails: Codable {
+public struct MyInfoDetails: Codable {
     private let _name: MyInfoRequiredValue
-    var name: String {
+    public var name: String {
         return _name.value
     }
     
     private let _dob: MyInfoRequiredValue
-    var dob: String {
+    public var dob: String {
         return _dob.value
     }
     private let _email: MyInfoRequiredValue
-    var email: String {
+    public var email: String {
         return _email.value
     }
     
     private let _sex: MyInfoOptionalValue?
-    var sex: String? {
+    public var sex: String? {
         return _sex?.value
     }
     
     private let _residentialStatus: MyInfoOptionalValue?
-    var residentialStatus: String? {
+    public var residentialStatus: String? {
         return _residentialStatus?.value
     }
     
     private let _nationality: MyInfoOptionalValue?
-    var nationality: String? {
+    public var nationality: String? {
         return _nationality?.value
     }
     
-    var address: MyInfoAddress
-    let mobileNumber: MyInfoMobileNumber?
+    public var address: MyInfoAddress
+    public let mobileNumber: MyInfoMobileNumber?
     
     enum CodingKeys: String, CodingKey {
         case _name = "name"
@@ -93,10 +109,10 @@ struct MyInfoOptionalValue: Codable {
     let value: String?
 }
 
-struct MyInfoMobileNumber: Codable {
-    let number: String?
-    let code: String?
-    let prefix: String?
+public struct MyInfoMobileNumber: Codable {
+    public let number: String?
+    public let code: String?
+    public let prefix: String?
     
     enum CodingKeys: String, CodingKey {
         case number = "nbr"
@@ -104,7 +120,7 @@ struct MyInfoMobileNumber: Codable {
         case prefix
     }
     
-    var formattedNumber: String? {
+    public var formattedNumber: String? {
         guard
             let number = self.number,
             let code = self.code,
