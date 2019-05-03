@@ -30,11 +30,15 @@ struct ApplicationErrors {
     ///   - error: The error to log
     ///   - userInfo: A dictionary with any additional user info to pass along. Defaults to nil.
     static func log(_ error: Error,
-                    withAdditionalUserInfo userInfo: [String : Any]? = nil,
+                    withAdditionalUserInfo userInfo: [String: Any]? = nil,
                     file: StaticString = #file,
                     line: UInt = #line) {
         let fileName = (String(staticString: file) as NSString).lastPathComponent
-        debugPrint("\(fileName) line \(line)\n- Error: \(error)\n- UserInfo: \(String(describing: userInfo))\n\n")
+        debugPrint("""
+            \(fileName) line \(line)
+            - Error: \(error)
+            - UserInfo: \(String(describing: userInfo))
+            """)
         Crashlytics.sharedInstance().recordError(error, withAdditionalUserInfo: userInfo)
     }
 }
