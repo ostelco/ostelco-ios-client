@@ -86,10 +86,6 @@ class APIManager: Service {
             try self.jsonDecoder.decode(Context.self, from: $0.content)
         }
 
-        configureTransformer("/products") {
-            try self.jsonDecoder.decode([ProductModel].self, from: $0.content)
-        }
-
         configureTransformer("/bundles") {
             try self.jsonDecoder.decode([BundleModel].self, from: $0.content)
         }

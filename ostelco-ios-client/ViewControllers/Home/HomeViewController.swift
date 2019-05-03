@@ -77,19 +77,22 @@ class HomeViewController: ApplePayViewController {
     }
 
     private func fetchProducts() {
-        getProducts { products, error in
-            self.availableProducts = products
-            if let error = error {
-                debugPrint("error fetching products \(error)")
-            } else if products.isEmpty {
-                debugPrint("No products available")
+        getProducts()
+            .done { [weak self] products in
+                products.forEach { debugPrint($0) }
+                guard let self = self else {
+                    return
+                }
+                
+                self.availableProducts = products
+                // Check if the customer is a member already.
+                self.hasSubscription = self.checkForSubscription(products)
+                // TODO: Remove this after the subscription purchase is implemented
+                self.hasSubscription = false
             }
-            self.availableProducts.forEach {debugPrint($0.name, $0.amount, $0.currency, $0.country, $0.sku)}
-            // Check if the customer is a member already.
-            self.hasSubscription = self.checkForSubscription(products)
-            // TODO: Remove this after the subscription purchase is implemented
-            self.hasSubscription = false
-        }
+            .catch { error in
+                debugPrint("error fetching products \(error)")
+            }
     }
 
     override func paymentSuccessful(_ product: Product?) {
