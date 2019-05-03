@@ -6,6 +6,10 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+func getSimProfileFromSimProfilesArray(_ simProfiles: [SimProfile]) -> SimProfile? {
+    return simProfiles.first
+}
+
 enum KycStatus: String, Codable {
     case APPROVED
     case REJECTED
@@ -29,4 +33,8 @@ struct RegionResponse: Codable {
     let status: KycStatus
     let simProfiles: [SimProfile]?
     let kycStatusMap: KYCStatusMap
+    
+    func getSimProfile() -> SimProfile? {
+        return getSimProfileFromSimProfilesArray(simProfiles ?? [])
+    }
 }

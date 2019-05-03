@@ -59,8 +59,12 @@ class ESIMPendingDownloadViewController: UIViewController {
                     }) {
                         self.simProfile = simProfile
                         switch simProfile.status {
-                        case .AVAILABLE_FOR_DOWNLOAD, .INSTALLED, .DOWNLOADED:
+                        case .AVAILABLE_FOR_DOWNLOAD:
                             self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(simProfile.status.rawValue)")
+                        case .NOT_READY:
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+                            }
                         default:
                             DispatchQueue.main.async {
                                 self.performSegue(withIdentifier: "showHome", sender: self)

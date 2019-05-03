@@ -11,6 +11,7 @@ enum SimProfileStatus: String, Codable {
     case DOWNLOADED
     case INSTALLED
     case ENABLED
+    case NOT_READY
 }
 
 struct SimProfile: Codable {
