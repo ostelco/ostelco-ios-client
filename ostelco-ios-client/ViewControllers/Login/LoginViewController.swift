@@ -114,9 +114,7 @@ class LoginViewController: UIViewController {
                                                 }
                                             } else {
                                                 self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                            }
-                                            
-                                            
+                                            }         
                                         case .REJECTED:
                                             self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
                                         }
