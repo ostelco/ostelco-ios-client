@@ -16,24 +16,26 @@ public class Product {
     let sku: String
     let type: String
 
-    @available(*, deprecated, message: "Construct a Product object from ProdctModel")
-    init(name: String, label: String, amount: Decimal, country: String, currency: String, sku: String, type: String) {
-        self.name = name
-        self.label = label
-        self.amount = amount
-        self.country = country
-        self.currency = currency
-        self.sku = sku
-        self.type = type
-    }
-
     init(from: ProductModel, countryCode: String) {
-        name = "\(from.presentation.label) of Data"
-        label = "Buy \(from.presentation.label) for \(from.presentation.price)"
-        amount = Decimal(from.price.amount)
-        country = countryCode
-        currency = from.price.currency
-        sku = from.sku
-        type = from.type
+        self.name = "\(from.presentation.label) of Data"
+        self.label = "Buy \(from.presentation.label) for \(from.presentation.price)"
+        self.amount = Decimal(from.price.amount)
+        self.country = countryCode
+        self.currency = from.price.currency
+        self.sku = from.sku
+        self.type = from.type
+    }
+}
+
+extension Product: CustomDebugStringConvertible {
+    
+    public var debugDescription: String {
+        return """
+        - Name: \(self.name)
+        - Amount: \(self.amount)
+        - Currency: \(self.currency)
+        - Country: \(self.country)
+        - SKU: \(self.sku)
+        """
     }
 }
