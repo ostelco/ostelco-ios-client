@@ -107,7 +107,7 @@ open class LoggedInAPI: BasicNetwork {
         
         return self.sendObject(address, to: path, method: .PUT)
             .done { data, response in
-
+                try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: true)
             }
     }
     
