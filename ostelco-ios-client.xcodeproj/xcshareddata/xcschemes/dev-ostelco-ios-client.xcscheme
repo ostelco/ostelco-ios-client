@@ -68,7 +68,32 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9BB6A792226F6513000D5E13"
+            BuildableName = "OstelcoStyles.framework"
+            BlueprintName = "OstelcoStyles"
+            ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C29802A82181EDA800FBC5C3"
+            BuildableName = "Oya-Development.app"
+            BlueprintName = "dev-ostelco-ios-client"
+            ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9B851ABA225E29BE0076ABF3"
+            BuildableName = "ostelco_core.framework"
+            BlueprintName = "ostelco-core"
+            ReferencedContainer = "container:ostelco-ios-client.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

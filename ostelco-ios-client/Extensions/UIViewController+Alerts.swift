@@ -34,7 +34,7 @@ extension UIViewController {
     
     func showGenericError(error: Error) {
         let title = "Error"
-        let message = "Client crashed: \(error)"
+        let message = "An error has occurred:\n\n\(error)"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         present(alert, animated: true, completion: nil)
     }

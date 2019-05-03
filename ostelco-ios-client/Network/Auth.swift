@@ -15,6 +15,7 @@ let sharedAuth = Auth()
 
 class Auth {
     let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
+    private(set) lazy var credentialsSecureStorage = CredentialSecureStorage(credentialManger: self.credentialsManager)
     
     // force show the login screen after user logs out without using the auth0 logout url
     var forceLoginPrompt = false
@@ -25,6 +26,7 @@ class Auth {
             .clearSession(federated: true) {
                 print("Clear Session: ", $0)
                 _ = self.credentialsManager.clear()
+                self.credentialsSecureStorage.clearSecureStorage()
                 if let callback = callback {
                     callback()
                 }
@@ -76,6 +78,7 @@ class Auth {
                     case .success(let credentials):
                         os_log("Store credentials with auth0 credentials manager.")
                         _ = self.credentialsManager.store(credentials: credentials)
+                        self.credentialsSecureStorage.update(with: credentials)
                         os_log("Successfully logged in with auth0, credential. refreshToken: %{private}@ accessToken: %{private}@ idToken: %{private}@", credentials.refreshToken ?? "none", credentials.accessToken ?? "none", credentials.idToken ?? "none")
                         if let accessToken = credentials.accessToken {
                             DispatchQueue.main.async {
@@ -93,7 +96,5 @@ class Auth {
             }
             return Disposables.create()
         }
-        
     }
-    
 }

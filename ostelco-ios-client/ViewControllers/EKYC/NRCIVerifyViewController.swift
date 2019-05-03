@@ -6,9 +6,10 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
-import Netverify
 import Crashlytics
+import Netverify
+import ostelco_core
+import UIKit
 
 class NRCIVerifyViewController: UIViewController {
     
@@ -28,41 +29,32 @@ class NRCIVerifyViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        // TODO: API fails with 500 so we start netverify regardless of failure / success until API is fixed
-        if let nric = nricTextField.text, !nric.isEmpty {
-            let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
-            nricErrorLabel.isHidden = true
-            spinnerView = showSpinner(onView: self.view)
-            APIManager.sharedInstance.regions.child(countryCode).child("/kyc/dave").child(nric).load()
-                .onSuccess { _ in
-                    self.startNetverify()
-                }
-                .onFailure { requestError in
-                    do {
-                        guard let errorData = requestError.entity?.content as? Data else {
-                            throw APIManager.APIError.errorCameWithoutData
-                        }
-                        
-                        let jsonRequestError = try JSONDecoder().decode(JSONRequestError.self, from: errorData)
-                        switch jsonRequestError.errorCode {
-                        case "INVALID_NRIC_FIN_ID":
-                            self.nricErrorLabel.isHidden = false
-                        default:
-                            Crashlytics.sharedInstance().recordError(requestError)
-                            self.showAPIError(error: requestError)
-                        }
-                    } catch let error {
-                        print(error)
-                        Crashlytics.sharedInstance().recordError(error)
-                        self.showAlert(title: "Error", msg: "Please try again later.")
-                    }
-                }
-                .onCompletion { _ in
-                    self.removeSpinner(self.spinnerView)
-            }
-        } else {
-            showAlert(title: "Error", msg: "NRIC field can't be empty")
+        guard
+            let nric = self.nricTextField.text,
+            nric.isNotEmpty else {
+                self.showAlert(title: "Error", msg: "NRIC field can't be empty")
+                return
         }
+        
+        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        self.nricErrorLabel.isHidden = true
+        self.spinnerView = self.showSpinner(onView: self.view)
+        APIManager.sharedInstance.loggedInAPI
+            .validateNRIC(nric, forRegion: countryCode)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+            }
+            .done { [weak self] isValid in
+                if isValid {
+                    self?.startNetverify()
+                } else {
+                    self?.nricErrorLabel.isHidden = false
+                }
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
 }
 

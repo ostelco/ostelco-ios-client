@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ostelco_core
 
 class PendingVerificationViewController: UIViewController {
     
@@ -117,11 +118,7 @@ class PendingVerificationViewController: UIViewController {
         let ohNo = OhNoViewController.fromStoryboard(type: .generic(code: nil))
         ohNo.primaryButtonAction = {
             ohNo.dismiss(animated: true, completion: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-              
-                self.checkVerificationStatus()
+                self?.checkVerificationStatus()
             })
         }
         self.present(ohNo, animated: true)

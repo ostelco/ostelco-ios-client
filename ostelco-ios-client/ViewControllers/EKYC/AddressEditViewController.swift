@@ -7,6 +7,8 @@
 //
 
 import Crashlytics
+import ostelco_core
+import PromiseKit
 import RxSwift
 import UIKit
 
@@ -113,49 +115,48 @@ class AddressEditViewController: UITableViewController {
     }
     
     private func sendAddressToServer() {
-        self.spinnerView = showSpinner(onView: self.view)
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
-        APIManager.sharedInstance.regions.child(countryCode).child("kyc/profile")
-            .withParam("address", self.buildAddressString())
-            .withParam("phoneNumber", "12345678")
-            .request(.put)
-            .onSuccess { _ in
-                DispatchQueue.main.async {
-                    let pendingVC = PendingVerificationViewController.fromStoryboard()
-                    self.present(pendingVC, animated: true)
-                }
+        let address = self.buildAddress()
+        
+        self.spinnerView = showSpinner(onView: self.view)
+
+        APIManager.sharedInstance.loggedInAPI
+            .addAddress(address, forRegion: countryCode)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
             }
-            .onFailure { requestError in
-                do {
-                    guard let errorData = requestError.entity?.content as? Data else {
-                        throw APIManager.APIError.errorCameWithoutData
-                    }
-                    
-                    let putProfileError = try JSONDecoder().decode(PutProfileError.self, from: errorData)
-                    self.showAlert(title: "Error", msg: "\(putProfileError.errors)")
-                } catch let error {
-                    print(error)
-                    Crashlytics.sharedInstance().recordError(requestError)
-                    self.showAPIError(error: requestError)
-                }
-                
+            .done { [weak self] in
+                let pendingVC = PendingVerificationViewController.fromStoryboard()
+                self?.present(pendingVC, animated: true)
             }
-            .onCompletion { _ in
-                self.removeSpinner(self.spinnerView)
+            .catch { [weak self] error in
+                switch error {
+                case APIHelper.Error.serverError(let serverError):
+                    self?.showAlert(title: "Error", msg: "\(serverError.errors)")
+                default:
+                    debugPrint("Error adding address: \(error)")
+                    ApplicationErrors.log(error)
+                    self?.showGenericError(error: error)
+                }
             }
     }
         
-    private func buildAddressString() -> String {
+    private func buildAddress() -> EKYCAddress {
         guard
             let street = self.dataSource.value(for: .street),
-            let house = self.dataSource.value(for: .unit),
+            let unit = self.dataSource.value(for: .unit),
             let city = self.dataSource.value(for: .city),
             let postcode = self.dataSource.value(for: .postcode),
             let country = self.dataSource.value(for: .country) else {
                 fatalError("Somehow validation passed but one of these was null")
         }
             
-        return "\(street);;;\(house);;;\(city);;;\(postcode);;;\(country)"
+        return EKYCAddress(street: street,
+                           unit: unit,
+                           city: city,
+                           postcode: postcode,
+                           country: country)
     }
     
     private func updateMyInfo() {

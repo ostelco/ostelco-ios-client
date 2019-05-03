@@ -6,10 +6,12 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import Foundation
 import Crashlytics
+import Foundation
+import ostelco_core
 
-class ApplicationErrors {
+/// Wrapper for logging errors throughout the application
+struct ApplicationErrors {
     enum General: LocalizedError {
         case noValidPlansFound
 
@@ -20,7 +22,23 @@ class ApplicationErrors {
             }
         }
     }
-    static func log(_ error: Error) {
-        Crashlytics.sharedInstance().recordError(error)
+    
+    /// Logs the passed-in error to our error logging software of choice and `debugPrint`s it
+    /// (Currently: Crashlytics)
+    ///
+    /// - Parameters:
+    ///   - error: The error to log
+    ///   - userInfo: A dictionary with any additional user info to pass along. Defaults to nil.
+    static func log(_ error: Error,
+                    withAdditionalUserInfo userInfo: [String: Any]? = nil,
+                    file: StaticString = #file,
+                    line: UInt = #line) {
+        let fileName = (String(staticString: file) as NSString).lastPathComponent
+        debugPrint("""
+            \(fileName) line \(line)
+            - Error: \(error)
+            - UserInfo: \(String(describing: userInfo))
+            """)
+        Crashlytics.sharedInstance().recordError(error, withAdditionalUserInfo: userInfo)
     }
 }
