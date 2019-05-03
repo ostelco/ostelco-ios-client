@@ -51,8 +51,12 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
     return auth0API.token.request(.post, json: ["grant_type": "refresh_token", "client_id": Environment().configuration(.Auth0ClientID), "refresh_token": refreshToken])
         .onSuccess {
             let credentials = $0.typedContent()! as Credentials
-            let accessToken = credentials.accessToken
-            APIManager.sharedInstance.authHeader = "Bearer \(accessToken!)"
+            guard let accessToken = credentials.accessToken else {
+                assertionFailure("No access token?!")
+                return
+            }
+            APIManager.sharedInstance.authHeader = "Bearer \(accessToken)"
+            sharedAuth.credentialsSecureStorage.setString(accessToken, for: .Auth0Token)
             // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required
             // by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating
             // the accessToken with auth0 is that auth0 will again refresh the access token next time you open the app or the
