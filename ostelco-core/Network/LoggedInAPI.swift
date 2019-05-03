@@ -176,6 +176,26 @@ open class LoggedInAPI: BasicNetwork {
             }
     }
     
+    /// Loads details based on a SingPass sign in (singapore only!)
+    ///
+    /// - Parameter code: The code associated with the user in SingPass
+    /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoDetails`.
+    public func loadSingpassInfo(code: String) -> Promise<MyInfoDetails> {
+        let myInfoEndpoints: [RegionEndpoint] = [
+            .region(code: "sg"),
+            .kyc,
+            .myInfo,
+            .myInfoCode(code: code)
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(myInfoEndpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(MyInfoDetails.self, from: $0) }
+    }
+    
+    // MARK: - General
+    
     /// Loads arbitrary data from a path based on the base URL, then validates
     /// that the response is valid.
     ///
