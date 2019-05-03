@@ -111,8 +111,14 @@ open class LoggedInAPI: BasicNetwork {
             }
     }
     
-    public func callNRICEndpoint(with nric: String,
-                                 forRegion regionCode: String) -> Promise<Void> {
+    /// Validates the given NRIC.
+    ///
+    /// - Parameters:
+    ///   - nric: The NRIC to validate
+    ///   - regionCode: The region code to use to create the call.
+    /// - Returns: A promise, which, when fulfilled, will return true if the NRIC is valid and false if not.
+    public func validateNRIC(_ nric: String,
+                             forRegion regionCode: String) -> Promise<Bool> {
         let nricEndpoints: [RegionEndpoint] = [
             .region(code: regionCode),
             .kyc,
@@ -122,10 +128,24 @@ open class LoggedInAPI: BasicNetwork {
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
         
-        return self.loadData(from: path)
-            .done { data in
-                let dataString = String(bytes: data, encoding: .utf8)
-                debugPrint("Got: \(String(describing: dataString))")
+        return self.loadNonValidatedData(from: path)
+            .map { data, response in
+                do {
+                    try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: false)
+                    return true
+                } catch {
+                    switch error {
+                    case APIHelper.Error.jsonError(let jsonError):
+                        if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
+                            return false
+                        }
+                    default:
+                        break
+                    }
+                    
+                    // If we got here, re-throw the error.
+                    throw error
+                }
             }
     }
     
@@ -141,6 +161,15 @@ open class LoggedInAPI: BasicNetwork {
                               secureStorage: self.secureStorage)
         
         return self.performValidatedRequest(request)
+    }
+    
+    public func loadNonValidatedData(from path: String) -> Promise<(data: Data, response: URLResponse)> {
+        let request = Request(baseURL: self.baseURL,
+                              path: path,
+                              loggedIn: true,
+                              secureStorage: self.secureStorage)
+        
+        return self.performRequest(request)
     }
     
     /// Sends `Codable` object to the given path based on the base URL.

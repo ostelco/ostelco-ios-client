@@ -40,25 +40,20 @@ class NRCIVerifyViewController: UIViewController {
         self.nricErrorLabel.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.sharedInstance.loggedInAPI
-            .callNRICEndpoint(with: nric, forRegion: countryCode)
+            .validateNRIC(nric, forRegion: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
             }
-            .done { [weak self] in
-                self?.startNetverify()
+            .done { [weak self] isValid in
+                if isValid {
+                    self?.startNetverify()
+                } else {
+                    self?.nricErrorLabel.isHidden = false
+                }
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
-                switch error {
-                case APIHelper.Error.jsonError(let jsonError):
-                    if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
-                        self?.nricErrorLabel.isHidden = false
-                    } else {
-                        self?.showGenericError(error: error)
-                    }
-                default:
-                    self?.showAlert(title: "Error", msg: "Please try again later.")
-                }
+                self?.showGenericError(error: error)
             }
     }
 }
