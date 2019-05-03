@@ -59,25 +59,9 @@ class APIManager: Service {
         configureTransformer("/regions/sg/kyc/myInfo/*") {
             try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
         }
-        
-        configureTransformer("/regions/*/simProfiles", requestMethods: [.get]) {
-            try self.jsonDecoder.decode([SimProfile].self, from: $0.content)
-        }
-        
+
         configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
             try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
-        }
-        
-        self.configure("/reginos/*/simProfiles") {
-            $0.expirationTime = 5
-        }
-        
-        configureTransformer("/regions/*") {
-            try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
-        }
-        
-        configureTransformer("/regions") {
-            try self.jsonDecoder.decode([RegionResponse].self, from: $0.content)
         }
         
         configureTransformer("/context") {

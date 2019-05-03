@@ -53,46 +53,44 @@ class ESIMPendingDownloadViewController: UIViewController {
         let region = OnBoardingManager.sharedInstance.region!
         let countryCode = region.region.id
         
-        spinnerView = showSpinner(onView: self.view)
-        APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").load()
-            .onSuccess { data in
-                if let simProfiles: [SimProfile] = data.typedContent(ifNone: nil) {
-                    if let simProfile = simProfiles.first(where: {
-                        $0.iccId == self.simProfile?.iccId
-                    }) {
-                        self.simProfile = simProfile
-                        switch simProfile.status {
-                        case .AVAILABLE_FOR_DOWNLOAD:
-                            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(simProfile.status.rawValue)")
-                        case .NOT_READY:
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                            }
-                        default:
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "showHome", sender: self)
-                            }
-                        }
-                    } else {
-                        self.showAlert(title: "Error", msg: "Could not find which esim profile ")
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                    }
-                }
+        self.spinnerView = self.showSpinner(onView: self.view)
+        
+        APIManager.sharedInstance.loggedInAPI
+            .loadSimProfilesForRegion(code: countryCode)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
             }
-            .onFailure { requestError in
-                ApplicationErrors.log(requestError)
-                self.showAPIError(error: requestError)
+            .done { [weak self] simProfiles in
+                self?.handleGotSimProfiles(simProfiles)
             }
-            .onCompletion { _ in
-                self.removeSpinner(self.spinnerView)
-        }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        showNeedHelpActionSheet()
+        self.showNeedHelpActionSheet()
+    }
+    
+    private func handleGotSimProfiles(_ profiles: [SimProfile]) {
+        guard let profile = profiles.first(where: {
+            $0.iccId == self.simProfile?.iccId
+        }) else {
+            self.showAlert(title: "Error", msg: "Could not find which esim profile ")
+            return
+        }
+        
+        self.simProfile = profile
+        switch profile.status {
+        case .AVAILABLE_FOR_DOWNLOAD:
+            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(profile.status.rawValue)")
+        case .NOT_READY:
+            self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+        default:
+            self.performSegue(withIdentifier: "showHome", sender: self)
+        }
     }
     
     func getSimProfileForRegion(region: RegionResponse) {

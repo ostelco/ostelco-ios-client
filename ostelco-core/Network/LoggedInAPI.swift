@@ -87,6 +87,22 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: path)
             .map { try self.decoder.decode(RegionResponse.self, from: $0) }
     }
+    
+    /// Loads the SIM profiles for the specified region
+    ///
+    /// - Parameter code: The region to request SIM profiles for
+    /// - Returns: A promise which when fullfilled contains the requested profiles
+    public func loadSimProfilesForRegion(code: String) -> Promise<[SimProfile]> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .simProfiles
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode([SimProfile].self, from: $0) }
+    }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> Promise<RegionResponse> {
