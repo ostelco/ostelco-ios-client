@@ -123,10 +123,8 @@ class AddressEditViewController: UITableViewController {
         APIManager.sharedInstance.loggedInAPI
             .addAddress(address, forRegion: countryCode)
             .ensure { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                self.removeSpinner(self.spinnerView)
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
             }
             .done { [weak self] in
                 let pendingVC = PendingVerificationViewController.fromStoryboard()
