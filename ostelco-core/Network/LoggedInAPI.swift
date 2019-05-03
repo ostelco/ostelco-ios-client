@@ -76,6 +76,17 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: RootEndpoint.regions.rawValue)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
+    
+    /// Loads the region response for the specified region
+    ///
+    /// - Parameter code: The region to request
+    /// - Returns: A promise which when fulfilled contains the requested region.
+    public func loadRegion(code: String) -> Promise<RegionResponse> {
+        let path = RootEndpoint.regions.pathByAddingEndpoints([RegionEndpoint.region(code: code)])
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(RegionResponse.self, from: $0) }
+    }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> Promise<RegionResponse> {
