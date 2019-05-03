@@ -122,7 +122,7 @@ public struct APIHelper {
                                                      decoder: JSONDecoder,
                                                      dataCanBeEmpty: Bool = true) throws {
         do {
-            _ = try APIHelper.validateResponse(data: data, response: response, dataCanBeEmpty: true)
+            _ = try APIHelper.validateResponse(data: data, response: response, dataCanBeEmpty: dataCanBeEmpty)
         } catch {
             switch error {
             case APIHelper.Error.invalidResponseCode(_, let data):
