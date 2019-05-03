@@ -71,4 +71,8 @@ public struct RegionResponse: Codable {
             return regionResponses.last
         }
     }
+    
+    public func getSimProfile() -> SimProfile? {
+        return self.simProfiles?.first
+    }
 }
