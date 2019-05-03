@@ -92,6 +92,8 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     @objc func setUpButtonTapped() {
         PKPassLibrary().openPaymentSetup()
+        // Go back to home screen.
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction private func cancelButtonTapped(_ sender: Any) {
