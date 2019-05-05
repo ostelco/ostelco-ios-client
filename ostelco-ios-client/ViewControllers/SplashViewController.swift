@@ -39,6 +39,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
                         if userManager.authToken != accessToken {
                             apiManager.authHeader = "Bearer \(accessToken)"
                             UserManager.sharedInstance.authToken = accessToken
+                            sharedAuth.credentialsSecureStorage.setString(accessToken, for: .Auth0Token)
                         }
                         
                         // TODO: New API does not handle refreshToken yet

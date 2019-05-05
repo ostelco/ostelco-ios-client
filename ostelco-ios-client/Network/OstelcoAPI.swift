@@ -12,7 +12,6 @@ import os
 import Auth0
 import ostelco_core
 
-let ostelcoAPI = OstelcoAPI()
 let auth0API = Auth0API()
 
 // var authRequest: Siesta.Request? = nil;
@@ -52,8 +51,12 @@ func refreshTokenHandler(refreshToken: String?) -> Siesta.Request {
     return auth0API.token.request(.post, json: ["grant_type": "refresh_token", "client_id": Environment().configuration(.Auth0ClientID), "refresh_token": refreshToken])
         .onSuccess {
             let credentials = $0.typedContent()! as Credentials
-            let accessToken = credentials.accessToken
-            ostelcoAPI.authToken = "Bearer \(accessToken!)"
+            guard let accessToken = credentials.accessToken else {
+                assertionFailure("No access token?!")
+                return
+            }
+            APIManager.sharedInstance.authHeader = "Bearer \(accessToken)"
+            sharedAuth.credentialsSecureStorage.setString(accessToken, for: .Auth0Token)
             // Credentials only contains accessToken at this point, if saved, we overwrite all other informatmion required
             // by auth0 to validate the credentials, thus the user is presented with the login screen. Downside of not updating
             // the accessToken with auth0 is that auth0 will again refresh the access token next time you open the app or the
@@ -80,62 +83,4 @@ class Auth0API: Service {
     }
     
     var token: Resource { return resource("oauth/token") }
-}
-
-class OstelcoAPI: Service {
-    
-    fileprivate init() {
-        super.init(
-            baseURL: Environment().configuration(PlistKey.ServerURL),
-            standardTransformers: [.text, .image]
-        )
-        
-        configure {
-            $0.headers["Content-Type"] = "application/json"
-            $0.headers["Authorization"] = self.authToken
-            
-            $0.decorateRequests { _, req in
-                return refreshTokenOnAuthFailure(request: req, refreshToken: self.refreshToken)
-            }
-        }
-        
-        let jsonDecoder = JSONDecoder()
-        self.configureTransformer("/bundles") {
-            try jsonDecoder.decode([BundleModel].self, from: $0.content)
-        }
-        
-        self.configure("/bundles") {
-            $0.expirationTime = 5
-        }
-        
-        self.configureTransformer("/profile") {
-            try jsonDecoder.decode(ProfileModel.self, from: $0.content)
-        }
-        
-        self.configureTransformer("/purchases*") {
-            try jsonDecoder.decode([PurchaseModel].self, from: $0.content)
-        }
-        
-        self.configureTransformer("/products") {
-            try jsonDecoder.decode([ProductModel].self, from: $0.content)
-        }
-    }
-    
-    var bundles: Resource { return resource("/bundles") }
-    var profile: Resource { return resource("/profile") }
-    var purchases: Resource { return resource("/purchases") }
-    var products: Resource { return resource("/products") }
-    
-    var authToken: String? {
-        didSet {
-            // Rerun existing configuration closure using new value
-            invalidateConfiguration()
-            
-            // Wipe any cached state if auth token changes
-            // Note: If we wipe resources, the purchase history list becomes blank after we repeate a request after a 401 from ostelcoAPI
-            // wipeResources()
-        }
-    }
-    
-    var refreshToken: String?
 }

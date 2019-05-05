@@ -29,7 +29,7 @@ class OstelcoAnalytics {
             var meta = event.metadata
             meta["name"] = event.name
             meta["className"] = String(describing: event)
-            Crashlytics.sharedInstance().recordError(AnalyticsError.eventNameIsEmpty, withAdditionalUserInfo: meta)
+            ApplicationErrors.log(AnalyticsError.eventNameIsEmpty, withAdditionalUserInfo: meta)
         } else {
             Analytics.logEvent(event.name, parameters: event.metadata)
         }

@@ -12,6 +12,7 @@ import Foundation
 public enum HeaderKey: String {
     case authorization = "Authorization"
     case contentType = "Content-Type"
+    case testing = "Testing"
 }
 
 /// Values to include in headers.
@@ -19,6 +20,7 @@ public enum HeaderKey: String {
 public enum HeaderValue {
     case applicationJSON
     case token(String)
+    case testing(String)
     
     public var toString: String {
         switch self {
@@ -26,6 +28,8 @@ public enum HeaderValue {
             return "application/json"
         case .token(let token):
             return "Bearer \(token)"
+        case .testing(let testString):
+            return testString
         }
     }
 }

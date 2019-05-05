@@ -6,6 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import PromiseKit
 import Siesta
 import ostelco_core
 
@@ -13,6 +14,14 @@ class APIManager: Service {
     
     static let sharedInstance = APIManager()
     let jsonDecoder = JSONDecoder()
+    
+    lazy var loggedInAPI: LoggedInAPI = {
+        let baseURLString = Environment().configuration(PlistKey.ServerURL)
+        let auth0Storage = sharedAuth.credentialsSecureStorage
+        return LoggedInAPI(baseURL: baseURLString,
+                           secureStorage: auth0Storage)
+    }()
+    
     var authHeader: String? {
         didSet {
             invalidateConfiguration()
@@ -87,56 +96,6 @@ class APIManager: Service {
 
         configureTransformer("/purchases") {
             try self.jsonDecoder.decode([PurchaseModel].self, from: $0.content)
-        }
-
-    }
-}
-
-extension APIManager {
-    
-    // TODO: Move to APIHelper together with the below todo
-    enum APIError: Swift.Error, LocalizedError {
-        case failedToGetRegion
-        case failedToParse
-        case errorCameWithoutData
-        
-        var localizedDescription: String {
-            switch self {
-            case .failedToGetRegion: // TODO: This error is specific to the APIManager, not APIHelper, thus should stay here
-                return "Could not find suitable region from region response"
-            case .failedToParse:
-                return "Something went wrong while parsing the API response"
-            case .errorCameWithoutData:
-                return "An error response was received from the server, but no further information is available"
-            }
-        }
-    }
-    
-    // TODO: Abstract the parsing logic into APIHelper using RegionResponse as a generic type. And handle the specific logic of returning one region out of a list inside this function. Also Refactor to use PromiseKit
-    func getRegionFromRegions(completion: @escaping (RegionResponse?, Error?) -> Void) {
-        regions.load()
-            .onSuccess { response in
-                if let regionResponseArray: [RegionResponse] = response.typedContent(ifNone: []) {
-                    if let region = getRegionFromRegionResponseArray(regionResponseArray) {
-                        DispatchQueue.main.async {
-                            completion(region, nil)
-                        }
-                        
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(nil, APIError.failedToGetRegion)
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion(nil, APIError.failedToParse)
-                    }
-                }
-            }
-            .onFailure { requestError in
-                DispatchQueue.main.async {
-                    completion(nil, requestError)
-                }
         }
     }
 }

@@ -63,12 +63,8 @@ extension LocationChecking {
             }
             .ensure { [weak self] in
                 // Whether we get an error or success, we always want to kill the spinner.
-                guard let self = self else {
-                    return
-                }
-                
-                self.removeSpinner(self.spinnerView)
-                self.spinnerView = nil
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
             }
             .catch { [weak self] error in
                 if let locationError = error as? LocationController.Error {

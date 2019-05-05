@@ -68,4 +68,40 @@ class HeaderGeneratorTests: XCTestCase {
             XCTFail("Unexpected error creating headers: \(error)")
         }
     }
+    
+    func testAddingAnAdditionalHeader() {
+        let storage = MockSecureStorage()
+        let testToken = "I'M A TEST TOKEN!"
+        storage.setString(testToken, for: .Auth0Token)
+        
+        do {
+            var headers = try Headers(loggedIn: true, secureStorage: storage)
+            headers.addValue(.testing("TEST"), for: .testing)
+            
+            let headerDict = headers.toStringDict
+            XCTAssertEqual(headerDict.count, 3)
+            XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], HeaderValue.applicationJSON.toString)
+            XCTAssertEqual(headerDict[HeaderKey.authorization.rawValue], "Bearer \(testToken)")
+            XCTAssertEqual(headerDict[HeaderKey.testing.rawValue], "TEST")
+        } catch {
+            XCTFail("Unexpected error creating headers: \(error)")
+        }
+    }
+    
+    func testReplacingADefaultHeader() {
+        let storage = MockSecureStorage()
+        let testToken = "I'M A TEST TOKEN!"
+        storage.setString(testToken, for: .Auth0Token)
+        
+        do {
+            var headers = try Headers(loggedIn: true, secureStorage: storage)
+            headers.addValue(.testing("TEST"), for: .contentType)
+            let headerDict = headers.toStringDict
+            XCTAssertEqual(headerDict.count, 2)
+            XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], "TEST")
+            XCTAssertEqual(headerDict[HeaderKey.authorization.rawValue], "Bearer \(testToken)")
+        } catch {
+            XCTFail("Unexpected error creating headers: \(error)")
+        }
+    }
 }

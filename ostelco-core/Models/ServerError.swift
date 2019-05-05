@@ -1,11 +1,11 @@
 //
-//  PutProfileError.swift
+//  ServerError.swift
 //  ostelco-ios-client
 //
 //  Created by mac on 4/2/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-struct PutProfileError: Codable {
-    let errors: [String]
+public struct ServerError: Codable {
+    public let errors: [String]
 }

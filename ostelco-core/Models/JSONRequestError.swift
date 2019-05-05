@@ -6,10 +6,10 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-struct JSONRequestError: Codable {
-    let errorCode: String
-    let httpStatusCode: Int
-    let message: String
+public struct JSONRequestError: Codable {
+    public let errorCode: String
+    public let httpStatusCode: Int
+    public let message: String
     
     enum CodingKeys: String, CodingKey {
         case errorCode

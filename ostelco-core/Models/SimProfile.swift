@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-enum SimProfileStatus: String, Codable {
+public enum SimProfileStatus: String, Codable {
     case AVAILABLE_FOR_DOWNLOAD
     case DOWNLOADED
     case INSTALLED
@@ -14,9 +14,9 @@ enum SimProfileStatus: String, Codable {
     case NOT_READY
 }
 
-struct SimProfile: Codable {
-    let eSimActivationCode: String
-    let alias: String
-    let iccId: String
-    let status: SimProfileStatus
+public struct SimProfile: Codable {
+    public let eSimActivationCode: String
+    public let alias: String
+    public let iccId: String
+    public let status: SimProfileStatus
 }
