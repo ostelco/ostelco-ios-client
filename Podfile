@@ -9,27 +9,30 @@ inhibit_all_warnings!
 
 # Framework target
 target 'ostelco-core' do
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core', '~>5.20.1'
   pod 'KeychainAccess', '~>3.2.0'
   pod 'PromiseKit', '~> 6.8.4'
 end
 
 abstract_target 'ostelco-ios' do
-  pod 'Auth0', '~>1.14.2'
   pod 'Crashlytics', '~>3.12.0'
   pod 'Fabric', '~>1.9.0'
   pod 'FreshchatSDK', '~>2.4.3'
-  pod 'Firebase/Core', '~>5.20.1'
   pod 'Firebase/DynamicLinks', '~>5.20.1'
   pod 'Firebase/Messaging', '~>5.20.1'
+  pod 'FirebaseUI/Auth', '~>6.2.1'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
+  pod 'FirebaseUI/Twitter'
   pod 'JumioMobileSDK/Netverify', '~>2.15.0'
-  pod 'JWTDecode', '~>2.2'
   pod 'RxCoreLocation', '~>1.3.1'
   pod 'RxSwift', '~>4.5.0'
   pod 'Siesta', '~>1.0'
   pod 'Siesta/UI', '~>1.0'
   pod 'Stripe', '~>14.0.0'
   pod 'SwiftLint', '~>0.31.0'
-
+  
   # Dev app target
   target 'dev-ostelco-ios-client' do
     

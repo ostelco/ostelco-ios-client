@@ -1,9 +1,20 @@
 PODS:
-  - Auth0 (1.14.2):
-    - SimpleKeychain
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
+  - FBSDKCoreKit (4.44.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.44.0):
+    - FBSDKCoreKit
+  - Firebase/Auth (5.20.1):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.4.2)
   - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
@@ -25,6 +36,12 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseAuth (5.4.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
@@ -44,6 +61,18 @@ PODS:
     - GoogleUtilities/Reachability (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
     - Protobuf (~> 3.1)
+  - FirebaseUI/Auth (6.2.1):
+    - Firebase/Auth (~> 5.0)
+    - GoogleUtilities/UserDefaults
+  - FirebaseUI/Facebook (6.2.1):
+    - FBSDKLoginKit (~> 4.35)
+    - FirebaseUI/Auth
+  - FirebaseUI/Google (6.2.1):
+    - FirebaseUI/Auth
+    - GoogleSignIn (~> 4.0)
+  - FirebaseUI/Twitter (6.2.1):
+    - FirebaseUI/Auth
+    - TwitterKit (~> 3.0)
   - FreshchatSDK (2.4.3)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -51,6 +80,18 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
   - GoogleUtilities/AppDelegateSwizzler (5.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -69,8 +110,8 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.1)
   - JumioMobileSDK/Netverify (2.15.0)
-  - JWTDecode (2.2.0)
   - KeychainAccess (3.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -100,20 +141,25 @@ PODS:
   - Siesta/Core (1.4.2)
   - Siesta/UI (1.4.2):
     - Siesta/Core
-  - SimpleKeychain (0.8.1)
   - Stripe (14.0.0)
   - SwiftLint (0.31.0)
+  - TwitterCore (3.2.0)
+  - TwitterKit (3.4.2):
+    - TwitterCore (>= 3.2.0)
 
 DEPENDENCIES:
-  - Auth0 (~> 1.14.2)
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
+  - Firebase/Auth
   - Firebase/Core (~> 5.20.1)
   - Firebase/DynamicLinks (~> 5.20.1)
   - Firebase/Messaging (~> 5.20.1)
+  - FirebaseUI/Auth (~> 6.2.1)
+  - FirebaseUI/Facebook
+  - FirebaseUI/Google
+  - FirebaseUI/Twitter
   - FreshchatSDK (~> 2.4.3)
   - JumioMobileSDK/Netverify (~> 2.15.0)
-  - JWTDecode (~> 2.2)
   - KeychainAccess (~> 3.2.0)
   - PromiseKit (~> 6.8.4)
   - RxCoreLocation (~> 1.3.1)
@@ -125,21 +171,28 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Auth0
+    - Bolts
     - Crashlytics
     - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
+    - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FirebaseUI
     - FreshchatSDK
     - GoogleAppMeasurement
+    - GoogleSignIn
+    - GoogleToolboxForMac
     - GoogleUtilities
+    - GTMSessionFetcher
     - JumioMobileSDK
-    - JWTDecode
     - KeychainAccess
     - nanopb
     - PromiseKit
@@ -148,26 +201,34 @@ SPEC REPOS:
     - RxCoreLocation
     - RxSwift
     - Siesta
-    - SimpleKeychain
     - Stripe
     - SwiftLint
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
-  Auth0: df9ac013e7850052fea1dcd53fa09bb129121721
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FBSDKCoreKit: 8bcd4503afe43f28823c2175a6142a7f50f1bf28
+  FBSDKLoginKit: 93c5a407ab1a6a17b1b38cff57e89991f714d878
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
+  FirebaseUI: c9e227a7d44e2e422a461cb3f4ead8dc5c7326e6
   FreshchatSDK: a7432bc1cb0ecd54d9a618158d1c8d0271176e00
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   JumioMobileSDK: 8949971b2007fccf1e63bac2f30f108a1ff2c53f
-  JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
@@ -176,10 +237,11 @@ SPEC CHECKSUMS:
   RxCoreLocation: 23d0f2f06fba5af57f2fa9064a5c165e75eb4c33
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
-  SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
+  TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: f94a04014570afc22800ad6264973daddaf9401b
+PODFILE CHECKSUM: 6e0b197cb0e27427fd69f42f58c03e31b276c171
 
 COCOAPODS: 1.6.1
