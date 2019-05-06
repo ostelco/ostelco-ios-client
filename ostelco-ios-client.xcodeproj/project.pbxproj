@@ -81,7 +81,6 @@
 		04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
 		04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
-		04834D732237B11800A01500 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
 		04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
 		04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
@@ -133,6 +132,7 @@
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
+		9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
@@ -178,7 +178,6 @@
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A1217B896800F59758 /* ProfileModel.swift */; };
-		9B9B324C225E3D4400227EA3 /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324D225E411700227EA3 /* APIHelper.swift */; };
 		9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324F225E423A00227EA3 /* Collection+Empty.swift */; };
 		9BB6A797226F6514000D5E13 /* OstelcoStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB6A795226F6514000D5E13 /* OstelcoStyles.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -747,7 +746,6 @@
 			isa = PBXGroup;
 			children = (
 				0437CF88224D3B380022A2B8 /* Context.swift */,
-				04834D712237B11800A01500 /* CustomerModel.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
@@ -867,6 +865,7 @@
 			children = (
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
 				043E711D223AF61600E01993 /* Country.swift */,
+				04834D712237B11800A01500 /* CustomerModel.swift */,
 				9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
@@ -1779,7 +1778,6 @@
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
-				9B9B324C225E3D4400227EA3 /* CustomerModel.swift in Sources */,
 				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
@@ -1824,6 +1822,7 @@
 				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
+				9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */,
 				9B821592227AD9EA00DC6B64 /* HTTPMethod.swift in Sources */,
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
@@ -1890,7 +1889,6 @@
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
-				04834D732237B11800A01500 /* CustomerModel.swift in Sources */,
 				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,

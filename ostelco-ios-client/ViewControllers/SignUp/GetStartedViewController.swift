@@ -8,6 +8,7 @@
 
 import UIKit
 import JWTDecode
+import ostelco_core
 
 class GetStartedViewController: UIViewController {
     

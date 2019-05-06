@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct CustomerModel: Codable {
-    let id: String
-    let name: String
-    let email: String
-    let analyticsId: String
-    let referralId: String
+public struct CustomerModel: Codable {
+    public let id: String
+    public let name: String
+    public let email: String
+    public let analyticsId: String
+    public let referralId: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,7 +23,7 @@ struct CustomerModel: Codable {
         case referralId
     }
     
-    func hasSubscription() -> Bool {
+    public func hasSubscription() -> Bool {
         return false
     }
 }
