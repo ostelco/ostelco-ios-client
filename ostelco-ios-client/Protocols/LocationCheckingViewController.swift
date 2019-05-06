@@ -52,7 +52,7 @@ extension LocationChecking {
         
         self.spinnerView = showSpinner(onView: view, loadingText: "Checking location...")
         var isDebug = false
-        #if DEBUG
+        #if ENABLE_SKIP_USER_LOCATION_CHECK
             isDebug = true
         #endif
         
