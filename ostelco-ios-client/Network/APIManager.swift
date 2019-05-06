@@ -29,6 +29,8 @@ class APIManager: Service {
         }
     }
     
+    private(set) lazy var secureStorage: SecureStorage = KeychainWrapper(appBundleID: Bundle.main.bundleIdentifier!)
+    
     var products: Resource { return resource("/products") }
     var regions: Resource { return resource("/regions") }
 
