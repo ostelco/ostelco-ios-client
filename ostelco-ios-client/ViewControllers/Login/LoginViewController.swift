@@ -68,18 +68,21 @@ class LoginViewController: UIViewController {
     }
     
     private func signInTapped() {
-        sharedAuth.loginWithAuth0().subscribe(
-            onNext: { _ in
-                DispatchQueue.main.async {
-                    self.loadCustomer()
-                }
-            },
-            onError: { error in
-                DispatchQueue.main.async {
-                    self.handleLoginFailure(message: "\(error)")
-                }
-            })
-            .disposed(by: self.disposeBag)
+        UserManager.sharedInstance.showLogin(from: self)
+        
+//        sharedAuth.loginWithAuth0().subscribe(
+//            onNext: { _ in
+//                // TODO: Duplicated logic from SplashViewController
+//                DispatchQueue.main.async {
+//                    self.loadCustomer()
+//                }
+//        },
+//            onError: { error in
+//                DispatchQueue.main.async {
+//                    self.handleLoginFailure(message: "\(error)")
+//                }
+//        })
+//            .disposed(by: self.disposeBag)
     }
     
     private func loadCustomer() {

@@ -26,46 +26,34 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     }
     
     func verifyCredentials() {
-        sharedAuth.credentialsManager.credentials { error, credentials in
-            guard error == nil,
-                let credentials = credentials else {
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "showLogin", sender: self)
-                    }
-                    return
-            }
-            
-            guard let accessToken = credentials.accessToken else {
-                assertionFailure("We have creds but no access token?!")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                let apiManager = APIManager.sharedInstance
-                let userManager = UserManager.sharedInstance
-                if userManager.authToken != accessToken && userManager.authToken != nil {
-                    apiManager.wipeResources()
-                    UserManager.sharedInstance.clear()
-                }
-                
-                if userManager.authToken != accessToken {
-                    apiManager.authHeader = "Bearer \(accessToken)"
-                    UserManager.sharedInstance.authToken = accessToken
-                    sharedAuth.credentialsSecureStorage.setString(accessToken, for: .Auth0Token)
-                }
-                
-                // TODO: New API does not handle refreshToken yet
-                /*
-                if let refreshToken = credentials.refreshToken {
-                    ostelcoAPI.refreshToken = refreshToken
-                }
-                */
-                // Send the FCM Token, if it is ready.
-                UIApplication.shared.typedDelegate.sendFCMToken()
-                
-                self.loadContext()
-            }
+        guard let accessToken = APIManager.sharedInstance.secureStorage.getString(for: .Auth0Token) else {
+            self.performSegue(withIdentifier: "showLogin", sender: self)
+            return
         }
+        
+//        let apiManager = APIManager.sharedInstance
+//        let userManager = UserManager.sharedInstance
+//        if userManager.authToken != accessToken && userManager.authToken != nil {
+//            apiManager.wipeResources()
+//            UserManager.sharedInstance.clear()
+//        }
+//
+//        if userManager.authToken != accessToken {
+//            apiManager.authHeader = "Bearer \(accessToken)"
+//            UserManager.sharedInstance.authToken = accessToken
+//            sharedAuth.credentialsSecureStorage.setString(accessToken, for: .Auth0Token)
+//        }
+//
+        // TODO: New API does not handle refreshToken yet
+        /*
+         if let refreshToken = credentials.refreshToken {
+         ostelcoAPI.refreshToken = refreshToken
+         }
+         */
+        // Send the FCM Token, if it is ready.
+        UIApplication.shared.typedDelegate.sendFCMToken()
+        
+        self.loadContext()
     }
     
     private func loadContext() {
