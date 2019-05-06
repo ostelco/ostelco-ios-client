@@ -47,33 +47,70 @@ open class LoggedInAPI: BasicNetwork {
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> Promise<[BundleModel]> {
-        return self.loadData(from: RootEndpoint.bundles.rawValue)
+        return self.loadData(from: RootEndpoint.bundles.value)
             .map { try self.decoder.decode([BundleModel].self, from: $0) }
+    }
+
+    /// - Returns: A promise which when fulfilled will contain the current context.
+    public func loadContext() -> Promise<Context> {
+        return self.loadData(from: RootEndpoint.context.value)
+            .map { try self.decoder.decode(Context.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> Promise<[PurchaseModel]> {
-        return self.loadData(from: RootEndpoint.purchases.rawValue)
+        return self.loadData(from: RootEndpoint.purchases.value)
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's proile model
     public func loadProfile() -> Promise<ProfileModel> {
-        return self.loadData(from: RootEndpoint.profile.rawValue)
+        return self.loadData(from: RootEndpoint.profile.value)
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> Promise<[ProductModel]> {
-        return self.loadData(from: RootEndpoint.products.rawValue)
+        return self.loadData(from: RootEndpoint.products.value)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
+    }
+    
+    // MARK: - Customer
+    
+    /// Creates a customer with the given data.
+    ///
+    /// - Parameter userSetup: The `UserSetup` to use.
+    /// - Returns: A promise which when fullfilled will contain the created customer model.
+    public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
+        return self.sendObject(userSetup, to: RootEndpoint.customer.value, method: .POST)
+            .map { data, response in
+                try APIHelper.validateResponse(data: data, response: response)
+            }
+            .map { try self.decoder.decode(CustomerModel.self, from: $0) }
+    }
+    
+    /// Deletes the logged in customer.
+    ///
+    /// - Returns: A promise which when fulfilled, indicates successful deletion.
+    public func deleteCustomer() -> Promise<Void> {
+        let request = Request(baseURL: self.baseURL,
+                              path: RootEndpoint.customer.value,
+                              method: .DELETE,
+                              loggedIn: true,
+                              secureStorage: self.secureStorage)
+        
+        return self.performValidatedRequest(request, dataCanBeEmpty: true)
+            .done { data in
+                let dataString = String(bytes: data, encoding: .utf8)
+                debugPrint("Delete customer response: \(String(describing: dataString))")
+            }
     }
     
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions() -> Promise<[RegionResponse]> {
-        return self.loadData(from: RootEndpoint.regions.rawValue)
+        return self.loadData(from: RootEndpoint.regions.value)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import JWTDecode
+import ostelco_core
 
 class GetStartedViewController: UIViewController {
     
@@ -28,31 +29,33 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        self.spinnerView = showSpinner(onView: self.view)
-        let email = self.getEmailFromJWT()
-        
-        if let email = email {
-            APIManager.sharedInstance.customer.withParam("nickname", nameTextField.text!).withParam("contactEmail", email).request(.post, json: [:])
-                .onSuccess({ data in
-                    if let customer: CustomerModel = data.typedContent(ifNone: nil) {
-                        OstelcoAnalytics.logEvent(.EnteredNickname)
-                        DispatchQueue.main.async {
-                            UserManager.sharedInstance.user = customer
-                            self.performSegue(withIdentifier: "showCountry", sender: self)
-                        }
-                    } else {
-                        self.showAlert(title: "Error", msg: "Something unexpected happened. Try again later.")
-                    }
-                })
-                .onFailure({ error in
-                    self.showAPIError(error: error)
-                })
-                .onCompletion({ _ in
-                    self.removeSpinner(self.spinnerView)
-                })
-        } else {
+        guard let email = self.getEmailFromJWT() else {
             self.showAlert(title: "Error", msg: "Email is empty or missing in claims")
+            return
         }
+        
+        guard let nickname = self.nameTextField.text else {
+            assertionFailure("No nickname but passed validation?!")
+            return
+        }
+        
+        self.spinnerView = self.showSpinner(onView: self.view)
+        let user = UserSetup(nickname: nickname, email: email)
+
+        APIManager.sharedInstance.loggedInAPI.createCustomer(with: user)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] customer in
+                OstelcoAnalytics.logEvent(.EnteredNickname)
+                UserManager.sharedInstance.user = customer
+                self?.performSegue(withIdentifier: "showCountry", sender: self)
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
 
     private func getEmailFromJWT() -> String? {

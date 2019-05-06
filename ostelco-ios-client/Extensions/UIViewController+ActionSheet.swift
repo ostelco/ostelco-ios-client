@@ -28,20 +28,21 @@ class NeedHelpAlertController: UIAlertController {
 func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAlertAction {
     let alertAction = UIAlertAction(title: title, style: .destructive) {_ in
         let spinnerView = vc.showSpinner(onView: vc.view)
-        APIManager.sharedInstance.customer.request(.delete)
-            .onSuccess { _ in
+        APIManager.sharedInstance.loggedInAPI.deleteCustomer()
+            .ensure { [weak vc] in
+                vc?.removeSpinner(spinnerView)
+            }
+            .done { [weak vc] in
                 sharedAuth.logout(callback: {
                     DispatchQueue.main.async {
-                        vc.perform(#selector(vc.showSplashScreen), with: nil, afterDelay: 0.5)
+                        vc?.showSplashScreen()
                     }
                 })
             }
-            .onFailure { requestError in
-                vc.showAPIError(error: requestError)
+            .catch { [weak vc] error in
+                ApplicationErrors.log(error)
+                vc?.showGenericError(error: error)
             }
-            .onCompletion { _ in
-                vc.removeSpinner(spinnerView)
-        }
     }
     
     return alertAction

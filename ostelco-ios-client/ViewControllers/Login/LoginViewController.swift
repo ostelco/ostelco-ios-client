@@ -68,91 +68,92 @@ class LoginViewController: UIViewController {
     }
     
     private func signInTapped() {
-        
         sharedAuth.loginWithAuth0().subscribe(
             onNext: { _ in
-                // TODO: Duplicated logic from SplashViewController
                 DispatchQueue.main.async {
-                    self.spinnerView = self.showSpinner(onView: self.view)
-                    APIManager.sharedInstance.context.load()
-                        .onSuccess({ data in
-                            if let context: Context = data.typedContent(ifNone: nil) {
-                                DispatchQueue.main.async {
-                                    UserManager.sharedInstance.user = context.customer
-                                }
-                                
-                                if let region = context.getRegion() {
-                                    DispatchQueue.main.async {
-                                        OnBoardingManager.sharedInstance.region = region
-                                        switch region.status {
-                                        case .PENDING:
-                                            if let jumio = region.kycStatusMap.JUMIO,
-                                                let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
-                                                let nricFin = region.kycStatusMap.NRIC_FIN {
-                                                switch (jumio, addressAndPhoneNumber, nricFin) {
-                                                case (.APPROVED, .APPROVED, .APPROVED):
-                                                    self.perform(#selector(self.showEKYCLastScreen), with: nil, afterDelay: 0.5)
-                                                case (.REJECTED, _, _):
-                                                    self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
-                                                case (.PENDING, .APPROVED, .APPROVED):
-                                                    self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                                default:
-                                                    self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
-                                                }
-                                            } else {
-                                                self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
-                                            }
-                                        case .APPROVED:
-                                            // TODO: Redirect based on sim profiles in region
-                                            if let simProfile = region.getSimProfile() {
-                                                switch simProfile.status {
-                                                // TODO: NOT_READY should probably send user to one of our error screens
-                                                case .AVAILABLE_FOR_DOWNLOAD, .NOT_READY:
-                                                    self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                                default:
-                                                    self.perform(#selector(self.showHome), with: nil, afterDelay: 0.5)
-                                                }
-                                            } else {
-                                                self.perform(#selector(self.showESim), with: nil, afterDelay: 0.5)
-                                            }
-                                        case .REJECTED:
-                                            self.perform(#selector(self.showEKYCOhNo), with: nil, afterDelay: 0.5)
-                                        }
-                                    }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
-                                    }
-                                }
-                            } else {
-                                preconditionFailure("Failed to parse user context from server response.")
-                            }
-                        })
-                        .onFailure({ error in
-                            if let statusCode = error.httpStatusCode {
-                                switch statusCode {
-                                case 404:
-                                    DispatchQueue.main.async {
-                                        self.perform(#selector(self.showSignUp), with: nil, afterDelay: 0.5)
-                                    }
-                                default:
-                                    preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
-                                }
-                            } else {
-                                preconditionFailure("Failed to fetch user context from server: \(error.userMessage)")
-                            }
-                        })
-                        .onCompletion({ _ in
-                            self.removeSpinner(self.spinnerView)
-                        })
+                    self.loadCustomer()
                 }
-        },
+            },
             onError: { error in
                 DispatchQueue.main.async {
                     self.handleLoginFailure(message: "\(error)")
                 }
-        })
+            })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func loadCustomer() {
+        self.spinnerView = self.showSpinner(onView: self.view)
+        
+        APIManager.sharedInstance.loggedInAPI.loadContext()
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] context in
+                UserManager.sharedInstance.user = context.customer
+                guard let region = context.getRegion() else {
+                    self?.showCountry()
+                    return
+                }
+                self?.handleRegionResponse(region)
+                
+            }
+            .catch { [weak self] error in
+                switch error {
+                case APIHelper.Error.invalidResponseCode(let code, _):
+                    if code == 404 {
+                        self?.showSignUp()
+                        return
+                    } // else, keep going.
+                default:
+                    break
+                }
+                
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
+    }
+
+    private func handleRegionResponse(_ region: RegionResponse) {
+        OnBoardingManager.sharedInstance.region = region
+        switch region.status {
+        case .PENDING:
+            if let jumio = region.kycStatusMap.JUMIO,
+                let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
+                let nricFin = region.kycStatusMap.NRIC_FIN {
+                switch (jumio, addressAndPhoneNumber, nricFin) {
+                case (.APPROVED, .APPROVED, .APPROVED):
+                    self.showEKYCLastScreen()
+                case (.REJECTED, _, _):
+                    self.showEKYCOhNo()
+                case (.PENDING, .APPROVED, .APPROVED):
+                    self.showESim()
+                default:
+                    self.showCountry()
+                }
+            } else {
+                self.showCountry()
+                self.perform(#selector(self.showCountry), with: nil, afterDelay: 0.5)
+            }
+        case .APPROVED:
+            // TODO: Redirect based on sim profiles in region
+            guard let simProfile = region.getSimProfile() else {
+                self.showESim()
+                return
+            }
+            
+            switch simProfile.status {
+            // TODO: NOT_READY should probably send user to one of our error screens
+            case .AVAILABLE_FOR_DOWNLOAD,
+                 .NOT_READY:
+                self.showESim()
+            default:
+                self.showHome()
+            }
+        case .REJECTED:
+            self.showEKYCOhNo()
+        }
     }
     
     @objc private func showCountry() {

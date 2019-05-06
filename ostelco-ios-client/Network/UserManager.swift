@@ -7,6 +7,7 @@
 //
 
 import Crashlytics
+import ostelco_core
 
 class UserManager {
     static let sharedInstance = UserManager()
