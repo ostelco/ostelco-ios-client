@@ -7,12 +7,13 @@
 //
 
 import Crashlytics
+import FirebaseAuth
+import FirebaseUI
 import ostelco_core
 
 class UserManager {
     static let sharedInstance = UserManager()
     
-    var authToken: String?
     var user: CustomerModel? {
         didSet {
             guard let user = self.user else {
@@ -37,5 +38,13 @@ class UserManager {
     
     func clear() {
         authToken = nil
+    }
+    
+    private var firebaseUser: FirebaseAuth.User? {
+        return FirebaseAuth.Auth.auth().currentUser
+    }
+    
+    var currentUserEmail: String? {
+        return self.firebaseUser?.email
     }
 }

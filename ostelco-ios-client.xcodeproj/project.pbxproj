@@ -81,8 +81,6 @@
 		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
 		04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
-		04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
-		04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */; };
 		04834D7E2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
 		04834D7F2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
 		0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
@@ -397,7 +395,6 @@
 		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
-		04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JWT+EmailClaim.swift"; sourceTree = "<group>"; };
 		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeAMemberViewController.swift; sourceTree = "<group>"; };
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -1017,7 +1014,6 @@
 		C2F6A3C4224E087900AF5087 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				04834D7A2237D2CB00A01500 /* JWT+EmailClaim.swift */,
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
@@ -1800,7 +1796,6 @@
 				043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
-				04834D7B2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
@@ -1990,7 +1985,6 @@
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
 				9B82158A2279FDCC00DC6B64 /* CredentialSecureStorage.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
-				04834D7C2237D2CB00A01500 /* JWT+EmailClaim.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,

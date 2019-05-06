@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JWTDecode
 import ostelco_core
 
 class GetStartedViewController: UIViewController {
@@ -29,8 +28,8 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let email = self.getEmailFromJWT() else {
-            self.showAlert(title: "Error", msg: "Email is empty or missing in claims")
+        guard let email = UserManager.sharedInstance.currentUserEmail else {
+            self.showAlert(title: "Error", msg: "Email is empty or missing in Firebase")
             return
         }
         
@@ -56,18 +55,6 @@ class GetStartedViewController: UIViewController {
                 ApplicationErrors.log(error)
                 self?.showGenericError(error: error)
             }
-    }
-
-    private func getEmailFromJWT() -> String? {
-        do {
-            let jwt = try decode(jwt: UserManager.sharedInstance.authToken!)
-            if let email = jwt.email {
-                return email
-            }
-        } catch {
-            self.showGenericError(error: error)
-        }
-        return nil
     }
 }
 
