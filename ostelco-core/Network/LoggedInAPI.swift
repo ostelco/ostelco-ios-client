@@ -89,6 +89,23 @@ open class LoggedInAPI: BasicNetwork {
             .map { try self.decoder.decode(CustomerModel.self, from: $0) }
     }
     
+    /// Deletes the logged in customer.
+    ///
+    /// - Returns: A promise which when fulfilled, indicates successful deletion.
+    public func deleteCustomer() -> Promise<Void> {
+        let request = Request(baseURL: self.baseURL,
+                              path: RootEndpoint.customer.value,
+                              method: .DELETE,
+                              loggedIn: true,
+                              secureStorage: self.secureStorage)
+        
+        return self.performValidatedRequest(request, dataCanBeEmpty: true)
+            .done { data in
+                let dataString = String(bytes: data, encoding: .utf8)
+                debugPrint("Delete customer response: \(String(describing: dataString))")
+            }
+    }
+    
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
