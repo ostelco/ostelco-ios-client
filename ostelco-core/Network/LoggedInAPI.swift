@@ -47,31 +47,31 @@ open class LoggedInAPI: BasicNetwork {
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> Promise<[BundleModel]> {
-        return self.loadData(from: RootEndpoint.bundles.rawValue)
+        return self.loadData(from: RootEndpoint.bundles.value)
             .map { try self.decoder.decode([BundleModel].self, from: $0) }
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
     public func loadContext() -> Promise<Context> {
-        return self.loadData(from: RootEndpoint.context.rawValue)
+        return self.loadData(from: RootEndpoint.context.value)
             .map { try self.decoder.decode(Context.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> Promise<[PurchaseModel]> {
-        return self.loadData(from: RootEndpoint.purchases.rawValue)
+        return self.loadData(from: RootEndpoint.purchases.value)
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's proile model
     public func loadProfile() -> Promise<ProfileModel> {
-        return self.loadData(from: RootEndpoint.profile.rawValue)
+        return self.loadData(from: RootEndpoint.profile.value)
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> Promise<[ProductModel]> {
-        return self.loadData(from: RootEndpoint.products.rawValue)
+        return self.loadData(from: RootEndpoint.products.value)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
     
@@ -82,7 +82,7 @@ open class LoggedInAPI: BasicNetwork {
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
     public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
-        return self.sendObject(userSetup, to: RootEndpoint.customer.rawValue, method: .POST)
+        return self.sendObject(userSetup, to: RootEndpoint.customer.value, method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
             }
@@ -110,7 +110,7 @@ open class LoggedInAPI: BasicNetwork {
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions() -> Promise<[RegionResponse]> {
-        return self.loadData(from: RootEndpoint.regions.rawValue)
+        return self.loadData(from: RootEndpoint.regions.value)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
     
