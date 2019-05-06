@@ -133,6 +133,7 @@
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
 		9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
+		9B5CBF3B22803A9A00D83D7B /* UserSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
@@ -450,6 +451,7 @@
 		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
+		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
 		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
 		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
@@ -876,6 +878,7 @@
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
 				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
+				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1810,6 +1813,7 @@
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9B82158C227A2F4100DC6B64 /* APIEndpoint.swift in Sources */,
+				9B5CBF3B22803A9A00D83D7B /* UserSetup.swift in Sources */,
 				9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,

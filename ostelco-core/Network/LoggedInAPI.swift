@@ -69,6 +69,22 @@ open class LoggedInAPI: BasicNetwork {
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
     
+    // MARK: - Customer
+    
+    /// Creates a customer with the given data.
+    ///
+    /// - Parameter userSetup: The `UserSetup` to use.
+    /// - Returns: A promise which when fullfilled will contain the created customer model.
+    public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
+        return self.sendObject(userSetup, to: RootEndpoint.customer.rawValue, method: .POST)
+            .map { data, response in
+                try APIHelper.validateResponse(data: data, response: response)
+            }
+            .map { data in
+                try self.decoder.decode(CustomerModel.self, from: data)
+            }
+    }
+    
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
