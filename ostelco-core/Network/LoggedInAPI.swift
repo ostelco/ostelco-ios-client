@@ -50,6 +50,12 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: RootEndpoint.bundles.rawValue)
             .map { try self.decoder.decode([BundleModel].self, from: $0) }
     }
+
+    /// - Returns: A promise which when fulfilled will contain the current context.
+    public func loadContext() -> Promise<Context> {
+        return self.loadData(from: RootEndpoint.context.rawValue)
+            .map { try self.decoder.decode(Context.self, from: $0) }
+    }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> Promise<[PurchaseModel]> {
@@ -80,9 +86,7 @@ open class LoggedInAPI: BasicNetwork {
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
             }
-            .map { data in
-                try self.decoder.decode(CustomerModel.self, from: data)
-            }
+            .map { try self.decoder.decode(CustomerModel.self, from: $0) }
     }
     
     // MARK: - Regions
