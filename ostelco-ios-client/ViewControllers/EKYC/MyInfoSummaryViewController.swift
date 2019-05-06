@@ -6,6 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import ostelco_core
 import UIKit
 
 class MyInfoSummaryViewController: UIViewController {
@@ -24,29 +25,28 @@ class MyInfoSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         debugPrint("Query Items: \(String(describing: myInfoQueryItems))")
-        spinnerView = self.showSpinner(onView: self.view)
-        if let code = getMyInfoCode() {
-            print("Code = \(code)")
-            APIManager.sharedInstance.regions.child("/sg/kyc/myInfo").child(code).load()
-                .onSuccess { entity in
-                    DispatchQueue.main.async {
-                        if let myInfoDetails: MyInfoDetails = entity.typedContent(ifNone: nil) {
-                            self.myInfoDetails = myInfoDetails
-                            self.updateUI(myInfoDetails)
-                        }
-                        self.removeSpinner(self.spinnerView)
-                    }
-                }
-                .onFailure { error in
-                    DispatchQueue.main.async {
-                        self.removeSpinner(self.spinnerView)
-                        self.showAPIError(error: error)
-                    }
-            }
+        self.spinnerView = self.showSpinner(onView: self.view)
+        
+        guard let code = getMyInfoCode() else {
+            return
         }
+        
         //TODO: Pass the code we retrieved to PRIME
-        //TODO: Get the address & phone number form PRIME
-        // updateUI(MyInfoDetails.testInfo) // TODO: Remove this when API is stable.
+        debugPrint("Code = \(code)")
+        APIManager.sharedInstance.loggedInAPI
+            .loadSingpassInfo(code: code)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] myInfoDetails in
+                self?.myInfoDetails = myInfoDetails
+                self?.updateUI(myInfoDetails)
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
     
     private func getMyInfoCode() -> String? {

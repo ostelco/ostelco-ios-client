@@ -6,15 +6,13 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
-import Stripe
-import Siesta
 import ostelco_core
 import OstelcoStyles
+import PromiseKit
+import UIKit
 
 class HomeViewController: ApplePayViewController {
 
-    var paymentError: RequestError?
     var availableProducts: [Product] = []
 
     @IBOutlet private weak var balanceLabel: DataAmountOnHomeLabel!
@@ -40,6 +38,12 @@ class HomeViewController: ApplePayViewController {
             }
         }
     }
+    
+    private lazy var byteCountFormatter: ByteCountFormatter = {
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .binary
+        return formatter
+    }()
 
     private func showWelcomeMessage() {
         welcomeLabel.isHidden = false
@@ -77,19 +81,22 @@ class HomeViewController: ApplePayViewController {
     }
 
     private func fetchProducts() {
-        getProducts { products, error in
-            self.availableProducts = products
-            if let error = error {
-                debugPrint("error fetching products \(error)")
-            } else if products.isEmpty {
-                debugPrint("No products available")
+        getProducts()
+            .done { [weak self] products in
+                products.forEach { debugPrint($0) }
+                guard let self = self else {
+                    return
+                }
+                
+                self.availableProducts = products
+                // Check if the customer is a member already.
+                self.hasSubscription = self.checkForSubscription(products)
+                // TODO: Remove this after the subscription purchase is implemented
+                self.hasSubscription = false
             }
-            self.availableProducts.forEach {debugPrint($0.name, $0.amount, $0.currency, $0.country, $0.sku)}
-            // Check if the customer is a member already.
-            self.hasSubscription = self.checkForSubscription(products)
-            // TODO: Remove this after the subscription purchase is implemented
-            self.hasSubscription = false
-        }
+            .catch { error in
+                debugPrint("error fetching products \(error)")
+            }
     }
 
     override func paymentSuccessful(_ product: Product?) {
@@ -101,17 +108,20 @@ class HomeViewController: ApplePayViewController {
         // Hide the Message on top
         welcomeLabel.isHidden = true
         messageLabel.isHidden = true
+        
         // Call the bundles API
-        getBundles { bundles, _ in
-            if let bundle = bundles.first {
-                let formatter: ByteCountFormatter = ByteCountFormatter()
-                formatter.countStyle = .binary
-                let formattedBalance = formatter.string(fromByteCount: bundle.balance)
-                self.balanceLabel.text = formattedBalance
+        APIManager.sharedInstance.loggedInAPI
+            .loadBundles()
+            .ensure { [weak self] in
+                self?.refreshControl.endRefreshing()
             }
-            print(bundles)
-            self.refreshControl.endRefreshing()
-        }
+            .done { [weak self] bundles in
+                debugPrint(bundles)
+                self?.updateBalance(from: bundles)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
@@ -125,7 +135,15 @@ class HomeViewController: ApplePayViewController {
         }
     }
 
-    // Shows the list of products in a sheet
+    private func updateBalance(from bundles: [BundleModel]) {
+        guard let bundle = bundles.first else {
+            return
+        }
+        
+        let formattedBalance = self.byteCountFormatter.string(fromByteCount: bundle.balance)
+        self.balanceLabel.text = formattedBalance
+    }
+    
     private func showProductListActionSheet(products: [Product]) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
@@ -137,23 +155,5 @@ class HomeViewController: ApplePayViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertCtrl.addAction(cancelAction)
         present(alertCtrl, animated: true, completion: nil)
-    }
-
-    func getBundles(completionHandler: @escaping ([BundleModel], Error?) -> Void) {
-        APIManager.sharedInstance.bundles.load()
-            .onSuccess { entity in
-                DispatchQueue.main.async {
-                    if let bundles: [BundleModel] = entity.typedContent(ifNone: nil) {
-                        completionHandler(bundles, nil)
-                    } else {
-                        completionHandler([], nil)
-                    }
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    completionHandler([], error)
-                }
-        }
     }
 }

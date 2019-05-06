@@ -8,6 +8,7 @@
 
 import UIKit
 import PassKit
+import PromiseKit
 import Stripe
 import Siesta
 
@@ -22,13 +23,20 @@ class BecomeAMemberViewController: ApplePayViewController {
         super.viewDidLoad()
         setupPaymentButton()
         let spinnerView: UIView = showSpinner(onView: view)
-        getProducts { products, error in
-            self.removeSpinner(spinnerView)
-            if let error = error {
+        getProducts()
+            .ensure { [weak self] in
+                self?.removeSpinner(spinnerView)
+            }
+            .done { [weak self] products in
+                guard let self = self else {
+                    return
+                }
+                
+                self.plan = self.getFirstPlan(products)
+            }
+            .catch { error in
                 ApplicationErrors.log(error)
             }
-            self.plan = self.getFirstPlan(products)
-        }
     }
 
     private func getFirstPlan(_ products: [Product]) -> Product? {

@@ -6,9 +6,8 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
-import Siesta
 import ostelco_core
+import UIKit
 
 class PurchaseHistoryTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var date: UILabel!
@@ -34,18 +33,23 @@ class PucrhaseHistoryTableViewController: UITableViewController {
     }
 
     @objc func didPullToRefresh() {
-        getPurchases { purchases, error in
-            self.tableView.refreshControl?.endRefreshing()
-            if let error = error {
-                debugPrint("error fetching purchases \(error)")
-                // TODO: Notify user about this error.
-            } else if purchases.isEmpty {
-                debugPrint("No purchases available")
-                // TODO: Show a message for empty purchase list.
+        APIManager.sharedInstance.loggedInAPI
+            .loadPurchases()
+            .map { purchaseModels -> [PurchaseRecord] in
+                let sortedPurchases = purchaseModels.sorted { $0.timestamp > $1.timestamp }
+                return sortedPurchases.map { PurchaseRecord(from: $0) }
             }
-            self.records = purchases
-            self.tableView.reloadData()
-        }
+            .ensure { [weak self] in
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+            .done { [weak self] purchaseRecords in
+                self?.records = purchaseRecords
+                self?.tableView.reloadData()
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+                // TODO: Notify user about this error.
+            }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,26 +66,6 @@ class PucrhaseHistoryTableViewController: UITableViewController {
             return purchaseCell
         } else {
             return cell
-        }
-    }
-
-    func getPurchases(completionHandler: @escaping ([PurchaseRecord], Error?) -> Void) {
-        APIManager.sharedInstance.purchases.load()
-            .onSuccess { entity in
-                DispatchQueue.main.async {
-                    if let purchases: [PurchaseModel] = entity.typedContent(ifNone: nil) {
-                        let sortedPurchases = purchases.sorted { $0.timestamp > $1.timestamp }
-                        let records = sortedPurchases.map { PurchaseRecord(from: $0) }
-                        completionHandler(records, nil)
-                    } else {
-                        completionHandler([], nil)
-                    }
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    completionHandler([], error)
-                }
         }
     }
 }

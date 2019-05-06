@@ -42,27 +42,23 @@ class PendingVerificationViewController: UIViewController {
     func checkVerificationStatus(silentCheck: Bool = false) {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         let spinnerView = showSpinner(onView: self.view)
-        APIManager.sharedInstance.regions.child(countryCode).load()
-            .onSuccess { data in
-                if let regionResponse: RegionResponse = data.typedContent(ifNone: nil) {
-                    // if let regionRespons.kycStatusMap.NR
-                    switch regionResponse.status {
-                    case .APPROVED:
-                        self.handleRegionApproved()
-                    default:
-                        self.handleRegionPendingOrRejected(silentCheck: silentCheck, regionResponse: regionResponse)
-                    }
-                } else {
-                    // TODO: Need to figure out what error code we should pass to generic error screen here
-                    self.showGenericOhNo()
+        APIManager.sharedInstance.loggedInAPI
+            .loadRegion(code: countryCode)
+            .ensure { [weak self] in
+                self?.removeSpinner(spinnerView)
+            }
+            .done { [weak self] regionResponse in
+                switch regionResponse.status {
+                case .APPROVED:
+                    self?.handleRegionApproved()
+                default:
+                    self?.handleRegionPendingOrRejected(silentCheck: silentCheck, regionResponse: regionResponse)
                 }
             }
-            .onFailure { error in
-                self.showAPIError(error: error)
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
             }
-            .onCompletion { _ in
-                self.removeSpinner(spinnerView)
-        }
     }
     
     func handleRegionApproved() {

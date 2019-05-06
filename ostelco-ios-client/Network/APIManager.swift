@@ -33,8 +33,6 @@ class APIManager: Service {
     var products: Resource { return resource("/products") }
     var context: Resource { return resource("/context") }
     var regions: Resource { return resource("/regions") }
-    var bundles: Resource { return resource("/bundles") }
-    var purchases: Resource { return resource("/purchases") }
 
     fileprivate init() {
         let networking = URLSessionConfiguration.ephemeral
@@ -57,45 +55,12 @@ class APIManager: Service {
         configureTransformer("/regions/*/kyc/jumio/scans") {
             try self.jsonDecoder.decode(Scan.self, from: $0.content)
         }
-        
-        configureTransformer("/regions/sg/kyc/myInfo/*") {
-            try self.jsonDecoder.decode(MyInfoDetails.self, from: $0.content)
-        }
-        
-        configureTransformer("/regions/*/simProfiles", requestMethods: [.get]) {
-            try self.jsonDecoder.decode([SimProfile].self, from: $0.content)
-        }
-        
         configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
             try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
         }
         
-        self.configure("/reginos/*/simProfiles") {
-            $0.expirationTime = 5
-        }
-        
-        configureTransformer("/regions/*") {
-            try self.jsonDecoder.decode(RegionResponse.self, from: $0.content)
-        }
-        
-        configureTransformer("/regions") {
-            try self.jsonDecoder.decode([RegionResponse].self, from: $0.content)
-        }
-        
         configureTransformer("/context") {
             try self.jsonDecoder.decode(Context.self, from: $0.content)
-        }
-
-        configureTransformer("/products") {
-            try self.jsonDecoder.decode([ProductModel].self, from: $0.content)
-        }
-
-        configureTransformer("/bundles") {
-            try self.jsonDecoder.decode([BundleModel].self, from: $0.content)
-        }
-
-        configureTransformer("/purchases") {
-            try self.jsonDecoder.decode([PurchaseModel].self, from: $0.content)
         }
     }
 }

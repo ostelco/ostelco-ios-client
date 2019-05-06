@@ -76,6 +76,33 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: RootEndpoint.regions.rawValue)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
+    
+    /// Loads the region response for the specified region
+    ///
+    /// - Parameter code: The region to request
+    /// - Returns: A promise which when fulfilled contains the requested region.
+    public func loadRegion(code: String) -> Promise<RegionResponse> {
+        let path = RootEndpoint.regions.pathByAddingEndpoints([RegionEndpoint.region(code: code)])
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(RegionResponse.self, from: $0) }
+    }
+    
+    /// Loads the SIM profiles for the specified region
+    ///
+    /// - Parameter code: The region to request SIM profiles for
+    /// - Returns: A promise which when fullfilled contains the requested profiles
+    public func loadSimProfilesForRegion(code: String) -> Promise<[SimProfile]> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .simProfiles
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode([SimProfile].self, from: $0) }
+    }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> Promise<RegionResponse> {
@@ -148,6 +175,26 @@ open class LoggedInAPI: BasicNetwork {
                 }
             }
     }
+    
+    /// Loads details based on a SingPass sign in (singapore only!)
+    ///
+    /// - Parameter code: The code associated with the user in SingPass
+    /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoDetails`.
+    public func loadSingpassInfo(code: String) -> Promise<MyInfoDetails> {
+        let myInfoEndpoints: [RegionEndpoint] = [
+            .region(code: "sg"),
+            .kyc,
+            .myInfo,
+            .myInfoCode(code: code)
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(myInfoEndpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(MyInfoDetails.self, from: $0) }
+    }
+    
+    // MARK: - General
     
     /// Loads arbitrary data from a path based on the base URL, then validates
     /// that the response is valid.

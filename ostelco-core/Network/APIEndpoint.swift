@@ -41,6 +41,8 @@ public enum RegionEndpoint: APIEndpoint {
     case dave
     case jumio
     case kyc
+    case myInfo
+    case myInfoCode(code: String)
     case nric(number: String)
     case region(code: String)
     case profile
@@ -54,10 +56,14 @@ public enum RegionEndpoint: APIEndpoint {
             return "dave"
         case .jumio:
             return "jumio"
-        case .nric(let number):
-            return number
         case .kyc:
             return "kyc"
+        case .myInfo:
+            return "myInfo"
+        case .myInfoCode(let code):
+            return code
+        case .nric(let number):
+            return number
         case .region(let code):
             return code
         case .profile:
