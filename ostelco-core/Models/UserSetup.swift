@@ -9,8 +9,8 @@
 import Foundation
 
 public struct UserSetup: Codable {
-    let nickname: String
-    let contactEmail: String
+    public let nickname: String
+    public let contactEmail: String
     
     public init(nickname: String,
                 email: String) {
