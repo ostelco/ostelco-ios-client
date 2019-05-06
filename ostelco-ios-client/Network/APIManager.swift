@@ -29,9 +29,7 @@ class APIManager: Service {
         }
     }
     
-    var customer: Resource { return resource("/customer") }
     var products: Resource { return resource("/products") }
-    var context: Resource { return resource("/context") }
     var regions: Resource { return resource("/regions") }
 
     fileprivate init() {
@@ -48,19 +46,11 @@ class APIManager: Service {
             $0.headers["Authorization"] = self.authHeader
         }
         
-        configureTransformer("/customer", requestMethods: [.get, .post, .put]) {
-            try self.jsonDecoder.decode(CustomerModel.self, from: $0.content)
-        }
-        
         configureTransformer("/regions/*/kyc/jumio/scans") {
             try self.jsonDecoder.decode(Scan.self, from: $0.content)
         }
         configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
             try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
-        }
-        
-        configureTransformer("/context") {
-            try self.jsonDecoder.decode(Context.self, from: $0.content)
         }
     }
 }
