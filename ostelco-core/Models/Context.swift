@@ -6,13 +6,11 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import ostelco_core
-
-struct Context: Codable {
-    let customer: CustomerModel?
-    let regions: [RegionResponse]
+public struct Context: Codable {
+    public let customer: CustomerModel?
+    public let regions: [RegionResponse]
     
-    func getRegion() -> RegionResponse? {
+    public func getRegion() -> RegionResponse? {
         return RegionResponse.getRegionFromRegionResponseArray(regions)
     }
 }

@@ -29,8 +29,6 @@
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		0437CF80224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		0437CF81224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
-		0437CF89224D3B380022A2B8 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
-		0437CF8A224D3B380022A2B8 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E71112239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
@@ -134,6 +132,7 @@
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
 		9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		9B5CBF3B22803A9A00D83D7B /* UserSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */; };
+		9B5CBF3C22803D3300D83D7B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
@@ -747,7 +746,6 @@
 		047F29302224589900FC6A8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0437CF88224D3B380022A2B8 /* Context.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
@@ -866,6 +864,7 @@
 			isa = PBXGroup;
 			children = (
 				0448819D217B4E4E00F59758 /* BundleModel.swift */,
+				0437CF88224D3B380022A2B8 /* Context.swift */,
 				043E711D223AF61600E01993 /* Country.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
 				9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */,
@@ -1725,7 +1724,6 @@
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
-				0437CF89224D3B380022A2B8 /* Context.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -1832,6 +1830,7 @@
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
 				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
+				9B5CBF3C22803D3300D83D7B /* Context.swift in Sources */,
 				9B821590227AD6D200DC6B64 /* EKYCAddress.swift in Sources */,
 				9B82159C227B254B00DC6B64 /* JSONRequestError.swift in Sources */,
 				9B82159B227B225400DC6B64 /* String+Static.swift in Sources */,
@@ -1881,7 +1880,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
-				0437CF8A224D3B380022A2B8 /* Context.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BE2D452225B609100B51999 /* TopUpButton.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
