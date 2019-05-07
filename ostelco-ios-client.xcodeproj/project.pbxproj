@@ -40,7 +40,6 @@
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */; };
@@ -259,7 +258,6 @@
 		C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
@@ -364,7 +362,6 @@
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04488177217924B800F59758 /* Production.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
-		04488198217B42C200F59758 /* OstelcoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAPI.swift; sourceTree = "<group>"; };
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
@@ -724,9 +721,8 @@
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
-				04488198217B42C200F59758 /* OstelcoAPI.swift */,
-				04834D7D2237D53700A01500 /* UserManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
+				04834D7D2237D53700A01500 /* UserManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1754,7 +1750,6 @@
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
-				04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
@@ -1913,7 +1908,6 @@
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
-				C29802AD2181EDA800FBC5C3 /* OstelcoAPI.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
