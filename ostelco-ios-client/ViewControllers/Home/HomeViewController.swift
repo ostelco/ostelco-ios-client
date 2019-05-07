@@ -11,7 +11,10 @@ import OstelcoStyles
 import PromiseKit
 import UIKit
 
+
 class HomeViewController: ApplePayViewController {
+
+    static var newSubscriber = false
 
     var availableProducts: [Product] = []
 
@@ -46,11 +49,13 @@ class HomeViewController: ApplePayViewController {
     }()
 
     private func showWelcomeMessage() {
-        welcomeLabel.isHidden = false
-        messageLabel.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-            self?.welcomeLabel.isHidden = true
-            self?.messageLabel.isHidden = true
+        if HomeViewController.newSubscriber {
+            welcomeLabel.isHidden = false
+            messageLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                self?.welcomeLabel.isHidden = true
+                self?.messageLabel.isHidden = true
+            }
         }
     }
 
