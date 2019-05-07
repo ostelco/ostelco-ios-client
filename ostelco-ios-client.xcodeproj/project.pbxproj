@@ -39,6 +39,8 @@
 		043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
 		043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
 		043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
+		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
+		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
@@ -366,6 +368,7 @@
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		043E7120223AFFA800E01993 /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
 		043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+CountryListActionSheet.swift"; sourceTree = "<group>"; };
+		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04488172217924B800F59758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -752,6 +755,7 @@
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
+				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1778,6 +1782,7 @@
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
+				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
@@ -1937,6 +1942,7 @@
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
+				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
