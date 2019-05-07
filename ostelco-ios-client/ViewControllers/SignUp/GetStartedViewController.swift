@@ -48,7 +48,7 @@ class GetStartedViewController: UIViewController {
             }
             .done { [weak self] customer in
                 OstelcoAnalytics.logEvent(.EnteredNickname)
-                UserManager.sharedInstance.user = customer
+                UserManager.sharedInstance.customer = customer
                 self?.performSegue(withIdentifier: "showCountry", sender: self)
             }
             .catch { [weak self] error in

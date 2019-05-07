@@ -13,8 +13,8 @@
 		041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */; };
 		041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */; };
 		041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */; };
-		041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */; };
-		041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */; };
+		041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */; };
+		041216AA222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */; };
 		041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
 		041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
 		041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
@@ -346,7 +346,7 @@
 		0412168B2226BBBA00455278 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
 		041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAuthorizationStatusExtensions.swift; sourceTree = "<group>"; };
-		041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountryOnBoardingViewController.swift; sourceTree = "<group>"; };
+		041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCountryOnBoardingViewController.swift; sourceTree = "<group>"; };
 		041216AB2228195600455278 /* ChooseCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountryViewController.swift; sourceTree = "<group>"; };
 		041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationAccessViewController.swift; sourceTree = "<group>"; };
 		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
@@ -679,10 +679,10 @@
 			isa = PBXGroup;
 			children = (
 				041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */,
-				041216A8222817EC00455278 /* ChooseCountryOnBoardingViewController.swift */,
 				041216AB2228195600455278 /* ChooseCountryViewController.swift */,
 				043E7120223AFFA800E01993 /* CountriesTableViewController.swift */,
 				9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */,
+				041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */,
 			);
 			path = Country;
 			sourceTree = "<group>";
@@ -1795,7 +1795,7 @@
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
-				041216A9222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
 				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
@@ -1979,7 +1979,7 @@
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
-				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
+				041216AA222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,

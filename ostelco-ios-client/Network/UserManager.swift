@@ -34,9 +34,9 @@ class UserManager: NSObject {
         return authUI
     }()
     
-    var user: CustomerModel? {
+    var customer: CustomerModel? {
         didSet {
-            guard let user = self.user else {
+            guard let customer = self.customer else {
                 Freshchat.sharedInstance().resetUser(completion: { () in
                     //Completion code
                 })
@@ -44,15 +44,15 @@ class UserManager: NSObject {
                 return
             }
             
-            Freshchat.sharedInstance().identifyUser(withExternalID: user.id, restoreID: nil)
+            Freshchat.sharedInstance().identifyUser(withExternalID: customer.id, restoreID: nil)
             let fcUser = FreshchatUser.sharedInstance()
-            fcUser?.firstName = user.name
-            fcUser?.email = user.email
+            fcUser?.firstName = customer.name
+            fcUser?.email = customer.email
             Freshchat.sharedInstance().setUser(fcUser)
             
-            Crashlytics.sharedInstance().setUserIdentifier(user.id)
-            Crashlytics.sharedInstance().setUserName(user.name)
-            Crashlytics.sharedInstance().setUserEmail(user.email)
+            Crashlytics.sharedInstance().setUserIdentifier(customer.id)
+            Crashlytics.sharedInstance().setUserName(customer.name)
+            Crashlytics.sharedInstance().setUserEmail(customer.email)
         }
     }
     

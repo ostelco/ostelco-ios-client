@@ -26,7 +26,7 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     }
     
     private func setTitle() {
-        if let user = UserManager.sharedInstance.user {
+        if let user = UserManager.sharedInstance.customer {
             titleLabel.text = "Hi \(user.name)!"
         }
     }
