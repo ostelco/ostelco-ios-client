@@ -26,16 +26,16 @@
                                         <rect key="frame" x="57.5" y="230.5" width="260" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Me-PfP">
-                                                <rect key="frame" x="47.5" y="0.0" width="165" height="115"/>
+                                                <rect key="frame" x="51" y="0.0" width="158" height="115"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-5F-Y8h" customClass="DataAmountOnHomeLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="158" height="100.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="84"/>
                                                         <color key="textColor" name="PeacockBlue"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-S7-EM7">
-                                                        <rect key="frame" x="71.5" y="100.5" width="22.5" height="14.5"/>
+                                                        <rect key="frame" x="68" y="100.5" width="22.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="PeacockBlue"/>
                                                         <nil key="highlightedColor"/>
@@ -73,13 +73,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now buy data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-5o-vGa">
-                                                <rect key="frame" x="19" y="25" width="142" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now buy data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-5o-vGa">
+                                                <rect key="frame" x="0.0" y="25" width="180.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Qse-5o-vGa" firstAttribute="trailing" secondItem="qkc-rS-fv8" secondAttribute="trailing" id="lik-06-rJp"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>

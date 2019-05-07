@@ -11,7 +11,10 @@ import OstelcoStyles
 import PromiseKit
 import UIKit
 
+
 class HomeViewController: ApplePayViewController {
+
+    static var newSubscriber = false
 
     var availableProducts: [Product] = []
 
@@ -46,17 +49,20 @@ class HomeViewController: ApplePayViewController {
     }()
 
     private func showWelcomeMessage() {
-        welcomeLabel.isHidden = false
-        messageLabel.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-            self?.welcomeLabel.isHidden = true
-            self?.messageLabel.isHidden = true
+        if HomeViewController.newSubscriber {
+            welcomeLabel.isHidden = false
+            messageLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                self?.welcomeLabel.isHidden = true
+                self?.messageLabel.isHidden = true
+            }
         }
     }
 
     private func checkForSubscription(_ products: [Product]) -> Bool {
         // See if the list contains offers.
-        let hasOffers = products.contains { $0.type == "offer" }
+        // TODO: Changes needed to support global app.
+        let hasOffers = products.contains { $0.type != "plan" && $0.currency.lowercased() == "sgd" }
         // If we have offers, user is already a member
         return hasOffers
     }
@@ -91,8 +97,7 @@ class HomeViewController: ApplePayViewController {
                 self.availableProducts = products
                 // Check if the customer is a member already.
                 self.hasSubscription = self.checkForSubscription(products)
-                // TODO: Remove this after the subscription purchase is implemented
-                self.hasSubscription = false
+                debugPrint("User has subscription ? \(self.hasSubscription)")
             }
             .catch { error in
                 debugPrint("error fetching products \(error)")
@@ -129,8 +134,6 @@ class HomeViewController: ApplePayViewController {
             // TODO: Should we show the plans here ?
             showProductListActionSheet(products: self.availableProducts)
         } else {
-            // TODO: Remove this after the subscription purchase is implemented
-            hasSubscription = true
             performSegue(withIdentifier: "becomeMember", sender: self)
         }
     }
