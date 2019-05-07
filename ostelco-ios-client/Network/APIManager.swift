@@ -17,9 +17,8 @@ class APIManager: Service {
     
     lazy var loggedInAPI: LoggedInAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)
-        let auth0Storage = sharedAuth.credentialsSecureStorage
         return LoggedInAPI(baseURL: baseURLString,
-                           secureStorage: auth0Storage)
+                           tokenProvider: self.tokenProvider)
     }()
     
     var authHeader: String? {
@@ -29,10 +28,10 @@ class APIManager: Service {
         }
     }
     
-    private(set) lazy var secureStorage: SecureStorage = KeychainWrapper(appBundleID: Bundle.main.bundleIdentifier!)
-    
     var products: Resource { return resource("/products") }
     var regions: Resource { return resource("/regions") }
+    
+    var tokenProvider: TokenProvider = UserManager.sharedInstance
 
     fileprivate init() {
         let networking = URLSessionConfiguration.ephemeral

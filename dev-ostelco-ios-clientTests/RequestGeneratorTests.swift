@@ -20,17 +20,13 @@ class RequestGeneratorTests: XCTestCase {
         return url
     }()
     
-    private lazy var storage: SecureStorage = {
-        let storage = MockSecureStorage()
-        storage.setString("Testing!", for: .Auth0Token)
-        return storage
-    }()
+    private lazy var testToken = "Testing!"
     
     func testBasicInitializationGivesAGetRequest() throws {
         let request = Request(baseURL: self.baseURL,
                               path: "test",
                               loggedIn: false,
-                              secureStorage: self.storage)
+                              token: self.testToken)
         
         let urlRequest = try request.toURLRequest()
         XCTAssertEqual(urlRequest.url?.absoluteString, "https://www.test.nl/api/test")
@@ -51,7 +47,7 @@ class RequestGeneratorTests: XCTestCase {
                               path: "data",
                               method: .PUT,
                               loggedIn: true,
-                              secureStorage: self.storage)
+                              token: self.testToken)
         request.bodyData = data
         
         let urlRequest = try request.toURLRequest()
@@ -79,7 +75,7 @@ class RequestGeneratorTests: XCTestCase {
         var request = Request(baseURL: self.baseURL,
                               path: "additional/headers",
                               loggedIn: true,
-                              secureStorage: self.storage)
+                              token: self.testToken)
         request.additionalHeaders = [ .contentType: .testing("TEST") ]
         
         let urlRequest = try request.toURLRequest()

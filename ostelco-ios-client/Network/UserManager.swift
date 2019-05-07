@@ -10,8 +10,13 @@ import Crashlytics
 import FirebaseAuth
 import FirebaseUI
 import ostelco_core
+import PromiseKit
 
 class UserManager: NSObject {
+    enum Error: Swift.Error {
+        case noFirebaseUser
+    }
+    
     static let sharedInstance = UserManager()
     
     private(set) lazy var authUI: FUIAuth = {
@@ -61,18 +66,12 @@ class UserManager: NSObject {
         return UserManager.sharedInstance.authUI.handleOpen(url, sourceApplication: sourceApplication)
     }
     
-    private var firebaseUser: FirebaseAuth.User? {
-        return FirebaseAuth.Auth.auth().currentUser
+    var firebaseUser: FirebaseAuth.User? {
+        return Auth.auth().currentUser
     }
     
     var currentUserEmail: String? {
         return self.firebaseUser?.email
-    }
-    
-    func getCurrentToken() -> Promise<String> {
-        return Promise { seal in
-//            FirebaseAuth.Auth.auth().currentUser.gettokn
-        }
     }
     
     func showLogin(from viewController: UIViewController) {
@@ -85,12 +84,34 @@ class UserManager: NSObject {
         } catch let error {
             ApplicationErrors.log(error)
         }
+        
+        OnBoardingManager.sharedInstance.region = nil
+        UserManager.sharedInstance.user = nil
+    }
+}
+
+extension UserManager: TokenProvider {
+    
+    func getToken() -> Promise<String> {
+        guard let user = self.firebaseUser else {
+            return Promise(error: Error.noFirebaseUser)
+        }
+
+        return user.promiseGetIDToken()
+    }
+    
+    func forceRefreshToken() -> Promise<String> {
+        guard let user = self.firebaseUser else {
+            return Promise(error: Error.noFirebaseUser)
+        }
+        
+        return user.promiseGetIDToken(forceRefresh: true)
     }
 }
 
 extension UserManager: FUIAuthDelegate {
     
-    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Swift.Error?) {
         #warning("HANDLE USER OR ERROR HERE")
     }
 }

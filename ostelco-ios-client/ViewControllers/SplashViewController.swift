@@ -26,7 +26,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     }
     
     func verifyCredentials() {
-        guard let accessToken = APIManager.sharedInstance.secureStorage.getString(for: .Auth0Token) else {
+        guard let user = UserManager.sharedInstance.firebaseUser else {
             self.performSegue(withIdentifier: "showLogin", sender: self)
             return
         }

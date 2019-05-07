@@ -12,9 +12,9 @@ import XCTest
 
 class HeaderGeneratorTests: XCTestCase {
     
-    func testGeneratingHeadersWithEmptyKeychainSucceedsForNonLoggedIn() {
+    func testGeneratingHeadersWithNilTokenSucceedsForNonLoggedIn() {
         do {
-            let headers = try Headers(loggedIn: false, secureStorage: MockSecureStorage())
+            let headers = try Headers(loggedIn: false, token: nil)
             let headerDict = headers.toStringDict
             XCTAssertEqual(headerDict.count, 1)
             XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], HeaderValue.applicationJSON.toString)
@@ -23,9 +23,9 @@ class HeaderGeneratorTests: XCTestCase {
         }
     }
     
-    func testGeneratingHeadersWithEmptyKeychainFailsForLoggedIn() {
+    func testGeneratingHeadersWithNilTokenFailsForLoggedIn() {
         do {
-            _ = try Headers(loggedIn: true, secureStorage: MockSecureStorage())
+            _ = try Headers(loggedIn: true, token: nil)
             XCTFail("There should be an error thrown when trying to get logged in headers with no token")
         } catch {
             switch error {
@@ -38,12 +38,9 @@ class HeaderGeneratorTests: XCTestCase {
         }
     }
     
-    func testGeneratingHeadersWithNonEmptyKeychainSuccedsForNotLoggedIn() {
-        let storage = MockSecureStorage()
-        storage.setString("test!", for: .Auth0Token)
-        
+    func testGeneratingHeadersWithNonNilTokenSuccedsForNotLoggedIn() {
         do {
-            let headers = try Headers(loggedIn: false, secureStorage: storage)
+            let headers = try Headers(loggedIn: false, token: "test!")
             let headerDict = headers.toStringDict
             XCTAssertEqual(headerDict.count, 1)
             XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], HeaderValue.applicationJSON.toString)
@@ -52,30 +49,25 @@ class HeaderGeneratorTests: XCTestCase {
         }
     }
     
-    func testGeneratingHeadersWithNonEmptyKeychainSucceedsForLoggedIn() {
-        let storage = MockSecureStorage()
+    func testGeneratingHeadersWithNonNilTokenSucceedsForLoggedIn() {
         let testToken = "I'M A TEST TOKEN!"
-        storage.setString(testToken, for: .Auth0Token)
         
         do {
-            let headers = try Headers(loggedIn: true, secureStorage: storage)
+            let headers = try Headers(loggedIn: true, token: testToken)
             let headerDict = headers.toStringDict
             XCTAssertEqual(headerDict.count, 2)
             XCTAssertEqual(headerDict[HeaderKey.contentType.rawValue], HeaderValue.applicationJSON.toString)
             XCTAssertEqual(headerDict[HeaderKey.authorization.rawValue], "Bearer \(testToken)")
-
         } catch {
             XCTFail("Unexpected error creating headers: \(error)")
         }
     }
     
     func testAddingAnAdditionalHeader() {
-        let storage = MockSecureStorage()
         let testToken = "I'M A TEST TOKEN!"
-        storage.setString(testToken, for: .Auth0Token)
         
         do {
-            var headers = try Headers(loggedIn: true, secureStorage: storage)
+            var headers = try Headers(loggedIn: true, token: testToken)
             headers.addValue(.testing("TEST"), for: .testing)
             
             let headerDict = headers.toStringDict
@@ -89,12 +81,10 @@ class HeaderGeneratorTests: XCTestCase {
     }
     
     func testReplacingADefaultHeader() {
-        let storage = MockSecureStorage()
         let testToken = "I'M A TEST TOKEN!"
-        storage.setString(testToken, for: .Auth0Token)
         
         do {
-            var headers = try Headers(loggedIn: true, secureStorage: storage)
+            var headers = try Headers(loggedIn: true, token: testToken)
             headers.addValue(.testing("TEST"), for: .contentType)
             let headerDict = headers.toStringDict
             XCTAssertEqual(headerDict.count, 2)

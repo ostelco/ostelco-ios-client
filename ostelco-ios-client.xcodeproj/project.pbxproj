@@ -123,14 +123,16 @@
 		9B174580227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
-		9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95422649BD70001641A /* KeychainTests.swift */; };
-		9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA95722649DD30001641A /* SecureStorage.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
 		9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D712237B11800A01500 /* CustomerModel.swift */; };
 		9B5CBF3B22803A9A00D83D7B /* UserSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */; };
 		9B5CBF3C22803D3300D83D7B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF88224D3B380022A2B8 /* Context.swift */; };
+		9B5CBF512281808B00D83D7B /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF502281808B00D83D7B /* TokenProvider.swift */; };
+		9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */; };
+		9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */; };
+		9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
@@ -143,13 +145,10 @@
 		9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
 		9B8215762279B0F800DC6B64 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215752279B0F800DC6B64 /* Headers.swift */; };
 		9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */; };
-		9B82157D2279B98000DC6B64 /* MockSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */; };
 		9B8215822279DF6900DC6B64 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF82224D1DAE0022A2B8 /* Region.swift */; };
 		9B8215832279DF8700DC6B64 /* SimProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF85224D1E020022A2B8 /* SimProfile.swift */; };
 		9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */; };
 		9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */; };
-		9B8215892279FDB000DC6B64 /* CredentialSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */; };
-		9B82158A2279FDCC00DC6B64 /* CredentialSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */; };
 		9B82158C227A2F4100DC6B64 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82158B227A2F4100DC6B64 /* APIEndpoint.swift */; };
 		9B821590227AD6D200DC6B64 /* EKYCAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */; };
 		9B821592227AD9EA00DC6B64 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B821591227AD9EA00DC6B64 /* HTTPMethod.swift */; };
@@ -162,7 +161,6 @@
 		9B851ACD225E29BE0076ABF3 /* ostelco_core.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B851ABD225E29BE0076ABF3 /* ostelco_core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B851AD0225E29BE0076ABF3 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		9B851AD1225E29BE0076ABF3 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */; };
 		9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */; };
 		9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE3225E33620076ABF3 /* NibLoadable.swift */; };
 		9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */; };
@@ -438,8 +436,6 @@
 		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
-		9B3FA95422649BD70001641A /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
-		9B3FA95722649DD30001641A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
 		9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoLabel.swift; sourceTree = "<group>"; };
 		9B46D64E226F02C30030A8EB /* OstelcoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFont.swift; sourceTree = "<group>"; };
@@ -448,6 +444,9 @@
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
 		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
+		9B5CBF502281808B00D83D7B /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAuthUser+PromiseKit.swift"; sourceTree = "<group>"; };
+		9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenProvider.swift; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
 		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
 		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
@@ -459,10 +458,8 @@
 		9B6E3A282270A8950063EBAA /* CLGeocoder+PromiseKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLGeocoder+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B8215752279B0F800DC6B64 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGeneratorTests.swift; sourceTree = "<group>"; };
-		9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSecureStorage.swift; sourceTree = "<group>"; };
 		9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegionResponse+Testing.swift"; sourceTree = "<group>"; };
 		9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionResponseTests.swift; sourceTree = "<group>"; };
-		9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialSecureStorage.swift; sourceTree = "<group>"; };
 		9B82158B227A2F4100DC6B64 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCAddress.swift; sourceTree = "<group>"; };
 		9B821591227AD9EA00DC6B64 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -473,7 +470,6 @@
 		9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ostelco_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B851ABD225E29BE0076ABF3 /* ostelco_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ostelco_core.h; sourceTree = "<group>"; };
 		9B851ABE225E29BE0076ABF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDataViewController.swift; sourceTree = "<group>"; };
 		9B851AE3225E33620076ABF3 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
@@ -731,7 +727,6 @@
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				04488191217938A300F59758 /* Auth.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
-				9B8215882279FDB000DC6B64 /* CredentialSecureStorage.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04488198217B42C200F59758 /* OstelcoAPI.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
@@ -759,7 +754,7 @@
 			children = (
 				9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */,
 				9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */,
-				9B3FA95722649DD30001641A /* SecureStorage.swift */,
+				9B5CBF502281808B00D83D7B /* TokenProvider.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -779,7 +774,7 @@
 		9B82157B2279B97700DC6B64 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				9B82157C2279B98000DC6B64 /* MockSecureStorage.swift */,
+				9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */,
 				9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */,
 			);
 			path = Mocks;
@@ -828,7 +823,6 @@
 			children = (
 				9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */,
 				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
-				9B851ADB225E2A240076ABF3 /* KeychainWrapper.swift */,
 				9BC465352270AD49001951BF /* LocationController.swift */,
 				9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */,
 			);
@@ -1003,7 +997,6 @@
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
-				9B3FA95422649BD70001641A /* KeychainTests.swift */,
 				9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */,
 				9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */,
 				9B821597227AEE1400DC6B64 /* RequestGeneratorTests.swift */,
@@ -1014,7 +1007,9 @@
 		C2F6A3C4224E087900AF5087 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */,
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
+				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
@@ -1029,7 +1024,6 @@
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
-				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1824,13 +1818,13 @@
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
-				9B8215892279FDB000DC6B64 /* CredentialSecureStorage.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9BC4653F2271B396001951BF /* LocationCheckingViewController.swift in Sources */,
+				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
@@ -1840,7 +1834,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B3FA95822649DD30001641A /* SecureStorage.swift in Sources */,
 				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */,
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
@@ -1856,7 +1849,6 @@
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
 				9BC4653A2271AD5A001951BF /* LocationProblem.swift in Sources */,
 				9BC465392271ACC3001951BF /* Country.swift in Sources */,
-				9B851ADC225E2A240076ABF3 /* KeychainWrapper.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
 				9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */,
@@ -1874,6 +1866,7 @@
 				9BC465372270AD56001951BF /* LocationController.swift in Sources */,
 				9B821596227ADCE000DC6B64 /* BasicNetwork.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
+				9B5CBF512281808B00D83D7B /* TokenProvider.swift in Sources */,
 				9B8215762279B0F800DC6B64 /* Headers.swift in Sources */,
 				9B8215832279DF8700DC6B64 /* SimProfile.swift in Sources */,
 				9BC465382270BAE9001951BF /* CLGeocoder+PromiseKit.swift in Sources */,
@@ -1900,13 +1893,12 @@
 			files = (
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
 				9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */,
+				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
-				9B3FA95522649BD70001641A /* KeychainTests.swift in Sources */,
-				9B82157D2279B98000DC6B64 /* MockSecureStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1942,6 +1934,7 @@
 				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
+				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
@@ -1983,7 +1976,6 @@
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* ChooseCountryOnBoardingViewController.swift in Sources */,
-				9B82158A2279FDCC00DC6B64 /* CredentialSecureStorage.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
