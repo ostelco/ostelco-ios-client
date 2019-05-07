@@ -13,6 +13,7 @@ struct UserDefaultsWrapper {
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
         case selectedTheme = "SelectedTheme"
+        case pendingEmail = "PendingEmail"
     }
     
     private static var defaults: UserDefaults {
@@ -55,6 +56,16 @@ struct UserDefaultsWrapper {
             } else {
                 self.removeValue(for: .selectedTheme)
             }
+        }
+    }
+    
+    /// What is the email we are waiting to confirm?
+    static var pendingEmail: String? {
+        get {
+            return self.value(for: .pendingEmail)
+        }
+        set {
+            self.setValue(newValue, for: .pendingEmail)
         }
     }
 }
