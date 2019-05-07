@@ -35,7 +35,7 @@ public struct ProductModel: Codable {
         if let productClass = properties["productClass"] {
             return productClass.lowercased()
         }
-        // default type is offer
+        // default type is simple_data
         return "simple_data"
     }
 }
