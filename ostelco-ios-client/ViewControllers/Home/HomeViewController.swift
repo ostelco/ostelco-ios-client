@@ -56,6 +56,7 @@ class HomeViewController: ApplePayViewController {
 
     private func checkForSubscription(_ products: [Product]) -> Bool {
         // See if the list contains offers.
+        // TODO: Changes needed to support global app.
         let hasOffers = products.contains { $0.type != "plan" && $0.currency.lowercased() == "sgd" }
         // If we have offers, user is already a member
         return hasOffers
