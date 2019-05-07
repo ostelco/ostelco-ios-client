@@ -32,10 +32,10 @@ public struct ProductModel: Codable {
     public let properties: [String: String]
 
     public var type: String {
-        if let productType = properties["productType"] {
-            return productType.lowercased()
+        if let productClass = properties["productClass"] {
+            return productClass.lowercased()
         }
         // default type is offer
-        return "offer"
+        return "simple_data"
     }
 }
