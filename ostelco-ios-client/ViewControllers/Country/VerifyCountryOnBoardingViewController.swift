@@ -31,3 +31,14 @@ class VerifyCountryOnBoardingViewController: UIViewController {
         }
     }
 }
+
+extension VerifyCountryOnBoardingViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .country
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}

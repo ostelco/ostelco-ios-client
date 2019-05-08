@@ -19,3 +19,14 @@ class ESIMOnBoardingViewController: UIViewController {
         showNeedHelpActionSheet()
     }
 }
+
+extension ESIMOnBoardingViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .esim
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}

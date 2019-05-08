@@ -207,3 +207,14 @@ extension LoginViewController: PageControllerDataSourceDelegate {
         self.configureButtonTitle(for: index)
     }
 }
+
+extension LoginViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .login
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}
