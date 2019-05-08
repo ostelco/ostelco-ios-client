@@ -103,7 +103,7 @@ class RequestGeneratorTests: XCTestCase {
                               path: "query/params",
                               queryItems: queryParams,
                               loggedIn: false,
-                              secureStorage: self.storage)
+                              token: self.testToken)
         
         let urlRequest = try request.toURLRequest()
         XCTAssertEqual(urlRequest.httpMethod, HTTPMethod.GET.rawValue)
