@@ -122,6 +122,8 @@
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
+		9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
+		9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
 		9B4DAD962281A7BB003810BE /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
 		9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
@@ -445,6 +447,7 @@
 		9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoButton.swift; sourceTree = "<group>"; };
 		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLinkManager.swift; sourceTree = "<group>"; };
+		9B4DAD912281A2CE003810BE /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9B4DAD952281A7BB003810BE /* Email.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Email.storyboard; sourceTree = "<group>"; };
 		9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEntryViewController.swift; sourceTree = "<group>"; };
 		9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -630,6 +633,7 @@
 				043E71102239F1D300E01993 /* FLApplication.swift */,
 				9BE2D45B225B634100B51999 /* TestAppDelegate.swift */,
 				9BE2D440225B5CB700B51999 /* Assets */,
+				9B4DAD942281A717003810BE /* Coordinators */,
 				C2F6A3C4224E087900AF5087 /* Extensions */,
 				047F29302224589900FC6A8F /* Models */,
 				9B920F60225B8C51001EF9CD /* ModelControllers */,
@@ -765,6 +769,14 @@
 				9B5CBF502281808B00D83D7B /* TokenProvider.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9B4DAD942281A717003810BE /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				9B4DAD912281A2CE003810BE /* RootCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		9B4DAD972281A7D3003810BE /* Email */ = {
@@ -1791,6 +1803,7 @@
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
+				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
@@ -1988,6 +2001,7 @@
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */,
+				9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,

@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
     var fcmToken: String?
     
+    private(set) lazy var rootCoordinator: RootCoordinator = {
+        guard let window = self.window else {
+            fatalError("No window?!")
+        }
+        
+        return RootCoordinator(window: window)
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -94,7 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        return UserManager.sharedInstance.handleApplication(app, open: url, options: options)
+        // TODO: Handle deeplinks
+        return false
     }
     
     func handleDynamicLink(dynamicLink: DynamicLink, incomingURL: URL) -> Bool {
