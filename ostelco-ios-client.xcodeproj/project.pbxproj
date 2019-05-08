@@ -260,8 +260,6 @@
 		9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */; };
 		9BF27782225D15FE006428D5 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777E225D15FE006428D5 /* Environment.plist */; };
 		9BF27783225D15FE006428D5 /* Environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777E225D15FE006428D5 /* Environment.plist */; };
-		9BF27784225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
-		9BF27785225D15FE006428D5 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BF2777F225D15FE006428D5 /* Auth0.plist */; };
 		B372691FA8FCE81A40A161DB /* Pods_ostelco_ios_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */; };
 		C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
 		C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */; };
@@ -531,7 +529,6 @@
 		9BE2D469225B7BCE00B51999 /* Support.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Support.storyboard; sourceTree = "<group>"; };
 		9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BF2777E225D15FE006428D5 /* Environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
-		9BF2777F225D15FE006428D5 /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		9F8B064363A091B91EDC2235 /* Pods-ostelco-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.release.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.release.xcconfig"; sourceTree = "<group>"; };
 		B4F3E55DDB2B8E1BAE28F0A6 /* Pods-dev-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		C0FA23121B4593BEA7856FF9 /* Pods_ostelco_ios_ostelco_ios_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ostelco_ios_ostelco_ios_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -998,7 +995,6 @@
 		9BE2D43F225B5C9900B51999 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				9BF2777F225D15FE006428D5 /* Auth0.plist */,
 				9BF2777E225D15FE006428D5 /* Environment.plist */,
 				9BF2777D225D15FE006428D5 /* GoogleService-Info.plist */,
 				04EC5AE7218872BA000C2EC3 /* Environment.swift */,
@@ -1317,7 +1313,6 @@
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				9BC465422271DAD4001951BF /* OhNo.storyboard in Resources */,
-				9BF27784225D15FE006428D5 /* Auth0.plist in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
@@ -1373,7 +1368,6 @@
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				9BC465432271DAD4001951BF /* OhNo.storyboard in Resources */,
-				9BF27785225D15FE006428D5 /* Auth0.plist in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,

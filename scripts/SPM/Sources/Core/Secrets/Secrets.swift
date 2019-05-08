@@ -45,7 +45,6 @@ struct Secrets {
         }
         
         try FirebaseUpdater.run(secrets: secrets, sourceRoot: sourceRoot)
-        try Auth0Updater.run(secrets: secrets, sourceRoot: sourceRoot)
         try EnvironmentUpdater.run(secrets: secrets, sourceRoot: sourceRoot)
     }
     
@@ -54,7 +53,6 @@ struct Secrets {
     /// - Parameter sourceRoot: The main iOS project's source root
     static func reset(sourceRoot: Folder) throws {
         try FirebaseUpdater.reset(sourceRoot: sourceRoot)
-        try Auth0Updater.reset(sourceRoot: sourceRoot)
         try EnvironmentUpdater.reset(sourceRoot: sourceRoot)
     }
     

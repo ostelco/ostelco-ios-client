@@ -4,9 +4,7 @@
 <dict>
 	<key>apple_merchant_id</key>
 	<string>SCRIPT_ME</string>
-	<key>auth0_client_id</key>
-	<string>SCRIPT_ME</string>
-	<key>auth0_domain</key>
+	<key>firebase_project_id</key>
 	<string>SCRIPT_ME</string>
 	<key>freshchat_app_id</key>
 	<string>SCRIPT_ME</string>
