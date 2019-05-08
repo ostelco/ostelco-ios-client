@@ -11,7 +11,6 @@ import OstelcoStyles
 import PromiseKit
 import UIKit
 
-
 class HomeViewController: ApplePayViewController {
 
     static var newSubscriber = false

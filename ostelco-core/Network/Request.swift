@@ -10,20 +10,27 @@ import Foundation
 
 public struct Request {
     
+    enum Error: Swift.Error {
+        case couldntConstructURLFromComponents
+    }
+    
     public let baseURL: URL
     public let path: String
     public let loggedIn: Bool
     public let secureStorage: SecureStorage
     public let method: HTTPMethod
+    public let queryItems: [URLQueryItem]?
     
     public init(baseURL: URL,
                 path: String,
                 method: HTTPMethod = .GET,
+                queryItems: [URLQueryItem]? = nil,
                 loggedIn: Bool,
                 secureStorage: SecureStorage) {
         self.baseURL = baseURL
         self.path = path
         self.method = method
+        self.queryItems = queryItems
         self.loggedIn = loggedIn
         self.secureStorage = secureStorage
     }
@@ -32,7 +39,12 @@ public struct Request {
     public var bodyData: Data?
     
     public func toURLRequest() throws -> URLRequest {
-        let url = self.baseURL.appendingPathComponent(self.path)
+        var urlComponents = URLComponents(string: self.baseURL.appendingPathComponent(self.path).absoluteString)
+        urlComponents?.queryItems = self.queryItems
+        guard let url = urlComponents?.url else {
+            throw Error.couldntConstructURLFromComponents
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
         
