@@ -35,9 +35,9 @@ class SettingsTableViewController2: UITableViewController {
         case .ChangeNickname:
             performSegue(withIdentifier: "nickname", sender: nil)
         case .TermsAndConditions:
-            showAlert(title: "Open terms and conditions", msg: "")
+            UIApplication.shared.open(ExternalLink.termsAndConditions.url)
         case .PrivacyPolicy:
-            showAlert(title: "Open privacy policy", msg: "")
+            UIApplication.shared.open(ExternalLink.privacyPolicy.url)
         case .CancelMembership:
             showDeleteAccountActionSheet()
         case .LogOut:
