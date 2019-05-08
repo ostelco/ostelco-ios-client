@@ -17,7 +17,6 @@ enum PostLoginDestination {
     case validateCountry
 }
 
-
 class RootCoordinator {
     
     let window: UIWindow

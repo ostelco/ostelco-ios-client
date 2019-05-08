@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
         STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
@@ -55,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationSupportsShakeToEdit = true
         
         registerNotifications(authorise: false)
+        FirebaseApp.configure()
+
         print("App started")
         
         return true

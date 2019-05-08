@@ -13,12 +13,15 @@ import PromiseKit
 struct EmailLinkManager {
     
     enum Error: Swift.Error, LocalizedError {
+        case couldntCreateFirebaseURL
         case noErrorAndNoUser
         case noPendingEmailStored
         
         var localizedDescription: String {
             // TODO: Actually localize
             switch self {
+            case .couldntCreateFirebaseURL:
+                return "Couldn't create a URL from the firebase projectID!"
             case .noErrorAndNoUser:
                 return "Signed into Firebase and received neither a user nor an error!"
             case .noPendingEmailStored:
@@ -28,7 +31,14 @@ struct EmailLinkManager {
     }
     
     static func linkEmail(_ emailAddress: String) -> Promise<Void> {
+        let base = Environment().configuration(.FirebaseProjectID)
+        let urlString = "https://\(base).firebaseapp.com"
+        guard let url = URL(string: urlString) else {
+            return Promise(error: Error.couldntCreateFirebaseURL)
+        }
+        
         let settings = ActionCodeSettings()
+        settings.url = url
         settings.handleCodeInApp = true
         settings.setIOSBundleID(Bundle.main.bundleIdentifier!)
         UserDefaultsWrapper.pendingEmail = emailAddress
