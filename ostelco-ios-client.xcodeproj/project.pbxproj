@@ -31,8 +31,6 @@
 		0437CF81224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
-		043E71112239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
-		043E71122239F1D300E01993 /* FLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E71102239F1D300E01993 /* FLApplication.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
 		043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
 		043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
@@ -364,7 +362,6 @@
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
 		0437CF88224D3B380022A2B8 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		043E71102239F1D300E01993 /* FLApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLApplication.swift; sourceTree = "<group>"; };
 		043E711A223AF3CF00E01993 /* OnBoardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingManager.swift; sourceTree = "<group>"; };
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		043E7120223AFFA800E01993 /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
@@ -629,7 +626,6 @@
 			isa = PBXGroup;
 			children = (
 				04488169217924B700F59758 /* AppDelegate.swift */,
-				043E71102239F1D300E01993 /* FLApplication.swift */,
 				9BE2D45B225B634100B51999 /* TestAppDelegate.swift */,
 				9BE2D440225B5CB700B51999 /* Assets */,
 				9B4DAD942281A717003810BE /* Coordinators */,
@@ -1783,7 +1779,6 @@
 			files = (
 				9BE2D44E225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
-				043E71112239F1D300E01993 /* FLApplication.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
@@ -2000,7 +1995,6 @@
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
 				9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */,
 				9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */,
-				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
