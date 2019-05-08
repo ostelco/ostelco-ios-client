@@ -36,6 +36,7 @@ extension UIViewController {
         let title = "Error"
         let message = "An error has occurred:\n\n\(error)"
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
         present(alert, animated: true, completion: nil)
     }
     
