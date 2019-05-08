@@ -37,8 +37,6 @@
 		043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
 		043E7121223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
 		043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7120223AFFA800E01993 /* CountriesTableViewController.swift */; };
-		043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
-		043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */; };
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
@@ -367,7 +365,6 @@
 		043E711A223AF3CF00E01993 /* OnBoardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingManager.swift; sourceTree = "<group>"; };
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		043E7120223AFFA800E01993 /* CountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
-		043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+CountryListActionSheet.swift"; sourceTree = "<group>"; };
 		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1027,7 +1024,6 @@
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
 				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
 				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
-				043E7123223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift */,
 				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
@@ -1744,7 +1740,6 @@
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
-				043E7124223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
@@ -1936,7 +1931,6 @@
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */,
-				043E7125223B00F400E01993 /* UITableViewController+CountryListActionSheet.swift in Sources */,
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				C29802B32181EDA800FBC5C3 /* Auth.swift in Sources */,
