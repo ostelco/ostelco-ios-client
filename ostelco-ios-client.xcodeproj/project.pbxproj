@@ -121,6 +121,8 @@
 		9B174580227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
+		9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
+		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
@@ -1357,6 +1359,7 @@
 				9BE2D46D225B7FFA00B51999 /* Settings.storyboard in Resources */,
 				047F292C222455CF00FC6A8F /* Home.storyboard in Resources */,
 				9BE2D46C225B7FF100B51999 /* Support.storyboard in Resources */,
+				9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				047F2923222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */,
@@ -1978,6 +1981,7 @@
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
+				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */,
 				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
