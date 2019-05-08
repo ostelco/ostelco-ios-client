@@ -26,8 +26,8 @@ class RootCoordinator {
         self.window = window
     }
     
-    var rootViewController: UIViewController? {
-        return self.window.rootViewController
+    var topViewController: UIViewController? {
+        return self.window.rootViewController?.topPresentedViewController()
     }
     
     func replaceRootViewController(with newRoot: UIViewController) {
@@ -36,7 +36,7 @@ class RootCoordinator {
     
     func showLogin() {
         let loginViewController = LoginViewController.fromStoryboard()
-        self.rootViewController?.present(loginViewController, animated: true)
+        self.topViewController?.present(loginViewController, animated: true)
     }
     
     func showEmailEntry() {
@@ -45,7 +45,7 @@ class RootCoordinator {
             return
         }
         
-        self.rootViewController?.present(emailNav, animated: true)
+        self.topViewController?.present(emailNav, animated: true)
     }
     
     func navigate(to destination: PostLoginDestination, from viewController: UIViewController) {
