@@ -27,8 +27,6 @@
 		042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
 		042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
-		0437CF80224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
-		0437CF81224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -146,6 +144,7 @@
 		9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */; };
 		9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
 		9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
+		9B6A928322833586007F5EC9 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
 		9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */; };
@@ -754,7 +753,6 @@
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
-				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 			);
@@ -898,6 +896,7 @@
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
+				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
@@ -1801,7 +1800,6 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
-				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1871,6 +1869,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6A928322833586007F5EC9 /* Scan.swift in Sources */,
 				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */,
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
@@ -1961,7 +1960,6 @@
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
-				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,

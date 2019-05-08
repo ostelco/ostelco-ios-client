@@ -6,8 +6,8 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-struct Scan: Codable {
-    let countryCode: String
-    let scanId: String
-    let status: String
+public struct Scan: Codable {
+    public let countryCode: String
+    public let scanId: String
+    public let status: String
 }
