@@ -167,6 +167,24 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: path)
             .map { try self.decoder.decode([SimProfile].self, from: $0) }
     }
+    
+    /// Creates a Jumio scan request for the given region
+    ///
+    /// - Parameter code: The region to request a Jumio scan request for
+    /// - Returns: A promise which when fulfilled contains the requested data
+    public func createJumioScanForRegion(code: String) -> Promise<Scan> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .kyc,
+            .jumio,
+            .scans,
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(Scan.self, from: $0) }
+    }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> Promise<RegionResponse> {

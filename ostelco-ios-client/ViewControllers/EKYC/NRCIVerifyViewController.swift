@@ -9,6 +9,7 @@
 import Crashlytics
 import Netverify
 import ostelco_core
+import PromiseKit
 import UIKit
 
 class NRCIVerifyViewController: UIViewController {
@@ -60,28 +61,12 @@ class NRCIVerifyViewController: UIViewController {
 
 extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
-    func getnewScanId(_ completion: @escaping (String?, Error?) -> Void) {
-        // This method should fetch new scanId from our server
+    func getNewScanId() -> Promise<String> {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
-        APIManager.sharedInstance.regions.child(countryCode).child("/kyc/jumio/scans")
-            .request(.post, json: [])
-            .onSuccess { data in
-                if let scan: Scan = data.typedContent(ifNone: nil) {
-                    completion(scan.scanId, nil)
-                } else {
-                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
-                    completion(nil, NSError(domain: "", code: 0, userInfo: nil))
-                }
+        return APIManager.sharedInstance.loggedInAPI.createJumioScanForRegion(code: countryCode)
+            .map { scan in
+                return scan.scanId
             }
-            .onFailure { error in
-                self.showAPIError(error: error)
-                if let cause = error.cause {
-                    completion(nil, cause)
-                } else {
-                    // TODO: Create more descriptive error. Not sure if this cause ever will happen, but that doesn't mean we shouldn't handle it somehow.
-                    completion(nil, NSError(domain: "", code: error.httpStatusCode ?? 0, userInfo: nil))
-                }
-        }
     }
     
     func createNetverifyController() {
@@ -126,9 +111,14 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     }
     
     func startNetverify() {
-        getnewScanId { (scanId, error) in
-            if let scanId: String = scanId {
+        self.getNewScanId()
+            .done { [weak self] scanId in
                 print("Retrieved \(scanId)")
+                guard let self = self else {
+                    // This got dealloc'd, bail out!
+                    return
+                }
+                
                 self.merchantScanReference = scanId
                 self.createNetverifyController()
                 if let netverifyVC = self.netverifyViewController {
@@ -136,10 +126,24 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
                 } else {
                     self.showAlert(title: "Netverify Mobile SDK", msg: "NetverifyViewController is nil")
                 }
-            } else if let error: Error = error {
-                print("Failed to retrieve a new scan Id \(error)")
             }
-        }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                print("Failed to retrieve a new scan Id \(error)")
+                guard let self = self else {
+                    // None of the rest of htis matters
+                    return
+                }
+                
+                switch error {
+                case APIHelper.Error.jsonError(let jsonError):
+                    self.showAlert(title: "Error", msg: jsonError.message)
+                case APIHelper.Error.serverError(let serverError):
+                    self.showAlert(title: "Error", msg: serverError.errors.joined(separator: "\n"))
+                default:
+                    self.showGenericError(error: error)
+                }
+            }
     }
     
     func netverifyViewController(_ netverifyViewController: NetverifyViewController, didFinishWith documentData: NetverifyDocumentData, scanReference: String) {
