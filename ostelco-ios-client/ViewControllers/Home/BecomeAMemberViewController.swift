@@ -109,6 +109,7 @@ class BecomeAMemberViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
+        HomeViewController.newSubscriber = true
         cancelButtonTapped(self)
     }
 }
