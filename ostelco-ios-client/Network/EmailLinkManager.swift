@@ -56,17 +56,17 @@ struct EmailLinkManager {
         }
     }
         
-    static func isSignInLink(_ link: String) -> Bool {
-        return Auth.auth().isSignIn(withEmailLink: link)
+    static func isSignInLink(_ link: URL) -> Bool {
+        return Auth.auth().isSignIn(withEmailLink: link.absoluteString)
     }
     
-    static func signInWithLink(_ link: String) -> Promise<Void> {
+    static func signInWithLink(_ link: URL) -> Promise<Void> {
         guard let email = UserDefaultsWrapper.pendingEmail else {
             return Promise(error: Error.noPendingEmailStored)
         }
         
         return Promise { seal in
-            Auth.auth().signIn(withEmail: email, link: link) { authDataResult, error in
+            Auth.auth().signIn(withEmail: email, link: link.absoluteString) { authDataResult, error in
                 if let firebaseError = error {
                     seal.reject(firebaseError)
                     return

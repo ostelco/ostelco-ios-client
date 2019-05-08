@@ -47,25 +47,35 @@ class RootCoordinator {
         self.topViewController?.present(emailNav, animated: true)
     }
     
-    func navigate(to destination: PostLoginDestination, from viewController: UIViewController) {
+    func navigate(to destination: PostLoginDestination, from viewController: UIViewController?) {
+        let presentingViewController: UIViewController
+        if let passedInVC = viewController {
+            presentingViewController = passedInVC
+        } else if let topVC = self.topViewController {
+            presentingViewController = topVC
+        } else {
+            assertionFailure("No view controller?!")
+            return
+        }
+        
         switch destination {
         case .ekycLastScreen:
             let pendingVerification = PendingVerificationViewController.fromStoryboard()
-            viewController.present(pendingVerification, animated: true)
+            presentingViewController.present(pendingVerification, animated: true)
         case .ekycOhNo:
-            self.showOhNo(from: viewController)
+            self.showOhNo(from: presentingViewController)
         case .esimSetup:
             let esim = ESIMOnBoardingViewController.fromStoryboard()
-            viewController.present(esim, animated: true)
+            presentingViewController.present(esim, animated: true)
         case .home:
             let tabs = TabBarController.fromStoryboard()
-            viewController.present(tabs, animated: true)
+            presentingViewController.present(tabs, animated: true)
         case .signupStart:
             let legalVC = TheLegalStuffViewController.fromStoryboard()
-            viewController.present(legalVC, animated: true)
+            presentingViewController.present(legalVC, animated: true)
         case .validateCountry:
             let countryVC = VerifyCountryOnBoardingViewController.fromStoryboard()
-            viewController.present(countryVC, animated: true)
+            presentingViewController.present(countryVC, animated: true)
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import Stripe
 import Firebase
 import FirebaseUI
+import PromiseKit
 import Siesta
 import UserNotifications
 
@@ -102,11 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
-        // TODO: Handle deeplinks
-        return false
-    }
-    
     func handleDynamicLink(dynamicLink: DynamicLink, incomingURL: URL) -> Bool {
         guard let url = dynamicLink.url else {
             print("No dynamic link object")
@@ -126,21 +122,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        if let incomingURL = userActivity.webpageURL {
-            print("Incoming URL is \(incomingURL)")
-            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) {(dynamicLink, error) in
-                guard error == nil else {
-                    print("Found an error \(error!.localizedDescription)")
-                    return
-                }
-                if let dynamicLink = dynamicLink {
-                    let handled = self.handleDynamicLink(dynamicLink: dynamicLink, incomingURL: incomingURL)
-                    print("handleDynamicLink ? = \(handled)")
-                }
-            }
-            return linkHandled
+        guard let incomingURL = userActivity.webpageURL else {
+            return false
         }
-        return false
+        
+        debugPrint("Incoming URL is \(incomingURL)")
+        
+        if EmailLinkManager.isSignInLink(incomingURL) {
+            EmailLinkManager.signInWithLink(incomingURL)
+                .then {
+                    UserManager.sharedInstance.getDestinationFromContext()
+                }
+                .done { [weak self] destination in
+                    self?.rootCoordinator.navigate(to: destination, from: nil)
+                }
+                .catch { error in
+                    ApplicationErrors.log(error)
+                    debugPrint("ERROR SIGNING IN: \(error)")
+                }
+            
+            // Even though this other stuff is async, we can definitely say we've hadnled it.
+            return true
+        }
+        
+        // If we've gotten here, it's some other kind of universal link.
+        return DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
+            guard error == nil else {
+                print("Found an error \(error!.localizedDescription)")
+                return
+            }
+            if let dynamicLink = dynamicLink {
+                let handled = self.handleDynamicLink(dynamicLink: dynamicLink, incomingURL: incomingURL)
+                print("handleDynamicLink ? = \(handled)")
+            }
+        }
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
