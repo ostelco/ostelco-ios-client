@@ -42,8 +42,8 @@
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		04488192217938A300F59758 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488191217938A300F59758 /* Auth.swift */; };
 		04488199217B42C200F59758 /* OstelcoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488198217B42C200F59758 /* OstelcoAPI.swift */; };
-		047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */; };
-		047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */; };
+		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
+		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2798223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */; };
 		047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */; };
 		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
@@ -376,7 +376,7 @@
 		044881A1217B896800F59758 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
-		047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController2.swift; sourceTree = "<group>"; };
+		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActionSheet.swift"; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -721,7 +721,7 @@
 				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
 				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
-				047B2794223BB8D900EE134B /* SettingsTableViewController2.swift */,
+				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 			);
@@ -1776,7 +1776,7 @@
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
-				047B2795223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
+				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
@@ -1996,7 +1996,7 @@
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				9BC465402271B3E8001951BF /* LocationCheckingViewController.swift in Sources */,
 				048533A1223C1882007C89F4 /* Product.swift in Sources */,
-				047B2796223BB8D900EE134B /* SettingsTableViewController2.swift in Sources */,
+				047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
