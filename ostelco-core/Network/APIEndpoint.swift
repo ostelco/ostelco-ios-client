@@ -75,3 +75,17 @@ public enum RegionEndpoint: APIEndpoint {
         }
     }
 }
+
+public enum ProductEndpoint: APIEndpoint {
+    case sku(_ sku: String)
+    case purchase
+    
+    var value: String {
+        switch self {
+        case .sku(let sku):
+            return sku
+        case .purchase:
+            return "purchase"
+        }
+    }
+}

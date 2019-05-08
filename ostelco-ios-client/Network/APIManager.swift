@@ -28,7 +28,6 @@ class APIManager: Service {
         }
     }
     
-    var products: Resource { return resource("/products") }
     var regions: Resource { return resource("/regions") }
     
     var tokenProvider: TokenProvider = UserManager.sharedInstance

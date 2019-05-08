@@ -69,10 +69,35 @@ open class LoggedInAPI: BasicNetwork {
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
     }
     
+    // MARK: - Products
+    
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> Promise<[ProductModel]> {
         return self.loadData(from: RootEndpoint.products.value)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
+    }
+    
+    /// Purchases a product with the given SKU and the given payment information
+    ///
+    /// - Parameters:
+    ///   - sku: The SKU to purchase
+    ///   - payment: The payment information to use to purchase it
+    /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
+    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> Promise<Void> {
+        let productEndpoints: [ProductEndpoint] = [
+            .sku(sku),
+            .purchase
+        ]
+        
+        let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
+        
+        return self.sendObject(payment, to: path, method: .POST)
+            .done { data, response in
+                try APIHelper.validateAndLookForServerError(data: data,
+                                                            response: response,
+                                                            decoder: self.decoder,
+                                                            dataCanBeEmpty: true)
+            }
     }
     
     // MARK: - Customer

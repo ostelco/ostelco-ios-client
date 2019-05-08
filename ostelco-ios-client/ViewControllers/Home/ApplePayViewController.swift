@@ -32,8 +32,8 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
             self.showAlert(title: "Payment Error", msg: error.localizedDescription)
         case .userCancelled:
             debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
-        case .primeAPIError(let requestError):
-            showAPIError(error: requestError)
+        case .primeAPIError(let error):
+            self.showGenericError(error: error)
         }
     }
 
