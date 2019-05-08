@@ -122,10 +122,14 @@
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
+		9B4DAD962281A7BB003810BE /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
+		9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
 		9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */; };
 		9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
+		9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
 		9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
+		9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
@@ -441,8 +445,11 @@
 		9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoButton.swift; sourceTree = "<group>"; };
 		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLinkManager.swift; sourceTree = "<group>"; };
+		9B4DAD952281A7BB003810BE /* Email.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Email.storyboard; sourceTree = "<group>"; };
+		9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEntryViewController.swift; sourceTree = "<group>"; };
 		9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorTests.swift; sourceTree = "<group>"; };
+		9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
 		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
@@ -760,6 +767,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		9B4DAD972281A7D3003810BE /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */,
+				9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
 		9B6E3A0B226F6FA70063EBAA /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,9 +863,9 @@
 			isa = PBXGroup;
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
+				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
-				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -933,8 +949,9 @@
 				04BA349B222587F6000359C4 /* SplashViewController.swift */,
 				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
 				047F2911222451D000FC6A8F /* Country */,
-				047F29192224536100FC6A8F /* ESim */,
 				047F29182224535300FC6A8F /* EKYC */,
+				9B4DAD972281A7D3003810BE /* Email */,
+				047F29192224536100FC6A8F /* ESim */,
 				047F291A2224538000FC6A8F /* Home */,
 				047F28FD2224415E00FC6A8F /* Login */,
 				047F2901222441A900FC6A8F /* SignUp */,
@@ -949,6 +966,7 @@
 				9B1745702276F60000CF321B /* Address.storyboard */,
 				047F2912222451DF00FC6A8F /* Country.storyboard */,
 				047F2921222453FE00FC6A8F /* EKYC.storyboard */,
+				9B4DAD952281A7BB003810BE /* Email.storyboard */,
 				047F29242224551A00FC6A8F /* ESim.storyboard */,
 				047F292A222455CF00FC6A8F /* Home.storyboard */,
 				047F28FE2224419700FC6A8F /* Login.storyboard */,
@@ -1271,6 +1289,7 @@
 				9BE2D46A225B7BCE00B51999 /* Support.storyboard in Resources */,
 				047F292B222455CF00FC6A8F /* Home.storyboard in Resources */,
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
+				9B4DAD962281A7BB003810BE /* Email.storyboard in Resources */,
 				047F2922222453FE00FC6A8F /* EKYC.storyboard in Resources */,
 				047F29252224551A00FC6A8F /* ESim.storyboard in Resources */,
 				9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */,
@@ -1795,6 +1814,7 @@
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
+				9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */,
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
@@ -1829,6 +1849,7 @@
 				9BC4653F2271B396001951BF /* LocationCheckingViewController.swift in Sources */,
 				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
+				9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1966,6 +1987,7 @@
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
+				9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */,
 				043E71122239F1D300E01993 /* FLApplication.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
