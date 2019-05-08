@@ -58,7 +58,7 @@ extension UIViewController {
     func showDeleteAccountActionSheet() {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
         
-        let deleteAction = createDeleteAccountAlertAction(title: "Delete Account", vc: self)
+        let deleteAction = createDeleteAccountAlertAction(title: "Cancel Membership", vc: self)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertCtrl.addAction(deleteAction)

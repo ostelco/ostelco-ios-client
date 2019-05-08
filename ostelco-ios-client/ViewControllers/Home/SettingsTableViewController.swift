@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController2: UITableViewController {
+class SettingsTableViewController: UITableViewController {
     enum MenuItem: Int {
         case PurchaseHistory
         case ChangeNickname
