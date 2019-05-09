@@ -27,7 +27,7 @@ abstract_target 'ostelco-ios' do
   pod 'RxSwift', '~>4.5.0'
   pod 'Siesta', '~>1.0'
   pod 'Siesta/UI', '~>1.0'
-  pod 'Stripe', '~>14.0.0'
+  pod 'Stripe', '~>15.0.0'
   pod 'SwiftLint', '~>0.31.0'
 
   # Dev app target
