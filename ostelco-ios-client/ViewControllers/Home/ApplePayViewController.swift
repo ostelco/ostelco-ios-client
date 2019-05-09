@@ -113,7 +113,7 @@ extension ApplePayViewController: STPPaymentContextDelegate {
             })
             .onFailure({ error in
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
-                completion(error)
+                completion(ApplePayError.primeAPIError(error))
             })
     }
 
