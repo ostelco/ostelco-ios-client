@@ -77,6 +77,8 @@ struct EmailLinkManager {
                     return
                 }
                 
+                // We've successfully logged in, we can delete the pending email.
+                UserDefaultsWrapper.pendingEmail = nil
                 seal.fulfill(())
             }
         }
