@@ -20,6 +20,7 @@ import ostelco_core
 // You could create a base class instead, though that's not an ideal solution.
 // https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
 class ApplePayViewController: UIViewController, ApplePayDelegate {
+
     // MARK: - Properties for ApplePayDelegate.
 
     var shownApplePay = false
@@ -28,9 +29,10 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     var applePayError: ApplePayError?
 
     // MARK: - Properties for Stripe Payment.
+
     #if STRIPE_PAYMENT
-    let customerContext = STPCustomerContext(keyProvider: StripeKeyProvider.sharedClient)
     lazy var paymentContext: STPPaymentContext = {
+        let customerContext = STPCustomerContext(keyProvider: self)
         let paymentContext = STPPaymentContext(customerContext: customerContext)
         paymentContext.delegate = self
         paymentContext.hostViewController = self
@@ -67,12 +69,15 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
 }
 
 extension ApplePayViewController: PKPaymentAuthorizationViewControllerDelegate {
+
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
+
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController,
                                             didAuthorizePayment payment: PKPayment,
                                             handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         handlePaymentAuthorized(controller, didAuthorizePayment: payment, handler: completion)
     }
+
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         handlePaymentFinished(controller)
     }
@@ -82,7 +87,8 @@ extension ApplePayViewController: PKPaymentAuthorizationViewControllerDelegate {
 // This extension supports payment through Stripe Standard UI components.
 // Mainly used for testing prime payment APIs with different types of cards avaiable in Stripe.
 // https://stripe.com/docs/testing
-extension ApplePayViewController: STPPaymentContextDelegate {
+extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemeralKeyProvider {
+
     // This shows various payment options avaiable through stripe.
     // You can add new cards using  the presented UI
     func showPaymentOptions() {
@@ -152,13 +158,9 @@ extension ApplePayViewController: STPPaymentContextDelegate {
         }
     }
 
-}
+    // MARK: - STPCustomerEphemeralKeyProvider method
 
-// This class provides the ephemeral key for Stripe payments
-// Called automatically by Stripe through the STPCustomerContext object
-class StripeKeyProvider: NSObject, STPCustomerEphemeralKeyProvider {
-    static let sharedClient = StripeKeyProvider()
-
+    // Called automatically by Stripe through the STPCustomerContext object
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         APIManager.sharedInstance.loggedInAPI
             .stripeEphemeralKey(stripeAPIVersion: apiVersion)
