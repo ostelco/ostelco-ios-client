@@ -45,7 +45,7 @@ protocol ApplePayDelegate: UIViewController {
     var purchasingProduct: Product? { get set }
     var applePayError: ApplePayError? { get set }
 
-    func paymentError(_ error: ApplePayError)
+    func paymentError(_ error: Error)
     func paymentSuccessful(_ product: Product?)
 
     func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
