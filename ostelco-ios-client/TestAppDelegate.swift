@@ -6,13 +6,14 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
+import Firebase
 
 class TestAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        FirebaseApp.configure()
         let vc = UIViewController()
         vc.view.backgroundColor = .orange
         
