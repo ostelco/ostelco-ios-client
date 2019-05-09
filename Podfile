@@ -35,6 +35,7 @@ abstract_target 'ostelco-ios' do
     # Test target
     target 'dev-ostelco-ios-clientTests' do
       inherit! :search_paths
+      pod 'OHHTTPStubs/Swift', '~>8.0.0'
     end
   end
   

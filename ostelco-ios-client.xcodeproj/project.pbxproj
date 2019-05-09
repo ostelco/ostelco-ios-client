@@ -1181,6 +1181,7 @@
 				C2236F06218A414C00B135C0 /* Sources */,
 				C2236F07218A414C00B135C0 /* Frameworks */,
 				C2236F08218A414C00B135C0 /* Resources */,
+				6DF472B48FD90E7A068CA3C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1472,6 +1473,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-dev-ostelco-ios-client/Pods-ostelco-ios-dev-ostelco-ios-client-resources.sh\"\n";
+		};
+		6DF472B48FD90E7A068CA3C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dev-ostelco-ios-clientTests/Pods-dev-ostelco-ios-clientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		7F32B70A7D81D54DB9AD3882 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
