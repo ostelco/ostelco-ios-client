@@ -11,7 +11,7 @@ import FirebaseAuth
 import ostelco_core
 import PromiseKit
 
-class UserManager: NSObject {
+class UserManager {
     enum Error: Swift.Error {
         case noFirebaseUser
     }
