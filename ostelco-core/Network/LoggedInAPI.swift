@@ -168,6 +168,25 @@ open class LoggedInAPI: BasicNetwork {
             .map { try self.decoder.decode([SimProfile].self, from: $0) }
     }
     
+    /// Creates a SIM profile for the given region
+    ///
+    /// - Parameter code: The region code to use
+    /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
+    public func createSimProfileForRegion(code: String) -> Promise<SimProfile> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .simProfiles
+        ]
+    
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.sendObject(SimProfileRequest(), to: path, method: .POST)
+            .map { data, response in
+                try APIHelper.validateResponse(data: data, response: response)
+            }
+            .map { try self.decoder.decode(SimProfile.self, from: $0) }
+    }
+    
     /// Creates a Jumio scan request for the given region
     ///
     /// - Parameter code: The region to request a Jumio scan request for

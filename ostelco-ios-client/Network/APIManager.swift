@@ -45,9 +45,5 @@ class APIManager: Service {
             $0.headers["Content-Type"] = "application/json"
             $0.headers["Authorization"] = self.authHeader
         }
-        
-        configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
-            try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
-        }
     }
 }
