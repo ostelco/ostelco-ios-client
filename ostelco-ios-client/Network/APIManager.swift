@@ -6,11 +6,10 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import PromiseKit
-import Siesta
 import ostelco_core
+import PromiseKit
 
-class APIManager: Service {
+class APIManager {
     
     static let sharedInstance = APIManager()
     

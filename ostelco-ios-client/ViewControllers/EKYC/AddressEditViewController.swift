@@ -9,7 +9,6 @@
 import Crashlytics
 import ostelco_core
 import PromiseKit
-import RxSwift
 import UIKit
 
 protocol MyInfoAddressUpdateDelegate: class {

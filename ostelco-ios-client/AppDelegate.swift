@@ -6,12 +6,13 @@
 //  Copyright © 2018 mac. All rights reserved.
 //
 
-import UIKit
-import Stripe
 import Firebase
+import FirebaseDynamicLinks
+import FirebaseMessaging
 import ostelco_core
 import PromiseKit
-import Siesta
+import Stripe
+import UIKit
 import UserNotifications
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,13 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
             if bundleIndentifier.contains("dev") {
                 ThemeManager.applyTheme(theme: .TurquoiseTheme)
-                SiestaLog.Category.enabled = .all
             } else {
                 ThemeManager.applyTheme(theme: .BlueTheme)
             }
         } else {
             ThemeManager.applyTheme(theme: .TurquoiseTheme)
-            SiestaLog.Category.enabled = .all
         }
         
         let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))

@@ -9,7 +9,6 @@
 import Foundation
 import ostelco_core
 import PromiseKit
-import Siesta
 import Stripe
 
 enum ApplePayError: Error {
