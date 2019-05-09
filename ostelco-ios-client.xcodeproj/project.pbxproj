@@ -151,6 +151,7 @@
 		9B6A928722841C38007F5EC9 /* EKYCProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */; };
 		9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A92882284209A007F5EC9 /* PushToken.swift */; };
 		9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */; };
+		9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */; };
 		9B6A92902284501B007F5EC9 /* MockJSON in Resources */ = {isa = PBXBuildFile; fileRef = 9B6A928F2284501B007F5EC9 /* MockJSON */; };
 		9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
@@ -473,6 +474,7 @@
 		9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCProfileUpdate.swift; sourceTree = "<group>"; };
 		9B6A92882284209A007F5EC9 /* PushToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPITests.swift; sourceTree = "<group>"; };
+		9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAPITests.swift; sourceTree = "<group>"; };
 		9B6A928F2284501B007F5EC9 /* MockJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockJSON; sourceTree = "<group>"; };
 		9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Testing.swift"; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 		9B6A928E22844F99007F5EC9 /* APITests */ = {
 			isa = PBXGroup;
 			children = (
+				9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */,
 				9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */,
 			);
 			path = APITests;
@@ -1927,6 +1930,7 @@
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
+				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */,
 			);
