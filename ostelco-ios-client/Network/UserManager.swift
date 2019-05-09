@@ -60,7 +60,7 @@ class UserManager {
     }
     
     func getDestinationFromContext() -> Promise<PostLoginDestination> {
-        return APIManager.shared.loggedInAPI.loadContext()
+        return APIManager.shared.primeAPI.loadContext()
             .map { context -> PostLoginDestination in
                 UserManager.shared.customer = context.customer
                 guard let region = context.getRegion() else {

@@ -13,9 +13,9 @@ class APIManager {
     
     static let shared = APIManager()
     
-    lazy var loggedInAPI: LoggedInAPI = {
+    lazy var primeAPI: PrimeAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)
-        return LoggedInAPI(baseURL: baseURLString,
+        return PrimeAPI(baseURL: baseURLString,
                            tokenProvider: self.tokenProvider)
     }()
     

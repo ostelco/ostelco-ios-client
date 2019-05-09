@@ -33,7 +33,7 @@ class MyInfoSummaryViewController: UIViewController {
         debugPrint("Code = \(code)")
         
         self.spinnerView = self.showSpinner(onView: self.view)
-        APIManager.shared.loggedInAPI
+        APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
@@ -89,7 +89,7 @@ class MyInfoSummaryViewController: UIViewController {
         
         let profileUpdate = EKYCProfileUpdate(address: address, phoneNumber: phoneNumber)
         self.spinnerView = self.showSpinner(onView: self.view)
-        APIManager.shared.loggedInAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
+        APIManager.shared.primeAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
                 self?.spinnerView = nil

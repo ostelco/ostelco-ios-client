@@ -28,7 +28,7 @@ class NeedHelpAlertController: UIAlertController {
 func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAlertAction {
     let alertAction = UIAlertAction(title: title, style: .destructive) {_ in
         let spinnerView = vc.showSpinner(onView: vc.view)
-        APIManager.shared.loggedInAPI.deleteCustomer()
+        APIManager.shared.primeAPI.deleteCustomer()
             .ensure { [weak vc] in
                 vc?.removeSpinner(spinnerView)
             }

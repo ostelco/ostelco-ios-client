@@ -1,5 +1,5 @@
 //
-//  LoggedInAPI.swift
+//  PrimeAPI.swift
 //  ostelco-core
 //
 //  Created by Ellen Shapiro on 4/10/19.
@@ -9,8 +9,8 @@
 import PromiseKit
 import Foundation
 
-/// A class to wrap APIs called once the user is logged in.
-open class LoggedInAPI: BasicNetwork {
+/// A class to wrap APIs controlled by the Prime backend.
+open class PrimeAPI: BasicNetwork {
     
     enum Error: Swift.Error, LocalizedError {
         case failedToGetRegion

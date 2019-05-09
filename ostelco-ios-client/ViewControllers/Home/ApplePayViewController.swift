@@ -42,7 +42,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     }
 
     func getProducts() -> Promise<[Product]> {
-        return APIManager.shared.loggedInAPI
+        return APIManager.shared.primeAPI
             .loadProducts()
             .map { productModels in
                 productModels.map { Product(from: $0, countryCode: "SG") }
