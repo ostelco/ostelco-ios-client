@@ -105,7 +105,15 @@ open class LoggedInAPI: BasicNetwork {
                 debugPrint("Delete customer response: \(String(describing: dataString))")
             }
     }
-    
+
+    /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
+    public func stripeEphemeralKey(apiVersion: String) -> Promise<[String: AnyObject]?> {
+        let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
+        let apiQueryItem = URLQueryItem(name: "api_version", value: apiVersion)
+        return self.loadData(from: path, queryItems: [apiQueryItem])
+            .map { try JSONSerialization.jsonObject(with: $0, options: []) as? [String: AnyObject] }
+    }
+
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
@@ -238,18 +246,20 @@ open class LoggedInAPI: BasicNetwork {
     ///
     /// - Parameter path: The path to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
-    public func loadData(from path: String) -> Promise<Data> {
+    public func loadData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<Data> {
         let request = Request(baseURL: self.baseURL,
                               path: path,
+                              queryItems: queryItems,
                               loggedIn: true,
                               secureStorage: self.secureStorage)
         
         return self.performValidatedRequest(request)
     }
     
-    public func loadNonValidatedData(from path: String) -> Promise<(data: Data, response: URLResponse)> {
+    public func loadNonValidatedData(from path: String,  queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
         let request = Request(baseURL: self.baseURL,
                               path: path,
+                              queryItems: queryItems,
                               loggedIn: true,
                               secureStorage: self.secureStorage)
         
