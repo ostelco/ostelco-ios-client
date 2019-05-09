@@ -11,7 +11,7 @@ import PromiseKit
 
 class APIManager {
     
-    static let sharedInstance = APIManager()
+    static let shared = APIManager()
     
     lazy var loggedInAPI: LoggedInAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)

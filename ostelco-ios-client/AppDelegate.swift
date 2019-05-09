@@ -293,7 +293,7 @@ extension AppDelegate: MessagingDelegate {
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
         
         let pushToken = PushToken(token: token, applicationID: appId)
-        APIManager.sharedInstance.loggedInAPI.sendPushToken(pushToken)
+        APIManager.shared.loggedInAPI.sendPushToken(pushToken)
             .done {
                 debugPrint("Set new FCM token: \(token)")
             }

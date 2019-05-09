@@ -31,7 +31,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-           APIManager.sharedInstance
+           APIManager.shared
             .loggedInAPI
             .getRegionFromRegions()
             .done { [weak self] regionResponse in
@@ -55,7 +55,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         
         self.spinnerView = self.showSpinner(onView: self.view)
         
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.loggedInAPI
             .loadSimProfilesForRegion(code: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
@@ -105,7 +105,7 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
         } else {
             self.spinnerView = self.showSpinner(onView: self.view)
-            APIManager.sharedInstance.loggedInAPI.createSimProfileForRegion(code: countryCode)
+            APIManager.shared.loggedInAPI.createSimProfileForRegion(code: countryCode)
                 .ensure { [weak self] in
                     self?.removeSpinner(self?.spinnerView)
                     self?.spinnerView = nil

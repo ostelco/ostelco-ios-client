@@ -119,7 +119,7 @@ class AddressEditViewController: UITableViewController {
         
         self.spinnerView = showSpinner(onView: self.view)
 
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.loggedInAPI
             .addAddress(address, forRegion: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)

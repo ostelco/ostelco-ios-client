@@ -69,7 +69,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             .then { source -> Promise<Void> in
                 // Call Prime API to buy the product.
                 let payment = PaymentInfo(sourceID: source.stripeID)
-                return APIManager.sharedInstance.loggedInAPI.purchaseProduct(with: product.sku, payment: payment)
+                return APIManager.shared.loggedInAPI.purchaseProduct(with: product.sku, payment: payment)
             }
             .done {
                 debugPrint("Successfully bought product \(product.sku)")

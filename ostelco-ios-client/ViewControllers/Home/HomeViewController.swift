@@ -114,7 +114,7 @@ class HomeViewController: ApplePayViewController {
         messageLabel.isHidden = true
         
         // Call the bundles API
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.loggedInAPI
             .loadBundles()
             .ensure { [weak self] in
                 self?.refreshControl.endRefreshing()

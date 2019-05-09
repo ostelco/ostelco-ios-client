@@ -40,7 +40,7 @@ class NRCIVerifyViewController: UIViewController {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         self.nricErrorLabel.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view)
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.loggedInAPI
             .validateNRIC(nric, forRegion: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
@@ -63,7 +63,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
     func getNewScanId() -> Promise<String> {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
-        return APIManager.sharedInstance.loggedInAPI.createJumioScanForRegion(code: countryCode)
+        return APIManager.shared.loggedInAPI.createJumioScanForRegion(code: countryCode)
             .map { scan in
                 return scan.scanId
             }

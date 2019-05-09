@@ -41,7 +41,7 @@ class GetStartedViewController: UIViewController {
         self.spinnerView = self.showSpinner(onView: self.view)
         let user = UserSetup(nickname: nickname, email: email)
 
-        APIManager.sharedInstance.loggedInAPI.createCustomer(with: user)
+        APIManager.shared.loggedInAPI.createCustomer(with: user)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
                 self?.spinnerView = nil
