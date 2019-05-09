@@ -101,7 +101,7 @@ PODS:
   - Siesta/UI (1.4.2):
     - Siesta/Core
   - SimpleKeychain (0.8.1)
-  - Stripe (14.0.0)
+  - Stripe (15.0.0)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
@@ -120,7 +120,7 @@ DEPENDENCIES:
   - RxSwift (~> 4.5.0)
   - Siesta (~> 1.0)
   - Siesta/UI (~> 1.0)
-  - Stripe (~> 14.0.0)
+  - Stripe (~> 15.0.0)
   - SwiftLint (~> 0.31.0)
 
 SPEC REPOS:
@@ -177,9 +177,9 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
-  Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  Stripe: 312b22a67af9fa55c246d26148b3f3a9636a0ff2
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: f94a04014570afc22800ad6264973daddaf9401b
+PODFILE CHECKSUM: e75486f1b0f82002ebc430aa8ccebcbff1f1b637
 
 COCOAPODS: 1.6.1

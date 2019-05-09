@@ -75,3 +75,14 @@ public enum RegionEndpoint: APIEndpoint {
         }
     }
 }
+
+public enum CustomerEndpoint: APIEndpoint {
+    case stripeEphemeralKey
+
+    var value: String {
+        switch self {
+        case .stripeEphemeralKey:
+            return "stripe-ephemeral-key"
+        }
+    }
+}
