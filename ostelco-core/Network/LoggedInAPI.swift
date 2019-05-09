@@ -45,6 +45,17 @@ open class LoggedInAPI: BasicNetwork {
         self.tokenProvider = tokenProvider
     }
     
+    /// Uploads the device's push token to the server.
+    ///
+    /// - Parameter pushToken: The push token to send
+    /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
+    public func sendPushToken(_ pushToken: PushToken) -> Promise<Void> {
+        return self.sendObject(pushToken, to: RootEndpoint.applicationToken.value, method: .POST)
+            .map { data, response in
+                try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
+            }
+    }
+    
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> Promise<[BundleModel]> {
         return self.loadData(from: RootEndpoint.bundles.value)

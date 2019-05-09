@@ -147,6 +147,7 @@
 		9B6A928322833586007F5EC9 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		9B6A9285228418A4007F5EC9 /* SimProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */; };
 		9B6A928722841C38007F5EC9 /* EKYCProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */; };
+		9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A92882284209A007F5EC9 /* PushToken.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
 		9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */; };
@@ -464,6 +465,7 @@
 		9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPAPIClient+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfileRequest.swift; sourceTree = "<group>"; };
 		9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCProfileUpdate.swift; sourceTree = "<group>"; };
+		9B6A92882284209A007F5EC9 /* PushToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
 		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
 		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
+				9B6A92882284209A007F5EC9 /* PushToken.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
 				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				0493B80E2253943900989F40 /* ServerError.swift */,
@@ -1886,6 +1889,7 @@
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
+				9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */,
 				9B821594227ADA1000DC6B64 /* Request.swift in Sources */,
 				9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,

@@ -24,6 +24,7 @@ extension APIEndpoint {
 }
 
 public enum RootEndpoint: String, APIEndpoint {
+    case applicationToken
     case bundles
     case context
     case customer
