@@ -90,15 +90,17 @@ extension ApplePayViewController: STPPaymentContextDelegate {
         let navigationController = UINavigationController(rootViewController: paymentOptionsViewController)
         present(navigationController, animated: true)
     }
+
     // Do actual payment using  Stripe.
     // Payment is done using the default card you have selected using the showPaymentOptions API
     // If no card is present, this will show the payment options UI
     func startStripePay(product: Product) {
         purchasingProduct = product
-        paymentContext.paymentAmount = Int(truncating: NSDecimalNumber(decimal: purchasingProduct!.amount))
-        paymentContext.paymentCurrency = purchasingProduct!.currency
+        paymentContext.paymentAmount = Int(truncating: NSDecimalNumber(decimal: product.amount))
+        paymentContext.paymentCurrency = product.currency
         paymentContext.requestPayment()
     }
+
     // Stripe is ready with a payment source, call Prime API to purchase the product
     func handleDidCreatePaymentResult(paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
         guard let product = purchasingProduct else {
