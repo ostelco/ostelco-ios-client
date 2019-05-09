@@ -114,15 +114,16 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
             return
         }
         // Call Prime API to buy the product.
-        APIManager.sharedInstance.products.child(product.sku).child("purchase").withParam("sourceId", paymentResult.source.stripeID).request(.post)
-            .onSuccess({ result in
-                debugPrint("Successfully bought a product %{public}@", "\(result)")
+        let payment = PaymentInfo(sourceID: paymentResult.source.stripeID)
+        APIManager.shared.primeAPI.purchaseProduct(with: product.sku, payment: payment)
+            .done {
+                debugPrint("Successfully bought product \(product.sku)")
                 completion(nil)
-            })
-            .onFailure({ error in
+            }
+            .catch { error in
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
                 completion(ApplePayError.primeAPIError(error))
-            })
+            }
     }
 
     // MARK: - STPPaymentContextDelegate methods
@@ -162,14 +163,13 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
 
     // Called automatically by Stripe through the STPCustomerContext object
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
-        APIManager.sharedInstance.loggedInAPI
-            .stripeEphemeralKey(stripeAPIVersion: apiVersion)
+        APIManager.shared.primeAPI.stripeEphemeralKey(stripeAPIVersion: apiVersion)
             .done { key in
                 completion(key, nil)
             }
             .catch { error in
                 completion(nil, error)
-        }
+            }
     }
 }
 #endif
