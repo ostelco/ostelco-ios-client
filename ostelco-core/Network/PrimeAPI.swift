@@ -143,7 +143,15 @@ open class PrimeAPI: BasicNetwork {
                 debugPrint("Delete customer response: \(String(describing: dataString))")
         }
     }
-    
+
+    /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
+    public func stripeEphemeralKey(stripeAPIVersion: String) -> Promise<[String: AnyObject]?> {
+        let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
+        let apiQueryItem = URLQueryItem(name: "api_version", value: stripeAPIVersion)
+        return self.loadData(from: path, queryItems: [apiQueryItem])
+            .map { try JSONSerialization.jsonObject(with: $0, options: []) as? [String: AnyObject] }
+    }
+
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
@@ -336,26 +344,24 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter path: The path to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
-    public func loadData(from path: String) -> Promise<Data> {
+    public func loadData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<Data> {
         return self.tokenProvider.getToken()
-            .then { token -> Promise<Data> in
-                let request = Request(baseURL: self.baseURL,
-                                      path: path,
-                                      loggedIn: true,
-                                      token: token)
-                return self.performValidatedRequest(request)
-            }
+            .map { Request(baseURL: self.baseURL,
+                           path: path,
+                           queryItems: queryItems,
+                           loggedIn: true,
+                           token: $0) }
+            .then { self.performValidatedRequest($0) }
     }
     
-    public func loadNonValidatedData(from path: String) -> Promise<(data: Data, response: URLResponse)> {
+    public func loadNonValidatedData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
         return self.tokenProvider.getToken()
-            .then { token -> Promise<(data: Data, response: URLResponse)> in
-                let request = Request(baseURL: self.baseURL,
-                                      path: path,
-                                      loggedIn: true,
-                                      token: token)
-                return self.performRequest(request)
-            }
+            .map { Request(baseURL: self.baseURL,
+                           path: path,
+                           queryItems: queryItems,
+                           loggedIn: true,
+                           token: $0) }
+            .then { self.performRequest($0) }
     }
     
     /// Sends `Codable` object to the given path based on the base URL.

@@ -150,10 +150,20 @@ class HomeViewController: ApplePayViewController {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
             let buyAction = UIAlertAction(title: product.label, style: .default) {_ in
-                self.startApplePay(product: product)
+                #if STRIPE_PAYMENT
+                    self.startStripePay(product: product)
+                #else
+                    self.startApplePay(product: product)
+                #endif
             }
             alertCtrl.addAction(buyAction)
         }
+        #if STRIPE_PAYMENT
+            let addCardsAction = UIAlertAction(title: "Setup Cards", style: .default) {_ in
+                self.showPaymentOptions()
+            }
+            alertCtrl.addAction(addCardsAction)
+        #endif
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertCtrl.addAction(cancelAction)
         present(alertCtrl, animated: true, completion: nil)

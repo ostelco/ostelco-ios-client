@@ -106,7 +106,7 @@ PODS:
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
   - Protobuf (3.7.0)
-  - Stripe (14.0.0)
+  - Stripe (15.0.1)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
@@ -120,7 +120,7 @@ DEPENDENCIES:
   - JumioMobileSDK/Netverify (~> 2.15.0)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
-  - Stripe (~> 14.0.0)
+  - Stripe (~> 15.0.0)
   - SwiftLint (~> 0.31.0)
 
 SPEC REPOS:
@@ -169,9 +169,9 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: b790769a30e8da9f7e64b0074e5312bbb10a0ada
+PODFILE CHECKSUM: 0de9e0f588c9000d7d39f2baa6d03c8896528664
 
 COCOAPODS: 1.6.1

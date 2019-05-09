@@ -33,7 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
+        #if STRIPE_PAYMENT
+            debugPrint("Stripe Payment enabled")
+        #else
+            STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
+        #endif
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
             if bundleIndentifier.contains("dev") {
                 ThemeManager.applyTheme(theme: .TurquoiseTheme)

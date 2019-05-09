@@ -26,19 +26,19 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>2.15.0'
-  pod 'Stripe', '~>14.0.0'
+  pod 'Stripe', '~>15.0.0'
   pod 'SwiftLint', '~>0.31.0'
-  
+
   # Dev app target
   target 'dev-ostelco-ios-client' do
-    
+
     # Test target
     target 'dev-ostelco-ios-clientTests' do
       inherit! :search_paths
       pod 'OHHTTPStubs/Swift', '~>8.0.0'
     end
   end
-  
+
   # Prod app target
   target 'ostelco-ios-client' do
   end
