@@ -24,15 +24,15 @@ class MyInfoSummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugPrint("Query Items: \(String(describing: myInfoQueryItems))")
-        self.spinnerView = self.showSpinner(onView: self.view)
         
+        debugPrint("Query Items: \(String(describing: self.myInfoQueryItems))")
         guard let code = getMyInfoCode() else {
             return
         }
         
-        //TODO: Pass the code we retrieved to PRIME
         debugPrint("Code = \(code)")
+        
+        self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.sharedInstance.loggedInAPI
             .loadSingpassInfo(code: code)
             .ensure { [weak self] in
