@@ -256,7 +256,7 @@ open class LoggedInAPI: BasicNetwork {
         return self.performValidatedRequest(request)
     }
     
-    public func loadNonValidatedData(from path: String,  queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
+    public func loadNonValidatedData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
         let request = Request(baseURL: self.baseURL,
                               path: path,
                               queryItems: queryItems,
