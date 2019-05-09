@@ -28,7 +28,7 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let email = UserManager.sharedInstance.currentUserEmail else {
+        guard let email = UserManager.shared.currentUserEmail else {
             self.showAlert(title: "Error", msg: "Email is empty or missing in Firebase")
             return
         }
@@ -48,7 +48,7 @@ class GetStartedViewController: UIViewController {
             }
             .done { [weak self] customer in
                 OstelcoAnalytics.logEvent(.EnteredNickname)
-                UserManager.sharedInstance.customer = customer
+                UserManager.shared.customer = customer
                 self?.performSegue(withIdentifier: "showCountry", sender: self)
             }
             .catch { [weak self] error in

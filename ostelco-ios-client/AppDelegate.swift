@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
                 .then {
-                    UserManager.sharedInstance.getDestinationFromContext()
+                    UserManager.shared.getDestinationFromContext()
                 }
                 .done { [weak self] destination in
                     self?.rootCoordinator.navigate(to: destination, from: nil)
@@ -283,7 +283,7 @@ extension AppDelegate: MessagingDelegate {
     
     func sendFCMToken() {
         guard
-            UserManager.sharedInstance.firebaseUser != nil,
+            UserManager.shared.firebaseUser != nil,
             let token = fcmToken else {
                 // Wait to be authenticated, or the token to be ready.
                 return

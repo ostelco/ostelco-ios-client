@@ -16,7 +16,7 @@ class UserManager {
         case noFirebaseUser
     }
     
-    static let sharedInstance = UserManager()
+    static let shared = UserManager()
     
     var customer: CustomerModel? {
         didSet {
@@ -62,7 +62,7 @@ class UserManager {
     func getDestinationFromContext() -> Promise<PostLoginDestination> {
         return APIManager.sharedInstance.loggedInAPI.loadContext()
             .map { context -> PostLoginDestination in
-                UserManager.sharedInstance.customer = context.customer
+                UserManager.shared.customer = context.customer
                 guard let region = context.getRegion() else {
                     return .validateCountry
                 }

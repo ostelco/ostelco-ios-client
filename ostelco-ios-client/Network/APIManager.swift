@@ -19,7 +19,7 @@ class APIManager {
                            tokenProvider: self.tokenProvider)
     }()
     
-    var tokenProvider: TokenProvider = UserManager.sharedInstance
+    var tokenProvider: TokenProvider = UserManager.shared
 
     fileprivate init() {
         URLSession.shared.configuration.timeoutIntervalForRequest = 300
