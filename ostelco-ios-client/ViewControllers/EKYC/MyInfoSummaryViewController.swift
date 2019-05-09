@@ -80,22 +80,27 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     @IBAction private func `continue`(_ sender: Any) {
-        spinnerView = self.showSpinner(onView: self.view)
-        APIManager.sharedInstance.regions.child("/sg/kyc/profile")
-            .withParam("address", address.text!)
-            .withParam("phoneNumber", myInfoDetails!.mobileNumber!.formattedNumber).request(.put)
-            .onSuccess { _ in
-                DispatchQueue.main.async {
-                    self.removeSpinner(self.spinnerView)
-                    self.performSegue(withIdentifier: "ESim", sender: self)
-                }
-            }
-            .onFailure { error in
-                DispatchQueue.main.async {
-                    self.removeSpinner(self.spinnerView)
-                    self.showAPIError(error: error)
-                }
+        guard
+            let address = self.address.text,
+            let phoneNumber = self.myInfoDetails?.mobileNumber?.formattedNumber else {
+                assertionFailure("Validation passed but we don't have either an address or a phone number?")
+                return
         }
+        
+        let profileUpdate = EKYCProfileUpdate(address: address, phoneNumber: phoneNumber)
+        self.spinnerView = self.showSpinner(onView: self.view)
+        APIManager.sharedInstance.loggedInAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] in
+                self?.performSegue(withIdentifier: "ESim", sender: self)
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
     
     func updateUI(_ myInfoDetails: MyInfoDetails?) {

@@ -13,7 +13,6 @@ import ostelco_core
 class APIManager: Service {
     
     static let sharedInstance = APIManager()
-    let jsonDecoder = JSONDecoder()
     
     lazy var loggedInAPI: LoggedInAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)
@@ -21,29 +20,9 @@ class APIManager: Service {
                            tokenProvider: self.tokenProvider)
     }()
     
-    var authHeader: String? {
-        didSet {
-            invalidateConfiguration()
-            wipeResources()
-        }
-    }
-    
-    var regions: Resource { return resource("/regions") }
-    
     var tokenProvider: TokenProvider = UserManager.sharedInstance
 
     fileprivate init() {
-        let networking = URLSessionConfiguration.ephemeral
-        networking.timeoutIntervalForRequest = 300
-        super.init(
-            baseURL: Environment().configuration(PlistKey.ServerURL),
-            standardTransformers: [.text],
-            networking: networking
-        )
-        
-        configure {
-            $0.headers["Content-Type"] = "application/json"
-            $0.headers["Authorization"] = self.authHeader
-        }
+        URLSession.shared.configuration.timeoutIntervalForRequest = 300
     }
 }

@@ -239,6 +239,29 @@ open class LoggedInAPI: BasicNetwork {
             }
     }
     
+    /// Updates the user's EKYC profile with the given information in the given region.
+    ///
+    /// - Parameters:
+    ///   - update: The info to be updated.
+    ///   - code: The region to update the user profile in
+    /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
+    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> Promise<Void> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .kyc,
+            .profile
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+
+        return self.sendObject(update, to: path, method: .PUT)
+            .map { data, response in
+                try APIHelper.validateAndLookForServerError(data: data,
+                                                            response: response,
+                                                            decoder: self.decoder)
+            }
+    }
+    
     /// Validates the given NRIC.
     ///
     /// - Parameters:
