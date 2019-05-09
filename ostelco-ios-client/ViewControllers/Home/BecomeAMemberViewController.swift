@@ -91,9 +91,9 @@ class BecomeAMemberViewController: ApplePayViewController {
     @objc func buyButtonTapped() {
         if let plan = plan {
             #if STRIPE_PAYMENT
-            startStripePay(product: plan)
+                startStripePay(product: plan)
             #else
-            startApplePay(product: plan)
+                startApplePay(product: plan)
             #endif
         } else {
             let error = ApplicationErrors.General.noValidPlansFound

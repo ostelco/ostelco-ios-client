@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
         #if STRIPE_PAYMENT
-        debugPrint("Stripe Payment enabled")
+            debugPrint("Stripe Payment enabled")
         #else
-        STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
+            STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
         #endif
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
             if bundleIndentifier.contains("dev") {

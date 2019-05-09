@@ -31,13 +31,13 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     // MARK: - Properties for Stripe Payment.
 
     #if STRIPE_PAYMENT
-    lazy var paymentContext: STPPaymentContext = {
-        let customerContext = STPCustomerContext(keyProvider: self)
-        let paymentContext = STPPaymentContext(customerContext: customerContext)
-        paymentContext.delegate = self
-        paymentContext.hostViewController = self
-        return paymentContext
-    }()
+        lazy var paymentContext: STPPaymentContext = {
+            let customerContext = STPCustomerContext(keyProvider: self)
+            let paymentContext = STPPaymentContext(customerContext: customerContext)
+            paymentContext.delegate = self
+            paymentContext.hostViewController = self
+            return paymentContext
+        }()
     #endif
 
     func paymentError(_ error: Error) {
