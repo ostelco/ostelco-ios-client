@@ -64,7 +64,6 @@ class EmailEntryViewController: UIViewController {
 extension EmailEntryViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         
         self.emailValidator.email = text
