@@ -159,7 +159,7 @@ class StripeKeyProvider: NSObject, STPCustomerEphemeralKeyProvider {
 
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         APIManager.sharedInstance.loggedInAPI
-            .stripeEphemeralKey(apiVersion: apiVersion)
+            .stripeEphemeralKey(stripeAPIVersion: apiVersion)
             .done { key in
                 completion(key, nil)
             }

@@ -107,9 +107,9 @@ open class LoggedInAPI: BasicNetwork {
     }
 
     /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
-    public func stripeEphemeralKey(apiVersion: String) -> Promise<[String: AnyObject]?> {
+    public func stripeEphemeralKey(stripeAPIVersion: String) -> Promise<[String: AnyObject]?> {
         let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
-        let apiQueryItem = URLQueryItem(name: "api_version", value: apiVersion)
+        let apiQueryItem = URLQueryItem(name: "api_version", value: stripeAPIVersion)
         return self.loadData(from: path, queryItems: [apiQueryItem])
             .map { try JSONSerialization.jsonObject(with: $0, options: []) as? [String: AnyObject] }
     }
