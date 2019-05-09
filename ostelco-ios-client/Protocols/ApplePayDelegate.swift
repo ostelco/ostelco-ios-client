@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Siesta
+import ostelco_core
+import PromiseKit
 import Stripe
 
 enum ApplePayError: Error {
@@ -17,7 +18,7 @@ enum ApplePayError: Error {
     case otherRestrictions
     // Other errors during payment
     case userCancelled
-    case primeAPIError(RequestError)
+    case primeAPIError(Error)
 }
 
 extension ApplePayError: LocalizedError {
@@ -62,27 +63,24 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
                                  handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         authorizedApplePay = true
         let product = purchasingProduct!
+        
         // Create Stripe Source.
-        STPAPIClient.shared().createSource(with: payment) { (source: STPSource?, error: Error?) in
-            guard let source = source, error == nil else {
-                debugPrint(error!)
-                completion(PKPaymentAuthorizationResult(status: .failure, errors: [error!]))
-                self.showAlert(title: "Failed to create stripe source", msg: "\(error!.localizedDescription)")
-                return
+        STPAPIClient.shared().promiseCreateSource(with: payment)
+            .then { source -> Promise<Void> in
+                // Call Prime API to buy the product.
+                let payment = PaymentInfo(sourceID: source.stripeID)
+                return APIManager.shared.primeAPI.purchaseProduct(with: product.sku, payment: payment)
             }
-            // Call Prime API to buy the product.
-            APIManager.sharedInstance.products.child(product.sku).child("purchase").withParam("sourceId", source.stripeID).request(.post)
-                .onSuccess({ result in
-                    debugPrint("Successfully bought a product %{public}@", "\(result)")
-                    completion(PKPaymentAuthorizationResult(status: .success, errors: []))
-                })
-                .onFailure({ error in
-                    debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
-                    completion(PKPaymentAuthorizationResult(status: .failure, errors: [error]))
-                    self.applePayError = ApplePayError.primeAPIError(error)
-                    // Wait for finish method before we call paymentError()
-                })
-        }
+            .done {
+                debugPrint("Successfully bought product \(product.sku)")
+                completion(PKPaymentAuthorizationResult(status: .success, errors: []))
+            }
+            .catch { error in
+                debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
+                self.applePayError = ApplePayError.primeAPIError(error)
+                completion(PKPaymentAuthorizationResult(status: .failure, errors: [error]))
+                // Wait for finish method before we call paymentError()
+            }
     }
 
     func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController) {

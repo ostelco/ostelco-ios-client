@@ -6,12 +6,13 @@
 //  Copyright © 2018 mac. All rights reserved.
 //
 
-import UIKit
-import Stripe
 import Firebase
-import FirebaseUI
+import FirebaseDynamicLinks
+import FirebaseMessaging
+import ostelco_core
 import PromiseKit
-import Siesta
+import Stripe
+import UIKit
 import UserNotifications
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,13 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let bundleIndentifier = Bundle.main.bundleIdentifier {
             if bundleIndentifier.contains("dev") {
                 ThemeManager.applyTheme(theme: .TurquoiseTheme)
-                SiestaLog.Category.enabled = .all
             } else {
                 ThemeManager.applyTheme(theme: .BlueTheme)
             }
         } else {
             ThemeManager.applyTheme(theme: .TurquoiseTheme)
-            SiestaLog.Category.enabled = .all
         }
         
         let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
@@ -131,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
                 .then {
-                    UserManager.sharedInstance.getDestinationFromContext()
+                    UserManager.shared.getDestinationFromContext()
                 }
                 .done { [weak self] destination in
                     self?.rootCoordinator.navigate(to: destination, from: nil)
@@ -283,9 +282,8 @@ extension AppDelegate: MessagingDelegate {
     }
     
     func sendFCMToken() {
-        // TODO: Make sure this is called after getting a valid auth token.
         guard
-            APIManager.sharedInstance.authHeader != nil,
+            UserManager.shared.firebaseUser != nil,
             let token = fcmToken else {
                 // Wait to be authenticated, or the token to be ready.
                 return
@@ -293,14 +291,15 @@ extension AppDelegate: MessagingDelegate {
         
         // Use the application ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
-        let json = ["token": token, "tokenType": "FCM", "applicationID": appId]
-        APIManager.sharedInstance.resource("/applicationToken").request(.post, json: json)
-            .onSuccess { _ in
-                print("Set new FCM token :\(token)")
+        
+        let pushToken = PushToken(token: token, applicationID: appId)
+        APIManager.shared.primeAPI.sendPushToken(pushToken)
+            .done {
+                debugPrint("Set new FCM token: \(token)")
             }
-            .onFailure { error in
-                print("Failed to set FCM token \(error)")
-        }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

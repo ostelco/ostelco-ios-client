@@ -1,5 +1,5 @@
 //
-//  LoggedInAPI.swift
+//  PrimeAPI.swift
 //  ostelco-core
 //
 //  Created by Ellen Shapiro on 4/10/19.
@@ -9,8 +9,8 @@
 import PromiseKit
 import Foundation
 
-/// A class to wrap APIs called once the user is logged in.
-open class LoggedInAPI: BasicNetwork {
+/// A class to wrap APIs controlled by the Prime backend.
+open class PrimeAPI: BasicNetwork {
     
     enum Error: Swift.Error, LocalizedError {
         case failedToGetRegion
@@ -45,6 +45,17 @@ open class LoggedInAPI: BasicNetwork {
         self.tokenProvider = tokenProvider
     }
     
+    /// Uploads the device's push token to the server.
+    ///
+    /// - Parameter pushToken: The push token to send
+    /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
+    public func sendPushToken(_ pushToken: PushToken) -> Promise<Void> {
+        return self.sendObject(pushToken, to: RootEndpoint.applicationToken.value, method: .POST)
+            .map { data, response in
+                try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
+            }
+    }
+    
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> Promise<[BundleModel]> {
         return self.loadData(from: RootEndpoint.bundles.value)
@@ -69,10 +80,35 @@ open class LoggedInAPI: BasicNetwork {
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
     }
     
+    // MARK: - Products
+    
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> Promise<[ProductModel]> {
         return self.loadData(from: RootEndpoint.products.value)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
+    }
+    
+    /// Purchases a product with the given SKU and the given payment information
+    ///
+    /// - Parameters:
+    ///   - sku: The SKU to purchase
+    ///   - payment: The payment information to use to purchase it
+    /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
+    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> Promise<Void> {
+        let productEndpoints: [ProductEndpoint] = [
+            .sku(sku),
+            .purchase
+        ]
+        
+        let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
+        
+        return self.sendObject(payment, to: path, method: .POST)
+            .done { data, response in
+                try APIHelper.validateAndLookForServerError(data: data,
+                                                            response: response,
+                                                            decoder: self.decoder,
+                                                            dataCanBeEmpty: true)
+            }
     }
     
     // MARK: - Customer
@@ -142,6 +178,43 @@ open class LoggedInAPI: BasicNetwork {
         return self.loadData(from: path)
             .map { try self.decoder.decode([SimProfile].self, from: $0) }
     }
+    
+    /// Creates a SIM profile for the given region
+    ///
+    /// - Parameter code: The region code to use
+    /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
+    public func createSimProfileForRegion(code: String) -> Promise<SimProfile> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .simProfiles
+        ]
+    
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.sendObject(SimProfileRequest(), to: path, method: .POST)
+            .map { data, response in
+                try APIHelper.validateResponse(data: data, response: response)
+            }
+            .map { try self.decoder.decode(SimProfile.self, from: $0) }
+    }
+    
+    /// Creates a Jumio scan request for the given region
+    ///
+    /// - Parameter code: The region to request a Jumio scan request for
+    /// - Returns: A promise which when fulfilled contains the requested data
+    public func createJumioScanForRegion(code: String) -> Promise<Scan> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .kyc,
+            .jumio,
+            .scans,
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(Scan.self, from: $0) }
+    }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> Promise<RegionResponse> {
@@ -174,6 +247,29 @@ open class LoggedInAPI: BasicNetwork {
         return self.sendObject(address, to: path, method: .PUT)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: true)
+            }
+    }
+    
+    /// Updates the user's EKYC profile with the given information in the given region.
+    ///
+    /// - Parameters:
+    ///   - update: The info to be updated.
+    ///   - code: The region to update the user profile in
+    /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
+    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> Promise<Void> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .kyc,
+            .profile
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+
+        return self.sendObject(update, to: path, method: .PUT)
+            .map { data, response in
+                try APIHelper.validateAndLookForServerError(data: data,
+                                                            response: response,
+                                                            decoder: self.decoder)
             }
     }
     

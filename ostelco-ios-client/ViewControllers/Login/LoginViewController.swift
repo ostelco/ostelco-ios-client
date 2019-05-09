@@ -10,12 +10,9 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 import Firebase
-import RxSwift
 
 class LoginViewController: UIViewController {
     var spinnerView: UIView?
-    
-    let disposeBag = DisposeBag()
     
     @IBOutlet private var primaryButton: UIButton!
     

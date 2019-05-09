@@ -27,8 +27,6 @@
 		042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
 		042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
-		0437CF80224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
-		0437CF81224D08660022A2B8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -143,6 +141,13 @@
 		9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */; };
 		9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
+		9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */; };
+		9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
+		9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
+		9B6A928322833586007F5EC9 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437CF7F224D08660022A2B8 /* Scan.swift */; };
+		9B6A9285228418A4007F5EC9 /* SimProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */; };
+		9B6A928722841C38007F5EC9 /* EKYCProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */; };
+		9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A92882284209A007F5EC9 /* PushToken.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
 		9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */; };
@@ -178,7 +183,7 @@
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
 		9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
-		9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */; };
+		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
 		9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
@@ -456,6 +461,11 @@
 		9B5CBF502281808B00D83D7B /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAuthUser+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenProvider.swift; sourceTree = "<group>"; };
+		9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
+		9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPAPIClient+PromiseKit.swift"; sourceTree = "<group>"; };
+		9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfileRequest.swift; sourceTree = "<group>"; };
+		9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCProfileUpdate.swift; sourceTree = "<group>"; };
+		9B6A92882284209A007F5EC9 /* PushToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
 		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
 		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
@@ -484,7 +494,7 @@
 		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInAPI.swift; sourceTree = "<group>"; };
+		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -749,7 +759,6 @@
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
-				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 			);
@@ -836,7 +845,7 @@
 				9B821595227ADCE000DC6B64 /* BasicNetwork.swift */,
 				9B8215752279B0F800DC6B64 /* Headers.swift */,
 				9B821591227AD9EA00DC6B64 /* HTTPMethod.swift */,
-				9B9B3242225E3B7B00227EA3 /* LoggedInAPI.swift */,
+				9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */,
 				9B821593227ADA1000DC6B64 /* Request.swift */,
 			);
 			path = Network;
@@ -885,15 +894,20 @@
 				043E711D223AF61600E01993 /* Country.swift */,
 				04834D712237B11800A01500 /* CustomerModel.swift */,
 				9B82158F227AD6D200DC6B64 /* EKYCAddress.swift */,
+				9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
 				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
+				9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */,
 				044881A7217BA32B00F59758 /* PurchaseModel.swift */,
 				044881A9217BA35C00F59758 /* ProductModel.swift */,
 				044881A1217B896800F59758 /* ProfileModel.swift */,
+				9B6A92882284209A007F5EC9 /* PushToken.swift */,
 				0437CF82224D1DAE0022A2B8 /* Region.swift */,
+				0437CF7F224D08660022A2B8 /* Scan.swift */,
 				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
+				9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */,
 				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
 			);
 			path = Models;
@@ -1037,6 +1051,7 @@
 				9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */,
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
 				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
+				9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
@@ -1794,7 +1809,6 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
-				0437CF80224D08660022A2B8 /* Scan.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -1819,6 +1833,7 @@
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
+				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */,
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
@@ -1863,6 +1878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6A928322833586007F5EC9 /* Scan.swift in Sources */,
 				9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */,
 				9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */,
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
@@ -1872,7 +1888,8 @@
 				9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
-				9B9B3243225E3B7B00227EA3 /* LoggedInAPI.swift in Sources */,
+				9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */,
+				9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */,
 				9B821594227ADA1000DC6B64 /* Request.swift in Sources */,
 				9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
@@ -1880,7 +1897,9 @@
 				9BC465392271ACC3001951BF /* Country.swift in Sources */,
 				9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */,
 				9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */,
+				9B6A928722841C38007F5EC9 /* EKYCProfileUpdate.swift in Sources */,
 				9B5CBF3922803A7E00D83D7B /* CustomerModel.swift in Sources */,
+				9B6A9285228418A4007F5EC9 /* SimProfileRequest.swift in Sources */,
 				9B821592227AD9EA00DC6B64 /* HTTPMethod.swift in Sources */,
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
@@ -1893,6 +1912,7 @@
 				9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */,
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9BC465372270AD56001951BF /* LocationController.swift in Sources */,
+				9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */,
 				9B821596227ADCE000DC6B64 /* BasicNetwork.swift in Sources */,
 				9B9B324B225E3D3E00227EA3 /* ProfileModel.swift in Sources */,
 				9B5CBF512281808B00D83D7B /* TokenProvider.swift in Sources */,
@@ -1952,7 +1972,6 @@
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
-				0437CF81224D08660022A2B8 /* Scan.swift in Sources */,
 				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
@@ -1978,6 +1997,7 @@
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
+				9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,

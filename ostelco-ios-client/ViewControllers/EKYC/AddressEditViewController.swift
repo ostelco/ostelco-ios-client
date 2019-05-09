@@ -9,7 +9,6 @@
 import Crashlytics
 import ostelco_core
 import PromiseKit
-import RxSwift
 import UIKit
 
 protocol MyInfoAddressUpdateDelegate: class {
@@ -120,7 +119,7 @@ class AddressEditViewController: UITableViewController {
         
         self.spinnerView = showSpinner(onView: self.view)
 
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.primeAPI
             .addAddress(address, forRegion: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)

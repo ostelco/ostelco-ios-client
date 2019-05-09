@@ -28,12 +28,12 @@ class NeedHelpAlertController: UIAlertController {
 func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAlertAction {
     let alertAction = UIAlertAction(title: title, style: .destructive) {_ in
         let spinnerView = vc.showSpinner(onView: vc.view)
-        APIManager.sharedInstance.loggedInAPI.deleteCustomer()
+        APIManager.shared.primeAPI.deleteCustomer()
             .ensure { [weak vc] in
                 vc?.removeSpinner(spinnerView)
             }
             .done { [weak vc] in
-                UserManager.sharedInstance.logOut()
+                UserManager.shared.logOut()
                 vc?.showSplashScreen()
             }
             .catch { [weak vc] error in
@@ -77,7 +77,7 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to log out from your account?", preferredStyle: .actionSheet)
         
         let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
-            UserManager.sharedInstance.logOut()
+            UserManager.shared.logOut()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         }
@@ -97,7 +97,7 @@ extension UIViewController {
         }
         let startOverAction = createDeleteAccountAlertAction(title: "Start Again", vc: self)
         let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
-            UserManager.sharedInstance.logOut()
+            UserManager.shared.logOut()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         }

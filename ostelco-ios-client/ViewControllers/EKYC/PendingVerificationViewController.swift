@@ -42,7 +42,7 @@ class PendingVerificationViewController: UIViewController {
     func checkVerificationStatus(silentCheck: Bool = false) {
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         let spinnerView = showSpinner(onView: self.view)
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.primeAPI
             .loadRegion(code: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(spinnerView)

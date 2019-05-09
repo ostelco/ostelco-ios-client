@@ -13,7 +13,7 @@
         <!--Email Entry View Controller-->
         <scene sceneID="6Lf-F7-s8L">
             <objects>
-                <viewController id="8Sr-ot-cFb" customClass="EmailEntryViewController" customModule="Oya_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Sr-ot-cFb" customClass="EmailEntryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ctk-Xq-LA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,19 +82,13 @@
         <!--Check Email View Controller-->
         <scene sceneID="aZy-RL-n2a">
             <objects>
-                <viewController id="ejA-LR-l53" customClass="CheckEmailViewController" customModule="Oya_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ejA-LR-l53" customClass="CheckEmailViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vCx-56-Z2j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-UY-nx5" customClass="Heading2Label" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address. Please click the link in the email you received." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cu-on-0rp" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="528.33333333333337" width="327" height="64.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,6 +110,19 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationSittingOnCloud" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-OY-xXL">
                                 <rect key="frame" x="24" y="206.33333333333334" width="327" height="16"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwW-Su-BCB" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="76" y="560" width="223" height="33"/>
+                                <state key="normal" title="Submit Simulator Pasteboard"/>
+                                <connections>
+                                    <action selector="submitPasteboardTapped" destination="ejA-LR-l53" eventType="touchUpInside" id="dDO-7w-ORq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address. Please click the link in the email you received." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cu-on-0rp" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="479.33333333333331" width="327" height="64.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -123,9 +130,11 @@
                             <constraint firstItem="YU5-UY-nx5" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="1TM-96-cfB"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="Eij-OY-xXL" secondAttribute="trailing" constant="24" id="20K-9X-JrH"/>
                             <constraint firstItem="0cu-on-0rp" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="3oq-7O-aPj"/>
-                            <constraint firstItem="fn5-bY-n3l" firstAttribute="top" secondItem="0cu-on-0rp" secondAttribute="bottom" constant="24" id="Fb7-Gy-UXb"/>
+                            <constraint firstItem="BwW-Su-BCB" firstAttribute="top" secondItem="0cu-on-0rp" secondAttribute="bottom" constant="16" id="9jL-qU-wMR"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="YU5-UY-nx5" secondAttribute="trailing" constant="24" id="I0M-qB-7d4"/>
+                            <constraint firstItem="fn5-bY-n3l" firstAttribute="top" secondItem="BwW-Su-BCB" secondAttribute="bottom" constant="24" id="QdO-at-rJd"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="bottom" secondItem="cen-WM-H3N" secondAttribute="bottom" constant="44" id="Sez-Eo-l7S"/>
+                            <constraint firstItem="BwW-Su-BCB" firstAttribute="centerX" secondItem="vCx-56-Z2j" secondAttribute="centerX" id="UKg-Xf-6Sq"/>
                             <constraint firstItem="fn5-bY-n3l" firstAttribute="centerX" secondItem="vCx-56-Z2j" secondAttribute="centerX" id="UiD-Qv-sUK"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="cen-WM-H3N" secondAttribute="trailing" constant="24" id="UyX-h9-Apg"/>
                             <constraint firstItem="0cu-on-0rp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Eij-OY-xXL" secondAttribute="bottom" constant="20" id="aHX-D7-eSf"/>
@@ -137,6 +146,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CEv-8w-uyC"/>
                     </view>
+                    <connections>
+                        <outlet property="submitPasteboardOnSimulatorButton" destination="BwW-Su-BCB" id="5bK-6s-39r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9L-Rx-c69" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
