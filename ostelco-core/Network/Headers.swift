@@ -65,14 +65,14 @@ public struct Headers {
     ///
     /// - Parameters:
     ///   - loggedIn: True if the user should be logged in for this call, false if not
-    ///   - secureStorage: The `SecureStorage` to pull credentials from if the user should be logged in
+    ///   - token: The authorization token to use to construct the headers, if one exists.
     /// - Returns: The generated headers
     /// - Throws: When headers cannot be constructed.
-    public init(loggedIn: Bool, secureStorage: SecureStorage) throws {
+    public init(loggedIn: Bool, token: String?) throws {
         self.addValue(.applicationJSON, for: .contentType)
         
         if loggedIn {
-            guard let token = secureStorage.getString(for: .Auth0Token) else {
+            guard let token = token else {
                 throw Error.noTokenForLoggedInRequest
             }
             

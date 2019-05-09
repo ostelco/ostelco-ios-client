@@ -11,8 +11,6 @@ import Foundation
 public enum PlistKey: String {
     case ServerURL = "server_url"
     case StripePublishableKey = "stripe_publishable_key"
-    case Auth0ClientID = "auth0_client_id"
-    case Auth0Domain = "auth0_domain"
     case FreshchatAppID = "freshchat_app_id"
     case FreshchatAppKey = "freshchat_app_key"
     case AppleMerchantId = "apple_merchant_id"
@@ -21,6 +19,7 @@ public enum PlistKey: String {
     case MyInfoURL = "myinfo_url"
     case MyInfoClientID = "myinfo_client_id"
     case MyInfoCallbackURL = "myinfo_callback_url"
+    case FirebaseProjectID = "firebase_project_id"
 }
 
 public class Environment {

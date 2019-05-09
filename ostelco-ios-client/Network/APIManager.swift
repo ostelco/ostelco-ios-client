@@ -6,53 +6,22 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import PromiseKit
-import Siesta
 import ostelco_core
+import PromiseKit
 
-class APIManager: Service {
+class APIManager {
     
-    static let sharedInstance = APIManager()
-    let jsonDecoder = JSONDecoder()
+    static let shared = APIManager()
     
-    lazy var loggedInAPI: LoggedInAPI = {
+    lazy var primeAPI: PrimeAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)
-        let auth0Storage = sharedAuth.credentialsSecureStorage
-        return LoggedInAPI(baseURL: baseURLString,
-                           secureStorage: auth0Storage)
+        return PrimeAPI(baseURL: baseURLString,
+                           tokenProvider: self.tokenProvider)
     }()
     
-    var authHeader: String? {
-        didSet {
-            invalidateConfiguration()
-            wipeResources()
-        }
-    }
-    
-    private(set) lazy var secureStorage: SecureStorage = KeychainWrapper(appBundleID: Bundle.main.bundleIdentifier!)
-    
-    var products: Resource { return resource("/products") }
-    var regions: Resource { return resource("/regions") }
+    var tokenProvider: TokenProvider = UserManager.shared
 
     fileprivate init() {
-        let networking = URLSessionConfiguration.ephemeral
-        networking.timeoutIntervalForRequest = 300
-        super.init(
-            baseURL: Environment().configuration(PlistKey.ServerURL),
-            standardTransformers: [.text],
-            networking: networking
-        )
-        
-        configure {
-            $0.headers["Content-Type"] = "application/json"
-            $0.headers["Authorization"] = self.authHeader
-        }
-        
-        configureTransformer("/regions/*/kyc/jumio/scans") {
-            try self.jsonDecoder.decode(Scan.self, from: $0.content)
-        }
-        configureTransformer("/regions/*/simProfiles", requestMethods: [.post]) {
-            try self.jsonDecoder.decode(SimProfile.self, from: $0.content)
-        }
+        URLSession.shared.configuration.timeoutIntervalForRequest = 300
     }
 }

@@ -19,25 +19,12 @@ class SecretsTests: XCTestCase {
             fatalError("No test root provided! Please add this to the environment variables for the scheme you are using.")
         }
         
-        guard let folder = Folder(path: testRoot) else {
+        guard let folder = try? Folder(path: testRoot) else {
             fatalError("Could not make folder from path \(testRoot)")
         }
         
         return folder
     }()
-    
-    private func tearDownAuth0AndValidate() {
-        do {
-            try Auth0Updater.reset(sourceRoot: self.testSourceRoot)
-            let file = try Auth0Updater.outputFile(in: self.testSourceRoot)
-            let dict = try PlistUpdater.loadAsDictionary(file: file)
-            for (_, value) in dict {
-                XCTAssertEqual(value, self.garbageValue)
-            }
-        } catch {
-            XCTFail("Unexpected error resetting Auth0 plist: \(error)")
-        }
-    }
     
     private func tearDownEnvironmentAndValidate() {
         do {
@@ -66,55 +53,10 @@ class SecretsTests: XCTestCase {
     }
     
     override func tearDown() {
-        self.tearDownAuth0AndValidate()
         self.tearDownFirebaseAndValidate()
         self.tearDownEnvironmentAndValidate()
         
         super.tearDown()
-    }
-    
-    func testAuth0NotIncludingAllKeysFails() {
-        let secrets = [
-            Auth0Updater.Auth0Key.clientID.rawValue: "TEST",
-        ]
-        
-        do {
-            try Auth0Updater.run(secrets: secrets, sourceRoot: self.testSourceRoot)
-        } catch Secrets.Error.missingSecrets(let keyNames) {
-            XCTAssertEqual(keyNames.count, Auth0Updater.Auth0Key.allCases.count - 1)
-        } catch {
-            XCTFail("Unexpected error: \(error)")
-        }
-    }
-    
-    func testAuth0IncludingAllKeysSucceeds() {
-        var secrets = [String: String]()
-        for (index, key) in Auth0Updater.Auth0Key.allCases.enumerated() {
-            secrets[key.jsonKey] = "Test\(index)"
-        }
-        
-        XCTAssertNoThrow(try Auth0Updater.run(secrets: secrets, sourceRoot: self.testSourceRoot))
-        
-        let dict: [String: AnyHashable]
-        do {
-            let file = try Auth0Updater.outputFile(in: self.testSourceRoot)
-            dict = try PlistUpdater.loadAsDictionary(file: file)
-        } catch {
-            XCTFail("Unexpected error reloading dictionary: \(error)")
-            return
-        }
-        
-        for (index, key) in Auth0Updater.Auth0Key.allCases.enumerated() {
-            guard let storedValue = dict[key.plistKey] else {
-                XCTFail("Couldn't access updated value in for plist key \(key.plistKey)")
-                return
-            }
-            
-            let expected = "Test\(index)"
-            XCTAssertEqual(storedValue,
-                           expected,
-                           "Value for plist key \(key.plistKey) was incorrect. Expecting \(expected), got \(storedValue)")
-        }
     }
     
     func testFirebaseNotIncludingAllKeysFails() {

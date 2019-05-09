@@ -1,9 +1,10 @@
 PODS:
-  - Auth0 (1.14.2):
-    - SimpleKeychain
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
+  - Firebase/Auth (5.20.1):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.4.2)
   - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
@@ -25,6 +26,12 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseAuth (5.4.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
@@ -69,14 +76,26 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.1)
   - JumioMobileSDK/Netverify (2.15.0)
-  - JWTDecode (2.2.0)
-  - KeychainAccess (3.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
+    - OHHTTPStubs/Default
   - PromiseKit (6.8.4):
     - PromiseKit/CorePromise (= 6.8.4)
     - PromiseKit/Foundation (= 6.8.4)
@@ -87,50 +106,32 @@ PODS:
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
   - Protobuf (3.7.0)
-  - RxCocoa (4.4.1):
-    - RxSwift (~> 4.0)
-  - RxCoreLocation (1.3.2):
-    - RxCoreLocation/Core (= 1.3.2)
-  - RxCoreLocation/Core (1.3.2):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.5.0)
-  - Siesta (1.4.2):
-    - Siesta/Core (= 1.4.2)
-  - Siesta/Core (1.4.2)
-  - Siesta/UI (1.4.2):
-    - Siesta/Core
-  - SimpleKeychain (0.8.1)
-  - Stripe (15.0.0)
+  - Stripe (15.0.1)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
-  - Auth0 (~> 1.14.2)
   - Crashlytics (~> 3.12.0)
   - Fabric (~> 1.9.0)
+  - Firebase/Auth (~> 5.20.1)
   - Firebase/Core (~> 5.20.1)
   - Firebase/DynamicLinks (~> 5.20.1)
   - Firebase/Messaging (~> 5.20.1)
   - FreshchatSDK (~> 2.4.3)
   - JumioMobileSDK/Netverify (~> 2.15.0)
-  - JWTDecode (~> 2.2)
-  - KeychainAccess (~> 3.2.0)
+  - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
-  - RxCoreLocation (~> 1.3.1)
-  - RxSwift (~> 4.5.0)
-  - Siesta (~> 1.0)
-  - Siesta/UI (~> 1.0)
   - Stripe (~> 15.0.0)
   - SwiftLint (~> 0.31.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Auth0
     - Crashlytics
     - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
+    - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
@@ -138,27 +139,23 @@ SPEC REPOS:
     - FreshchatSDK
     - GoogleAppMeasurement
     - GoogleUtilities
+    - GTMSessionFetcher
     - JumioMobileSDK
-    - JWTDecode
-    - KeychainAccess
     - nanopb
+    - OHHTTPStubs
     - PromiseKit
     - Protobuf
-    - RxCocoa
-    - RxCoreLocation
-    - RxSwift
-    - Siesta
-    - SimpleKeychain
     - Stripe
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Auth0: df9ac013e7850052fea1dcd53fa09bb129121721
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
@@ -166,20 +163,15 @@ SPEC CHECKSUMS:
   FreshchatSDK: a7432bc1cb0ecd54d9a618158d1c8d0271176e00
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   JumioMobileSDK: 8949971b2007fccf1e63bac2f30f108a1ff2c53f
-  JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
-  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
-  RxCoreLocation: 23d0f2f06fba5af57f2fa9064a5c165e75eb4c33
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
-  SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
-  Stripe: 312b22a67af9fa55c246d26148b3f3a9636a0ff2
+  Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: e75486f1b0f82002ebc430aa8ccebcbff1f1b637
+PODFILE CHECKSUM: 0de9e0f588c9000d7d39f2baa6d03c8896528664
 
 COCOAPODS: 1.6.1

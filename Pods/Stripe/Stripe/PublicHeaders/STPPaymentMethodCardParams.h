@@ -10,12 +10,20 @@
 
 #import "STPFormEncodable.h"
 
+@class STPCardParams;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  The user's card details.
  */
 @interface STPPaymentMethodCardParams : NSObject <STPFormEncodable>
+
+/**
+ A convenience initializer for creating a payment method from a card source.
+ This should be used to help with migrations to Payment Methods from Sources.
+ */
+- (instancetype)initWithCardSourceParams:(STPCardParams *)cardSourceParams;
 
 /**
  The card number, as a string without any separators. Ex. @"4242424242424242"
@@ -25,12 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Two-digit number representing the card's expiration month.
  */
-@property (nonatomic) NSUInteger expMonth;
+@property (nonatomic, nullable) NSNumber *expMonth;
 
 /**
  Two- or four-digit number representing the card's expiration year.
  */
-@property (nonatomic) NSUInteger expYear;
+@property (nonatomic, nullable) NSNumber *expYear;
 
 /**
  For backwards compatibility, you can alternatively set this as a Stripe token (e.g., for apple pay)

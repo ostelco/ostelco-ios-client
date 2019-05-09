@@ -134,20 +134,4 @@ public struct APIHelper {
             }
         }
     }
-    
-    /// Encodes a `Codable` object to be sent and returns it as a Promise.
-    /// Note that if encoding fails, the promise will be rejected.
-    ///
-    /// - Parameters:
-    ///   - object: The object to encode
-    ///   - encoder: The encoder to use to encode it
-    /// - Returns: A promise, which when fulfilled will contain the encoded data.
-    public static func encode<T: Codable>(_ object: T, with encoder: JSONEncoder) -> Promise<Data> {
-        do {
-            let data = try encoder.encode(object)
-            return .value(data)
-        } catch {
-            return Promise(error: error)
-        }
-    }
 }

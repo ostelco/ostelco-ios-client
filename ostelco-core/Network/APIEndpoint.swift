@@ -24,6 +24,7 @@ extension APIEndpoint {
 }
 
 public enum RootEndpoint: String, APIEndpoint {
+    case applicationToken
     case bundles
     case context
     case customer
@@ -72,6 +73,20 @@ public enum RegionEndpoint: APIEndpoint {
             return "simProfiles"
         case .scans:
             return "scans"
+        }
+    }
+}
+
+public enum ProductEndpoint: APIEndpoint {
+    case sku(_ sku: String)
+    case purchase
+    
+    var value: String {
+        switch self {
+        case .sku(let sku):
+            return sku
+        case .purchase:
+            return "purchase"
         }
     }
 }

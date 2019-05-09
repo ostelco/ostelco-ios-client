@@ -18,3 +18,14 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
         performSegue(withIdentifier: "selectIdentityVerificationMethod", sender: self)
     }
 }
+
+extension VerifyIdentityOnBoardingViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}

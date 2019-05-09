@@ -48,7 +48,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
             case .userCancelled:
                 debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
             case .primeAPIError(let requestError):
-                showAPIError(error: requestError)
+                self.showGenericError(error: requestError)
             }
         } else {
             showAlert(title: "Payment Error", msg: error.localizedDescription)
@@ -60,7 +60,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     }
 
     func getProducts() -> Promise<[Product]> {
-        return APIManager.sharedInstance.loggedInAPI
+        return APIManager.shared.primeAPI
             .loadProducts()
             .map { productModels in
                 productModels.map { Product(from: $0, countryCode: "SG") }

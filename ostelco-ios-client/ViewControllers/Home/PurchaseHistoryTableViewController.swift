@@ -33,7 +33,7 @@ class PucrhaseHistoryTableViewController: UITableViewController {
     }
 
     @objc func didPullToRefresh() {
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.primeAPI
             .loadPurchases()
             .map { purchaseModels -> [PurchaseRecord] in
                 let sortedPurchases = purchaseModels.sorted { $0.timestamp > $1.timestamp }

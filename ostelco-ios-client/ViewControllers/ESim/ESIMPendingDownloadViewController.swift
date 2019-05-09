@@ -31,8 +31,8 @@ class ESIMPendingDownloadViewController: UIViewController {
         if let region = OnBoardingManager.sharedInstance.region {
             getSimProfileForRegion(region: region)
         } else {
-           APIManager.sharedInstance
-            .loggedInAPI
+           APIManager.shared
+            .primeAPI
             .getRegionFromRegions()
             .done { [weak self] regionResponse in
                 OnBoardingManager.sharedInstance.region = regionResponse
@@ -55,7 +55,7 @@ class ESIMPendingDownloadViewController: UIViewController {
         
         self.spinnerView = self.showSpinner(onView: self.view)
         
-        APIManager.sharedInstance.loggedInAPI
+        APIManager.shared.primeAPI
             .loadSimProfilesForRegion(code: countryCode)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
@@ -101,37 +101,26 @@ class ESIMPendingDownloadViewController: UIViewController {
                     self.performSegue(withIdentifier: "showHome", sender: self)
                 }
             } else {
-                simProfile = simProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) })
+                self.simProfile = simProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) })
             }
         } else {
-            spinnerView = showSpinner(onView: self.view)
-            APIManager.sharedInstance.regions.child(countryCode).child("simProfiles").withParam("profileType", "iphone").request(.post)
-                .onSuccess { data in
-                    if let simProfile: SimProfile = data.typedContent(ifNone: nil) {
-                        self.simProfile = simProfile
-                    } else {
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                        }
-                    }
+            self.spinnerView = self.showSpinner(onView: self.view)
+            APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
+                .ensure { [weak self] in
+                    self?.removeSpinner(self?.spinnerView)
+                    self?.spinnerView = nil
                 }
-                .onFailure { requestError in
-                    if let statusCode = requestError.httpStatusCode {
-                        switch statusCode {
-                        default:
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                            }
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                        }
+                .done { [weak self] profile in
+                    guard let self = self else {
+                        return
                     }
+                    
+                    self.simProfile = profile
                 }
-                .onCompletion { _ in
-                    self.removeSpinner(self.spinnerView)
-            }
+                .catch { [weak self] error in
+                    ApplicationErrors.log(error)
+                    self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+                }
         }
     }
     

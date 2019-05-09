@@ -10,7 +10,6 @@ import UIKit
 import PassKit
 import PromiseKit
 import Stripe
-import Siesta
 
 class BecomeAMemberViewController: ApplePayViewController {
 

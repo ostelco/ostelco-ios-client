@@ -52,3 +52,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         return true
     }
 }
+
+extension TabBarController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .tabController
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}

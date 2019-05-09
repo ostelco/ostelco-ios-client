@@ -14,12 +14,11 @@ struct EnvironmentUpdater {
     /// Required keys which should be provided in either a `secrets.json` file or in the CI environment.
     enum EnvironmentKey: String, CaseIterable, KeyToUpdate {
         case appleMerchantId = "apple_merchant_id"
-        case auth0ClientID = "auth0_client_id"
-        case auth0Domain = "auth0_domain"
-        case jumioToken = "jumio_token"
-        case jumioSecret = "jumio_secret"
+        case firebaseProjectID = "firebase_project_id"
         case freshchatAppID = "freshchat_app_id"
         case freshchatAppKey = "freshchat_app_key"
+        case jumioToken = "jumio_token"
+        case jumioSecret = "jumio_secret"
         case myInfoURL = "myinfo_url"
         case myInfoClientID = "myinfo_client_id"
         case myInfoCallbackURL = "myinfo_callback_url"
@@ -27,11 +26,24 @@ struct EnvironmentUpdater {
         case stripePublishableKey = "stripe_publishable_key"
         
         var jsonKey: String {
-            return self.rawValue
+            switch self {
+            case .firebaseProjectID:
+                return "FIR_PROJECT_ID"
+            default:
+                return self.rawValue
+            }
         }
         
         var plistKey: String {
             return self.rawValue
+        }
+        
+        init?(jsonKey: String) {
+            if jsonKey == EnvironmentKey.firebaseProjectID.jsonKey {
+                self = .firebaseProjectID
+            } else {
+                self.init(rawValue: jsonKey)
+            }
         }
     }
 }
