@@ -33,11 +33,8 @@ func createDeleteAccountAlertAction(title: String, vc: UIViewController) -> UIAl
                 vc?.removeSpinner(spinnerView)
             }
             .done { [weak vc] in
-                sharedAuth.logout(callback: {
-                    DispatchQueue.main.async {
-                        vc?.showSplashScreen()
-                    }
-                })
+                UserManager.sharedInstance.logOut()
+                vc?.showSplashScreen()
             }
             .catch { [weak vc] error in
                 ApplicationErrors.log(error)
@@ -80,7 +77,7 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to log out from your account?", preferredStyle: .actionSheet)
         
         let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) {_ in
-            sharedAuth.logout()
+            UserManager.sharedInstance.logOut()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         }
@@ -100,7 +97,7 @@ extension UIViewController {
         }
         let startOverAction = createDeleteAccountAlertAction(title: "Start Again", vc: self)
         let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
-            sharedAuth.logout()
+            UserManager.sharedInstance.logOut()
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         }

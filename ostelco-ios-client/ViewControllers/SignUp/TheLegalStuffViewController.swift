@@ -62,3 +62,14 @@ class TheLegalStuffViewController: UIViewController {
         UIApplication.shared.open(ExternalLink.privacyPolicy.url)
     }
 }
+
+extension TheLegalStuffViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .signUp
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
+    }
+}

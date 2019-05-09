@@ -26,8 +26,19 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     }
     
     private func setTitle() {
-        if let user = UserManager.sharedInstance.user {
+        if let user = UserManager.sharedInstance.customer {
             titleLabel.text = "Hi \(user.name)!"
         }
+    }
+}
+
+extension VerifyCountryOnBoardingViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .country
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
     }
 }

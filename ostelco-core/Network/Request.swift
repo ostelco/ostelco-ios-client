@@ -17,7 +17,7 @@ public struct Request {
     public let baseURL: URL
     public let path: String
     public let loggedIn: Bool
-    public let secureStorage: SecureStorage
+    public let token: String?
     public let method: HTTPMethod
     public let queryItems: [URLQueryItem]?
     
@@ -26,13 +26,13 @@ public struct Request {
                 method: HTTPMethod = .GET,
                 queryItems: [URLQueryItem]? = nil,
                 loggedIn: Bool,
-                secureStorage: SecureStorage) {
+                token: String?) {
         self.baseURL = baseURL
         self.path = path
         self.method = method
         self.queryItems = queryItems
         self.loggedIn = loggedIn
-        self.secureStorage = secureStorage
+        self.token = token
     }
     
     public var additionalHeaders: [HeaderKey: HeaderValue]?
@@ -48,7 +48,7 @@ public struct Request {
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
         
-        var headers = try Headers(loggedIn: self.loggedIn, secureStorage: self.secureStorage)
+        var headers = try Headers(loggedIn: self.loggedIn, token: self.token)
         
         if let additional = self.additionalHeaders {
             additional.forEach { key, value in headers.addValue(value, for: key) }

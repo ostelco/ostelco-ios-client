@@ -67,7 +67,6 @@
 		OBJ_192 /* File+Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* File+Reset.swift */; };
 		OBJ_193 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* JSONLoader.swift */; };
 		OBJ_194 /* PlistUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* PlistUpdater.swift */; };
-		OBJ_195 /* Auth0Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Auth0Updater.swift */; };
 		OBJ_196 /* FirebaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* FirebaseUpdater.swift */; };
 		OBJ_197 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Secrets.swift */; };
 		OBJ_199 /* ShellOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ShellOut::ShellOut::Product" /* ShellOut.framework */; };
@@ -353,7 +352,6 @@
 /* Begin PBXFileReference section */
 		9B3FA8F7226481C90001641A /* KeyToUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyToUpdate.swift; sourceTree = "<group>"; };
 		9B921096225CBE7A001EF9CD /* SecretsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsTests.swift; sourceTree = "<group>"; };
-		9B92109F225CC6C6001EF9CD /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		9B9210A0225CD737001EF9CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B9210A1225CDA32001EF9CD /* Environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Environment.plist; sourceTree = "<group>"; };
 		9B9210A2225CDA54001EF9CD /* EnvironmentUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentUpdater.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 		OBJ_122 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/ellen/Desktop/Work/Oya/iOS/scripts/SPM/.build/checkouts/Files/Package.swift; sourceTree = "<group>"; };
 		OBJ_123 /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		OBJ_135 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_14 /* Auth0Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Updater.swift; sourceTree = "<group>"; };
 		OBJ_15 /* FirebaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUpdater.swift; sourceTree = "<group>"; };
 		OBJ_16 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		OBJ_18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -576,7 +573,6 @@
 		9B92109E225CC182001EF9CD /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				9B92109F225CC6C6001EF9CD /* Auth0.plist */,
 				9B9210A0225CD737001EF9CD /* GoogleService-Info.plist */,
 				9B9210A1225CDA32001EF9CD /* Environment.plist */,
 			);
@@ -707,7 +703,6 @@
 		OBJ_13 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* Auth0Updater.swift */,
 				OBJ_15 /* FirebaseUpdater.swift */,
 				9B9210A2225CDA54001EF9CD /* EnvironmentUpdater.swift */,
 				9B3FA8F7226481C90001641A /* KeyToUpdate.swift */,
@@ -1330,7 +1325,6 @@
 				OBJ_193 /* JSONLoader.swift in Sources */,
 				OBJ_194 /* PlistUpdater.swift in Sources */,
 				9B3FA8F9226482190001641A /* KeyToUpdate.swift in Sources */,
-				OBJ_195 /* Auth0Updater.swift in Sources */,
 				9B9210A4225CDC14001EF9CD /* EnvironmentUpdater.swift in Sources */,
 				OBJ_196 /* FirebaseUpdater.swift in Sources */,
 				OBJ_197 /* Secrets.swift in Sources */,

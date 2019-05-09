@@ -17,5 +17,5 @@ if UIApplication.isNonUITesting {
 
 _ = UIApplicationMain(CommandLine.argc,
                       CommandLine.unsafeArgv,
-                      NSStringFromClass(FLApplication.self),
+                      nil,
                       appDelegateClassName)

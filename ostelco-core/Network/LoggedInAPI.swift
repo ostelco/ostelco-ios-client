@@ -26,7 +26,7 @@ open class LoggedInAPI: BasicNetwork {
     private let baseURL: URL
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
-    private let secureStorage: SecureStorage
+    private let tokenProvider: TokenProvider
     
     /// Designated Initializer.
     ///
@@ -34,15 +34,15 @@ open class LoggedInAPI: BasicNetwork {
     ///   - baseURL: The URL string to use to construct the base URL. If
     ///              the passed in string does not resolve to a valid URL,
     ///              a fatal error will be thrown
-    ///   - secureStorage: The `SecureStorage` instance to use to access user creds.
+    ///   - tokenProvider: The `TokenProvider` instance to use to access user creds.
     public init(baseURL: String,
-                secureStorage: SecureStorage) {
+                tokenProvider: TokenProvider) {
         guard let url = URL(string: baseURL) else {
             fatalError("Could not create base URL from passed-in string \(baseURL)")
         }
         
         self.baseURL = url
-        self.secureStorage = secureStorage
+        self.tokenProvider = tokenProvider
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
@@ -93,17 +93,19 @@ open class LoggedInAPI: BasicNetwork {
     ///
     /// - Returns: A promise which when fulfilled, indicates successful deletion.
     public func deleteCustomer() -> Promise<Void> {
-        let request = Request(baseURL: self.baseURL,
-                              path: RootEndpoint.customer.value,
-                              method: .DELETE,
-                              loggedIn: true,
-                              secureStorage: self.secureStorage)
-        
-        return self.performValidatedRequest(request, dataCanBeEmpty: true)
+        return self.tokenProvider.getToken()
+            .then { token -> Promise<Data> in
+                let request = Request(baseURL: self.baseURL,
+                                      path: RootEndpoint.customer.value,
+                                      method: .DELETE,
+                                      loggedIn: true,
+                                      token: token)
+                return self.performValidatedRequest(request, dataCanBeEmpty: true)
+            }
             .done { data in
                 let dataString = String(bytes: data, encoding: .utf8)
                 debugPrint("Delete customer response: \(String(describing: dataString))")
-            }
+        }
     }
     
     // MARK: - Regions
@@ -239,21 +241,25 @@ open class LoggedInAPI: BasicNetwork {
     /// - Parameter path: The path to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
     public func loadData(from path: String) -> Promise<Data> {
-        let request = Request(baseURL: self.baseURL,
-                              path: path,
-                              loggedIn: true,
-                              secureStorage: self.secureStorage)
-        
-        return self.performValidatedRequest(request)
+        return self.tokenProvider.getToken()
+            .then { token -> Promise<Data> in
+                let request = Request(baseURL: self.baseURL,
+                                      path: path,
+                                      loggedIn: true,
+                                      token: token)
+                return self.performValidatedRequest(request)
+            }
     }
     
     public func loadNonValidatedData(from path: String) -> Promise<(data: Data, response: URLResponse)> {
-        let request = Request(baseURL: self.baseURL,
-                              path: path,
-                              loggedIn: true,
-                              secureStorage: self.secureStorage)
-        
-        return self.performRequest(request)
+        return self.tokenProvider.getToken()
+            .then { token -> Promise<(data: Data, response: URLResponse)> in
+                let request = Request(baseURL: self.baseURL,
+                                      path: path,
+                                      loggedIn: true,
+                                      token: token)
+                return self.performRequest(request)
+            }
     }
     
     /// Sends `Codable` object to the given path based on the base URL.
@@ -265,13 +271,14 @@ open class LoggedInAPI: BasicNetwork {
     ///   - method: The `HTTPMethod` to use to send it.
     /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
     public func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
-        return APIHelper.encode(object, with: self.encoder)
-            .map { data -> Request in
+        return self.tokenProvider.getToken()
+            .map { token -> Request in
+                let data = try self.encoder.encode(object)
                 var request = Request(baseURL: self.baseURL,
                                       path: path,
                                       method: method,
                                       loggedIn: true,
-                                      secureStorage: self.secureStorage)
+                                      token: token)
                 
                 request.bodyData = data
                 return request

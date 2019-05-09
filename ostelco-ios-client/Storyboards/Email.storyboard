@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7MC-T4-ZkG">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Email Entry View Controller-->
+        <scene sceneID="6Lf-F7-s8L">
+            <objects>
+                <viewController id="8Sr-ot-cFb" customClass="EmailEntryViewController" customModule="Oya_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ctk-Xq-LA1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-FN-Gmq" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
+                                <rect key="frame" x="0.0" y="198.66666666666666" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JS7-WM-fll"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8Sr-ot-cFb" id="Un6-en-Hz4"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your email address?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-YK-ZEC" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="88" width="327" height="76.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwT-Hr-sTl" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped" destination="8Sr-ot-cFb" eventType="touchUpInside" id="M5Z-N3-VY4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some kind of error occurred" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoL-c1-WZi" customClass="ErrorTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="258.66666666666669" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ERh-WW-QFw" firstAttribute="trailing" secondItem="HwT-Hr-sTl" secondAttribute="trailing" constant="24" id="3au-ZB-ZER"/>
+                            <constraint firstItem="LoL-c1-WZi" firstAttribute="top" secondItem="6Sg-FN-Gmq" secondAttribute="bottom" constant="16" id="5N2-Uc-qCK"/>
+                            <constraint firstItem="6Sg-FN-Gmq" firstAttribute="leading" secondItem="ERh-WW-QFw" secondAttribute="leading" id="Cd2-Bk-lgF"/>
+                            <constraint firstItem="LoL-c1-WZi" firstAttribute="leading" secondItem="ERh-WW-QFw" secondAttribute="leading" constant="24" id="D1T-Bj-Qvb"/>
+                            <constraint firstItem="HwT-Hr-sTl" firstAttribute="leading" secondItem="ERh-WW-QFw" secondAttribute="leading" constant="24" id="IrX-q5-SpR"/>
+                            <constraint firstItem="ERh-WW-QFw" firstAttribute="trailing" secondItem="LoL-c1-WZi" secondAttribute="trailing" constant="24" id="WHl-SV-Epg"/>
+                            <constraint firstItem="6Sg-FN-Gmq" firstAttribute="top" secondItem="Jp7-YK-ZEC" secondAttribute="bottom" constant="34" id="Yy9-aM-adf"/>
+                            <constraint firstItem="ERh-WW-QFw" firstAttribute="trailing" secondItem="6Sg-FN-Gmq" secondAttribute="trailing" id="f0N-uC-T4i"/>
+                            <constraint firstItem="Jp7-YK-ZEC" firstAttribute="top" secondItem="ERh-WW-QFw" secondAttribute="top" constant="44" id="fcN-gm-fnc"/>
+                            <constraint firstItem="Jp7-YK-ZEC" firstAttribute="leading" secondItem="ERh-WW-QFw" secondAttribute="leading" constant="24" id="hFr-sO-FAZ"/>
+                            <constraint firstItem="ERh-WW-QFw" firstAttribute="trailing" secondItem="Jp7-YK-ZEC" secondAttribute="trailing" constant="24" id="itq-rR-lau"/>
+                            <constraint firstItem="ERh-WW-QFw" firstAttribute="bottom" secondItem="HwT-Hr-sTl" secondAttribute="bottom" constant="44" id="p3Z-Xd-Uzb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ERh-WW-QFw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rkb-vY-rZz"/>
+                    <connections>
+                        <outlet property="continueButton" destination="HwT-Hr-sTl" id="J7h-3H-JGV"/>
+                        <outlet property="emailTextField" destination="6Sg-FN-Gmq" id="caw-OJ-uUA"/>
+                        <outlet property="errorLabel" destination="LoL-c1-WZi" id="Am5-Pa-HwR"/>
+                        <segue destination="ejA-LR-l53" kind="show" identifier="showCheckEmail" id="D3X-3Z-teV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nn1-iI-OwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="192.85714285714286"/>
+        </scene>
+        <!--Check Email View Controller-->
+        <scene sceneID="aZy-RL-n2a">
+            <objects>
+                <viewController id="ejA-LR-l53" customClass="CheckEmailViewController" customModule="Oya_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vCx-56-Z2j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-UY-nx5" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to confirm your email address. Please click the link in the email you received." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cu-on-0rp" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="528.33333333333337" width="327" height="64.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cen-WM-H3N" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <state key="normal" title="Resend Email"/>
+                                <connections>
+                                    <action selector="resendTapped" destination="ejA-LR-l53" eventType="touchUpInside" id="O5J-NU-2i9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn5-bY-n3l" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <state key="normal" title="Need help?"/>
+                                <connections>
+                                    <action selector="needHelpTapped" destination="ejA-LR-l53" eventType="touchUpInside" id="Ek9-Rt-wX3"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illustrationSittingOnCloud" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-OY-xXL">
+                                <rect key="frame" x="24" y="206.33333333333334" width="327" height="16"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Eij-OY-xXL" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="1Om-GF-TMG"/>
+                            <constraint firstItem="YU5-UY-nx5" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="1TM-96-cfB"/>
+                            <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="Eij-OY-xXL" secondAttribute="trailing" constant="24" id="20K-9X-JrH"/>
+                            <constraint firstItem="0cu-on-0rp" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="3oq-7O-aPj"/>
+                            <constraint firstItem="fn5-bY-n3l" firstAttribute="top" secondItem="0cu-on-0rp" secondAttribute="bottom" constant="24" id="Fb7-Gy-UXb"/>
+                            <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="YU5-UY-nx5" secondAttribute="trailing" constant="24" id="I0M-qB-7d4"/>
+                            <constraint firstItem="CEv-8w-uyC" firstAttribute="bottom" secondItem="cen-WM-H3N" secondAttribute="bottom" constant="44" id="Sez-Eo-l7S"/>
+                            <constraint firstItem="fn5-bY-n3l" firstAttribute="centerX" secondItem="vCx-56-Z2j" secondAttribute="centerX" id="UiD-Qv-sUK"/>
+                            <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="cen-WM-H3N" secondAttribute="trailing" constant="24" id="UyX-h9-Apg"/>
+                            <constraint firstItem="0cu-on-0rp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Eij-OY-xXL" secondAttribute="bottom" constant="20" id="aHX-D7-eSf"/>
+                            <constraint firstItem="cen-WM-H3N" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="cPz-uA-ck5"/>
+                            <constraint firstItem="Eij-OY-xXL" firstAttribute="top" secondItem="YU5-UY-nx5" secondAttribute="bottom" constant="80" id="dqv-Nt-Z9D"/>
+                            <constraint firstItem="cen-WM-H3N" firstAttribute="top" secondItem="fn5-bY-n3l" secondAttribute="bottom" constant="34" id="hJX-je-wuB"/>
+                            <constraint firstItem="YU5-UY-nx5" firstAttribute="top" secondItem="CEv-8w-uyC" secondAttribute="top" constant="44" id="nVS-mn-Fov"/>
+                            <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="0cu-on-0rp" secondAttribute="trailing" constant="24" id="uuS-rP-IDo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CEv-8w-uyC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9L-Rx-c69" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="192.85714285714286"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RgN-2v-0wV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7MC-T4-ZkG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ScK-Am-4Oq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Sr-ot-cFb" kind="relationship" relationship="rootViewController" id="8IJ-iM-AM5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoo-5Y-DeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="193"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="illustrationSittingOnCloud" width="239" height="161"/>
+    </resources>
+</document>

@@ -104,65 +104,11 @@
                     </view>
                     <connections>
                         <outlet property="primaryButton" destination="DW1-o4-Dgl" id="cY2-xt-orS"/>
-                        <segue destination="BTq-n3-cQJ" kind="show" identifier="showSignUp" id="GgF-Xs-zdM"/>
-                        <segue destination="uYv-Rx-W57" kind="show" identifier="showCountry" id="WAP-la-UV7"/>
-                        <segue destination="q2N-Ki-5Zu" kind="show" identifier="showEKYC" id="h2n-iC-Cyi"/>
-                        <segue destination="JOm-7Z-w9R" kind="show" identifier="showEKYCLastScreen" id="OSX-Xe-maR"/>
-                        <segue destination="BEa-Hu-JHR" kind="show" identifier="showESim" id="6nE-9E-D5q"/>
-                        <segue destination="lQn-Sf-TiT" kind="show" identifier="showHome" id="jb5-M9-12O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDi-1Z-voi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="56.799999999999997" y="30.134932533733135"/>
-        </scene>
-        <!--SignUp-->
-        <scene sceneID="RKc-wN-HjB">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="BTq-n3-cQJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KyQ-fa-sXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="803" y="-174"/>
-        </scene>
-        <!--Country-->
-        <scene sceneID="KG6-S4-M4d">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Country" id="uYv-Rx-W57" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lZT-z1-4Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="806" y="-88"/>
-        </scene>
-        <!--EKYC-->
-        <scene sceneID="DBT-7s-2nc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" id="q2N-Ki-5Zu" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="thH-gt-YwY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="793" y="-14"/>
-        </scene>
-        <!--ESim-->
-        <scene sceneID="vcv-Jk-phk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ESim" id="BEa-Hu-JHR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0VU-qo-C7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="791" y="186"/>
-        </scene>
-        <!--TabController-->
-        <scene sceneID="jmb-zZ-jRl">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TabController" id="lQn-Sf-TiT" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="82C-NX-gEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="799" y="254"/>
-        </scene>
-        <!--PendingVerificationViewController-->
-        <scene sceneID="rzq-ff-CsV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="EKYC" referencedIdentifier="PendingVerificationViewController" id="JOm-7Z-w9R" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2c6-W1-478" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="934" y="93"/>
         </scene>
     </scenes>
     <resources>
