@@ -7,11 +7,15 @@ use_frameworks!
 # Don't show warnings from frameworks to prevent polluting warnings
 inhibit_all_warnings!
 
+def firebase_version
+  # All Firebase libs should have the same version
+  '~>5.20.1'
+end
+
 # Framework target
 target 'ostelco-core' do
-  pod 'Firebase/Auth'
-  pod 'Firebase/Core', '~>5.20.1'
-  pod 'KeychainAccess', '~>3.2.0'
+  pod 'Firebase/Auth', '~>5.20.1'
+  pod 'Firebase/Core', firebase_version
   pod 'PromiseKit', '~> 6.8.4'
 end
 
@@ -19,17 +23,9 @@ abstract_target 'ostelco-ios' do
   pod 'Crashlytics', '~>3.12.0'
   pod 'Fabric', '~>1.9.0'
   pod 'FreshchatSDK', '~>2.4.3'
-  pod 'Firebase/DynamicLinks', '~>5.20.1'
-  pod 'Firebase/Messaging', '~>5.20.1'
-  pod 'FirebaseUI/Auth', '~>6.2.1'
-  pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Facebook'
-  pod 'FirebaseUI/Twitter'
+  pod 'Firebase/DynamicLinks', firebase_version
+  pod 'Firebase/Messaging', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>2.15.0'
-  pod 'RxCoreLocation', '~>1.3.1'
-  pod 'RxSwift', '~>4.5.0'
-  pod 'Siesta', '~>1.0'
-  pod 'Siesta/UI', '~>1.0'
   pod 'Stripe', '~>14.0.0'
   pod 'SwiftLint', '~>0.31.0'
   
@@ -39,6 +35,7 @@ abstract_target 'ostelco-ios' do
     # Test target
     target 'dev-ostelco-ios-clientTests' do
       inherit! :search_paths
+      pod 'OHHTTPStubs/Swift', '~>8.0.0'
     end
   end
   
