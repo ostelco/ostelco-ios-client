@@ -101,8 +101,9 @@ open class PrimeAPI: BasicNetwork {
         ]
         
         let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
-        
-        return self.sendObject(payment, to: path, method: .POST)
+        let queryItem = URLQueryItem(name: "sourceId", value: payment.sourceId)
+
+        return self.sendQuery(to: path, queryItems: [ queryItem ],  method: .POST)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data,
                                                             response: response,
@@ -118,7 +119,11 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
     public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
-        return self.sendObject(userSetup, to: RootEndpoint.customer.value, method: .POST)
+        let queryItems = [
+            URLQueryItem(name: "nickname", value: userSetup.nickname),
+            URLQueryItem(name: "contactEmail", value: userSetup.contactEmail)
+        ]
+        return self.sendQuery(to: RootEndpoint.customer.value, queryItems: queryItems, method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
             }
@@ -198,8 +203,9 @@ open class PrimeAPI: BasicNetwork {
         ]
     
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        
-        return self.sendObject(SimProfileRequest(), to: path, method: .POST)
+        let queryItem = URLQueryItem(name: "profileType", value: SimProfileRequest().profileType)
+
+        return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response)
             }
@@ -249,10 +255,14 @@ open class PrimeAPI: BasicNetwork {
             .kyc,
             .profile
         ]
-        
+
         let path = RootEndpoint.regions.pathByAddingEndpoints(profileEndpoints)
-        
-        return self.sendObject(address, to: path, method: .PUT)
+        let queryItems = [
+            URLQueryItem(name: "address", value: address.address),
+            URLQueryItem(name: "phoneNumber", value: address.phoneNumber)
+        ]
+
+        return self.sendQuery(to: path, queryItems: queryItems, method: .PUT)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: true)
             }
@@ -270,10 +280,14 @@ open class PrimeAPI: BasicNetwork {
             .kyc,
             .profile
         ]
-        
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
 
-        return self.sendObject(update, to: path, method: .PUT)
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        let queryItems = [
+            URLQueryItem(name: "address", value: update.address),
+            URLQueryItem(name: "phoneNumber", value: update.phoneNumber)
+        ]
+
+        return self.sendQuery(to: path, queryItems: queryItems, method: .PUT)
             .map { data, response in
                 try APIHelper.validateAndLookForServerError(data: data,
                                                             response: response,
@@ -381,9 +395,34 @@ open class PrimeAPI: BasicNetwork {
                                       method: method,
                                       loggedIn: true,
                                       token: token)
-                
+
                 request.bodyData = data
                 return request
+            }
+            .then {
+                self.performRequest($0)
+            }
+    }
+
+    /// Sends a request with query parameters to the given path based on the base URL.
+    /// NOTE: Does not validate directly, since we may need to parse error data which comes back.
+    ///
+    /// - Parameters:
+    ///   - path: The path to send it to
+    ///   - queryItems: The query parameters to send.
+    ///   - method: The `HTTPMethod` to use to send it.
+    /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
+    public func sendQuery(to path: String,
+                          queryItems: [URLQueryItem],
+                          method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+        return self.tokenProvider.getToken()
+            .map { token -> Request in
+                return Request(baseURL: self.baseURL,
+                               path: path,
+                               method: method,
+                               queryItems: queryItems,
+                               loggedIn: true,
+                               token: token)
             }
             .then {
                 self.performRequest($0)
