@@ -67,7 +67,7 @@ struct UserDefaultsWrapper {
         set {
             if let newEmail = newValue {
                 self.setValue(newEmail, for: .pendingEmail)
-            } else  {
+            } else {
                 self.removeValue(for: .pendingEmail)
             }
         }
