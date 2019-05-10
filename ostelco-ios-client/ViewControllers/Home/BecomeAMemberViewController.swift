@@ -90,7 +90,7 @@ class BecomeAMemberViewController: ApplePayViewController {
     @objc func buyButtonTapped() {
         if let plan = plan {
             #if STRIPE_PAYMENT
-                startStripePay(product: plan)
+                showStripePaymentActionSheet(plan: plan)
             #else
                 startApplePay(product: plan)
             #endif
@@ -100,6 +100,23 @@ class BecomeAMemberViewController: ApplePayViewController {
             self.showAlert(title: "Subscription Error", msg: error.localizedDescription)
         }
     }
+
+    #if STRIPE_PAYMENT
+    private func showStripePaymentActionSheet(plan: Product) {
+        let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let buyAction = UIAlertAction(title: plan.label, style: .default) {_ in
+            self.startStripePay(product: plan)
+        }
+        alertCtrl.addAction(buyAction)
+        let addCardsAction = UIAlertAction(title: "Setup Cards", style: .default) {_ in
+            self.showPaymentOptions()
+        }
+        alertCtrl.addAction(addCardsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertCtrl.addAction(cancelAction)
+        present(alertCtrl, animated: true, completion: nil)
+    }
+    #endif
 
     @objc func setUpButtonTapped() {
         PKPassLibrary().openPaymentSetup()
