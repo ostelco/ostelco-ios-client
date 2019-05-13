@@ -119,6 +119,8 @@
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
 		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
+		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
+		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
@@ -443,6 +445,7 @@
 		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
+		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
 		9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoLabel.swift; sourceTree = "<group>"; };
 		9B46D64E226F02C30030A8EB /* OstelcoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFont.swift; sourceTree = "<group>"; };
@@ -1052,6 +1055,7 @@
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
 				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
 				9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */,
+				9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D64223020DA00A01500 /* UIButton+Border.swift */,
@@ -1769,6 +1773,7 @@
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
+				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
@@ -1933,6 +1938,7 @@
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
+				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
 				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,

@@ -39,9 +39,7 @@ protocol LocationChecking: UIViewController {
 extension LocationChecking {
     
     func showFailedToGetLocationAlert() {
-        let alert = UIAlertController(title: "We're sorry but...", message: "We were unable to get your current location.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.showAlert(title: "We're sorry but...", msg: "We were unable to get your current location.")
     }
     
     func checkLocation(isIn country: Country = OnBoardingManager.sharedInstance.selectedCountry) {

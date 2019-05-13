@@ -164,8 +164,8 @@ class HomeViewController: ApplePayViewController {
             }
             alertCtrl.addAction(addCardsAction)
         #endif
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertCtrl.addAction(cancelAction)
+        
+        alertCtrl.addAction(.cancelAction())
         present(alertCtrl, animated: true, completion: nil)
     }
 }
