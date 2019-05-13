@@ -651,7 +651,10 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <rect key="frame" x="0.0" y="196.66666666666666" width="375" height="44"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6Sh-M6-Cr3" id="PpP-ZV-WOm"/>
+                                </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This seems to be an invalid NRIC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-bU-7nA" customClass="ErrorTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="264.66666666666669" width="327" height="20.333333333333314"/>
