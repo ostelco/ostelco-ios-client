@@ -312,24 +312,22 @@ open class PrimeAPI: BasicNetwork {
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
         
-        return self.loadNonValidatedData(from: path)
-            .map { data, response in
-                do {
-                    try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: false)
-                    return true
-                } catch {
-                    switch error {
-                    case APIHelper.Error.jsonError(let jsonError):
-                        if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
-                            return false
-                        }
-                    default:
-                        break
+        return self.loadData(from: path)
+            .map { _ in
+                return true
+            }
+            .recover { error -> Promise<Bool> in
+                switch error {
+                case APIHelper.Error.jsonError(let jsonError):
+                    if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
+                        return .value(false)
                     }
-                    
-                    // If we got here, re-throw the error.
-                    throw error
+                default:
+                    break
                 }
+                
+                // If we got here, re-throw the error.
+                throw error
             }
     }
     

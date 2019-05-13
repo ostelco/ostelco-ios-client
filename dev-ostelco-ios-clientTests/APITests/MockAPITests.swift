@@ -53,6 +53,12 @@ class MockAPITests: XCTestCase {
         })
     }
     
+    private func stub500AtPath(_ path: String) {
+        OHHTTPStubs.stubRequests(passingTest: isPath("/\(path)")) { _ in
+            return OHHTTPStubsResponse(data: Data(), statusCode: 500, headers: nil)
+        }
+    }
+    
     // MARK: - Push
     
     func testMockSendingPushNotificationToken() {
