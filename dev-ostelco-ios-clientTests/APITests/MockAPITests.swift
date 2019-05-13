@@ -95,4 +95,12 @@ class MockAPITests: XCTestCase {
         
         XCTAssertTrue(simProfiles.isEmpty)
     }
+    
+    func testMockDeletingCustomer() {
+        OHHTTPStubs.stubRequests(passingTest: isPath("/api/customer") && isMethodDELETE(), withStubResponse: { _ in
+            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
+        })
+        
+        self.testAPI.deleteCustomer().awaitResult(in: self)
+    }
 }
