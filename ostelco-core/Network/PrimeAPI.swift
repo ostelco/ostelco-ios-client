@@ -103,7 +103,7 @@ open class PrimeAPI: BasicNetwork {
         let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
         let queryItem = URLQueryItem(name: "sourceId", value: payment.sourceId)
 
-        return self.sendQuery(to: path, queryItems: [ queryItem ],  method: .POST)
+        return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data,
                                                             response: response,
