@@ -135,14 +135,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
                     return
                 }
                 
-                switch error {
-                case APIHelper.Error.jsonError(let jsonError):
-                    self.showAlert(title: "Error", msg: jsonError.message)
-                case APIHelper.Error.serverError(let serverError):
-                    self.showAlert(title: "Error", msg: serverError.errors.joined(separator: "\n"))
-                default:
-                    self.showGenericError(error: error)
-                }
+                self.showGenericError(error: error)
             }
     }
     

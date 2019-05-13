@@ -130,14 +130,8 @@ class AddressEditViewController: UITableViewController {
                 self?.present(pendingVC, animated: true)
             }
             .catch { [weak self] error in
-                switch error {
-                case APIHelper.Error.serverError(let serverError):
-                    self?.showAlert(title: "Error", msg: "\(serverError.errors)")
-                default:
-                    debugPrint("Error adding address: \(error)")
-                    ApplicationErrors.log(error)
-                    self?.showGenericError(error: error)
-                }
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
             }
     }
         
