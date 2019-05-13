@@ -157,11 +157,52 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockDeletingCustomer() {
-        OHHTTPStubs.stubRequests(passingTest: isPath("/api/customer") && isMethodDELETE(), withStubResponse: { _ in
+        OHHTTPStubs.stubRequests(passingTest: isPath("/customer") && isMethodDELETE(), withStubResponse: { _ in
             return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
         })
         
         // Failures handled in `awaitResult`
         self.testAPI.deleteCustomer().awaitResult(in: self)
+    }
+    
+    // MARK: - Regions
+    
+    func testMockNRICCheckWithValidNRIC() {
+        self.stubPath("regions/sg/kyc/dave/S9315107J", toLoad: "nric_check_valid")
+        
+        guard let isValid = self.testAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertTrue(isValid)
+    }
+    
+    func testMockNRICCheckWithInvalidNRIC() {
+        self.stubPath("regions/sg/kyc/dave/NOPE", toLoad: "nric_check_invalid", statusCode: 403)
+        
+        guard let isValid = self.testAPI.validateNRIC("NOPE", forRegion: "sg").awaitResult(in: self) else {
+            // Failure handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertFalse(isValid)
+    }
+    
+    func testMockNRIC500Error() {
+        self.stub500AtPath("regions/sg/kyc/dave/NOPE")
+
+        guard let error = self.testAPI.validateNRIC("NOPE", forRegion: "sg").awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.invalidResponseCode(let code, let data):
+            XCTAssertEqual(code, 500)
+            XCTAssertTrue(data.isEmpty)
+        default:
+            XCTFail("Unexpected error: \(error)")
+        }
     }
 }
