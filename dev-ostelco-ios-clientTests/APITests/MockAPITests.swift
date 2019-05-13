@@ -38,6 +38,27 @@ class MockAPITests: XCTestCase {
         self.mockAPI.sendPushToken(pushToken).awaitResult(in: self)
     }
     
+    // MARK: - Bundles
+    
+    func testMockLoadingBundles() {
+        self.stubPath("bundles", toLoad: "bundles")
+        
+        guard let bundles = self.mockAPI.loadBundles().awaitResult(in: self) else {
+            // Failure handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(bundles.count, 1)
+    
+        guard let bundle = bundles.first else {
+            XCTFail("Couldn't access first bundle!")
+            return
+        }
+        
+        XCTAssertEqual(bundle.id, "0c95007b-fcc2-48f9-a889-5eade089b9b3")
+        XCTAssertEqual(bundle.balance, 2147483648)
+    }
+    
     // MARK: - Context
     
     func testMockFetchingContextForUserWithoutCustomerProfile() {
