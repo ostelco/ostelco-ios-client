@@ -49,6 +49,7 @@ class HomeViewController: ApplePayViewController {
 
     private func showWelcomeMessage() {
         if HomeViewController.newSubscriber {
+            HomeViewController.newSubscriber = false
             welcomeLabel.isHidden = false
             messageLabel.isHidden = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
