@@ -20,7 +20,6 @@ extension UIAlertAction {
                              handler: completion)
     }
     
-    
     /// Basic "Cancel" style action
     ///
     /// - Parameters:
