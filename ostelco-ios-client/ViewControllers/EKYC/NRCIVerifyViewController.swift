@@ -157,9 +157,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         self.dismiss(animated: true) {
             self.netverifyViewController?.destroy()
             self.netverifyViewController = nil
-            let alert = UIAlertController(title: "Info", message: "\(error?.message ?? "An unknown error occurred.")", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            self.showAlert(title: "Info", msg: "\(error?.message ?? "An unknown error occurred.")")
         }
     }
 }

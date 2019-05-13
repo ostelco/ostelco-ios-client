@@ -56,10 +56,9 @@ extension UIViewController {
         let alertCtrl = UIAlertController(title: nil, message: "Are you sure that you want to delete your account completely?", preferredStyle: .actionSheet)
         
         let deleteAction = createDeleteAccountAlertAction(title: "Cancel Membership", vc: self)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertCtrl.addAction(deleteAction)
-        alertCtrl.addAction(cancelAction)
+        alertCtrl.addAction(.cancelAction())
         
         // Action sheet crashes on iPad: https://medium.com/@nickmeehan/actionsheet-popover-on-ipad-in-swift-5768dfa82094
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
@@ -81,10 +80,9 @@ extension UIViewController {
             let viewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertCtrl.addAction(logOutAction)
-        alertCtrl.addAction(cancelAction)
+        alertCtrl.addAction(.cancelAction())
         
         present(alertCtrl, animated: true, completion: nil)
     }
