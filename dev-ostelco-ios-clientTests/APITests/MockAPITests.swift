@@ -41,7 +41,30 @@ class MockAPITests: XCTestCase {
                           statusCode: Int32 = 200,
                           file: StaticString = #file,
                           line: UInt = #line) {
-        OHHTTPStubs.stubRequests(passingTest: isPath("/\(path)"), withStubResponse: { _ in
+        OHHTTPStubs.stubRequests(passingTest: isPath("/\(path)"),
+                                 withStubResponse: self.loadFile(named: fileName,
+                                                                 statusCode: statusCode,
+                                                                 file: file,
+                                                                 line: line))
+    }
+    
+    private func stubAbsoluteURLString(_ absoluteURLString: String,
+                                       toLoad fileName: String,
+                                       statusCode: Int32 = 200,
+                                       file: StaticString = #file,
+                                       line: UInt = #line) {
+        OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString(absoluteURLString),
+                                 withStubResponse: self.loadFile(named: fileName,
+                                                                 statusCode: statusCode,
+                                                                 file: file,
+                                                                 line: line))
+    }
+    
+    private func loadFile(named fileName: String,
+                          statusCode: Int32,
+                          file: StaticString = #file,
+                          line: UInt = #line) -> OHHTTPStubsResponseBlock {
+        return { _ in
             guard let path = Bundle(for: MockAPITests.self).path(forResource: fileName, ofType: "json", inDirectory: "MockJSON") else {
                 XCTFail("Couldn't get bundled path!",
                         file: file,
@@ -50,7 +73,7 @@ class MockAPITests: XCTestCase {
             }
             
             return OHHTTPStubsResponse(fileAtPath: path, statusCode: statusCode, headers: nil)
-        })
+        }
     }
     
     private func stub500AtPath(_ path: String) {
@@ -293,5 +316,20 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(scan.scanId, "326aceb6-3e54-4049-9f7b-0c922ad2c85a")
         XCTAssertEqual(scan.countryCode, "sg")
         XCTAssertEqual(scan.status, "PENDING")
+    }
+    
+    func testMockRequestingSimProfile() {
+        self.stubAbsoluteURLString("https://api.fake.org/regions/sg/simProfiles?profileType=iphone",
+                                   toLoad: "create_sim_profile")
+        
+        guard let simProfile = self.testAPI.createSimProfileForRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled by `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
     }
 }
