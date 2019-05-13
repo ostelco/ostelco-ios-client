@@ -74,7 +74,7 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
     
-    /// - Returns: A Promise which when fulfilled will contain the user's proile model
+    /// - Returns: A Promise which when fulfilled will contain the user's profile model
     public func loadProfile() -> Promise<ProfileModel> {
         return self.loadData(from: RootEndpoint.profile.value)
             .map { try self.decoder.decode(ProfileModel.self, from: $0) }
