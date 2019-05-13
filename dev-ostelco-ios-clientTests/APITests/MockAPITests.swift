@@ -160,7 +160,7 @@ class MockAPITests: XCTestCase {
     
     // MARK: - Customer
     
-    func testAddingCustomerNickname() {
+    func testMockCreatingCustomer() {
         self.stubPath("customer", toLoad: "customer_create")
         
         let setup = UserSetup(nickname: "HomerJay", email: "h.simpson@snpp.com")
