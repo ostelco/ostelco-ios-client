@@ -1,0 +1,11 @@
+{
+	"errorCode": "FAILED_TO_FETCH_CONTEXT",
+	"error": {
+		"type": "Identity",
+		"id": "lisa@springfieldelementary.edu",
+		"error": null,
+		"message": "Identity - lisa@springfieldelementary.edu not found."
+	},
+	"status": 404,
+	"message": "Failed to fetch customer."
+}

@@ -53,7 +53,25 @@ class MockAPITests: XCTestCase {
         })
     }
     
-    func testMockFetchingContext() throws {
+    func testMockFetchingContextForUserWithoutCustomerProfile() {
+        self.stubPath("context", toLoad: "customer_nonexistent", statusCode: 404)
+        
+        guard let error = self.testAPI.loadContext().awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_CONTEXT")
+            XCTAssertEqual(jsonError.httpStatusCode, 404)
+            XCTAssertEqual(jsonError.message, "Failed to fetch customer.")
+        default:
+            XCTFail("Unexpected error type received: \(error)")
+        }
+    }
+    
+    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileButNotSimProfile() throws {
         self.stubPath("context", toLoad: "context")
         
         guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
@@ -104,6 +122,7 @@ class MockAPITests: XCTestCase {
         let setup = UserSetup(nickname: "HomerJay", email: "h.simpson@snpp.com")
         
         guard let customer = self.testAPI.createCustomer(with: setup).awaitResult(in: self) else {
+            // Failure handled in `awaitResult`
             return
         }
         
@@ -119,6 +138,7 @@ class MockAPITests: XCTestCase {
             return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
         })
         
+        // Failures handled in `awaitResult`
         self.testAPI.deleteCustomer().awaitResult(in: self)
     }
 }

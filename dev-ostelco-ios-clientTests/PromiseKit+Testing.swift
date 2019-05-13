@@ -34,4 +34,29 @@ extension Promise {
         testCase.wait(for: [expectation], timeout: timeout)
         return result
     }
+    
+    func awaitResultExpectingError(in testCase: XCTestCase,
+                                   timeout: TimeInterval = 10,
+                                   file: StaticString = #file,
+                                   line: UInt = #line) -> Error? {
+        
+        let expectation = testCase.expectation(description: "Awaiting rejection of promise")
+        
+        var error: Error?
+        self
+            .done { _ in
+                XCTFail("Request succeeded when it shouldn't have!",
+                        file: file,
+                        line: line)
+                expectation.fulfill()
+            }
+            .catch { promiseError in
+                error = promiseError
+                expectation.fulfill()
+            }
+        
+        testCase.wait(for: [expectation], timeout: timeout)
+        return error
+    }
+    
 }
