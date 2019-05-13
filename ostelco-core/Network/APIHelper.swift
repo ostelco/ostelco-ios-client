@@ -67,11 +67,15 @@ public struct APIHelper {
     /// - Parameters:
     ///   - data: The data received from URLSession
     ///   - response: The response received from URLSession
+    ///   - decoder: The JSON decoder to use to try to parse errors from invalid response codes.
     ///   - dataCanBeEmpty: True if the data can be empty, false if not. Defaults to false.
     /// - Returns: The valid data.
     /// - Throws: Throws an error if the URLResponse is not an HTTPURLResponse, the status
     ///           code is invalid, or the data was empty without permission.
-    public static func validateResponse(data: Data, response: URLResponse, dataCanBeEmpty: Bool = false) throws -> Data {
+    public static func validateResponse(data: Data,
+                                        response: URLResponse,
+                                        decoder: JSONDecoder,
+                                        dataCanBeEmpty: Bool = false) throws -> Data {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw Error.invalidResponseType(data: data)
         }
@@ -81,7 +85,11 @@ public struct APIHelper {
             // Valid response code
             break
         default:
-            throw Error.invalidResponseCode(httpResponse.statusCode, data: data)
+            if let parsedError = self.createOptionalError(from: data, decoder: decoder) {
+                throw parsedError
+            } else {
+                throw Error.invalidResponseCode(httpResponse.statusCode, data: data)
+            }
         }
         
         if !dataCanBeEmpty {
@@ -93,17 +101,31 @@ public struct APIHelper {
         return data
     }
     
-    /// Creates an error based on the returned data. Should only be used if error JSON is expected
+    /// Attempts to create an error based on returned data. Returns nil if data can't be parsed.
+    ///
+    /// - Parameters:
+    ///   - data: The data to decode
+    ///   - decoder: The decoder to use to try to decode it
+    /// - Returns: An error if found, or nil.
+    public static func createOptionalError(from data: Data, decoder: JSONDecoder) -> Error? {
+        if let serverError = try? decoder.decode(ServerError.self, from: data) {
+            return APIHelper.Error.serverError(serverError)
+        } else if let jsonError = try? decoder.decode(JSONRequestError.self, from: data) {
+            return APIHelper.Error.jsonError(jsonError)
+        } else {
+            return nil
+        }
+    }
+    
+    /// Creates a non-optional error based on the returned data. Should only be used if error JSON is expected
     ///
     /// - Parameters:
     ///   - data: The data returned from the server
     ///   - decoder: The JSONDecoder to use to parse the JSON
     /// - Returns: An error to be thrown
     public static func createError(from data: Data, decoder: JSONDecoder) -> Error {
-        if let serverError = try? decoder.decode(ServerError.self, from: data) {
-            return APIHelper.Error.serverError(serverError)
-        } else if let jsonError = try? decoder.decode(JSONRequestError.self, from: data) {
-            return APIHelper.Error.jsonError(jsonError)
+        if let error = self.createOptionalError(from: data, decoder: decoder) {
+            return error
         } else {
             return APIHelper.Error.expectedServerErrorNotFound(data: data)
         }
@@ -122,7 +144,10 @@ public struct APIHelper {
                                                      decoder: JSONDecoder,
                                                      dataCanBeEmpty: Bool = true) throws {
         do {
-            _ = try APIHelper.validateResponse(data: data, response: response, dataCanBeEmpty: dataCanBeEmpty)
+            _ = try APIHelper.validateResponse(data: data,
+                                               response: response,
+                                               decoder: decoder,
+                                               dataCanBeEmpty: dataCanBeEmpty)
         } catch {
             switch error {
             case APIHelper.Error.invalidResponseCode(_, let data):

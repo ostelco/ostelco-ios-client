@@ -34,13 +34,15 @@ open class BasicNetwork {
     ///
     /// - Parameters:
     ///   - request: The request to execute
+    ///   - decoder: The JSON decoder to use to parse errors
     ///   - dataCanBeEmpty: If returned data can be empty. Defaults to false.
     /// - Returns: The promise, which when fulfilled will return the data received.
-    open func performValidatedRequest(_ request: Request, dataCanBeEmpty: Bool = false) -> Promise<Data> {
+    open func performValidatedRequest(_ request: Request, decoder: JSONDecoder, dataCanBeEmpty: Bool = false) -> Promise<Data> {
         return self.performRequest(request)
             .map { data, response in
                 try APIHelper.validateResponse(data: data,
                                                response: response,
+                                               decoder: decoder,
                                                dataCanBeEmpty: dataCanBeEmpty)
             }
     }
