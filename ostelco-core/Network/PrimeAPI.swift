@@ -125,7 +125,7 @@ open class PrimeAPI: BasicNetwork {
         ]
         return self.sendQuery(to: RootEndpoint.customer.value, queryItems: queryItems, method: .POST)
             .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response)
+                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
             .map { try self.decoder.decode(CustomerModel.self, from: $0) }
     }
@@ -141,7 +141,7 @@ open class PrimeAPI: BasicNetwork {
                                       method: .DELETE,
                                       loggedIn: true,
                                       token: token)
-                return self.performValidatedRequest(request, dataCanBeEmpty: true)
+                return self.performValidatedRequest(request, decoder: self.decoder, dataCanBeEmpty: true)
             }
             .done { data in
                 let dataString = String(bytes: data, encoding: .utf8)
@@ -207,7 +207,7 @@ open class PrimeAPI: BasicNetwork {
 
         return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
             .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response)
+                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
             .map { try self.decoder.decode(SimProfile.self, from: $0) }
     }
@@ -365,7 +365,7 @@ open class PrimeAPI: BasicNetwork {
                            queryItems: queryItems,
                            loggedIn: true,
                            token: $0) }
-            .then { self.performValidatedRequest($0) }
+            .then { self.performValidatedRequest($0, decoder: self.decoder) }
     }
     
     public func loadNonValidatedData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
