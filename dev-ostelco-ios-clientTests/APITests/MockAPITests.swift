@@ -221,6 +221,49 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(simProfiles.count, 0)
     }
     
+    func testMockFetchingContextForUserWithValidSimProfile() {
+        self.stubPath("context", toLoad: "context_with_sim_profile")
+        
+        guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        guard let customer = context.customer else {
+            XCTFail("Couldn't access customer!")
+            return
+        }
+        
+        XCTAssertEqual(customer.name, "HomerJay")
+        XCTAssertEqual(customer.email, "h.simpson@snpp.com")
+        XCTAssertEqual(customer.id, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+        XCTAssertEqual(customer.analyticsId, "42b7d480-f434-4074-9f5c-2bf152f96cfe")
+        XCTAssertEqual(customer.referralId, "b18635c0-f504-47ab-9d09-a425f615d2ae")
+        
+        guard let region = context.getRegion() else {
+            XCTFail("Could not get region!")
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfile = region.getSimProfile() else {
+            XCTFail("Could not get sim profile from region!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
     // MARK: - Customer
     
     func testMockCreatingCustomer() {

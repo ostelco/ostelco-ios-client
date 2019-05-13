@@ -66,10 +66,10 @@ public struct RegionResponse: Codable {
         } else if let rejectedRegion = regionResponses.last(where: { $0.status == .REJECTED }) {
             // Boo, at least one region has been rejected.
             return rejectedRegion
-        } else {
-            // Return the last response, which is either nil or .PENDING
-            return regionResponses.last
         }
+        
+        // If we've gotten here, return the last response, which is either nil or .PENDING
+        return regionResponses.last
     }
     
     public func getSimProfile() -> SimProfile? {
