@@ -53,6 +53,21 @@ class MockAPITests: XCTestCase {
         })
     }
     
+    // MARK: - Push
+    
+    func testMockSendingPushNotificationToken() {
+        self.stubPath("applicationToken", toLoad: "send_push_token")
+        
+        let pushToken = PushToken(token: "diY18Uy_xDI:APA91bFNqZ-UWLSS9SYZLYGh2UuTHiyBitBLDQ15dEyOLHMIXsmSUc07_kUgV3ir7yolUEr-44x1gA-u_oQ9964KbmXMG-SO7E9y1ruJGd205bsq7Lk2D-2uhKgIChYgN22_DSC9hK_5",
+                                  tokenType: "FCM",
+                                  applicationID: "sg.redotter.dev.selfcare.9725FE65-45FD-4646-B8A3-FF20ADEBF509")
+        
+        // Failures handled in `awaitResult`
+        self.testAPI.sendPushToken(pushToken).awaitResult(in: self)
+    }
+    
+    // MARK: - Context
+    
     func testMockFetchingContextForUserWithoutCustomerProfile() {
         self.stubPath("context", toLoad: "customer_nonexistent", statusCode: 404)
         
