@@ -121,6 +121,8 @@
 		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
+		9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */; };
+		9B3FA6942289B84C001E4D60 /* XCTestCase+MockingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
@@ -450,6 +452,8 @@
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
 		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
+		9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkTests.swift; sourceTree = "<group>"; };
+		9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MockingHelpers.swift"; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
 		9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoLabel.swift; sourceTree = "<group>"; };
 		9B46D64E226F02C30030A8EB /* OstelcoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFont.swift; sourceTree = "<group>"; };
@@ -1054,10 +1058,12 @@
 			isa = PBXGroup;
 			children = (
 				9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */,
+				9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */,
 				9B6A928F2284501B007F5EC9 /* MockJSON */,
 				9B82157B2279B97700DC6B64 /* Mocks */,
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 				9B6A928E22844F99007F5EC9 /* APITests */,
+				9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */,
 				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
@@ -1922,7 +1928,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
+				9B3FA6942289B84C001E4D60 /* XCTestCase+MockingHelpers.swift in Sources */,
 				9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */,
+				9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */,
 				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
