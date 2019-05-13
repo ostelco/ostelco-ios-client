@@ -21,6 +21,8 @@ class LiveAPITests: XCTestCase {
         }
         
         self.liveFetchingContext()
+        self.liveValidNRIC()
+        self.liveInvalidNRIC()
     }
 
     func liveFetchingContext() {
