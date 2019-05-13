@@ -227,6 +227,21 @@ class MockAPITests: XCTestCase {
         }
     }
     
+    func testMockCreatingAddress() {
+        let address = EKYCAddress(street: "123 Fake Street",
+                                  unit: "3",
+                                  city: "Fake City",
+                                  postcode: "12345",
+                                  country: "Singapore")
+        
+        OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString("https://api.fake.org/regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678") && isMethodPUT(), withStubResponse: { _ in
+            // TODO: Figure out why this is a `204 No Content` instead of a `201 Created` on the real API
+            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
+        })
+        
+        self.testAPI.addAddress(address, forRegion: "sg").awaitResult(in: self)
+    }
+    
     func testMockCreatingJumioScan() {
         self.stubPath("regions/sg/kyc/jumio/scans", toLoad: "create_jumio_scan")
         
