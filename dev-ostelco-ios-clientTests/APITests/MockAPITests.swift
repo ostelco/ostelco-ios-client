@@ -96,6 +96,24 @@ class MockAPITests: XCTestCase {
         XCTAssertTrue(simProfiles.isEmpty)
     }
     
+    // MARK: - Customer
+    
+    func testAddingCustomerNickname() {
+        self.stubPath("customer", toLoad: "customer_create")
+        
+        let setup = UserSetup(nickname: "HomerJay", email: "h.simpson@snpp.com")
+        
+        guard let customer = self.testAPI.createCustomer(with: setup).awaitResult(in: self) else {
+            return
+        }
+        
+        XCTAssertEqual(customer.name, "HomerJay")
+        XCTAssertEqual(customer.email, "h.simpson@snpp.com")
+        XCTAssertEqual(customer.id, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+        XCTAssertEqual(customer.analyticsId, "42b7d480-f434-4074-9f5c-2bf152f96cfe")
+        XCTAssertEqual(customer.referralId, "b18635c0-f504-47ab-9d09-a425f615d2ae")
+    }
+    
     func testMockDeletingCustomer() {
         OHHTTPStubs.stubRequests(passingTest: isPath("/api/customer") && isMethodDELETE(), withStubResponse: { _ in
             return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
