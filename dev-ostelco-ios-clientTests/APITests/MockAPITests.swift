@@ -256,6 +256,40 @@ class MockAPITests: XCTestCase {
         self.mockAPI.deleteCustomer().awaitResult(in: self)
     }
     
+    // MARK: - Purchases
+    
+    func testMockLoadingPurchases() {
+        self.stubPath("purchases", toLoad: "purchases")
+        
+        guard let purchases = self.mockAPI.loadPurchases().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(purchases.count, 1)
+        
+        guard let purchase = purchases.first else {
+            XCTFail("Couldn't load first purchase!")
+            return
+        }
+        
+        XCTAssertEqual(purchase.id, "84407440-6441-4c31-814e-603b2921296a")
+        XCTAssertEqual(purchase.timestamp, 1557740624128)
+        
+        XCTAssertEqual(purchase.product.sku, "2GB_FREE_ON_JOINING")
+        
+        XCTAssertEqual(purchase.product.price.amount, 0)
+        XCTAssertEqual(purchase.product.price.currency, "")
+        
+        XCTAssertEqual(purchase.product.properties, [
+            "noOfBytes": "2_147_483_648",
+            "productClass": "SIMPLE_DATA"
+        ])
+        
+        XCTAssertEqual(purchase.product.presentation.price, "Free")
+        XCTAssertEqual(purchase.product.presentation.label, "2GB Welcome Pack")
+    }
+    
     // MARK: - Regions
     
     func testMockNRICCheckWithValidNRIC() {

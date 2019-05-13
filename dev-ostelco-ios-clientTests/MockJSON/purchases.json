@@ -1,0 +1,20 @@
+[{
+	"id": "84407440-6441-4c31-814e-603b2921296a",
+	"product": {
+		"sku": "2GB_FREE_ON_JOINING",
+		"price": {
+			"amount": 0,
+			"currency": ""
+		},
+		"properties": {
+			"noOfBytes": "2_147_483_648",
+			"productClass": "SIMPLE_DATA"
+		},
+		"presentation": {
+			"priceLabel": "Free",
+			"productLabel": "2GB Welcome Pack"
+		}
+	},
+	"timestamp": 1557740624128,
+	"refund": null
+}]
