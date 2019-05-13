@@ -115,8 +115,8 @@ class MockAPITests: XCTestCase {
         XCTAssertNil(context.getRegion())
     }
     
-    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileAndRegionsButNotSimProfile() {
-        self.stubPath("context", toLoad: "context_no_sim_profiles")
+    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileAndRegionsJumioRejected() {
+        self.stubPath("context", toLoad: "context_jumio_rejected")
         
         guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
             // Failure handled in `awaitResult`
@@ -156,6 +156,46 @@ class MockAPITests: XCTestCase {
         }
         
         XCTAssertTrue(simProfiles.isEmpty)
+    }
+    
+    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileAndRegionsJumioApproved() {
+        self.stubPath("context", toLoad: "context_jumio_approved")
+        
+        guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        guard let customer = context.customer else {
+            XCTFail("Couldn't access customer!")
+            return
+        }
+        
+        XCTAssertEqual(customer.name, "HomerJay")
+        XCTAssertEqual(customer.email, "h.simpson@snpp.com")
+        XCTAssertEqual(customer.id, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+        XCTAssertEqual(customer.analyticsId, "42b7d480-f434-4074-9f5c-2bf152f96cfe")
+        XCTAssertEqual(customer.referralId, "b18635c0-f504-47ab-9d09-a425f615d2ae")
+        
+        guard let region = context.getRegion() else {
+            XCTFail("Could not get region!")
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfiles = region.simProfiles else {
+            XCTFail("Sim profiles was unexpectedly nil!")
+            return
+        }
+        
+        XCTAssertEqual(simProfiles.count, 0)
     }
     
     // MARK: - Customer
