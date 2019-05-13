@@ -125,7 +125,7 @@ open class PrimeAPI: BasicNetwork {
         ]
         return self.sendQuery(to: RootEndpoint.customer.value, queryItems: queryItems, method: .POST)
             .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response)
+                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
             .map { try self.decoder.decode(CustomerModel.self, from: $0) }
     }
@@ -141,7 +141,7 @@ open class PrimeAPI: BasicNetwork {
                                       method: .DELETE,
                                       loggedIn: true,
                                       token: token)
-                return self.performValidatedRequest(request, dataCanBeEmpty: true)
+                return self.performValidatedRequest(request, decoder: self.decoder, dataCanBeEmpty: true)
             }
             .done { data in
                 let dataString = String(bytes: data, encoding: .utf8)
@@ -207,7 +207,7 @@ open class PrimeAPI: BasicNetwork {
 
         return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
             .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response)
+                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
             .map { try self.decoder.decode(SimProfile.self, from: $0) }
     }
@@ -312,24 +312,22 @@ open class PrimeAPI: BasicNetwork {
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
         
-        return self.loadNonValidatedData(from: path)
-            .map { data, response in
-                do {
-                    try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: false)
-                    return true
-                } catch {
-                    switch error {
-                    case APIHelper.Error.jsonError(let jsonError):
-                        if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
-                            return false
-                        }
-                    default:
-                        break
+        return self.loadData(from: path)
+            .map { _ in
+                return true
+            }
+            .recover { error -> Promise<Bool> in
+                switch error {
+                case APIHelper.Error.jsonError(let jsonError):
+                    if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
+                        return .value(false)
                     }
-                    
-                    // If we got here, re-throw the error.
-                    throw error
+                default:
+                    break
                 }
+                
+                // If we got here, re-throw the error.
+                throw error
             }
     }
     
@@ -365,7 +363,7 @@ open class PrimeAPI: BasicNetwork {
                            queryItems: queryItems,
                            loggedIn: true,
                            token: $0) }
-            .then { self.performValidatedRequest($0) }
+            .then { self.performValidatedRequest($0, decoder: self.decoder) }
     }
     
     public func loadNonValidatedData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {

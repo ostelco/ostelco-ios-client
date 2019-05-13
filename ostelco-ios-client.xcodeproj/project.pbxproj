@@ -150,6 +150,10 @@
 		9B6A9285228418A4007F5EC9 /* SimProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */; };
 		9B6A928722841C38007F5EC9 /* EKYCProfileUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */; };
 		9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A92882284209A007F5EC9 /* PushToken.swift */; };
+		9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */; };
+		9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */; };
+		9B6A92902284501B007F5EC9 /* MockJSON in Resources */ = {isa = PBXBuildFile; fileRef = 9B6A928F2284501B007F5EC9 /* MockJSON */; };
+		9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */; };
 		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
 		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
 		9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */; };
@@ -469,6 +473,10 @@
 		9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfileRequest.swift; sourceTree = "<group>"; };
 		9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCProfileUpdate.swift; sourceTree = "<group>"; };
 		9B6A92882284209A007F5EC9 /* PushToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushToken.swift; sourceTree = "<group>"; };
+		9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPITests.swift; sourceTree = "<group>"; };
+		9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAPITests.swift; sourceTree = "<group>"; };
+		9B6A928F2284501B007F5EC9 /* MockJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockJSON; sourceTree = "<group>"; };
+		9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Testing.swift"; sourceTree = "<group>"; };
 		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
 		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
 		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
@@ -795,6 +803,15 @@
 			path = Email;
 			sourceTree = "<group>";
 		};
+		9B6A928E22844F99007F5EC9 /* APITests */ = {
+			isa = PBXGroup;
+			children = (
+				9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */,
+				9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */,
+			);
+			path = APITests;
+			sourceTree = "<group>";
+		};
 		9B6E3A0B226F6FA70063EBAA /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,8 +1053,11 @@
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */,
+				9B6A928F2284501B007F5EC9 /* MockJSON */,
 				9B82157B2279B97700DC6B64 /* Mocks */,
 				C2236F0E218A414C00B135C0 /* Info.plist */,
+				9B6A928E22844F99007F5EC9 /* APITests */,
 				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
@@ -1360,6 +1380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6A92902284501B007F5EC9 /* MockJSON in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1902,13 +1923,16 @@
 			files = (
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
 				9B82157A2279B92F00DC6B64 /* HeaderGeneratorTests.swift in Sources */,
+				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
+				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
+				9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

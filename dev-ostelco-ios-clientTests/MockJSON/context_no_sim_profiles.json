@@ -1,0 +1,23 @@
+{
+	"customer": {
+		"id": "e30665f1-2a08-4304-bc06-5005b268b3b8",
+		"nickname": "Steve",
+		"contactEmail": "steve@apple.com",
+		"analyticsId": "7966e40e-e85a-46fd-953d-14e86bb0afec",
+		"referralId": "f3562c3a-8a6e-4be1-a521-7a2c7b1c2b41"
+	},
+	"regions": [{
+		"region": {
+			"id": "sg",
+			"name": "Singapore"
+		},
+		"status": "PENDING",
+		"kycStatusMap": {
+			"JUMIO": "REJECTED",
+			"MY_INFO": "PENDING",
+			"ADDRESS_AND_PHONE_NUMBER": "PENDING",
+			"NRIC_FIN": "APPROVED"
+		},
+		"simProfiles": []
+	}]
+}

@@ -1,0 +1,11 @@
+{
+	"errorCode": "INVALID_NRIC_FIN_ID",
+	"error": {
+		"type": "NRIC/FIN ID",
+		"id": "NOPE",
+		"message": "Invalid NRIC/FIN ID",
+		"error": null
+	},
+	"status": 403,
+	"message": "Invalid NRIC/FIN ID"
+}
