@@ -256,6 +256,38 @@ class MockAPITests: XCTestCase {
         self.mockAPI.deleteCustomer().awaitResult(in: self)
     }
     
+    // MARK: - Products
+    
+    func testMockLoadingProducts() {
+        self.stubPath("products", toLoad: "products")
+        
+        guard let products = self.mockAPI.loadProducts().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(products.count, 1)
+        
+        guard let product = products.first else {
+            XCTFail("Could not access first product!")
+            return
+        }
+        
+        XCTAssertEqual(product.sku, "PLAN_1SGD_YEAR")
+        
+        XCTAssertEqual(product.price.amount, 100)
+        XCTAssertEqual(product.price.currency, "SGD")
+        
+        XCTAssertEqual(product.properties, [
+            "intervalCount": "1",
+            "productClass": "PLAN",
+            "interval": "year"
+        ])
+        
+        XCTAssertEqual(product.presentation.price, "$1")
+        XCTAssertEqual(product.presentation.label, "Annual subscription plan")
+    }
+    
     // MARK: - Purchases
     
     func testMockLoadingPurchases() {
