@@ -21,6 +21,10 @@ class LiveAPITests: XCTestCase {
         }
         
         self.liveFetchingContext()
+        self.liveValidNRIC()
+        self.liveInvalidNRIC()
+        self.liveBundles()
+        self.livePurchases()
     }
 
     func liveFetchingContext() {
@@ -51,4 +55,13 @@ class LiveAPITests: XCTestCase {
         XCTAssertFalse(isValid)
     }
     
+    func liveBundles() {
+        // Failures handled in `awaitResult`
+        _ = self.testAPI.loadBundles().awaitResult(in: self)
+    }
+    
+    func livePurchases() {
+        // Failures handled in `awaitResult`
+        _ = self.testAPI.loadPurchases().awaitResult(in: self)
+    }
 }

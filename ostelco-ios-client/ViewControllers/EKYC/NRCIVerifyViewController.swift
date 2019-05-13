@@ -59,6 +59,16 @@ class NRCIVerifyViewController: UIViewController {
     }
 }
 
+extension NRCIVerifyViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        // No, returns should not be added to the text.
+        return false
+    }
+}
+
 extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
     func getNewScanId() -> Promise<String> {

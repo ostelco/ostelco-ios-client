@@ -73,13 +73,7 @@ open class PrimeAPI: BasicNetwork {
         return self.loadData(from: RootEndpoint.purchases.value)
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
-    
-    /// - Returns: A Promise which when fulfilled will contain the user's proile model
-    public func loadProfile() -> Promise<ProfileModel> {
-        return self.loadData(from: RootEndpoint.profile.value)
-            .map { try self.decoder.decode(ProfileModel.self, from: $0) }
-    }
-    
+
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
@@ -226,7 +220,14 @@ open class PrimeAPI: BasicNetwork {
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
         
-        return self.loadData(from: path)
+        return self.tokenProvider.getToken()
+            .map { Request(baseURL: self.baseURL,
+                           path: path,
+                           method: .POST,
+                           loggedIn: true,
+                           token: $0)
+            }
+            .then { self.performValidatedRequest($0, decoder: self.decoder) }
             .map { try self.decoder.decode(Scan.self, from: $0) }
     }
 

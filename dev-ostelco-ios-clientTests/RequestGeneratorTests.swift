@@ -12,7 +12,7 @@ import XCTest
 
 class RequestGeneratorTests: XCTestCase {
     
-    private lazy var baseURL: URL = {
+    private lazy var testURL: URL = {
         guard let url = URL(string: "https://www.test.nl/api") else {
             fatalError("This should create a URL!")
         }
@@ -23,7 +23,7 @@ class RequestGeneratorTests: XCTestCase {
     private lazy var testToken = "Testing!"
     
     func testBasicInitializationGivesAGetRequest() throws {
-        let request = Request(baseURL: self.baseURL,
+        let request = Request(baseURL: self.testURL,
                               path: "test",
                               loggedIn: false,
                               token: self.testToken)
@@ -43,7 +43,7 @@ class RequestGeneratorTests: XCTestCase {
     
     func testAddingPutDataToRequestWorks() throws {
         let data = "I'm a test string!".data(using: .utf8)!
-        var request = Request(baseURL: self.baseURL,
+        var request = Request(baseURL: self.testURL,
                               path: "data",
                               method: .PUT,
                               loggedIn: true,
@@ -72,7 +72,7 @@ class RequestGeneratorTests: XCTestCase {
     }
     
     func testSettingAdditionalHeadersUpdatesHeaderDict() throws {
-        var request = Request(baseURL: self.baseURL,
+        var request = Request(baseURL: self.testURL,
                               path: "additional/headers",
                               loggedIn: true,
                               token: self.testToken)
@@ -99,7 +99,7 @@ class RequestGeneratorTests: XCTestCase {
             URLQueryItem(name: "date", value: "2019-05-08")
         ]
         
-        let request = Request(baseURL: self.baseURL,
+        let request = Request(baseURL: self.testURL,
                               path: "query/params",
                               queryItems: queryParams,
                               loggedIn: false,
