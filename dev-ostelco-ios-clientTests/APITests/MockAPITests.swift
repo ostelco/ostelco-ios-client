@@ -13,7 +13,7 @@ import XCTest
 
 class MockAPITests: XCTestCase {
     
-    private lazy var testAPI = PrimeAPI(baseURL: "https://www.fake.org/api", tokenProvider: self.mockTokenProvider)
+    private lazy var testAPI = PrimeAPI(baseURL: "https://api.fake.org", tokenProvider: self.mockTokenProvider)
     
     private lazy var mockTokenProvider: MockTokenProvider = {
         let provider = MockTokenProvider()
@@ -41,7 +41,7 @@ class MockAPITests: XCTestCase {
                           statusCode: Int32 = 200,
                           file: StaticString = #file,
                           line: UInt = #line) {
-        OHHTTPStubs.stubRequests(passingTest: isPath("/api/\(path)"), withStubResponse: { _ in
+        OHHTTPStubs.stubRequests(passingTest: isPath("/\(path)"), withStubResponse: { _ in
             guard let path = Bundle(for: MockAPITests.self).path(forResource: fileName, ofType: "json", inDirectory: "MockJSON") else {
                 XCTFail("Couldn't get bundled path!",
                         file: file,
@@ -71,8 +71,31 @@ class MockAPITests: XCTestCase {
         }
     }
     
-    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileButNotSimProfile() throws {
-        self.stubPath("context", toLoad: "context")
+    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileButNotRegions() {
+        self.stubPath("context", toLoad: "context_no_regions")
+        
+        guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
+            // Failure handled in `awaitResult`
+            return
+        }
+        
+        guard let customer = context.customer else {
+            XCTFail("No customer in context!")
+            return
+        }
+        
+        XCTAssertEqual(customer.name, "HomerJay")
+        XCTAssertEqual(customer.email, "h.simpson@snpp.com")
+        XCTAssertEqual(customer.id, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+        XCTAssertEqual(customer.analyticsId, "42b7d480-f434-4074-9f5c-2bf152f96cfe")
+        XCTAssertEqual(customer.referralId, "b18635c0-f504-47ab-9d09-a425f615d2ae")
+        
+        XCTAssertEqual(context.regions.count, 0)
+        XCTAssertNil(context.getRegion())
+    }
+    
+    func testMockFetchingContextForUserWhoAlreadyHasCustomerProfileAndRegionsButNotSimProfile() {
+        self.stubPath("context", toLoad: "context_no_sim_profiles")
         
         guard let context = self.testAPI.loadContext().awaitResult(in: self) else {
             // Failure handled in `awaitResult`
