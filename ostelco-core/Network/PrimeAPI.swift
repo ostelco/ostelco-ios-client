@@ -226,7 +226,14 @@ open class PrimeAPI: BasicNetwork {
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
         
-        return self.loadData(from: path)
+        return self.tokenProvider.getToken()
+            .map { Request(baseURL: self.baseURL,
+                           path: path,
+                           method: .POST,
+                           loggedIn: true,
+                           token: $0)
+            }
+            .then { self.performValidatedRequest($0, decoder: self.decoder) }
             .map { try self.decoder.decode(Scan.self, from: $0) }
     }
 

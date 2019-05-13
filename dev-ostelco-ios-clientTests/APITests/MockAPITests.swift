@@ -226,4 +226,17 @@ class MockAPITests: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
     }
+    
+    func testMockCreatingJumioScan() {
+        self.stubPath("regions/sg/kyc/jumio/scans", toLoad: "create_jumio_scan")
+        
+        guard let scan = self.testAPI.createJumioScanForRegion(code: "sg").awaitResult(in: self) else {
+            // Failure handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(scan.scanId, "326aceb6-3e54-4049-9f7b-0c922ad2c85a")
+        XCTAssertEqual(scan.countryCode, "sg")
+        XCTAssertEqual(scan.status, "PENDING")
+    }
 }
