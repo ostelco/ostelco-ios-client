@@ -109,7 +109,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
         name.text = myInfoDetails.name
         dob.text = myInfoDetails.dob
-        address.text = "\(myInfoDetails.address.getAddressLine1())\n\(myInfoDetails.address.getAddressLine2())"
+        address.text = myInfoDetails.address.formattedAddress
         if let nationality = myInfoDetails.nationality {
             self.nationality.text = nationality
         }

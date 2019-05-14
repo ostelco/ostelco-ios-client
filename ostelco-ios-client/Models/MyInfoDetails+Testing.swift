@@ -83,8 +83,8 @@ extension MyInfoDetails {
         do {
             let myInfo = try JSONDecoder().decode(MyInfoDetails.self, from: json)
             print("MyInfo \(myInfo)")
-            print("Address 1 \(myInfo.address.getAddressLine1())")
-            print("Address 2 \(myInfo.address.getAddressLine2())")
+            print("Address 1 \(myInfo.address.addressLine1)")
+            print("Address 2 \(myInfo.address.addressLine2)")
             return myInfo
         } catch {
             print("Error \(error)")
