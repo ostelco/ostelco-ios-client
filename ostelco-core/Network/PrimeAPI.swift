@@ -383,16 +383,6 @@ open class PrimeAPI: BasicNetwork {
             .then { self.performValidatedRequest($0, decoder: self.decoder) }
     }
     
-    public func loadNonValidatedData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<(data: Data, response: URLResponse)> {
-        return self.tokenProvider.getToken()
-            .map { Request(baseURL: self.baseURL,
-                           path: path,
-                           queryItems: queryItems,
-                           loggedIn: true,
-                           token: $0) }
-            .then { self.performRequest($0) }
-    }
-    
     /// Sends `Codable` object to the given path based on the base URL.
     /// NOTE: Does not validate directly, since we may need to parse error data which comes back.
     ///
