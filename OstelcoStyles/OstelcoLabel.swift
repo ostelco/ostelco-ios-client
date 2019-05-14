@@ -227,6 +227,17 @@ public class StepsTextLabel: OstelcoLabel {
     }
 }
 
+public class StepNumberLabel: OstelcoLabel {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.appTextColor = .oyaBlue
+        self.appFont = OstelcoFont(fontType: .medium,
+                                   fontSize: .body)
+        self.alpha = 0.5
+    }
+}
+
 public class UpdateTextLabel: OstelcoLabel {
     
     public override func commonInit() {

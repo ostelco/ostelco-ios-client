@@ -6,9 +6,21 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import OstelcoStyles
 import UIKit
 
 class VerifyIdentityOnBoardingViewController: UIViewController {
+    
+    @IBOutlet private var step1Icon: UIImageView!
+    @IBOutlet private var step2Icon: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tintColor = OstelcoColor.oyaBlue.toUIColor
+        self.step1Icon.tintColor = tintColor
+        self.step2Icon.tintColor = tintColor
+    }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
