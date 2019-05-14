@@ -76,6 +76,10 @@ class UserManager {
                     if code == 404 {
                         return .value(.signupStart)
                     } // else, keep going.
+                case APIHelper.Error.jsonError(let requestError):
+                    if requestError.httpStatusCode == 404 {
+                        return .value(.signupStart)
+                    } // else, keep going.
                 default:
                     break
                 }
