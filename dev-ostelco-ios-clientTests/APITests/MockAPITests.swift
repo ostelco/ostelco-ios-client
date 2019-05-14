@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import OHHTTPStubs
+@testable import Oya_Development_app
 import ostelco_core
 import PromiseKit
 import XCTest
@@ -248,10 +248,8 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockDeletingCustomer() {
-        OHHTTPStubs.stubRequests(passingTest: isPath("/customer") && isMethodDELETE(), withStubResponse: { _ in
-            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
-        })
-        
+        self.stubEmptyDataAtPath("customer", statusCode: 204)
+       
         // Failures handled in `awaitResult`
         self.mockAPI.deleteCustomer().awaitResult(in: self)
     }
@@ -446,13 +444,22 @@ class MockAPITests: XCTestCase {
                                   postcode: "12345",
                                   country: "Singapore")
         
-        OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString("https://api.fake.org/regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678") && isMethodPUT(), withStubResponse: { _ in
-            // TODO: Figure out why this is a `204 No Content` instead of a `201 Created` on the real API
-            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
-        })
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678", statusCode: 204)
         
         // Failure handled in `awaitResult`
         self.mockAPI.addAddress(address, forRegion: "sg").awaitResult(in: self)
+    }
+    
+    func testMockUpdatingAddress() {
+        guard
+            let testInfo = MyInfoDetails.testInfo,
+            let update = EKYCProfileUpdate(myInfoDetails: testInfo)else {
+                XCTFail("Couldn't load test info details or create update!")
+                return
+        }
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=102%20BEDOK%20NORTH%20AVENUE%204%0A460102%20SG&phoneNumber=+6597399245", statusCode: 204)
+        
+        self.mockAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
     }
     
     func testMockCreatingJumioScan() {
@@ -469,7 +476,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockRequestingSimProfile() {
-        self.stubAbsoluteURLString("https://api.fake.org/regions/sg/simProfiles?profileType=iphone",
+       self.stubAbsolutePath("regions/sg/simProfiles?profileType=iphone",
                                    toLoad: "create_sim_profile")
         
         guard let simProfile = self.mockAPI.createSimProfileForRegion(code: "sg").awaitResult(in: self) else {

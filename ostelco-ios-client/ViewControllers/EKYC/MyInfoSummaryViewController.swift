@@ -81,13 +81,12 @@ class MyInfoSummaryViewController: UIViewController {
     
     @IBAction private func `continue`(_ sender: Any) {
         guard
-            let address = self.address.text,
-            let phoneNumber = self.myInfoDetails?.mobileNumber?.formattedNumber else {
-                assertionFailure("Validation passed but we don't have either an address or a phone number?")
+            let details = self.myInfoDetails,
+            let profileUpdate = EKYCProfileUpdate(myInfoDetails: details) else {
+                assertionFailure("Validation passed but we can't create a profile update?")
                 return
         }
         
-        let profileUpdate = EKYCProfileUpdate(address: address, phoneNumber: phoneNumber)
         self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.shared.primeAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
             .ensure { [weak self] in

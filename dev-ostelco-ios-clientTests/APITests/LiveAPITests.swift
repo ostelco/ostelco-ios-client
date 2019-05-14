@@ -29,6 +29,7 @@ class LiveAPITests: XCTestCase {
         self.liveRegions()
         self.liveRegionWithData()
         self.liveUnsupportedRegion()
+        self.liveAddressUpdate()
     }
 
     func liveFetchingContext() {
@@ -106,5 +107,21 @@ class LiveAPITests: XCTestCase {
         default:
             XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
         }
+    }
+    
+    func liveAddressUpdate() {
+        let address = MyInfoAddress(country: "SG",
+                                    unit: "128",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    block: "102",
+                                    postal: "460102",
+                                    floor: "09",
+                                    building: "PEARL GARDEN").formattedAddress
+        let phone = "+6597399245"
+        
+        let update = EKYCProfileUpdate(address: address, phoneNumber: phone)
+        
+        // Failures handled in `awaitResult`
+        self.testAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
     }
 }

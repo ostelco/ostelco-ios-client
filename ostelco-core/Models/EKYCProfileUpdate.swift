@@ -12,6 +12,15 @@ public struct EKYCProfileUpdate: Codable {
     public let address: String
     public let phoneNumber: String
     
+    public init?(myInfoDetails: MyInfoDetails) {
+        guard let phoneNumber = myInfoDetails.mobileNumber?.formattedNumber else {
+            return nil
+        }
+        
+        self.address = myInfoDetails.address.formattedAddress
+        self.phoneNumber = phoneNumber
+    }
+    
     public init(address: String,
                 phoneNumber: String) {
         self.address = address
