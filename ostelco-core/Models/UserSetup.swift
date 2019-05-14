@@ -17,4 +17,16 @@ public struct UserSetup: Codable {
         self.nickname = nickname
         self.contactEmail = email
     }
+    
+    public enum CodingKeys: String, CodingKey {
+        case nickname
+        case contactEmail
+    }
+    
+    public var asQueryItems: [URLQueryItem] {
+        return [
+            URLQueryItem(codingKey: CodingKeys.nickname, value: self.nickname),
+            URLQueryItem(codingKey: CodingKeys.contactEmail, value: self.contactEmail)
+        ]
+    }
 }

@@ -17,4 +17,16 @@ public struct EKYCProfileUpdate: Codable {
         self.address = address
         self.phoneNumber = phoneNumber
     }
+    
+    public enum CodingKeys: String, CodingKey {
+        case address
+        case phoneNumber
+    }
+    
+    public var asQueryItems: [URLQueryItem] {
+        return [
+            URLQueryItem(codingKey: CodingKeys.address, value: self.address),
+            URLQueryItem(codingKey: CodingKeys.phoneNumber, value: self.phoneNumber)
+        ]
+    }
 }

@@ -14,4 +14,14 @@ public struct SimProfileRequest: Codable {
     public init() {
         self.profileType = "iphone"
     }
+    
+    public enum CodingKeys: String, CodingKey {
+        case profileType
+    }
+    
+    public var asQueryItems: [URLQueryItem] {
+        return [
+            URLQueryItem(codingKey: CodingKeys.profileType, value: self.profileType)
+        ]
+    }
 }

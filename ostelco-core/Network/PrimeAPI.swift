@@ -95,9 +95,8 @@ open class PrimeAPI: BasicNetwork {
         ]
         
         let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
-        let queryItem = URLQueryItem(name: "sourceId", value: payment.sourceId)
 
-        return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
+        return self.sendQuery(to: path, queryItems: payment.asQueryItems, method: .POST)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data,
                                                             response: response,
@@ -113,11 +112,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
     public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
-        let queryItems = [
-            URLQueryItem(name: "nickname", value: userSetup.nickname),
-            URLQueryItem(name: "contactEmail", value: userSetup.contactEmail)
-        ]
-        return self.sendQuery(to: RootEndpoint.customer.value, queryItems: queryItems, method: .POST)
+        return self.sendQuery(to: RootEndpoint.customer.value, queryItems: userSetup.asQueryItems, method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
@@ -197,9 +192,8 @@ open class PrimeAPI: BasicNetwork {
         ]
     
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        let queryItem = URLQueryItem(name: "profileType", value: SimProfileRequest().profileType)
 
-        return self.sendQuery(to: path, queryItems: [ queryItem ], method: .POST)
+        return self.sendQuery(to: path, queryItems: SimProfileRequest().asQueryItems, method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
             }
@@ -258,12 +252,8 @@ open class PrimeAPI: BasicNetwork {
         ]
 
         let path = RootEndpoint.regions.pathByAddingEndpoints(profileEndpoints)
-        let queryItems = [
-            URLQueryItem(name: "address", value: address.address),
-            URLQueryItem(name: "phoneNumber", value: address.phoneNumber)
-        ]
 
-        return self.sendQuery(to: path, queryItems: queryItems, method: .PUT)
+        return self.sendQuery(to: path, queryItems: address.asQueryItems, method: .PUT)
             .done { data, response in
                 try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: true)
             }
@@ -283,12 +273,8 @@ open class PrimeAPI: BasicNetwork {
         ]
 
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        let queryItems = [
-            URLQueryItem(name: "address", value: update.address),
-            URLQueryItem(name: "phoneNumber", value: update.phoneNumber)
-        ]
 
-        return self.sendQuery(to: path, queryItems: queryItems, method: .PUT)
+        return self.sendQuery(to: path, queryItems: update.asQueryItems, method: .PUT)
             .map { data, response in
                 try APIHelper.validateAndLookForServerError(data: data,
                                                             response: response,

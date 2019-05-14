@@ -102,6 +102,7 @@
 		13590E50313513F4967C8381 /* Pods_ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DCE29F29767B2734BF3223 /* Pods_ostelco_core.framework */; };
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
+		9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B1745712276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
@@ -441,6 +442,7 @@
 		82A568CF407D7A453ED4152C /* Pods-ostelco-ios-ostelco-ios-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client.release.xcconfig"; sourceTree = "<group>"; };
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Codable.swift"; sourceTree = "<group>"; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B1745702276F60000CF321B /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
@@ -893,6 +895,7 @@
 				9B9B324F225E423A00227EA3 /* Collection+Empty.swift */,
 				9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */,
 				9B82159A227B225400DC6B64 /* String+Static.swift */,
+				9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1888,6 +1891,7 @@
 				9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */,
 				9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */,
 				9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */,
+				9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */,
 				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
 				9B5CBF3C22803D3300D83D7B /* Context.swift in Sources */,
 				9B821590227AD6D200DC6B64 /* EKYCAddress.swift in Sources */,
