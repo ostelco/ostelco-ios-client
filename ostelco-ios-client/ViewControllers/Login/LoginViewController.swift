@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     var spinnerView: UIView?
     
     @IBOutlet private var primaryButton: UIButton!
+    @IBOutlet private var logoImageView: UIImageView!
     
     /// Has to be set up through `prepareForSegue` when this VC is loaded
     // swiftlint:disable:next implicitly_unwrapped_optional
@@ -34,6 +35,7 @@ class LoginViewController: UIViewController {
         
         let index = self.dataSource.currentIndex
         self.configureButtonTitle(for: index)
+        self.logoImageView.tintColor = OstelcoColor.oyaBlue.toUIColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -103,6 +103,7 @@
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
+                        <outlet property="logoImageView" destination="X7G-Yi-Yav" id="Uxc-bF-KeI"/>
                         <outlet property="primaryButton" destination="DW1-o4-Dgl" id="cY2-xt-orS"/>
                     </connections>
                 </viewController>
