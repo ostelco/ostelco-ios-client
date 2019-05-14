@@ -14,11 +14,14 @@ import ostelco_core
 struct ApplicationErrors {
     enum General: LocalizedError {
         case noValidPlansFound
+        case noMyInfoConfigFound
 
         var localizedDescription: String {
             switch self {
             case .noValidPlansFound:
                 return "Did not find a valid subscription plan"
+            case .noMyInfoConfigFound:
+                return "Did not find valid configuration for MyInfo"
             }
         }
     }

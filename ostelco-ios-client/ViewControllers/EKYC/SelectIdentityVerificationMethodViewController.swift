@@ -90,12 +90,16 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     }
     
     func showMyInfoLogin(url: URL?) {
-        if let url = url {
-            debugPrint("URL for the login screen: \(url.absoluteString)")
-            webView = SFSafariViewController(url: url)
-            webView!.delegate = self
-            present(webView!, animated: true)
+        guard let url = url else {
+            let error = ApplicationErrors.General.noMyInfoConfigFound
+            assertionFailure(error.localizedDescription)
+            ApplicationErrors.log(error)
+            return
         }
+        debugPrint("URL for the login screen: \(url.absoluteString)")
+        webView = SFSafariViewController(url: url)
+        webView!.delegate = self
+        present(webView!, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
