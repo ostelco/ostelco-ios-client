@@ -139,10 +139,16 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
-    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> Promise<[String: AnyObject]?> {
+    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> Promise<[String: AnyHashable]> {
         let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
         return self.loadData(from: path, queryItems: request.asQueryItems)
-            .map { try JSONSerialization.jsonObject(with: $0, options: []) as? [String: AnyObject] }
+            .map { data -> [String: AnyHashable] in
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let dictionary = object as? [String: AnyHashable] else {
+                    throw APIHelper.Error.invalidResponseType(data: data)
+                }
+                return dictionary
+            }
     }
 
     // MARK: - Regions

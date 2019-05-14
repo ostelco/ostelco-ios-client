@@ -20,6 +20,7 @@ public struct APIHelper {
         case invalidResponseCode(_ code: Int, data: Data)
         case jsonError(_ error: JSONRequestError)
         case serverError(_ error: ServerError)
+        case unexpectedResponseFormat(data: Data)
         
         var localizedDescription: String {
             switch self {
@@ -57,6 +58,13 @@ public struct APIHelper {
                 return """
                 Received server error(s):
                 - \(error.errors.joined(separator: "\n- "))
+                """
+            case .unexpectedResponseFormat(let data):
+                let dataString = String(bytes: data, encoding: .utf8)
+                return """
+                We were expecting a different format than was received.
+                Data received as string:
+                \(String(describing: dataString))
                 """
             }
         }

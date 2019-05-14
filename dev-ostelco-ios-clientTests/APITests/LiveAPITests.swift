@@ -31,6 +31,7 @@ class LiveAPITests: XCTestCase {
         self.liveUnsupportedRegion()
         self.liveAddressUpdate()
         self.liveSimProfilesForRegion()
+        self.liveStripeEphemeralKey()
     }
 
     func liveFetchingContext() {
@@ -129,5 +130,18 @@ class LiveAPITests: XCTestCase {
     func liveSimProfilesForRegion() {
         // Failures handled in `awaitResult`
         _ = self.testAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self)
+    }
+    
+    func liveStripeEphemeralKey() {
+        // API version can be found in Pods/Stripe/STPAPIClient
+        // (near the top) -not public so can't be accessed directly
+        let request = StripeEphemeralKeyRequest(apiVersion: "2015-10-12")
+        
+        guard let dictionary = self.testAPI.stripeEphemeralKey(with: request).awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertTrue(dictionary.isNotEmpty)
     }
 }

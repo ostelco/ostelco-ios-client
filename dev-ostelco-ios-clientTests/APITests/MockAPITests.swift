@@ -254,6 +254,38 @@ class MockAPITests: XCTestCase {
         self.mockAPI.deleteCustomer().awaitResult(in: self)
     }
     
+    func testMockCreatingEphemeralKey() {
+        self.stubAbsolutePath("customer/stripe-ephemeral-key?api_version=2015-10-12", toLoad: "stripe_ephemeral_key")
+        
+        let request = StripeEphemeralKeyRequest(apiVersion: "2015-10-12")
+        
+        guard let keyDict = self.mockAPI.stripeEphemeralKey(with: request).awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(keyDict["id"] as? String, "ephkey_FAKE")
+        XCTAssertEqual(keyDict["object"] as? String, "ephemeral_key")
+        XCTAssertEqual(keyDict["created"] as? Int64, Int64(1557842380))
+        XCTAssertEqual(keyDict["expires"] as? Int64, Int64(1557845980))
+        XCTAssertEqual(keyDict["livemode"] as? Bool, true)
+        XCTAssertEqual(keyDict["secret"] as? String, "ek_live_FAKE")
+        
+        guard let associatedObjects = keyDict["associated_objects"] as? [[String: AnyHashable]] else {
+            XCTFail("Couldn't get associated objects")
+            return
+        }
+        
+        XCTAssertEqual(associatedObjects.count, 1)
+        guard let firstObject = associatedObjects.first else {
+            XCTFail("Couldn't get first associated object")
+            return
+        }
+        
+        XCTAssertEqual(firstObject["type"] as? String, "customer")
+        XCTAssertEqual(firstObject["id"] as? String, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+    }
+    
     // MARK: - Products
     
     func testMockLoadingProducts() {
@@ -516,7 +548,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockRequestingSimProfilesForRegion() {
-        self.stubPath("regions/sg/simprofiles", toLoad: "sim_profiles_singapore")
+        self.stubPath("regions/sg/simProfiles", toLoad: "sim_profiles_singapore")
         
         guard let simProfiles = self.mockAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self) else {
             // Failures handled in `awaitResult`
