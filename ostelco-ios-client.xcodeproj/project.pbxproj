@@ -934,10 +934,10 @@
 				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
 				9B46D64A226F00210030A8EB /* OstelcoColor.swift */,
 				9B46D64E226F02C30030A8EB /* OstelcoFont.swift */,
+				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 				9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */,
 				9B1745822277428A00CF321B /* OstelcoTextField.swift */,
 				9BB6A796226F6514000D5E13 /* Info.plist */,
-				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 			);
 			path = OstelcoStyles;
 			sourceTree = "<group>";

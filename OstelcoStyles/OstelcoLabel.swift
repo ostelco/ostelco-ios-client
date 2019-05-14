@@ -123,6 +123,16 @@ public class DataAmountOnHomeLabel: OstelcoLabel {
     }
 }
 
+public class DataRemainingLabel: OstelcoLabel {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.appTextColor = .oyaBlue
+        self.appFont = OstelcoFont(fontType: .regular,
+                                   fontSize: .finePrint)
+    }
+}
+
 // MARK: - Header Labels
 
 public class Heading1Label: OstelcoLabel {
