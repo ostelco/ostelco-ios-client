@@ -163,7 +163,8 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
 
     // Called automatically by Stripe through the STPCustomerContext object
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
-        APIManager.shared.primeAPI.stripeEphemeralKey(stripeAPIVersion: apiVersion)
+        let request = StripeEphemeralKeyRequest(apiVersion: apiVersion)
+        APIManager.shared.primeAPI.stripeEphemeralKey(with: request)
             .done { key in
                 completion(key, nil)
             }

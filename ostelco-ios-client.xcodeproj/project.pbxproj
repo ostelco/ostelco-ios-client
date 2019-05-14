@@ -103,6 +103,7 @@
 		3DE8BBC08DBE9CD31C4D8ACC /* Pods_ostelco_ios_dev_ostelco_ios_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A00F4D1901E266946834B /* Pods_ostelco_ios_dev_ostelco_ios_client.framework */; };
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */; };
+		9B0685FB228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B1745712276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
@@ -443,6 +444,7 @@
 		8578A6EA9583065A5342491B /* Pods-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-ios-client/Pods-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Codable.swift"; sourceTree = "<group>"; };
+		9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeEphemeralKeyRequest.swift; sourceTree = "<group>"; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B1745702276F60000CF321B /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 				9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */,
+				9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */,
 				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
 			);
 			path = Models;
@@ -1871,6 +1874,7 @@
 				9B8215822279DF6900DC6B64 /* Region.swift in Sources */,
 				9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */,
 				9B82158C227A2F4100DC6B64 /* APIEndpoint.swift in Sources */,
+				9B0685FB228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift in Sources */,
 				9B5CBF3B22803A9A00D83D7B /* UserSetup.swift in Sources */,
 				9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
