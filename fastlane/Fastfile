@@ -149,7 +149,7 @@ platform :ios do
     build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
     download_dsyms(version: "1.1", build_number: build_number)
 #   download_dsyms
-    upload_symbols_to_crashlytics(gsp_path: "./ostelco-ios-client/src/environments/GoogleService-Info-dev.plist")   # Upload them to Crashlytics
+    upload_symbols_to_crashlytics(gsp_path: "./.secrets/GoogleService-Info-dev.plist")   # Upload them to Crashlytics
     clean_build_artifacts           # Delete the local dSYM files
   end
 
