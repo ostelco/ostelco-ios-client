@@ -354,6 +354,31 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(simProfile.alias, "")
     }
     
+    func testMockLoadingRegionFromRegions() {
+        self.stubPath("regions", toLoad: "regions_multiple")
+        
+        guard let approvedRegion = self.mockAPI.getRegionFromRegions().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(approvedRegion.region.id, "no")
+        XCTAssertEqual(approvedRegion.region.name, "Norway")
+        XCTAssertEqual(approvedRegion.status, .APPROVED)
+        
+        XCTAssertNil(approvedRegion.kycStatusMap.ADDRESS_AND_PHONE_NUMBER)
+        XCTAssertNil(approvedRegion.kycStatusMap.JUMIO)
+        XCTAssertNil(approvedRegion.kycStatusMap.MY_INFO)
+        XCTAssertNil(approvedRegion.kycStatusMap.NRIC_FIN)
+        
+        guard let simProfiles = approvedRegion.simProfiles else {
+            XCTFail("Sim profiles was nil when it shouldn't be!")
+            return
+        }
+        
+        XCTAssertTrue(simProfiles.isEmpty)
+    }
+    
     func testMockLoadingSingleSupportedRegion() {
         self.stubPath("regions/sg", toLoad: "region_singapore")
         
