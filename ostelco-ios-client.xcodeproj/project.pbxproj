@@ -79,8 +79,6 @@
 		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
-		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
-		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
@@ -191,8 +189,6 @@
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
-		9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
-		9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
 		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
@@ -402,7 +398,6 @@
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
-		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
@@ -500,7 +495,6 @@
 		9B851AE3225E33620076ABF3 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
-		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
@@ -957,8 +951,6 @@
 			isa = PBXGroup;
 			children = (
 				9BBF705B2265F03600E4B9B4 /* Cells */,
-				9B920F64225B8EC6001EF9CD /* Theme.swift */,
-				048C787B2191C9660041F135 /* ThemeManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1787,7 +1779,6 @@
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
-				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
@@ -1807,7 +1798,6 @@
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
-				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
@@ -1950,7 +1940,6 @@
 				C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
-				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
@@ -1962,7 +1951,6 @@
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
-				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,

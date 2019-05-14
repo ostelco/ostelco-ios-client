@@ -12,7 +12,6 @@ struct UserDefaultsWrapper {
     
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
-        case selectedTheme = "SelectedTheme"
         case pendingEmail = "PendingEmail"
     }
     
@@ -36,26 +35,6 @@ struct UserDefaultsWrapper {
     static func clearAll() {
         for key in Key.allCases {
             self.removeValue(for: key)
-        }
-    }
-    
-    /// What, if any, is the stored theme for this user?
-    static var storedTheme: Theme? {
-        get {
-            guard
-                let themeValue: Int = self.value(for: .selectedTheme),
-                let theme = Theme(rawValue: themeValue) else {
-                    return nil
-            }
-            
-            return theme
-        }
-        set {
-            if let themeToStore = newValue {
-                self.setValue(themeToStore.rawValue, for: .selectedTheme)
-            } else {
-                self.removeValue(for: .selectedTheme)
-            }
         }
     }
     
