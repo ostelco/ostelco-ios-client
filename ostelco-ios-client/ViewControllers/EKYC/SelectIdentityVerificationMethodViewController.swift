@@ -73,12 +73,19 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
             .done { [weak self] myInfoConfig in
                 debugPrint("MyInfoConfig.url: \(myInfoConfig.url)")
                 var components = URLComponents(string: myInfoConfig.url)!
-                // Add purpose and state parameters to the url.
-                // state parameter is currently ignored by prime.
-                components.queryItems = [
+                // Add mandatory purpose and state parameters to the MyInfo authorization url.
+                // The "purpose" parameter contains the string which is shown to the user when
+                // requesting the consent.
+                // The "state" is an identifer used to reconcile query and response. This is
+                // currently ignored by prime.
+                // https://www.ndi-api.gov.sg/library/trusted-data/myinfo/tutorial2
+                var queryItems: [URLQueryItem] = components.queryItems ?? []
+                let extraQueryItems: [URLQueryItem] = [
                     URLQueryItem(name: "purpose", value: "eKYC"),
                     URLQueryItem(name: "state", value: "123")
                 ]
+                queryItems.append(contentsOf: extraQueryItems)
+                components.queryItems = queryItems
                 // Show the login screen.
                 self?.showMyInfoLogin(url: components.url)
             }
