@@ -26,6 +26,9 @@ class LiveAPITests: XCTestCase {
         self.liveBundles()
         self.livePurchases()
         self.liveProducts()
+        self.liveRegions()
+        self.liveRegionWithData()
+        self.liveUnsupportedRegion()
     }
 
     func liveFetchingContext() {
@@ -69,5 +72,39 @@ class LiveAPITests: XCTestCase {
     func liveProducts() {
         // Failures handled in `awaitResult`
         _ = self.testAPI.loadProducts().awaitResult(in: self)
+    }
+    
+    func liveRegions() {
+        guard let regions = self.testAPI.loadRegions().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertTrue(regions.isNotEmpty)
+    }
+    
+    func liveRegionWithData() {
+        guard let region = self.testAPI.loadRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+    }
+    
+    func liveUnsupportedRegion() {
+        // Note: This should be updated if we ever support Vanuatu.
+        guard let error = self.testAPI.loadRegion(code: "vu").awaitResultExpectingError(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.httpStatusCode, 404)
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_REGIONS")
+        default:
+            XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
+        }
     }
 }

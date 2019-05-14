@@ -324,6 +324,82 @@ class MockAPITests: XCTestCase {
     
     // MARK: - Regions
     
+    func testMockLoadingAllRegions() {
+        self.stubPath("regions", toLoad: "regions")
+        
+        guard let regions = self.mockAPI.loadRegions().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        guard let region = regions.first else {
+            XCTFail("Could not get region!")
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfile = region.getSimProfile() else {
+            XCTFail("Could not get sim profile from region!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
+    func testMockLoadingSingleSupportedRegion() {
+        self.stubPath("regions/sg", toLoad: "region_singapore")
+        
+        guard let region = self.mockAPI.loadRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled by `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfile = region.getSimProfile() else {
+            XCTFail("Could not get sim profile from region!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
+    func testMockLoadingSingleUnsupportedRegion() {
+        self.stubPath("regions/vu", toLoad: "region_vanuatu", statusCode: 404)
+        guard let error = self.mockAPI.loadRegion(code: "vu").awaitResultExpectingError(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.httpStatusCode, 404)
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_REGIONS")
+            XCTAssertEqual(jsonError.message, "Failed to get regions.")
+        default:
+            XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
+        }
+    }
+    
     func testMockNRICCheckWithValidNRIC() {
         self.stubPath("regions/sg/kyc/dave/S9315107J", toLoad: "nric_check_valid")
         
