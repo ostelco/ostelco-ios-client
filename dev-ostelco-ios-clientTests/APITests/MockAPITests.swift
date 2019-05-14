@@ -514,4 +514,25 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
         XCTAssertEqual(simProfile.alias, "")
     }
+    
+    func testMockRequestingSimProfilesForRegion() {
+        self.stubPath("regions/sg/simprofiles", toLoad: "sim_profiles_singapore")
+        
+        guard let simProfiles = self.mockAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(simProfiles.count, 1)
+        
+        guard let simProfile = simProfiles.first else {
+            XCTFail("Could not access first sim profile!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .DOWNLOADED)
+        XCTAssertEqual(simProfile.alias, "")
+    }
 }

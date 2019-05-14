@@ -30,6 +30,7 @@ class LiveAPITests: XCTestCase {
         self.liveRegionWithData()
         self.liveUnsupportedRegion()
         self.liveAddressUpdate()
+        self.liveSimProfilesForRegion()
     }
 
     func liveFetchingContext() {
@@ -123,5 +124,10 @@ class LiveAPITests: XCTestCase {
         
         // Failures handled in `awaitResult`
         self.testAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
+    }
+    
+    func liveSimProfilesForRegion() {
+        // Failures handled in `awaitResult`
+        _ = self.testAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self)
     }
 }
