@@ -316,6 +316,8 @@ class MockAPITests: XCTestCase {
         
         XCTAssertEqual(product.presentation.price, "$1")
         XCTAssertEqual(product.presentation.label, "Annual subscription plan")
+        
+        XCTAssertEqual(product.type, "plan")
     }
     
     // MARK: - Purchases
