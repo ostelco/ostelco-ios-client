@@ -105,6 +105,7 @@
 		9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */; };
 		9B0685FB228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */; };
 		9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */; };
+		9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B1745712276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
@@ -209,8 +210,6 @@
 		9BB6A7A2226F6523000D5E13 /* OstelcoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */; };
 		9BB6A7A3226F6529000D5E13 /* UIColor+Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */; };
 		9BB6A7A6226F656E000D5E13 /* OstelcoStyles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
-		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
@@ -774,12 +773,11 @@
 		047F29302224589900FC6A8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
-				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
-				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -908,8 +906,8 @@
 			isa = PBXGroup;
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
-				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
+				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 			);
 			path = ModelControllers;
@@ -1062,6 +1060,7 @@
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */,
 				9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */,
 				9B6A928F2284501B007F5EC9 /* MockJSON */,
@@ -1833,7 +1832,6 @@
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
 				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
 				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
-				9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
@@ -1941,6 +1939,7 @@
 				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
+				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
 				9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
@@ -2021,7 +2020,6 @@
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
-				9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
 				9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
