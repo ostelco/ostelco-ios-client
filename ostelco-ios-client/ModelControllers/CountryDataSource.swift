@@ -31,7 +31,7 @@ class CountryDataSource: GenericTableViewDataSource<Country, CountryCell> {
     }
     
     override func configureCell(_ cell: CountryCell, for country: Country) {
-        cell.countryLabel.text = country.name
+        cell.countryLabel.text = country.nameOrPlaceholder
         if country == self.selectedCountry {
             cell.accessoryType = .checkmark
         } else {
