@@ -32,6 +32,7 @@ class LiveAPITests: XCTestCase {
         self.liveAddressUpdate()
         self.liveSimProfilesForRegion()
         self.liveStripeEphemeralKey()
+        self.liveMyInfoConfig()
     }
 
     func liveFetchingContext() {
@@ -143,5 +144,15 @@ class LiveAPITests: XCTestCase {
         }
         
         XCTAssertTrue(dictionary.isNotEmpty)
+    }
+    
+    func liveMyInfoConfig() {
+        guard let config = self.testAPI.loadMyInfoConfig().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+
+        // Can we at least create a URL out of what we get back?
+        XCTAssertNotNil(URL(string: config.url))
     }
 }

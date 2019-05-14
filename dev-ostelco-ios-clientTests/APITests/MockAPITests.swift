@@ -494,6 +494,17 @@ class MockAPITests: XCTestCase {
         }
     }
     
+    func testMockFetchingMyInfoConfig() {
+        self.stubPath("regions/sg/kyc/myInfoConfig", toLoad: "my_info_config")
+        
+        guard let config = self.mockAPI.loadMyInfoConfig().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(config.url, "https://myinfosgstg.api.gov.sg/test/v2/authorise?client_id=STG-FAKE_CLIENT_ID&attributes=name,sex,dob,residentialstatus,nationality,mobileno,email,regadd&redirect_uri=https://dl-dev.oya.world/links/myinfo")
+    }
+    
     func testMockCreatingAddress() {
         let address = EKYCAddress(street: "123 Fake Street",
                                   unit: "3",
