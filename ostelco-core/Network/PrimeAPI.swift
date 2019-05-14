@@ -349,7 +349,23 @@ open class PrimeAPI: BasicNetwork {
         return self.loadData(from: path)
             .map { try self.decoder.decode(MyInfoDetails.self, from: $0) }
     }
-    
+
+    /// Loads configuration details of MyInfo sign in (singapore only!)
+    ///
+    /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoConfig`.
+    public func loadMyInfoConfig() -> Promise<MyInfoConfig> {
+        let myInfoEndpoints: [RegionEndpoint] = [
+            .region(code: "sg"),
+            .kyc,
+            .myInfoConfig
+        ]
+
+        let path = RootEndpoint.regions.pathByAddingEndpoints(myInfoEndpoints)
+
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(MyInfoConfig.self, from: $0) }
+    }
+
     // MARK: - General
     
     /// Loads arbitrary data from a path based on the base URL, then validates

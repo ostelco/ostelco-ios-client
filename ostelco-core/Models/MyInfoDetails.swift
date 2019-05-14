@@ -131,3 +131,7 @@ public struct MyInfoMobileNumber: Codable {
         return "\(prefix)\(code)\(number)"
     }
 }
+
+public struct MyInfoConfig: Codable {
+    public let url: String
+}

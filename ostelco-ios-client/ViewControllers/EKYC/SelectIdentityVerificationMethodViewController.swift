@@ -18,7 +18,8 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
-    
+    var spinnerView: UIView?
+
     @IBAction private func checkTapped(_ check: CheckButton) {
         check.isChecked.toggle()
         
@@ -39,7 +40,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             //performSegue(withIdentifier: "myInfoSummary", sender: self)
             UIApplication.shared.typedDelegate.myInfoDelegate = self
-            getMyInfoToken()
+            startMyInfoLogin()
         } else if self.scanICCheck.isChecked {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             performSegue(withIdentifier: "nricVerify", sender: self)
@@ -60,23 +61,37 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         showNeedHelpActionSheet()
     }
     
-    func getMyInfoURL() -> URL? {
-        var components = URLComponents(string: Environment().configuration(PlistKey.MyInfoURL))!
-        components.queryItems = [
-            URLQueryItem(name: "client_id", value: Environment().configuration(PlistKey.MyInfoClientID)),
-            //TODO: Find the right values for the query parameters.
-            //URLQueryItem(name: "attributes", value: "name,nationality,dob,email,mobileno,regadd"),
-            URLQueryItem(name: "attributes", value: "name,sex,race,nationality,dob,email,mobileno,regadd,housingtype,hdbtype,marital,edulevel,assessableincome,ownerprivate,assessyear,cpfcontributions,cpfbalances"),
-            URLQueryItem(name: "purpose", value: "eKYC"),
-            URLQueryItem(name: "state", value: "123"),
-            URLQueryItem(name: "redirect_uri", value: Environment().configuration(PlistKey.MyInfoCallbackURL)),
-        ]
-        return components.url
+    func startMyInfoLogin() {
+        self.spinnerView = self.showSpinner(onView: self.view)
+        // Fetch the configuration from prime
+        APIManager.shared.primeAPI
+            .loadMyInfoConfig()
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] myInfoConfig in
+                debugPrint("MyInfoConfig.url: \(myInfoConfig.url)")
+                var components = URLComponents(string: myInfoConfig.url)!
+                // Add purpose and state parameters to the url.
+                // state parameter is currently ignored by prime.
+                components.queryItems = [
+                    URLQueryItem(name: "purpose", value: "eKYC"),
+                    URLQueryItem(name: "state", value: "123")
+                ]
+                // Show the login screen.
+                self?.showMyInfoLogin(url: components.url)
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
+
     }
     
-    func getMyInfoToken() {
-        if let url = getMyInfoURL() {
-            print("URL for API \(url.absoluteString)")
+    func showMyInfoLogin(url: URL?) {
+        if let url = url {
+            debugPrint("URL for the login screen: \(url.absoluteString)")
             webView = SFSafariViewController(url: url)
             webView!.delegate = self
             present(webView!, animated: true)
