@@ -21,10 +21,17 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var residentialStatus: UILabel!
     @IBOutlet private weak var address: UILabel!
     @IBOutlet private weak var mobileNumber: UILabel!
+    @IBOutlet private weak var continueButton: UIButton!
+    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var reloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.updateUI(nil)
+        self.loadMyInfo()
+    }
+    
+    private func loadMyInfo() {
         debugPrint("Query Items: \(String(describing: self.myInfoQueryItems))")
         guard let code = getMyInfoCode() else {
             return
@@ -32,6 +39,7 @@ class MyInfoSummaryViewController: UIViewController {
         
         debugPrint("Code = \(code)")
         
+        self.reloadButton.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
@@ -46,6 +54,7 @@ class MyInfoSummaryViewController: UIViewController {
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
                 self?.showGenericError(error: error)
+                self?.reloadButton.isHidden = false
             }
     }
     
@@ -79,7 +88,15 @@ class MyInfoSummaryViewController: UIViewController {
         }
     }
     
-    @IBAction private func `continue`(_ sender: Any) {
+    @IBAction private func tryAgainTapped() {
+        self.loadMyInfo()
+    }
+    
+    @IBAction private func editTapped() {
+        self.performSegue(withIdentifier: "editAddress", sender: self)
+    }
+    
+    @IBAction private func continueTapped(_ sender: Any) {
         guard
             let details = self.myInfoDetails,
             let profileUpdate = EKYCProfileUpdate(myInfoDetails: details) else {
@@ -104,11 +121,20 @@ class MyInfoSummaryViewController: UIViewController {
     
     func updateUI(_ myInfoDetails: MyInfoDetails?) {
         guard let myInfoDetails = myInfoDetails else {
+            self.name.text = nil
+            self.dob.text = nil
+            self.address.text = nil
+            self.nationality.text = nil
+            self.residentialStatus.text = nil
+            self.mobileNumber.text = nil
+            self.sex.text = nil
+            self.continueButton.isEnabled = false
+            self.editButton.isEnabled = false
             return
         }
-        name.text = myInfoDetails.name
-        dob.text = myInfoDetails.dob
-        address.text = myInfoDetails.address.formattedAddress
+        self.name.text = myInfoDetails.name
+        self.dob.text = myInfoDetails.dob
+        self.address.text = myInfoDetails.address.formattedAddress
         if let nationality = myInfoDetails.nationality {
             self.nationality.text = nationality
         }
@@ -121,6 +147,9 @@ class MyInfoSummaryViewController: UIViewController {
         if let sex = myInfoDetails.sex {
             self.sex.text = sex
         }
+        
+        self.editButton.isEnabled = true
+        self.continueButton.isEnabled = true
     }
 }
 
