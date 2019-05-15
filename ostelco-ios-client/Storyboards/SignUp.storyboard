@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,9 +42,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" name="White"/>
-                                </state>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
                                 </connections>
@@ -159,9 +156,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-4i-IUw" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" name="White"/>
-                                </state>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="USN-HI-rjY"/>
                                 </connections>
@@ -237,9 +232,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERf-ng-eZR" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" name="White"/>
-                                </state>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="QEI-Mx-3pr"/>
                                 </connections>
@@ -294,8 +287,5 @@
     </scenes>
     <resources>
         <image name="fakeModalNotifications" width="291" height="204"/>
-        <namedColor name="White">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
