@@ -74,10 +74,17 @@ open class GenericTableViewDataSource<Item, Cell: LocatableTableViewCell>: Gener
     
     // MARK: - UITableViewDelegate
     
-    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func deselectRowIfItExists(in tableView: UITableView, at indexPath: IndexPath, animated: Bool = true) {
+        guard indexPath.row < self.items.count else {
+            // Row doesn't exist, bail!
+            return
+        }
         
-        let item = self.item(at: indexPath)
-        self.selectedItem(item)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.deselectRowIfItExists(in: tableView, at: indexPath)
+        self.selectedIndexPath(indexPath)
     }
 }

@@ -10,6 +10,7 @@ import Firebase
 import FirebaseDynamicLinks
 import FirebaseMessaging
 import ostelco_core
+import OstelcoStyles
 import PromiseKit
 import Stripe
 import UIKit
@@ -38,15 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
         #endif
-        if let bundleIndentifier = Bundle.main.bundleIdentifier {
-            if bundleIndentifier.contains("dev") {
-                ThemeManager.applyTheme(theme: .TurquoiseTheme)
-            } else {
-                ThemeManager.applyTheme(theme: .BlueTheme)
-            }
-        } else {
-            ThemeManager.applyTheme(theme: .TurquoiseTheme)
-        }
+        
+        self.configureAppearance()
         
         let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
@@ -63,6 +57,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("App started")
         
         return true
+    }
+    
+    func configureAppearance() {
+        if
+            let bundleIndentifier = Bundle.main.bundleIdentifier,
+            bundleIndentifier.contains("dev") {
+                OstelcoColor.useDevColor = true
+        }
+        
+        let mainColor = OstelcoColor.oyaBlue.toUIColor
+        UITabBar.appearance().tintColor = mainColor
+        UIToolbar.appearance().tintColor = mainColor
+        UINavigationBar.appearance().tintColor = mainColor
     }
     
     func enableNotifications() {

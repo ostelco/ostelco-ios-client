@@ -7,6 +7,7 @@
 //
 
 import ostelco_core
+import OstelcoStyles
 import UIKit
 
 class SplashViewController: UIViewController, StoryboardLoadable {
@@ -17,7 +18,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     var spinnerView: UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = ThemeManager.currentTheme().mainColor
+        self.view.backgroundColor = OstelcoColor.oyaBlue.toUIColor
     }
     
     override func viewDidAppear(_ animated: Bool) {

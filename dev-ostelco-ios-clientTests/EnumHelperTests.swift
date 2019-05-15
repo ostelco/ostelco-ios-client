@@ -16,4 +16,10 @@ class EnumHelperTests: XCTestCase {
             XCTAssertNoThrow(storyboard.asUIStoryboard)
         }
     }
+    
+    func testAllExternalLinksCreateURLs() {
+        for link in ExternalLink.allCases {
+            XCTAssertNoThrow(link.url)
+        }
+    }
 }

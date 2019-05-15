@@ -7,6 +7,7 @@
 //
 
 import ostelco_core
+import OstelcoStyles
 import UIKit
 
 class CountriesTableViewController: UITableViewController {
@@ -19,6 +20,8 @@ class CountriesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
         self.tableView.addEmptyFooter()
         self.dataSource.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
     }
@@ -28,5 +31,6 @@ extension CountriesTableViewController: CountrySelectionDelegate {
     
     func selected(country: Country) {
         OnBoardingManager.sharedInstance.selectedCountry = country
+        OstelcoAnalytics.logEvent(.ChosenCountry(country: OnBoardingManager.sharedInstance.selectedCountry))
     }
 }

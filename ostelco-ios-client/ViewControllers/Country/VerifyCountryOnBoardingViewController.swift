@@ -6,11 +6,20 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import OstelcoStyles
 import UIKit
 
 class VerifyCountryOnBoardingViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
+    
+    @IBOutlet private weak var selectedStepIcon: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.selectedStepIcon.tintColor = OstelcoColor.oyaBlue.toUIColor
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -69,8 +69,6 @@
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
 		04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
-		04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
-		04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D64223020DA00A01500 /* UIButton+Border.swift */; };
 		04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
@@ -81,8 +79,6 @@
 		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
-		048C787C2191C9660041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
-		048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C787B2191C9660041F135 /* ThemeManager.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
@@ -104,6 +100,8 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */; };
 		9B0685FB228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */; };
+		9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */; };
+		9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B1745712276F60000CF321B /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B1745702276F60000CF321B /* Address.storyboard */; };
@@ -191,8 +189,6 @@
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
-		9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
-		9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F64225B8EC6001EF9CD /* Theme.swift */; };
 		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
@@ -208,8 +204,6 @@
 		9BB6A7A2226F6523000D5E13 /* OstelcoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */; };
 		9BB6A7A3226F6529000D5E13 /* UIColor+Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */; };
 		9BB6A7A6226F656E000D5E13 /* OstelcoStyles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
-		9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
@@ -241,18 +235,10 @@
 		9BC465432271DAD4001951BF /* OhNo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC465412271DAD4001951BF /* OhNo.storyboard */; };
 		9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC465442271DC98001951BF /* OhNoViewController.swift */; };
 		9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC465442271DC98001951BF /* OhNoViewController.swift */; };
-		9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
-		9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
-		9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */; };
 		9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D449225B5E9600B51999 /* TabBarController.swift */; };
 		9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D449225B5E9600B51999 /* TabBarController.swift */; };
-		9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */; };
 		9BE2D44E225B601D00B51999 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */; };
 		9BE2D44F225B601D00B51999 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */; };
-		9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D450225B609100B51999 /* TopUpButton.swift */; };
-		9BE2D452225B609100B51999 /* TopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D450225B609100B51999 /* TopUpButton.swift */; };
-		9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */; };
-		9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */; };
 		9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D456225B61CF00B51999 /* Storyboard.swift */; };
 		9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D456225B61CF00B51999 /* Storyboard.swift */; };
 		9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D459225B625500B51999 /* EnumHelperTests.swift */; };
@@ -404,7 +390,6 @@
 		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPendingDownloadViewController.swift; sourceTree = "<group>"; };
-		04834D64223020DA00A01500 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
 		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
@@ -413,7 +398,6 @@
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
-		048C787B2191C9660041F135 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
@@ -445,6 +429,7 @@
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Codable.swift"; sourceTree = "<group>"; };
 		9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeEphemeralKeyRequest.swift; sourceTree = "<group>"; };
+		9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryDataSourceTests.swift; path = "dev-ostelco-ios-clientTests/CountryDataSourceTests.swift"; sourceTree = SOURCE_ROOT; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B1745702276F60000CF321B /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
@@ -510,7 +495,6 @@
 		9B851AE3225E33620076ABF3 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
-		9B920F64225B8EC6001EF9CD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
@@ -537,12 +521,8 @@
 		9BC4653E2271B396001951BF /* LocationCheckingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCheckingViewController.swift; sourceTree = "<group>"; };
 		9BC465412271DAD4001951BF /* OhNo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OhNo.storyboard; sourceTree = "<group>"; };
 		9BC465442271DC98001951BF /* OhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoViewController.swift; sourceTree = "<group>"; };
-		9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
-		9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
-		9BE2D450225B609100B51999 /* TopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpButton.swift; sourceTree = "<group>"; };
-		9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Coloring.swift"; sourceTree = "<group>"; };
 		9BE2D456225B61CF00B51999 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		9BE2D459225B625500B51999 /* EnumHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumHelperTests.swift; sourceTree = "<group>"; };
 		9BE2D45B225B634100B51999 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
@@ -772,12 +752,11 @@
 		047F29302224589900FC6A8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
-				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
 				9B17457F227722C200CF321B /* ValidationState.swift */,
-				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -906,8 +885,8 @@
 			isa = PBXGroup;
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
-				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
+				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 			);
 			path = ModelControllers;
@@ -949,10 +928,10 @@
 				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
 				9B46D64A226F00210030A8EB /* OstelcoColor.swift */,
 				9B46D64E226F02C30030A8EB /* OstelcoFont.swift */,
+				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 				9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */,
 				9B1745822277428A00CF321B /* OstelcoTextField.swift */,
 				9BB6A796226F6514000D5E13 /* Info.plist */,
-				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 			);
 			path = OstelcoStyles;
 			sourceTree = "<group>";
@@ -972,9 +951,6 @@
 			isa = PBXGroup;
 			children = (
 				9BBF705B2265F03600E4B9B4 /* Cells */,
-				9B920F64225B8EC6001EF9CD /* Theme.swift */,
-				048C787B2191C9660041F135 /* ThemeManager.swift */,
-				9BE2D450225B609100B51999 /* TopUpButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1060,6 +1036,7 @@
 		C2236F0B218A414C00B135C0 /* dev-ostelco-ios-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
 				9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */,
 				9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */,
 				9B6A928F2284501B007F5EC9 /* MockJSON */,
@@ -1067,6 +1044,7 @@
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 				9B6A928E22844F99007F5EC9 /* APITests */,
 				9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */,
+				9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */,
 				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
@@ -1087,10 +1065,6 @@
 				9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
-				04834D64223020DA00A01500 /* UIButton+Border.swift */,
-				9BE2D446225B5E3100B51999 /* UIColor+Hex.swift */,
-				9BE2D453225B60BE00B51999 /* UIImage+Coloring.swift */,
-				9BE2D441225B5D5100B51999 /* UIView+Shadow.swift */,
 				047B2797223BC38D00EE134B /* UIViewController+ActionSheet.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
@@ -1805,14 +1779,11 @@
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
-				9B920F65225B8EC6001EF9CD /* Theme.swift in Sources */,
-				9BE2D447225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
-				04834D65223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
@@ -1822,15 +1793,11 @@
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
-				9BE2D442225B5D5100B51999 /* UIView+Shadow.swift in Sources */,
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */,
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
-				9BE2D451225B609100B51999 /* TopUpButton.swift in Sources */,
-				048C787C2191C9660041F135 /* ThemeManager.swift in Sources */,
-				9BBF70492265D4D200E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
@@ -1845,7 +1812,6 @@
 				9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
-				9BE2D454225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
@@ -1938,6 +1904,8 @@
 				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
+				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
+				9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
@@ -1954,21 +1922,17 @@
 			files = (
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
-				9BE2D452225B609100B51999 /* TopUpButton.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
-				9BE2D448225B5E3100B51999 /* UIColor+Hex.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
-				9BE2D455225B60BE00B51999 /* UIImage+Coloring.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
-				04834D66223020DA00A01500 /* UIButton+Border.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
@@ -1976,7 +1940,6 @@
 				C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
-				9B920F66225B8EE1001EF9CD /* Theme.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
@@ -1988,8 +1951,6 @@
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
-				9BE2D44C225B5EE600B51999 /* UIView+Shadow.swift in Sources */,
-				048C787D2191C9BF0041F135 /* ThemeManager.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				047B2799223BC38D00EE134B /* UIViewController+ActionSheet.swift in Sources */,
@@ -2017,7 +1978,6 @@
 				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
-				9BBF704A2265D51600E4B9B4 /* MyInfoDetails+Testing.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
 				9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
