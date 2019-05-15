@@ -123,6 +123,7 @@
 		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */; };
 		9B3FA6942289B84C001E4D60 /* XCTestCase+MockingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */; };
+		9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */; };
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* RootCoordinator.swift */; };
@@ -441,6 +442,7 @@
 		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
 		9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkTests.swift; sourceTree = "<group>"; };
 		9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MockingHelpers.swift"; sourceTree = "<group>"; };
+		9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSourceTests.swift; sourceTree = "<group>"; };
 		9B46D64A226F00210030A8EB /* OstelcoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoColor.swift; sourceTree = "<group>"; };
 		9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoLabel.swift; sourceTree = "<group>"; };
 		9B46D64E226F02C30030A8EB /* OstelcoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFont.swift; sourceTree = "<group>"; };
@@ -1049,6 +1051,7 @@
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
 				9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */,
+				9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */,
 				9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */,
 				9B821597227AEE1400DC6B64 /* RequestGeneratorTests.swift */,
 			);
@@ -1910,6 +1913,7 @@
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
+				9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */,
 				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */,
