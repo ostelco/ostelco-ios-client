@@ -20,6 +20,7 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
         let label = UILabel()
         label.text = "TESTING WITHOUT UI!"
         label.textColor = .white
+        label.sizeToFit()
         
         vc.view.addSubview(label)
         label.center = vc.view.center
