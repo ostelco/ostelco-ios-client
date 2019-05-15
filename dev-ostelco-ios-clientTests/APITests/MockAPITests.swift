@@ -506,6 +506,40 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(config.url, "https://myinfosgstg.api.gov.sg/test/v2/authorise?client_id=STG-FAKE_CLIENT_ID&attributes=name,sex,dob,residentialstatus,nationality,mobileno,email,regadd&redirect_uri=https://dl-dev.oya.world/links/myinfo")
     }
     
+    func testMockFetchingMyInfo() {
+        self.stubPath("regions/sg/kyc/myInfo/some-singpass-code", toLoad: "my_info")
+        
+        guard let info = self.mockAPI.loadSingpassInfo(code: "some-singpass-code").awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(info.name, "TAN XIAO HUI")
+        XCTAssertEqual(info.dob, "1970-05-17")
+        XCTAssertEqual(info.email, "myinfotesting@gmail.com")
+        XCTAssertEqual(info.nationality, "SG")
+        XCTAssertEqual(info.residentialStatus, "C")
+        XCTAssertEqual(info.sex, "F")
+        
+        XCTAssertEqual(info.address.country, "SG")
+        XCTAssertEqual(info.address.unit, "128")
+        XCTAssertEqual(info.address.street, "BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(info.address.block, "102")
+        XCTAssertEqual(info.address.postal, "460102")
+        XCTAssertEqual(info.address.floor, "09")
+        XCTAssertEqual(info.address.building, "PEARL GARDEN")
+        
+        guard let mobileNumber = info.mobileNumber else {
+            XCTFail("Could not access mobile number!")
+            return
+        }
+        
+        XCTAssertEqual(mobileNumber.prefix, "+")
+        XCTAssertEqual(mobileNumber.code, "65")
+        XCTAssertEqual(mobileNumber.number, "97399245")
+        XCTAssertEqual(mobileNumber.formattedNumber, "+6597399245")
+    }
+    
     func testMockCreatingAddress() {
         let address = EKYCAddress(street: "123 Fake Street",
                                   unit: "3",
