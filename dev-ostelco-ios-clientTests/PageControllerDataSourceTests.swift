@@ -85,7 +85,6 @@ class PageControllerDataSourceTests: XCTestCase {
         XCTAssertEqual(self.dataSource.currentIndex, 1)
         XCTAssertEqual(self.dataSource.presentationIndex(for: self.pageController), 1)
 
-        
         self.dataSource.goToNextPage(animated: false)
         XCTAssertEqual(self.lastUpdatedIndex, 2)
         XCTAssertEqual(self.dataSource.currentIndex, 2)

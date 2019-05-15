@@ -285,6 +285,24 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(firstObject["id"] as? String, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
     }
     
+    func testMockBadDataForEphemeralKey() {
+        self.stubAbsolutePath("customer/stripe-ephemeral-key?api_version=INVALID", toLoad: "stripe_key_invalid")
+        
+        let request = StripeEphemeralKeyRequest(apiVersion: "INVALID")
+        
+        guard let error = self.mockAPI.stripeEphemeralKey(with: request).awaitResultExpectingError(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.unexpectedResponseFormat(let data):
+            XCTAssertTrue(data.isNotEmpty)
+        default:
+            XCTFail("Unexpected error type for bad data with ephemeral key: \(error)")
+        }
+    }
+    
     // MARK: - Products
     
     func testMockLoadingProducts() {
@@ -443,6 +461,23 @@ class MockAPITests: XCTestCase {
         }
         
         XCTAssertTrue(simProfiles.isEmpty)
+    }
+    
+    func testMockLoadingRegionFromEmptyRegions() {
+        self.stubPath("regions", toLoad: "regions_empty")
+        
+        guard let error = self.mockAPI.getRegionFromRegions().awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case PrimeAPI.Error.failedToGetRegion:
+            // This is what we want!
+            break
+        default:
+            XCTFail("Unexpected error after loading empty regions: \(error)")
+        }
     }
     
     func testMockLoadingSingleSupportedRegion() {
