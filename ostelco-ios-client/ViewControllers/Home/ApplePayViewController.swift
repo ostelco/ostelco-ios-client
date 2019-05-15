@@ -121,6 +121,7 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
                 completion(nil)
             }
             .catch { error in
+                ApplicationErrors.log(error)
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
                 completion(ApplePayError.primeAPIError(error))
             }
@@ -169,6 +170,7 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
                 completion(key, nil)
             }
             .catch { error in
+                ApplicationErrors.log(error)
                 completion(nil, error)
             }
     }
