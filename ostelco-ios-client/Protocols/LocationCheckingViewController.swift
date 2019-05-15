@@ -77,6 +77,7 @@ extension LocationChecking {
                 }
                 
                 debugPrint("- LocationChecking: Unable to get and/or reverse geocode location. Error: \(error)")
+                ApplicationErrors.log(error)
                 self?.showFailedToGetLocationAlert()
         }
     }
