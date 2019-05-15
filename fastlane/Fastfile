@@ -141,16 +141,48 @@ platform :ios do
     )
   end
 
-  desc "Upload latest symbol file to crashlytics"
+  desc "Upload latest iTunes Connect bitcode symbol file to crashlytics"
   lane :refresh_dsyms_beta do
+    # Download latest recompiled dSYM files from iTC
     latest_build_number = latest_testflight_build_number(
       version: "1.1"
     )
     build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
     download_dsyms(version: "1.1", build_number: build_number)
-#   download_dsyms
-    upload_symbols_to_crashlytics(gsp_path: "./.secrets/GoogleService-Info-dev.plist")   # Upload them to Crashlytics
-    clean_build_artifacts           # Delete the local dSYM files
+
+    # Update the `GoogleService-Info.plist` with secrets
+    run_spm_pre_script
+    upload_symbols_to_crashlytics
+
+    # Delete the local dSYM files
+    clean_build_artifacts
+
+    #Reset the secrets files
+    run_spm_post_script   
+  end
+
+  desc "Runs the SPM pre-build script."
+  desc "Pass in a value for `prod` to use the prod argument"
+  lane :run_spm_pre_script do |options|
+    srcroot = sh("cd .. && pwd")
+    sh("cd ../scripts/SPM && swift build")
+
+    if options[:prod]
+      sh("cd ../scripts/SPM && swift run SPM -pre -prod -src=#{srcroot}")
+    else
+      sh("cd ../scripts/SPM && swift run SPM -pre -src=#{srcroot}")
+    end
+  end
+
+  desc "Runs the SPM post-build script."
+  desc "Pass in a value for `prod` to use the prod argument"
+  lane :run_spm_post_script do |options|
+    srcroot = sh("cd .. && pwd")
+    if options[:prod]
+      sh("cd ../scripts/SPM && swift run SPM -post -prod -src=#{srcroot}")
+    else
+      sh("cd ../scripts/SPM && swift run SPM -post -src=#{srcroot}")
+    end
   end
 
 end
