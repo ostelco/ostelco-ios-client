@@ -319,6 +319,27 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(product.type, "plan")
     }
     
+    func testMockPurchasingProductFailure() {
+        self.stubAbsolutePath("products/PLAN_1SGD_YEAR/purchase?sourceId=card_FAKE_CARD",
+                              toLoad: "purchase_fail",
+                              statusCode: 500)
+        
+        let info = PaymentInfo(sourceID: "card_FAKE_CARD")
+        
+        guard let error = self.mockAPI.purchaseProduct(with: "PLAN_1SGD_YEAR", payment: info).awaitResultExpectingError(in: self) else {
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_PURCHASE_PRODUCT")
+            XCTAssertEqual(jsonError.httpStatusCode, 500)
+            XCTAssertEqual(jsonError.message, "Failed to purchase product.")
+        default:
+            XCTFail("Unexpected error purchasing product: \(error)")
+        }
+    }
+    
     // MARK: - Purchases
     
     func testMockLoadingPurchases() {
