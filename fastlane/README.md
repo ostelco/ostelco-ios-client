@@ -45,7 +45,21 @@ Runs all the tests
 ```
 fastlane ios refresh_dsyms_beta
 ```
-Upload latest symbol file to crashlytics
+Upload latest iTunes Connect bitcode symbol file to crashlytics
+### ios run_spm_pre_script
+```
+fastlane ios run_spm_pre_script
+```
+Runs the SPM pre-build script.
+
+Pass in a value for `prod` to use the prod argument
+### ios run_spm_post_script
+```
+fastlane ios run_spm_post_script
+```
+Runs the SPM post-build script.
+
+Pass in a value for `prod` to use the prod argument
 
 ----
 
