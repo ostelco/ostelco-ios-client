@@ -99,8 +99,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     func showMyInfoLogin(url: URL?) {
         guard let url = url else {
             let error = ApplicationErrors.General.noMyInfoConfigFound
-            ApplicationErrors.assertAndLog(error.localizedDescription)
-            ApplicationErrors.log(error)
+            ApplicationErrors.assertAndLog(error)
             return
         }
         debugPrint("URL for the login screen: \(url.absoluteString)")
