@@ -66,7 +66,7 @@ class AllowLocationAccessViewController: UIViewController {
              .authorizedWhenInUse:
             self.checkLocation()
         @unknown default:
-            assertionFailure("Apple added another case to this! You should update your handling.")
+            ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }
     }
 }

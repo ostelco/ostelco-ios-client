@@ -154,7 +154,7 @@ class AddressEditViewController: UITableViewController {
     
     private func updateMyInfo() {
         guard let delegate = self.myInfoDelegate else {
-            assertionFailure("You're probably going to want to use a delegate here")
+            ApplicationErrors.assertAndLog("You're probably going to want to use a delegate here")
             return
         }
         

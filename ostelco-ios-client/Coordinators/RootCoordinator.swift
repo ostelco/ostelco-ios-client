@@ -40,7 +40,7 @@ class RootCoordinator {
     
     func showEmailEntry() {
         guard let emailNav = Storyboard.email.asUIStoryboard.instantiateInitialViewController() else {
-            assertionFailure("Could not instantiate email nav!")
+            ApplicationErrors.assertAndLog("Could not instantiate email nav!")
             return
         }
         
@@ -54,7 +54,7 @@ class RootCoordinator {
         } else if let topVC = self.topViewController {
             presentingViewController = topVC
         } else {
-            assertionFailure("No view controller?!")
+            ApplicationErrors.assertAndLog("No view controller?!")
             return
         }
         

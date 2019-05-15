@@ -24,7 +24,7 @@ class EmailEntryViewController: UIViewController {
     
     @IBAction private func continueTapped() {
         guard let email = self.emailTextField.text else {
-            assertionFailure("Email validation passed but the field was nil?!")
+            ApplicationErrors.assertAndLog("Email validation passed but the field was nil?!")
             return
         }
         

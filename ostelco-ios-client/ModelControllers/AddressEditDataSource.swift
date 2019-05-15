@@ -213,7 +213,7 @@ extension AddressEditDataSource: UITextFieldDelegate {
             let nextSection = textField.tag + 1
             let indexPath = IndexPath(row: 0, section: nextSection)
             guard let cell = self.tableView?.cellForRow(at: indexPath) as? TextEditCell else {
-                assertionFailure("Couldn't get cell for section \(nextSection)")
+                ApplicationErrors.assertAndLog("Couldn't get cell for section \(nextSection)")
                 return false
             }
 

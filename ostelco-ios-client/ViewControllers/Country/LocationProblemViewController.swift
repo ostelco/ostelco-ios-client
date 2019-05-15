@@ -73,7 +73,7 @@ class LocationProblemViewController: UIViewController {
     
     @IBAction private func primaryButtonTapped() {
         guard let problem = self.locationProblem else {
-            assertionFailure("You should have a problem by this point!")
+            ApplicationErrors.assertAndLog("You should have a problem by this point!")
             return
         }
         
@@ -87,7 +87,7 @@ class LocationProblemViewController: UIViewController {
             // Re-check the user's location
             self.checkLocation()
         case .restrictedByParentalControls:
-            assertionFailure("You shouldn't be able to get here, this button should be gone!")
+            ApplicationErrors.assertAndLog("You shouldn't be able to get here, this button should be gone!")
         }
     }
     
@@ -116,7 +116,7 @@ class LocationProblemViewController: UIViewController {
              .authorizedWhenInUse:
             self.checkLocation()
         @unknown default:
-            assertionFailure("Apple added a new status here! You should update this handling.")
+            ApplicationErrors.assertAndLog("Apple added a new status here! You should update this handling.")
         }
     }
 }

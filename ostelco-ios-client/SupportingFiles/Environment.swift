@@ -39,7 +39,7 @@ public class Environment {
     
     public func configuration(_ key: PlistKey) -> String {
         guard let value = self.infoDict[key.rawValue] as? String else {
-            assertionFailure("Could not find string value for \(key.rawValue) in Environment dictionary!")
+            ApplicationErrors.assertAndLog("Could not find string value for \(key.rawValue) in Environment dictionary!")
             return ""
         }
         
