@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if
             let bundleIndentifier = Bundle.main.bundleIdentifier,
             bundleIndentifier.contains("dev") {
-            OstelcoColor.useDevColor = true
+                OstelcoColor.useDevColor = true
         }
         
         let mainColor = OstelcoColor.oyaBlue.toUIColor
