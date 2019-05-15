@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import OHHTTPStubs
+@testable import Oya_Development_app
 import ostelco_core
 import PromiseKit
 import XCTest
@@ -248,12 +248,76 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockDeletingCustomer() {
-        OHHTTPStubs.stubRequests(passingTest: isPath("/customer") && isMethodDELETE(), withStubResponse: { _ in
-            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
-        })
-        
+        self.stubEmptyDataAtPath("customer", statusCode: 204)
+       
         // Failures handled in `awaitResult`
         self.mockAPI.deleteCustomer().awaitResult(in: self)
+    }
+    
+    func testMockCreatingEphemeralKey() {
+        self.stubAbsolutePath("customer/stripe-ephemeral-key?api_version=2015-10-12", toLoad: "stripe_ephemeral_key")
+        
+        let request = StripeEphemeralKeyRequest(apiVersion: "2015-10-12")
+        
+        guard let keyDict = self.mockAPI.stripeEphemeralKey(with: request).awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(keyDict["id"] as? String, "ephkey_FAKE")
+        XCTAssertEqual(keyDict["object"] as? String, "ephemeral_key")
+        XCTAssertEqual(keyDict["created"] as? Int64, Int64(1557842380))
+        XCTAssertEqual(keyDict["expires"] as? Int64, Int64(1557845980))
+        XCTAssertEqual(keyDict["livemode"] as? Bool, true)
+        XCTAssertEqual(keyDict["secret"] as? String, "ek_live_FAKE")
+        
+        guard let associatedObjects = keyDict["associated_objects"] as? [[String: AnyHashable]] else {
+            XCTFail("Couldn't get associated objects")
+            return
+        }
+        
+        XCTAssertEqual(associatedObjects.count, 1)
+        guard let firstObject = associatedObjects.first else {
+            XCTFail("Couldn't get first associated object")
+            return
+        }
+        
+        XCTAssertEqual(firstObject["type"] as? String, "customer")
+        XCTAssertEqual(firstObject["id"] as? String, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
+    }
+    
+    // MARK: - Products
+    
+    func testMockLoadingProducts() {
+        self.stubPath("products", toLoad: "products")
+        
+        guard let products = self.mockAPI.loadProducts().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(products.count, 1)
+        
+        guard let product = products.first else {
+            XCTFail("Could not access first product!")
+            return
+        }
+        
+        XCTAssertEqual(product.sku, "PLAN_1SGD_YEAR")
+        
+        XCTAssertEqual(product.price.amount, 100)
+        XCTAssertEqual(product.price.currency, "SGD")
+        
+        XCTAssertEqual(product.properties, [
+            "intervalCount": "1",
+            "productClass": "PLAN",
+            "interval": "year"
+        ])
+        
+        XCTAssertEqual(product.presentation.price, "$1")
+        XCTAssertEqual(product.presentation.label, "Annual subscription plan")
+        
+        XCTAssertEqual(product.type, "plan")
     }
     
     // MARK: - Purchases
@@ -291,6 +355,107 @@ class MockAPITests: XCTestCase {
     }
     
     // MARK: - Regions
+    
+    func testMockLoadingAllRegions() {
+        self.stubPath("regions", toLoad: "regions")
+        
+        guard let regions = self.mockAPI.loadRegions().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        guard let region = regions.first else {
+            XCTFail("Could not get region!")
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfile = region.getSimProfile() else {
+            XCTFail("Could not get sim profile from region!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
+    func testMockLoadingRegionFromRegions() {
+        self.stubPath("regions", toLoad: "regions_multiple")
+        
+        guard let approvedRegion = self.mockAPI.getRegionFromRegions().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(approvedRegion.region.id, "no")
+        XCTAssertEqual(approvedRegion.region.name, "Norway")
+        XCTAssertEqual(approvedRegion.status, .APPROVED)
+        
+        XCTAssertNil(approvedRegion.kycStatusMap.ADDRESS_AND_PHONE_NUMBER)
+        XCTAssertNil(approvedRegion.kycStatusMap.JUMIO)
+        XCTAssertNil(approvedRegion.kycStatusMap.MY_INFO)
+        XCTAssertNil(approvedRegion.kycStatusMap.NRIC_FIN)
+        
+        guard let simProfiles = approvedRegion.simProfiles else {
+            XCTFail("Sim profiles was nil when it shouldn't be!")
+            return
+        }
+        
+        XCTAssertTrue(simProfiles.isEmpty)
+    }
+    
+    func testMockLoadingSingleSupportedRegion() {
+        self.stubPath("regions/sg", toLoad: "region_singapore")
+        
+        guard let region = self.mockAPI.loadRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled by `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(region.region.id, "sg")
+        XCTAssertEqual(region.region.name, "Singapore")
+        XCTAssertEqual(region.status, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.JUMIO, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.MY_INFO, .PENDING)
+        XCTAssertEqual(region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .APPROVED)
+        XCTAssertEqual(region.kycStatusMap.NRIC_FIN, .APPROVED)
+        
+        guard let simProfile = region.getSimProfile() else {
+            XCTFail("Could not get sim profile from region!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
+    func testMockLoadingSingleUnsupportedRegion() {
+        self.stubPath("regions/vu", toLoad: "region_vanuatu", statusCode: 404)
+        guard let error = self.mockAPI.loadRegion(code: "vu").awaitResultExpectingError(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.httpStatusCode, 404)
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_REGIONS")
+            XCTAssertEqual(jsonError.message, "Failed to get regions.")
+        default:
+            XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
+        }
+    }
     
     func testMockNRICCheckWithValidNRIC() {
         self.stubPath("regions/sg/kyc/dave/S9315107J", toLoad: "nric_check_valid")
@@ -331,6 +496,17 @@ class MockAPITests: XCTestCase {
         }
     }
     
+    func testMockFetchingMyInfoConfig() {
+        self.stubPath("regions/sg/kyc/myInfoConfig", toLoad: "my_info_config")
+        
+        guard let config = self.mockAPI.loadMyInfoConfig().awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(config.url, "https://myinfosgstg.api.gov.sg/test/v2/authorise?client_id=STG-FAKE_CLIENT_ID&attributes=name,sex,dob,residentialstatus,nationality,mobileno,email,regadd&redirect_uri=https://dl-dev.oya.world/links/myinfo")
+    }
+    
     func testMockCreatingAddress() {
         let address = EKYCAddress(street: "123 Fake Street",
                                   unit: "3",
@@ -338,13 +514,22 @@ class MockAPITests: XCTestCase {
                                   postcode: "12345",
                                   country: "Singapore")
         
-        OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString("https://api.fake.org/regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678") && isMethodPUT(), withStubResponse: { _ in
-            // TODO: Figure out why this is a `204 No Content` instead of a `201 Created` on the real API
-            return OHHTTPStubsResponse(data: Data(), statusCode: 204, headers: nil)
-        })
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678", statusCode: 204)
         
         // Failure handled in `awaitResult`
         self.mockAPI.addAddress(address, forRegion: "sg").awaitResult(in: self)
+    }
+    
+    func testMockUpdatingAddress() {
+        guard
+            let testInfo = MyInfoDetails.testInfo,
+            let update = EKYCProfileUpdate(myInfoDetails: testInfo)else {
+                XCTFail("Couldn't load test info details or create update!")
+                return
+        }
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=102%20BEDOK%20NORTH%20AVENUE%204%0A460102%20SG&phoneNumber=+6597399245", statusCode: 204)
+        
+        self.mockAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
     }
     
     func testMockCreatingJumioScan() {
@@ -361,7 +546,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockRequestingSimProfile() {
-        self.stubAbsoluteURLString("https://api.fake.org/regions/sg/simProfiles?profileType=iphone",
+       self.stubAbsolutePath("regions/sg/simProfiles?profileType=iphone",
                                    toLoad: "create_sim_profile")
         
         guard let simProfile = self.mockAPI.createSimProfileForRegion(code: "sg").awaitResult(in: self) else {
@@ -372,6 +557,27 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(simProfile.iccId, "8947000000000001598")
         XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
         XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.alias, "")
+    }
+    
+    func testMockRequestingSimProfilesForRegion() {
+        self.stubPath("regions/sg/simProfiles", toLoad: "sim_profiles_singapore")
+        
+        guard let simProfiles = self.mockAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        XCTAssertEqual(simProfiles.count, 1)
+        
+        guard let simProfile = simProfiles.first else {
+            XCTFail("Could not access first sim profile!")
+            return
+        }
+        
+        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
+        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
+        XCTAssertEqual(simProfile.status, .DOWNLOADED)
         XCTAssertEqual(simProfile.alias, "")
     }
 }

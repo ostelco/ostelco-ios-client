@@ -1,0 +1,23 @@
+[{
+	"region": {
+		"id": "sg",
+		"name": "Singapore"
+	},
+	"status": "PENDING",
+	"kycStatusMap": {
+		"JUMIO": "PENDING",
+		"MY_INFO": "PENDING",
+		"ADDRESS_AND_PHONE_NUMBER": "PENDING",
+		"NRIC_FIN": "PENDING"
+	},
+	"simProfiles": []
+},
+{
+	"region": {
+		"id": "no",
+		"name": "Norway"
+	},
+	"status": "APPROVED",
+	"kycStatusMap": {},
+	"simProfiles": []
+}]

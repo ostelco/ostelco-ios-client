@@ -14,4 +14,14 @@ public struct PaymentInfo: Codable {
     public init(sourceID: String) {
         self.sourceId = sourceID
     }
+    
+    public enum CodingKeys: String, CodingKey {
+        case sourceId
+    }
+    
+    public var asQueryItems: [URLQueryItem] {
+        return [
+            URLQueryItem(codingKey: CodingKeys.sourceId, value: self.sourceId)
+        ]
+    }
 }

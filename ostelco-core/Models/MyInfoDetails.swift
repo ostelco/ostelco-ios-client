@@ -33,26 +33,25 @@ public struct MyInfoAddress: Codable {
         self.building = building
     }
     
-    public func getAddressLine1() -> String {
-        var addressLine1: String = ""
-        if let block = self.block {
-            addressLine1 = "\(block) "
-        }
-        if let street = self.street {
-            addressLine1 += "\(street) "
-        }
-        return addressLine1
+    public var addressLine1: String {
+        var addressBits = [String]()
+        addressBits.appendIfNotNil(self.block, string: { $0 })
+        addressBits.appendIfNotNil(self.street, string: { $0 })
+        return addressBits.joined(separator: " ")
     }
     
-    public func getAddressLine2() -> String {
-        var addressLine2: String = ""
-        if let postal = self.postal {
-            addressLine2 = "\(postal) "
-        }
-        if let country = self.country {
-            addressLine2 += "\(country) "
-        }
-        return addressLine2
+    public var addressLine2: String {
+        var addressBits = [String]()
+        addressBits.appendIfNotNil(self.postal, string: { $0 })
+        addressBits.appendIfNotNil(self.country, string: { $0 })
+        return addressBits.joined(separator: " ")
+    }
+    
+    public var formattedAddress: String {
+        var addressBits = [String]()
+        addressBits.appendIfNotEmpty(self.addressLine1)
+        addressBits.appendIfNotEmpty(self.addressLine2)
+        return addressBits.joined(separator: "\n")
     }
 }
 
@@ -128,7 +127,11 @@ public struct MyInfoMobileNumber: Codable {
                 return nil
         }
         
-        return "\(prefix)\(code)\(number)"
+        return [
+            prefix,
+            code,
+            number
+        ].joined()
     }
 }
 

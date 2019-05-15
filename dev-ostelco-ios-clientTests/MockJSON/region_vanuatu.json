@@ -1,0 +1,11 @@
+{
+	"errorCode": "FAILED_TO_FETCH_REGIONS",
+	"error": {
+		"type": "BELONG_TO_REGION",
+		"id": "5112d0bf-4f58-49ea-b417-2af8d69895d2 -> vu",
+		"error": null,
+		"message": "BELONG_TO_REGION - 5112d0bf-4f58-49ea-b417-2af8d69895d2 -> vu not found."
+	},
+	"status": 404,
+	"message": "Failed to get regions."
+}

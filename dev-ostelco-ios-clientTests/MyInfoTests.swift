@@ -34,6 +34,10 @@ class MyInfoTests: XCTestCase {
         XCTAssertEqual(address.floor, "09")
         XCTAssertEqual(address.building, "PEARL GARDEN")
         
+        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.addressLine2, "460102 SG")
+        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4\n460102 SG")
+        
         guard let mobileNumber = testInfo.mobileNumber else {
             XCTFail("Could not access mobile number!")
             return
@@ -42,5 +46,89 @@ class MyInfoTests: XCTestCase {
         XCTAssertEqual(mobileNumber.prefix, "+")
         XCTAssertEqual(mobileNumber.number, "97399245")
         XCTAssertEqual(mobileNumber.formattedNumber, "+6597399245")
+    }
+    
+    func testAddressFormattingWithMissingBlock() {
+        let address = MyInfoAddress(country: "SG",
+                                    unit: "128",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    block: nil,
+                                    postal: "460102",
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.addressLine2, "460102 SG")
+        XCTAssertEqual(address.formattedAddress, "BEDOK NORTH AVENUE 4\n460102 SG")
+    }
+    
+    func testAddressFormattingWithMissingStreet() {
+        let address = MyInfoAddress(country: "SG",
+                                    unit: "128",
+                                    street: nil,
+                                    block: "102",
+                                    postal: "460102",
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "102")
+        XCTAssertEqual(address.addressLine2, "460102 SG")
+        XCTAssertEqual(address.formattedAddress, "102\n460102 SG")
+    }
+    
+    func testAddressFormattingWithMissingPostcode() {
+        let address = MyInfoAddress(country: "SG",
+                                    unit: "128",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    block: "102",
+                                    postal: nil,
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.addressLine2, "SG")
+        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4\nSG")
+    }
+    
+    func testAddressFormattingWithMissingCountry() {
+        let address = MyInfoAddress(country: nil,
+                                    unit: "128",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    block: "102",
+                                    postal: "460102",
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.addressLine2, "460102")
+        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4\n460102")
+    }
+    
+    func testAddressFormattingWithMissingBlockAndStreet() {
+        let address = MyInfoAddress(country: "SG",
+                                    unit: "128",
+                                    street: nil,
+                                    block: nil,
+                                    postal: "460102",
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "")
+        XCTAssertEqual(address.addressLine2, "460102 SG")
+        XCTAssertEqual(address.formattedAddress, "460102 SG")
+    }
+    
+    func testAddressFormattingWithMissingPostcodeAndCountry() {
+        let address = MyInfoAddress(country: nil,
+                                    unit: "128",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    block: "102",
+                                    postal: nil,
+                                    floor: "09",
+                                    building: "PEARL GARDEN")
+        
+        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.addressLine2, "")
+        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4")
     }
 }

@@ -47,11 +47,12 @@ extension XCTestCase {
                                                                  line: line))
     }
     
-    func stubAbsoluteURLString(_ absoluteURLString: String,
-                               toLoad fileName: String,
-                               statusCode: Int32 = 200,
-                               file: StaticString = #file,
-                               line: UInt = #line) {
+    func stubAbsolutePath(_ absolutePath: String,
+                          toLoad fileName: String,
+                          statusCode: Int32 = 200,
+                          file: StaticString = #file,
+                          line: UInt = #line) {
+        let absoluteURLString = self.baseURL.absoluteString + "/" + absolutePath
         OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString(absoluteURLString),
                                  withStubResponse: self.loadFile(named: fileName,
                                                                  statusCode: statusCode,
@@ -78,6 +79,14 @@ extension XCTestCase {
     func stubEmptyDataAtPath(_ path: String,
                              statusCode: Int32) {
         OHHTTPStubs.stubRequests(passingTest: isPath("/\(path)")) { _ in
+            return OHHTTPStubsResponse(data: Data(), statusCode: statusCode, headers: nil)
+        }
+    }
+    
+    func stubEmptyDataAtAbsolutePath(_ absolutePath: String,
+                                     statusCode: Int32) {
+        let absoluteURLString = self.baseURL.absoluteString + "/" + absolutePath
+        OHHTTPStubs.stubRequests(passingTest: isAbsoluteURLString(absoluteURLString)) { _ in
             return OHHTTPStubsResponse(data: Data(), statusCode: statusCode, headers: nil)
         }
     }

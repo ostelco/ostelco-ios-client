@@ -1,0 +1,19 @@
+[{
+	"region": {
+		"id": "sg",
+		"name": "Singapore"
+	},
+	"status": "APPROVED",
+	"kycStatusMap": {
+		"JUMIO": "APPROVED",
+		"MY_INFO": "PENDING",
+		"ADDRESS_AND_PHONE_NUMBER": "APPROVED",
+		"NRIC_FIN": "APPROVED"
+	},
+	"simProfiles": [{
+		"iccId": "8947000000000001598",
+		"eSimActivationCode": "FAKE_ACTIVATION_CODE",
+		"status": "AVAILABLE_FOR_DOWNLOAD",
+		"alias": ""
+	}]
+}]

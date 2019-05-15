@@ -26,3 +26,17 @@ public extension Array {
         self.append(closure(unwrapped))
     }
 }
+
+public extension Array where Element: Collection {
+    
+    /// Checks if the passed in element conforming to `Collection` is empty. Discards the element if it's empty, appends it if it's not.
+    ///
+    /// - Parameter element: The element to optionally append.
+    mutating func appendIfNotEmpty(_ element: Element) {
+        guard element.isNotEmpty else {
+            return
+        }
+        
+        self.append(element)
+    }
+}

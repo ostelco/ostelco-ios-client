@@ -1,0 +1,16 @@
+[{
+	"sku": "PLAN_1SGD_YEAR",
+	"price": {
+		"amount": 100,
+		"currency": "SGD"
+	},
+	"properties": {
+		"intervalCount": "1",
+		"productClass": "PLAN",
+		"interval": "year"
+	},
+	"presentation": {
+		"priceLabel": "$1",
+		"productLabel": "Annual subscription plan"
+	}
+}]
