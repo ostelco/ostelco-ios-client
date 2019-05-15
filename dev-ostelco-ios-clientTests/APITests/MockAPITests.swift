@@ -319,6 +319,17 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(product.type, "plan")
     }
     
+    func testMockPurchasingProductSuccess() {
+        self.stubAbsolutePath("products/PLAN_1SGD_YEAR/purchase?sourceId=card_LEGIT_CARD",
+                              toLoad: "purchase_success",
+                              statusCode: 201)
+        
+        let info = PaymentInfo(sourceID: "card_LEGIT_CARD")
+
+        // Failures handled in `awaitResult`
+        self.mockAPI.purchaseProduct(with: "PLAN_1SGD_YEAR", payment: info).awaitResult(in: self)
+    }
+    
     func testMockPurchasingProductFailure() {
         self.stubAbsolutePath("products/PLAN_1SGD_YEAR/purchase?sourceId=card_FAKE_CARD",
                               toLoad: "purchase_fail",
@@ -327,6 +338,7 @@ class MockAPITests: XCTestCase {
         let info = PaymentInfo(sourceID: "card_FAKE_CARD")
         
         guard let error = self.mockAPI.purchaseProduct(with: "PLAN_1SGD_YEAR", payment: info).awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
             return
         }
         
