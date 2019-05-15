@@ -29,7 +29,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         case self.scanICCheck:
             self.singPassCheck.isChecked = false
         default:
-            assertionFailure("Unknown option toggled!")
+            ApplicationErrors.assertAndLog("Unknown option toggled!")
         }
         
         self.updateContinue()
@@ -45,7 +45,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             performSegue(withIdentifier: "nricVerify", sender: self)
         } else {
-            assertionFailure("At least one of these should be checked if continue is enabled!")
+            ApplicationErrors.assertAndLog("At least one of these should be checked if continue is enabled!")
         }
     }
     
@@ -99,8 +99,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     func showMyInfoLogin(url: URL?) {
         guard let url = url else {
             let error = ApplicationErrors.General.noMyInfoConfigFound
-            assertionFailure(error.localizedDescription)
-            ApplicationErrors.log(error)
+            ApplicationErrors.assertAndLog(error)
             return
         }
         debugPrint("URL for the login screen: \(url.absoluteString)")

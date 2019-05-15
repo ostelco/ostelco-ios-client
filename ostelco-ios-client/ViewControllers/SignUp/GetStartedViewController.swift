@@ -34,7 +34,7 @@ class GetStartedViewController: UIViewController {
         }
         
         guard let nickname = self.nameTextField.text else {
-            assertionFailure("No nickname but passed validation?!")
+            ApplicationErrors.assertAndLog("No nickname but passed validation?!")
             return
         }
         

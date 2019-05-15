@@ -31,7 +31,7 @@ class CheckEmailViewController: UIViewController {
     
     @IBAction private func resendTapped() {
         guard let email = UserDefaultsWrapper.pendingEmail else {
-            assertionFailure("No pending email?!")
+            ApplicationErrors.assertAndLog("No pending email?!")
             return
         }
         

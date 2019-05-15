@@ -39,6 +39,7 @@ class ESIMPendingDownloadViewController: UIViewController {
                 self?.getSimProfileForRegion(region: regionResponse)
             }
             .catch { [weak self] error in
+                ApplicationErrors.log(error)
                 debugPrint("Error getting region: \(error)")
                 self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
             }

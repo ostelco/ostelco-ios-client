@@ -21,7 +21,7 @@ extension UNAuthorizationStatus {
         case .provisional:
             return "provisional"
         @unknown default:
-            assertionFailure("Apple added something! You should handle it here.")
+            ApplicationErrors.assertAndLog("Apple added something! You should handle it here.")
             return ""
         }
     }

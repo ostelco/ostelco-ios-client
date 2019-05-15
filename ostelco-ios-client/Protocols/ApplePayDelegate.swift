@@ -77,6 +77,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             }
             .catch { error in
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
+                ApplicationErrors.log(error)
                 self.applePayError = ApplePayError.primeAPIError(error)
                 completion(PKPaymentAuthorizationResult(status: .failure, errors: [error]))
                 // Wait for finish method before we call paymentError()

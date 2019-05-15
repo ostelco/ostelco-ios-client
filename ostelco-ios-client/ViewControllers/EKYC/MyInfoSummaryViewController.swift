@@ -77,7 +77,7 @@ class MyInfoSummaryViewController: UIViewController {
             guard
                 let nav = segue.destination as? UINavigationController,
                 let addressVC = nav.topViewController as? AddressEditViewController else {
-                    assertionFailure("Could not access correct view controller!")
+                    ApplicationErrors.assertAndLog("Could not access correct view controller!")
                     return
             }
             
@@ -100,7 +100,7 @@ class MyInfoSummaryViewController: UIViewController {
         guard
             let details = self.myInfoDetails,
             let profileUpdate = EKYCProfileUpdate(myInfoDetails: details) else {
-                assertionFailure("Validation passed but we can't create a profile update?")
+                ApplicationErrors.assertAndLog("Validation passed but we can't create a profile update?")
                 return
         }
         

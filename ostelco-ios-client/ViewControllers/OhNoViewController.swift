@@ -149,7 +149,7 @@ class OhNoViewController: UIViewController {
     
     @IBAction private func primaryButtonTapped() {
         guard let action = self.primaryButtonAction else {
-            assertionFailure("You probably want to do something here!")
+            ApplicationErrors.assertAndLog("You probably want to do something here!")
             return
         }
         

@@ -100,7 +100,7 @@ class HomeViewController: ApplePayViewController {
                 debugPrint("User has subscription ? \(self.hasSubscription)")
             }
             .catch { error in
-                debugPrint("error fetching products \(error)")
+                ApplicationErrors.log(error)
             }
     }
 
