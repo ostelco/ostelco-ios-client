@@ -12,10 +12,10 @@ import Foundation
 /// A class to wrap APIs controlled by the Prime backend.
 open class PrimeAPI: BasicNetwork {
     
-    enum Error: Swift.Error, LocalizedError {
+    public enum Error: Swift.Error, LocalizedError {
         case failedToGetRegion
         
-        var localizedDescription: String {
+        public var localizedDescription: String {
             switch self {
             case .failedToGetRegion:
                 return "Could not find suitable region from region response"
@@ -145,7 +145,7 @@ open class PrimeAPI: BasicNetwork {
             .map { data -> [AnyHashable: Any] in
                 let object = try JSONSerialization.jsonObject(with: data, options: [])
                 guard let dictionary = object as? [AnyHashable: Any] else {
-                    throw APIHelper.Error.invalidResponseType(data: data)
+                    throw APIHelper.Error.unexpectedResponseFormat(data: data)
                 }
                 return dictionary
             }

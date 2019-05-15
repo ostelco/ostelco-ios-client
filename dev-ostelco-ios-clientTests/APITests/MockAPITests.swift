@@ -285,6 +285,24 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(firstObject["id"] as? String, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
     }
     
+    func testMockBadDataForEphemeralKey() {
+        self.stubAbsolutePath("customer/stripe-ephemeral-key?api_version=INVALID", toLoad: "stripe_key_invalid")
+        
+        let request = StripeEphemeralKeyRequest(apiVersion: "INVALID")
+        
+        guard let error = self.mockAPI.stripeEphemeralKey(with: request).awaitResultExpectingError(in: self) else {
+            // Failures handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.unexpectedResponseFormat(let data):
+            XCTAssertTrue(data.isNotEmpty)
+        default:
+            XCTFail("Unexpected error type for bad data with ephemeral key: \(error)")
+        }
+    }
+    
     // MARK: - Products
     
     func testMockLoadingProducts() {
@@ -317,6 +335,39 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(product.presentation.label, "Annual subscription plan")
         
         XCTAssertEqual(product.type, "plan")
+    }
+    
+    func testMockPurchasingProductSuccess() {
+        self.stubAbsolutePath("products/PLAN_1SGD_YEAR/purchase?sourceId=card_LEGIT_CARD",
+                              toLoad: "purchase_success",
+                              statusCode: 201)
+        
+        let info = PaymentInfo(sourceID: "card_LEGIT_CARD")
+
+        // Failures handled in `awaitResult`
+        self.mockAPI.purchaseProduct(with: "PLAN_1SGD_YEAR", payment: info).awaitResult(in: self)
+    }
+    
+    func testMockPurchasingProductFailure() {
+        self.stubAbsolutePath("products/PLAN_1SGD_YEAR/purchase?sourceId=card_FAKE_CARD",
+                              toLoad: "purchase_fail",
+                              statusCode: 500)
+        
+        let info = PaymentInfo(sourceID: "card_FAKE_CARD")
+        
+        guard let error = self.mockAPI.purchaseProduct(with: "PLAN_1SGD_YEAR", payment: info).awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_PURCHASE_PRODUCT")
+            XCTAssertEqual(jsonError.httpStatusCode, 500)
+            XCTAssertEqual(jsonError.message, "Failed to purchase product.")
+        default:
+            XCTFail("Unexpected error purchasing product: \(error)")
+        }
     }
     
     // MARK: - Purchases
@@ -410,6 +461,23 @@ class MockAPITests: XCTestCase {
         }
         
         XCTAssertTrue(simProfiles.isEmpty)
+    }
+    
+    func testMockLoadingRegionFromEmptyRegions() {
+        self.stubPath("regions", toLoad: "regions_empty")
+        
+        guard let error = self.mockAPI.getRegionFromRegions().awaitResultExpectingError(in: self) else {
+            // Unexpected success handled in `awaitResult`
+            return
+        }
+        
+        switch error {
+        case PrimeAPI.Error.failedToGetRegion:
+            // This is what we want!
+            break
+        default:
+            XCTFail("Unexpected error after loading empty regions: \(error)")
+        }
     }
     
     func testMockLoadingSingleSupportedRegion() {

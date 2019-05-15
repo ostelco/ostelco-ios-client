@@ -162,6 +162,8 @@ public struct APIHelper {
                 throw self.createError(from: data, decoder: decoder)
             case APIHelper.Error.invalidResponseType(let data):
                 throw self.createError(from: data, decoder: decoder)
+            case APIHelper.Error.unexpectedResponseFormat(data: let data):
+                throw self.createError(from: data, decoder: decoder)
             default:
                 throw error
             }

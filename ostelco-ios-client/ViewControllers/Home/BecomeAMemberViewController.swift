@@ -56,7 +56,12 @@ class BecomeAMemberViewController: ApplePayViewController {
             return
         case .noSupportedCards?,
              .otherRestrictions?:
-            showSetupButton = true
+            #if STRIPE_PAYMENT
+                // If we're doing stripe payments, it doesn't matter whether we have apple pay set up or not
+                showSetupButton = false
+            #else
+                showSetupButton = true
+            #endif
         default:
             showSetupButton = false
         }

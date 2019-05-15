@@ -1,0 +1,21 @@
+{
+	"errorCode": "FAILED_TO_PURCHASE_PRODUCT",
+	"error": {
+		"description": "Failed to subscribe 2af02cfb-470e-4609-9030-e6c388150612 to plan PLAN_1SGD_YEAR",
+		"message": null,
+		"error": {
+			"type": "Plan",
+			"id": "Failed to subscribe 2af02cfb-470e-4609-9030-e6c388150612 to PLAN_1SGD_YEAR",
+			"expectedCount": 1,
+			"actualCount": 0,
+			"error": {
+				"description": "Failed to subscribe customer 2af02cfb-470e-4609-9030-e6c388150612 to plan plan_FAKE_ID",
+				"message": "No such plan: plan_FAKE_ID; a similar object exists in test mode, but a live mode key was used to make this request.; code: resource_missing",
+				"error": null
+			},
+			"message": "Failed to create Plan - Failed to subscribe 2af02cfb-470e-4609-9030-e6c388150612 to PLAN_1SGD_YEAR"
+		}
+	},
+	"status": 500,
+	"message": "Failed to purchase product."
+}
