@@ -10,6 +10,7 @@ import UIKit
 
 extension UIApplication {
     
+    /// The current application delegate cast to the proper type.
     var typedDelegate: AppDelegate {
         guard let typed = self.delegate as? AppDelegate else {
             fatalError("App delegate is not of proper type!")
@@ -18,6 +19,7 @@ extension UIApplication {
         return typed
     }
     
+    /// Opens the settings for this application.
     func openSettings() {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
             fatalError("Could not construct settings URL!")
