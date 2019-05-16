@@ -39,9 +39,11 @@ class SettingsTableViewController: UITableViewController {
         case .PrivacyPolicy:
             UIApplication.shared.open(ExternalLink.privacyPolicy.url)
         case .CancelMembership:
-            showDeleteAccountActionSheet()
+            let deleteAccount = DeleteAccountActionSheet(showingIn: self)
+            self.presentActionSheet(deleteAccount)
         case .LogOut:
-            showLogOutActionSheet()
+            let logOut = LogOutActionSheet(showingIn: self)
+            self.presentActionSheet(logOut)
         }
     }
 }
