@@ -25,8 +25,8 @@ class NeedHelpAlertController: UIAlertController {
         
         let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
             UserManager.shared.logOut()
-            let viewController = LoginViewController.fromStoryboard()
-            self.present(viewController, animated: true)
+            let loginVC = LoginViewController.fromStoryboard()
+            viewController.present(loginVC, animated: true)
         }
         self.addAction(logOutAction)
         
