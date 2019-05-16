@@ -238,8 +238,6 @@
 		9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC465442271DC98001951BF /* OhNoViewController.swift */; };
 		9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D449225B5E9600B51999 /* TabBarController.swift */; };
 		9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D449225B5E9600B51999 /* TabBarController.swift */; };
-		9BE2D44E225B601D00B51999 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */; };
-		9BE2D44F225B601D00B51999 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */; };
 		9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D456225B61CF00B51999 /* Storyboard.swift */; };
 		9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D456225B61CF00B51999 /* Storyboard.swift */; };
 		9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2D459225B625500B51999 /* EnumHelperTests.swift */; };
@@ -524,7 +522,6 @@
 		9BC465412271DAD4001951BF /* OhNo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OhNo.storyboard; sourceTree = "<group>"; };
 		9BC465442271DC98001951BF /* OhNoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoViewController.swift; sourceTree = "<group>"; };
 		9BE2D449225B5E9600B51999 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		9BE2D456225B61CF00B51999 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		9BE2D459225B625500B51999 /* EnumHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumHelperTests.swift; sourceTree = "<group>"; };
 		9BE2D45B225B634100B51999 /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
@@ -970,7 +967,6 @@
 		9BE2D43D225B5ACA00B51999 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9BE2D44D225B601D00B51999 /* LaunchScreenViewController.swift */,
 				9BC465442271DC98001951BF /* OhNoViewController.swift */,
 				04BA349B222587F6000359C4 /* SplashViewController.swift */,
 				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
@@ -1758,7 +1754,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE2D44E225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
@@ -1964,7 +1959,6 @@
 				047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
-				9BE2D44F225B601D00B51999 /* LaunchScreenViewController.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
