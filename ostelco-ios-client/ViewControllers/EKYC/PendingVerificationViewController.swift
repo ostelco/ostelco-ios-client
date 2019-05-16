@@ -11,28 +11,27 @@ import ostelco_core
 
 class PendingVerificationViewController: UIViewController {
     
+    // for PushNotificationHandling
+    var pushNotificationObserver: NSObjectProtocol?
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
-        showNeedHelpActionSheet()
+        self.showNeedHelpActionSheet()
     }
     
     @IBAction private func `continue`(_ sender: Any) {
-        checkVerificationStatus()
+        self.checkVerificationStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
+        self.addPushNotificationListener()
         addWillEnterForegroundObserver(selector: #selector(didBecomeActive))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeNotificationObserver()
+        self.removePushNotificationListener()
         removeWillEnterForegroundObserver()
-    }
-    
-    @objc func onDidReceiveData(_ notification: Notification) {
-        print(#function, "Notification didReceivePushNotification arrived")
     }
     
     @objc func didBecomeActive() {
@@ -131,5 +130,14 @@ extension PendingVerificationViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return false
+    }
+}
+
+// MARK: - PushNotificationHandling
+
+extension PendingVerificationViewController: PushNotificationHandling {
+    
+    func handlePushNotification(userInfo: [AnyHashable: Any]?) {
+        debugPrint("GOT PUSH: \(String(describing: userInfo))")
     }
 }

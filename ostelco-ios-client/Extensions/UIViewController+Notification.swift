@@ -8,23 +8,7 @@
 
 import Foundation
 
-
 extension UIViewController {
-    func addNotificationObserver(selector: Selector) {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: selector,
-            name: .didReceivePushNotification,
-            object: nil
-        )
-    }
-    
-    func removeNotificationObserver() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: .didReceivePushNotification,
-            object: nil)
-    }
     
     func addWillEnterForegroundObserver(selector: Selector) {
         NotificationCenter.default.addObserver(self, selector: selector, name: UIApplication.didBecomeActiveNotification, object: nil)
