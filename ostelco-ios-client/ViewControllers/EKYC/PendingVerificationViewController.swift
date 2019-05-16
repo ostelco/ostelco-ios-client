@@ -14,6 +14,9 @@ class PendingVerificationViewController: UIViewController {
     // for PushNotificationHandling
     var pushNotificationObserver: NSObjectProtocol?
     
+    // for DidBecomeActiveHandling
+    var didBecomeActiveObserver: NSObjectProtocol?
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
         self.showNeedHelpActionSheet()
     }
@@ -25,17 +28,13 @@ class PendingVerificationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addPushNotificationListener()
-        addWillEnterForegroundObserver(selector: #selector(didBecomeActive))
+        self.addDidBecomeActiveObserver()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.removePushNotificationListener()
-        removeWillEnterForegroundObserver()
-    }
-    
-    @objc func didBecomeActive() {
-        checkVerificationStatus(silentCheck: true)
+        self.removeDidBecomeActiveObserver()
     }
     
     func checkVerificationStatus(silentCheck: Bool = false) {
@@ -139,5 +138,14 @@ extension PendingVerificationViewController: PushNotificationHandling {
     
     func handlePushNotification(userInfo: [AnyHashable: Any]?) {
         debugPrint("GOT PUSH: \(String(describing: userInfo))")
+    }
+}
+
+// MARK: - DidBecomeActiveHandling
+
+extension PendingVerificationViewController: DidBecomeActiveHandling {
+    
+    func handleDidBecomeActive() {
+        self.checkVerificationStatus(silentCheck: true)
     }
 }

@@ -213,6 +213,8 @@
 		9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */; };
 		9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */; };
 		9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */; };
+		9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */; };
+		9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
@@ -275,8 +277,6 @@
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
-		C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */; };
 		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
@@ -514,6 +514,7 @@
 		9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountActionSheet.swift; sourceTree = "<group>"; };
 		9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandling.swift; sourceTree = "<group>"; };
+		9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidBecomeActiveHandling.swift; sourceTree = "<group>"; };
 		9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTests.swift; sourceTree = "<group>"; };
 		9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoDetails+Testing.swift"; sourceTree = "<group>"; };
 		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -554,7 +555,6 @@
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Notification.swift"; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
@@ -984,6 +984,7 @@
 				9BE2D462225B696400B51999 /* StoryboardLoadable.swift */,
 				9BC4653E2271B396001951BF /* LocationCheckingViewController.swift */,
 				9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */,
+				9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1092,7 +1093,6 @@
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
-				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
@@ -1791,6 +1791,7 @@
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
@@ -1838,7 +1839,6 @@
 				9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */,
 				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
-				C2A89CF02261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
 				9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
@@ -1961,6 +1961,7 @@
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
+				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -2010,7 +2011,6 @@
 				9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
-				C2A89CF12261554000100E44 /* UIViewController+Notification.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
