@@ -14,7 +14,7 @@ class NeedHelpAlertController: UIAlertController {
         self.init(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let supportAction = UIAlertAction(title: "Contact Support", style: .default) {_ in
-            Freshchat.sharedInstance()?.showConversations(self)
+            Freshchat.sharedInstance()?.showConversations(viewController)
         }
         self.addAction(supportAction)
         
