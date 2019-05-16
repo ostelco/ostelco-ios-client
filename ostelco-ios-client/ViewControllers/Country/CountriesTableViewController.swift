@@ -31,6 +31,5 @@ extension CountriesTableViewController: CountrySelectionDelegate {
     
     func selected(country: Country) {
         OnBoardingManager.sharedInstance.selectedCountry = country
-        OstelcoAnalytics.logEvent(.ChosenCountry(country: OnBoardingManager.sharedInstance.selectedCountry))
     }
 }
