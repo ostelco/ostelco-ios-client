@@ -34,8 +34,6 @@ class SplashViewController: UIViewController, StoryboardLoadable {
         }
         
         // YEP! Now we need to know where to send them.
-        UIApplication.shared.typedDelegate.sendFCMToken()
-        
         let spinnerView = self.showSpinner(onView: self.view)
         UserManager.shared.getDestinationFromContext()
             .ensure { [weak self] in

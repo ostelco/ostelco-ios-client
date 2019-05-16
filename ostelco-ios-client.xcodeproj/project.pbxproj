@@ -209,6 +209,8 @@
 		9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */; };
 		9BBEEE19228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */; };
 		9BBEEE1A228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */; };
+		9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */; };
+		9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
@@ -508,6 +510,7 @@
 		9BBEEE12228D954600EED7F5 /* NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpActionSheet.swift; sourceTree = "<group>"; };
 		9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutActionSheet.swift; sourceTree = "<group>"; };
 		9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountActionSheet.swift; sourceTree = "<group>"; };
+		9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTests.swift; sourceTree = "<group>"; };
 		9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoDetails+Testing.swift"; sourceTree = "<group>"; };
 		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -891,6 +894,7 @@
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
+				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 			);
@@ -1078,6 +1082,7 @@
 				9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */,
 				04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */,
 				9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */,
+				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
 				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
@@ -1085,7 +1090,6 @@
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				C2A89CEF2261554000100E44 /* UIViewController+Notification.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
-				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
 			);
@@ -1842,6 +1846,7 @@
 				9BBEEE13228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
+				9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
@@ -2009,6 +2014,7 @@
 				9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
+				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				041216AA222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,

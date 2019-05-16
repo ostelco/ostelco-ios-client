@@ -8,9 +8,6 @@
 
 import Foundation
 
-extension Notification.Name {
-    static let didReceivePushNotification = Notification.Name("didReceivePushNotification")
-}
 
 extension UIViewController {
     func addNotificationObserver(selector: Selector) {
