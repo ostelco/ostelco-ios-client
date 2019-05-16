@@ -116,8 +116,9 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: product.name, amount: applePayAmount),
-            PKPaymentSummaryItem(label: "Red Otter", amount: applePayAmount),
+            PKPaymentSummaryItem(label: product.subTotalLabel, amount: NSDecimalNumber(value: product.subTotal)),
+            PKPaymentSummaryItem(label: product.taxLabel, amount: NSDecimalNumber(value: product.tax)),
+            PKPaymentSummaryItem(label: product.payeeLabel, amount: applePayAmount),
         ]
         if Stripe.canSubmitPaymentRequest(paymentRequest) {
             // Setup payment authorization view controller
