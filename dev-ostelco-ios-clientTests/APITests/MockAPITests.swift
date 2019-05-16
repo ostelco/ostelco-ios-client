@@ -333,7 +333,13 @@ class MockAPITests: XCTestCase {
         
         XCTAssertEqual(product.presentation.price, "$1")
         XCTAssertEqual(product.presentation.label, "Annual subscription plan")
-        
+
+        XCTAssertEqual(product.presentation.subTotalLabel, "Sub Total")
+        XCTAssertEqual(product.presentation.subTotal, "93")
+        XCTAssertEqual(product.presentation.taxLabel, "GST")
+        XCTAssertEqual(product.presentation.tax, "7")
+        XCTAssertEqual(product.presentation.payeeLabel, "Red Otter")
+
         XCTAssertEqual(product.type, "plan")
     }
     
@@ -391,7 +397,7 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(purchase.timestamp, 1557740624128)
         
         XCTAssertEqual(purchase.product.sku, "2GB_FREE_ON_JOINING")
-        
+
         XCTAssertEqual(purchase.product.price.amount, 0)
         XCTAssertEqual(purchase.product.price.currency, "")
         
@@ -402,6 +408,13 @@ class MockAPITests: XCTestCase {
         
         XCTAssertEqual(purchase.product.presentation.price, "Free")
         XCTAssertEqual(purchase.product.presentation.label, "2GB Welcome Pack")
+
+        XCTAssertEqual(purchase.product.presentation.subTotalLabel, "Sub Total")
+        XCTAssertEqual(purchase.product.presentation.subTotal, "0")
+        XCTAssertEqual(purchase.product.presentation.taxLabel, "GST")
+        XCTAssertEqual(purchase.product.presentation.tax, "0")
+        XCTAssertEqual(purchase.product.presentation.payeeLabel, "Red Otter")
+
     }
     
     // MARK: - Regions
