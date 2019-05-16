@@ -16,9 +16,9 @@ public class Product {
     let sku: String
     let type: String
     let taxLabel: String
-    let tax: Int
+    let tax: Decimal
     let subTotalLabel: String
-    let subTotal: Int
+    let subTotal: Decimal
     let payeeLabel: String
 
     init(from: ProductModel, countryCode: String) {
@@ -29,11 +29,11 @@ public class Product {
         self.currency = from.price.currency
         self.sku = from.sku
         self.type = from.type
-        self.taxLabel = from.presentation.taxLabel
-        self.tax = Int(from.presentation.tax) ?? 0
-        self.subTotalLabel = from.presentation.subTotalLabel
-        self.subTotal = Int(from.presentation.subTotal) ?? 0
-        self.payeeLabel = from.presentation.payeeLabel
+        self.taxLabel = from.presentation.taxLabel ?? ""
+        self.tax = Decimal(string: from.presentation.tax ?? "" ) ?? 0
+        self.subTotalLabel = from.presentation.subTotalLabel ?? ""
+        self.subTotal = Decimal(string: from.presentation.subTotal ?? "") ?? 0
+        self.payeeLabel = from.presentation.payeeLabel ?? ""
     }
 }
 

@@ -114,10 +114,12 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         }
         // Convert to acutal amount (prime uses currency’s smallest unit)
         let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
+        let tax = convertStripeToNormalCurrency(amount: product.tax, currency: product.currency)
+        let subTotal = convertStripeToNormalCurrency(amount: product.subTotal, currency: product.currency)
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
-            PKPaymentSummaryItem(label: product.subTotalLabel, amount: NSDecimalNumber(value: product.subTotal)),
-            PKPaymentSummaryItem(label: product.taxLabel, amount: NSDecimalNumber(value: product.tax)),
+            PKPaymentSummaryItem(label: product.subTotalLabel, amount: subTotal),
+            PKPaymentSummaryItem(label: product.taxLabel, amount: tax),
             PKPaymentSummaryItem(label: product.payeeLabel, amount: applePayAmount),
         ]
         if Stripe.canSubmitPaymentRequest(paymentRequest) {
