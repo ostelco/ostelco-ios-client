@@ -49,7 +49,7 @@ public struct Request {
         request.httpMethod = self.method.rawValue
         
         var headers = try Headers(loggedIn: self.loggedIn, token: self.token)
-        
+
         if let additional = self.additionalHeaders {
             additional.forEach { key, value in headers.addValue(value, for: key) }
         }
