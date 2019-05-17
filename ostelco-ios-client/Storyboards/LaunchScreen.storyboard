@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="86X-Zj-eku">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,34 +10,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Launch Screen View Controller-->
+        <!--View Controller-->
         <scene sceneID="t6r-UB-jqV">
             <objects>
-                <viewController storyboardIdentifier="LaunchScreen" id="86X-Zj-eku" customClass="LaunchScreenViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="86X-Zj-eku" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B3z-yb-KTH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoryboardLaunchScreenProduction" translatesAutoresizingMaskIntoConstraints="NO" id="LKC-yw-IVU">
-                                <rect key="frame" x="-68.666666666666686" y="155" width="512.33333333333337" height="512"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaVertical" translatesAutoresizingMaskIntoConstraints="NO" id="LKC-yw-IVU">
+                                <rect key="frame" x="124" y="236.66666666666663" width="127" height="339"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.18431372549019609" green="0.086274509803921567" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerY" secondItem="yK8-xW-4fr" secondAttribute="centerY" id="EXw-Oh-MZi"/>
-                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerX" secondItem="yK8-xW-4fr" secondAttribute="centerX" id="hTN-VD-igZ"/>
+                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerY" secondItem="B3z-yb-KTH" secondAttribute="centerY" id="Lef-UV-txy"/>
+                            <constraint firstItem="LKC-yw-IVU" firstAttribute="centerX" secondItem="B3z-yb-KTH" secondAttribute="centerX" id="P8L-bG-KYe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yK8-xW-4fr"/>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="LKC-yw-IVU" id="WsZ-fd-Ov8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guS-h6-aTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
     <resources>
-        <image name="StoryboardLaunchScreenProduction" width="512" height="512"/>
+        <image name="oyaVertical" width="127" height="339"/>
     </resources>
 </document>
