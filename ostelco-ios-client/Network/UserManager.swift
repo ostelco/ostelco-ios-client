@@ -127,6 +127,28 @@ class UserManager {
             return .ekycOhNo
         }
     }
+    
+    func deleteAccount(showingIn viewController: UIViewController) {
+        let spinnerView = viewController.showSpinner(onView: viewController.view)
+        APIManager.shared.primeAPI.deleteCustomer()
+            .ensure { [weak viewController] in
+                viewController?.removeSpinner(spinnerView)
+            }
+            .done { [weak viewController] in
+                self.logOut() // no `weak self` since this is a singleton.
+                guard let vc = viewController else {
+                    // Not worth instantiating the splash VC.
+                    return
+                }
+                
+                let splashVC = SplashViewController.fromStoryboard()
+                vc.present(splashVC, animated: true)
+            }
+            .catch { [weak viewController] error in
+                ApplicationErrors.log(error)
+                viewController?.showGenericError(error: error)
+            }
+    }
 }
 
 extension UserManager: TokenProvider {
