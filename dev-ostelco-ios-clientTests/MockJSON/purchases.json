@@ -12,7 +12,12 @@
 		},
 		"presentation": {
 			"priceLabel": "Free",
-			"productLabel": "2GB Welcome Pack"
+			"productLabel": "2GB Welcome Pack",
+            "subTotal": "0",
+            "payeeLabel": "Red Otter",
+            "taxLabel": "GST",
+            "tax": "0",
+            "subTotalLabel": "Sub Total"
 		}
 	},
 	"timestamp": 1557740624128,

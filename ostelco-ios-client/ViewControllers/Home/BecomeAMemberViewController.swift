@@ -21,16 +21,15 @@ class BecomeAMemberViewController: ApplePayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPaymentButton()
-        let spinnerView: UIView = showSpinner(onView: view)
+        paymentButton?.isEnabled = false
         getProducts()
             .ensure { [weak self] in
-                self?.removeSpinner(spinnerView)
+                self?.paymentButton?.isEnabled = true
             }
             .done { [weak self] products in
                 guard let self = self else {
                     return
                 }
-                
                 self.plan = self.getFirstPlan(products)
             }
             .catch { error in

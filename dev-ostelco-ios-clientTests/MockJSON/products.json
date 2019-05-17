@@ -11,6 +11,12 @@
 	},
 	"presentation": {
 		"priceLabel": "$1",
-		"productLabel": "Annual subscription plan"
+		"productLabel": "Annual subscription plan",
+        "subTotal": "93",
+        "payeeLabel": "Red Otter",
+        "priceLabel": "$1",
+        "taxLabel": "GST",
+        "tax": "7",
+        "subTotalLabel": "Sub Total"
 	}
 }]
