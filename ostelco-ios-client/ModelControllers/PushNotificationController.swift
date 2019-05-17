@@ -14,7 +14,7 @@ import UserNotifications
 import UIKit
 
 /// A controller for handling push notifications.
-open class PushNotificationController: NSObject {
+class PushNotificationController: NSObject {
     
     enum Error: Swift.Error {
         case notAuthorized(status: UNAuthorizationStatus)
@@ -38,24 +38,24 @@ open class PushNotificationController: NSObject {
     
     /// Checks for the user's notification settings
     ///
-    /// - Returns: A Promise which when fulfilled will have the user's notification settings
-    open func getNotificationSettings() -> Promise<UNNotificationSettings> {
+    /// - Returns: A Promise which when fulfilled will have the user's authorization status
+    func getAuthorizationStatus() -> Promise<UNAuthorizationStatus> {
         return Promise { seal in
             UNUserNotificationCenter.current().getNotificationSettings { settings in
-                seal.fulfill(settings)
+                seal.fulfill(settings.authorizationStatus)
             }
         }
     }
     
     /// Registers the user for remote notifications.
-    open func registerForRemoteNotifications() {
+    func registerForRemoteNotifications() {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
     /// Requests authorization for remote notifications.
     ///
     /// - Returns: A Promise which when fulfilled will include a Boolean indicating whether the request was granted or not.
-    open func requestAuthorization() -> Promise<Bool> {
+    func requestAuthorization() -> Promise<Bool> {
         return Promise { seal in
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
                 if let error = error {
@@ -80,10 +80,10 @@ open class PushNotificationController: NSObject {
     ///                                       prompt them to authorize? Pass true to show authorization immediately.
     /// - Returns: A promise which, when fulfilled, indicates whether the user is now registered for notifications.
     ///            Note that statuses other than `.notDetermined` and `.authorized` will cause the Promise to reject.
-    open func checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: Bool) -> Promise<Bool> {
-        return self.getNotificationSettings()
-            .then { settings -> Promise<Bool> in
-                switch settings.authorizationStatus {
+    func checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: Bool) -> Promise<Bool> {
+        return self.getAuthorizationStatus()
+            .then { status -> Promise<Bool> in
+                switch status {
                 case .notDetermined:
                     if authorizeIfNotDetermined {
                         return self.requestAuthorization()
@@ -94,7 +94,7 @@ open class PushNotificationController: NSObject {
                 case .authorized:
                     return .value(true)
                 default:
-                    throw Error.notAuthorized(status: settings.authorizationStatus)
+                    throw Error.notAuthorized(status: status)
                 }
             }
             .map { authorized in
@@ -124,19 +124,29 @@ open class PushNotificationController: NSObject {
             }
             .catch { error in
                 ApplicationErrors.log(error)
-        }
+            }
+    }
+    
+    func sendDidReceivePushNotification(_ userInfo: [AnyHashable: Any]) {
+        NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
+    }
+    
+    func otherAppleUserInfoHandling(_ userInfo: [AnyHashable: Any]) {
+        Messaging.messaging().appDidReceiveMessage(userInfo)
     }
     
     // MARK: - App Delegate Matching methods
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-         Messaging.messaging().appDidReceiveMessage(userInfo)
+        self.sendDidReceivePushNotification(userInfo)
+        self.otherAppleUserInfoHandling(userInfo)
     }
     
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        Messaging.messaging().appDidReceiveMessage(userInfo)
+        self.sendDidReceivePushNotification(userInfo)
+        self.otherAppleUserInfoHandling(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
     }
     
@@ -151,36 +161,30 @@ open class PushNotificationController: NSObject {
 
 extension PushNotificationController: UNUserNotificationCenterDelegate {
     
-    open func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                     willPresent notification: UNNotification,
-                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
         self.sendDidReceivePushNotification(userInfo)
         completionHandler([])
     }
     
-    open func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                     didReceive response: UNNotificationResponse,
-                                     withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         self.sendDidReceivePushNotification(userInfo)
         completionHandler()
-    }
-    
-    open func sendDidReceivePushNotification(_ userInfo: [AnyHashable: Any]) {
-        NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
     }
 }
 
 extension PushNotificationController: MessagingDelegate {
     
-    open func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        debugPrint("- PushNotificationController: Firebase registration token: \(fcmToken)")
-        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         self.sendFCMToken(fcmToken)
     }
 
-    open func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         debugPrint("- PushNotificationController: Received data message: \(remoteMessage.appData)")
     }
 }

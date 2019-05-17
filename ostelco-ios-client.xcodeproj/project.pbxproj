@@ -215,6 +215,8 @@
 		9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */; };
 		9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */; };
 		9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */; };
+		9BBEEE1F228DA82600EED7F5 /* PushNotificationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE1E228DA82600EED7F5 /* PushNotificationControllerTests.swift */; };
+		9BBEEE21228DA83800EED7F5 /* MockPushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */; };
 		9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */; };
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
@@ -515,6 +517,8 @@
 		9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandling.swift; sourceTree = "<group>"; };
 		9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidBecomeActiveHandling.swift; sourceTree = "<group>"; };
+		9BBEEE1E228DA82600EED7F5 /* PushNotificationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationControllerTests.swift; sourceTree = "<group>"; };
+		9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPushNotificationController.swift; sourceTree = "<group>"; };
 		9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTests.swift; sourceTree = "<group>"; };
 		9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyInfoDetails+Testing.swift"; sourceTree = "<group>"; };
 		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -825,6 +829,7 @@
 			children = (
 				9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */,
 				9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */,
+				9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1074,6 +1079,7 @@
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
 				9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */,
 				9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */,
+				9BBEEE1E228DA82600EED7F5 /* PushNotificationControllerTests.swift */,
 				9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */,
 				9B821597227AEE1400DC6B64 /* RequestGeneratorTests.swift */,
 			);
@@ -1943,8 +1949,10 @@
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
+				9BBEEE21228DA83800EED7F5 /* MockPushNotificationController.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */,
+				9BBEEE1F228DA82600EED7F5 /* PushNotificationControllerTests.swift in Sources */,
 				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */,
