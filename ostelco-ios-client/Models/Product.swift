@@ -15,6 +15,11 @@ public class Product {
     let country: String
     let sku: String
     let type: String
+    let taxLabel: String
+    let tax: Decimal
+    let subTotalLabel: String
+    let subTotal: Decimal
+    let payeeLabel: String
 
     init(from: ProductModel, countryCode: String) {
         self.name = "\(from.presentation.label) of Data"
@@ -24,6 +29,11 @@ public class Product {
         self.currency = from.price.currency
         self.sku = from.sku
         self.type = from.type
+        self.taxLabel = from.presentation.taxLabel ?? ""
+        self.tax = Decimal(string: from.presentation.tax ?? "" ) ?? 0
+        self.subTotalLabel = from.presentation.subTotalLabel ?? ""
+        self.subTotal = Decimal(string: from.presentation.subTotal ?? "") ?? 0
+        self.payeeLabel = from.presentation.payeeLabel ?? ""
     }
 }
 
@@ -36,6 +46,11 @@ extension Product: CustomDebugStringConvertible {
         - Currency: \(self.currency)
         - Country: \(self.country)
         - SKU: \(self.sku)
+        - Tax Label: \(self.taxLabel)
+        - Tax: \(self.tax)
+        - SubTotal Label: \(self.subTotalLabel)
+        - SubTotal: \(self.subTotal)
+        - Payee Label: \(self.payeeLabel)
         """
     }
 }

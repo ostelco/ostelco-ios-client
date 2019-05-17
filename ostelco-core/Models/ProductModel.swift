@@ -11,12 +11,20 @@ import Foundation
 public struct PresentationModel: Codable {
     public let label: String
     public let price: String
-    public let isDefault: String?
+    public let taxLabel: String?
+    public let tax: String?
+    public let subTotalLabel: String?
+    public let subTotal: String?
+    public let payeeLabel: String?
 
     enum CodingKeys: String, CodingKey {
         case label = "productLabel"
         case price = "priceLabel"
-        case isDefault
+        case taxLabel
+        case tax
+        case subTotalLabel
+        case subTotal
+        case payeeLabel
     }
 }
 
