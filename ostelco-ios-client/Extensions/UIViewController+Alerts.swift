@@ -11,6 +11,9 @@ import UIKit
 
 extension UIViewController {
     
+    /// Shows a generic error message based on a Swift error, particularly if it's localizable.
+    ///
+    /// - Parameter error: The error to show.
     func showGenericError(error: Error) {
         let message: String
             
@@ -30,11 +33,37 @@ extension UIViewController {
         self.showAlert(title: "Error", msg: message)
     }
     
+    /// Shows an alert with an OK button.
+    ///
+    /// - Parameters:
+    ///   - title: The title of the alert
+    ///   - msg: The message of the alert.
     func showAlert(title: String, msg: String) {
         let alert = UIAlertController(title: title,
                                       message: msg,
                                       preferredStyle: .alert)
         alert.addAction(.okAction())
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    /// Method to compensate for action sheet crashes on the iPad
+    ///
+    /// - Parameter alertController: The alert controller to present as an action sheet.
+    func presentActionSheet(_ alertController: UIAlertController) {
+        // Action sheet crashes on iPad: https://medium.com/@nickmeehan/actionsheet-popover-on-ipad-in-swift-5768dfa82094
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            if let popoverController = alertController.popoverPresentationController {
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
+        } else {
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func showNeedHelpActionSheet() {
+        let needHelp = NeedHelpAlertController(showingIn: self)
+        self.presentActionSheet(needHelp)
     }
 }

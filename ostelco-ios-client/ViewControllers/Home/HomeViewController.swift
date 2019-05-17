@@ -167,6 +167,6 @@ class HomeViewController: ApplePayViewController {
         #endif
         
         alertCtrl.addAction(.cancelAction())
-        present(alertCtrl, animated: true, completion: nil)
+        self.presentActionSheet(alertCtrl)
     }
 }

@@ -117,7 +117,7 @@ class BecomeAMemberViewController: ApplePayViewController {
         }
         alertCtrl.addAction(addCardsAction)
         alertCtrl.addAction(.cancelAction())
-        present(alertCtrl, animated: true, completion: nil)
+        self.presentActionSheet(alertCtrl)
     }
     #endif
 
