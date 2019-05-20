@@ -107,6 +107,7 @@ PODS:
     - PromiseKit/CorePromise
   - Protobuf (3.7.0)
   - Stripe (15.0.1)
+  - SwiftGifOrigin (1.7.0)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
@@ -121,6 +122,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
   - Stripe (~> 15.0.0)
+  - SwiftGifOrigin (~> 1.7.0)
   - SwiftLint (~> 0.31.0)
 
 SPEC REPOS:
@@ -146,6 +148,7 @@ SPEC REPOS:
     - PromiseKit
     - Protobuf
     - Stripe
+    - SwiftGifOrigin
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -170,8 +173,9 @@ SPEC CHECKSUMS:
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 0de9e0f588c9000d7d39f2baa6d03c8896528664
+PODFILE CHECKSUM: 45a16fc4bced3bab2f3e61e7f91be99df61a7c29
 
 COCOAPODS: 1.6.1

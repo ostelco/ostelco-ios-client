@@ -27,6 +27,7 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/Messaging', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>2.15.0'
   pod 'Stripe', '~>15.0.0'
+  pod 'SwiftGifOrigin', '~>1.7.0'
   pod 'SwiftLint', '~>0.31.0'
 
   # Dev app target
