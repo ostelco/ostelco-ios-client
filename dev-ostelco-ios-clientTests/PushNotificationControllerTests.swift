@@ -11,11 +11,39 @@ import XCTest
 
 class PushNotificationControllerTests: XCTestCase {
     
-    private lazy var testController = MockPushNotificationController()
+    private lazy var testUserManager = MockUserManager()
+
+    private lazy var testController: MockPushNotificationController = {
+        let controller = MockPushNotificationController()
+        controller.userManager = self.testUserManager
+        controller.primeAPI = self.mockAPI
+        
+        return controller
+    }()
+    
+    // MARK: - Test Lifecycle
+    
+    override func setUp() {
+        super.setUp()
+        self.setupStubbing()
+    }
+    
+    override func tearDown() {
+        self.tearDownStubbing()
+        super.tearDown()
+    }
+    
+    private func setupTokenMock() {
+        self.stubPath("applicationToken", toLoad: "send_push_token")
+    }
+    
+    // MARK: - Tests
     
     func testRegisteringForPushNotificationsNotForcingAuthorizationAndAccepting() {
         let fcmToken = "No forced auth and accepted"
         self.testController.fakeFCMToken = fcmToken
+        self.setupTokenMock()
+        
         guard let authorized = self.testController
             .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: false)
             .awaitResult(in: self) else {
@@ -30,7 +58,8 @@ class PushNotificationControllerTests: XCTestCase {
     func testRegisteringForPushNotificationsForcingAuthorizationAndAccepting() {
         let fcmToken = "Forced auth and accepted"
         self.testController.fakeFCMToken = fcmToken
-        
+        self.setupTokenMock()
+
         guard let authorized = self.testController
             .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
             .awaitResult(in: self) else {
@@ -46,7 +75,7 @@ class PushNotificationControllerTests: XCTestCase {
         let fcmToken = "Forced auth and declined"
         self.testController.fakeFCMToken = fcmToken
         self.testController.authorizationStatus = .denied
-        
+
         guard let error = self.testController
             .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
             .awaitResultExpectingError(in: self) else {
@@ -68,7 +97,8 @@ class PushNotificationControllerTests: XCTestCase {
         let fcmToken = "Already authorized"
         self.testController.fakeFCMToken = fcmToken
         self.testController.authorizationStatus = .authorized
-        
+        self.setupTokenMock()
+
         guard let authorized = self.testController
             .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: false)
             .awaitResult(in: self) else {
