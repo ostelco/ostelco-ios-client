@@ -167,8 +167,6 @@ public class BuyButton: OstelcoButton {
         self.addRoundingAndShadow(background: .oyaBlue)
     }
     
-
-    
     public override var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.noIntrinsicMetric,
                       height: 55)
