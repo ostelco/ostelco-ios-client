@@ -15,7 +15,7 @@ class LiveAPITests: XCTestCase {
     private lazy var testAPI = APIManager.shared.primeAPI
     
     func testLiveIfTheresAUser() {
-        guard UserManager.shared.firebaseUser != nil else {
+        guard UserManager.shared.hasCurrentUser else {
             print("Not running live tests without a logged in user!")
             return
         }

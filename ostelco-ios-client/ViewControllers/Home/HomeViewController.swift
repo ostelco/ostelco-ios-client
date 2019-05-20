@@ -70,7 +70,7 @@ class HomeViewController: ApplePayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIApplication.shared.typedDelegate.registerNotifications(authorise: true)
+        self.registerForPushNotificationsIfNeeded()
 
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
@@ -84,6 +84,19 @@ class HomeViewController: ApplePayViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchProducts()
+    }
+    
+    private func registerForPushNotificationsIfNeeded() {
+        PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
+            .catch { error in
+                switch error {
+                case PushNotificationController.Error.notAuthorized:
+                    // This is an expected error type, we don't need to do anything.
+                    break
+                default:
+                    ApplicationErrors.log(error)
+                }
+            }
     }
 
     private func fetchProducts() {

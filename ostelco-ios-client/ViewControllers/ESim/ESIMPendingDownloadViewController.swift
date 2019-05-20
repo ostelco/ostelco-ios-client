@@ -11,6 +11,10 @@ import Crashlytics
 import ostelco_core
 
 class ESIMPendingDownloadViewController: UIViewController {
+    
+    // for PushNotificationHandling
+    var pushNotificationObserver: NSObjectProtocol?
+    
     var spinnerView: UIView?
     var simProfile: SimProfile? {
         didSet {
@@ -127,15 +131,20 @@ class ESIMPendingDownloadViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addNotificationObserver(selector: #selector(onDidReceiveData(_:)))
+        self.addPushNotificationListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeNotificationObserver()
+        self.removePushNotificationListener()
     }
+}
+
+// MARK: - PushNotificationHandling
+
+extension ESIMPendingDownloadViewController: PushNotificationHandling {
     
-    @objc func onDidReceiveData(_ notification: Notification) {
-        print(#function, "Notification didReceivePushNotification arrived")
+    func handlePushNotification(userInfo: [AnyHashable: Any]?) {
+        debugPrint("GOT PUSH: \(String(describing: userInfo))")
     }
 }
