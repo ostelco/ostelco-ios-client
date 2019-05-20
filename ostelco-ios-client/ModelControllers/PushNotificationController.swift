@@ -37,8 +37,10 @@ class PushNotificationController: NSObject {
         UNUserNotificationCenter.current().delegate = self
         Messaging.messaging().delegate = self
         
-        // Allow direct delivery bypassing APNS when the app is open.
-        Messaging.messaging().shouldEstablishDirectChannel = true
+        if !UIApplication.isTesting {
+            // Allow direct delivery bypassing APNS when the app is open.
+            Messaging.messaging().shouldEstablishDirectChannel = true
+        }
     }
     
     /// Checks for the user's notification settings
