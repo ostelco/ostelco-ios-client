@@ -189,7 +189,7 @@ public class BuyButton: OstelcoButton {
 
 public class CheckButton: OstelcoButton {
     
-    private let checkSize: CGFloat = 25
+    private let checkSize: CGFloat = 30
   
     @IBInspectable
     public var isChecked: Bool = false {
@@ -205,7 +205,7 @@ public class CheckButton: OstelcoButton {
         
         self.appTitleColor = .white
         self.appFont = OstelcoFont(fontType: .bold,
-                                   fontSize: .body)
+                                   fontSize: .onboarding)
         self.tintColor = .white
         self.setupRoundedCenter(background: .oyaBlue)
         self.configureForChecked()
@@ -225,10 +225,9 @@ public class CheckButton: OstelcoButton {
     }
     
     public func setupRoundedCenter(background color: OstelcoColor) {
-        let cornerRadius = self.checkSize / 2
         let inset = (self.intrinsicContentSize.width - self.checkSize) / 2
         self.shapeLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: inset, dy: inset),
-                                            cornerRadius: cornerRadius).cgPath
+                                            cornerRadius: 5).cgPath
         self.shapeLayer.strokeColor = color.toUIColor.cgColor
         self.shapeLayer.lineWidth = 1
                 
