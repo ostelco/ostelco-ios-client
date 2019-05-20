@@ -27,7 +27,7 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     }
     
     func checkIfWeHaveALoggedInUser() {
-        guard UserManager.shared.firebaseUser != nil else {
+        guard UserManager.shared.hasCurrentUser else {
             // NOPE! We need to log in.
             UIApplication.shared.typedDelegate.rootCoordinator.showLogin()
             return

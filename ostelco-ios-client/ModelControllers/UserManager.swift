@@ -11,7 +11,7 @@ import FirebaseAuth
 import ostelco_core
 import PromiseKit
 
-class UserManager {
+class UserManager: TokenProvider {
     enum Error: Swift.Error {
         case noFirebaseUser
     }
@@ -40,8 +40,12 @@ class UserManager {
         }
     }
     
-    var firebaseUser: FirebaseAuth.User? {
+    private var firebaseUser: FirebaseAuth.User? {
         return Auth.auth().currentUser
+    }
+    
+    var hasCurrentUser: Bool {
+        return self.firebaseUser != nil
     }
     
     var currentUserEmail: String? {
@@ -149,9 +153,8 @@ class UserManager {
                 viewController?.showGenericError(error: error)
             }
     }
-}
-
-extension UserManager: TokenProvider {
+    
+    // MARK: - TokenProvider
     
     func getToken() -> Promise<String> {
         guard let user = self.firebaseUser else {

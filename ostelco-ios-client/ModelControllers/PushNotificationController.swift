@@ -18,6 +18,8 @@ class PushNotificationController: NSObject {
     
     enum Error: Swift.Error {
         case notAuthorized(status: UNAuthorizationStatus)
+        case noLoggedInUser
+        case fcmTokenWasNil
     }
     
     /// Singleton instance.
@@ -25,6 +27,9 @@ class PushNotificationController: NSObject {
     
     /// The user manager to use when trying to figure out if anyone is logged in. Variable for testing.
     var userManager = UserManager.shared
+    
+    /// The instance of the prime API to use when talking to prime. Variable for testing.
+    var primeAPI = APIManager.shared.primeAPI
     
     override init() {
         super.init()
@@ -106,24 +111,27 @@ class PushNotificationController: NSObject {
             }
     }
     
-    func sendFCMToken(_ fcmToken: String?) {
-        guard
-            self.userManager.firebaseUser != nil,
-            let token = fcmToken else {
-                // Wait to be authenticated, or the token to be ready.
-                return
+    @discardableResult
+    func sendFCMToken(_ fcmToken: String?) -> Promise<Void> {
+        guard self.userManager.hasCurrentUser else {
+            return Promise(error: Error.noLoggedInUser)
+        }
+        
+        guard let token = fcmToken else {
+            return Promise(error: Error.fcmTokenWasNil)
         }
         
         // Use the application ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
         
         let pushToken = PushToken(token: token, applicationID: appId)
-        APIManager.shared.primeAPI.sendPushToken(pushToken)
+        return self.primeAPI.sendPushToken(pushToken)
             .done {
                 debugPrint("Set new FCM token: \(token)")
             }
-            .catch { error in
+            .recover { error in
                 ApplicationErrors.log(error)
+                throw error
             }
     }
     
