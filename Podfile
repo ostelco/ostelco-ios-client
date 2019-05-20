@@ -16,17 +16,18 @@ end
 target 'ostelco-core' do
   pod 'Firebase/Auth', '~>5.20.1'
   pod 'Firebase/Core', firebase_version
-  pod 'PromiseKit', '~> 6.8.4'
+  pod 'PromiseKit', '~> 6.8.4' # Promises for Swift
 end
 
 abstract_target 'ostelco-ios' do
   pod 'Crashlytics', '~>3.12.0'
   pod 'Fabric', '~>1.9.0'
-  pod 'FreshchatSDK', '~>2.4.3'
+  pod 'FreshchatSDK', '~>2.4.3' # Customer Support live chat
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
-  pod 'JumioMobileSDK/Netverify', '~>2.15.0'
-  pod 'Stripe', '~>15.0.0'
+  pod 'JumioMobileSDK/Netverify', '~>2.15.0' # eKYC
+  pod 'Nantes', '~>0.0.7' # Labels with links
+  pod 'Stripe', '~>15.0.0' # Payments
   pod 'SwiftGifOrigin', '~>1.7.0'
   pod 'SwiftLint', '~>0.31.0'
 
@@ -36,7 +37,7 @@ abstract_target 'ostelco-ios' do
     # Test target
     target 'dev-ostelco-ios-clientTests' do
       inherit! :search_paths
-      pod 'OHHTTPStubs/Swift', '~>8.0.0'
+      pod 'OHHTTPStubs/Swift', '~>8.0.0' # URL mocking
     end
   end
 

@@ -83,6 +83,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Nantes (0.0.7)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - Firebase/Messaging (~> 5.20.1)
   - FreshchatSDK (~> 2.4.3)
   - JumioMobileSDK/Netverify (~> 2.15.0)
+  - Nantes (~> 0.0.7)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
   - Stripe (~> 15.0.0)
@@ -144,6 +146,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JumioMobileSDK
     - nanopb
+    - Nantes
     - OHHTTPStubs
     - PromiseKit
     - Protobuf
@@ -169,6 +172,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   JumioMobileSDK: 8949971b2007fccf1e63bac2f30f108a1ff2c53f
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Nantes: 85db7af961c30e5116ffa6ac3f74f790b5f23d90
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
@@ -176,6 +180,6 @@ SPEC CHECKSUMS:
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 45a16fc4bced3bab2f3e61e7f91be99df61a7c29
+PODFILE CHECKSUM: ab033cbcf9a321e74c36d4635c8d7b1297277592
 
 COCOAPODS: 1.6.1
