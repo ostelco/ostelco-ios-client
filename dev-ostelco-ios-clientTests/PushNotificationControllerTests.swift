@@ -68,6 +68,15 @@ class PushNotificationControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(authorized)
+        
+        guard let promise = self.testController.activeSendTokenPromise else {
+            XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
+            return
+        }
+        
+        promise.awaitResult(in: self)
+        self.testController.activeSendTokenPromise = nil
+
         XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
     }
     
@@ -107,6 +116,15 @@ class PushNotificationControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(authorized)
+        
+        guard let promise = self.testController.activeSendTokenPromise else {
+            XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
+            return
+        }
+        
+        promise.awaitResult(in: self)
+        self.testController.activeSendTokenPromise = nil
+        
         XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
     }
     

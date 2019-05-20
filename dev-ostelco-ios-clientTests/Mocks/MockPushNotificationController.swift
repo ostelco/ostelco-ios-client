@@ -20,6 +20,7 @@ class MockPushNotificationController: PushNotificationController {
     
     var authorizationStatus: UNAuthorizationStatus = .notDetermined
     var shouldAuthorize: Bool = true
+    var activeSendTokenPromise: Promise<Void>?
     
     var fakeFCMToken: String?
     
@@ -45,7 +46,9 @@ class MockPushNotificationController: PushNotificationController {
 
     override func sendFCMToken(_ fcmToken: String?) -> Promise<Void> {
         self.sentFCMToken = fcmToken
-        return super.sendFCMToken(fcmToken)
+        let promise = super.sendFCMToken(fcmToken)
+        self.activeSendTokenPromise = promise
+        return promise
     }
     
     override func otherAppleUserInfoHandling(_ userInfo: [AnyHashable: Any]) {
