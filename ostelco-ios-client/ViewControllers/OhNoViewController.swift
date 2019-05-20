@@ -16,13 +16,19 @@ class OhNoViewController: UIViewController {
         case generic(code: String?)
         case ekycRejected
         case myInfoFailed
-        
+        case paymentFailedGeneric
+        case paymentFailedCardDeclined
+
         var displayTitle: String {
             switch self {
             case .generic,
                  .ekycRejected,
                  .myInfoFailed:
                 return "Oh no"
+            case .paymentFailedGeneric:
+                return "Payment Failed"
+            case .paymentFailedCardDeclined:
+                return "Card Declined"
             }
         }
         
@@ -33,6 +39,9 @@ class OhNoViewController: UIViewController {
                 return UIImage(named: "illustrationGhost")!
             case .ekycRejected:
                 return UIImage(named: "illustrationPainter")!
+            case .paymentFailedGeneric,
+                 .paymentFailedCardDeclined:
+                return UIImage(named: "illustrationSittingOnCloud")!
             }
         }
         
@@ -54,13 +63,19 @@ class OhNoViewController: UIViewController {
                 return NSAttributedString(string: "Something went wrong.\n\nTry again in a while, or contact support")
             case .myInfoFailed:
                 return NSAttributedString(string: "We're unable to retrieve your info from MyInfo.\n\n. Try later.")
+            case .paymentFailedGeneric:
+                 return NSAttributedString(string: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.")
+            case .paymentFailedCardDeclined:
+                return NSAttributedString(string: "Your card was declined. Contact your bank or try with another card.")
             }
         }
         
         var buttonTitle: String {
             switch self {
             case .generic,
-                 .myInfoFailed:
+                 .myInfoFailed,
+                 .paymentFailedGeneric,
+                 .paymentFailedCardDeclined:
                 return "Try again"
             case .ekycRejected:
                 return "Retry"

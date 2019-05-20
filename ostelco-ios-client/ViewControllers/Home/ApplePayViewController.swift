@@ -47,12 +47,34 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
                 self.showAlert(title: "Payment Error", msg: error.localizedDescription)
             case .userCancelled:
                 debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
+            case .paymentDeclined:
+                debugPrint(error.localizedDescription, "Payment was declined")
+                showOhNo(type: .paymentFailedCardDeclined)
             case .primeAPIError(let requestError):
-                self.showGenericError(error: requestError)
+                debugPrint(requestError.localizedDescription, "Payment failed")
+                showOhNo(type: .paymentFailedGeneric)
             }
         } else {
             showAlert(title: "Payment Error", msg: error.localizedDescription)
         }
+    }
+
+    func showOhNo(type: OhNoViewController.IssueType) {
+        let ohNo = OhNoViewController.fromStoryboard(type: type)
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: { [weak self] in
+                guard let product = self?.purchasingProduct else {
+                    debugPrint("Cannot find the purchasing product, cancel retry")
+                    return
+                }
+                #if STRIPE_PAYMENT
+                    self?.startStripePay(product: product)
+                #else
+                    self?.startApplePay(product: product)
+                #endif
+            })
+        }
+        present(ohNo, animated: true)
     }
 
     func paymentSuccessful(_ product: Product?) {

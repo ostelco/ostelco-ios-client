@@ -130,7 +130,7 @@ class HomeViewController: ApplePayViewController {
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
-        if hasSubscription {
+       if hasSubscription {
             // TODO: Should we show the plans here ?
             showProductListActionSheet(products: self.availableProducts)
         } else {
