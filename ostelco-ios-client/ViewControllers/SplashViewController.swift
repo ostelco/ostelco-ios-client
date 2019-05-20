@@ -27,15 +27,13 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     }
     
     func checkIfWeHaveALoggedInUser() {
-        guard UserManager.shared.firebaseUser != nil else {
+        guard UserManager.shared.hasCurrentUser else {
             // NOPE! We need to log in.
             UIApplication.shared.typedDelegate.rootCoordinator.showLogin()
             return
         }
         
         // YEP! Now we need to know where to send them.
-        UIApplication.shared.typedDelegate.sendFCMToken()
-        
         let spinnerView = self.showSpinner(onView: self.view)
         UserManager.shared.getDestinationFromContext()
             .ensure { [weak self] in

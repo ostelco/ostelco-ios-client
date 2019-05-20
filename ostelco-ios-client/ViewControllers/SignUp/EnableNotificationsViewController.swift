@@ -15,15 +15,6 @@ class EnableNotificationsViewController: UIViewController {
         super.viewDidLoad()
         OstelcoAnalytics.logEvent(.LegalStuffAgreed)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.enableNotifications(ignoreNotDetermined: true)
-    }
-    
-    private func registerAndContinue() {
-        UIApplication.shared.typedDelegate.enableNotifications()
-        self.showGetStarted()
-    }
     
     @IBAction private func continueTapped() {
         self.requestNotificationAuthorization()
@@ -32,31 +23,22 @@ class EnableNotificationsViewController: UIViewController {
     @IBAction private func needHelpTapped() {
         self.showNeedHelpActionSheet()
     }
-    
-    private func enableNotifications(ignoreNotDetermined: Bool = false) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            DispatchQueue.main.async {
-                switch settings.authorizationStatus {
-                case .notDetermined:
-                    if !ignoreNotDetermined {
-                        self.requestNotificationAuthorization()
-                    }
-                case.authorized:
-                    print("Already authorized to show notifications, continue")
-                    self.registerAndContinue()
+
+    private func requestNotificationAuthorization() {
+        PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
+            .done { [weak self] _ in
+                self?.showGetStarted()
+            }
+            .catch { [weak self] error in
+                switch error {
+                case PushNotificationController.Error.notAuthorized:
+                    // The user declined push notifications. Oh well. Let's move on.
+                    self?.showGetStarted()
                 default:
-                    self.showGetStarted()
+                    ApplicationErrors.log(error)
+                    self?.showGenericError(error: error)
                 }
             }
-        }
-    }
-    
-    private func requestNotificationAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in
-            DispatchQueue.main.async {
-                self.registerAndContinue()
-            }
-        }
     }
     
     private func showGetStarted() {

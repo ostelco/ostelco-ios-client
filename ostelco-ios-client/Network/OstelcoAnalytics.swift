@@ -42,9 +42,9 @@ enum AnalyticsEvent {
     case ChosenCountry(country: Country)
     case ChosenIDMethod(idMethod: String)
     case DownloadingESIM
-}
+    case PushNotificationsAccepted
+    case PushNotificationsDeclined
 
-extension AnalyticsEvent {
     var name: String {
         switch self {
         case .ChosenCountry:
