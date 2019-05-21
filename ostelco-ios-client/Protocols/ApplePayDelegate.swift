@@ -144,17 +144,18 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
 
     // Create appropriate ApplePayError based on the Error
     func createPaymentError(_ error: Error) -> ApplePayError {
-        // All generic payment errors are treated as primeAPIError
-        var paymentError = ApplePayError.primeAPIError(error)
-        if let apiError = error as? APIHelper.Error {
-            if case let .jsonError(jsonRequestError) = apiError {
-                // Payment is declined when status = 403 and code = FAILED_TO_PURCHASE_PRODUCT
-                if jsonRequestError.httpStatusCode == 403 && jsonRequestError.errorCode == "FAILED_TO_PURCHASE_PRODUCT" {
-                    paymentError = ApplePayError.paymentDeclined
-                }
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            // Handle status logic here, return payment declined if needed otherwise keep going
+            // Payment is declined when status = 403 and code = FAILED_TO_PURCHASE_PRODUCT
+            if jsonError.httpStatusCode == 403 && jsonError.errorCode == "FAILED_TO_PURCHASE_PRODUCT" {
+                return ApplePayError.paymentDeclined
             }
+        default:
+            break
         }
-        return paymentError
+        // All generic payment errors are treated as primeAPIError
+        return ApplePayError.primeAPIError(error)
     }
 
     // Findout if we can make payments on this device.
