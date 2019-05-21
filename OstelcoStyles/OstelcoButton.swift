@@ -54,6 +54,8 @@ open class OstelcoButton: UIButton {
         }
     }
     
+    fileprivate var roundedBackgroundLayer: CAShapeLayer?
+    
     // MARK: - Overridden variables
     
     open override var isEnabled: Bool {
@@ -96,6 +98,17 @@ open class OstelcoButton: UIButton {
     
     // MARK: - Shadow helpers
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let shapeLayer = self.roundedBackgroundLayer else {
+            return
+        }
+        
+        let cornerRadius = self.intrinsicContentSize.height / 2
+        shapeLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+        shapeLayer.shadowPath = shapeLayer.path
+    }
+    
     fileprivate func addRoundingAndShadow(background color: OstelcoColor) {
         let cornerRadius = self.intrinsicContentSize.height / 2
         let shapeLayer = CAShapeLayer()
@@ -110,6 +123,7 @@ open class OstelcoButton: UIButton {
         shapeLayer.shadowRadius = 18
         
         self.layer.insertSublayer(shapeLayer, at: 0)
+        self.roundedBackgroundLayer = shapeLayer
     }
 }
 
