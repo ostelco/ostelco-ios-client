@@ -61,18 +61,9 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
 
     func showOhNo(type: OhNoViewController.IssueType) {
         let ohNo = OhNoViewController.fromStoryboard(type: type)
+        ohNo.buttonTitle = "Ok I understand"
         ohNo.primaryButtonAction = {
-            ohNo.dismiss(animated: true, completion: { [weak self] in
-                guard let product = self?.purchasingProduct else {
-                    debugPrint("Cannot find the purchasing product, cancel retry")
-                    return
-                }
-                #if STRIPE_PAYMENT
-                    self?.startStripePay(product: product)
-                #else
-                    self?.startApplePay(product: product)
-                #endif
-            })
+            ohNo.dismiss(animated: true, completion: nil)
         }
         present(ohNo, animated: true)
     }
