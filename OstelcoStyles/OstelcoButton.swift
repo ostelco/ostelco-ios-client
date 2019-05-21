@@ -239,3 +239,62 @@ public class CheckButton: OstelcoButton {
                       height: 44)
     }
 }
+
+public class RadioButton: OstelcoButton {
+    
+    private let outerCircleWidth: CGFloat = 30
+    private let innerCircleWidth: CGFloat = 14
+    
+    private lazy var outerLayer = CAShapeLayer()
+    private lazy var innerLayer = CAShapeLayer()
+    
+    @IBInspectable
+    public var isCurrentSelected: Bool = false {
+        didSet {
+            self.configureForSelected()
+        }
+    }
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.setupLayers(background: .oyaBlue)
+        self.configureForSelected()
+    }
+    
+    private func configureForSelected() {
+        if self.isCurrentSelected {
+            self.layer.addSublayer(self.innerLayer)
+            // TODO: Localize accessibility
+            self.accessibilityLabel = "Selected"
+            self.layer.addSublayer(self.innerLayer)
+        } else {
+            self.innerLayer.removeFromSuperlayer()
+            self.accessibilityLabel = "Deselected"
+        }
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 44,
+                      height: 44)
+    }
+    
+    private func setupLayers(background color: OstelcoColor) {
+        let outerLayerInset = (self.intrinsicContentSize.width - self.outerCircleWidth) / 2
+        let outerCornerRadius = self.outerCircleWidth / 2
+        self.outerLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: outerLayerInset, dy: outerLayerInset),
+                                            cornerRadius: outerCornerRadius).cgPath
+        self.outerLayer.strokeColor = color.toUIColor.cgColor
+        self.outerLayer.lineWidth = 1
+        self.outerLayer.fillColor = nil
+        
+        self.layer.insertSublayer(self.outerLayer, at: 0)
+        
+        let innerLayerInset = (self.intrinsicContentSize.width - self.innerCircleWidth) / 2
+        let innerCornerRadius = self.innerCircleWidth / 2
+        self.innerLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: innerLayerInset, dy: innerLayerInset),
+                                            cornerRadius: innerCornerRadius).cgPath
+        
+        self.innerLayer.fillColor = color.toUIColor.cgColor
+        self.innerLayer.strokeColor = color.toUIColor.cgColor
+    }
+}
