@@ -64,7 +64,7 @@ class OhNoViewController: UIViewController {
             case .myInfoFailed:
                 return NSAttributedString(string: "We're unable to retrieve your info from MyInfo.\n\n. Try later.")
             case .paymentFailedGeneric:
-                 return NSAttributedString(string: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.")
+                return NSAttributedString(string: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.")
             case .paymentFailedCardDeclined:
                 return NSAttributedString(string: "Your card was declined. Contact your bank or try with another card.")
             }
