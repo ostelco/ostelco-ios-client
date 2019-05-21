@@ -1,0 +1,14 @@
+{
+  "aps" : {
+    "alert" : {
+      "title" : "Test notification",
+      "body" : "I am a test!"
+    }
+  },
+  "google.c.a.c_id" : "fake_cac_id",
+  "google.c.a.e" : "1",
+  "gcm.message_id" : "0:fake_message_id%gibberish",
+  "gcm.n.e" : "1",
+  "google.c.a.ts" : "lol_cats",
+  "google.c.a.udt" : "0"
+}

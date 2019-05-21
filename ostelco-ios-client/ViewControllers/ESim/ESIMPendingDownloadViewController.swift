@@ -144,7 +144,7 @@ class ESIMPendingDownloadViewController: UIViewController {
 
 extension ESIMPendingDownloadViewController: PushNotificationHandling {
     
-    func handlePushNotification(userInfo: [AnyHashable: Any]?) {
-        debugPrint("GOT PUSH: \(String(describing: userInfo))")
+    func handlePushNotification(_ notification: PushNotification) {
+        debugPrint("GOT PUSH: \(notification)")
     }
 }

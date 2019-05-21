@@ -136,8 +136,8 @@ extension PendingVerificationViewController: StoryboardLoadable {
 
 extension PendingVerificationViewController: PushNotificationHandling {
     
-    func handlePushNotification(userInfo: [AnyHashable: Any]?) {
-        debugPrint("GOT PUSH: \(String(describing: userInfo))")
+    func handlePushNotification(_ notification: PushNotification) {
+        debugPrint("Got notification: \(notification)")
     }
 }
 
