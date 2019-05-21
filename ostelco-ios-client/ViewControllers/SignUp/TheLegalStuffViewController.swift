@@ -13,14 +13,17 @@ class TheLegalStuffViewController: UIViewController {
     
     @IBOutlet private weak var termsAndConditionsLabel: BodyTextLabel!
     @IBOutlet private weak var privacyPolicyLabel: BodyTextLabel!
+    @IBOutlet private weak var ageLabel: BodyTextLabel!
     
     @IBOutlet private weak var termsAndConditionsCheck: CheckButton!
     @IBOutlet private weak var privacyPolicyCheck: CheckButton!
+    @IBOutlet private weak var ageCheck: CheckButton!
     
     private var allChecks: [CheckButton] {
         return [
             self.termsAndConditionsCheck,
-            self.privacyPolicyCheck
+            self.privacyPolicyCheck,
+            self.ageCheck
         ]
     }
     
@@ -31,7 +34,8 @@ class TheLegalStuffViewController: UIViewController {
         
         self.termsAndConditionsLabel.setFullText("I hereby agree to the Terms & Conditions", withBoldedPortion: "Terms & Conditions")
         self.privacyPolicyLabel.setFullText("I agree to the Privacy Policy", withBoldedPortion: "Privacy Policy")
-
+        self.ageLabel.setFullText("I am at least 18 years of age", withBoldedPortion: "18 years")
+        
         self.updateContinueButtonState()
     }
 
@@ -60,6 +64,11 @@ class TheLegalStuffViewController: UIViewController {
     
     @IBAction private func privacyPolicyTapped(sender: UITapGestureRecognizer) {
         UIApplication.shared.open(ExternalLink.privacyPolicy.url)
+    }
+    
+    @IBAction private func ageTapped(sender: UITapGestureRecognizer) {
+        #warning("Get actual link for this before launch!")
+        self.showAlert(title: "Placeholder", msg: "Must get actual URL here!")
     }
 }
 
