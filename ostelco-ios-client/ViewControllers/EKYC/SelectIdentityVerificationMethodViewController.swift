@@ -12,36 +12,38 @@ import OstelcoStyles
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
     
-    @IBOutlet private var singPassCheck: CheckButton!
-    @IBOutlet private var scanICCheck: CheckButton!
+    @IBOutlet private var singPassButton: RadioButton!
+    @IBOutlet private var scanICButton: RadioButton!
     @IBOutlet private var continueButton: UIButton!
+
+    private lazy var radioButtons: [RadioButton] = [
+        self.singPassButton,
+        self.scanICButton
+    ]
     
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
     var spinnerView: UIView?
 
-    @IBAction private func checkTapped(_ check: CheckButton) {
-        check.isChecked.toggle()
-        
-        switch check {
-        case self.singPassCheck:
-            self.scanICCheck.isChecked = false
-        case self.scanICCheck:
-            self.singPassCheck.isChecked = false
-        default:
-            ApplicationErrors.assertAndLog("Unknown option toggled!")
+    @IBAction private func selectRadioButton(_ radioButton: RadioButton) {
+        self.radioButtons.forEach { button in
+            if button == radioButton {
+                button.isCurrentSelected = true
+            } else {
+                button.isCurrentSelected = false
+            }
         }
         
         self.updateContinue()
     }
     
     @IBAction private func continueTapped() {
-        if self.singPassCheck.isChecked {
+        if self.singPassButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             //performSegue(withIdentifier: "myInfoSummary", sender: self)
             UIApplication.shared.typedDelegate.myInfoDelegate = self
             startMyInfoLogin()
-        } else if self.scanICCheck.isChecked {
+        } else if self.singPassButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             performSegue(withIdentifier: "nricVerify", sender: self)
         } else {
@@ -50,15 +52,16 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     }
     
     private func updateContinue() {
-        if self.singPassCheck.isChecked || self.scanICCheck.isChecked {
+        if self.radioButtons.contains(where: { $0.isCurrentSelected }) {
             self.continueButton.isEnabled = true
         } else {
+            // No option has been selected yet. Disable.
             self.continueButton.isEnabled = false
         }
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        showNeedHelpActionSheet()
+        self.showNeedHelpActionSheet()
     }
     
     func startMyInfoLogin() {
