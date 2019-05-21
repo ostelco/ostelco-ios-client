@@ -298,3 +298,45 @@ public class RadioButton: OstelcoButton {
         self.innerLayer.strokeColor = color.toUIColor.cgColor
     }
 }
+
+public class DropShadowButton: OstelcoButton {
+    
+    private lazy var dropShadowLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.path = UIBezierPath(roundedRect: self.bounds,
+                                  cornerRadius: self.defaultCornerRadius).cgPath
+        
+        layer.shadowColor = OstelcoColor.black.toUIColor.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.1
+        layer.fillColor = OstelcoColor.white.toUIColor.cgColor
+        
+        return layer
+    }()
+    
+    public override func commonInit() {
+        super.commonInit()
+        
+        self.appTitleColor = .blackForText
+        self.appFont = OstelcoFont(fontType: .medium,
+                                   fontSize: .body)
+        
+       
+        self.layer.insertSublayer(self.dropShadowLayer, at: 0)
+       
+        if let imageView = self.imageView {
+            self.bringSubviewToFront(imageView)
+        }
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.dropShadowLayer.path = UIBezierPath(roundedRect: self.bounds,
+                                  cornerRadius: self.defaultCornerRadius).cgPath
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 154,
+                      height: 56)
+    }
+}
