@@ -93,6 +93,24 @@ open class OstelcoButton: UIButton {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
+    
+    // MARK: - Shadow helpers
+    
+    fileprivate func addRoundingAndShadow(background color: OstelcoColor) {
+        let cornerRadius = self.intrinsicContentSize.height / 2
+        let shapeLayer = CAShapeLayer()
+        
+        shapeLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+        
+        shapeLayer.fillColor = color.toUIColor.cgColor
+        shapeLayer.shadowColor = color.toUIColor.cgColor
+        shapeLayer.shadowPath = shapeLayer.path
+        shapeLayer.shadowOpacity = 0.3
+        shapeLayer.shadowOffset = CGSize(width: 0, height: 7)
+        shapeLayer.shadowRadius = 18
+        
+        self.layer.insertSublayer(shapeLayer, at: 0)
+    }
 }
 
 public class LinkTextButton: OstelcoButton {
@@ -111,13 +129,11 @@ public class PrimaryButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
-        self.appBackgroundColor = .oyaBlue
         self.appTitleColor = .white
         self.appFont = OstelcoFont(fontType: .semibold,
                                    fontSize: .secondary)
         
-        self.clipsToBounds = true
-        self.layer.cornerRadius = self.defaultCornerRadius
+        self.addRoundingAndShadow(background: .oyaBlue)
     }
     
     public override var intrinsicContentSize: CGSize {
@@ -130,17 +146,15 @@ public class SmallButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
-        self.layer.cornerRadius = self.defaultCornerRadius
-        self.clipsToBounds = true
         self.contentEdgeInsets = UIEdgeInsets(top: 7,
                                               left: 14,
                                               bottom: 7,
                                               right: 14)
         
-        self.appBackgroundColor = .oyaBlue
         self.appTitleColor = .white
         self.appFont = OstelcoFont(fontType: .semibold,
                                    fontSize: .smallButton)
+        self.addRoundingAndShadow(background: .oyaBlue)
     }
 }
 
@@ -151,22 +165,6 @@ public class BuyButton: OstelcoButton {
         self.appTitleColor = .white
         self.appFont = OstelcoFont(fontType: .bold, fontSize: .body)
         self.addRoundingAndShadow(background: .oyaBlue)
-    }
-    
-    private func addRoundingAndShadow(background color: OstelcoColor) {
-        let cornerRadius = self.intrinsicContentSize.height / 2
-        let shapeLayer = CAShapeLayer()
-        
-        shapeLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
-        
-        shapeLayer.fillColor = color.toUIColor.cgColor
-        shapeLayer.shadowColor = color.toUIColor.cgColor
-        shapeLayer.shadowPath = shapeLayer.path
-        shapeLayer.shadowOpacity = 0.3
-        shapeLayer.shadowOffset = CGSize(width: 0, height: 7)
-        shapeLayer.shadowRadius = 18
-        
-        self.layer.insertSublayer(shapeLayer, at: 0)
     }
     
     public override var intrinsicContentSize: CGSize {
