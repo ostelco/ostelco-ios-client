@@ -73,12 +73,13 @@ class OhNoViewController: UIViewController {
         var buttonTitle: String {
             switch self {
             case .generic,
-                 .myInfoFailed,
-                 .paymentFailedGeneric,
-                 .paymentFailedCardDeclined:
+                 .myInfoFailed:
                 return "Try again"
             case .ekycRejected:
                 return "Retry"
+            case .paymentFailedGeneric,
+                 .paymentFailedCardDeclined:
+                return "OK"
             }
         }
     }

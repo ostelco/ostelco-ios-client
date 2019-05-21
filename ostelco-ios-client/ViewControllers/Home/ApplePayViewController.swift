@@ -61,7 +61,6 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
 
     func showOhNo(type: OhNoViewController.IssueType) {
         let ohNo = OhNoViewController.fromStoryboard(type: type)
-        ohNo.buttonTitle = "OK"
         ohNo.primaryButtonAction = {
             ohNo.dismiss(animated: true, completion: nil)
         }
