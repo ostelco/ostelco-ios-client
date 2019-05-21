@@ -747,7 +747,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <image name="stepDoneIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lEw-Lv-iIN"/>
-        <segue reference="V1P-0a-sbR"/>
+        <segue reference="ALh-un-KZb"/>
+        <segue reference="e1q-8T-pOn"/>
     </inferredMetricsTieBreakers>
 </document>
