@@ -81,7 +81,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             .catch { error in
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
                 ApplicationErrors.log(error)
-                self.applePayError = self.createApplePayError(error)
+                self.applePayError = self.createPaymentError(error)
                 completion(PKPaymentAuthorizationResult(status: .failure, errors: [error]))
                 // Wait for finish method before we call paymentError()
             }
@@ -143,7 +143,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     // MARK: - Other Helpers.
 
     // Create appropriate ApplePayError based on the Error
-    func createApplePayError(_ error: Error) -> ApplePayError {
+    func createPaymentError(_ error: Error) -> ApplePayError {
         // All generic payment errors are treated as primeAPIError
         var paymentError = ApplePayError.primeAPIError(error)
         if let apiError = error as? APIHelper.Error {
