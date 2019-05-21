@@ -84,35 +84,63 @@
                                     <action selector="needHelpTapped" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="Jcv-PQ-0I3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7I-ar-SNO" customClass="CheckButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="65" y="404.33333333333331" width="44" height="44"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Nyb-6M-zL2"/>
+                                    <constraint firstAttribute="height" constant="44" id="uL1-iU-ZVt"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="checkButtonTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="8xU-Qe-F1k"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="I am at least 18 years of age" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvT-X2-jqG" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="132" y="406" width="178" height="40.666666666666686"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bjz-VS-NgE" appends="YES" id="9G7-NM-o7J"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="44" id="0cg-Fv-WhP"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="fhX-lv-Abz" secondAttribute="trailing" constant="65" id="3E6-mj-6hA"/>
-                            <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="4ct-C6-Ngo" secondAttribute="trailing" constant="65" id="5Rb-94-nUc"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="24" id="BeZ-UY-Gdf"/>
-                            <constraint firstItem="4ct-C6-Ngo" firstAttribute="leading" secondItem="oKo-ag-iar" secondAttribute="trailing" constant="23" id="GNE-Kg-32f"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="MU2-9r-kL0" secondAttribute="trailing" constant="24" id="GNQ-Lg-84S"/>
+                            <constraint firstItem="4ct-C6-Ngo" firstAttribute="trailing" secondItem="fhX-lv-Abz" secondAttribute="trailing" id="GOw-Mp-bYD"/>
                             <constraint firstItem="5XH-1y-ENz" firstAttribute="top" secondItem="BD5-xy-nGB" secondAttribute="bottom" constant="100" id="GfF-9T-6zt"/>
                             <constraint firstItem="4ct-C6-Ngo" firstAttribute="top" secondItem="fhX-lv-Abz" secondAttribute="bottom" constant="20" id="IUE-5g-NOK"/>
+                            <constraint firstItem="TvT-X2-jqG" firstAttribute="centerY" secondItem="Z7I-ar-SNO" secondAttribute="centerY" id="JgO-vc-8AU"/>
                             <constraint firstItem="fhX-lv-Abz" firstAttribute="leading" secondItem="5XH-1y-ENz" secondAttribute="trailing" constant="23" id="LEK-hf-ddd"/>
                             <constraint firstItem="4ct-C6-Ngo" firstAttribute="centerY" secondItem="oKo-ag-iar" secondAttribute="centerY" id="LbA-yV-Ff1"/>
+                            <constraint firstItem="TvT-X2-jqG" firstAttribute="leading" secondItem="fhX-lv-Abz" secondAttribute="leading" id="OtN-kO-PDx"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="top" secondItem="NBH-PE-WSS" secondAttribute="bottom" constant="16" id="U39-4i-Nkw"/>
                             <constraint firstItem="oKo-ag-iar" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="65" id="VFI-OQ-ZEj"/>
                             <constraint firstItem="IDd-hs-GvP" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="W8Z-E6-2jP"/>
+                            <constraint firstItem="TvT-X2-jqG" firstAttribute="trailing" secondItem="fhX-lv-Abz" secondAttribute="trailing" id="XE1-Zb-85r"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="BD5-xy-nGB" secondAttribute="trailing" constant="16" id="ZJn-iF-S9D"/>
+                            <constraint firstItem="4ct-C6-Ngo" firstAttribute="leading" secondItem="fhX-lv-Abz" secondAttribute="leading" id="ZaO-ao-Ckd"/>
                             <constraint firstItem="BD5-xy-nGB" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="16" id="aFU-nu-jr4"/>
+                            <constraint firstItem="TvT-X2-jqG" firstAttribute="top" secondItem="4ct-C6-Ngo" secondAttribute="bottom" constant="20" id="bNp-SB-VZa"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="bottom" secondItem="MU2-9r-kL0" secondAttribute="bottom" constant="44" id="icc-2j-d81"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="top" secondItem="IDd-hs-GvP" secondAttribute="bottom" constant="34" id="sKh-zY-Lq2"/>
                             <constraint firstItem="fhX-lv-Abz" firstAttribute="centerY" secondItem="5XH-1y-ENz" secondAttribute="centerY" id="t7m-si-hg8"/>
                             <constraint firstItem="MU2-9r-kL0" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="24" id="tTI-YA-gy5"/>
+                            <constraint firstItem="TvT-X2-jqG" firstAttribute="leading" secondItem="Z7I-ar-SNO" secondAttribute="trailing" constant="23" id="vJa-Sd-San"/>
                             <constraint firstItem="5XH-1y-ENz" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="65" id="vNj-e6-gl9"/>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="NBH-PE-WSS" secondAttribute="trailing" constant="24" id="w4f-oW-00N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lio-dE-X4q"/>
                     </view>
                     <connections>
+                        <outlet property="ageCheck" destination="Z7I-ar-SNO" id="T66-cr-rlM"/>
+                        <outlet property="ageLabel" destination="TvT-X2-jqG" id="dpO-OW-wPQ"/>
                         <outlet property="continueButton" destination="MU2-9r-kL0" id="0g2-uG-RTP"/>
                         <outlet property="privacyPolicyCheck" destination="oKo-ag-iar" id="gbE-PR-csP"/>
                         <outlet property="privacyPolicyLabel" destination="4ct-C6-Ngo" id="enC-yd-tzb"/>
@@ -131,6 +159,11 @@
                         <action selector="privacyPolicyTappedWithSender:" destination="Q2B-DW-NZJ" id="GEg-Cz-lQG"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="bjz-VS-NgE">
+                    <connections>
+                        <action selector="ageTappedWithSender:" destination="Q2B-DW-NZJ" id="HI6-zz-Z5D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="60" y="28.335832083958024"/>
         </scene>
@@ -143,19 +176,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow push notifications" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dam-4t-AgC" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="76.666666666666686"/>
+                                <rect key="frame" x="24" y="88" width="327" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you let us, we'll let you know when your 2GB is ready to use" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-BI-FHP" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="180.66666666666666" width="343" height="40.666666666666657"/>
+                                <rect key="frame" x="16" y="140" width="343" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-4i-IUw" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="USN-HI-rjY"/>
@@ -165,7 +198,7 @@
                                 <rect key="frame" x="56" y="304" width="291" height="204"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-Zm-rhZ" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <rect key="frame" x="148.66666666666666" y="640" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="Cs5-Hy-gA9" eventType="touchUpInside" id="WQL-DB-YsR"/>
@@ -209,19 +242,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58z-OV-xk5" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
+                                <rect key="frame" x="24" y="88" width="327" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT SHOULD WE CALL YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-qY-Xwu">
-                                <rect key="frame" x="16" y="182.33333333333334" width="193" height="16"/>
+                                <rect key="frame" x="16" y="180" width="193" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g Jolly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-mX-GWu" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="206.33333333333334" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="204" width="375" height="17"/>
                                 <accessibility key="accessibilityConfiguration" hint="test"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -231,14 +264,14 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERf-ng-eZR" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="kSR-PZ-JWA" eventType="touchUpInside" id="QEI-Mx-3pr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-En-ghf" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <rect key="frame" x="148.66666666666666" y="640" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="kSR-PZ-JWA" eventType="touchUpInside" id="uXb-1v-ADe"/>
