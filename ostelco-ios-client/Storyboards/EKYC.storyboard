@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="p4c-8F-xgI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dcw-mJ-c2k">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the info  we fetched:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-pg-vOP">
@@ -101,13 +101,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Coronation Rd 078881 Singapore" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-Ux-hgl">
-                                <rect key="frame" x="24" y="493" width="266" height="36"/>
+                                <rect key="frame" x="24" y="493" width="264" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw2-9i-yMz" customClass="SmallButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="298" y="493" width="53" height="31"/>
+                                <rect key="frame" x="296" y="493" width="55" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
@@ -127,7 +127,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-B6-gXk" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="102.66666666666669" y="641" width="170" height="33"/>
+                                <rect key="frame" x="98" y="641" width="179" height="33"/>
                                 <state key="normal" title="Try Loading Info Again"/>
                                 <connections>
                                     <action selector="tryAgainTapped" destination="gvs-yG-kvc" eventType="touchUpInside" id="2sS-yZ-6ol"/>
@@ -229,7 +229,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iV4-pi-NqU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rVO-dG-aIs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're checking your docs right now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-wX-vOS" customClass="Heading2Label" customModule="OstelcoStyles">
@@ -246,14 +246,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD3-aa-FLQ" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="PEw-c6-lRR" eventType="touchUpInside" id="MNI-eQ-D3e"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationWaiting" translatesAutoresizingMaskIntoConstraints="NO" id="Aki-Tt-fsJ">
-                                <rect key="frame" x="179.66666666666666" y="229.66666666666666" width="16" height="16"/>
+                                <rect key="frame" x="78.666666666666686" y="229.66666666666663" width="218" height="162"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7C-ps-86K" customClass="BodyTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="515.66666666666663" width="327" height="81.333333333333371"/>
@@ -311,24 +311,24 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <viewControllerLayoutGuide type="bottom" id="2kh-cD-2FL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BiG-lB-MH2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1J-bp-uX1" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="wph-HM-hyl"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-vN-iQu">
-                                <rect key="frame" x="24" y="362" width="150" height="88"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-vN-iQu">
+                                <rect key="frame" x="24" y="340" width="210" height="132"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gCK-9w-EEr">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sx-rK-YKd" customClass="RadioButton" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                <rect key="frame" x="0.0" y="6" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="XRY-LM-H4R"/>
                                                     <constraint firstAttribute="height" constant="44" id="hyI-f2-acn"/>
@@ -337,16 +337,20 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                                     <action selector="selectRadioButton:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="w2m-C6-DrG"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="singpass" translatesAutoresizingMaskIntoConstraints="NO" id="6LJ-xY-zOu">
-                                                <rect key="frame" x="56" y="14" width="16" height="16"/>
-                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjK-SN-c4T" customClass="DropShadowButton" customModule="OstelcoStyles">
+                                                <rect key="frame" x="56" y="0.0" width="154" height="56"/>
+                                                <state key="normal" image="singpass"/>
+                                                <connections>
+                                                    <action selector="singPassTapped" destination="OlM-wU-Qkj" eventType="touchUpInside" id="7Ly-1q-gNW"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="16r-bq-CwZ">
-                                        <rect key="frame" x="0.0" y="44" width="150" height="44"/>
+                                        <rect key="frame" x="0.0" y="76" width="210" height="56"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7f-eC-N4m" customClass="RadioButton" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                <rect key="frame" x="0.0" y="6" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="AIk-27-VlB"/>
                                                     <constraint firstAttribute="width" constant="44" id="KHj-0z-ggu"/>
@@ -355,15 +359,15 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                                     <action selector="selectRadioButton:" destination="OlM-wU-Qkj" eventType="touchUpInside" id="0K3-A2-fOU"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HlJ-yW-QF5">
-                                                <rect key="frame" x="63.333333333333329" y="14" width="16" height="16"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan IC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-xB-q0X" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="91.333333333333329" y="11.999999999999998" width="58.666666666666671" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dig-FV-m5B" customClass="DropShadowButton" customModule="OstelcoStyles">
+                                                <rect key="frame" x="56" y="0.0" width="154" height="56"/>
+                                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Scan IC" image="icIcon"/>
+                                                <connections>
+                                                    <action selector="scanICTapped" destination="OlM-wU-Qkj" eventType="touchUpInside" id="FzN-Tw-ZMR"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -399,8 +403,8 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="Mc8-hP-V8V" id="HU7-u0-dFL"/>
-                        <outlet property="scanICButton" destination="q7f-eC-N4m" id="41k-hd-9Ew"/>
-                        <outlet property="singPassButton" destination="9Sx-rK-YKd" id="TsF-4d-3Q6"/>
+                        <outlet property="scanICRadioButton" destination="q7f-eC-N4m" id="41k-hd-9Ew"/>
+                        <outlet property="singPassRadioButton" destination="9Sx-rK-YKd" id="TsF-4d-3Q6"/>
                         <segue destination="gvs-yG-kvc" kind="show" identifier="myInfoSummary" id="bEO-EU-hWV"/>
                         <segue destination="FwH-jf-eYg" kind="show" identifier="nricVerify" id="Lbu-Hw-uvg"/>
                     </connections>
@@ -418,7 +422,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hBZ-M3-Brj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-nA-Oi9" customClass="Heading2Label" customModule="OstelcoStyles">
@@ -428,31 +432,31 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-4L-NZF" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="158.33333333333334" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="158.33333333333334" width="327" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepDoneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-3R-kYh">
-                                <rect key="frame" x="24" y="210.66666666666666" width="16" height="16"/>
+                                <rect key="frame" x="24" y="231" width="25" height="25"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wHp-SC-2Gv">
-                                <rect key="frame" x="24" y="258.66666666666669" width="16" height="16"/>
+                                <rect key="frame" x="24" y="288" width="25" height="25"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-H9-c0e" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24.666666666666671" y="306.66666666666669" width="15" height="21"/>
+                                <rect key="frame" x="29" y="345" width="15" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-Uu-blB" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="56" y="208.33333333333334" width="122" height="21"/>
+                                <rect key="frame" x="65.000000000000014" y="233" width="130.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Cn-N6y" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="56" y="306.66666666666669" width="146" height="21"/>
+                                <rect key="frame" x="64.999999999999986" y="345" width="155.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -465,14 +469,14 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-Fa-gNJ" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="GWU-ht-SLC" eventType="touchUpInside" id="BMM-Ak-wo9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQM-f2-0Z1" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="56" y="256.33333333333331" width="144" height="21"/>
+                                <rect key="frame" x="65" y="290" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -525,7 +529,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <viewControllerLayoutGuide type="bottom" id="F0D-Lc-Y8H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ue5-OE-BQC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan IC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBv-vb-fbU" customClass="Heading2Label" customModule="OstelcoStyles">
@@ -541,7 +545,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3T0-Yr-iT7" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="FwH-jf-eYg" eventType="touchUpInside" id="7cR-DZ-xuB"/>
@@ -555,19 +559,19 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HNL-Qz-6Vj">
-                                <rect key="frame" x="60" y="275" width="255" height="182"/>
+                                <rect key="frame" x="60" y="275" width="255" height="202.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="27A-Pe-HQh">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="40.666666666666664"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZU-3N-JQX" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="12" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="14.333333333333334" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your NRIC/FIN number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-ug-6QS" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="28" y="0.0" width="227" height="20.333333333333332"/>
+                                                <rect key="frame" x="30.333333333333329" y="0.0" width="224.66666666666669" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -575,16 +579,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-x0-Ulq">
-                                        <rect key="frame" x="0.0" y="40.333333333333314" width="255" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="60.666666666666693" width="255" height="20.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="2." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kft-bY-Qe9" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.333333333333334" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="17" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your IC card" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IE-pd-quO" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.333333333333329" y="0.0" width="224.66666666666669" height="20.333333333333332"/>
+                                                <rect key="frame" x="33" y="0.0" width="222" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -592,16 +596,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jci-De-sMQ">
-                                        <rect key="frame" x="0.0" y="80.666666666666686" width="255" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="101" width="255" height="40.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-oO-6wu" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="16.666666666666668" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify that you look like the photo on your IC card" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-uC-Py9" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.666666666666671" y="0.0" width="224.33333333333331" height="40.666666666666664"/>
+                                                <rect key="frame" x="32.666666666666671" y="0.0" width="222.33333333333331" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -609,16 +613,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-vN-84h">
-                                        <rect key="frame" x="0.0" y="141.33333333333331" width="255" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="161.66666666666669" width="255" height="40.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="4." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBz-xS-yJa" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="17.333333333333332" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will ask you for your address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd8-hl-wR3" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.666666666666671" y="0.0" width="224.33333333333331" height="40.666666666666664"/>
+                                                <rect key="frame" x="33.333333333333329" y="0.0" width="221.66666666666669" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -628,7 +632,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-ik-v5D" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="9" y="64" width="54" height="21"/>
+                                <rect key="frame" x="9" y="64" width="52" height="21"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-8" maxY="0.0"/>
                                 <state key="normal" title="Back" image="backChevron"/>
                                 <connections>
@@ -670,17 +674,17 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tpz-qF-L8m">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your NRIC/FIN?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEw-Za-1UP" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
+                                <rect key="frame" x="24" y="88" width="327" height="76.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g S XXX XXX XXD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MrK-sD-vRV" userLabel="NRIC Text Field" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="158.33333333333334" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="196.66666666666666" width="375" height="44"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -689,13 +693,13 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This seems to be an invalid NRIC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-bU-7nA" customClass="ErrorTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="226.33333333333334" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="264.66666666666669" width="327" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv2-1J-Hak" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="617" width="87" height="33"/>
+                                <rect key="frame" x="142" y="617" width="91" height="33"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="6Sh-M6-Cr3" eventType="touchUpInside" id="0oS-XB-bc9"/>

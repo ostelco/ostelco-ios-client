@@ -12,18 +12,23 @@ import OstelcoStyles
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
     
-    @IBOutlet private var singPassButton: RadioButton!
-    @IBOutlet private var scanICButton: RadioButton!
+    @IBOutlet private var singPassRadioButton: RadioButton!
+    @IBOutlet private var scanICRadioButton: RadioButton!
     @IBOutlet private var continueButton: UIButton!
 
     private lazy var radioButtons: [RadioButton] = [
-        self.singPassButton,
-        self.scanICButton
+        self.singPassRadioButton,
+        self.scanICRadioButton
     ]
     
     var webView: SFSafariViewController?
     var myInfoQueryItems: [URLQueryItem]?
     var spinnerView: UIView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateContinue()
+    }
 
     @IBAction private func selectRadioButton(_ radioButton: RadioButton) {
         self.radioButtons.forEach { button in
@@ -38,12 +43,12 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
-        if self.singPassButton.isCurrentSelected {
+        if self.singPassRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             //performSegue(withIdentifier: "myInfoSummary", sender: self)
             UIApplication.shared.typedDelegate.myInfoDelegate = self
             startMyInfoLogin()
-        } else if self.singPassButton.isCurrentSelected {
+        } else if self.scanICRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             performSegue(withIdentifier: "nricVerify", sender: self)
         } else {
@@ -62,6 +67,14 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     @IBAction private func needHelpTapped(_ sender: Any) {
         self.showNeedHelpActionSheet()
+    }
+    
+    @IBAction private func singPassTapped() {
+        self.selectRadioButton(self.singPassRadioButton)
+    }
+    
+    @IBAction private func scanICTapped() {
+        self.selectRadioButton(self.scanICRadioButton)
     }
     
     func startMyInfoLogin() {

@@ -320,8 +320,6 @@ public class DropShadowButton: OstelcoButton {
         self.appTitleColor = .blackForText
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .body)
-        
-       
         self.layer.insertSublayer(self.dropShadowLayer, at: 0)
        
         if let imageView = self.imageView {
