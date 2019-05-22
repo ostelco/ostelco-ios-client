@@ -186,7 +186,11 @@ platform :ios do
   end
 
  desc "Push production build to TestFlight from developer machine using testflight build numbers"
-  lane :tfprod do
+   lane :tfprod do
+
+    # This will not update any project files.
+    # The build numbers will remain same.
+
     # Ensure that your git status is not dirty
     ensure_git_status_clean
 
