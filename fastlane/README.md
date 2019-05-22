@@ -60,6 +60,11 @@ fastlane ios run_spm_post_script
 Runs the SPM post-build script.
 
 Pass in a value for `prod` to use the prod argument
+### ios tfprod
+```
+fastlane ios tfprod
+```
+Push production build to TestFlight from developer machine using testflight build numbers
 
 ----
 
