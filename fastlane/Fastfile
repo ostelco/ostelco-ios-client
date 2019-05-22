@@ -214,7 +214,7 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
 
     # Ignore all changes, tag releases manually
-    reset_git_repo(force: true)
+    reset_git_repo(force: true, skip_clean: true)
 
   end
 
