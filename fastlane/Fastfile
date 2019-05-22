@@ -208,15 +208,10 @@ platform :ios do
     # build and upload porod app
     build_app(scheme: "ostelco-ios-client")
     upload_to_testflight(skip_waiting_for_build_processing: true)
-    # Commit the version bump
-    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
 
-    # Add a git tag for this build. This will automatically
-    # use an appropriate git tag name
-    add_git_tag
+    # Ignore all changes, tag releases manually
+    reset_git_repo
 
-    # Push the new commit and tag back to your git remote
-    push_to_git_remote
   end
 
 end
