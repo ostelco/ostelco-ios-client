@@ -6,15 +6,25 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import OstelcoStyles
 import UIKit
 
 class CheckEmailViewController: UIViewController {
     
     @IBOutlet private var submitPasteboardOnSimulatorButton: UIButton!
+    @IBOutlet private var gifView: LoopingVideoView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureSubmitPasteboardButton()
+        
+        guard let url = Bundle.main.url(forResource: "email", withExtension: "mp4", subdirectory: "gifMP4s") else {
+            assertionFailure("Couldn't load email MP4 gif video!")
+            return
+        }
+        
+        self.gifView.videoURL = url
+        self.gifView.play()
     }
     
     private func configureSubmitPasteboardButton() {
