@@ -32,16 +32,16 @@ class OhNoViewController: UIViewController {
             }
         }
         
-        var displayImage: UIImage {
+        var gifAssetName: String {
             switch self {
             case .generic,
                  .myInfoFailed:
-                return UIImage(named: "illustrationGhost")!
+                return "taken"
             case .ekycRejected:
-                return UIImage(named: "illustrationPainter")!
+                return "blank_canvas"
             case .paymentFailedGeneric,
                  .paymentFailedCardDeclined:
-                return UIImage(named: "illustrationSittingOnCloud")!
+                return "no_connection"
             }
         }
         
@@ -87,7 +87,7 @@ class OhNoViewController: UIViewController {
     @IBOutlet private var primaryButton: UIButton!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var gifView: LoopingVideoView!
     
     /// Convenience method for loading and populating with values for a given type
     ///
@@ -96,7 +96,7 @@ class OhNoViewController: UIViewController {
     static func fromStoryboard(type: IssueType) -> OhNoViewController {
         let vc = self.fromStoryboard()
         vc.displayTitle = type.displayTitle
-        vc.displayImage = type.displayImage
+        vc.videoURL = Bundle.main.url(forResource: type.gifAssetName, withExtension: "mp4", subdirectory: "gifMP4s")
         vc.buttonTitle = type.buttonTitle
         vc.issueDescription = type.issueDescription
         
@@ -124,10 +124,10 @@ class OhNoViewController: UIViewController {
         }
     }
     
-    /// The image to use to entertain the user while explaining something went wrong.
-    var displayImage: UIImage = UIImage(named: "illustrationGhost")! {
+    /// The gif video to use to entertain the user while explaining something went wrong.
+    var videoURL: URL? {
         didSet {
-            self.configureImage()
+            self.configureGIFVideo()
         }
     }
     
@@ -140,7 +140,7 @@ class OhNoViewController: UIViewController {
         self.configurePrimaryButton()
         self.configureDescription()
         self.configureTitle()
-        self.configureImage()
+        self.configureGIFVideo()
     }
     
     private func configureDescription() {
@@ -155,8 +155,8 @@ class OhNoViewController: UIViewController {
         self.primaryButton?.setTitle(self.buttonTitle, for: .normal)
     }
     
-    private func configureImage() {
-        self.imageView?.image = self.displayImage
+    private func configureGIFVideo() {
+        self.gifView?.videoURL = self.videoURL
     }
     
     @IBAction private func needHelpTapped() {
