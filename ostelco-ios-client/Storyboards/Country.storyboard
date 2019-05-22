@@ -293,8 +293,8 @@
                                     <action selector="needHelpTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="Sjw-Zx-XAX"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
-                                <rect key="frame" x="61.666666666666657" y="184.66666666666663" width="251.99999999999997" height="151"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
+                                <rect key="frame" x="9" y="184.66666666666663" width="357" height="265"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-b2-7aj" customClass="BodyTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="497.33333333333331" width="327" height="101.66666666666669"/>
@@ -305,12 +305,17 @@ Please enable “Location Access” in Settings.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-ru-tsI" customClass="LoopingVideoView" customModule="OstelcoStyles">
+                                <rect key="frame" x="9" y="184.66666666666663" width="357" height="265"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eCD-Rb-UgE" firstAttribute="top" secondItem="Xri-W8-wUh" secondAttribute="bottom" constant="20" id="0jL-BR-r04"/>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="24" id="1fp-eg-JvS"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="Bkm-Aa-qIB"/>
+                            <constraint firstItem="08o-ru-tsI" firstAttribute="trailing" secondItem="eCD-Rb-UgE" secondAttribute="trailing" id="I8b-rh-Gmn"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="IAI-Vb-4BI"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="top" secondItem="Dsi-HB-ICT" secondAttribute="bottom" constant="32" id="KJl-rM-P8A"/>
                             <constraint firstItem="Dsi-HB-ICT" firstAttribute="centerX" secondItem="Nly-Oz-x9M" secondAttribute="centerX" id="LPm-Gz-pOj"/>
@@ -319,15 +324,19 @@ Please enable “Location Access” in Settings.</string>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="bottom" secondItem="qTN-jC-vf4" secondAttribute="bottom" constant="44" id="ZCu-4i-oGE"/>
                             <constraint firstItem="eCD-Rb-UgE" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Zyh-3p-BHY"/>
                             <constraint firstItem="Xri-W8-wUh" firstAttribute="top" secondItem="Nly-Oz-x9M" secondAttribute="top" constant="44" id="aRb-IU-gUZ"/>
+                            <constraint firstItem="08o-ru-tsI" firstAttribute="leading" secondItem="eCD-Rb-UgE" secondAttribute="leading" id="dHw-ga-bz9"/>
                             <constraint firstItem="Xri-W8-wUh" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="ob1-pW-cff"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eCD-Rb-UgE" secondAttribute="bottom" constant="20" id="oiP-OG-C2M"/>
                             <constraint firstAttribute="trailing" secondItem="Xri-W8-wUh" secondAttribute="trailing" constant="24" id="rRn-eF-c7Y"/>
                             <constraint firstItem="Dsi-HB-ICT" firstAttribute="top" secondItem="gj0-b2-7aj" secondAttribute="bottom" constant="20" id="rRu-Li-Hg7"/>
+                            <constraint firstItem="08o-ru-tsI" firstAttribute="bottom" secondItem="eCD-Rb-UgE" secondAttribute="bottom" id="wex-cV-HRo"/>
+                            <constraint firstItem="08o-ru-tsI" firstAttribute="top" secondItem="eCD-Rb-UgE" secondAttribute="top" id="xZt-1E-ZQ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nly-Oz-x9M"/>
                     </view>
                     <connections>
                         <outlet property="explanationLabel" destination="gj0-b2-7aj" id="UjQ-eR-e6R"/>
+                        <outlet property="gifView" destination="08o-ru-tsI" id="2tx-F5-fPF"/>
                         <outlet property="imageView" destination="eCD-Rb-UgE" id="wAW-zJ-LZ4"/>
                         <outlet property="primaryButton" destination="qTN-jC-vf4" id="6t7-IB-gOw"/>
                         <outlet property="titleLabel" destination="Xri-W8-wUh" id="tdq-fO-azI"/>
@@ -349,7 +358,7 @@ Please enable “Location Access” in Settings.</string>
     </scenes>
     <resources>
         <image name="fakeModalLocation" width="310" height="268"/>
-        <image name="illustrationLocation" width="252" height="151"/>
+        <image name="instructionsLocation" width="357" height="265"/>
         <image name="stepArrowIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

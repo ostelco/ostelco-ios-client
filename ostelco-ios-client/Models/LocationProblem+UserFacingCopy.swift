@@ -12,7 +12,7 @@ import UIKit
 extension LocationProblem {
     
     /// The image to use to illustrate the problem.
-    var image: UIImage {
+    var image: UIImage? {
         // This will be addressed via codegen later
         switch self {
         case .disabledInSettings,
@@ -21,7 +21,19 @@ extension LocationProblem {
         case .deniedByUser,
              .restrictedByParentalControls,
              .authorizedButWrongCountry:
-            return UIImage(named: "illustrationLocation")!
+            return nil
+        }
+    }
+    
+    var videoURL: URL? {
+        switch self {
+        case .disabledInSettings,
+             .notDetermined:
+            return nil
+        case .deniedByUser,
+             .restrictedByParentalControls,
+             .authorizedButWrongCountry:
+            return Bundle.main.url(forResource: "location", withExtension: "mp4", subdirectory: "gifMP4s")
         }
     }
     
