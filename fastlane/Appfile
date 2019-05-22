@@ -17,6 +17,9 @@ for_platform :ios do
   for_lane :localbeta do
     app_identifier 'sg.redotter.dev.selfcare'
   end
+  for_lane :tfprod do
+    app_identifier 'sg.redotter.selfcare'
+  end
 end
 
 # For more information about the Appfile, see:

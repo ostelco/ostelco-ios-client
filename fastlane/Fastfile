@@ -185,4 +185,38 @@ platform :ios do
     end
   end
 
+  desc "Push production build to TestFlight from developer machine using testflight build numbers"
+  lane :tfprod do
+    # Ensure that your git status is not dirty
+    ensure_git_status_clean
+
+    # Increment the build number (not the version number)
+    # Providing the xcodeproj is optional
+
+    # Bump version number here when it is changed in project files.
+    latest_build_number = latest_testflight_build_number(
+      version: "1.1"
+    )
+
+    build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
+
+    increment_build_number(
+      build_number: build_number,
+      xcodeproj: "ostelco-ios-client.xcodeproj"
+    )
+
+    # build and upload porod app
+    build_app(scheme: "ostelco-ios-client")
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+    # Commit the version bump
+    commit_version_bump(xcodeproj: "ostelco-ios-client.xcodeproj")
+
+    # Add a git tag for this build. This will automatically
+    # use an appropriate git tag name
+    add_git_tag
+
+    # Push the new commit and tag back to your git remote
+    push_to_git_remote
+  end
+
 end
