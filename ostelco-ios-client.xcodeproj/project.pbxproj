@@ -196,6 +196,8 @@
 		9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324D225E411700227EA3 /* APIHelper.swift */; };
 		9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324F225E423A00227EA3 /* Collection+Empty.swift */; };
+		9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D957C2295770E00CAB0E7 /* gifMP4s */; };
+		9B9D957E2295770E00CAB0E7 /* gifMP4s in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D957C2295770E00CAB0E7 /* gifMP4s */; };
 		9BB6A797226F6514000D5E13 /* OstelcoStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB6A795226F6514000D5E13 /* OstelcoStyles.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9BB6A79B226F6514000D5E13 /* OstelcoStyles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -515,6 +517,7 @@
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9B9D957C2295770E00CAB0E7 /* gifMP4s */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gifMP4s; sourceTree = "<group>"; };
 		9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OstelcoStyles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB6A795226F6514000D5E13 /* OstelcoStyles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OstelcoStyles.h; sourceTree = "<group>"; };
 		9BB6A796226F6514000D5E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1070,6 +1073,7 @@
 			isa = PBXGroup;
 			children = (
 				04488172217924B800F59758 /* Assets.xcassets */,
+				9B9D957C2295770E00CAB0E7 /* gifMP4s */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1377,6 +1381,7 @@
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				9BC465422271DAD4001951BF /* OhNo.storyboard in Resources */,
+				9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
@@ -1433,6 +1438,7 @@
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				9BC465432271DAD4001951BF /* OhNo.storyboard in Resources */,
+				9B9D957E2295770E00CAB0E7 /* gifMP4s in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
