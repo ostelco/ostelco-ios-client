@@ -251,7 +251,7 @@ Scan the QR code with this phone</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-gp-JLF" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="704" width="327" height="30"/>
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Pmf-Pt-KCB" eventType="touchUpInside" id="It5-su-1Qf"/>
@@ -259,7 +259,7 @@ Scan the QR code with this phone</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using your 2GB of free data!  🎉" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-4d-Nbm" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="413" width="327" height="20.333333333333314"/>
+                                <rect key="frame" x="24" y="515" width="327" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -270,27 +270,35 @@ Scan the QR code with this phone</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="illustrationRocket" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-ZT-mCw">
-                                <rect key="frame" x="79.666666666666686" y="203" width="216" height="155"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVL-Vw-Riu" customClass="LoopingVideoView" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="168" width="327" height="327"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wVL-Vw-Riu" secondAttribute="height" multiplier="1:1" id="FRE-FS-taJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XNS-02-cHf" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="3ZS-45-m0B"/>
                             <constraint firstItem="f60-ZU-6eq" firstAttribute="trailing" secondItem="zu4-gp-JLF" secondAttribute="trailing" constant="24" id="9oq-ep-LVV"/>
                             <constraint firstAttribute="trailing" secondItem="XNS-02-cHf" secondAttribute="trailing" constant="24" id="COx-Ha-Hl1"/>
-                            <constraint firstItem="KBj-ZT-mCw" firstAttribute="centerX" secondItem="UFf-7M-WzA" secondAttribute="centerX" id="Gf8-Yw-ziq"/>
                             <constraint firstItem="UYk-4d-Nbm" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="LCj-Mf-FSW"/>
+                            <constraint firstItem="UYk-4d-Nbm" firstAttribute="top" secondItem="wVL-Vw-Riu" secondAttribute="bottom" constant="20" id="Oc0-sH-xW2"/>
                             <constraint firstItem="zu4-gp-JLF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UYk-4d-Nbm" secondAttribute="bottom" constant="20" id="PLF-ZP-bHw"/>
+                            <constraint firstItem="wVL-Vw-Riu" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="VjY-hd-puQ"/>
                             <constraint firstItem="zu4-gp-JLF" firstAttribute="leading" secondItem="f60-ZU-6eq" secondAttribute="leading" constant="24" id="Vqs-X9-cKY"/>
                             <constraint firstAttribute="trailing" secondItem="UYk-4d-Nbm" secondAttribute="trailing" constant="24" id="Vzc-rM-CPL"/>
+                            <constraint firstItem="wVL-Vw-Riu" firstAttribute="top" secondItem="XNS-02-cHf" secondAttribute="bottom" constant="20" id="at7-Ac-4HS"/>
                             <constraint firstItem="f60-ZU-6eq" firstAttribute="bottom" secondItem="zu4-gp-JLF" secondAttribute="bottom" constant="44" id="cHG-7p-e7T"/>
-                            <constraint firstItem="UYk-4d-Nbm" firstAttribute="top" secondItem="KBj-ZT-mCw" secondAttribute="bottom" constant="55" id="kLM-tF-dW0"/>
                             <constraint firstItem="XNS-02-cHf" firstAttribute="top" secondItem="f60-ZU-6eq" secondAttribute="top" constant="44" id="lBa-0K-BDg"/>
-                            <constraint firstItem="KBj-ZT-mCw" firstAttribute="top" secondItem="XNS-02-cHf" secondAttribute="bottom" constant="55" id="wBM-q0-qBm"/>
+                            <constraint firstItem="f60-ZU-6eq" firstAttribute="trailing" secondItem="wVL-Vw-Riu" secondAttribute="trailing" constant="24" id="pN2-9b-TUb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f60-ZU-6eq"/>
                     </view>
+                    <connections>
+                        <outlet property="gifView" destination="wVL-Vw-Riu" id="NQY-oj-MS2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09W-a0-oOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,7 +314,6 @@ Scan the QR code with this phone</string>
         </scene>
     </scenes>
     <resources>
-        <image name="illustrationRocket" width="216" height="155"/>
         <image name="laptop" width="79" height="63"/>
         <image name="phone" width="65" height="82"/>
         <image name="stepArrowIcon" width="25" height="25"/>

@@ -748,6 +748,7 @@
 			children = (
 				04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */,
 				04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */,
+				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 			);
 			path = ESim;
 			sourceTree = "<group>";
@@ -756,10 +757,9 @@
 			isa = PBXGroup;
 			children = (
 				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
-				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
+				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
-				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
 			);

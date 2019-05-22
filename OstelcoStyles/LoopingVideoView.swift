@@ -32,7 +32,7 @@ public class LoopingVideoView: UIView {
         return label
     }()
     
-    /// The URL of the video to play. NOTE: Does not actually start playback. 
+    /// The URL of the video to play. NOTE: Does not actually start playback.
     public var videoURL: URL? {
         didSet {
             guard let url = self.videoURL else {
