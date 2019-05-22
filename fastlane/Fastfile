@@ -214,8 +214,28 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
 
     # Ignore all changes, tag releases manually
-    reset_git_repo(force: true)
+    reset_git_repo(force: true, skip_clean: true)
 
+  end
+
+  desc "Upload latest iTunes Connect bitcode symbol file to crashlytics"
+  lane :refresh_dsyms_prod do
+    # Download latest recompiled dSYM files from iTC
+    latest_build_number = latest_testflight_build_number(
+      version: "1.1"
+    )
+    build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
+    download_dsyms(version: "1.1", build_number: build_number)
+
+    # Update the `GoogleService-Info.plist` with secrets
+    run_spm_pre_script(prod: true)
+    upload_symbols_to_crashlytics
+
+    # Delete the local dSYM files
+    clean_build_artifacts
+
+    #Reset the secrets files
+    run_spm_post_script(prod: true)
   end
 
 end
