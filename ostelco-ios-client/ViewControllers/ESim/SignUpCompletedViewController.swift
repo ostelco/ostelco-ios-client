@@ -16,12 +16,7 @@ class SignUpCompletedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let url = Bundle.main.url(forResource: "rocket", withExtension: "mp4", subdirectory: "gifMP4s") else {
-            assertionFailure("Couldn't get URL for rocket gif!")
-            return
-        }
-        
-        self.gifView.videoURL = url
+        self.gifView.videoURL = GifVideo.rocket.url
         self.gifView.play()
     }
     

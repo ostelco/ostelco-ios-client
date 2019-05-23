@@ -22,4 +22,26 @@ class EnumHelperTests: XCTestCase {
             XCTAssertNoThrow(link.url)
         }
     }
+    
+    func testAllGifVideosHaveActualFiles() {
+        for video in GifVideo.allCases {
+            XCTAssertTrue(FileManager.default.fileExists(atPath: video.url.path),
+                          "File does not exist for \(video.rawValue)")
+        }
+    }
+    
+    func testAllGifVideoFilesHaveEnumCases() {
+        let folderContents = Bundle.main.paths(forResourcesOfType: "mp4", inDirectory: "gifMP4s")
+        
+        let fileNames = folderContents
+            .map { ($0 as NSString).lastPathComponent }
+            .map { ($0 as NSString).deletingPathExtension }
+        
+        XCTAssertEqual(fileNames.count, GifVideo.allCases.count)
+        
+        for fileName in fileNames {
+            XCTAssertTrue(GifVideo.allCases.contains(where: { $0.rawValue == fileName }),
+                          "Could not find enum case for \(fileName).mp4")
+        }
+    }
 }

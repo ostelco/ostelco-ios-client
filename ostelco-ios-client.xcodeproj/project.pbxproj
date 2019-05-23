@@ -117,6 +117,8 @@
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
 		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
+		9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
+		9B305F99229694F700B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */; };
@@ -454,6 +456,7 @@
 		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
+		9B305F97229693EA00B89FCB /* GifVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifVideo.swift; sourceTree = "<group>"; };
 		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
 		9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkTests.swift; sourceTree = "<group>"; };
 		9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MockingHelpers.swift"; sourceTree = "<group>"; };
@@ -782,6 +785,7 @@
 			isa = PBXGroup;
 			children = (
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
+				9B305F97229693EA00B89FCB /* GifVideo.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
@@ -1843,6 +1847,7 @@
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
+				9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */,
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
@@ -2019,6 +2024,7 @@
 				9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
+				9B305F99229694F700B89FCB /* GifVideo.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,

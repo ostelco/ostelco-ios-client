@@ -16,14 +16,14 @@ enum OnboardingPage: Int, CaseIterable {
     case noNeedToChange
     case fullyDigital
     
-    var gifAssetName: String {
+    var gifVideo: GifVideo {
         switch self {
         case .whatIsOya:
-            return "arrow_up"
+            return .arrow_up
         case .noNeedToChange:
-            return "heart"
+            return .heart
         case .fullyDigital:
-            return "app"
+            return .app
         }
     }
     
@@ -84,12 +84,7 @@ class OnboardingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let url = Bundle.main.url(forResource: self.onboardingPage.gifAssetName, withExtension: "mp4", subdirectory: "gifMP4s") else {
-            assertionFailure()
-            return
-        }
-        
-        self.gifView.videoURL = url
+        self.gifView.videoURL = self.onboardingPage.gifVideo.url
         self.copyLabel.text = self.onboardingPage.copyText
     }
     

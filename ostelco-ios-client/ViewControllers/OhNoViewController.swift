@@ -32,16 +32,16 @@ class OhNoViewController: UIViewController {
             }
         }
         
-        var gifAssetName: String {
+        var gifVideo: GifVideo {
             switch self {
             case .generic,
                  .myInfoFailed:
-                return "taken"
+                return .taken
             case .ekycRejected:
-                return "blank_canvas"
+                return .blank_canvas
             case .paymentFailedGeneric,
                  .paymentFailedCardDeclined:
-                return "no_connection"
+                return .no_connection
             }
         }
         
@@ -96,7 +96,7 @@ class OhNoViewController: UIViewController {
     static func fromStoryboard(type: IssueType) -> OhNoViewController {
         let vc = self.fromStoryboard()
         vc.displayTitle = type.displayTitle
-        vc.videoURL = Bundle.main.url(forResource: type.gifAssetName, withExtension: "mp4", subdirectory: "gifMP4s")
+        vc.videoURL = type.gifVideo.url
         vc.buttonTitle = type.buttonTitle
         vc.issueDescription = type.issueDescription
         

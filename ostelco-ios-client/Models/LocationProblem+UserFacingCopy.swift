@@ -33,7 +33,7 @@ extension LocationProblem {
         case .deniedByUser,
              .restrictedByParentalControls,
              .authorizedButWrongCountry:
-            return Bundle.main.url(forResource: "location", withExtension: "mp4", subdirectory: "gifMP4s")
+            return GifVideo.location.url
         }
     }
     

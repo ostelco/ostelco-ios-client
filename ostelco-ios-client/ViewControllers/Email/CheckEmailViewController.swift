@@ -18,12 +18,7 @@ class CheckEmailViewController: UIViewController {
         super.viewDidLoad()
         self.configureSubmitPasteboardButton()
         
-        guard let url = Bundle.main.url(forResource: "email", withExtension: "mp4", subdirectory: "gifMP4s") else {
-            assertionFailure("Couldn't load email MP4 gif video!")
-            return
-        }
-        
-        self.gifView.videoURL = url
+        self.gifView.videoURL = GifVideo.mail.url
         self.gifView.play()
     }
     
