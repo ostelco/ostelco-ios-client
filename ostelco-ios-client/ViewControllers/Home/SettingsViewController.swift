@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             appVersion = "App Version \(version)"
         }
-        if let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+        if let buildNumber = Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as? String {
             appVersion = "\(appVersion) Build \(buildNumber)"
         }
         self.versionLabel.text = appVersion
