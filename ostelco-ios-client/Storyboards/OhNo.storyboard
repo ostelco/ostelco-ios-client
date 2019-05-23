@@ -33,12 +33,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh no" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6O-Yd-Zwn" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="28.333333333333329"/>
+                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNV-H2-eGR" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNV-H2-eGR" customClass="BodyTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="491.33333333333331" width="327" height="101.66666666666669"/>
                                 <string key="text">Something went wrong. Try again in a while.
 
@@ -48,7 +48,7 @@ If you contact customer support, please use this error code: E333</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2r-SU-Y1X" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="140.33333333333337" width="327" height="327"/>
+                                <rect key="frame" x="29" y="150.33333333333337" width="317" height="317"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="A2r-SU-Y1X" secondAttribute="height" multiplier="1:1" id="YZB-mJ-XVy"/>
@@ -59,15 +59,16 @@ If you contact customer support, please use this error code: E333</string>
                         <constraints>
                             <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="U6O-Yd-Zwn" secondAttribute="trailing" constant="24" id="07L-90-ArN"/>
                             <constraint firstItem="U6O-Yd-Zwn" firstAttribute="top" secondItem="sEh-h0-R7g" secondAttribute="top" constant="44" id="I4I-bF-BiW"/>
+                            <constraint firstItem="A2r-SU-Y1X" firstAttribute="centerX" secondItem="LYf-aK-g1x" secondAttribute="centerX" id="I6b-9g-P6e"/>
                             <constraint firstItem="sEh-h0-R7g" firstAttribute="bottom" secondItem="2f8-jn-WWp" secondAttribute="bottom" constant="44" id="JKc-CB-BrW"/>
                             <constraint firstItem="U6O-Yd-Zwn" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="Oa1-mJ-n4M"/>
                             <constraint firstItem="2f8-jn-WWp" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="Ruh-ii-o1p"/>
                             <constraint firstItem="A2r-SU-Y1X" firstAttribute="top" secondItem="U6O-Yd-Zwn" secondAttribute="bottom" constant="24" id="SOE-EE-uvC"/>
-                            <constraint firstItem="A2r-SU-Y1X" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="T0x-Fa-l7w"/>
+                            <constraint firstItem="A2r-SU-Y1X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="T0x-Fa-l7w"/>
                             <constraint firstItem="RNV-H2-eGR" firstAttribute="top" secondItem="A2r-SU-Y1X" secondAttribute="bottom" constant="24" id="YO9-8O-UU2"/>
                             <constraint firstItem="HH9-bZ-tBx" firstAttribute="centerX" secondItem="LYf-aK-g1x" secondAttribute="centerX" id="YfT-s8-QF1"/>
                             <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="RNV-H2-eGR" secondAttribute="trailing" constant="24" id="fz7-03-vEA"/>
-                            <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" secondItem="A2r-SU-Y1X" secondAttribute="trailing" constant="24" id="guu-QI-Ce6"/>
+                            <constraint firstItem="sEh-h0-R7g" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A2r-SU-Y1X" secondAttribute="trailing" constant="24" id="guu-QI-Ce6"/>
                             <constraint firstItem="RNV-H2-eGR" firstAttribute="leading" secondItem="sEh-h0-R7g" secondAttribute="leading" constant="24" id="gvD-Up-qje"/>
                             <constraint firstItem="2f8-jn-WWp" firstAttribute="top" secondItem="HH9-bZ-tBx" secondAttribute="bottom" constant="34" id="mG4-vp-Tl1"/>
                             <constraint firstItem="HH9-bZ-tBx" firstAttribute="top" secondItem="RNV-H2-eGR" secondAttribute="bottom" constant="24" id="oGu-cx-SDA"/>

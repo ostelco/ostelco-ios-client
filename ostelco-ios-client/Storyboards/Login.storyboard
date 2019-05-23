@@ -34,11 +34,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="K5d-bQ-8ZF" firstAttribute="centerX" secondItem="c2K-zq-Gas" secondAttribute="centerX" id="3wi-sD-erQ"/>
                             <constraint firstItem="K5d-bQ-8ZF" firstAttribute="top" secondItem="c2K-zq-Gas" secondAttribute="top" id="8uo-rI-fbf"/>
                             <constraint firstAttribute="bottom" secondItem="I3U-ge-2P9" secondAttribute="bottom" constant="20" id="Awe-Tb-ylc"/>
-                            <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" secondItem="K5d-bQ-8ZF" secondAttribute="trailing" constant="24" id="Dog-29-oCM"/>
+                            <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K5d-bQ-8ZF" secondAttribute="trailing" constant="24" id="Dog-29-oCM"/>
                             <constraint firstItem="I3U-ge-2P9" firstAttribute="top" secondItem="K5d-bQ-8ZF" secondAttribute="bottom" constant="20" id="PWO-aa-97B"/>
-                            <constraint firstItem="K5d-bQ-8ZF" firstAttribute="leading" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="YyB-SQ-kEE"/>
+                            <constraint firstItem="K5d-bQ-8ZF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="YyB-SQ-kEE"/>
                             <constraint firstItem="I3U-ge-2P9" firstAttribute="leading" secondItem="7HN-dF-OAG" secondAttribute="leading" constant="24" id="b9Z-vb-jbZ"/>
                             <constraint firstItem="7HN-dF-OAG" firstAttribute="trailing" secondItem="I3U-ge-2P9" secondAttribute="trailing" constant="24" id="bEl-Gu-9rj"/>
                         </constraints>
@@ -72,14 +73,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="700" width="327" height="34"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
-                                <rect key="frame" x="24" y="181" width="327" height="467"/>
+                                <rect key="frame" x="24" y="181" width="327" height="483"/>
                                 <connections>
                                     <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
                                 </connections>

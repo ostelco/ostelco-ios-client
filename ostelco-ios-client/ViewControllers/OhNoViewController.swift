@@ -157,6 +157,7 @@ class OhNoViewController: UIViewController {
     
     private func configureGIFVideo() {
         self.gifView?.videoURL = self.videoURL
+        self.gifView?.play()
     }
     
     @IBAction private func needHelpTapped() {

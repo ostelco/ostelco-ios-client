@@ -26,6 +26,7 @@ class PendingVerificationViewController: UIViewController {
         super.viewDidLoad()
         
         self.gifView.videoURL = GifVideo.time.url
+        self.gifView.play()
     }
     
     override func viewWillAppear(_ animated: Bool) {
