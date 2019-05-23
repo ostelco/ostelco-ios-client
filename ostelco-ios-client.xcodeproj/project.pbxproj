@@ -117,6 +117,7 @@
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
 		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
+		9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */; };
 		9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B305F99229694F700B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
@@ -456,6 +457,7 @@
 		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
+		9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRoundedImageView.swift; sourceTree = "<group>"; };
 		9B305F97229693EA00B89FCB /* GifVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifVideo.swift; sourceTree = "<group>"; };
 		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
 		9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkTests.swift; sourceTree = "<group>"; };
@@ -969,6 +971,7 @@
 				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 				9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */,
 				9B1745822277428A00CF321B /* OstelcoTextField.swift */,
+				9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */,
 				9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */,
 				9BB6A796226F6514000D5E13 /* Info.plist */,
 			);
@@ -1960,6 +1963,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB6A7A1226F6523000D5E13 /* OstelcoFont.swift in Sources */,
+				9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */,
 				9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */,
 				9BB6A79F226F6523000D5E13 /* OstelcoButton.swift in Sources */,
 				9B9D958022957E3400CAB0E7 /* LoopingVideoView.swift in Sources */,
