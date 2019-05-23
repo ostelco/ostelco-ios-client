@@ -33,16 +33,10 @@ enum ESIMPage: Int, CaseIterable {
         }
     }
     
-    // var video:
-    
     var topText: [String] {
         switch self {
         case .instructions:
-            return ["""
-            We are about to send you an email with a
-            QR code. Before we do that, please read
-            these instructions.
-            """]
+            return ["We are about to send you an email with a QR code. Before we do that, please read these instructions."]
         case .scanQRCode:
             return ["""
             On your phone, go to:
