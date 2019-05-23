@@ -51,8 +51,18 @@ enum OnboardingPage: Int, CaseIterable {
             
             No need to wait for a SIM card in the mail
             
-            Try it now, with 2GB free data!
+            Try it now! With 1GB free data
             """
+        }
+    }
+    
+    var linkedText: String? {
+        switch self {
+        case .whatIsOya,
+             .noNeedToChange:
+            return nil
+        case .fullyDigital:
+            return "fully digital"
         }
     }
     
@@ -63,7 +73,7 @@ enum OnboardingPage: Int, CaseIterable {
 
 class OnboardingPageViewController: UIViewController {
     
-    @IBOutlet private var copyLabel: UILabel!
+    @IBOutlet private var copyLabel: OnboardingLabel!
     
     @IBOutlet private var gifView: LoopingVideoView!
     
@@ -83,9 +93,13 @@ class OnboardingPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.gifView.videoURL = self.onboardingPage.gifVideo.url
-        self.copyLabel.text = self.onboardingPage.copyText
+        if let linkText = self.onboardingPage.linkedText {
+            self.copyLabel.setFullText(self.onboardingPage.copyText, withLinkedPortion: linkText)
+        } else {
+            self.copyLabel.text = self.onboardingPage.copyText
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

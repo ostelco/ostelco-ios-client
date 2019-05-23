@@ -47,6 +47,24 @@ open class OstelcoLabel: UILabel {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
+    
+    open func setFullText(_ fullText: String, withAttributedPortion attributedPortion: String, attributes: [NSAttributedString.Key: Any]) {
+        guard let range = fullText.range(of: attributedPortion) else {
+            assertionFailure("You're trying to set attributed text that's not in the full text!")
+            // In prod: Fall back to just setting the text normally.
+            self.text = fullText
+            return
+        }
+        
+        let attributed = NSMutableAttributedString(string: fullText, attributes: [
+            .font: self.appFont.toUIFont,
+            .foregroundColor: self.appTextColor.toUIColor
+        ])
+        
+        attributed.addAttributes(attributes, range: NSRange(range, in: fullText))
+        
+        self.attributedText = attributed
+    }
 }
 
 // MARK: - Data labels
@@ -165,6 +183,15 @@ public class OnboardingLabel: OstelcoLabel {
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .onboarding)
     }
+    
+    public func setFullText(_ fullText: String, withLinkedPortion linkedPortion: String) {
+        self.addTapRecognizer()
+        self.setFullText(fullText,
+                         withAttributedPortion: linkedPortion,
+                         attributes: [
+                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
+                         ])
+    }
 }
 
 public class BodyTextBoldLabel: OstelcoLabel {
@@ -187,23 +214,20 @@ public class BodyTextLabel: OstelcoLabel {
     }
     
     public func setFullText(_ fullText: String, withBoldedPortion boldedPortion: String) {
-        guard let range = fullText.range(of: boldedPortion) else {
-            assertionFailure("You're trying to set bolded text that's not in the full text!")
-            // In prod: Fall back to just setting the text normally.
-            self.text = fullText
-            return
-        }
-        
-        let attributed = NSMutableAttributedString(string: fullText, attributes: [
-            .font: self.appFont.toUIFont,
-            .foregroundColor: self.appTextColor.toUIColor
-            ])
-        
-        attributed.addAttributes([
-            .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
-            ], range: NSRange(range, in: fullText))
-        
-        self.attributedText = attributed
+        self.setFullText(fullText,
+                         withAttributedPortion: boldedPortion,
+                         attributes: [
+                            .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
+                         ])
+    }
+    
+    public func setFullText(_ fullText: String, withLinkedPortion linkedPortion: String) {
+        self.addTapRecognizer()
+        self.setFullText(fullText,
+                         withAttributedPortion: linkedPortion,
+                         attributes: [
+                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
+                         ])
     }
 }
 
