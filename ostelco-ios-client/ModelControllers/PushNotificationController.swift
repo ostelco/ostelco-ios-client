@@ -35,9 +35,11 @@ class PushNotificationController: NSObject {
         super.init()
         
         UNUserNotificationCenter.current().delegate = self
-        Messaging.messaging().delegate = self
         
         if !UIApplication.isTesting {
+            // Actually get messages sent through firebase's Messaging
+            Messaging.messaging().delegate = self
+
             // Allow direct delivery bypassing APNS when the app is open.
             Messaging.messaging().shouldEstablishDirectChannel = true
         }

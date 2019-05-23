@@ -47,12 +47,24 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
                 self.showAlert(title: "Payment Error", msg: error.localizedDescription)
             case .userCancelled:
                 debugPrint(error.localizedDescription, "Payment was cancelled after showing Apple Pay screen")
+            case .paymentDeclined:
+                debugPrint(error.localizedDescription, "Payment was declined")
+                showOhNo(type: .paymentFailedCardDeclined)
             case .primeAPIError(let requestError):
-                self.showGenericError(error: requestError)
+                debugPrint(requestError.localizedDescription, "Payment failed")
+                showOhNo(type: .paymentFailedGeneric)
             }
         } else {
             showAlert(title: "Payment Error", msg: error.localizedDescription)
         }
+    }
+
+    func showOhNo(type: OhNoViewController.IssueType) {
+        let ohNo = OhNoViewController.fromStoryboard(type: type)
+        ohNo.primaryButtonAction = {
+            ohNo.dismiss(animated: true, completion: nil)
+        }
+        present(ohNo, animated: true)
     }
 
     func paymentSuccessful(_ product: Product?) {
@@ -123,7 +135,7 @@ extension ApplePayViewController: STPPaymentContextDelegate, STPCustomerEphemera
             .catch { error in
                 ApplicationErrors.log(error)
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
-                completion(ApplePayError.primeAPIError(error))
+                completion(self.createPaymentError(error))
             }
     }
 
