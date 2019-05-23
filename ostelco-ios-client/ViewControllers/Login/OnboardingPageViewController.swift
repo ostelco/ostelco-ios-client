@@ -27,42 +27,32 @@ enum OnboardingPage: Int, CaseIterable {
         }
     }
     
-    var copyText: String {
+    var linkableText: LinkableText? {
         switch self {
         case .whatIsOya:
-            return """
+            return LinkableText(fullText: """
             OYA is a simple way to get extra mobile data
             
             No monthly fees
             
             Just extra data when you need it!
-            """
+            """, linkedPortion: nil)
         case .noNeedToChange:
-            return """
+            return LinkableText(fullText: """
             No need to change telco!
             
             When you’re running low on data, get some extra from OYA
             
             OYA data never expires, so it’s there when you need it!
-            """
+            """, linkedPortion: nil)
         case .fullyDigital:
-            return """
+            return LinkableText(fullText: """
             OYA is fully digital
             
             No need to wait for a SIM card in the mail
             
             Try it now! With 1GB free data
-            """
-        }
-    }
-    
-    var linkedText: String? {
-        switch self {
-        case .whatIsOya,
-             .noNeedToChange:
-            return nil
-        case .fullyDigital:
-            return "fully digital"
+            """, linkedPortion: "fully digital")
         }
     }
     
@@ -93,13 +83,15 @@ class OnboardingPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.gifView.videoURL = self.onboardingPage.gifVideo.url
-        if let linkText = self.onboardingPage.linkedText {
-            self.copyLabel.setFullText(self.onboardingPage.copyText, withLinkedPortion: linkText)
-        } else {
-            self.copyLabel.text = self.onboardingPage.copyText
+        guard let linkableText = self.onboardingPage.linkableText else {
+            ApplicationErrors.assertAndLog("Couldn't instantiate onboarding page linkable text for page \(self.onboardingPage!)")
+            return
         }
+        
+        self.copyLabel.tapDelegate = self
+        self.copyLabel.setLinkableText(linkableText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,5 +113,23 @@ extension OnboardingPageViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return false
+    }
+}
+
+extension OnboardingPageViewController: LabelTapDelegate {
+    
+    func tappedAttributedLabel(_ label: UILabel, at index: Int) {
+        guard self.onboardingPage.linkableText!.isIndexLinked(index) else {
+            // Did not actually tap a link
+            return
+        }
+        
+        switch self.onboardingPage! {
+        case .fullyDigital:
+            #warning("Figure out where this needs to go before release")
+            self.showAlert(title: "UPDATE ME!", msg: "We should tell people what the hell fully digital means")
+        default:
+            break
+        }
     }
 }

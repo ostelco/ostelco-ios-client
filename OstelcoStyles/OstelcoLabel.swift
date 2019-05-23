@@ -8,9 +8,18 @@
 
 import UIKit
 
+public protocol LabelTapDelegate: class {
+    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int)
+}
+
 /// Base label subclass to facilitate easy IBDesignable subclasses.
 @IBDesignable
 open class OstelcoLabel: UILabel {
+    
+    public weak var tapDelegate: LabelTapDelegate?
+    
+    private lazy var tapRecognizer = UITapGestureRecognizer(target: self,
+                                                            action: #selector(handleTap(_:)))
     
     public var appTextColor: OstelcoColor = .blackForText {
         didSet {
@@ -48,22 +57,93 @@ open class OstelcoLabel: UILabel {
         self.commonInit()
     }
     
-    open func setFullText(_ fullText: String, withAttributedPortion attributedPortion: String, attributes: [NSAttributedString.Key: Any]) {
-        guard let range = fullText.range(of: attributedPortion) else {
-            assertionFailure("You're trying to set attributed text that's not in the full text!")
-            // In prod: Fall back to just setting the text normally.
-            self.text = fullText
-            return
-        }
-        
+    public func setFullText(_ fullText: String,
+                            withAttributedPortion attributedPortion: String,
+                            attributes: [NSAttributedString.Key: Any]) {
+        self.setFullText(fullText,
+                         withAttributedPortions: [attributedPortion],
+                         attributes: attributes)
+    }
+    
+    open func setFullText(_ fullText: String,
+                          withAttributedPortions attributedPortions: [String],
+                          attributes: [NSAttributedString.Key: Any]) {
+        let attributedRanges = attributedPortions.compactMap { fullText.range(of: $0) }
         let attributed = NSMutableAttributedString(string: fullText, attributes: [
             .font: self.appFont.toUIFont,
             .foregroundColor: self.appTextColor.toUIColor
         ])
         
-        attributed.addAttributes(attributes, range: NSRange(range, in: fullText))
+        for range in attributedRanges {
+            attributed.addAttributes(attributes, range: NSRange(range, in: fullText))
+        }
         
         self.attributedText = attributed
+    }
+    
+    public func setLinkableText(_ linkableText: LinkableText) {
+        guard let linkedBits = linkableText.linkedBits else {
+            // Nothing to link!
+            self.text = linkableText.fullText
+            return
+        }
+        
+        self.addTapRecognizer()
+        self.setFullText(linkableText.fullText,
+                         withAttributedPortions: linkedBits,
+                         attributes: [
+                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
+                         ])
+    }
+    
+    open func addTapRecognizer() {
+        guard self.tapRecognizer.view == nil else {
+            // already added, don't re-add
+            return
+        }
+        
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(self.tapRecognizer)
+    }
+    
+    @objc private func handleTap(_ recognizer: UITapGestureRecognizer) {
+        let touchPoint = recognizer.location(in: self)
+        guard let index = self.characterIndex(at: touchPoint) else {
+            // Nothing to handle here.
+            return
+        }
+        
+        self.tapDelegate?.tappedAttributedLabel(self, at: index)
+    }
+    
+    private func characterIndex(at point: CGPoint) -> Int? {
+        guard let attributedText = self.attributedText else {
+            return nil
+        }
+        
+        // Fix issue where font isn't properly set when passing attributed string to text storage
+        let fullStringRange = NSRange(location: 0, length: attributedText.length)
+        let mutable = NSMutableAttributedString(attributedString: attributedText)
+        mutable.addAttribute(.font, value: self.appFont.toUIFont, range: fullStringRange)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = self.textAlignment
+        mutable.addAttribute(.paragraphStyle, value: paragraphStyle, range: fullStringRange)
+        
+        // OK now let's let core text do some math for us
+        let textStorage = NSTextStorage(attributedString: mutable)
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        
+        let textContainer = NSTextContainer(size: self.frame.size)
+        textContainer.lineFragmentPadding = 0
+        textContainer.maximumNumberOfLines = self.numberOfLines
+        textContainer.lineBreakMode = self.lineBreakMode
+        layoutManager.addTextContainer(textContainer)
+
+        return layoutManager.characterIndex(for: point,
+                                            in: textContainer,
+                                            fractionOfDistanceBetweenInsertionPoints: nil)
+        
     }
 }
 
@@ -71,6 +151,8 @@ open class OstelcoLabel: UILabel {
 
 public class DataAmountOnHomeLabel: OstelcoLabel {
     
+    /// This is set up in `commonInit`.
+    // swiftlint:disable:next implicitly_unwrapped_optional
     public var smallFont: OstelcoFont!
     
     @IBInspectable
@@ -171,15 +253,6 @@ public class OnboardingLabel: OstelcoLabel {
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .onboarding)
     }
-    
-    public func setFullText(_ fullText: String, withLinkedPortion linkedPortion: String) {
-        self.addTapRecognizer()
-        self.setFullText(fullText,
-                         withAttributedPortion: linkedPortion,
-                         attributes: [
-                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
-                         ])
-    }
 }
 
 public class BodyTextBoldLabel: OstelcoLabel {
@@ -206,15 +279,6 @@ public class BodyTextLabel: OstelcoLabel {
                          withAttributedPortion: boldedPortion,
                          attributes: [
                             .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
-                         ])
-    }
-    
-    public func setFullText(_ fullText: String, withLinkedPortion linkedPortion: String) {
-        self.addTapRecognizer()
-        self.setFullText(fullText,
-                         withAttributedPortion: linkedPortion,
-                         attributes: [
-                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
                          ])
     }
 }
