@@ -14,9 +14,9 @@ import UIKit
 @IBDesignable
 public class LoopingVideoView: UIView {
     
-    private lazy var gifPlayer = AVQueuePlayer()
+    private lazy var loopingVideoPlayer = AVQueuePlayer()
     private lazy var playerLayer: AVPlayerLayer = {
-        let playerLayer = AVPlayerLayer(player: self.gifPlayer)
+        let playerLayer = AVPlayerLayer(player: self.loopingVideoPlayer)
         playerLayer.videoGravity = .resizeAspect
     
         // Get rid of doofy gray border on player layer
@@ -40,13 +40,13 @@ public class LoopingVideoView: UIView {
     public var videoURL: URL? {
         didSet {
             guard let url = self.videoURL else {
-                self.gifPlayer.pause()
+                self.loopingVideoPlayer.pause()
                 self.playerLooper = nil
                 return
             }
             
             let playerItem = AVPlayerItem(url: url)
-            self.playerLooper = AVPlayerLooper(player: self.gifPlayer, templateItem: playerItem)
+            self.playerLooper = AVPlayerLooper(player: self.loopingVideoPlayer, templateItem: playerItem)
         }
     }
     
@@ -88,11 +88,11 @@ public class LoopingVideoView: UIView {
     
     /// Starts playing the video on a loop
     public func play() {
-        self.gifPlayer.play()
+        self.loopingVideoPlayer.play()
     }
     
     /// Pauses video playback
     public func pause() {
-        self.gifPlayer.pause()
+        self.loopingVideoPlayer.pause()
     }
 }
