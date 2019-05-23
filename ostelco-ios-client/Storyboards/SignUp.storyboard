@@ -36,6 +36,9 @@
                                     <constraint firstAttribute="height" constant="44" id="I2d-hy-gxx"/>
                                     <constraint firstAttribute="width" constant="44" id="lKp-PX-Z2l"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="checkImage" value="check"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="checkButtonTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="8q6-QY-Lyb"/>
                                 </connections>
@@ -53,6 +56,9 @@
                                     <constraint firstAttribute="width" constant="44" id="Uvg-B1-M0f"/>
                                     <constraint firstAttribute="height" constant="44" id="bKD-Xb-U10"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="checkImage" value="check"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="checkButtonTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="Vba-gs-8vx"/>
                                 </connections>
@@ -91,6 +97,9 @@
                                     <constraint firstAttribute="width" constant="44" id="Nyb-6M-zL2"/>
                                     <constraint firstAttribute="height" constant="44" id="uL1-iU-ZVt"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="checkImage" value="check"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="checkButtonTapped:" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="8xU-Qe-F1k"/>
                                 </connections>
@@ -319,6 +328,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check" width="14" height="12"/>
         <image name="fakeModalNotifications" width="291" height="204"/>
     </resources>
 </document>
