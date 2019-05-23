@@ -18,6 +18,10 @@ public class LoopingVideoView: UIView {
     private lazy var playerLayer: AVPlayerLayer = {
         let playerLayer = AVPlayerLayer(player: self.gifPlayer)
         playerLayer.videoGravity = .resizeAspect
+    
+        // Get rid of doofy gray border on player layer
+        playerLayer.shouldRasterize = true
+        playerLayer.rasterizationScale = UIScreen.main.scale
         
         return playerLayer
     }()
