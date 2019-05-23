@@ -77,7 +77,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
-  - JumioMobileSDK/Netverify (2.15.0)
+  - JumioMobileSDK/Netverify (3.1.2)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -119,7 +119,7 @@ DEPENDENCIES:
   - Firebase/DynamicLinks (~> 5.20.1)
   - Firebase/Messaging (~> 5.20.1)
   - FreshchatSDK (~> 2.4.3)
-  - JumioMobileSDK/Netverify (~> 2.15.0)
+  - JumioMobileSDK/Netverify (~> 3.1.2)
   - Nantes (~> 0.0.7)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
@@ -170,7 +170,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  JumioMobileSDK: 8949971b2007fccf1e63bac2f30f108a1ff2c53f
+  JumioMobileSDK: e7235c9f7e38cb5aba2fb2329e87325f97b70caf
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Nantes: 85db7af961c30e5116ffa6ac3f74f790b5f23d90
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
@@ -180,6 +180,6 @@ SPEC CHECKSUMS:
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: ab033cbcf9a321e74c36d4635c8d7b1297277592
+PODFILE CHECKSUM: 93bb2f7e8892c8d5a0d77a99011af1a0df2519a9
 
 COCOAPODS: 1.6.1
