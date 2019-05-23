@@ -81,7 +81,7 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
     
     func createNetverifyController() {
         // Prevent SDK to be initialized on Jailbroken devices
-        if JMDeviceInfo.isJailbrokenDevice() {
+        if JumioDeviceInfo.isJailbrokenDevice() {
             print("Will not allow this from a jailbroken device")
             return
         }
@@ -91,23 +91,23 @@ extension NRCIVerifyViewController: NetverifyViewControllerDelegate {
         
         // Setup the Configuration for Netverify
         let config: NetverifyConfiguration = NetverifyConfiguration()
-        config.merchantApiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
-        config.merchantApiSecret = Environment().configuration(.JumioSecret) //Fill this from JUMIO console
-        config.merchantScanReference = self.merchantScanReference
-        config.requireVerification = true
-        config.requireFaceMatch = true
+        config.apiToken = Environment().configuration(.JumioToken) // Fill this from JUMIO console
+        config.apiSecret = Environment().configuration(.JumioSecret) //Fill this from JUMIO console
+        config.customerInternalReference = self.merchantScanReference
+        config.enableVerification = true
+        config.enableIdentityVerification = true
         config.delegate = self
         // TODO: Replace preselected country with previously selected country when supporting multiple countries. Note that Preselected country below has to be on the following format https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
         // while we use alpha-2
         config.preselectedCountry = "SGP"
         
         // General appearance - deactivate blur
-        NetverifyBaseView.netverifyAppearance().disableBlur = true
+        NetverifyBaseView.jumioAppearance().disableBlur = true
         // General appearance - background color
-        NetverifyBaseView.netverifyAppearance().backgroundColor =
+        NetverifyBaseView.jumioAppearance().backgroundColor =
             UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1)
         // Positive Button - Background Color
-        NetverifyPositiveButton.netverifyAppearance().setBackgroundColor(
+        NetverifyPositiveButton.jumioAppearance().setBackgroundColor(
             UIColor(red: 47 / 255.0, green: 22 / 255.0, blue: 232 / 255.0, alpha: 1),
             for: .normal
         )
