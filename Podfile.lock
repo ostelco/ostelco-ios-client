@@ -1,89 +1,89 @@
 PODS:
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
-  - Firebase/Auth (5.20.1):
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
+  - Fabric (1.10.1)
+  - Firebase/Auth (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.4.2)
-  - Firebase/Core (5.20.1):
+    - FirebaseAuth (~> 6.1.0)
+  - Firebase/Core (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.20.1):
-    - FirebaseCore (= 5.4.1)
-  - Firebase/DynamicLinks (5.20.1):
+    - FirebaseAnalytics (= 6.0.1)
+  - Firebase/CoreOnly (6.1.0):
+    - FirebaseCore (= 6.0.1)
+  - Firebase/DynamicLinks (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (= 3.4.3)
-  - Firebase/Messaging (5.20.1):
+    - FirebaseDynamicLinks (~> 4.0.0)
+  - Firebase/Messaging (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.5.0)
-  - FirebaseAnalytics (5.8.0):
-    - FirebaseCore (~> 5.4)
-    - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - FirebaseMessaging (~> 4.0.1)
+  - FirebaseAnalytics (6.0.1):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleAppMeasurement (= 6.0.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseAuth (5.4.2):
+  - FirebaseAuth (6.1.0):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.4.1):
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseDynamicLinks (3.4.3):
-    - FirebaseAnalytics (~> 5.1)
+  - FirebaseCore (6.0.1):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseDynamicLinks (4.0.0):
     - FirebaseAnalyticsInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-  - FirebaseInstanceID (3.8.1):
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/UserDefaults (~> 5.2)
-  - FirebaseMessaging (3.5.0):
+    - FirebaseCore (~> 6.0)
+  - FirebaseInstanceID (4.1.0):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.0.1):
     - FirebaseAnalyticsInterop (~> 1.1)
-    - FirebaseCore (~> 5.2)
-    - FirebaseInstanceID (~> 3.6)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/Reachability (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Reachability (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
     - Protobuf (~> 3.1)
-  - FreshchatSDK (2.4.3)
-  - GoogleAppMeasurement (5.8.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+  - FreshchatSDK (2.5.1)
+  - GoogleAppMeasurement (6.0.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.5.0):
+  - GoogleUtilities/AppDelegateSwizzler (6.1.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.5.0)
-  - GoogleUtilities/Logger (5.5.0):
+  - GoogleUtilities/Environment (6.1.0)
+  - GoogleUtilities/Logger (6.1.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.5.0):
+  - GoogleUtilities/MethodSwizzler (6.1.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.5.0):
+  - GoogleUtilities/Network (6.1.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.5.0)"
-  - GoogleUtilities/Reachability (5.5.0):
+  - "GoogleUtilities/NSData+zlib (6.1.0)"
+  - GoogleUtilities/Reachability (6.1.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.5.0):
+  - GoogleUtilities/UserDefaults (6.1.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.1)
+  - GTMSessionFetcher/Core (1.2.2)
   - JumioMobileSDK/Netverify (3.1.2)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Nantes (0.0.7)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -108,24 +108,21 @@ PODS:
     - PromiseKit/CorePromise
   - Protobuf (3.7.0)
   - Stripe (15.0.1)
-  - SwiftGifOrigin (1.7.0)
-  - SwiftLint (0.31.0)
+  - SwiftLint (0.32.0)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.12.0)
-  - Fabric (~> 1.9.0)
-  - Firebase/Auth (~> 5.20.1)
-  - Firebase/Core (~> 5.20.1)
-  - Firebase/DynamicLinks (~> 5.20.1)
-  - Firebase/Messaging (~> 5.20.1)
-  - FreshchatSDK (~> 2.4.3)
+  - Crashlytics (~> 3.13.1)
+  - Fabric (~> 1.10.0)
+  - Firebase/Auth (~> 6.1.0)
+  - Firebase/Core (~> 6.1.0)
+  - Firebase/DynamicLinks (~> 6.1.0)
+  - Firebase/Messaging (~> 6.1.0)
+  - FreshchatSDK (~> 2.5.1)
   - JumioMobileSDK/Netverify (~> 3.1.2)
-  - Nantes (~> 0.0.7)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
   - Stripe (~> 15.0.0)
-  - SwiftGifOrigin (~> 1.7.0)
-  - SwiftLint (~> 0.31.0)
+  - SwiftLint (~> 0.32.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -146,40 +143,36 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JumioMobileSDK
     - nanopb
-    - Nantes
     - OHHTTPStubs
     - PromiseKit
     - Protobuf
     - Stripe
-    - SwiftGifOrigin
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
-  FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f
+  FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
+  FirebaseAuth: 4281d6d98a90881e00710fa8d9e37c2ccdfc7d80
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
-  FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
-  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
-  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
-  FreshchatSDK: a7432bc1cb0ecd54d9a618158d1c8d0271176e00
-  GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
-  GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
-  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  FirebaseCore: 66bdef3b310a026880e2a5bc8aa586ab62ce4543
+  FirebaseDynamicLinks: 25fc45fdf2557ee2ee630999c301245d8911792e
+  FirebaseInstanceID: 27bed93a59b6685f5c3e0c028a878a764fd75c33
+  FirebaseMessaging: 31377e05331d16dc6c9fd82554f9a5c49aa70aed
+  FreshchatSDK: ded74133feff02722215f5f382bb04a87c53c766
+  GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
+  GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   JumioMobileSDK: e7235c9f7e38cb5aba2fb2329e87325f97b70caf
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Nantes: 85db7af961c30e5116ffa6ac3f74f790b5f23d90
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
-  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 93bb2f7e8892c8d5a0d77a99011af1a0df2519a9
+PODFILE CHECKSUM: 2c42409a1191fd8011440a17b38fcbb68b1f5719
 
 COCOAPODS: 1.6.1
