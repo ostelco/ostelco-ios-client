@@ -16,7 +16,7 @@ class LocationProblemViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var gifView: LoopingVideoView!
-    @IBOutlet private var explanationLabel: UILabel!
+    @IBOutlet private var explanationLabel: BodyTextLabel!
     @IBOutlet private var primaryButton: UIButton!
     
     /// For the `LocationChecking` protocol
@@ -62,7 +62,8 @@ class LocationProblemViewController: UIViewController {
         }
         
         self.titleLabel.text = problem.title
-        self.explanationLabel.text = problem.copy
+        self.explanationLabel.tapDelegate = self
+        self.explanationLabel.setLinkableText(problem.linkableCopy)
         
         if let image = problem.image {
             self.imageView.isHidden = false
@@ -156,5 +157,16 @@ extension LocationProblemViewController: LocationChecking {
     
     func handleLocationProblem(_ problem: LocationProblem) {
         self.locationProblem = problem
+    }
+}
+
+extension LocationProblemViewController: LabelTapDelegate {
+    
+    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
+        guard self.locationProblem!.linkableCopy.isIndexLinked(characterIndex) else {
+            return
+        }
+        
+        UIApplication.shared.open(ExternalLink.locationRequirement.url)
     }
 }

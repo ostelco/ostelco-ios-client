@@ -112,4 +112,10 @@ class LinkableTextTests: XCTestCase {
                             "Could not generate linkable text for \(country.nameOrPlaceholder)")
         }
     }
+    
+    func testLinkableLocationProblems() {
+        for problem in LocationProblem.allCases {
+            XCTAssertNotNil(problem.linkableCopy)
+        }
+    }
 }

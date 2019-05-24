@@ -23,4 +23,8 @@ public enum LocationProblem {
     case restrictedByParentalControls
     case notDetermined
     case authorizedButWrongCountry(expected: String, actual: String)
+    
+    /// NOTE: Due to associated objects, this can't be made `caseIterable`
+    /// automatically, so make sure you update the extension in the tests
+    /// if you add a new case.
 }

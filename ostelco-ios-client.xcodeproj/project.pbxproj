@@ -217,6 +217,7 @@
 		9BB6A7A6226F656E000D5E13 /* OstelcoStyles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9BBA3DC02296EB8F0014FADE /* LinkableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBA3DBD2296EA280014FADE /* LinkableText.swift */; };
 		9BBA3DC22296FB9D0014FADE /* LinkableTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */; };
+		9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBA3DC32297F78C0014FADE /* LocationProblem+Testing.swift */; };
 		9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */; };
 		9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */; };
 		9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */; };
@@ -538,6 +539,7 @@
 		9BB6A796226F6514000D5E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BBA3DBD2296EA280014FADE /* LinkableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableText.swift; sourceTree = "<group>"; };
 		9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTextTests.swift; sourceTree = "<group>"; };
+		9BBA3DC32297F78C0014FADE /* LocationProblem+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationProblem+Testing.swift"; sourceTree = "<group>"; };
 		9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		9BBEEE0B228D88F600EED7F5 /* PushNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandling.swift; sourceTree = "<group>"; };
 		9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidBecomeActiveHandling.swift; sourceTree = "<group>"; };
@@ -1105,6 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */,
+				9BBA3DC32297F78C0014FADE /* LocationProblem+Testing.swift */,
 				9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */,
 				9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */,
 				9B6A928F2284501B007F5EC9 /* MockJSON */,
@@ -1989,6 +1992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
 				9B3FA6942289B84C001E4D60 /* XCTestCase+MockingHelpers.swift in Sources */,
