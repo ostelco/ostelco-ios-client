@@ -222,7 +222,7 @@
         <!--Settings-->
         <scene sceneID="cSR-fR-N40">
             <objects>
-                <viewController id="BhN-Cy-zMa" sceneMemberID="viewController">
+                <viewController id="BhN-Cy-zMa" customClass="SettingsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rE8-uD-Hbd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,6 +253,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="1z6-P0-jqK"/>
                     <navigationItem key="navigationItem" title="Settings" id="S4t-v9-mK9"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="CdE-qD-DLO" id="idH-l9-zAc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iab-nS-Gf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

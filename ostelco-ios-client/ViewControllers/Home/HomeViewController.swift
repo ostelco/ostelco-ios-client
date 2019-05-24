@@ -47,16 +47,26 @@ class HomeViewController: ApplePayViewController {
         return formatter
     }()
 
+    private func showMessage() {
+        welcomeLabel.isHidden = false
+        messageLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            self?.welcomeLabel.isHidden = true
+            self?.messageLabel.isHidden = true
+        }
+    }
+
     private func showWelcomeMessage() {
         if HomeViewController.newSubscriber {
             HomeViewController.newSubscriber = false
-            welcomeLabel.isHidden = false
-            messageLabel.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-                self?.welcomeLabel.isHidden = true
-                self?.messageLabel.isHidden = true
-            }
+            showMessage()
         }
+    }
+
+    private func showToppedUpMessage() {
+        welcomeLabel.text = "You have been topped up! 🎉"
+        messageLabel.text = "Thanks for using OYA"
+        showMessage()
     }
 
     private func checkForSubscription(_ products: [Product]) -> Bool {
@@ -118,8 +128,8 @@ class HomeViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
-        refreshControl.beginRefreshing()
         didPullToRefresh()
+        showToppedUpMessage()
     }
 
     @objc func didPullToRefresh() {
@@ -143,7 +153,7 @@ class HomeViewController: ApplePayViewController {
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
-        if hasSubscription {
+       if hasSubscription {
             // TODO: Should we show the plans here ?
             showProductListActionSheet(products: self.availableProducts)
         } else {

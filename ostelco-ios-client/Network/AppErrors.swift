@@ -14,6 +14,7 @@ import ostelco_core
 struct ApplicationErrors {
     enum General: LocalizedError {
         case assertionFailed(message: String, file: String, line: UInt)
+        case couldntConvertUserInfoToNotificaitonData(userInfo: [AnyHashable: Any]?)
         case noValidPlansFound
         case noMyInfoConfigFound
 
@@ -21,6 +22,12 @@ struct ApplicationErrors {
             switch self {
             case .assertionFailed(let message, let file, let line):
                 return "Assertion failed in \(file) line \(line):\n\(message)"
+            case .couldntConvertUserInfoToNotificaitonData(let userInfo):
+                if let userInfo = userInfo {
+                    return "Could not turn user info into a push notification: \(userInfo)"
+                } else {
+                    return "No user info received with a push notification!"
+                }
             case .noValidPlansFound:
                 return "Did not find a valid subscription plan"
             case .noMyInfoConfigFound:

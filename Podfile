@@ -25,7 +25,7 @@ abstract_target 'ostelco-ios' do
   pod 'FreshchatSDK', '~>2.4.3' # Customer Support live chat
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
-  pod 'JumioMobileSDK/Netverify', '~>2.15.0' # eKYC
+  pod 'JumioMobileSDK/Netverify', '~>3.1.2' # eKYC
   pod 'Nantes', '~>0.0.7' # Labels with links
   pod 'Stripe', '~>15.0.0' # Payments
   pod 'SwiftGifOrigin', '~>1.7.0'

@@ -54,6 +54,8 @@ open class OstelcoButton: UIButton {
         }
     }
     
+    fileprivate var roundedBackgroundLayer: CAShapeLayer?
+    
     // MARK: - Overridden variables
     
     open override var isEnabled: Bool {
@@ -96,6 +98,17 @@ open class OstelcoButton: UIButton {
     
     // MARK: - Shadow helpers
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let shapeLayer = self.roundedBackgroundLayer else {
+            return
+        }
+        
+        let cornerRadius = self.intrinsicContentSize.height / 2
+        shapeLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+        shapeLayer.shadowPath = shapeLayer.path
+    }
+    
     fileprivate func addRoundingAndShadow(background color: OstelcoColor) {
         let cornerRadius = self.intrinsicContentSize.height / 2
         let shapeLayer = CAShapeLayer()
@@ -110,6 +123,7 @@ open class OstelcoButton: UIButton {
         shapeLayer.shadowRadius = 18
         
         self.layer.insertSublayer(shapeLayer, at: 0)
+        self.roundedBackgroundLayer = shapeLayer
     }
 }
 
@@ -175,7 +189,7 @@ public class BuyButton: OstelcoButton {
 
 public class CheckButton: OstelcoButton {
     
-    private let checkSize: CGFloat = 25
+    private let checkSize: CGFloat = 30
   
     @IBInspectable
     public var isChecked: Bool = false {
@@ -191,7 +205,7 @@ public class CheckButton: OstelcoButton {
         
         self.appTitleColor = .white
         self.appFont = OstelcoFont(fontType: .bold,
-                                   fontSize: .body)
+                                   fontSize: .onboarding)
         self.tintColor = .white
         self.setupRoundedCenter(background: .oyaBlue)
         self.configureForChecked()
@@ -211,10 +225,9 @@ public class CheckButton: OstelcoButton {
     }
     
     public func setupRoundedCenter(background color: OstelcoColor) {
-        let cornerRadius = self.checkSize / 2
         let inset = (self.intrinsicContentSize.width - self.checkSize) / 2
         self.shapeLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: inset, dy: inset),
-                                            cornerRadius: cornerRadius).cgPath
+                                            cornerRadius: 5).cgPath
         self.shapeLayer.strokeColor = color.toUIColor.cgColor
         self.shapeLayer.lineWidth = 1
                 
@@ -224,5 +237,104 @@ public class CheckButton: OstelcoButton {
     public override var intrinsicContentSize: CGSize {
         return CGSize(width: 44,
                       height: 44)
+    }
+}
+
+public class RadioButton: OstelcoButton {
+    
+    private let outerCircleWidth: CGFloat = 30
+    private let innerCircleWidth: CGFloat = 14
+    
+    private lazy var outerLayer = CAShapeLayer()
+    private lazy var innerLayer = CAShapeLayer()
+    
+    @IBInspectable
+    public var isCurrentSelected: Bool = false {
+        didSet {
+            self.configureForSelected()
+        }
+    }
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.setupLayers(background: .oyaBlue)
+        self.configureForSelected()
+    }
+    
+    private func configureForSelected() {
+        if self.isCurrentSelected {
+            self.layer.addSublayer(self.innerLayer)
+            // TODO: Localize accessibility
+            self.accessibilityLabel = "Selected"
+            self.layer.addSublayer(self.innerLayer)
+        } else {
+            self.innerLayer.removeFromSuperlayer()
+            self.accessibilityLabel = "Deselected"
+        }
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 44,
+                      height: 44)
+    }
+    
+    private func setupLayers(background color: OstelcoColor) {
+        let outerLayerInset = (self.intrinsicContentSize.width - self.outerCircleWidth) / 2
+        let outerCornerRadius = self.outerCircleWidth / 2
+        self.outerLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: outerLayerInset, dy: outerLayerInset),
+                                            cornerRadius: outerCornerRadius).cgPath
+        self.outerLayer.strokeColor = color.toUIColor.cgColor
+        self.outerLayer.lineWidth = 1
+        self.outerLayer.fillColor = nil
+        
+        self.layer.insertSublayer(self.outerLayer, at: 0)
+        
+        let innerLayerInset = (self.intrinsicContentSize.width - self.innerCircleWidth) / 2
+        let innerCornerRadius = self.innerCircleWidth / 2
+        self.innerLayer.path = UIBezierPath(roundedRect: self.bounds.insetBy(dx: innerLayerInset, dy: innerLayerInset),
+                                            cornerRadius: innerCornerRadius).cgPath
+        
+        self.innerLayer.fillColor = color.toUIColor.cgColor
+        self.innerLayer.strokeColor = color.toUIColor.cgColor
+    }
+}
+
+public class DropShadowButton: OstelcoButton {
+    
+    private lazy var dropShadowLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.path = UIBezierPath(roundedRect: self.bounds,
+                                  cornerRadius: self.defaultCornerRadius).cgPath
+        
+        layer.shadowColor = OstelcoColor.black.toUIColor.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.1
+        layer.fillColor = OstelcoColor.white.toUIColor.cgColor
+        
+        return layer
+    }()
+    
+    public override func commonInit() {
+        super.commonInit()
+        
+        self.appTitleColor = .blackForText
+        self.appFont = OstelcoFont(fontType: .medium,
+                                   fontSize: .body)
+        self.layer.insertSublayer(self.dropShadowLayer, at: 0)
+       
+        if let imageView = self.imageView {
+            self.bringSubviewToFront(imageView)
+        }
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.dropShadowLayer.path = UIBezierPath(roundedRect: self.bounds,
+                                  cornerRadius: self.defaultCornerRadius).cgPath
+    }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 154,
+                      height: 56)
     }
 }

@@ -18,6 +18,7 @@ enum ApplePayError: Error {
     case otherRestrictions
     // Other errors during payment
     case userCancelled
+    case paymentDeclined
     case primeAPIError(Error)
 }
 
@@ -33,6 +34,8 @@ extension ApplePayError: LocalizedError {
         // Other errors during payment
         case .userCancelled:
             return "User has cancelled the payment"
+        case .paymentDeclined:
+            return "Payment was declined"
         case .primeAPIError:
             return "Prime API Error"
         }
@@ -78,7 +81,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             .catch { error in
                 debugPrint("Failed to buy product with sku %{public}@, got error: %{public}@", "123", "\(error)")
                 ApplicationErrors.log(error)
-                self.applePayError = ApplePayError.primeAPIError(error)
+                self.applePayError = self.createPaymentError(error)
                 completion(PKPaymentAuthorizationResult(status: .failure, errors: [error]))
                 // Wait for finish method before we call paymentError()
             }
@@ -138,6 +141,22 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     }
 
     // MARK: - Other Helpers.
+
+    // Create appropriate ApplePayError based on the Error
+    func createPaymentError(_ error: Error) -> ApplePayError {
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            // Handle status logic here, return payment declined if needed otherwise keep going
+            // Payment is declined when status = 403 and code = FAILED_TO_PURCHASE_PRODUCT
+            if jsonError.httpStatusCode == 403 && jsonError.errorCode == "FAILED_TO_PURCHASE_PRODUCT" {
+                return ApplePayError.paymentDeclined
+            }
+        default:
+            break
+        }
+        // All generic payment errors are treated as primeAPIError
+        return ApplePayError.primeAPIError(error)
+    }
 
     // Findout if we can make payments on this device.
     func canMakePayments() -> ApplePayError? {
