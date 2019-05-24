@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lsf-aj-zcC">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,22 +10,163 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Instructions View Controller-->
+        <scene sceneID="C1M-in-MlX">
+            <objects>
+                <viewController storyboardIdentifier="ESIMInstructionsViewController" id="7y7-CI-oP5" customClass="ESIMInstructionsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kKs-eL-NW4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-11-IYb" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="32" y="88" width="350" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBu-JG-9LU" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="789.5" width="366" height="28.5"/>
+                                <state key="normal" title="Send me the QR code"/>
+                                <connections>
+                                    <action selector="primaryButtonTapped:" destination="7y7-CI-oP5" eventType="touchUpInside" id="9as-v0-bv4"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="do3-8p-zAP">
+                                <rect key="frame" x="24" y="120" width="366" height="633.5"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-m4-Wv4">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="577"/>
+                                        <connections>
+                                            <segue destination="1cU-eB-9Qs" kind="embed" id="D3w-bP-v4t"/>
+                                        </connections>
+                                    </containerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allright, I know what to do!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6c-Xx-6VL" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                        <rect key="frame" x="0.0" y="613" width="366" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="do3-8p-zAP" firstAttribute="leading" secondItem="uq5-TP-2Bj" secondAttribute="leading" constant="24" id="Enk-W0-cvl"/>
+                            <constraint firstItem="xML-11-IYb" firstAttribute="top" secondItem="uq5-TP-2Bj" secondAttribute="top" constant="44" id="ErQ-06-Twl"/>
+                            <constraint firstItem="do3-8p-zAP" firstAttribute="top" secondItem="xML-11-IYb" secondAttribute="bottom" constant="32" id="U4q-QO-kET"/>
+                            <constraint firstItem="jBu-JG-9LU" firstAttribute="top" secondItem="do3-8p-zAP" secondAttribute="bottom" constant="36" id="ckw-3I-G5I"/>
+                            <constraint firstItem="jBu-JG-9LU" firstAttribute="leading" secondItem="uq5-TP-2Bj" secondAttribute="leading" constant="24" id="fnx-Ct-EJt"/>
+                            <constraint firstItem="uq5-TP-2Bj" firstAttribute="trailing" secondItem="xML-11-IYb" secondAttribute="trailing" constant="32" id="jmA-zZ-81p"/>
+                            <constraint firstItem="uq5-TP-2Bj" firstAttribute="trailing" secondItem="do3-8p-zAP" secondAttribute="trailing" constant="24" id="kLm-9t-Y96"/>
+                            <constraint firstItem="uq5-TP-2Bj" firstAttribute="bottom" secondItem="jBu-JG-9LU" secondAttribute="bottom" constant="44" id="lDJ-sJ-p9W"/>
+                            <constraint firstItem="uq5-TP-2Bj" firstAttribute="trailing" secondItem="jBu-JG-9LU" secondAttribute="trailing" constant="24" id="mRl-ga-x9U"/>
+                            <constraint firstItem="xML-11-IYb" firstAttribute="leading" secondItem="uq5-TP-2Bj" secondAttribute="leading" constant="32" id="vkM-ti-ZA3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uq5-TP-2Bj"/>
+                    </view>
+                    <connections>
+                        <outlet property="lastPageLabel" destination="V6c-Xx-6VL" id="3DT-ha-NAK"/>
+                        <outlet property="primaryButton" destination="jBu-JG-9LU" id="2HM-cC-aj7"/>
+                        <segue destination="pps-vh-Zol" kind="show" identifier="showESIMInstructions" id="6tX-Sn-okP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnf-TA-ZcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024.6376811594205" y="57.589285714285708"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="CUZ-D2-Fr2">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1cU-eB-9Qs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKM-HU-p4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="729"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="KxC-0E-p5U">
+            <objects>
+                <viewController storyboardIdentifier="ESIMPageViewController" id="AJs-Go-yWO" customClass="ESIMPageViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YBB-of-Lpg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="top" axis="vertical" distribution="fillProportionally" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="aOc-in-O3Q">
+                                <rect key="frame" x="0.0" y="44" width="414" height="634"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiN-vE-YMt" userLabel="Top Text" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                        <rect key="frame" x="173" y="0.0" width="68" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-YD-4zA">
+                                        <rect key="frame" x="19.5" y="84.5" width="375" height="273"/>
+                                    </imageView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOe-De-RyU">
+                                        <rect key="frame" x="0.0" y="421.5" width="414" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="256" id="mBg-DI-EqP"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="KbH-LR-uAk" kind="embed" id="mEv-As-o8y"/>
+                                        </connections>
+                                    </containerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcn-jK-CyN" userLabel="Bottom Text" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                        <rect key="frame" x="158.5" y="613.5" width="97" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XOe-De-RyU" firstAttribute="leading" secondItem="aOc-in-O3Q" secondAttribute="leading" id="kTw-TX-rAx"/>
+                                    <constraint firstAttribute="trailing" secondItem="XOe-De-RyU" secondAttribute="trailing" id="vqU-mA-v9c"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aOc-in-O3Q" firstAttribute="leading" secondItem="CgP-VZ-TAa" secondAttribute="leading" id="AUc-d3-z2i"/>
+                            <constraint firstItem="aOc-in-O3Q" firstAttribute="top" secondItem="CgP-VZ-TAa" secondAttribute="top" id="LQo-kc-VE9"/>
+                            <constraint firstItem="CgP-VZ-TAa" firstAttribute="trailing" secondItem="aOc-in-O3Q" secondAttribute="trailing" id="Ny6-jJ-dwo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CgP-VZ-TAa"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomTextLabel" destination="Bcn-jK-CyN" id="LXA-Ud-xwm"/>
+                        <outlet property="imageView" destination="7cB-YD-4zA" id="iVc-mJ-g1f"/>
+                        <outlet property="playerView" destination="XOe-De-RyU" id="m9Q-EK-GLw"/>
+                        <outlet property="topTextLabel" destination="DiN-vE-YMt" id="ZNc-Z0-K76"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fy8-Sr-P5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="809"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="bPj-KE-27E">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="KbH-LR-uAk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UiX-mI-1Tx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="294" y="1300"/>
+        </scene>
         <!--On Boarding View Controller-->
         <scene sceneID="OKx-hg-ozQ">
             <objects>
                 <viewController id="Lsf-aj-zcC" customClass="ESIMOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3f0-SH-REC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-aQ-DYw" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
+                                <rect key="frame" x="24" y="88" width="366" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 2GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-xd-unb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="160.33333333333334" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="158" width="366" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,28 +186,28 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-xm-Fnb">
-                                <rect key="frame" x="24" y="326.66666666666669" width="25" height="25"/>
+                                <rect key="frame" x="24" y="324.5" width="25" height="25"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-UT-kpb" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65.000000000000014" y="214.66666666666666" width="130.33333333333337" height="21"/>
+                                <rect key="frame" x="65" y="212.5" width="122" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-f2-C0l" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="271.66666666666669" width="156" height="21"/>
+                                <rect key="frame" x="65" y="269.5" width="144" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-iQ-nVD" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="64.999999999999986" y="328.66666666666669" width="155.66666666666663" height="21"/>
+                                <rect key="frame" x="65" y="326.5" width="146" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Sv-hb7" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="788" width="366" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -74,7 +215,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clz-Qn-znE" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <rect key="frame" x="168" y="724" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="Lsf-aj-zcC" eventType="touchUpInside" id="kGy-ht-bq2"/>
@@ -113,19 +254,19 @@
                         <outlet property="step1Icon" destination="lHf-a4-RCd" id="rgs-la-bNV"/>
                         <outlet property="step2Icon" destination="sfy-wI-seC" id="1Mx-Vz-drx"/>
                         <outlet property="step3Icon" destination="FFx-xm-Fnb" id="h7H-Kv-C38"/>
-                        <segue destination="pps-vh-Zol" kind="show" identifier="showESIMInstructions" id="hrd-Fg-yq4"/>
+                        <segue destination="7y7-CI-oP5" kind="show" identifier="showESIMInstructionsCarousel" id="eUh-kH-S1C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFD-12-WhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="48"/>
+            <point key="canvasLocation" x="135" y="58"/>
         </scene>
         <!--Pending Download View Controller-->
         <scene sceneID="oPj-wY-cH4">
             <objects>
                 <viewController id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgR-Xv-prz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-P3-rBL" customClass="Heading2Label" customModule="OstelcoStyles">
@@ -240,7 +381,7 @@ Scan the QR code with this phone</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wE5-Lr-JxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997.5999999999999" y="46.326836581709152"/>
+            <point key="canvasLocation" x="1997" y="58"/>
         </scene>
         <!--OhNo-->
         <scene sceneID="fYj-Ko-N6l">
@@ -255,11 +396,11 @@ Scan the QR code with this phone</string>
             <objects>
                 <viewController storyboardIdentifier="SignUpCompletedViewController" id="Pmf-Pt-KCB" customClass="SignUpCompletedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UFf-7M-WzA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-gp-JLF" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="704" width="327" height="30"/>
+                                <rect key="frame" x="24" y="768" width="366" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Pmf-Pt-KCB" eventType="touchUpInside" id="It5-su-1Qf"/>

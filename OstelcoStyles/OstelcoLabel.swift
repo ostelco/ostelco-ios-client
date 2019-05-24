@@ -197,11 +197,11 @@ public class BodyTextLabel: OstelcoLabel {
         let attributed = NSMutableAttributedString(string: fullText, attributes: [
             .font: self.appFont.toUIFont,
             .foregroundColor: self.appTextColor.toUIColor
-        ])
+            ])
         
         attributed.addAttributes([
             .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
-        ], range: NSRange(range, in: fullText))
+            ], range: NSRange(range, in: fullText))
         
         self.attributedText = attributed
     }
