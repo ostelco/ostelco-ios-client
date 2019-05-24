@@ -190,6 +190,13 @@ public class BuyButton: OstelcoButton {
 public class CheckButton: OstelcoButton {
     
     private let checkSize: CGFloat = 30
+    
+    @IBInspectable
+    public var checkImage: UIImage? {
+        didSet {
+            self.configureForChecked()
+        }
+    }
   
     @IBInspectable
     public var isChecked: Bool = false {
@@ -213,12 +220,21 @@ public class CheckButton: OstelcoButton {
     
     private func configureForChecked() {
         if self.isChecked {
-            self.setTitle("✓", for: .normal)
+            if let checkImage = self.checkImage {
+                self.setTitle(nil, for: .normal)
+                self.setImage(checkImage, for: .normal)
+                self.bringSubviewToFront(self.imageView!)
+            } else {
+                self.setImage(nil, for: .normal)
+                self.setTitle("✓", for: .normal)
+            }
+            
             // TODO: Localize accessibility
             self.accessibilityLabel = "Checked"
             self.shapeLayer.fillColor = OstelcoColor.oyaBlue.toUIColor.cgColor
         } else {
             self.setTitle(nil, for: .normal)
+            self.setImage(nil, for: .normal)
             self.accessibilityLabel = "Unchecked"
             self.shapeLayer.fillColor = nil
         }

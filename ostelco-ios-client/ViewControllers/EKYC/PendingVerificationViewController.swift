@@ -6,8 +6,9 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import UIKit
 import ostelco_core
+import OstelcoStyles
+import UIKit
 
 class PendingVerificationViewController: UIViewController {
     
@@ -17,12 +18,15 @@ class PendingVerificationViewController: UIViewController {
     // for DidBecomeActiveHandling
     var didBecomeActiveObserver: NSObjectProtocol?
     
-    @IBAction private func needHelpTapped(_ sender: Any) {
-        self.showNeedHelpActionSheet()
-    }
+    @IBOutlet private var gifView: LoopingVideoView!
+
+    // MARK: - View Lifecycle
     
-    @IBAction private func `continue`(_ sender: Any) {
-        self.checkVerificationStatus()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.gifView.videoURL = GifVideo.time.url
+        self.gifView.play()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +39,16 @@ class PendingVerificationViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.removePushNotificationListener()
         self.removeDidBecomeActiveObserver()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction private func needHelpTapped(_ sender: Any) {
+        self.showNeedHelpActionSheet()
+    }
+    
+    @IBAction private func `continue`(_ sender: Any) {
+        self.checkVerificationStatus()
     }
     
     func checkVerificationStatus(silentCheck: Bool = false) {

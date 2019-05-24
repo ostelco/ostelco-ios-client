@@ -121,6 +121,9 @@
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
 		9B1E07462282F4A900EBFCDC /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DAD952281A7BB003810BE /* Email.storyboard */; };
 		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
+		9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */; };
+		9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
+		9B305F99229694F700B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */; };
@@ -200,6 +203,9 @@
 		9B9B324A225E3D3900227EA3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A9217BA35C00F59758 /* ProductModel.swift */; };
 		9B9B324E225E411700227EA3 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324D225E411700227EA3 /* APIHelper.swift */; };
 		9B9B3250225E423A00227EA3 /* Collection+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B324F225E423A00227EA3 /* Collection+Empty.swift */; };
+		9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D957C2295770E00CAB0E7 /* gifMP4s */; };
+		9B9D957E2295770E00CAB0E7 /* gifMP4s in Resources */ = {isa = PBXBuildFile; fileRef = 9B9D957C2295770E00CAB0E7 /* gifMP4s */; };
+		9B9D958022957E3400CAB0E7 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */; };
 		9BB6A797226F6514000D5E13 /* OstelcoStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB6A795226F6514000D5E13 /* OstelcoStyles.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BB6A79A226F6514000D5E13 /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9BB6A79B226F6514000D5E13 /* OstelcoStyles.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -457,6 +463,8 @@
 		9B17457C2277033300CF321B /* AddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		9B17457F227722C200CF321B /* ValidationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationState.swift; sourceTree = "<group>"; };
 		9B1745822277428A00CF321B /* OstelcoTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTextField.swift; sourceTree = "<group>"; };
+		9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRoundedImageView.swift; sourceTree = "<group>"; };
+		9B305F97229693EA00B89FCB /* GifVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifVideo.swift; sourceTree = "<group>"; };
 		9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Convenience.swift"; sourceTree = "<group>"; };
 		9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicNetworkTests.swift; sourceTree = "<group>"; };
 		9B3FA6932289B84C001E4D60 /* XCTestCase+MockingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MockingHelpers.swift"; sourceTree = "<group>"; };
@@ -521,6 +529,8 @@
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
 		9B9B3251225E7CCD00227EA3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9B9D957C2295770E00CAB0E7 /* gifMP4s */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gifMP4s; sourceTree = "<group>"; };
+		9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideoView.swift; sourceTree = "<group>"; };
 		9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OstelcoStyles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB6A795226F6514000D5E13 /* OstelcoStyles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OstelcoStyles.h; sourceTree = "<group>"; };
 		9BB6A796226F6514000D5E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -751,6 +761,7 @@
 				04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */,
 				040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */,
 				040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */,
+				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 			);
 			path = ESim;
 			sourceTree = "<group>";
@@ -759,10 +770,9 @@
 			isa = PBXGroup;
 			children = (
 				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
-				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
+				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
-				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
 			);
@@ -785,6 +795,7 @@
 			isa = PBXGroup;
 			children = (
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
+				9B305F97229693EA00B89FCB /* GifVideo.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
@@ -961,13 +972,15 @@
 			children = (
 				9BB6A795226F6514000D5E13 /* OstelcoStyles.h */,
 				9B6E3A0B226F6FA70063EBAA /* fonts */,
-				9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */,
+				9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */,
 				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
 				9B46D64A226F00210030A8EB /* OstelcoColor.swift */,
 				9B46D64E226F02C30030A8EB /* OstelcoFont.swift */,
 				9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */,
 				9B46D64C226F01D60030A8EB /* OstelcoLabel.swift */,
 				9B1745822277428A00CF321B /* OstelcoTextField.swift */,
+				9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */,
+				9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */,
 				9BB6A796226F6514000D5E13 /* Info.plist */,
 			);
 			path = OstelcoStyles;
@@ -1078,6 +1091,7 @@
 			isa = PBXGroup;
 			children = (
 				04488172217924B800F59758 /* Assets.xcassets */,
+				9B9D957C2295770E00CAB0E7 /* gifMP4s */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1385,6 +1399,7 @@
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
 				9BC465422271DAD4001951BF /* OhNo.storyboard in Resources */,
+				9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				9BE2D468225B7A6600B51999 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
@@ -1441,6 +1456,7 @@
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				9BC465432271DAD4001951BF /* OhNo.storyboard in Resources */,
+				9B9D957E2295770E00CAB0E7 /* gifMP4s in Resources */,
 				047F2914222451DF00FC6A8F /* Country.storyboard in Resources */,
 				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
 				048C78822191ED430041F135 /* Assets.xcassets in Resources */,
@@ -1843,6 +1859,7 @@
 				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
+				9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */,
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
@@ -1956,8 +1973,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB6A7A1226F6523000D5E13 /* OstelcoFont.swift in Sources */,
+				9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */,
 				9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */,
 				9BB6A79F226F6523000D5E13 /* OstelcoButton.swift in Sources */,
+				9B9D958022957E3400CAB0E7 /* LoopingVideoView.swift in Sources */,
 				9BB6A7A2226F6523000D5E13 /* OstelcoLabel.swift in Sources */,
 				9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */,
 				9BB6A7A3226F6529000D5E13 /* UIColor+Pixel.swift in Sources */,
@@ -2020,6 +2039,7 @@
 				9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
+				9B305F99229694F700B89FCB /* GifVideo.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
