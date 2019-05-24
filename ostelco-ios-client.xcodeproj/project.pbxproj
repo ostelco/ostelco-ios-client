@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */; };
+		040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */; };
+		040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */; };
+		040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */; };
 		0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168B2226BBBA00455278 /* GetStartedViewController.swift */; };
 		0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168B2226BBBA00455278 /* GetStartedViewController.swift */; };
 		0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */; };
@@ -367,6 +371,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPageViewController.swift; sourceTree = "<group>"; };
+		040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
 		0412168B2226BBBA00455278 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
 		041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAuthorizationStatusExtensions.swift; sourceTree = "<group>"; };
@@ -753,6 +759,8 @@
 			children = (
 				04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */,
 				04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */,
+				040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */,
+				040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 			);
 			path = ESim;
@@ -1829,6 +1837,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
+				040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
@@ -1859,6 +1868,7 @@
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
+				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
@@ -2007,6 +2017,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043E7122223AFFA800E01993 /* CountriesTableViewController.swift in Sources */,
+				040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
@@ -2037,6 +2048,7 @@
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
+				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
