@@ -48,12 +48,21 @@ class HomeViewController: ApplePayViewController {
     }()
 
     private func showMessage() {
-        welcomeLabel.isHidden = false
-        messageLabel.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-            self?.welcomeLabel.isHidden = true
-            self?.messageLabel.isHidden = true
-        }
+        welcomeLabel.alpha = 1.0
+        messageLabel.alpha = 1.0
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 2.0,
+            options: .curveEaseIn,
+            animations: {  [weak self] in
+                self?.hideMessages()
+            },
+            completion: nil)
+    }
+
+    private func hideMessages() {
+        welcomeLabel.alpha = 0.0
+        messageLabel.alpha = 0.0
     }
 
     private func showWelcomeMessage() {
@@ -87,8 +96,7 @@ class HomeViewController: ApplePayViewController {
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         refreshControl.attributedTitle = NSMutableAttributedString(string: refreshBalanceText)
         self.scrollView.addSubview(refreshControl)
-        refreshControl.beginRefreshing()
-        didPullToRefresh()
+        refreshBalance()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -128,15 +136,11 @@ class HomeViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
-        didPullToRefresh()
+        refreshBalance()
         showToppedUpMessage()
     }
 
-    @objc func didPullToRefresh() {
-        // Hide the Message on top
-        welcomeLabel.isHidden = true
-        messageLabel.isHidden = true
-        
+    func refreshBalance() {
         // Call the bundles API
         APIManager.shared.primeAPI
             .loadBundles()
@@ -149,11 +153,16 @@ class HomeViewController: ApplePayViewController {
             }
             .catch { error in
                 ApplicationErrors.log(error)
-            }
+        }
+    }
+
+    @objc func didPullToRefresh() {
+        hideMessages()
+        refreshBalance()
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
-       if hasSubscription {
+        if hasSubscription {
             // TODO: Should we show the plans here ?
             showProductListActionSheet(products: self.availableProducts)
         } else {
