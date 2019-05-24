@@ -90,6 +90,7 @@ class HomeViewController: ApplePayViewController {
         super.viewDidLoad()
 
         self.registerForPushNotificationsIfNeeded()
+        self.balanceLabel.dataAmountString = nil
 
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
@@ -176,7 +177,7 @@ class HomeViewController: ApplePayViewController {
         }
         
         let formattedBalance = self.byteCountFormatter.string(fromByteCount: bundle.balance)
-        self.balanceLabel.text = formattedBalance
+        self.balanceLabel.dataAmountString = formattedBalance
     }
     
     private func showProductListActionSheet(products: [Product]) {
