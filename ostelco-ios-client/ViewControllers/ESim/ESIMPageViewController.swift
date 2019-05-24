@@ -36,7 +36,11 @@ enum ESIMPage: Int, CaseIterable {
     var topText: [String] {
         switch self {
         case .instructions:
-            return ["We are about to send you an email with a QR code. Before we do that, please read these instructions."]
+            return ["""
+            We are about to send you an email with a QR
+            code. Before we do that, please read these
+            instructions.
+            """]
         case .scanQRCode:
             return ["""
             On your phone, go to:
@@ -93,9 +97,9 @@ enum ESIMPage: Int, CaseIterable {
 
 class ESIMPageViewController: UIViewController {
 
-    @IBOutlet private var topTextLabel: OstelcoLabel!
+    @IBOutlet private var topTextLabel: BodyTextLabel!
     @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var bottomTextLabel: OstelcoLabel!
+    @IBOutlet private var bottomTextLabel: BodyTextLabel!
     @IBOutlet private var playerView: UIView!
     
     // This is set up in the convenience constructor
@@ -140,7 +144,7 @@ class ESIMPageViewController: UIViewController {
         }
     }
     
-    private func setTextLabel(_ label: OstelcoLabel, _ parts: [String]) {
+    private func setTextLabel(_ label: BodyTextLabel, _ parts: [String]) {
         switch parts.count {
         case 1:
             label.text = parts[0]
