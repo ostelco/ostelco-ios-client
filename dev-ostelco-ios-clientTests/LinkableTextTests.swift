@@ -97,4 +97,10 @@ class LinkableTextTests: XCTestCase {
             XCTAssertNotNil(page.linkableText)
         }
     }
+    
+    func testLinkableTextInLegalLinksInstantiates() {
+        for link in LegalLink.allCases {
+            XCTAssertNotNil(link.linkableText)
+        }
+    }
 }

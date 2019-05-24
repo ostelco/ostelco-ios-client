@@ -840,7 +840,6 @@
 			children = (
 				9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */,
 				9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */,
-				9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */,
 			);
 			path = APITests;
 			sourceTree = "<group>";
@@ -978,7 +977,7 @@
 				9BB6A795226F6514000D5E13 /* OstelcoStyles.h */,
 				9B6E3A0B226F6FA70063EBAA /* fonts */,
 				9BBA3DBD2296EA280014FADE /* LinkableText.swift */,
-                9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */,
+				9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */,
 				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
 				9B46D64A226F00210030A8EB /* OstelcoColor.swift */,
 				9B46D64E226F02C30030A8EB /* OstelcoFont.swift */,
@@ -1116,6 +1115,7 @@
 				9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */,
 				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
+				9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
 				9B8215792279B92F00DC6B64 /* HeaderGeneratorTests.swift */,
 				9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */,

@@ -9,6 +9,37 @@
 import OstelcoStyles
 import UIKit
 
+enum LegalLink: CaseIterable {
+    case termsAndConditions
+    case privacyPolicy
+    case minimumAge
+    
+    var linkableText: LinkableText {
+        switch self {
+        case .termsAndConditions:
+            return LinkableText(fullText: "I hereby agree to the Terms & Conditions",
+                                linkedPortion: "Terms & Conditions")!
+        case .privacyPolicy:
+            return LinkableText(fullText: "I agree to the Privacy Policy",
+                                linkedPortion: "Privacy Policy")!
+        case .minimumAge:
+            return LinkableText(fullText: "I am at least 18 years of age",
+                                linkedPortion: "18 years")!
+        }
+    }
+    
+    var linkToOpen: ExternalLink {
+        switch self {
+        case .termsAndConditions:
+            return .termsAndConditions
+        case .privacyPolicy:
+            return .privacyPolicy
+        case .minimumAge:
+            return .minimumAgeDetails
+        }
+    }
+}
+
 class TheLegalStuffViewController: UIViewController {
     
     @IBOutlet private weak var termsAndConditionsLabel: BodyTextLabel!
@@ -18,7 +49,9 @@ class TheLegalStuffViewController: UIViewController {
     @IBOutlet private weak var termsAndConditionsCheck: CheckButton!
     @IBOutlet private weak var privacyPolicyCheck: CheckButton!
     @IBOutlet private weak var ageCheck: CheckButton!
-    
+
+    @IBOutlet private weak var continueButton: UIButton!
+ 
     private var allChecks: [CheckButton] {
         return [
             self.termsAndConditionsCheck,
@@ -27,14 +60,15 @@ class TheLegalStuffViewController: UIViewController {
         ]
     }
     
-    @IBOutlet private weak var continueButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.termsAndConditionsLabel.setFullText("I hereby agree to the Terms & Conditions", withBoldedPortion: "Terms & Conditions")
-        self.privacyPolicyLabel.setFullText("I agree to the Privacy Policy", withBoldedPortion: "Privacy Policy")
-        self.ageLabel.setFullText("I am at least 18 years of age", withBoldedPortion: "18 years")
+        self.termsAndConditionsLabel.tapDelegate = self
+        self.termsAndConditionsLabel.setLinkableText(LegalLink.termsAndConditions.linkableText)
+        self.privacyPolicyLabel.tapDelegate = self
+        self.privacyPolicyLabel.setLinkableText(LegalLink.privacyPolicy.linkableText)
+        self.ageLabel.tapDelegate = self
+        self.ageLabel.setLinkableText(LegalLink.minimumAge.linkableText)
         
         self.updateContinueButtonState()
     }
@@ -57,19 +91,6 @@ class TheLegalStuffViewController: UIViewController {
             self.continueButton.isEnabled = true
         }
     }
-    
-    @IBAction private func termsAndConditionsTapped(sender: UITapGestureRecognizer) {
-        UIApplication.shared.open(ExternalLink.termsAndConditions.url)
-    }
-    
-    @IBAction private func privacyPolicyTapped(sender: UITapGestureRecognizer) {
-        UIApplication.shared.open(ExternalLink.privacyPolicy.url)
-    }
-    
-    @IBAction private func ageTapped(sender: UITapGestureRecognizer) {
-        #warning("Get actual link for this before launch!")
-        self.showAlert(title: "Placeholder", msg: "Must get actual URL here!")
-    }
 }
 
 extension TheLegalStuffViewController: StoryboardLoadable {
@@ -80,5 +101,30 @@ extension TheLegalStuffViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return true
+    }
+}
+
+extension TheLegalStuffViewController: LabelTapDelegate {
+    
+    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
+        
+        let legalLink: LegalLink
+        switch label {
+        case self.termsAndConditionsLabel:
+            legalLink = .termsAndConditions
+        case self.privacyPolicyLabel:
+            legalLink = .privacyPolicy
+        case self.ageLabel:
+            legalLink = .minimumAge
+        default:
+            fatalError("Tapped an unhandled label!")
+        }
+        
+        guard legalLink.linkableText.isIndexLinked(characterIndex) else {
+            // Did not actually tap the link
+            return
+        }
+        
+        UIApplication.shared.open(legalLink.linkToOpen.url)
     }
 }

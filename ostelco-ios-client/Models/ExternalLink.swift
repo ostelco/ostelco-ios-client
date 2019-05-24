@@ -7,6 +7,8 @@
 //
 
 enum ExternalLink: String, CaseIterable {
+    #warning("Get real link for this before shipping!")
+    case minimumAgeDetails = "https://pi-redirector.firebaseapp.com/minimum-age"
     case privacyPolicy = "https://pi-redirector.firebaseapp.com/privacy-policy"
     case termsAndConditions = "https://pi-redirector.firebaseapp.com/terms-and-conditions"
     case esimInstructionsVideo = "https://pi-redirector.firebaseapp.com/esim-instructions-video"
