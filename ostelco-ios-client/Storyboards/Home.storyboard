@@ -25,10 +25,10 @@
                                         <rect key="frame" x="57.5" y="230.5" width="260" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Me-PfP">
-                                                <rect key="frame" x="23.5" y="0.0" width="213.5" height="115"/>
+                                                <rect key="frame" x="30.5" y="0.0" width="199.5" height="115"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-5F-Y8h" customClass="DataAmountOnHomeLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="100.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="100.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-S7-EM7" customClass="DataRemainingLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="95.5" y="100.5" width="22.5" height="14.5"/>
+                                                        <rect key="frame" x="88.5" y="100.5" width="22.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -114,21 +114,21 @@
         <!--BecomeA Member View Controller-->
         <scene sceneID="LV8-xQ-L8R">
             <objects>
-                <viewController id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BecomeAMemberViewController" id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZFr-gb-dCZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY" customClass="Heading1Label" customModule="OstelcoStyles">
                                 <rect key="frame" x="25" y="153" width="325" height="119.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member.  As an OYA member you keep your data forever.  $1 = 1 year of membership." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member.  As an OYA member you keep your data forever.  $1 = 1 year of membership." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet" customClass="BodyTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="25" y="297.5" width="325" height="142.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-ae-gcm">
@@ -165,6 +165,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonContainer" destination="hBZ-4q-9ed" id="WiH-VQ-0Gz"/>
+                        <outlet property="explanatoryCopyLabel" destination="n4T-iY-aet" id="3bV-w8-sLa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-MG-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,8 @@ enum ExternalLink: String, CaseIterable {
     #warning("Get real link for the below links before shipping!")
     case minimumAgeDetails = "https://pi-redirector.firebaseapp.com/minimum-age"
     case locationRequirement = "https://pi-redirector.firebaseapp.com/location-required"
+    case aboutMembership = "https://pi-redirector.firebaseapp.com/about-membership"
+    case currentPricing = "https://pi-redirector.firebaseapp.com/current-pricing"
     
     var url: URL {
         guard let url = URL(string: self.rawValue) else {

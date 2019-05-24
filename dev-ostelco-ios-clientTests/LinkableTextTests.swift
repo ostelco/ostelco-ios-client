@@ -118,4 +118,9 @@ class LinkableTextTests: XCTestCase {
             XCTAssertNotNil(problem.linkableCopy)
         }
     }
+    
+    func testLinkableBecomeAMember() {
+        let vc = BecomeAMemberViewController.fromStoryboard()
+        XCTAssertNotNil(vc.linkableCopy)
+    }
 }
