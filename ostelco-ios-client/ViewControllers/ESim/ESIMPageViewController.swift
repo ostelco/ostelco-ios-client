@@ -11,6 +11,11 @@ import OstelcoStyles
 import UIKit
 import AVKit
 
+struct BoldableText {
+    public let fullText: String
+    public let boldedPortion: String?
+}
+
 enum ESIMPage: Int, CaseIterable {
     case instructions
     case scanQRCode
@@ -33,45 +38,37 @@ enum ESIMPage: Int, CaseIterable {
         }
     }
     
-    var topText: [String] {
+    var topText: BoldableText {
         switch self {
         case .instructions:
-            return ["""
+            return BoldableText(fullText: """
             We are about to send you an email with a QR
             code. Before we do that, please read these
             instructions.
-            """]
+            """, boldedPortion: nil)
         case .scanQRCode:
-            return ["""
+            return BoldableText(fullText: """
             On your phone, go to:
             Settings - Mobile Data - Add Data Plan
-            """, "Settings - Mobile Data - Add Data Plan"]
+            """, boldedPortion: "Settings - Mobile Data - Add Data Plan")
         case .tapToContinue:
-            return ["""
-            Then tap continue...
-            """]
+            return BoldableText(fullText: "Then tap continue...", boldedPortion: nil)
         case .forMobileDataOnly:
-            return ["""
-            Choose "...for mobile data only"
-            """]
+            return BoldableText(fullText: "Choose \"...for mobile data only\"", boldedPortion: nil)
         case .watchVideo:
-            return ["""
-            Still unsure? Watch this video!
-            """]
+            return BoldableText(fullText: "Still unsure? Watch this video!", boldedPortion: nil)
         }
     }
     
-    var bottomText: [String]? {
+    var bottomText: BoldableText? {
         switch self {
         case .instructions:
-            return ["""
+            return BoldableText(fullText: """
             Open the email on
             another device
-            """, "another device"]
+            """, boldedPortion: "another device")
         case .scanQRCode:
-            return ["""
-            Scan the QR code
-            """]
+            return BoldableText(fullText: "Scan the QR code", boldedPortion: nil)
         case .tapToContinue:
             return nil
         case .forMobileDataOnly:
@@ -144,14 +141,11 @@ class ESIMPageViewController: UIViewController {
         }
     }
     
-    private func setTextLabel(_ label: BodyTextLabel, _ parts: [String]) {
-        switch parts.count {
-        case 1:
-            label.text = parts[0]
-        case 2:
-            label.setFullText(parts[0], withBoldedPortion: parts[1])
-        default:
-            break
+    private func setTextLabel(_ label: BodyTextLabel, _ text: BoldableText) {
+        if let boldedPortion = text.boldedPortion {
+            label.setFullText(text.fullText, withBoldedPortion: boldedPortion)
+        } else {
+            label.text = text.fullText
         }
     }
     
