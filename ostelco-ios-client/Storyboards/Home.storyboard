@@ -25,16 +25,19 @@
                                         <rect key="frame" x="57.5" y="230.5" width="260" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Me-PfP">
-                                                <rect key="frame" x="51" y="0.0" width="158" height="115"/>
+                                                <rect key="frame" x="23.5" y="0.0" width="213.5" height="115"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-5F-Y8h" customClass="DataAmountOnHomeLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="158" height="100.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-5F-Y8h" customClass="DataAmountOnHomeLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="100.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="dataAmountString" value="2.3 GB"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-S7-EM7" customClass="DataRemainingLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="68" y="100.5" width="22.5" height="14.5"/>
+                                                        <rect key="frame" x="95.5" y="100.5" width="22.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

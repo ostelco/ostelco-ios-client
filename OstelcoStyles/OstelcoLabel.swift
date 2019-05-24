@@ -8,9 +8,18 @@
 
 import UIKit
 
+public protocol LabelTapDelegate: class {
+    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int)
+}
+
 /// Base label subclass to facilitate easy IBDesignable subclasses.
 @IBDesignable
 open class OstelcoLabel: UILabel {
+    
+    public weak var tapDelegate: LabelTapDelegate?
+    
+    private lazy var tapRecognizer = UITapGestureRecognizer(target: self,
+                                                            action: #selector(handleTap(_:)))
     
     public var appTextColor: OstelcoColor = .blackForText {
         didSet {
@@ -47,79 +56,158 @@ open class OstelcoLabel: UILabel {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
+    
+    public func setFullText(_ fullText: String,
+                            withAttributedPortion attributedPortion: String,
+                            attributes: [NSAttributedString.Key: Any]) {
+        self.setFullText(fullText,
+                         withAttributedPortions: [attributedPortion],
+                         attributes: attributes)
+    }
+    
+    open func setFullText(_ fullText: String,
+                          withAttributedPortions attributedPortions: [String],
+                          attributes: [NSAttributedString.Key: Any]) {
+        let attributedRanges = attributedPortions.compactMap { fullText.range(of: $0) }
+        let attributed = NSMutableAttributedString(string: fullText, attributes: [
+            .font: self.appFont.toUIFont,
+            .foregroundColor: self.appTextColor.toUIColor
+        ])
+        
+        for range in attributedRanges {
+            attributed.addAttributes(attributes, range: NSRange(range, in: fullText))
+        }
+        
+        self.attributedText = attributed
+    }
+    
+    public func setLinkableText(_ linkableText: LinkableText) {
+        guard let linkedBits = linkableText.linkedBits else {
+            // Nothing to link!
+            self.text = linkableText.fullText
+            return
+        }
+        
+        self.addTapRecognizer()
+        self.setFullText(linkableText.fullText,
+                         withAttributedPortions: linkedBits,
+                         attributes: [
+                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
+                         ])
+    }
+    
+    open func addTapRecognizer() {
+        guard self.tapRecognizer.view == nil else {
+            // already added, don't re-add
+            return
+        }
+        
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(self.tapRecognizer)
+    }
+    
+    @objc private func handleTap(_ recognizer: UITapGestureRecognizer) {
+        let touchPoint = recognizer.location(in: self)
+        guard let index = self.characterIndex(at: touchPoint) else {
+            // Nothing to handle here.
+            return
+        }
+        
+        self.tapDelegate?.tappedAttributedLabel(self, at: index)
+    }
+    
+    private func characterIndex(at point: CGPoint) -> Int? {
+        guard let attributedText = self.attributedText else {
+            return nil
+        }
+        
+        // Fix issue where font isn't properly set when passing attributed string to text storage
+        let fullStringRange = NSRange(location: 0, length: attributedText.length)
+        let mutable = NSMutableAttributedString(attributedString: attributedText)
+        mutable.addAttribute(.font, value: self.appFont.toUIFont, range: fullStringRange)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = self.textAlignment
+        mutable.addAttribute(.paragraphStyle, value: paragraphStyle, range: fullStringRange)
+        
+        // OK now let's let core text do some math for us
+        let textStorage = NSTextStorage(attributedString: mutable)
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        
+        let textContainer = NSTextContainer(size: self.frame.size)
+        textContainer.lineFragmentPadding = 0
+        textContainer.maximumNumberOfLines = self.numberOfLines
+        textContainer.lineBreakMode = self.lineBreakMode
+        layoutManager.addTextContainer(textContainer)
+
+        return layoutManager.characterIndex(for: point,
+                                            in: textContainer,
+                                            fractionOfDistanceBetweenInsertionPoints: nil)
+        
+    }
 }
 
 // MARK: - Data labels
 
 public class DataAmountOnHomeLabel: OstelcoLabel {
+    
+    /// This is set up in `commonInit`.
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    public var smallFont: OstelcoFont!
+    
+    @IBInspectable
+    public var dataAmountString: String? {
+        didSet {
+            self.configureForDataAmountString()
+        }
+    }
 
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .oyaBlue
         self.appFont = OstelcoFont(fontType: .alternateBold,
                                    fontSize: .data)
-    }
-    override public var text: String? {
-        didSet {
-            setAttributedText()
-        }
-    }
-    override public var textColor: UIColor? {
-        didSet {
-            setAttributedText()
-        }
-    }
-    override public var font: UIFont? {
-        didSet {
-            setAttributedText()
-        }
+        self.smallFont = OstelcoFont(fontType: .alternateBold,
+                                     fontSize: .dataDecimals)
+        self.configureForDataAmountString()
     }
 
-    private func setAttributedText() {
-        attributedText = getStylizeBalanceString(text: self.text ?? "")
-    }
-
-    // Make the string with all the styles required for the balance text
-    // Input text e.g. "54.5 GB"
-    private func getStylizeBalanceString(text: String) -> NSMutableAttributedString {
-        let decimalSeparator: String = Locale.current.decimalSeparator!
-        let bigFont = appFont.toUIFont
-        let smallFont = appFont.toUIFont.withSize(OstelcoFontSize.dataDecimals.toCGFloat)
-        let color = appTextColor.toUIColor
+    /// Make the string with all the styles required for the balance text
+    /// Input text e.g. "54.5 GB"
+    private func configureForDataAmountString() {
+        guard let text = self.dataAmountString else {
+            // Nothing to format.
+            self.text = nil
+            return
+        }
 
         // Split text to 2 parts, number and units
         let textArray: [String] = text.components(separatedBy: " ")
         guard textArray.count >= 2 else {
-            return NSMutableAttributedString(string: text)
+            // We don't have enough info to format this correctly, just set it normally.
+            self.text = text
+            return
         }
-
+    
         // Split number string to integer and decimal parts.
-        let numberArray: [String] = textArray[0].components(separatedBy: decimalSeparator)
-        guard numberArray.count >= 1 else {
-            return NSMutableAttributedString(string: text)
+        let decimalSeparator: String = Locale.current.decimalSeparator!
+        let numberBit = textArray[0]
+        let numberArray = numberBit.components(separatedBy: decimalSeparator)
+        guard numberArray.count >= 2 else {
+            // There isn't a decimal separator, don't bother formatting.
+            self.text = text
+            return
         }
-
-        let integerPart = numberArray[0]
-        // If there is a decimal part.
-        let decimalPart: String? = (numberArray.count >= 2) ? "\(decimalSeparator)\(numberArray[1])": nil
-        let unit = " \(textArray[1])"
-
-        // Add integer part with the big font.
-        let attrString = NSMutableAttributedString(string: integerPart, attributes: [.font: bigFont, .foregroundColor: color])
-        if let decimalPart = decimalPart {
-            // Add decimal part including the decimal character
-            // This portion of text is aligned to top with a smaller font
-            let offset = bigFont.capHeight - smallFont.capHeight
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: smallFont,
-                .baselineOffset: offset,
-                .foregroundColor: color
-            ]
-            attrString.append(NSMutableAttributedString(string: decimalPart, attributes: attributes))
-        }
-        // Add the modifier part with bigger font.
-        attrString.append(NSMutableAttributedString(string: unit, attributes: [.font: bigFont, .foregroundColor: color]))
-        return attrString
+        
+        let decimalPart = numberArray[1]
+        let offset = self.appFont.toUIFont.capHeight - self.smallFont.toUIFont.capHeight
+        self.setFullText(text,
+                         withAttributedPortion: decimalSeparator + decimalPart,
+                         attributes: [
+                            .font: self.smallFont.toUIFont,
+                            .baselineOffset: offset,
+                            .foregroundColor: self.appTextColor.toUIColor
+                        ])
     }
 }
 
@@ -187,23 +275,11 @@ public class BodyTextLabel: OstelcoLabel {
     }
     
     public func setFullText(_ fullText: String, withBoldedPortion boldedPortion: String) {
-        guard let range = fullText.range(of: boldedPortion) else {
-            assertionFailure("You're trying to set bolded text that's not in the full text!")
-            // In prod: Fall back to just setting the text normally.
-            self.text = fullText
-            return
-        }
-        
-        let attributed = NSMutableAttributedString(string: fullText, attributes: [
-            .font: self.appFont.toUIFont,
-            .foregroundColor: self.appTextColor.toUIColor
-            ])
-        
-        attributed.addAttributes([
-            .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
-            ], range: NSRange(range, in: fullText))
-        
-        self.attributedText = attributed
+        self.setFullText(fullText,
+                         withAttributedPortion: boldedPortion,
+                         attributes: [
+                            .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
+                         ])
     }
 }
 
