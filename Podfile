@@ -14,7 +14,7 @@ end
 
 # Framework target
 target 'ostelco-core' do
-  pod 'Firebase/Auth', '~>5.20.1'
+  pod 'Firebase/Auth', firebase_version
   pod 'Firebase/Core', firebase_version
   pod 'PromiseKit', '~> 6.8.4' # Promises for Swift
 end
@@ -26,9 +26,7 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>3.1.2' # eKYC
-  pod 'Nantes', '~>0.0.7' # Labels with links
   pod 'Stripe', '~>15.0.0' # Payments
-  pod 'SwiftGifOrigin', '~>1.7.0'
   pod 'SwiftLint', '~>0.31.0'
 
   # Dev app target
