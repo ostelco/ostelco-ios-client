@@ -21,7 +21,6 @@ class ESIMInstructionsViewController: UIViewController {
     
     private lazy var dataSource: PageControllerDataSource = {
         let pages = ESIMPage.allCases.map { $0.viewController }
-        print(pages)
         return PageControllerDataSource(pageController: self.pageController,
                                         viewControllers: pages,
                                         pageIndicatorTintColor: OstelcoColor.paleGrey.toUIColor,
