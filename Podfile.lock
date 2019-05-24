@@ -52,7 +52,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
     - Protobuf (~> 3.1)
-  - FreshchatSDK (2.4.4)
+  - FreshchatSDK (2.5.1)
   - GoogleAppMeasurement (6.0.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -117,7 +117,7 @@ DEPENDENCIES:
   - Firebase/Core (~> 6.1.0)
   - Firebase/DynamicLinks (~> 6.1.0)
   - Firebase/Messaging (~> 6.1.0)
-  - FreshchatSDK (~> 2.4.4)
+  - FreshchatSDK (~> 2.5.1)
   - JumioMobileSDK/Netverify (~> 3.1.2)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
@@ -161,7 +161,7 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: 25fc45fdf2557ee2ee630999c301245d8911792e
   FirebaseInstanceID: 27bed93a59b6685f5c3e0c028a878a764fd75c33
   FirebaseMessaging: 31377e05331d16dc6c9fd82554f9a5c49aa70aed
-  FreshchatSDK: 67e20ed1e98c2a3597bfe7124919fad2a2e04cf7
+  FreshchatSDK: ded74133feff02722215f5f382bb04a87c53c766
   GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
   GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
@@ -173,6 +173,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: c2fc2e87a121db6aa29249830932c8bdde3f2829
+PODFILE CHECKSUM: 2c42409a1191fd8011440a17b38fcbb68b1f5719
 
 COCOAPODS: 1.6.1
