@@ -6,7 +6,9 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import AVFoundation
 import ostelco_core
+import OstelcoStyles
 import UIKit
 
 enum OnboardingPage: Int, CaseIterable {
@@ -14,14 +16,14 @@ enum OnboardingPage: Int, CaseIterable {
     case noNeedToChange
     case fullyDigital
     
-    var image: UIImage {
+    var gifVideo: GifVideo {
         switch self {
         case .whatIsOya:
-            return UIImage(named: "illustrationArrowsUp")!
+            return .arrow_up
         case .noNeedToChange:
-            return UIImage(named: "illustrationJumpForJoy")!
+            return .heart
         case .fullyDigital:
-            return UIImage(named: "illustrationDevices")!
+            return .app
         }
     }
     
@@ -63,7 +65,7 @@ class OnboardingPageViewController: UIViewController {
     
     @IBOutlet private var copyLabel: UILabel!
     
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var gifView: LoopingVideoView!
     
     // This is set up in the convenience constructor
     // swiftlint:disable:next implicitly_unwrapped_optional
@@ -82,8 +84,18 @@ class OnboardingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.gifView.videoURL = self.onboardingPage.gifVideo.url
         self.copyLabel.text = self.onboardingPage.copyText
-        self.imageView.image = self.onboardingPage.image
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.gifView.play()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.gifView.pause()
     }
 }
 

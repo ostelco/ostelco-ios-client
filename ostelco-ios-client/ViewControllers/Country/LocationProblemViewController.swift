@@ -8,12 +8,14 @@
 
 import CoreLocation
 import ostelco_core
+import OstelcoStyles
 import UIKit
 
 class LocationProblemViewController: UIViewController {
     
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var gifView: LoopingVideoView!
     @IBOutlet private var explanationLabel: UILabel!
     @IBOutlet private var primaryButton: UIButton!
     
@@ -61,7 +63,20 @@ class LocationProblemViewController: UIViewController {
         
         self.titleLabel.text = problem.title
         self.explanationLabel.text = problem.copy
-        self.imageView.image = problem.image
+        
+        if let image = problem.image {
+            self.imageView.isHidden = false
+            self.gifView.isHidden = true
+            self.imageView.image = image
+        } else if let url = problem.videoURL {
+            self.imageView.isHidden = true
+            self.gifView.isHidden = false
+            self.gifView.videoURL = url
+            self.gifView.play()
+        } else {
+            self.imageView.isHidden = true
+            self.gifView.isHidden = true
+        }
         
         if let buttonTitle = problem.primaryButtonTitle {
             self.primaryButton.isHidden = false
