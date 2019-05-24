@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
+  - Fabric (1.10.1)
   - Firebase/Auth (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.2)
@@ -51,7 +51,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
     - Protobuf (~> 3.1)
-  - FreshchatSDK (2.4.3)
+  - FreshchatSDK (2.4.4)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -107,21 +107,21 @@ PODS:
     - PromiseKit/CorePromise
   - Protobuf (3.7.0)
   - Stripe (15.0.1)
-  - SwiftLint (0.31.0)
+  - SwiftLint (0.32.0)
 
 DEPENDENCIES:
-  - Crashlytics (~> 3.12.0)
-  - Fabric (~> 1.9.0)
+  - Crashlytics (~> 3.13.1)
+  - Fabric (~> 1.10.0)
   - Firebase/Auth (~> 5.20.1)
   - Firebase/Core (~> 5.20.1)
   - Firebase/DynamicLinks (~> 5.20.1)
   - Firebase/Messaging (~> 5.20.1)
-  - FreshchatSDK (~> 2.4.3)
+  - FreshchatSDK (~> 2.4.4)
   - JumioMobileSDK/Netverify (~> 3.1.2)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
   - Stripe (~> 15.0.0)
-  - SwiftLint (~> 0.31.0)
+  - SwiftLint (~> 0.32.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -149,8 +149,8 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
   Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
@@ -160,7 +160,7 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
-  FreshchatSDK: a7432bc1cb0ecd54d9a618158d1c8d0271176e00
+  FreshchatSDK: 67e20ed1e98c2a3597bfe7124919fad2a2e04cf7
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
@@ -170,8 +170,8 @@ SPEC CHECKSUMS:
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 89491d89ab4e336e18df0ffa0c516412f0355f35
+PODFILE CHECKSUM: 139c79c0840f39fb29ec283c5e4ebb05d7ba45f8
 
 COCOAPODS: 1.6.1

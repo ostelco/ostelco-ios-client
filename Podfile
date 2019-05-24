@@ -20,14 +20,14 @@ target 'ostelco-core' do
 end
 
 abstract_target 'ostelco-ios' do
-  pod 'Crashlytics', '~>3.12.0'
-  pod 'Fabric', '~>1.9.0'
-  pod 'FreshchatSDK', '~>2.4.3' # Customer Support live chat
+  pod 'Crashlytics', '~>3.13.1'
+  pod 'Fabric', '~>1.10.0'
+  pod 'FreshchatSDK', '~>2.4.4' # Customer Support live chat
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>3.1.2' # eKYC
   pod 'Stripe', '~>15.0.0' # Payments
-  pod 'SwiftLint', '~>0.31.0'
+  pod 'SwiftLint', '~>0.32.0'
 
   # Dev app target
   target 'dev-ostelco-ios-client' do
