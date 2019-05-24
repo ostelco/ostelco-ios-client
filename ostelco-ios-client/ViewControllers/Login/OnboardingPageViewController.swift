@@ -126,8 +126,7 @@ extension OnboardingPageViewController: LabelTapDelegate {
         
         switch self.onboardingPage! {
         case .fullyDigital:
-            #warning("Figure out where this needs to go before release")
-            self.showAlert(title: "UPDATE ME!", msg: "We should tell people what the hell fully digital means")
+            UIApplication.shared.open(ExternalLink.fullyDigital.url)
         default:
             break
         }
