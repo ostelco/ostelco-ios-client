@@ -60,7 +60,7 @@ class HomeViewController: ApplePayViewController {
             completion: nil)
     }
 
-    func hideMessages() {
+    private func hideMessages() {
         welcomeLabel.alpha = 0.0
         messageLabel.alpha = 0.0
     }
