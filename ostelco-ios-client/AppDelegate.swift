@@ -152,11 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Notification handling
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        if Freshchat.sharedInstance().isFreshchatNotification(userInfo) {
-            Freshchat.sharedInstance().handleRemoteNotification(userInfo, andAppstate: application.applicationState)
-        } else {
-            PushNotificationController.shared.application(application, didReceiveRemoteNotification: userInfo)
-        }
+        PushNotificationController.shared.application(application, didReceiveRemoteNotification: userInfo)
     }
     
     func application(_ application: UIApplication,
@@ -172,7 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Freshchat.sharedInstance().setPushRegistrationToken(deviceToken)
         PushNotificationController.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
     

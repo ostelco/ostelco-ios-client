@@ -139,6 +139,15 @@ class PushNotificationController: NSObject {
             }
     }
     
+    private func receievedUserInfo(_ userInfo: [AnyHashable: Any]) {
+        if Freshchat.sharedInstance().isFreshchatNotification(userInfo) {
+            Freshchat.sharedInstance().handleRemoteNotification(userInfo, andAppstate: UIApplication.shared.applicationState)
+        } else {
+            self.sendDidReceivePushNotification(userInfo)
+            self.otherAppleUserInfoHandling(userInfo)
+        }
+    }
+    
     func sendDidReceivePushNotification(_ userInfo: [AnyHashable: Any]) {
         NotificationCenter.default.post(name: .didReceivePushNotification, object: self, userInfo: userInfo)
     }
@@ -150,15 +159,13 @@ class PushNotificationController: NSObject {
     // MARK: - App Delegate Matching methods
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        self.sendDidReceivePushNotification(userInfo)
-        self.otherAppleUserInfoHandling(userInfo)
+        self.receievedUserInfo(userInfo)
     }
     
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        self.sendDidReceivePushNotification(userInfo)
-        self.otherAppleUserInfoHandling(userInfo)
+        self.receievedUserInfo(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
     }
     
@@ -167,6 +174,7 @@ class PushNotificationController: NSObject {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Freshchat.sharedInstance().setPushRegistrationToken(deviceToken)
         Messaging.messaging().apnsToken = deviceToken
     }
 }
@@ -177,7 +185,7 @@ extension PushNotificationController: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
-        self.sendDidReceivePushNotification(userInfo)
+        self.receievedUserInfo(userInfo)
         completionHandler([])
     }
     
@@ -185,7 +193,7 @@ extension PushNotificationController: UNUserNotificationCenterDelegate {
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        self.sendDidReceivePushNotification(userInfo)
+        self.receievedUserInfo(userInfo)
         completionHandler()
     }
 }
