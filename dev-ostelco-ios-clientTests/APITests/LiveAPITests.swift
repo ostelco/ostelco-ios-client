@@ -42,7 +42,6 @@ class LiveAPITests: XCTestCase {
         }
         
         XCTAssertNotNil(context.customer)
-        XCTAssertNotNil(context.regions.first)
     }
     
     func liveValidNRIC() {
