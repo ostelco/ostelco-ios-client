@@ -10,9 +10,6 @@ import UIKit
 
 class ChooseCountryViewController: UIViewController {
     
-    @IBOutlet private weak var picker: UIPickerView!
-    @IBOutlet private weak var selectedCountryLabel: UILabel!
-    
     @IBAction private func needHelpTapped(_ sender: Any) {
         showNeedHelpActionSheet()
     }

@@ -7,6 +7,7 @@
 //
 
 @testable import Oya_Development_app
+import ostelco_core
 import OstelcoStyles
 import XCTest
 
@@ -96,5 +97,30 @@ class LinkableTextTests: XCTestCase {
         for page in OnboardingPage.allCases {
             XCTAssertNotNil(page.linkableText)
         }
+    }
+    
+    func testLinkableTextInLegalLinksInstantiates() {
+        for link in LegalLink.allCases {
+            XCTAssertNotNil(link.linkableText)
+        }
+    }
+    
+    func testLinkableTextGenerationForLocationRequirement() {
+        let vc = AllowLocationAccessViewController.fromStoryboard()
+        for country in Country.defaultCountries {
+            XCTAssertNotNil(vc.generateLinkableText(for: country),
+                            "Could not generate linkable text for \(country.nameOrPlaceholder)")
+        }
+    }
+    
+    func testLinkableLocationProblems() {
+        for problem in LocationProblem.allCases {
+            XCTAssertNotNil(problem.linkableCopy)
+        }
+    }
+    
+    func testLinkableBecomeAMember() {
+        let vc = BecomeAMemberViewController.fromStoryboard()
+        XCTAssertNotNil(vc.linkableCopy)
     }
 }

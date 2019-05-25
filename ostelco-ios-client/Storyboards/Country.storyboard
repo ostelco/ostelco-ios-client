@@ -27,7 +27,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zT4-y0-olf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2398" y="-761"/>
+            <point key="canvasLocation" x="2396" y="369"/>
         </scene>
         <!--Verify Country On Boarding View Controller-->
         <scene sceneID="kRV-OE-jZn">
@@ -208,7 +208,7 @@
         <!--Allow Location Access View Controller-->
         <scene sceneID="VCS-Q8-7ym">
             <objects>
-                <viewController storyboardIdentifier="unwindFromCountry" id="51P-Xu-Q3s" customClass="AllowLocationAccessViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllowLocationAccessViewController" id="51P-Xu-Q3s" customClass="AllowLocationAccessViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q3Q-44-Cly">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,12 +256,10 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="iZq-29-s8v" id="LrR-IP-Zc3"/>
-                        <segue destination="3AC-7l-Au2" kind="unwind" identifier="unwindFromCountry" unwindAction="unwindFromCountryWithSender:" id="S5h-Mb-XJF"/>
                         <segue destination="vGc-SK-lCJ" kind="show" identifier="showEKYC" id="7AW-gF-J98"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ao-87-Iid" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="3AC-7l-Au2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3293.5999999999999" y="-222.63868065967017"/>
         </scene>
@@ -274,30 +272,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-W8-wUh" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="76.666666666666686"/>
+                                <rect key="frame" x="24" y="88" width="327" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTN-jC-vf4" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="primaryButtonTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="m8O-3N-uqn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="619" width="91" height="33"/>
+                                <rect key="frame" x="148.66666666666666" y="642" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="Sjw-Zx-XAX"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
-                                <rect key="frame" x="9" y="184.66666666666663" width="357" height="265"/>
+                                <rect key="frame" x="9" y="144" width="357" height="265"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-b2-7aj" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="497.33333333333331" width="327" height="101.66666666666669"/>
+                                <rect key="frame" x="24" y="520.33333333333337" width="327" height="101.66666666666663"/>
                                 <string key="text">To give you mobile data, by law, we have to verify which country you’re in
 
 Please enable “Location Access” in Settings.</string>
@@ -306,7 +304,7 @@ Please enable “Location Access” in Settings.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-ru-tsI" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="9" y="184.66666666666663" width="357" height="265"/>
+                                <rect key="frame" x="9" y="144" width="357" height="265"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -362,6 +360,6 @@ Please enable “Location Access” in Settings.</string>
         <image name="stepArrowIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bMg-lB-hOd"/>
+        <segue reference="7AW-gF-J98"/>
     </inferredMetricsTieBreakers>
 </document>

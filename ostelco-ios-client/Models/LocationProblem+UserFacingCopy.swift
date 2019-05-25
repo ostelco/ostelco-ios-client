@@ -7,6 +7,7 @@
 //
 
 import ostelco_core
+import OstelcoStyles
 import UIKit
 
 extension LocationProblem {
@@ -25,6 +26,7 @@ extension LocationProblem {
         }
     }
     
+    /// The URL of the gif video to show. If nil, there is no gif video.
     var videoURL: URL? {
         switch self {
         case .disabledInSettings,
@@ -51,28 +53,28 @@ extension LocationProblem {
     }
     
     /// The explanatory copy the user should see about the problem.
-    var copy: String {
+    var linkableCopy: LinkableText {
         switch self {
         case .authorizedButWrongCountry(let expected, let actual):
-            return """
+            return LinkableText(fullText: """
             It seems like you're in \(actual).
             
             To give you mobile data, by law, we have to verify that you're in \(expected)
-            """
+            """, linkedPortion: "by law")!
         case .disabledInSettings,
              .deniedByUser,
              .notDetermined:
-            return """
+            return LinkableText(fullText: """
             To give you mobile data, by law, we have to verify which country you're in.
             
             Please enable "Location Services" in Settings.
-            """
+            """, linkedPortion: "by law")!
         case .restrictedByParentalControls:
-            return """
+            return LinkableText(fullText: """
             To give you mobile data, by law, we have to verify which country you're in.
             
             "Location Services" are disabled due to Parental Control Settings on this device.
-            """
+            """, linkedPortion: "by law")!
         }
     }
     

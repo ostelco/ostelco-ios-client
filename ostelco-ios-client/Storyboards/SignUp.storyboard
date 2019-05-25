@@ -19,19 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The legal stuff" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBH-PE-WSS" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="38.333333333333343"/>
+                                <rect key="frame" x="24" y="88" width="327" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Before you can proceed you must read and accept the terms &amp; conditions. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-xy-nGB" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="142.33333333333334" width="343" height="40.666666666666657"/>
+                                <rect key="frame" x="16" y="140" width="343" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XH-1y-ENz" customClass="CheckButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="283" width="44" height="44"/>
+                                <rect key="frame" x="65" y="280.66666666666669" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="I2d-hy-gxx"/>
                                     <constraint firstAttribute="width" constant="44" id="lKp-PX-Z2l"/>
@@ -44,14 +44,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKo-ag-iar" customClass="CheckButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="343.66666666666669" width="44" height="44"/>
+                                <rect key="frame" x="65" y="341.33333333333331" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Uvg-B1-M0f"/>
                                     <constraint firstAttribute="height" constant="44" id="bKD-Xb-U10"/>
@@ -64,34 +64,28 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I hereby agree to the Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhX-lv-Abz" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="132" y="284.66666666666669" width="178" height="40.666666666666686"/>
+                                <rect key="frame" x="132" y="282.33333333333331" width="178" height="40.666666666666686"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cvp-aj-9ib" appends="YES" id="PC0-Se-Drb"/>
-                                </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="I agree to the Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-C6-Ngo" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="132" y="345.33333333333331" width="178" height="40.666666666666686"/>
+                                <rect key="frame" x="132" y="343" width="178" height="40.666666666666686"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="g2e-DE-Bi4" appends="YES" id="ptm-8D-CdV"/>
-                                </connections>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-hs-GvP" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="142" y="617" width="91" height="33"/>
+                                <rect key="frame" x="148.66666666666666" y="640" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="Jcv-PQ-0I3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7I-ar-SNO" customClass="CheckButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="404.33333333333331" width="44" height="44"/>
+                                <rect key="frame" x="65" y="402" width="44" height="44"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Nyb-6M-zL2"/>
@@ -105,14 +99,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="I am at least 18 years of age" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvT-X2-jqG" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="132" y="406" width="178" height="40.666666666666686"/>
+                                <rect key="frame" x="132" y="403.66666666666669" width="178" height="40.666666666666686"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="bjz-VS-NgE" appends="YES" id="9G7-NM-o7J"/>
-                                </connections>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,21 +149,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viW-Hm-VzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="cvp-aj-9ib">
-                    <connections>
-                        <action selector="termsAndConditionsTappedWithSender:" destination="Q2B-DW-NZJ" id="MRb-ef-0eT"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="g2e-DE-Bi4">
-                    <connections>
-                        <action selector="privacyPolicyTappedWithSender:" destination="Q2B-DW-NZJ" id="GEg-Cz-lQG"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="bjz-VS-NgE">
-                    <connections>
-                        <action selector="ageTappedWithSender:" destination="Q2B-DW-NZJ" id="HI6-zz-Z5D"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="60" y="28.335832083958024"/>
         </scene>
