@@ -39,8 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** @typedef FIRUserUpdateCallback
     @brief The type of block invoked when a request to update the current user is completed.
  */
-typedef void (^FIRUserUpdateCallback)(NSError *_Nullable error)
-    NS_SWIFT_NAME(UserUpdateCallback);
+typedef void (^FIRUserUpdateCallback)(NSError *_Nullable error) NS_SWIFT_NAME(UserUpdateCallback);
 
 /** @typedef FIRAuthStateDidChangeListenerHandle
     @brief The type of handle returned by `FIRAuth.addAuthStateDidChangeListener:`.
@@ -290,17 +289,12 @@ NS_SWIFT_NAME(Auth)
 
     @remarks The string used to set this property must be a language code that follows BCP 47.
  */
-@property(nonatomic, copy, nullable) NSString *languageCode;
+@property (nonatomic, copy, nullable) NSString *languageCode;
 
 /** @property settings
     @brief Contains settings related to the auth object.
  */
-@property(nonatomic, copy, nullable) FIRAuthSettings *settings;
-
-/** @property userAccessGroup
-    @brief The current user access group that the Auth instance is using. Default is nil.
- */
-@property(readonly, nonatomic, copy, nullable) NSString *userAccessGroup;
+@property (nonatomic, copy, nullable) FIRAuthSettings *settings;
 
 #if TARGET_OS_IOS
 /** @property APNSToken
@@ -326,13 +320,22 @@ NS_SWIFT_NAME(Auth)
 - (void)updateCurrentUser:(FIRUser *)user completion:(nullable FIRUserUpdateCallback)completion;
 
 /** @fn fetchProvidersForEmail:completion:
-    @brief Please use fetchSignInMethodsForEmail:completion: for Objective-C or
-        fetchSignInMethods(forEmail:completion:) for Swift instead.
+    @brief Fetches the list of IdPs that can be used for signing in with the provided email address.
+        Useful for an "identifier-first" sign-in flow.
+
+    @param email The email address for which to obtain a list of identity providers.
+    @param completion Optionally; a block which is invoked when the list of providers for the
+        specified email address is ready or an error was encountered. Invoked asynchronously on the
+        main thread in the future.
+
+    @remarks Possible error codes:
+
+        + `FIRAuthErrorCodeInvalidEmail` - Indicates the email address is malformed.
+
+    @remarks See `FIRAuthErrors` for a list of error codes that are common to all API methods.
  */
 - (void)fetchProvidersForEmail:(NSString *)email
-                    completion:(nullable FIRProviderQueryCallback)completion
-DEPRECATED_MSG_ATTRIBUTE("Please use fetchSignInMethodsForEmail:completion: for Objective-C or "
-                         "fetchSignInMethods(forEmail:completion:) for Swift instead.");
+                    completion:(nullable FIRProviderQueryCallback)completion;
 
 /** @fn fetchSignInMethodsForEmail:completion:
     @brief Fetches the list of all sign-in methods previously used for the provided email address.
@@ -401,6 +404,68 @@ DEPRECATED_MSG_ATTRIBUTE("Please use fetchSignInMethodsForEmail:completion: for 
                    link:(NSString *)link
              completion:(nullable FIRAuthDataResultCallback)completion;
 
+/** @fn signInAndRetrieveDataWithEmail:password:completion:
+    @brief Please use `signInWithEmail:password:completion:` for Objective-C or
+        `signIn(withEmail:password:completion:)` for Swift instead.
+
+    @param email The user's email address.
+    @param password The user's password.
+    @param completion Optionally; a block which is invoked when the sign in flow finishes, or is
+        canceled. Invoked asynchronously on the main thread in the future.
+ */
+- (void)signInAndRetrieveDataWithEmail:(NSString *)email
+                              password:(NSString *)password
+                            completion:(nullable FIRAuthDataResultCallback)completion
+                                DEPRECATED_MSG_ATTRIBUTE(
+                                      "Please use signInWithEmail:password:completion: for"
+                                      " Objective-C or signIn(withEmail:password:completion:) for"
+                                      " Swift instead.");
+
+/** @fn signInWithCredential:completion:
+    @brief Please use `signInAndRetrieveDataWithCredential:completion:` for Objective-C or
+        `signInAndRetrieveData(with:completion:)` for swift instead
+
+    @param credential The credential supplied by the IdP.
+    @param completion Optionally; a block which is invoked when the sign in flow finishes, or is
+        canceled. Invoked asynchronously on the main thread in the future.
+
+    @remarks Possible error codes:
+
+        + `FIRAuthErrorCodeInvalidCredential` - Indicates the supplied credential is invalid.
+            This could happen if it has expired or it is malformed.
+        + `FIRAuthErrorCodeOperationNotAllowed` - Indicates that accounts
+            with the identity provider represented by the credential are not enabled.
+            Enable them in the Auth section of the Firebase console.
+        + `FIRAuthErrorCodeAccountExistsWithDifferentCredential` - Indicates the email asserted
+            by the credential (e.g. the email in a Facebook access token) is already in use by an
+            existing account, that cannot be authenticated with this sign-in method. Call
+            fetchProvidersForEmail for this user’s email and then prompt them to sign in with any of
+            the sign-in providers returned. This error will only be thrown if the "One account per
+            email address" setting is enabled in the Firebase console, under Auth settings.
+        + `FIRAuthErrorCodeUserDisabled` - Indicates the user's account is disabled.
+        + `FIRAuthErrorCodeWrongPassword` - Indicates the user attempted sign in with an
+            incorrect password, if credential is of the type EmailPasswordAuthCredential.
+        + `FIRAuthErrorCodeInvalidEmail` - Indicates the email address is malformed.
+        + `FIRAuthErrorCodeMissingVerificationID` - Indicates that the phone auth credential was
+            created with an empty verification ID.
+        + `FIRAuthErrorCodeMissingVerificationCode` - Indicates that the phone auth credential
+            was created with an empty verification code.
+        + `FIRAuthErrorCodeInvalidVerificationCode` - Indicates that the phone auth credential
+            was created with an invalid verification Code.
+        + `FIRAuthErrorCodeInvalidVerificationID` - Indicates that the phone auth credential was
+            created with an invalid verification ID.
+        + `FIRAuthErrorCodeSessionExpired` - Indicates that the SMS code has expired.
+
+
+
+    @remarks See `FIRAuthErrors` for a list of error codes that are common to all API methods
+ */
+- (void)signInWithCredential:(FIRAuthCredential *)credential
+                  completion:(nullable FIRAuthResultCallback)completion DEPRECATED_MSG_ATTRIBUTE(
+                                      "Please use signInAndRetrieveDataWithCredential:completion:"
+                                      " for Objective-C or signInAndRetrieveData(with:completion:)"
+                                      " for Swift instead.");
+
 /** @fn signInWithProvider:UIDelegate:completion:
     @brief Signs in using the provided auth provider instance.
 
@@ -450,15 +515,6 @@ DEPRECATED_MSG_ATTRIBUTE("Please use fetchSignInMethodsForEmail:completion: for 
                 completion:(nullable FIRAuthDataResultCallback)completion;
 
 /** @fn signInAndRetrieveDataWithCredential:completion:
-    @brief Please use signInWithCredential:completion: for Objective-C or "
-        "signIn(with:completion:) for Swift instead.
- */
-- (void)signInAndRetrieveDataWithCredential:(FIRAuthCredential *)credential
-                                 completion:(nullable FIRAuthDataResultCallback)completion
-DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Objective-C or "
-                         "signIn(with:completion:) for Swift instead.");
-
-/** @fn signInWithCredential:completion:
     @brief Asynchronously signs in to Firebase with the given 3rd-party credentials (e.g. a Facebook
         login Access Token, a Google ID Token/Access Token pair, etc.) and returns additional
         identity provider data.
@@ -469,35 +525,37 @@ DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Object
 
     @remarks Possible error codes:
 
-    + `FIRAuthErrorCodeInvalidCredential` - Indicates the supplied credential is invalid.
-        This could happen if it has expired or it is malformed.
-    + `FIRAuthErrorCodeOperationNotAllowed` - Indicates that accounts
-        with the identity provider represented by the credential are not enabled.
-        Enable them in the Auth section of the Firebase console.
-    + `FIRAuthErrorCodeAccountExistsWithDifferentCredential` - Indicates the email asserted
-        by the credential (e.g. the email in a Facebook access token) is already in use by an
-        existing account, that cannot be authenticated with this sign-in method. Call
-        fetchProvidersForEmail for this user’s email and then prompt them to sign in with any of
-        the sign-in providers returned. This error will only be thrown if the "One account per
-        email address" setting is enabled in the Firebase console, under Auth settings.
-    + `FIRAuthErrorCodeUserDisabled` - Indicates the user's account is disabled.
-    + `FIRAuthErrorCodeWrongPassword` - Indicates the user attempted sign in with an
-        incorrect password, if credential is of the type EmailPasswordAuthCredential.
-    + `FIRAuthErrorCodeInvalidEmail` - Indicates the email address is malformed.
-    + `FIRAuthErrorCodeMissingVerificationID` - Indicates that the phone auth credential was
-        created with an empty verification ID.
-    + `FIRAuthErrorCodeMissingVerificationCode` - Indicates that the phone auth credential
-        was created with an empty verification code.
-    + `FIRAuthErrorCodeInvalidVerificationCode` - Indicates that the phone auth credential
-        was created with an invalid verification Code.
-    + `FIRAuthErrorCodeInvalidVerificationID` - Indicates that the phone auth credential was
-        created with an invalid verification ID.
-    + `FIRAuthErrorCodeSessionExpired` - Indicates that the SMS code has expired.
+        + `FIRAuthErrorCodeInvalidCredential` - Indicates the supplied credential is invalid.
+            This could happen if it has expired or it is malformed.
+        + `FIRAuthErrorCodeOperationNotAllowed` - Indicates that accounts
+            with the identity provider represented by the credential are not enabled.
+            Enable them in the Auth section of the Firebase console.
+        + `FIRAuthErrorCodeAccountExistsWithDifferentCredential` - Indicates the email asserted
+            by the credential (e.g. the email in a Facebook access token) is already in use by an
+            existing account, that cannot be authenticated with this sign-in method. Call
+            fetchProvidersForEmail for this user’s email and then prompt them to sign in with any of
+            the sign-in providers returned. This error will only be thrown if the "One account per
+            email address" setting is enabled in the Firebase console, under Auth settings.
+        + `FIRAuthErrorCodeUserDisabled` - Indicates the user's account is disabled.
+        + `FIRAuthErrorCodeWrongPassword` - Indicates the user attempted sign in with an
+            incorrect password, if credential is of the type EmailPasswordAuthCredential.
+        + `FIRAuthErrorCodeInvalidEmail` - Indicates the email address is malformed.
+        + `FIRAuthErrorCodeMissingVerificationID` - Indicates that the phone auth credential was
+            created with an empty verification ID.
+        + `FIRAuthErrorCodeMissingVerificationCode` - Indicates that the phone auth credential
+            was created with an empty verification code.
+        + `FIRAuthErrorCodeInvalidVerificationCode` - Indicates that the phone auth credential
+            was created with an invalid verification Code.
+        + `FIRAuthErrorCodeInvalidVerificationID` - Indicates that the phone auth credential was
+            created with an invalid verification ID.
+        + `FIRAuthErrorCodeSessionExpired` - Indicates that the SMS code has expired.
+
+
 
     @remarks See `FIRAuthErrors` for a list of error codes that are common to all API methods
-*/
-- (void)signInWithCredential:(FIRAuthCredential *)credential
-                  completion:(nullable FIRAuthDataResultCallback)completion;
+ */
+- (void)signInAndRetrieveDataWithCredential:(FIRAuthCredential *)credential
+                                 completion:(nullable FIRAuthDataResultCallback)completion;
 
 /** @fn signInAnonymouslyWithCompletion:
     @brief Asynchronously creates and becomes an anonymous user.
@@ -516,6 +574,17 @@ DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Object
  */
 - (void)signInAnonymouslyWithCompletion:(nullable FIRAuthDataResultCallback)completion;
 
+/** @fn signInAnonymouslyAndRetrieveDataWithCompletion:
+    @brief `Please use sign `signInAnonymouslyWithCompletion:` for Objective-C or
+        `signInAnonymously(Completion:)` for Swift instead.
+    @param completion Optionally; a block which is invoked when the sign in finishes, or is
+        canceled. Invoked asynchronously on the main thread in the future.
+ */
+- (void)signInAnonymouslyAndRetrieveDataWithCompletion:
+    (nullable FIRAuthDataResultCallback)completion
+        DEPRECATED_MSG_ATTRIBUTE("Please use signInAnonymouslyWithCompletion: for Objective-C or"
+        " signInAnonymously(Completion:) for swift instead.");
+
 /** @fn signInWithCustomToken:completion:
     @brief Asynchronously signs in to Firebase with the given Auth token.
 
@@ -530,10 +599,27 @@ DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Object
         + `FIRAuthErrorCodeCustomTokenMismatch` - Indicates the service account and the API key
             belong to different projects.
 
+
+
     @remarks See `FIRAuthErrors` for a list of error codes that are common to all API methods.
  */
 - (void)signInWithCustomToken:(NSString *)token
                    completion:(nullable FIRAuthDataResultCallback)completion;
+
+/** @fn signInAndRetrieveDataWithCustomToken:completion:
+    @brief Please use `signInWithCustomToken:completion:` or `signIn(withCustomToken:completion:)`
+        for Swift instead.
+
+    @param token A self-signed custom auth token.
+    @param completion Optionally; a block which is invoked when the sign in finishes, or is
+        canceled. Invoked asynchronously on the main thread in the future.
+ */
+- (void)signInAndRetrieveDataWithCustomToken:(NSString *)token
+                                  completion:(nullable FIRAuthDataResultCallback)completion
+                                      DEPRECATED_MSG_ATTRIBUTE(
+                                      "Please use signInWithCustomToken:completion:"
+                                      "for Objective-C or signIn(withCustomToken:completion:) for"
+                                      " Swift instead.");
 
 /** @fn createUserWithEmail:password:completion:
     @brief Creates and, on success, signs in a user with the given email address and password.
@@ -560,6 +646,23 @@ DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Object
 - (void)createUserWithEmail:(NSString *)email
                    password:(NSString *)password
                  completion:(nullable FIRAuthDataResultCallback)completion;
+
+/** @fn createUserAndRetrieveDataWithEmail:password:completion:
+    @brief Please use `createUserAndRetrieveDataWithEmail:password:completion:` or
+        `createUser(withEmail:password:completion:)` for Swift instead.
+
+    @param email The user's email address.
+    @param password The user's desired password.
+    @param completion Optionally; a block which is invoked when the sign up flow finishes, or is
+        canceled. Invoked asynchronously on the main thread in the future.
+ */
+- (void)createUserAndRetrieveDataWithEmail:(NSString *)email
+                                  password:(NSString *)password
+                                completion:(nullable FIRAuthDataResultCallback)completion
+                                    DEPRECATED_MSG_ATTRIBUTE(
+                                      "Please use createUserWithEmail:password:completion: for"
+                                      " Objective-C or createUser(withEmail:password:completion:)"
+                                      " for Swift instead.");
 
 /** @fn confirmPasswordResetWithCode:newPassword:completion:
     @brief Resets the password given a code sent to the user outside of the app and a new password
@@ -805,21 +908,6 @@ DEPRECATED_MSG_ATTRIBUTE("Please use signInWithCredential:completion: for Object
 - (BOOL)canHandleNotification:(NSDictionary *)userInfo;
 
 #endif  // TARGET_OS_IOS
-
-#pragma mark - User sharing
-
-/** @fn useUserAccessGroup:error:
-    @brief Switch userAccessGroup and current user to the given accessGroup and the user stored in
-        it.
- */
-- (BOOL)useUserAccessGroup:(NSString *_Nullable)accessGroup
-                     error:(NSError *_Nullable *_Nullable)outError;
-
-/** @fn getStoredUserForAccessGroup:error:
-    @brief Get the stored user in the given accessGroup.
- */
-- (nullable FIRUser *)getStoredUserForAccessGroup:(NSString *_Nullable)accessGroup
-                                            error:(NSError *_Nullable *_Nullable)outError;
 
 @end
 

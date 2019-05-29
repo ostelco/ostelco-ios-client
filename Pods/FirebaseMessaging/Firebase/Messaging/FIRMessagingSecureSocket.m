@@ -16,9 +16,9 @@
 
 #import "FIRMessagingSecureSocket.h"
 
-#import <Protobuf/GPBMessage.h>
-#import <Protobuf/GPBCodedOutputStream.h>
-#import <Protobuf/GPBUtilities.h>
+#import "GPBMessage.h"
+#import "GPBCodedOutputStream.h"
+#import "GPBUtilities.h"
 
 #import "FIRMessagingCodedInputStream.h"
 #import "FIRMessagingDefines.h"
