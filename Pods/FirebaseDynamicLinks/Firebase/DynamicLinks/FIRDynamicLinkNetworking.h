@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, FIRDynamicLinkNetworkingRetrievalProcessType) {
  */
 void FIRMakeHTTPRequest(NSURLRequest *request, FIRNetworkRequestCompletionHandler completion);
 
-/** The base of the FDL API URL */
+/** The base of the FDL API URL, Used in AppInvites to switch prod/staging backend */
 FOUNDATION_EXPORT NSString *const kApiaryRestBaseUrl;
 
 /**

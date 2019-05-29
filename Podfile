@@ -9,7 +9,7 @@ inhibit_all_warnings!
 
 def firebase_version
   # All Firebase libs should have the same version
-  '~>6.1.0'
+  '~>5.20.1'
 end
 
 # Framework target

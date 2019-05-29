@@ -18,8 +18,6 @@
 
 #import <FirebaseCore/FIRLogger.h>
 
-FIRLoggerService kFIRLoggerMessaging = @"[Firebase/Messaging]";
-
 @implementation FIRMessagingLogger
 
 + (instancetype)standardLogger {
