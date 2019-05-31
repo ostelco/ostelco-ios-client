@@ -144,8 +144,8 @@ public class PrimaryButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         self.appTitleColor = .white
-        self.appFont = OstelcoFont(fontType: .semibold,
-                                   fontSize: .secondary)
+        self.appFont = OstelcoFont(fontType: .bold,
+                                   fontSize: .body)
         
         self.addRoundingAndShadow(background: .oyaBlue)
     }
@@ -166,8 +166,8 @@ public class SmallButton: OstelcoButton {
                                               right: 14)
         
         self.appTitleColor = .white
-        self.appFont = OstelcoFont(fontType: .semibold,
-                                   fontSize: .smallButton)
+        self.appFont = OstelcoFont(fontType: .bold,
+                                   fontSize: .body)
         self.addRoundingAndShadow(background: .oyaBlue)
     }
 }

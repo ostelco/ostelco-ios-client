@@ -164,11 +164,6 @@
 		9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */; };
 		9B6A92902284501B007F5EC9 /* MockJSON in Resources */ = {isa = PBXBuildFile; fileRef = 9B6A928F2284501B007F5EC9 /* MockJSON */; };
 		9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */; };
-		9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */; };
-		9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */; };
-		9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */; };
-		9B6E3A15226F70070063EBAA /* SFProText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A14226F70070063EBAA /* SFProText-Medium.otf */; };
-		9B6E3A17226F701A0063EBAA /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B6E3A16226F701A0063EBAA /* SFProText-Semibold.otf */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
@@ -501,11 +496,6 @@
 		9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAPITests.swift; sourceTree = "<group>"; };
 		9B6A928F2284501B007F5EC9 /* MockJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockJSON; sourceTree = "<group>"; };
 		9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Testing.swift"; sourceTree = "<group>"; };
-		9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Heavy.otf"; sourceTree = "<group>"; };
-		9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Bold.otf"; sourceTree = "<group>"; };
-		9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
-		9B6E3A14226F70070063EBAA /* SFProText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Medium.otf"; sourceTree = "<group>"; };
-		9B6E3A16226F701A0063EBAA /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFontSize.swift; sourceTree = "<group>"; };
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
 		9B6E3A23227091EF0063EBAA /* LocationProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblem.swift; sourceTree = "<group>"; };
@@ -527,6 +517,9 @@
 		9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDataViewController.swift; sourceTree = "<group>"; };
 		9B851AE3225E33620076ABF3 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemainingDataViewController.xib; sourceTree = "<group>"; };
+		9B8AFF4322A1204500CC84B1 /* Telenor-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Telenor-Bold.otf"; sourceTree = "<group>"; };
+		9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Telenor-Medium.otf"; sourceTree = "<group>"; };
+		9B8AFF4522A1204500CC84B1 /* Telenor.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Telenor.otf; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
@@ -849,11 +842,9 @@
 		9B6E3A0B226F6FA70063EBAA /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				9B6E3A0D226F6FC20063EBAA /* SFProText-Bold.otf */,
-				9B6E3A0C226F6FC20063EBAA /* SFProText-Heavy.otf */,
-				9B6E3A14226F70070063EBAA /* SFProText-Medium.otf */,
-				9B6E3A0E226F6FC30063EBAA /* SFProText-Regular.otf */,
-				9B6E3A16226F701A0063EBAA /* SFProText-Semibold.otf */,
+				9B8AFF4322A1204500CC84B1 /* Telenor-Bold.otf */,
+				9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */,
+				9B8AFF4522A1204500CC84B1 /* Telenor.otf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -1428,11 +1419,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B6E3A12226F6FE30063EBAA /* SFProText-Regular.otf in Resources */,
-				9B6E3A13226F6FE90063EBAA /* SFProText-Bold.otf in Resources */,
-				9B6E3A17226F701A0063EBAA /* SFProText-Semibold.otf in Resources */,
-				9B6E3A15226F70070063EBAA /* SFProText-Medium.otf in Resources */,
-				9B6E3A11226F6FDE0063EBAA /* SFProText-Heavy.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

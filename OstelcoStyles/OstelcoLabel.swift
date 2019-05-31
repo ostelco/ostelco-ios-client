@@ -165,9 +165,9 @@ public class DataAmountOnHomeLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .oyaBlue
-        self.appFont = OstelcoFont(fontType: .alternateBold,
+        self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .data)
-        self.smallFont = OstelcoFont(fontType: .alternateBold,
+        self.smallFont = OstelcoFont(fontType: .bold,
                                      fontSize: .dataDecimals)
         self.configureForDataAmountString()
     }
@@ -228,7 +228,7 @@ public class Heading1Label: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .black
-        self.appFont = OstelcoFont(fontType: .heavy,
+        self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .heading1)
     }
 }
@@ -320,7 +320,7 @@ public class UpdateTextLabel: OstelcoLabel {
         super.commonInit()
         self.appTextColor = .blackForText
         self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .secondary)
+                                   fontSize: .body)
     }
 }
 
@@ -330,7 +330,7 @@ public class UpdateTextGreyLabel: OstelcoLabel {
         super.commonInit()
         self.appTextColor = .darkGrey
         self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .secondary)
+                                   fontSize: .body)
     }
 }
 
@@ -351,5 +351,15 @@ public class AppVersionTextLabel: OstelcoLabel {
         self.appTextColor = .darkGrey
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .finePrint)
+    }
+}
+
+public class InputFieldHeadlineLabel: OstelcoLabel {
+    
+    public override func commonInit() {
+        super.commonInit()
+        self.appFont = OstelcoFont(fontType: .regular,
+                                   fontSize: .inputHeadline)
+        self.appTextColor = .blackForText
     }
 }
