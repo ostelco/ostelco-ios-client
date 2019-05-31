@@ -21,6 +21,8 @@ class RootCoordinator {
     
     let window: UIWindow
     
+    private var noInternetVC: UIViewController?
+    
     init(window: UIWindow) {
         self.window = window
     }
@@ -92,5 +94,35 @@ class RootCoordinator {
             })
         }
         viewController.present(ohNo, animated: true)
+    }
+    
+    func showNoInternet() {
+        guard self.noInternetVC == nil else {
+            // Already showing
+            return
+        }
+        
+        let noInternet = OhNoViewController.fromStoryboard(type: .noInternet)
+        noInternet.primaryButtonAction = {
+            guard InternetConnectionMonitor.shared.isCurrentlyConnected() else {
+                // Still no internet for you.
+                return
+            }
+            
+            self.hideNoInternet()
+        }
+        
+        self.noInternetVC = noInternet
+        self.topViewController?.present(noInternet, animated: true)
+    }
+    
+    func hideNoInternet() {
+        guard let vc = self.noInternetVC else {
+            // Nothing to hide
+            return
+        }
+        
+        self.noInternetVC = nil
+        vc.dismiss(animated: true, completion: nil)
     }
 }

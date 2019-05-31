@@ -11,11 +11,6 @@ import OstelcoStyles
 import UIKit
 import AVKit
 
-struct BoldableText {
-    public let fullText: String
-    public let boldedPortion: String?
-}
-
 enum ESIMPage: Int, CaseIterable {
     case instructions
     case scanQRCode
@@ -120,32 +115,24 @@ class ESIMPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTextLabel(topTextLabel, esimPage.topText)
+        self.topTextLabel.setBoldableText(self.esimPage.topText)
         
-        if let bottomText = esimPage.bottomText {
-            setTextLabel(bottomTextLabel, bottomText)
+        if let bottomText = self.esimPage.bottomText {
+            self.bottomTextLabel.setBoldableText(bottomText)
         } else {
-            bottomTextLabel.isHidden = true
+            self.bottomTextLabel.isHidden = true
         }
         
-        if let image = esimPage.image {
-            imageView.image = image
+        if let image = self.esimPage.image {
+            self.imageView.image = image
         } else {
-            imageView.isHidden = true
+            self.imageView.isHidden = true
         }
         
-        if let videoURL = esimPage.videoURL {
-            playerController.player = AVPlayer(url: videoURL)
+        if let videoURL = self.esimPage.videoURL {
+            self.playerController.player = AVPlayer(url: videoURL)
         } else {
-            playerView.isHidden = true
-        }
-    }
-    
-    private func setTextLabel(_ label: BodyTextLabel, _ text: BoldableText) {
-        if let boldedPortion = text.boldedPortion {
-            label.setFullText(text.fullText, withBoldedPortion: boldedPortion)
-        } else {
-            label.text = text.fullText
+            self.playerView.isHidden = true
         }
     }
     

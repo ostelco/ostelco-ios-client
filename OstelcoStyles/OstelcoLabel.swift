@@ -274,8 +274,13 @@ public class BodyTextLabel: OstelcoLabel {
                                    fontSize: .body)
     }
     
-    public func setFullText(_ fullText: String, withBoldedPortion boldedPortion: String) {
-        self.setFullText(fullText,
+    public func setBoldableText(_ boldable: BoldableText) {
+        guard let boldedPortion = boldable.boldedPortion else {
+            self.text = boldable.fullText
+            return
+        }
+        
+        self.setFullText(boldable.fullText,
                          withAttributedPortion: boldedPortion,
                          attributes: [
                             .font: OstelcoFont(fontType: .bold, fontSize: self.appFont.fontSize).toUIFont
