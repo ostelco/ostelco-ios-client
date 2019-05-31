@@ -189,6 +189,9 @@
 		9B851AE1225E33350076ABF3 /* RemainingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE0225E33350076ABF3 /* RemainingDataViewController.swift */; };
 		9B851AE4225E33620076ABF3 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B851AE3225E33620076ABF3 /* NibLoadable.swift */; };
 		9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B851AE7225E36F90076ABF3 /* RemainingDataViewController.xib */; };
+		9B8AFF4622A12E3C00CC84B1 /* Telenor-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4322A1204500CC84B1 /* Telenor-Bold.otf */; };
+		9B8AFF4722A12E3C00CC84B1 /* Telenor-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */; };
+		9B8AFF4822A12E3C00CC84B1 /* Telenor.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4522A1204500CC84B1 /* Telenor.otf */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -1419,6 +1422,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8AFF4722A12E3C00CC84B1 /* Telenor-Medium.otf in Resources */,
+				9B8AFF4822A12E3C00CC84B1 /* Telenor.otf in Resources */,
+				9B8AFF4622A12E3C00CC84B1 /* Telenor-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
