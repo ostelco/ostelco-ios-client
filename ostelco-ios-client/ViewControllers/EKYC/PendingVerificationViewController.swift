@@ -91,7 +91,7 @@ class PendingVerificationViewController: UIViewController {
                 self.showEKYCOhNo()
             case (.APPROVED, .APPROVED, .APPROVED):
                 // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
-                self.performSegue(withIdentifier: "ESim", sender: self)
+                self.handleRegionApproved()
             case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
