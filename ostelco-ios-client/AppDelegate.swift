@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-
+    
         STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
         #if STRIPE_PAYMENT
             debugPrint("Stripe Payment enabled")
@@ -54,8 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationSupportsShakeToEdit = true
         
         self.registerForNotifications()
-        print("App started")
-        
+        InternetConnectionMonitor.shared.start()
+
         return true
     }
     
