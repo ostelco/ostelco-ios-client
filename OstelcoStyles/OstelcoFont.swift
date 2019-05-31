@@ -41,15 +41,7 @@ public class OstelcoFont {
             return
         }
         
-        OstelcoFontType.allCases.forEach { fontType in
-            switch fontType {
-            case .alternateBold:
-                // TODO: Deal with this when we get the telenor font
-                break
-            default:
-                fontType.register()
-            }
-        }
+        OstelcoFontType.allCases.forEach { $0.register() }
         
         _fontsRegistered = true
     }
@@ -57,27 +49,18 @@ public class OstelcoFont {
 
 /// The types of font as indicated in https://app.zeplin.io/project/5c8b989f46989524fb0258ac/styleguide
 public enum OstelcoFontType: CaseIterable {
-    case alternateBold
     case bold
-    case heavy
     case medium
     case regular
-    case semibold
     
     var fontName: String {
         switch self {
-        case .alternateBold:
-            return "Telenor"
         case .bold:
-            return "SFProText-Bold"
-        case .heavy:
-            return "SFProText-Heavy"
+            return "Telenor-Bold"
         case .medium:
-            return "SFProText-Medium"
+            return "Telenor-Medium"
         case .regular:
-            return "SFProText-Regular"
-        case .semibold:
-            return "SFProText-Semibold"
+            return "Telenor"
         }
     }
 

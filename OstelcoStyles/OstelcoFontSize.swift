@@ -15,30 +15,26 @@ public enum OstelcoFontSize: CaseIterable {
     case finePrint
     case heading1
     case heading2
+    case inputHeadline
     case onboarding
-    case secondary
-    case smallButton
     
     var toCGFloat: CGFloat {
         switch self {
-        case .body:
-            return 17
-        case .data:
-            return 84
-        case .dataDecimals:
-            return 28
         case .finePrint:
             return 12
-        case .heading1:
-            return 50
-        case .heading2:
-            return 32
+        case .inputHeadline:
+            return 13
+        case .body:
+            return 17
         case .onboarding:
             return 18
-        case .secondary:
-            return 16
-        case .smallButton:
-            return 14
+        case .dataDecimals,
+             .heading2:
+            return 28
+        case .heading1:
+            return 50
+        case .data:
+            return 84
         }
     }
 }
