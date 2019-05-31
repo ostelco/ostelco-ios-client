@@ -361,5 +361,6 @@ public class InputFieldHeadlineLabel: OstelcoLabel {
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .inputHeadline)
         self.appTextColor = .blackForText
+        self.alpha = 0.75
     }
 }
