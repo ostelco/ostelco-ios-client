@@ -194,6 +194,7 @@
 		9B8AFF4822A12E3C00CC84B1 /* Telenor.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4522A1204500CC84B1 /* Telenor.otf */; };
 		9B8AFF5322A1479E00CC84B1 /* InternetConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */; };
 		9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */; };
+		9B8AFF5622A14E4500CC84B1 /* BoldableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -526,6 +527,7 @@
 		9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Telenor-Medium.otf"; sourceTree = "<group>"; };
 		9B8AFF4522A1204500CC84B1 /* Telenor.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Telenor.otf; sourceTree = "<group>"; };
 		9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionMonitor.swift; sourceTree = "<group>"; };
+		9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldableText.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 			children = (
 				9BB6A795226F6514000D5E13 /* OstelcoStyles.h */,
 				9B6E3A0B226F6FA70063EBAA /* fonts */,
+				9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */,
 				9BBA3DBD2296EA280014FADE /* LinkableText.swift */,
 				9B9D957F22957E3400CAB0E7 /* LoopingVideoView.swift */,
 				9B46D650226F0E5D0030A8EB /* OstelcoButton.swift */,
@@ -1980,6 +1983,7 @@
 				9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */,
 				9BB6A7A3226F6529000D5E13 /* UIColor+Pixel.swift in Sources */,
 				9BB6A7A0226F6523000D5E13 /* OstelcoColor.swift in Sources */,
+				9B8AFF5622A14E4500CC84B1 /* BoldableText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
