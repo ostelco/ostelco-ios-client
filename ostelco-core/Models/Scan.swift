@@ -9,5 +9,5 @@
 public struct Scan: Codable {
     public let countryCode: String
     public let scanId: String
-    public let status: String
+    public let status: EKYCStatus
 }
