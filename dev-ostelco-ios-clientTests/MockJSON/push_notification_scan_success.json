@@ -1,0 +1,30 @@
+{
+  "SCAN_INFORMATION": {
+    "scanId":"fake_scan_id",
+    "countryCode":"sg",
+    "status":"APPROVED",
+    "scanResult":{
+      "vendorScanReference":"vendor_fake_scan_id",
+      "verificationStatus":"APPROVED_VERIFIED",
+      "time":1559310256200,
+      "type":"ID_CARD",
+      "country":"SG",
+      "firstName":"FAKEY",
+      "lastName":"MC FAKERSON",
+      "dob":"1970-01-01",
+      "rejectReason":null
+    }
+  },
+  "aps" : {
+    "alert" : {
+      "title" : "Test notification",
+      "body" : "I am a test!"
+    }
+  },
+  "google.c.a.c_id" : "fake_cac_id",
+  "google.c.a.e" : "1",
+  "gcm.message_id" : "1:fake_message_id%gibberish",
+  "gcm.n.e" : "1",
+  "google.c.a.ts" : "lol_cats",
+  "google.c.a.udt" : "0"
+}

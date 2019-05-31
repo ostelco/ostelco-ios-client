@@ -144,7 +144,7 @@ class ESIMPendingDownloadViewController: UIViewController {
 
 extension ESIMPendingDownloadViewController: PushNotificationHandling {
     
-    func handlePushNotification(_ notification: PushNotification) {
+    func handlePushNotification(_ notification: PushNotificationContainer) {
         debugPrint("GOT PUSH: \(notification)")
     }
 }

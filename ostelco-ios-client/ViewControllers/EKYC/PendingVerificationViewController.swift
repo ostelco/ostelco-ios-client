@@ -150,8 +150,20 @@ extension PendingVerificationViewController: StoryboardLoadable {
 
 extension PendingVerificationViewController: PushNotificationHandling {
     
-    func handlePushNotification(_ notification: PushNotification) {
-        debugPrint("Got notification: \(notification)")
+    func handlePushNotification(_ notification: PushNotificationContainer) {
+        guard let scanInfo = notification.scanInfo else {
+            // This is some other kind of notification
+            return
+        }
+        
+        switch scanInfo.status {
+        case .APPROVED:
+            self.handleRegionApproved()
+        case .REJECTED:
+            self.showEKYCOhNo()
+        case .PENDING:
+            self.handleRegionPending(silentCheck: true)
+        }
     }
 }
 

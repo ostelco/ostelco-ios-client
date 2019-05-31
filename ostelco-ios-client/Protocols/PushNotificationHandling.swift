@@ -17,8 +17,8 @@ protocol PushNotificationHandling: class {
     
     /// Called when a push notification NSNotification is recevied.
     ///
-    /// - Parameter userInfo: The parsed notification from the NSNotification.
-    func handlePushNotification(_ notification: PushNotification)
+    /// - Parameter notification: The parsed object from the NSNotification.
+    func handlePushNotification(_ notification: PushNotificationContainer)
 }
 
 // MARK: - Default implementation
@@ -36,8 +36,7 @@ extension PushNotificationHandling {
                     return
                 }
                 
-                guard
-                    let pushObject = self.convertToNotification(userInfo: notification.userInfo) else {
+                guard let pushObject = self.convertToNotificationContainer(userInfo: notification.userInfo) else {
                     let error = ApplicationErrors.General.couldntConvertUserInfoToNotificaitonData(userInfo: notification.userInfo)
                     ApplicationErrors.assertAndLog(error)
                         return
@@ -51,14 +50,12 @@ extension PushNotificationHandling {
     ///
     /// - Parameter dictionary: The user info dictionary to parse, or nil
     /// - Returns: The parsed push notification, or nil if one could not be parsed.
-    func convertToNotification(userInfo dictionary: [AnyHashable: Any]?) -> PushNotification? {
-        guard
-            let dictionary = dictionary,
-            let container = PushNotificationContainer(dictionary: dictionary) else {
-                return nil
+    func convertToNotificationContainer(userInfo dictionary: [AnyHashable: Any]?) -> PushNotificationContainer? {
+        guard let dictionary = dictionary else {
+            return nil
         }
         
-        return container.alert?.notification
+        return PushNotificationContainer(dictionary: dictionary)
     }
     
     func removePushNotificationListener() {

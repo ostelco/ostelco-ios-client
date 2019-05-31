@@ -196,6 +196,7 @@
 		9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */; };
 		9B8AFF5622A14E4500CC84B1 /* BoldableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */; };
 		9B8AFF5822A1698500CC84B1 /* EKYCStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5722A1698500CC84B1 /* EKYCStatus.swift */; };
+		9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -530,6 +531,7 @@
 		9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionMonitor.swift; sourceTree = "<group>"; };
 		9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldableText.swift; sourceTree = "<group>"; };
 		9B8AFF5722A1698500CC84B1 /* EKYCStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCStatus.swift; sourceTree = "<group>"; };
+		9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioScanInfo.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
@@ -958,6 +960,7 @@
 				9B6A928622841C38007F5EC9 /* EKYCProfileUpdate.swift */,
 				9B8AFF5722A1698500CC84B1 /* EKYCStatus.swift */,
 				0493B80B2252BE0900989F40 /* JSONRequestError.swift */,
+				9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */,
 				9B6E3A23227091EF0063EBAA /* LocationProblem.swift */,
 				C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */,
 				9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */,
@@ -1938,6 +1941,7 @@
 				9B821599227AFC4700DC6B64 /* ServerError.swift in Sources */,
 				9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */,
 				9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */,
+				9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */,
 				9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */,
 				9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */,
 				9B821594227ADA1000DC6B64 /* Request.swift in Sources */,

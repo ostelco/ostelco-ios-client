@@ -10,4 +10,11 @@ public struct Scan: Codable {
     public let countryCode: String
     public let scanId: String
     public let status: EKYCStatus
+    public let scanResult: ScanResult?
+}
+
+public struct ScanResult: Codable {
+    public let vendorScanReference: String
+    public let verificationStatus: JumioVerificationStatus
+    public let rejectReason: JumioRejectionReason?
 }
