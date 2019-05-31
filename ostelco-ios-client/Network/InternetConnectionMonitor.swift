@@ -9,7 +9,14 @@
 import Foundation
 import Network
 
+/// A class to monitor the internet connection status.
+/// NOTE: This works great on device, but if you try to test
+///       on the simulator by toggling your computer wifi off
+///       and on, it'll detect the connection going off but not
+///       going back on. TODO: File a Radar.
 class InternetConnectionMonitor {
+    
+    /// Singleton instance
     static let shared = InternetConnectionMonitor()
     
     private let monitor = NWPathMonitor()
@@ -18,11 +25,19 @@ class InternetConnectionMonitor {
         self.monitor.pathUpdateHandler = self.handleUpdatedPath
     }
     
+    deinit {
+        self.monitor.cancel()
+    }
+    
+    /// Start monitoring the network connection asynchronously
     func start() {
         let bg = DispatchQueue.global(qos: .background)
         self.monitor.start(queue: bg)
     }
     
+    /// Checks if the current path is connected synchronously
+    ///
+    /// - Returns: True if connected, false if not.
     func isCurrentlyConnected() -> Bool {
         switch self.monitor.currentPath.status {
         case .satisfied:
@@ -34,10 +49,6 @@ class InternetConnectionMonitor {
             ApplicationErrors.assertAndLog("Apple added something else here you need to handle!")
             return false
         }
-    }
-    
-    deinit {
-        self.monitor.cancel()
     }
     
     private func handleUpdatedPath(_ path: NWPath) {
