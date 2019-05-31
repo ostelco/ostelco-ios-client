@@ -192,6 +192,8 @@
 		9B8AFF4622A12E3C00CC84B1 /* Telenor-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4322A1204500CC84B1 /* Telenor-Bold.otf */; };
 		9B8AFF4722A12E3C00CC84B1 /* Telenor-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */; };
 		9B8AFF4822A12E3C00CC84B1 /* Telenor.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AFF4522A1204500CC84B1 /* Telenor.otf */; };
+		9B8AFF5322A1479E00CC84B1 /* InternetConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */; };
+		9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -523,6 +525,7 @@
 		9B8AFF4322A1204500CC84B1 /* Telenor-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Telenor-Bold.otf"; sourceTree = "<group>"; };
 		9B8AFF4422A1204500CC84B1 /* Telenor-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Telenor-Medium.otf"; sourceTree = "<group>"; };
 		9B8AFF4522A1204500CC84B1 /* Telenor.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Telenor.otf; sourceTree = "<group>"; };
+		9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionMonitor.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
@@ -787,6 +790,7 @@
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
 				9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */,
+				9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
 			);
@@ -1843,6 +1847,7 @@
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
+				9B8AFF5322A1479E00CC84B1 /* InternetConnectionMonitor.swift in Sources */,
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
@@ -2026,6 +2031,7 @@
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
+				9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */,
 				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
