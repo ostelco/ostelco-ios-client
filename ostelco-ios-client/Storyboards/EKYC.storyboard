@@ -21,174 +21,215 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the info  we fetched:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-pg-vOP">
-                                <rect key="frame" x="24" y="73" width="329" height="62.333333333333343"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVy-7i-Lrq" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="708" width="329" height="50"/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="continueTapped:" destination="gvs-yG-kvc" eventType="touchUpInside" id="Czz-kF-cWd"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D94-lP-OFd">
-                                <rect key="frame" x="24" y="165" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mikayla Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb4-Ah-ciY">
-                                <rect key="frame" x="24" y="188" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUA-Fs-z7i">
-                                <rect key="frame" x="24" y="226" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-51-Wtt">
-                                <rect key="frame" x="24" y="249" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-fQ-byD">
-                                <rect key="frame" x="24" y="287" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRB-FC-L17">
-                                <rect key="frame" x="24" y="310" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq2-GQ-kKJ">
-                                <rect key="frame" x="24" y="348" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singaporean" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-dh-cCO">
-                                <rect key="frame" x="24" y="371" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residential status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfN-cA-Hcq">
-                                <rect key="frame" x="24" y="409" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citizen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlL-EN-MCH">
-                                <rect key="frame" x="24" y="432" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-m5-yI3">
-                                <rect key="frame" x="24" y="470" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Coronation Rd 078881 Singapore" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-Ux-hgl">
-                                <rect key="frame" x="24" y="493" width="260" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw2-9i-yMz" customClass="SmallButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="292" y="493" width="59" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="editTapped" destination="gvs-yG-kvc" eventType="touchUpInside" id="IcR-Lq-RDV"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P3-xq-jRq">
-                                <rect key="frame" x="24" y="549" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+65 123 321 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-Tl-4XW">
-                                <rect key="frame" x="24" y="572" width="327" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-B6-gXk" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="102.66666666666669" y="641" width="170" height="33"/>
-                                <state key="normal" title="Try Loading Info Again"/>
-                                <connections>
-                                    <action selector="tryAgainTapped" destination="gvs-yG-kvc" eventType="touchUpInside" id="2sS-yZ-6ol"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3T-1o-hA1">
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-WU-PTF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="735.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the info  we fetched:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-pg-vOP" customClass="Heading2Label" customModule="OstelcoStyles">
+                                                <rect key="frame" x="20" y="20" width="335" height="69.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2a9-PM-8In">
+                                                <rect key="frame" x="20" y="109.33333333333334" width="335" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D94-lP-OFd" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mikayla Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb4-Ah-ciY" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iBw-zz-bkJ">
+                                                <rect key="frame" x="20" y="176.33333333333334" width="335" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUA-Fs-z7i" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-51-Wtt" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="M1r-TT-wbZ">
+                                                <rect key="frame" x="20" y="243.33333333333331" width="335" height="46"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-fQ-byD" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRB-FC-L17" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="25" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="a2a-3Z-cK8">
+                                                <rect key="frame" x="20" y="309.33333333333331" width="335" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq2-GQ-kKJ" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singaporean" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-dh-cCO" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-X0-4iT">
+                                                <rect key="frame" x="20" y="376.33333333333331" width="335" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residential status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfN-cA-Hcq" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citizen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlL-EN-MCH" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cyq-mY-d2n">
+                                                <rect key="frame" x="20" y="443.33333333333331" width="335" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-m5-yI3" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jL8-pj-gT3">
+                                                        <rect key="frame" x="0.0" y="26.000000000000057" width="335" height="42"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Coronation Rd 078881 Singapore" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-Ux-hgl" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                                <rect key="frame" x="0.0" y="0.0" width="268" height="42"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw2-9i-yMz" customClass="SmallButton" customModule="OstelcoStyles">
+                                                                <rect key="frame" x="276" y="3.6666666666666288" width="59" height="35"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="Edit"/>
+                                                                <connections>
+                                                                    <action selector="editTapped" destination="gvs-yG-kvc" eventType="touchUpInside" id="IcR-Lq-RDV"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-re-bmc">
+                                                <rect key="frame" x="20" y="531.33333333333337" width="335" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P3-xq-jRq" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+65 123 321 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-Tl-4XW" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-B6-gXk" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                                <rect key="frame" x="102.66666666666669" y="598.33333333333337" width="170" height="33"/>
+                                                <state key="normal" title="Try Loading Info Again"/>
+                                                <connections>
+                                                    <action selector="tryAgainTapped" destination="gvs-yG-kvc" eventType="touchUpInside" id="2sS-yZ-6ol"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVy-7i-Lrq" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                                <rect key="frame" x="20" y="665.33333333333337" width="335" height="50"/>
+                                                <state key="normal" title="Continue"/>
+                                                <connections>
+                                                    <action selector="continueTapped:" destination="gvs-yG-kvc" eventType="touchUpInside" id="Czz-kF-cWd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="fyA-B6-gXk" firstAttribute="top" secondItem="oTe-re-bmc" secondAttribute="bottom" constant="20" id="1md-AZ-FkB"/>
+                                            <constraint firstItem="iBw-zz-bkJ" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="5gF-XP-fI4"/>
+                                            <constraint firstItem="2a9-PM-8In" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="99w-F4-cE9"/>
+                                            <constraint firstItem="2a9-PM-8In" firstAttribute="top" secondItem="16o-pg-vOP" secondAttribute="bottom" constant="20" id="FwD-st-uXJ"/>
+                                            <constraint firstItem="HVy-7i-Lrq" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="Gyt-n0-I2N"/>
+                                            <constraint firstAttribute="trailing" secondItem="16o-pg-vOP" secondAttribute="trailing" constant="20" id="IZl-eJ-jQo"/>
+                                            <constraint firstItem="16o-pg-vOP" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="No4-Lx-gRX"/>
+                                            <constraint firstAttribute="trailing" secondItem="M1r-TT-wbZ" secondAttribute="trailing" constant="20" id="Oi8-Ac-X0w"/>
+                                            <constraint firstAttribute="trailing" secondItem="HVy-7i-Lrq" secondAttribute="trailing" constant="20" id="PWM-Y8-agV"/>
+                                            <constraint firstItem="HVy-7i-Lrq" firstAttribute="top" secondItem="fyA-B6-gXk" secondAttribute="bottom" constant="34" id="Qv5-Ck-9Fs"/>
+                                            <constraint firstAttribute="trailing" secondItem="cyq-mY-d2n" secondAttribute="trailing" constant="20" id="Srt-Fe-rKu"/>
+                                            <constraint firstAttribute="trailing" secondItem="1JJ-X0-4iT" secondAttribute="trailing" constant="20" id="Ucg-NA-yiE"/>
+                                            <constraint firstAttribute="trailing" secondItem="iBw-zz-bkJ" secondAttribute="trailing" constant="20" id="XNM-WD-eVt"/>
+                                            <constraint firstItem="a2a-3Z-cK8" firstAttribute="top" secondItem="M1r-TT-wbZ" secondAttribute="bottom" constant="20" id="b5g-hG-a7Z"/>
+                                            <constraint firstItem="iBw-zz-bkJ" firstAttribute="top" secondItem="2a9-PM-8In" secondAttribute="bottom" constant="20" id="cMO-oC-hNc"/>
+                                            <constraint firstAttribute="trailing" secondItem="a2a-3Z-cK8" secondAttribute="trailing" constant="20" id="e7Q-KJ-lKE"/>
+                                            <constraint firstItem="fyA-B6-gXk" firstAttribute="centerX" secondItem="IEB-WU-PTF" secondAttribute="centerX" id="gry-jn-2gr"/>
+                                            <constraint firstItem="M1r-TT-wbZ" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="iSv-dX-tQH"/>
+                                            <constraint firstAttribute="trailing" secondItem="2a9-PM-8In" secondAttribute="trailing" constant="20" id="lTj-aZ-FQB"/>
+                                            <constraint firstAttribute="trailing" secondItem="oTe-re-bmc" secondAttribute="trailing" constant="20" id="nHE-dG-d6j"/>
+                                            <constraint firstItem="16o-pg-vOP" firstAttribute="top" secondItem="IEB-WU-PTF" secondAttribute="top" constant="20" id="nT8-1X-lTF"/>
+                                            <constraint firstItem="cyq-mY-d2n" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="nh9-rs-4tb"/>
+                                            <constraint firstItem="cyq-mY-d2n" firstAttribute="top" secondItem="1JJ-X0-4iT" secondAttribute="bottom" constant="20" id="qhl-Fm-Jz5"/>
+                                            <constraint firstItem="oTe-re-bmc" firstAttribute="top" secondItem="cyq-mY-d2n" secondAttribute="bottom" constant="20" id="tCO-Bj-Not"/>
+                                            <constraint firstItem="oTe-re-bmc" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="tnX-Y3-ufw"/>
+                                            <constraint firstItem="1JJ-X0-4iT" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="uKH-PR-3G3"/>
+                                            <constraint firstItem="M1r-TT-wbZ" firstAttribute="top" secondItem="iBw-zz-bkJ" secondAttribute="bottom" constant="20" id="ufn-Dl-uM6"/>
+                                            <constraint firstItem="1JJ-X0-4iT" firstAttribute="top" secondItem="a2a-3Z-cK8" secondAttribute="bottom" constant="20" id="wkF-hP-A9m"/>
+                                            <constraint firstItem="a2a-3Z-cK8" firstAttribute="leading" secondItem="IEB-WU-PTF" secondAttribute="leading" constant="20" id="wqr-ur-p5U"/>
+                                            <constraint firstAttribute="bottom" secondItem="HVy-7i-Lrq" secondAttribute="bottom" constant="20" id="wy9-tf-6Vq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IEB-WU-PTF" secondAttribute="trailing" id="4K1-KF-FrO"/>
+                                    <constraint firstItem="IEB-WU-PTF" firstAttribute="top" secondItem="s3T-1o-hA1" secondAttribute="top" id="Hyf-Ov-Y8g"/>
+                                    <constraint firstAttribute="bottom" secondItem="IEB-WU-PTF" secondAttribute="bottom" id="URT-wG-GYG"/>
+                                    <constraint firstItem="IEB-WU-PTF" firstAttribute="leading" secondItem="s3T-1o-hA1" secondAttribute="leading" id="x8j-JW-mhm"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QUA-Fs-z7i" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="0Vn-Mz-B6i"/>
-                            <constraint firstItem="tFe-dh-cCO" firstAttribute="top" secondItem="yq2-GQ-kKJ" secondAttribute="bottom" constant="5" id="17e-o5-lap"/>
-                            <constraint firstItem="fyA-B6-gXk" firstAttribute="centerX" secondItem="Dcw-mJ-c2k" secondAttribute="centerX" id="2p8-4M-Gsf"/>
-                            <constraint firstItem="D94-lP-OFd" firstAttribute="leading" secondItem="Dcw-mJ-c2k" secondAttribute="leading" constant="24" id="4rC-Al-L8e"/>
-                            <constraint firstItem="fyA-B6-gXk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ezZ-Tl-4XW" secondAttribute="bottom" constant="8" id="59Q-Lj-RUz"/>
-                            <constraint firstItem="yq2-GQ-kKJ" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="5oF-ws-ViM"/>
-                            <constraint firstItem="tFe-dh-cCO" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="8hI-HQ-KVL"/>
-                            <constraint firstItem="QUA-Fs-z7i" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="AG4-d9-uUC"/>
-                            <constraint firstItem="HVy-7i-Lrq" firstAttribute="leading" secondItem="Dcw-mJ-c2k" secondAttribute="leading" constant="24" id="BCG-Li-cvE"/>
-                            <constraint firstItem="cRB-FC-L17" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="BrD-eF-g5c"/>
-                            <constraint firstItem="p4c-8F-xgI" firstAttribute="top" secondItem="HVy-7i-Lrq" secondAttribute="bottom" constant="20" id="ChG-FP-w5g"/>
-                            <constraint firstItem="qlL-EN-MCH" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="Dhb-d7-Kw0"/>
-                            <constraint firstItem="hzR-fQ-byD" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="Ejr-n3-TPT"/>
-                            <constraint firstItem="7qU-m5-yI3" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="FwN-VP-jKT"/>
-                            <constraint firstItem="5P3-xq-jRq" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="I0z-cO-O7W"/>
-                            <constraint firstItem="7qU-m5-yI3" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="Iye-cS-NNS"/>
-                            <constraint firstItem="5ky-Ux-hgl" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="Jvo-mN-qG4"/>
-                            <constraint firstItem="D94-lP-OFd" firstAttribute="top" secondItem="16o-pg-vOP" secondAttribute="bottom" constant="29.5" id="MeH-Q5-0Rk"/>
-                            <constraint firstItem="zb4-Ah-ciY" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="Nyt-gl-S4G"/>
-                            <constraint firstItem="16o-pg-vOP" firstAttribute="leading" secondItem="Dcw-mJ-c2k" secondAttribute="leading" constant="24" id="OQn-2k-1Qf"/>
-                            <constraint firstItem="kfN-cA-Hcq" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="QNI-Jn-OKU"/>
-                            <constraint firstItem="yq2-GQ-kKJ" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="QPm-Py-yYO"/>
-                            <constraint firstItem="ezZ-Tl-4XW" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="RBG-p2-F3s"/>
-                            <constraint firstItem="RpD-51-Wtt" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="RiS-73-Xa8"/>
-                            <constraint firstItem="kfN-cA-Hcq" firstAttribute="top" secondItem="tFe-dh-cCO" secondAttribute="bottom" constant="20" id="RjW-1h-yqD"/>
-                            <constraint firstItem="Hw2-9i-yMz" firstAttribute="top" secondItem="5ky-Ux-hgl" secondAttribute="top" id="Sjp-jm-tDw"/>
-                            <constraint firstItem="kfN-cA-Hcq" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="Sq0-9H-nJs"/>
-                            <constraint firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" constant="24" id="TCe-c5-32E"/>
-                            <constraint firstItem="cRB-FC-L17" firstAttribute="top" secondItem="hzR-fQ-byD" secondAttribute="bottom" constant="5" id="Txv-sv-WH7"/>
-                            <constraint firstItem="5P3-xq-jRq" firstAttribute="top" secondItem="5ky-Ux-hgl" secondAttribute="bottom" constant="20" id="Vcv-6g-F0X"/>
-                            <constraint firstItem="RpD-51-Wtt" firstAttribute="top" secondItem="QUA-Fs-z7i" secondAttribute="bottom" constant="5" id="YPE-Cg-0r6"/>
-                            <constraint firstItem="tFe-dh-cCO" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="YmK-Kh-le3"/>
-                            <constraint firstItem="qlL-EN-MCH" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="ZYA-4M-VX8"/>
-                            <constraint firstItem="zb4-Ah-ciY" firstAttribute="top" secondItem="D94-lP-OFd" secondAttribute="bottom" constant="5" id="ago-hh-aXI"/>
-                            <constraint firstItem="ezZ-Tl-4XW" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="cCi-rL-1WY"/>
-                            <constraint firstItem="RpD-51-Wtt" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="cMD-7d-DZQ"/>
-                            <constraint firstItem="yq2-GQ-kKJ" firstAttribute="top" secondItem="cRB-FC-L17" secondAttribute="bottom" constant="20" id="eKA-mb-Mww"/>
-                            <constraint firstItem="cRB-FC-L17" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="efc-ev-vLY"/>
-                            <constraint firstItem="ezZ-Tl-4XW" firstAttribute="top" secondItem="5P3-xq-jRq" secondAttribute="bottom" constant="5" id="fxD-ja-tLi"/>
-                            <constraint firstItem="5ky-Ux-hgl" firstAttribute="top" secondItem="7qU-m5-yI3" secondAttribute="bottom" constant="5" id="gGH-To-fyZ"/>
-                            <constraint firstItem="5P3-xq-jRq" firstAttribute="leading" secondItem="D94-lP-OFd" secondAttribute="leading" id="hYR-TT-5Wy"/>
-                            <constraint firstItem="qlL-EN-MCH" firstAttribute="top" secondItem="kfN-cA-Hcq" secondAttribute="bottom" constant="5" id="hbo-hk-s98"/>
-                            <constraint firstAttribute="trailing" secondItem="HVy-7i-Lrq" secondAttribute="trailing" constant="22" id="hqB-lG-dAS"/>
-                            <constraint firstItem="hzR-fQ-byD" firstAttribute="top" secondItem="RpD-51-Wtt" secondAttribute="bottom" constant="20" id="kYM-ej-JVZ"/>
-                            <constraint firstItem="zb4-Ah-ciY" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="pwo-uK-kx9"/>
-                            <constraint firstItem="HVy-7i-Lrq" firstAttribute="top" secondItem="fyA-B6-gXk" secondAttribute="bottom" constant="34" id="qZy-Hk-KLy"/>
-                            <constraint firstItem="7qU-m5-yI3" firstAttribute="top" secondItem="qlL-EN-MCH" secondAttribute="bottom" constant="20" id="rVE-d1-9Kl"/>
-                            <constraint firstAttribute="trailing" secondItem="16o-pg-vOP" secondAttribute="trailing" constant="22" id="rfV-QP-y4Z"/>
-                            <constraint firstItem="QUA-Fs-z7i" firstAttribute="top" secondItem="zb4-Ah-ciY" secondAttribute="bottom" constant="20" id="t0u-0y-dpG"/>
-                            <constraint firstItem="hzR-fQ-byD" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="vPO-Ny-T1k"/>
-                            <constraint firstItem="Hw2-9i-yMz" firstAttribute="leading" secondItem="5ky-Ux-hgl" secondAttribute="trailing" constant="8" id="vf9-Nj-K0B"/>
-                            <constraint firstItem="Hw2-9i-yMz" firstAttribute="trailing" secondItem="D94-lP-OFd" secondAttribute="trailing" id="w3Z-nw-Ppr"/>
-                            <constraint firstItem="16o-pg-vOP" firstAttribute="top" secondItem="zQM-7o-Qx8" secondAttribute="bottom" constant="29" id="wjc-29-FKd"/>
+                            <constraint firstItem="s3T-1o-hA1" firstAttribute="leading" secondItem="Dcw-mJ-c2k" secondAttribute="leading" id="00T-ye-F6N"/>
+                            <constraint firstItem="s3T-1o-hA1" firstAttribute="top" secondItem="zQM-7o-Qx8" secondAttribute="bottom" id="bzQ-M6-kzH"/>
+                            <constraint firstAttribute="trailing" secondItem="s3T-1o-hA1" secondAttribute="trailing" id="eLx-Ej-Gbj"/>
+                            <constraint firstItem="IEB-WU-PTF" firstAttribute="width" secondItem="Dcw-mJ-c2k" secondAttribute="width" id="iju-G8-3zM"/>
+                            <constraint firstItem="p4c-8F-xgI" firstAttribute="top" secondItem="s3T-1o-hA1" secondAttribute="bottom" constant="-34" id="nZ5-Jt-TkQ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -761,7 +802,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <image name="stepArrowIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lEw-Lv-iIN"/>
-        <segue reference="V1P-0a-sbR"/>
+        <segue reference="ALh-un-KZb"/>
+        <segue reference="e1q-8T-pOn"/>
     </inferredMetricsTieBreakers>
 </document>
