@@ -16,6 +16,7 @@ class OhNoViewController: UIViewController {
         case generic(code: String?)
         case ekycRejected
         case myInfoFailed
+        case noInternet
         case paymentFailedGeneric
         case paymentFailedCardDeclined
 
@@ -25,6 +26,8 @@ class OhNoViewController: UIViewController {
                  .ekycRejected,
                  .myInfoFailed:
                 return "Oh no"
+            case .noInternet:
+                return "No internet connection"
             case .paymentFailedGeneric:
                 return "Payment Failed"
             case .paymentFailedCardDeclined:
@@ -39,34 +42,55 @@ class OhNoViewController: UIViewController {
                 return .taken
             case .ekycRejected:
                 return .blank_canvas
-            case .paymentFailedGeneric,
+            case .noInternet,
+                 .paymentFailedGeneric,
                  .paymentFailedCardDeclined:
                 return .no_connection
             }
         }
         
-        var issueDescription: NSAttributedString {
+        var linkableText: LinkableText? {
             switch self {
+            case .noInternet:
+                return LinkableText(fullText: """
+Try again in a while or contact support
+
+support@oya.world
+""",
+                                    linkedBits: ["support@oya.world"])
+            case .ekycRejected,
+                 .generic,
+                 .myInfoFailed,
+                 .paymentFailedCardDeclined,
+                 .paymentFailedGeneric:
+                return nil
+            }
+        }
+        
+        var boldableText: BoldableText? {
+            switch self {
+            case .noInternet:
+                return nil
             case .generic(let code):
-                let attributedString = NSMutableAttributedString(string: "Something went wrong. Try again in a while.")
                 guard let errorCode = code else {
-                    return attributedString
+                    return BoldableText(fullText: "Something went wrong. Try again in a while.",
+                                        boldedPortion: nil)
                 }
                 
-                attributedString.append(NSAttributedString(string: "If you contact customer support, please use this error code: "))
-                attributedString.append(NSAttributedString(string: errorCode, attributes: [
-                    .font: OstelcoFont(fontType: .bold, fontSize: .body).toUIFont
-                ]))
-                
-                return NSAttributedString(attributedString: attributedString)
+                return BoldableText(fullText:
+                    "Something went wrong. Try again in a while. If you contact customer support, please use this error code: \(errorCode)", boldedPortion: "\(errorCode)")
             case .ekycRejected:
-                return NSAttributedString(string: "Something went wrong.\n\nTry again in a while, or contact support")
+                return BoldableText(fullText: "Something went wrong.\n\nTry again in a while, or contact support",
+                                    boldedPortion: nil)
             case .myInfoFailed:
-                return NSAttributedString(string: "We're unable to retrieve your info from MyInfo.\n\n. Try later.")
+                return BoldableText(fullText: "We're unable to retrieve your info from MyInfo.\n\n. Try later.",
+                                    boldedPortion: nil)
             case .paymentFailedGeneric:
-                return NSAttributedString(string: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.")
+                return BoldableText(fullText: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.",
+                                    boldedPortion: nil)
             case .paymentFailedCardDeclined:
-                return NSAttributedString(string: "Your card was declined. Contact your bank or try with another card.")
+                return BoldableText(fullText: "Your card was declined. Contact your bank or try with another card.",
+                                    boldedPortion: nil)
             }
         }
         
@@ -77,6 +101,8 @@ class OhNoViewController: UIViewController {
                 return "Try again"
             case .ekycRejected:
                 return "Retry"
+            case .noInternet:
+                return "Check again"
             case .paymentFailedGeneric,
                  .paymentFailedCardDeclined:
                 return "OK"
@@ -86,7 +112,7 @@ class OhNoViewController: UIViewController {
     
     @IBOutlet private var primaryButton: UIButton!
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var descriptionLabel: BodyTextLabel!
     @IBOutlet private var gifView: LoopingVideoView!
     
     /// Convenience method for loading and populating with values for a given type
@@ -98,7 +124,8 @@ class OhNoViewController: UIViewController {
         vc.displayTitle = type.displayTitle
         vc.videoURL = type.gifVideo.url
         vc.buttonTitle = type.buttonTitle
-        vc.issueDescription = type.issueDescription
+        vc.boldableText = type.boldableText
+        vc.linkableText = type.linkableText
         
         return vc
     }
@@ -117,8 +144,15 @@ class OhNoViewController: UIViewController {
         }
     }
     
-    /// The description of whatever went wrong. Attributed so parts can be highlighted if needed.
-    var issueDescription: NSAttributedString = NSAttributedString(string: "Something went wrong.\n\nTry again in a while, or contact support") {
+    /// [optional] Text which may or may not contain bolding. Note that either boldable or linkable text should be provided.
+    var boldableText: BoldableText? {
+        didSet {
+            self.configureDescription()
+        }
+    }
+    
+    /// [optional] Text containing a link. Note that either boldable or linkable text should be provided.
+    var linkableText: LinkableText? {
         didSet {
             self.configureDescription()
         }
@@ -144,7 +178,18 @@ class OhNoViewController: UIViewController {
     }
     
     private func configureDescription() {
-        self.descriptionLabel?.attributedText = self.issueDescription
+        guard self.descriptionLabel != nil else {
+            // Come back once the view has loaded.
+            return
+        }
+        
+        if let boldable = self.boldableText {
+            self.descriptionLabel.setBoldableText(boldable)
+        } else if let linkable = self.linkableText {
+            self.descriptionLabel.setLinkableText(linkable)
+        } else {
+            self.descriptionLabel.text = "Something went wrong.\n\nTry again in a while, or contact support"
+        }
     }
     
     private func configureTitle() {
