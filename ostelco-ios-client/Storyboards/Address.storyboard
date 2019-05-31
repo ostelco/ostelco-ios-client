@@ -29,7 +29,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUz-qS-RwR" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                    <rect key="frame" x="142" y="-15" width="91" height="33"/>
+                                    <rect key="frame" x="144" y="-15" width="87" height="33"/>
                                     <state key="normal" title="Need help?"/>
                                     <connections>
                                         <action selector="needHelpTapped" destination="RH1-NC-1gY" eventType="touchUpInside" id="pG1-75-BMr"/>
