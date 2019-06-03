@@ -6,23 +6,17 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-public enum KycStatus: String, Codable {
-    case APPROVED
-    case REJECTED
-    case PENDING
-}
-
 public struct KYCStatusMap: Codable {
-    public let JUMIO: KycStatus?
-    public let MY_INFO: KycStatus?
-    public let NRIC_FIN: KycStatus?
-    public let ADDRESS_AND_PHONE_NUMBER: KycStatus?
+    public let JUMIO: EKYCStatus?
+    public let MY_INFO: EKYCStatus?
+    public let NRIC_FIN: EKYCStatus?
+    public let ADDRESS_AND_PHONE_NUMBER: EKYCStatus?
     
     /// Testing initializer
-    init(jumio: KycStatus? = nil,
-         myInfo: KycStatus? = nil,
-         nricFin: KycStatus? = nil,
-         addressPhone: KycStatus? = nil) {
+    init(jumio: EKYCStatus? = nil,
+         myInfo: EKYCStatus? = nil,
+         nricFin: EKYCStatus? = nil,
+         addressPhone: EKYCStatus? = nil) {
         self.JUMIO = jumio
         self.MY_INFO = myInfo
         self.NRIC_FIN = nricFin
@@ -44,13 +38,13 @@ public struct Region: Codable {
 
 public struct RegionResponse: Codable {
     public let region: Region
-    public let status: KycStatus
+    public let status: EKYCStatus
     public let simProfiles: [SimProfile]?
     public let kycStatusMap: KYCStatusMap
     
     /// Testing initializer
     init(region: Region,
-         status: KycStatus,
+         status: EKYCStatus,
          simProfiles: [SimProfile]?,
          kycStatusMap: KYCStatusMap) {
         self.region = region

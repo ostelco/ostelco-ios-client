@@ -25,7 +25,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "1")
         XCTAssertEqual(region.region.name, "ApprovedRegion")
-        XCTAssertEqual(region.status, KycStatus.APPROVED)
+        XCTAssertEqual(region.status, .APPROVED)
     }
     
     func testApprovedIsReturnedWhenOnlyApprovedRejectedPresent() {
@@ -41,7 +41,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "1")
         XCTAssertEqual(region.region.name, "ApprovedRegion")
-        XCTAssertEqual(region.status, KycStatus.APPROVED)
+        XCTAssertEqual(region.status, .APPROVED)
     }
     
     func testApprovedIsReturnedWhenOnlyApprovedPendingPresent() {
@@ -57,7 +57,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "1")
         XCTAssertEqual(region.region.name, "ApprovedRegion")
-        XCTAssertEqual(region.status, KycStatus.APPROVED)
+        XCTAssertEqual(region.status, .APPROVED)
     }
     
     func testApprovedIsReturnedWhenThatsTheOnlyOption() {
@@ -72,7 +72,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "1")
         XCTAssertEqual(region.region.name, "ApprovedRegion")
-        XCTAssertEqual(region.status, KycStatus.APPROVED)
+        XCTAssertEqual(region.status, .APPROVED)
     }
     
     func testRejectedIsReturnedWhenPendingAndRejectedPresent() {
@@ -88,7 +88,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "3")
         XCTAssertEqual(region.region.name, "RejectedRegion")
-        XCTAssertEqual(region.status, KycStatus.REJECTED)
+        XCTAssertEqual(region.status, .REJECTED)
     }
     
     func testRejectedIsReturnedWhenThatsTheOnlyOption() {
@@ -103,7 +103,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "3")
         XCTAssertEqual(region.region.name, "RejectedRegion")
-        XCTAssertEqual(region.status, KycStatus.REJECTED)
+        XCTAssertEqual(region.status, .REJECTED)
     }
     
     func testPendingIsReturnedWhenThatsTheOnlyOption() {
@@ -118,7 +118,7 @@ class RegionResponseTests: XCTestCase {
         
         XCTAssertEqual(region.region.id, "2")
         XCTAssertEqual(region.region.name, "PendingRegion")
-        XCTAssertEqual(region.status, KycStatus.PENDING)
+        XCTAssertEqual(region.status, .PENDING)
     }
     
     func testNilIsReturnedForAnEmptyArray() {

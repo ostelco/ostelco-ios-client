@@ -91,7 +91,7 @@ class PendingVerificationViewController: UIViewController {
                 self.showEKYCOhNo()
             case (.APPROVED, .APPROVED, .APPROVED):
                 // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
-                self.performSegue(withIdentifier: "ESim", sender: self)
+                self.handleRegionApproved()
             case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
@@ -150,8 +150,20 @@ extension PendingVerificationViewController: StoryboardLoadable {
 
 extension PendingVerificationViewController: PushNotificationHandling {
     
-    func handlePushNotification(_ notification: PushNotification) {
-        debugPrint("Got notification: \(notification)")
+    func handlePushNotification(_ notification: PushNotificationContainer) {
+        guard let scanInfo = notification.scanInfo else {
+            // This is some other kind of notification
+            return
+        }
+        
+        switch scanInfo.status {
+        case .APPROVED:
+            self.handleRegionApproved()
+        case .REJECTED:
+            self.showEKYCOhNo()
+        case .PENDING:
+            self.handleRegionPending(silentCheck: true)
+        }
     }
 }
 

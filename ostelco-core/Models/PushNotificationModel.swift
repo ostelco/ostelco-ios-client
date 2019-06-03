@@ -11,10 +11,12 @@ import Foundation
 public struct PushNotificationContainer: Codable {
     public let alert: PushAlert?
     public let gcmMessageID: String?
+    public let scanInfo: Scan?
     
     public enum CodingKeys: String, CodingKey {
         case alert = "aps"
         case gcmMessageID = "gcm.message_id"
+        case scanInfo = "SCAN_INFORMATION"
     }
     
     public init?(dictionary: [AnyHashable: Any]) {

@@ -14,18 +14,20 @@ class PushParsingTests: XCTestCase {
     
     class PushHandler: PushNotificationHandling {
         var pushNotificationObserver: NSObjectProtocol?
-        var notification: PushNotification?
+        var notification: PushNotificationContainer?
         
-        func handlePushNotification(_ notification: PushNotification) {
+        func handlePushNotification(_ notification: PushNotificationContainer) {
             self.notification = notification
         }
     }
     
     private lazy var testPushHandler = PushHandler()
     
-    private func loadMockPushJSON(file: StaticString = #file, line: UInt = #line) -> [AnyHashable: Any]? {
+    private func loadMockPushJSON(named name: String = "push_notification",
+                                  file: StaticString = #file,
+                                  line: UInt = #line) -> [AnyHashable: Any]? {
         guard
-            let file = Bundle(for: PushParsingTests.self).url(forResource: "push_notification", withExtension: "json", subdirectory: "MockJSON"),
+            let file = Bundle(for: PushParsingTests.self).url(forResource: name, withExtension: "json", subdirectory: "MockJSON"),
             let data = try? Data(contentsOf: file),
             let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any] else {
                 XCTFail("Couldn't load test json!")
@@ -68,15 +70,47 @@ class PushParsingTests: XCTestCase {
             return
         }
         
-        guard let notification = self.testPushHandler.convertToNotification(userInfo: dict) else {
+        guard let notification = self.testPushHandler.convertToNotificationContainer(userInfo: dict) else {
             XCTFail("Couldn't create notification!")
             return
         }
         
-        XCTAssertEqual(notification.title, "Test notification")
-        XCTAssertEqual(notification.body, "I am a test!")
+        XCTAssertEqual(notification.alert?.notification.title, "Test notification")
+        XCTAssertEqual(notification.alert?.notification.body, "I am a test!")
         
         // TODO: Update with real data
-        XCTAssertNil(notification.data)
+        XCTAssertNil(notification.alert?.notification.data)
+    }
+    
+    func testConvertingPushNotificationWithScanInfo() {
+        guard let dict = self.loadMockPushJSON(named: "push_notification_scan_success") else {
+            // Failures handled in loader
+            return
+        }
+        
+        guard let notification = self.testPushHandler.convertToNotificationContainer(userInfo: dict) else {
+            XCTFail("Couldn't create notification!")
+            return
+        }
+        
+        XCTAssertEqual(notification.gcmMessageID, "1:fake_message_id%gibberish")
+        
+        guard let scan = notification.scanInfo else {
+            XCTFail("Couldn't get scan info!")
+            return
+        }
+        
+        XCTAssertEqual(scan.countryCode, "sg")
+        XCTAssertEqual(scan.scanId, "fake_scan_id")
+        XCTAssertEqual(scan.status, .APPROVED)
+        
+        guard let result = scan.scanResult else {
+            XCTFail("Couldn't get result info!")
+            return
+        }
+        
+        XCTAssertEqual(result.verificationStatus, .APPROVED_VERIFIED)
+        XCTAssertEqual(result.vendorScanReference, "vendor_fake_scan_id")
+        XCTAssertNil(result.rejectReason)
     }
 }
