@@ -12,9 +12,6 @@ import ostelco_core
 
 class ESIMPendingDownloadViewController: UIViewController {
     
-    // for PushNotificationHandling
-    var pushNotificationObserver: NSObjectProtocol?
-    
     var spinnerView: UIView?
     var simProfile: SimProfile? {
         didSet {
@@ -127,24 +124,5 @@ class ESIMPendingDownloadViewController: UIViewController {
                     self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
                 }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.addPushNotificationListener()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.removePushNotificationListener()
-    }
-}
-
-// MARK: - PushNotificationHandling
-
-extension ESIMPendingDownloadViewController: PushNotificationHandling {
-    
-    func handlePushNotification(_ notification: PushNotificationContainer) {
-        debugPrint("GOT PUSH: \(notification)")
     }
 }
