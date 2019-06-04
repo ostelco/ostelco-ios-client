@@ -34,6 +34,11 @@ public struct Region: Codable {
         self.id = id
         self.name = name
     }
+    
+    // Convenience method to access the related country object.
+    public var country: Country {
+        return Country(self.id)
+    }
 }
 
 public struct RegionResponse: Codable {
