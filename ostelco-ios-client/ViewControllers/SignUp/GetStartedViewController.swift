@@ -58,6 +58,17 @@ class GetStartedViewController: UIViewController {
     }
 }
 
+extension GetStartedViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .signUp
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}
+
 extension GetStartedViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

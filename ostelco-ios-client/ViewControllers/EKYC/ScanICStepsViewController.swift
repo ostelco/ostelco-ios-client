@@ -18,4 +18,14 @@ class ScanICStepsViewController: UIViewController {
     @IBAction private func needHelpTapped() {
         self.showNeedHelpActionSheet()
     }
+
+extension ScanICStepsViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
 }

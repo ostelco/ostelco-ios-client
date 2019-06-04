@@ -153,6 +153,17 @@ class MyInfoSummaryViewController: UIViewController {
     }
 }
 
+extension MyInfoSummaryViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}
+
 extension MyInfoSummaryViewController: MyInfoAddressUpdateDelegate {
     
     func addressUpdated(to address: MyInfoAddress) {

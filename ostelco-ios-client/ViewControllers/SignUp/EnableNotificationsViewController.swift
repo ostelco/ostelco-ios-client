@@ -45,3 +45,14 @@ class EnableNotificationsViewController: UIViewController {
         self.performSegue(withIdentifier: "displayGetStarted", sender: self)
     }
 }
+
+extension EnableNotificationsViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .signUp
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}

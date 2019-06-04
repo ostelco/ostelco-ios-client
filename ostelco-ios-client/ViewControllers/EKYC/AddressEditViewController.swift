@@ -181,3 +181,14 @@ extension AddressEditViewController: AddressEditDataSourceDelegate {
         }
     }
 }
+
+extension AddressEditViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .address
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}

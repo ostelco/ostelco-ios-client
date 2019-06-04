@@ -12,7 +12,7 @@
         <!--My Info Summary View Controller-->
         <scene sceneID="3mU-yK-PLV">
             <objects>
-                <viewController id="gvs-yG-kvc" customClass="MyInfoSummaryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyInfoSummaryViewController" id="gvs-yG-kvc" customClass="MyInfoSummaryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQM-7o-Qx8"/>
                         <viewControllerLayoutGuide type="bottom" id="p4c-8F-xgI"/>
@@ -720,7 +720,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify View Controller-->
         <scene sceneID="Vhr-RP-qdq">
             <objects>
-                <viewController id="6Sh-M6-Cr3" customClass="NRCIVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nLB-PI-vfj"/>
                         <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
