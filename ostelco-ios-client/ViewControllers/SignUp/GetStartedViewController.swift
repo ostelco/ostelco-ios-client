@@ -16,6 +16,8 @@ class GetStartedViewController: UIViewController {
     
     var spinnerView: UIView?
     
+    var coordinator: SignUpCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +51,7 @@ class GetStartedViewController: UIViewController {
             .done { [weak self] customer in
                 OstelcoAnalytics.logEvent(.EnteredNickname)
                 UserManager.shared.customer = customer
-                self?.performSegue(withIdentifier: "showCountry", sender: self)
+                self?.coordinator?.nameEnteredSuccessfully()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)

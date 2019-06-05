@@ -20,7 +20,7 @@ extension RootCoordinator.Destination: Equatable {
              (.home, .home):
             return true
         case (.ekyc(let lhsRegion), .ekyc(let rhsRegion)):
-            return lhsRegion.region.id == rhsRegion.region.id
+            return lhsRegion?.region.id == rhsRegion?.region.id
         case (.esim(let lhsProfile), .esim(let rhsProfile)):
             return lhsProfile?.iccId == rhsProfile?.iccId
         default:

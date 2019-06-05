@@ -90,6 +90,9 @@
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU2-9r-kL0" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="qUZ-3z-E14"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yg1-bc-UOR">
                                 <rect key="frame" x="72" y="404.66666666666669" width="231" height="44"/>
