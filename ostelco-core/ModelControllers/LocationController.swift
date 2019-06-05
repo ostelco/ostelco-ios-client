@@ -25,7 +25,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     public private(set) var isUpdating = false
     
     /// Are location services currently enabled?
-    public var locationServicesEnabled: Bool {
+    open var locationServicesEnabled: Bool {
         return CLLocationManager.locationServicesEnabled()
     }
     
@@ -43,15 +43,15 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     private var locationSeal: Resolver<CLLocation>?
     
     /// The user's current authorization status with the system.
-    public var authorizationStatus: CLAuthorizationStatus {
+    open var authorizationStatus: CLAuthorizationStatus {
         return CLLocationManager.authorizationStatus()
     }
     
-    public func requestAuthorization() {
+    open func requestAuthorization() {
         return self.locationManager.requestAlwaysAuthorization()
     }
     
-    public func requestLocation() -> Promise<CLLocation> {
+    open func requestLocation() -> Promise<CLLocation> {
         return Promise { seal in
             self.locationManager.requestLocation()
             self.locationSeal = seal
