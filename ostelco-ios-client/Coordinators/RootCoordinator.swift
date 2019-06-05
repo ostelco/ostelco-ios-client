@@ -25,7 +25,11 @@ class RootCoordinator {
     let window: UIWindow
     
     private var noInternetVC: UIViewController?
-    private lazy var onboardingNavController = UINavigationController()
+    private lazy var onboardingNavController: UINavigationController = {
+        let nav = UINavigationController()
+        nav.isNavigationBarHidden = true
+        return nav
+    }()
     
     private var signUpCoordinator: SignUpCoordinator?
     private var countryCoordinator: CountryCoordinator?
