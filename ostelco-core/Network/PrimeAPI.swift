@@ -205,6 +205,26 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(SimProfile.self, from: $0) }
     }
     
+    /// Resend QR code email for given sim profile
+    ///
+    /// - Parameters:
+    ///     - code: The region code to use
+    ///     - iccId: the iccId of the sim profile to resend QR code email
+    /// - Returns: The sim profile with the given iccid
+    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> Promise<SimProfile> {
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .simProfiles,
+            .iccId(code: iccId),
+            .resendEmail
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.loadData(from: path)
+            .map { try self.decoder.decode(SimProfile.self, from: $0) }
+    }
+    
     /// Creates a Jumio scan request for the given region
     ///
     /// - Parameter code: The region to request a Jumio scan request for

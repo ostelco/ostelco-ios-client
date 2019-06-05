@@ -50,6 +50,8 @@ public enum RegionEndpoint: APIEndpoint {
     case profile
     case simProfiles
     case scans
+    case iccId(code: String)
+    case resendEmail
     
     var value: String {
         switch self {
@@ -76,6 +78,10 @@ public enum RegionEndpoint: APIEndpoint {
             return "simProfiles"
         case .scans:
             return "scans"
+        case .iccId(let code):
+            return code
+        case .resendEmail:
+            return "resendEmail"
         }
     }
 }
