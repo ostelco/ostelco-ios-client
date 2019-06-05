@@ -33,8 +33,7 @@ class JumioCoordinator: NSObject {
     
     weak var delegate: JumioCoordinatorDelegate?
     
-    init(country: Country,
-         apiManager: APIManager = .shared) throws {
+    init(country: Country) throws {
         guard !JumioDeviceInfo.isJailbrokenDevice() else {
             // Prevent SDK from being initialized on Jailbroken devices
             throw Error.deviceIsJailbroken
