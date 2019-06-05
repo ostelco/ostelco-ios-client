@@ -25,6 +25,8 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var reloadButton: UIButton!
     
+    weak var coordinator: SingaporeEKYCCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI(nil)
@@ -67,33 +69,12 @@ class MyInfoSummaryViewController: UIViewController {
         return nil
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        switch segue.identifier {
-        case "editAddress":
-            guard
-                let nav = segue.destination as? UINavigationController,
-                let addressVC = nav.topViewController as? AddressEditViewController else {
-                    ApplicationErrors.assertAndLog("Could not access correct view controller!")
-                    return
-            }
-            
-            addressVC.mode = .myInfoVerify(myInfo: self.myInfoDetails?.address)
-            addressVC.myInfoDelegate = self
-        default:
-            break
-        }
-    }
-    
     @IBAction private func tryAgainTapped() {
         self.loadMyInfo()
     }
     
     @IBAction private func editTapped() {
-        self.performSegue(withIdentifier: "editAddress", sender: self)
+        self.coordinator?.editSingPassAddress(self.myInfoDetails?.address, delegate: self)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -111,7 +92,7 @@ class MyInfoSummaryViewController: UIViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.performSegue(withIdentifier: "ESim", sender: self)
+                self?.coordinator?.verifiedSingPassAddress()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
@@ -167,6 +148,7 @@ extension MyInfoSummaryViewController: StoryboardLoadable {
 extension MyInfoSummaryViewController: MyInfoAddressUpdateDelegate {
     
     func addressUpdated(to address: MyInfoAddress) {
+        self.navigationController?.popToViewController(self, animated: true)
         self.myInfoDetails?.address = address
         self.updateUI(self.myInfoDetails)
     }

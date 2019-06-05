@@ -27,8 +27,8 @@
 		041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
 		042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
-		042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
-		042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */; };
+		042928F2223D0BE700806438 /* NRICVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRICVerifyViewController.swift */; };
+		042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRICVerifyViewController.swift */; };
 		042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
@@ -140,6 +140,14 @@
 		9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
 		9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
+		9B4F1A3C22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A3B22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift */; };
+		9B4F1A3E22A6A91A00FCC8CC /* EKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */; };
+		9B4F1A3F22A6A91A00FCC8CC /* EKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */; };
+		9B4F1A4022A6A9FE00FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A3B22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift */; };
+		9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
+		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
+		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
+		9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
@@ -162,6 +170,8 @@
 		9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */; };
 		9B6A92902284501B007F5EC9 /* MockJSON in Resources */ = {isa = PBXBuildFile; fileRef = 9B6A928F2284501B007F5EC9 /* MockJSON */; };
 		9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */; };
+		9B6A9DCC22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */; };
+		9B6A9DCD22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */; };
 		9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
@@ -387,7 +397,7 @@
 		041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationAccessViewController.swift; sourceTree = "<group>"; };
 		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
-		042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRCIVerifyViewController.swift; sourceTree = "<group>"; };
+		042928F1223D0BE700806438 /* NRICVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -488,6 +498,10 @@
 		9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorTests.swift; sourceTree = "<group>"; };
 		9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
+		9B4F1A3B22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeEKYCCoordinator.swift; sourceTree = "<group>"; };
+		9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCCoordinator.swift; sourceTree = "<group>"; };
+		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
+		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
 		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
@@ -503,6 +517,7 @@
 		9B6A928C22844F95007F5EC9 /* LiveAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAPITests.swift; sourceTree = "<group>"; };
 		9B6A928F2284501B007F5EC9 /* MockJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockJSON; sourceTree = "<group>"; };
 		9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Testing.swift"; sourceTree = "<group>"; };
+		9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEKYCCoordinator.swift; sourceTree = "<group>"; };
 		9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFontSize.swift; sourceTree = "<group>"; };
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
@@ -755,7 +770,7 @@
 			children = (
 				9B17457C2277033300CF321B /* AddressEditViewController.swift */,
 				C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */,
-				042928F1223D0BE700806438 /* NRCIVerifyViewController.swift */,
+				042928F1223D0BE700806438 /* NRICVerifyViewController.swift */,
 				C24EE404222838950053937E /* PendingVerificationViewController.swift */,
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
 				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
@@ -831,6 +846,7 @@
 				9B4DAD912281A2CE003810BE /* RootCoordinator.swift */,
 				9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */,
 				9B7466EA22A516E500C1C792 /* CountryCoordinator.swift */,
+				9B4F1A4422A6B89300FCC8CC /* EKYC */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -842,6 +858,18 @@
 				9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */,
 			);
 			path = Email;
+			sourceTree = "<group>";
+		};
+		9B4F1A4422A6B89300FCC8CC /* EKYC */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */,
+				9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */,
+				9B4F1A3B22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift */,
+				9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */,
+				9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */,
+			);
+			path = EKYC;
 			sourceTree = "<group>";
 		};
 		9B6A928E22844F99007F5EC9 /* APITests */ = {
@@ -1861,10 +1889,11 @@
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
+				9B4F1A3C22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				9BBEEE16228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
-				042928F2223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
+				042928F2223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
 				9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */,
@@ -1893,6 +1922,7 @@
 				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
+				9B6A9DCC22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
@@ -1904,12 +1934,15 @@
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
 				9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
+				9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
+				9B4F1A3E22A6A91A00FCC8CC /* EKYCCoordinator.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				9BBEEE19228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */,
+				9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE13228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
@@ -2038,6 +2071,7 @@
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
+				9B4F1A4022A6A9FE00FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
@@ -2064,7 +2098,7 @@
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
-				042928F3223D0BE700806438 /* NRCIVerifyViewController.swift in Sources */,
+				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
 				9B7466EC22A516E500C1C792 /* CountryCoordinator.swift in Sources */,
 				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
@@ -2080,9 +2114,11 @@
 				C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
+				9B6A9DCD22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */,
 				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
+				9B4F1A3F22A6A91A00FCC8CC /* EKYCCoordinator.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
@@ -2090,6 +2126,7 @@
 				9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */,
 				9B4DAD932281A538003810BE /* RootCoordinator.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
+				9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -2097,6 +2134,7 @@
 				9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				9BBEEE1A228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */,
+				9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,

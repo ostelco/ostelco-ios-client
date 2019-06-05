@@ -227,3 +227,16 @@ extension RootCoordinator: CountryCoordinatorDelegate {
             }
     }
 }
+
+// MARK: - EKYCCoordinatorDelegate
+
+extension RootCoordinator: EKYCCoordinatorDelegate {
+    
+    func ekycSuccessful(region: RegionResponse) {
+        self.navigate(to: .esim(profile: region.getSimProfile()), from: nil, animated: true)
+    }
+    
+    func reselectCountry() {
+        self.navigate(to: .country, from: nil, animated: true)
+    }
+}

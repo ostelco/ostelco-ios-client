@@ -22,6 +22,7 @@ class AddressEditViewController: UITableViewController {
     @IBOutlet private var saveBarButtton: UIBarButtonItem!
     @IBOutlet private var cancelBarButton: UIBarButtonItem!
     
+    weak var coordinator: SingaporeEKYCCoordinator?
     var spinnerView: UIView?
     
     enum Mode {
@@ -126,8 +127,7 @@ class AddressEditViewController: UITableViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                let pendingVC = PendingVerificationViewController.fromStoryboard()
-                self?.present(pendingVC, animated: true)
+                self?.coordinator?.enteredAddressSuccessfully()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
