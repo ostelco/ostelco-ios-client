@@ -38,28 +38,28 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
     }
     
-    @IBAction private func sendAgainTapped(_ sender: Any) {        
-        if let simProfile = self.simProfile, let region = OnBoardingManager.sharedInstance.region {
-        
-            self.spinnerView = self.showSpinner(onView: self.view)
-            
-            APIManager.shared.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: simProfile.iccId)
-                .ensure { [weak self] in
-                    self?.removeSpinner(self?.spinnerView)
-                    self?.spinnerView = nil
-                }
-                .done { [weak self] _ in
-                    self?.showAlert(title: "Message", msg: "We have resent the QR code to your email address.")
-                }
-                .catch { [weak self] error in
-                    ApplicationErrors.log(error)
-                    debugPrint("Error resending email: \(error)")
-                    self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                }
-        } else {
-            ApplicationErrors.assertAndLog("Error sending email, simProfile or region is null?!")
-            self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
+    @IBAction private func sendAgainTapped(_ sender: Any) {
+        guard
+            let simProfile = self.simProfile,
+            let region = OnBoardingManager.sharedInstance.region else {
+                fatalError("Error sending email, simProfile or region is null?!")
         }
+        
+        self.spinnerView = self.showSpinner(onView: self.view)
+        
+        APIManager.shared.primeAPI
+            .resendEmailForSimProfileInRegion(code: region.region.id, iccId: simProfile.iccId)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] _ in
+                self?.showAlert(title: "Message", msg: "We have resent the QR code to your email address.")
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
