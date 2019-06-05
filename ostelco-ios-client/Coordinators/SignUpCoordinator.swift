@@ -42,7 +42,7 @@ class SignUpCoordinator {
             return .value(.legalese)
         }
         
-        guard self.userManager.customer?.name != nil else {
+        guard self.userManager.customer != nil else {
             return .value(.enterName)
         }
         
@@ -101,6 +101,6 @@ class SignUpCoordinator {
             }
             .catch { error in
                 ApplicationErrors.log(error)
-        }
+            }
     }
 }
