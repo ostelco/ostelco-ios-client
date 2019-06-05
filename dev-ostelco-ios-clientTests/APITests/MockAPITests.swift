@@ -130,7 +130,7 @@ class MockAPITests: XCTestCase {
         
         XCTAssertEqual(firstRegion.region.id, "sg")
         XCTAssertEqual(firstRegion.region.name, "Singapore")
-        XCTAssertEqual(firstRegion.status, .PENDING)
+        XCTAssertEqual(firstRegion.status, .REJECTED)
         XCTAssertEqual(firstRegion.kycStatusMap.JUMIO, .REJECTED)
         XCTAssertEqual(firstRegion.kycStatusMap.MY_INFO, .PENDING)
         XCTAssertEqual(firstRegion.kycStatusMap.ADDRESS_AND_PHONE_NUMBER, .PENDING)
@@ -185,7 +185,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockFetchingContextForUserWithValidSimProfile() {
-        self.stubPath("context", toLoad: "context_with_sim_profile")
+        self.stubPath("context", toLoad: "context_with_pending_sim_profile")
         
         guard let context = self.mockAPI.loadContext().awaitResult(in: self) else {
             // Failures handled in `awaitResult`

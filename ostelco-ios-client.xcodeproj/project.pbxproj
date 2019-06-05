@@ -148,6 +148,7 @@
 		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
 		9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
+		9B4F1A4922A7CB9500FCC8CC /* RootCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */; };
 		9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */; };
 		9B4F1A4E22A7F9C200FCC8CC /* EmailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4D22A7F9C200FCC8CC /* EmailCoordinator.swift */; };
 		9B4F1A4F22A7FAFB00FCC8CC /* EmailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4D22A7F9C200FCC8CC /* EmailCoordinator.swift */; };
@@ -507,6 +508,7 @@
 		9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
+		9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorTests.swift; sourceTree = "<group>"; };
 		9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorDestinations+Equatable.swift"; sourceTree = "<group>"; };
 		9B4F1A4D22A7F9C200FCC8CC /* EmailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCoordinator.swift; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -882,6 +884,14 @@
 			path = EKYC;
 			sourceTree = "<group>";
 		};
+		9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */,
+			);
+			path = CoordinatorTests;
+			sourceTree = "<group>";
+		};
 		9B6A928E22844F99007F5EC9 /* APITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1160,6 +1170,7 @@
 				9B82157B2279B97700DC6B64 /* Mocks */,
 				C2236F0E218A414C00B135C0 /* Info.plist */,
 				9B6A928E22844F99007F5EC9 /* APITests */,
+				9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */,
 				9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */,
 				9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */,
 				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
@@ -2062,6 +2073,7 @@
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				9BBEEE21228DA83800EED7F5 /* MockPushNotificationController.swift in Sources */,
+				9B4F1A4922A7CB9500FCC8CC /* RootCoordinatorTests.swift in Sources */,
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */,
 				9BBEEE1F228DA82600EED7F5 /* PushNotificationControllerTests.swift in Sources */,
