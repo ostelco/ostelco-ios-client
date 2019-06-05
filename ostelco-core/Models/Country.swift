@@ -9,7 +9,7 @@
 // Inspired from: https://github.com/juanpablofernandez/CountryList
 public class Country: Equatable {
     
-    private static let defaultCodes =  ["NO", "SG", "US"]
+    private static let defaultCodes =  ["SG", "US"]
     
     public static var defaultCountries: [Country] {
         return self.defaultCodes.map { Country($0) }
