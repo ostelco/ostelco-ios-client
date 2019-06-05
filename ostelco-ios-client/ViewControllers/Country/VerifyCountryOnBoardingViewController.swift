@@ -12,8 +12,9 @@ import UIKit
 class VerifyCountryOnBoardingViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
-    
     @IBOutlet private weak var selectedStepIcon: UIImageView!
+    
+    weak var coordinator: CountryCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTitle()
+        self.setTitle()
     }
     
     @IBAction private func needHelpTapped(_ sender: UIButton) {
@@ -31,12 +32,12 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "displayChooseCountry", sender: self)
+        self.coordinator?.finishedViewingCountryLandingScreen()
     }
     
     private func setTitle() {
         if let user = UserManager.shared.customer {
-            titleLabel.text = "Hi \(user.name)!"
+            self.titleLabel.text = "Hi \(user.name)!"
         }
     }
 }
@@ -48,6 +49,6 @@ extension VerifyCountryOnBoardingViewController: StoryboardLoadable {
     }
     
     static var isInitialViewController: Bool {
-        return true
+        return false
     }
 }

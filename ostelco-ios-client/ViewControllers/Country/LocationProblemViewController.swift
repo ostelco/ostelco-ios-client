@@ -19,6 +19,8 @@ class LocationProblemViewController: UIViewController {
     @IBOutlet private var explanationLabel: BodyTextLabel!
     @IBOutlet private var primaryButton: UIButton!
     
+    weak var coordinator: CountryCoordinator?
+    
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
     
@@ -135,6 +137,26 @@ class LocationProblemViewController: UIViewController {
             ApplicationErrors.assertAndLog("Apple added a new status here! You should update this handling.")
         }
     }
+    
+    private func checkLocation() {
+        guard let coordinator = self.coordinator else {
+            return
+        }
+       
+        coordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: OnBoardingManager.sharedInstance.selectedCountry)
+            .done { [weak self] destination in
+                switch destination {
+                case .locationProblem(let problem):
+                    self?.locationProblem = problem
+                    self?.listenForChanges()
+                default:
+                    coordinator.navigate(to: destination, animated: true)
+                }
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
+    }
 }
 
 // MARK: - StoryboardLoadable
@@ -146,17 +168,6 @@ extension LocationProblemViewController: StoryboardLoadable {
     
     static var storyboard: Storyboard {
         return .country
-    }
-}
-
-extension LocationProblemViewController: LocationChecking {
-    
-    func locationCheckSucceeded() {
-        self.performSegue(withIdentifier: "locationAccessAllowedAndConfirmed", sender: self)
-    }
-    
-    func handleLocationProblem(_ problem: LocationProblem) {
-        self.locationProblem = problem
     }
 }
 

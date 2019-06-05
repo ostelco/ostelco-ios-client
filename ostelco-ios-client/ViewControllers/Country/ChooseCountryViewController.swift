@@ -6,17 +6,61 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import OstelcoStyles
+import ostelco_core
 import UIKit
 
 class ChooseCountryViewController: UIViewController {
     
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var continueButton: UIButton!
+    
+    private lazy var dataSource: CountryDataSource = {
+        return CountryDataSource(tableView: self.tableView,
+                                 countries: Country.defaultCountries,
+                                 delegate: self)
+    }()
+    
+    weak var coordinator: CountryCoordinator?
+    private var currentSelectedCountry: Country? {
+        didSet {
+            if self.currentSelectedCountry == nil {
+                self.continueButton.isEnabled = false
+            } else {
+                self.continueButton.isEnabled = true
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
+        self.tableView.addEmptyFooter()
+        self.currentSelectedCountry = OnBoardingManager.sharedInstance.selectedCountry
+        self.dataSource.selectedCountry = self.currentSelectedCountry
+    }
+    
     @IBAction private func needHelpTapped(_ sender: Any) {
-        showNeedHelpActionSheet()
+        self.showNeedHelpActionSheet()
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        OstelcoAnalytics.logEvent(.ChosenCountry(country: OnBoardingManager.sharedInstance.selectedCountry))
-        performSegue(withIdentifier: "displayAllowLocationAccess", sender: self)
+        guard let country = self.currentSelectedCountry else {
+            return
+        }
+        
+        self.coordinator?.selectedCountry(country)
+    }
+}
+
+extension ChooseCountryViewController: CountrySelectionDelegate {
+    
+    func selected(country: Country) {
+        self.currentSelectedCountry = country
+    }
+}
+
 extension ChooseCountryViewController: StoryboardLoadable {
     
     static var storyboard: Storyboard {

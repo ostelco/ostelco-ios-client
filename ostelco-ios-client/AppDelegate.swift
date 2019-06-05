@@ -122,10 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
                 .then {
-                    UserManager.shared.getDestinationFromContext()
+                    self.rootCoordinator.determineDestination()
                 }
                 .done { [weak self] destination in
-                    self?.rootCoordinator.navigate(to: destination, from: nil)
+                    self?.rootCoordinator.navigate(to: destination, from: nil, animated: true)
                 }
                 .catch { error in
                     ApplicationErrors.log(error)

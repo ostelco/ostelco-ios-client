@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LdJ-hc-ks3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,29 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Countries Table View Controller-->
-        <scene sceneID="IJh-64-weN">
-            <objects>
-                <tableViewController id="S77-Tv-iN9" customClass="CountriesTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VRc-vz-Eao">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="423"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="S77-Tv-iN9" id="5F4-sh-MMa"/>
-                            <outlet property="delegate" destination="S77-Tv-iN9" id="Q3j-jT-MAo"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zT4-y0-olf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2396" y="369"/>
-        </scene>
         <!--Verify Country On Boarding View Controller-->
         <scene sceneID="kRV-OE-jZn">
             <objects>
-                <viewController id="LdJ-hc-ks3" customClass="VerifyCountryOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyCountryOnBoardingViewController" id="LdJ-hc-ks3" customClass="VerifyCountryOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GkR-0X-0d9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,6 +107,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hM8-XF-g1b"/>
                     </view>
+                    <navigationItem key="navigationItem" id="IiA-Qv-EwW"/>
                     <connections>
                         <outlet property="selectedStepIcon" destination="CYM-RT-YcS" id="u7y-Wj-Nfa"/>
                         <outlet property="titleLabel" destination="sCM-Rj-d9a" id="geg-ue-chb"/>
@@ -134,12 +116,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6G-8H-L6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1598" y="-221"/>
+            <point key="canvasLocation" x="2540" y="-221.67487684729065"/>
         </scene>
         <!--Choose Country View Controller-->
         <scene sceneID="PLw-gW-CHP">
             <objects>
-                <viewController id="qUz-io-xXw" customClass="ChooseCountryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseCountryViewController" id="qUz-io-xXw" customClass="ChooseCountryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XbB-Nd-iwA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,12 +152,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0L-Vt-w2C">
-                                <rect key="frame" x="0.0" y="174" width="375" height="423"/>
-                                <connections>
-                                    <segue destination="S77-Tv-iN9" kind="embed" id="BAd-iI-grH"/>
-                                </connections>
-                            </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-xp-H1D">
+                                <rect key="frame" x="0.0" y="176" width="375" height="421"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -186,24 +166,26 @@
                             <constraint firstItem="crC-Wa-ajC" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="Fd7-c6-ovo"/>
                             <constraint firstItem="Ndf-mv-q3A" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" constant="24" id="FnI-NP-o2P"/>
                             <constraint firstItem="ihi-S8-29C" firstAttribute="top" secondItem="crC-Wa-ajC" secondAttribute="bottom" constant="34" id="MGk-1f-DO7"/>
-                            <constraint firstItem="L0L-Vt-w2C" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" id="VRs-uz-sqA"/>
-                            <constraint firstItem="L0L-Vt-w2C" firstAttribute="trailing" secondItem="5Kh-UI-MQa" secondAttribute="trailing" id="XBO-LJ-N7s"/>
+                            <constraint firstItem="crC-Wa-ajC" firstAttribute="top" secondItem="gVU-xp-H1D" secondAttribute="bottom" constant="20" id="OMX-N4-bSI"/>
                             <constraint firstItem="ihi-S8-29C" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" constant="24" id="ZzI-eZ-eAL"/>
+                            <constraint firstItem="gVU-xp-H1D" firstAttribute="top" secondItem="xqT-SW-me3" secondAttribute="bottom" constant="10" id="bGA-xh-byJ"/>
+                            <constraint firstItem="5Kh-UI-MQa" firstAttribute="trailing" secondItem="gVU-xp-H1D" secondAttribute="trailing" id="cMO-d8-jzr"/>
                             <constraint firstItem="5Kh-UI-MQa" firstAttribute="trailing" secondItem="Ndf-mv-q3A" secondAttribute="trailing" constant="24" id="d3p-wJ-xFO"/>
-                            <constraint firstItem="crC-Wa-ajC" firstAttribute="top" secondItem="L0L-Vt-w2C" secondAttribute="bottom" constant="20" id="eFS-0i-QVI"/>
                             <constraint firstItem="5Kh-UI-MQa" firstAttribute="trailing" secondItem="ihi-S8-29C" secondAttribute="trailing" constant="24" id="hRa-1G-hhp"/>
-                            <constraint firstItem="L0L-Vt-w2C" firstAttribute="top" secondItem="xqT-SW-me3" secondAttribute="bottom" constant="8" id="m7K-rE-2sE"/>
+                            <constraint firstItem="gVU-xp-H1D" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" id="n1X-PM-kp5"/>
                             <constraint firstItem="xqT-SW-me3" firstAttribute="leading" secondItem="5Kh-UI-MQa" secondAttribute="leading" constant="16" id="tog-QH-uu2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Kh-UI-MQa"/>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="ihi-S8-29C" id="ODJ-79-rrR"/>
+                        <outlet property="tableView" destination="gVU-xp-H1D" id="aMs-Rv-y4m"/>
                         <segue destination="51P-Xu-Q3s" kind="show" identifier="displayAllowLocationAccess" id="28L-C4-tD5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHW-hg-TWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2399" y="-224"/>
+            <point key="canvasLocation" x="3340" y="-224.6305418719212"/>
         </scene>
         <!--Allow Location Access View Controller-->
         <scene sceneID="VCS-Q8-7ym">
@@ -261,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ao-87-Iid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3293.5999999999999" y="-222.63868065967017"/>
+            <point key="canvasLocation" x="4236" y="-223.15270935960592"/>
         </scene>
         <!--Location Problem View Controller-->
         <scene sceneID="mfJ-4g-S3x">
@@ -272,30 +254,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-W8-wUh" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTN-jC-vf4" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="primaryButtonTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="m8O-3N-uqn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="144" y="619" width="87" height="33"/>
+                                <rect key="frame" x="148.66666666666666" y="642" width="78" height="30"/>
                                 <state key="normal" title="Need help?"/>
                                 <connections>
                                     <action selector="needHelpTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="Sjw-Zx-XAX"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
-                                <rect key="frame" x="9" y="142.66666666666663" width="357" height="265"/>
+                                <rect key="frame" x="9" y="144" width="357" height="265"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-b2-7aj" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="494" width="327" height="105"/>
+                                <rect key="frame" x="24" y="520.33333333333337" width="327" height="101.66666666666663"/>
                                 <string key="text">To give you mobile data, by law, we have to verify which country you’re in
 
 Please enable “Location Access” in Settings.</string>
@@ -304,7 +286,7 @@ Please enable “Location Access” in Settings.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-ru-tsI" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="9" y="142.66666666666663" width="357" height="265"/>
+                                <rect key="frame" x="9" y="144" width="357" height="265"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -343,7 +325,7 @@ Please enable “Location Access” in Settings.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Eb-gI-Li9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4108" y="-224"/>
+            <point key="canvasLocation" x="5050.3999999999996" y="-224.6305418719212"/>
         </scene>
         <!--EKYC-->
         <scene sceneID="sc9-eh-k4E">
@@ -351,7 +333,27 @@ Please enable “Location Access” in Settings.</string>
                 <viewControllerPlaceholder storyboardName="EKYC" id="vGc-SK-lCJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4R-U3-F4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3332" y="275"/>
+            <point key="canvasLocation" x="4634" y="237"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hvb-4F-5y9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="XAl-Dj-xla" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TVJ-9X-pEj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P3e-ZT-mwl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="LdJ-hc-ks3" kind="relationship" relationship="rootViewController" id="TKX-vk-F6a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPR-Mh-Bn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1597.5999999999999" y="-221.67487684729065"/>
         </scene>
     </scenes>
     <resources>

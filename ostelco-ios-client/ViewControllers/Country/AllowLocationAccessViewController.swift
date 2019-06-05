@@ -15,6 +15,8 @@ class AllowLocationAccessViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
+    weak var coordinator: CountryCoordinator?
+
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
     
@@ -44,16 +46,10 @@ class AllowLocationAccessViewController: UIViewController {
         self.hasRequestedAuthorization = true
     }
     
-    private func showLocationProblemViewController(for problem: LocationProblem) {
-        let problemVC = LocationProblemViewController.fromStoryboard()
-        problemVC.locationProblem = problem
-        self.present(problemVC, animated: true)
-    }
-    
     private func requestAuthorization() {
         let locationController = LocationController.shared
         guard locationController.locationServicesEnabled else {
-            self.showLocationProblemViewController(for: .disabledInSettings)
+            self.coordinator?.handleLocationProblem(.disabledInSettings)
             return
         }
         
@@ -69,12 +65,12 @@ class AllowLocationAccessViewController: UIViewController {
                 self?.handleAuthorizationStatus(status)
             }
         case .restricted:
-            self.showLocationProblemViewController(for: .restrictedByParentalControls)
+            self.coordinator?.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
-            self.showLocationProblemViewController(for: .deniedByUser)
+            self.coordinator?.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.checkLocation()
+            self.coordinator?.locationUsageAuthorized(for: self.selectedCountry)
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }
@@ -89,17 +85,6 @@ extension AllowLocationAccessViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return false
-    }
-}
-
-extension AllowLocationAccessViewController: LocationChecking {
-    
-    func locationCheckSucceeded() {
-        self.performSegue(withIdentifier: "showEKYC", sender: self)
-    }
-    
-    func handleLocationProblem(_ problem: LocationProblem) {
-        self.showLocationProblemViewController(for: problem)
     }
 }
 

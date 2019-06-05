@@ -76,9 +76,13 @@ class CheckEmailViewController: UIViewController {
                 .ensure { [weak self] in
                     self?.removeSpinner(spinner)
                 }
-                .then { UserManager.shared.getDestinationFromContext() }
+                .then {
+                    UIApplication.shared.typedDelegate
+                        .rootCoordinator.determineDestination()
+                }
                 .done { destination in
-                    UIApplication.shared.typedDelegate.rootCoordinator.navigate(to: destination, from: self)
+                    UIApplication.shared.typedDelegate
+                        .rootCoordinator.navigate(to: destination, from: self, animated: true)
                 }
                 .catch { [weak self] error in
                     ApplicationErrors.log(error)
