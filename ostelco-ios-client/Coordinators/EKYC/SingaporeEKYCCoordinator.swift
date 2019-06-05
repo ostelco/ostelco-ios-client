@@ -56,27 +56,45 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             guard
                 let jumio = region.kycStatusMap.JUMIO,
                 let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
-                let nricFin = region.kycStatusMap.NRIC_FIN else {
+                let nricFin = region.kycStatusMap.NRIC_FIN,
+                let myInfo = region.kycStatusMap.MY_INFO else {
                     return .goBackAndChooseCountry
             }
             
-            switch (jumio, addressAndPhoneNumber, nricFin) {
-            case (.PENDING, .PENDING, .PENDING):
+            switch (jumio, addressAndPhoneNumber, nricFin, myInfo) {
+            case (.PENDING, .PENDING, .PENDING, .PENDING):
                 // User hasn't selected anything yet
                 return .selectVerificationMethod
-            case (.APPROVED, .APPROVED, .APPROVED):
-                // This probably should have shown as a success at a higher level, but ¯\_(ツ)_/¯
-                return .success(region: region)
-            case (.REJECTED, _, _):
+            case (.REJECTED, _, _, _):
                 // If jumio is rejected, *everything* is rejected.
                 return .ekycRejected
-            case (.PENDING, .APPROVED, .APPROVED):
-                // The user only used NRIC + Address, we're good.
+            case (_, _, _, .REJECTED):
+                // If myInfo is rejected, *everything* is rejected
+                return .ekycRejected
+            case (.APPROVED, .APPROVED, .APPROVED, _):
+                // Jumio + addresss + NRCFIN = Yay!
                 return .success(region: region)
-            case (.PENDING, .PENDING, .APPROVED):
-                // The user has an approved NRIC but we need an address
+            case (_, .APPROVED, _, .APPROVED):
+                // MyInfo + address = yay!
+                return .success(region: region)
+            case (_, .PENDING, _, .APPROVED):
+                // My info also needs an address submitted, but we've probably lost
+                // what we need to access their singpass address. Make the user enter it.
                 return .enterAddress
+            case (.PENDING, .PENDING, .APPROVED, _):
+                // The user has an approved NRIC. Now we need Jumio verification and an address. Start with jumio.
+                return .jumio
+            case (.PENDING, .APPROVED, .APPROVED, _):
+                // The user has an approved NRIC and address, now we need Jumio verification.
+                return .jumio
+            case (.APPROVED, .PENDING, .APPROVED, _):
+                // The user has an approved NRIC and verified with jumio, now we need an address.
+                return .enterAddress
+            case (.PENDING, .APPROVED, .PENDING, _):
+                // The user has an approved addresss, but we still need something else.
+                return .selectVerificationMethod
             default:
+                // The user has gotten into some bizarre state and should try again.
                 return .goBackAndChooseCountry
             }
         }
@@ -175,7 +193,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     }
     
     func enteredAddressSuccessfully() {
-        
+        self.updateRegionAndNavigate(animated: true)
     }
 }
 
