@@ -18,7 +18,6 @@ protocol EKYCCoordinator: class {
     var delegate: EKYCCoordinatorDelegate? { get set }
     var navigationController: UINavigationController { get }
     var country: Country { get }
-    var apiManager: APIManager { get }
     var jumioCoordinator: JumioCoordinator? { get set }
     
     func showFirstStepAfterLanding()
@@ -29,15 +28,13 @@ extension EKYCCoordinator {
     
     // NOTE: This must be called on one of the concrete implementations of EKYCCoordinator
     static func forCountry(country: Country,
-                           apiManager: APIManager = .shared,
                            navigationController: UINavigationController) -> EKYCCoordinator {
         switch country.countryCode.lowercased() {
         case "sg":
-            return SingaporeEKYCCoordinator(navigationController: navigationController,
-                                            apiManager: apiManager)
+            return SingaporeEKYCCoordinator(navigationController: navigationController)
         default:
             return DefaultEKYCCoordinator(navigationController: navigationController,
-                                          apiManager: apiManager,
+                                         
                                           country: country)
         }
     }
@@ -69,10 +66,10 @@ extension EKYCCoordinator {
 
 extension EKYCCoordinator where Self: JumioCoordinatorDelegate {
     
-    func launchJumio(apiManager: APIManager, animated: Bool) {
+    func launchJumio(animated: Bool) {
         let jumioCoordinator: JumioCoordinator
         do {
-            jumioCoordinator = try JumioCoordinator(country: country, apiManager: apiManager)
+            jumioCoordinator = try JumioCoordinator(country: country)
         } catch let error {
             self.handleError(message: error.localizedDescription)
             return

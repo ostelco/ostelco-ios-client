@@ -61,7 +61,8 @@ class RootCoordinator {
             return .value(.login)
         }
         
-        return APIManager.shared.primeAPI.loadContext()
+        return APIManager.shared.primeAPI
+            .loadContext()
             .map { context -> RootDestination in
                 UserManager.shared.customer = context.customer
                 guard let region = context.getRegion() else {
@@ -159,11 +160,13 @@ class RootCoordinator {
             let coordinator =
                 DefaultEKYCCoordinator.forCountry(country: region.region.country, navigationController: self.onboardingNavController)
             coordinator.showEKYCLandingPage(animated: animated)
+            coordinator.delegate = self
             self.ekycCoordinator = coordinator
         case .esim(let profile):
-            let coordinator = ESimCoordinator()
+            let coordinator = ESimCoordinator(navigationController: self.onboardingNavController)
+            coordinator.delegate = self
             let destination = coordinator.determineDestination(from: profile)
-            coordinator.navigate(to: destination)
+            coordinator.navigate(to: destination, animated: animated)
             self.esimCoordinator = coordinator
         case .home:
             let tabs = TabBarController.fromStoryboard()
@@ -238,5 +241,14 @@ extension RootCoordinator: EKYCCoordinatorDelegate {
     
     func reselectCountry() {
         self.navigate(to: .country, from: nil, animated: true)
+    }
+}
+
+// MARK: - ESimCoordinatorDelegate
+
+extension RootCoordinator: ESimCoordinatorDelegate {
+    
+    func esimSetupComplete() {
+        self.navigate(to: .home, from: nil, animated: true)
     }
 }

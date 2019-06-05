@@ -12,6 +12,7 @@ import ostelco_core
 
 class ESIMPendingDownloadViewController: UIViewController {
     
+    weak var coordinator: ESimCoordinator?
     var spinnerView: UIView?
     var simProfile: SimProfile? {
         didSet {
@@ -29,26 +30,15 @@ class ESIMPendingDownloadViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let region = OnBoardingManager.sharedInstance.region {
-            getSimProfileForRegion(region: region)
+            self.getSimProfileForRegion(region: region)
         } else {
-           APIManager.shared
-            .primeAPI
-            .getRegionFromRegions()
-            .done { [weak self] regionResponse in
-                OnBoardingManager.sharedInstance.region = regionResponse
-                self?.getSimProfileForRegion(region: regionResponse)
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                debugPrint("Error getting region: \(error)")
-                self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-            }
+            self.loadRegion()
         }
     }
     
-    @IBAction private func sendAgainTapped(_ sender: Any) {
-        
+    @IBAction private func sendAgainTapped(_ sender: Any) {        
         if let simProfile = self.simProfile, let region = OnBoardingManager.sharedInstance.region {
         
             self.spinnerView = self.showSpinner(onView: self.view)
@@ -97,6 +87,19 @@ class ESIMPendingDownloadViewController: UIViewController {
         self.showNeedHelpActionSheet()
     }
     
+    private func loadRegion() {
+        APIManager.shared.primeAPI
+            .getRegionFromRegions()
+            .done { [weak self] regionResponse in
+                OnBoardingManager.sharedInstance.region = regionResponse
+                self?.getSimProfileForRegion(region: regionResponse)
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
+    }
+    
     private func handleGotSimProfiles(_ profiles: [SimProfile]) {
         guard let profile = profiles.first(where: {
             $0.iccId == self.simProfile?.iccId
@@ -106,44 +109,61 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
         
         self.simProfile = profile
-        switch profile.status {
-        case .AVAILABLE_FOR_DOWNLOAD:
+        let destination = self.coordinator!.determineDestination(from: profile)
+        switch destination {
+        case .pendingDownload:
             self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(profile.status.rawValue)")
-        case .NOT_READY:
-            self.performSegue(withIdentifier: "showGenericOhNo", sender: self)
         default:
-            self.performSegue(withIdentifier: "showHome", sender: self)
+            self.coordinator?.navigate(to: destination, animated: true)
         }
     }
     
     func getSimProfileForRegion(region: RegionResponse) {
-        let countryCode = region.region.id
-        if let simProfiles = region.simProfiles, simProfiles.isNotEmpty {
-            if simProfiles.contains(where: { $0.status == .ENABLED }) {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "showHome", sender: self)
-                }
-            } else {
-                self.simProfile = simProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) })
-            }
-        } else {
-            self.spinnerView = self.showSpinner(onView: self.view)
-            APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
-                .ensure { [weak self] in
-                    self?.removeSpinner(self?.spinnerView)
-                    self?.spinnerView = nil
-                }
-                .done { [weak self] profile in
-                    guard let self = self else {
-                        return
-                    }
-                    
-                    self.simProfile = profile
-                }
-                .catch { [weak self] error in
-                    ApplicationErrors.log(error)
-                    self?.performSegue(withIdentifier: "showGenericOhNo", sender: self)
-                }
+        guard
+            let existingProfiles = region.simProfiles,
+            existingProfiles.isNotEmpty else {
+                self.createSimProfileForRegion(region)
+                return
         }
+        
+        if let enabledProfile = existingProfiles.first(where: { $0.status == .ENABLED }) {
+            self.simProfile = enabledProfile
+        } else if let almostReadyProfile = existingProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) }) {
+            self.simProfile = almostReadyProfile
+        } else {
+            self.simProfile = existingProfiles.first
+        }
+        
+        self.handleGotSimProfiles(existingProfiles)
+    }
+    
+    private func createSimProfileForRegion(_ region: RegionResponse) {
+        let countryCode = region.region.id
+        self.spinnerView = self.showSpinner(onView: self.view)
+        APIManager.shared.primeAPI
+            .createSimProfileForRegion(code: countryCode)
+            .ensure { [weak self] in
+                self?.removeSpinner(self?.spinnerView)
+                self?.spinnerView = nil
+            }
+            .done { [weak self] profile in
+                self?.simProfile = profile
+                self?.handleGotSimProfiles([profile])
+            }
+            .catch { [weak self] error in
+                ApplicationErrors.log(error)
+                self?.showGenericError(error: error)
+            }
+    }
+}
+
+extension ESIMPendingDownloadViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .esim
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
     }
 }

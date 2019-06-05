@@ -13,6 +13,8 @@ class SignUpCompletedViewController: UIViewController {
 
     @IBOutlet private var gifView: LoopingVideoView!
     
+    weak var coordinator: ESimCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +23,18 @@ class SignUpCompletedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        performSegue(withIdentifier: "home", sender: self)
+        self.coordinator?.acknowledgedSuccess()
     }
+}
+
+extension SignUpCompletedViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .esim
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+    
 }

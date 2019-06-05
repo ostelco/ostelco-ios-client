@@ -32,12 +32,9 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     var jumioCoordinator: JumioCoordinator?
     var singPassCoordinator: SingPassCoordinator?
     let country = Country("sg")
-    let apiManager: APIManager
     
-    init(navigationController: UINavigationController,
-         apiManager: APIManager) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.apiManager = apiManager
     }
     
     func determineDestination(from region: RegionResponse) -> SingaporeEKYCCoordinator.Destination {
@@ -104,7 +101,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         case .landing:
             self.showEKYCLandingPage(animated: animated)
         case .jumio:
-            self.launchJumio(apiManager: self.apiManager, animated: animated)
+            self.launchJumio(animated: animated)
         case .enterNRIC:
             let nricVC = NRICVerifyViewController.fromStoryboard()
            nricVC.coordinator = self
@@ -153,7 +150,8 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     }
     
     private func updateRegionAndNavigate(animated: Bool) {
-        self.apiManager.primeAPI.loadRegion(code: self.country.countryCode)
+        APIManager.shared.primeAPI
+            .loadRegion(code: self.country.countryCode)
             .done { region in
                 let destination = self.determineDestination(from: region)
                 self.navigate(to: destination, animated: animated)

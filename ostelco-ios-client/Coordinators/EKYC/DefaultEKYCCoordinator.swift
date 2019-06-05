@@ -13,15 +13,12 @@ import UIKit
 class DefaultEKYCCoordinator: EKYCCoordinator {
     
     static func coordinator(for country: Country,
-                            apiManager: APIManager = .shared,
                             navigationController: UINavigationController) -> EKYCCoordinator {
         switch country.countryCode.lowercased() {
         case "sg":
-            return SingaporeEKYCCoordinator(navigationController: navigationController,
-                                            apiManager: apiManager)
+            return SingaporeEKYCCoordinator(navigationController: navigationController)
         default:
             return DefaultEKYCCoordinator(navigationController: navigationController,
-                                          apiManager: apiManager,
                                           country: country)
         }
     }
@@ -36,16 +33,13 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
     }
     
     let navigationController: UINavigationController
-    let apiManager: APIManager
     let country: Country
     var jumioCoordinator: JumioCoordinator?
     weak var delegate: EKYCCoordinatorDelegate?
     
     init(navigationController: UINavigationController,
-         apiManager: APIManager,
          country: Country) {
         self.navigationController = navigationController
-        self.apiManager = apiManager
         self.country = country
     }
     
@@ -82,7 +76,7 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
         case .landing:
             self.showEKYCLandingPage(animated: animated)
         case .jumio:
-            self.launchJumio(apiManager: self.apiManager, animated: animated)
+            self.launchJumio(animated: animated)
         case .waitingForVerification:
             self.showWaitingForVerification(animated: animated)
         }

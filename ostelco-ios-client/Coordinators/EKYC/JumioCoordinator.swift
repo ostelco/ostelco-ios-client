@@ -29,7 +29,6 @@ class JumioCoordinator: NSObject {
         }
     }
     
-    private let apiManager: APIManager
     private let country: Country
     
     weak var delegate: JumioCoordinatorDelegate?
@@ -42,7 +41,6 @@ class JumioCoordinator: NSObject {
         }
         
         self.country = country
-        self.apiManager = apiManager
     }
     
     func startScan(from viewController: UIViewController) {
@@ -63,7 +61,8 @@ class JumioCoordinator: NSObject {
 
     private func getNewScanID() -> Promise<String> {
         let countryCode = self.country.countryCode.lowercased()
-        return self.apiManager.primeAPI.createJumioScanForRegion(code: countryCode)
+        return APIManager.shared.primeAPI
+            .createJumioScanForRegion(code: countryCode)
             .map { scan in
                 return scan.scanId
             }

@@ -172,6 +172,8 @@
 		9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */; };
 		9B6A9DCC22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */; };
 		9B6A9DCD22A55E850036AEE4 /* DefaultEKYCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */; };
+		9B6A9DCF22A562D10036AEE4 /* ESimCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */; };
+		9B6A9DD022A562D10036AEE4 /* ESimCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */; };
 		9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
@@ -518,6 +520,7 @@
 		9B6A928F2284501B007F5EC9 /* MockJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MockJSON; sourceTree = "<group>"; };
 		9B6A929122847124007F5EC9 /* PromiseKit+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PromiseKit+Testing.swift"; sourceTree = "<group>"; };
 		9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEKYCCoordinator.swift; sourceTree = "<group>"; };
+		9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCoordinator.swift; sourceTree = "<group>"; };
 		9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFontSize.swift; sourceTree = "<group>"; };
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
@@ -843,10 +846,11 @@
 		9B4DAD942281A717003810BE /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				9B4DAD912281A2CE003810BE /* RootCoordinator.swift */,
-				9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */,
 				9B7466EA22A516E500C1C792 /* CountryCoordinator.swift */,
 				9B4F1A4422A6B89300FCC8CC /* EKYC */,
+				9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */,
+				9B4DAD912281A2CE003810BE /* RootCoordinator.swift */,
+				9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1947,6 +1951,7 @@
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */,
+				9B6A9DCF22A562D10036AEE4 /* ESimCoordinator.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
