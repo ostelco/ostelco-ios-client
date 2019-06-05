@@ -245,7 +245,7 @@ class RootCoordinator {
 extension RootCoordinator: EmailCoordinatorDelegate {
     
     func emailSuccessfullyVerified() {
-        self.navigate(to: .country, from: nil, animated: true)
+        self.navigate(to: .signUp, from: nil, animated: true)
         self.emailCoordinator = nil
     }
 }
