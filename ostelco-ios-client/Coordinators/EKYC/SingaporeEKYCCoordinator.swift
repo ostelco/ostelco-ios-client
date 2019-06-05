@@ -46,12 +46,13 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         guard let region = region else {
             return .landing
         }
-            switch region.status {
-            case .APPROVED:
-                return .success(region: region)
-            case .REJECTED:
-                return .ekycRejected
-            case .PENDING:
+        
+        switch region.status {
+        case .APPROVED:
+            return .success(region: region)
+        case .REJECTED:
+            return .ekycRejected
+        case .PENDING:
             guard
                 let jumio = region.kycStatusMap.JUMIO,
                 let addressAndPhoneNumber = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
