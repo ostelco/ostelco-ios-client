@@ -43,7 +43,11 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
         self.country = country
     }
     
-    func determineDestination(from region: RegionResponse) -> DefaultEKYCCoordinator.Destination {
+    func determineDestination(from region: RegionResponse?) -> DefaultEKYCCoordinator.Destination {
+        guard let region = region else {
+            return .landing
+        }
+        
         switch region.status {
         case .APPROVED:
             return .success(region: region)
@@ -63,6 +67,11 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
                 return .waitingForVerification
             }
         }
+    }
+    
+    func determineAndNavigateDestination(from region: RegionResponse?, animated: Bool) {
+        let destination = self.determineDestination(from: region)
+        self.navigate(to: destination, animated: true)
     }
     
     func navigate(to destination: DefaultEKYCCoordinator.Destination, animated: Bool) {

@@ -11,7 +11,7 @@ import PromiseKit
 import UIKit
 
 protocol CountryCoordinatorDelegate: class {
-    func countrySelectionCompleted()
+    func countrySelectionCompleted(with country: Country)
 }
 
 class CountryCoordinator {
@@ -20,7 +20,7 @@ class CountryCoordinator {
         case chooseCountry
         case allowLocation
         case locationProblem(_ problem: LocationProblem)
-        case countryComplete
+        case countryComplete(country: Country)
     }
     
     private let navigationController: UINavigationController
@@ -34,7 +34,8 @@ class CountryCoordinator {
         self.locationController = locationController
     }
     
-    func determineDestination(hasSeenInitalVC: Bool = false, selectedCountry: Country? = nil) -> Promise<CountryCoordinator.Destination> {
+    func determineDestination(hasSeenInitalVC: Bool = false,
+                              selectedCountry: Country? = nil) -> Promise<CountryCoordinator.Destination> {
         guard hasSeenInitalVC else {
             return .value(.landing)
         }
@@ -67,7 +68,7 @@ class CountryCoordinator {
         return self.locationController.checkInCorrectCountry(country, isDebug: isDebug)
             .map {
                 // If no error occurred, this is the correct location!
-                return .countryComplete
+                return .countryComplete(country: country)
             }
             .ensure { [weak self] in
                 // Whether we get an error or success, we always want to kill the spinner.
@@ -104,8 +105,8 @@ class CountryCoordinator {
             self.navigationController.setViewControllers([landing], animated: animated)
         case .locationProblem(let problem):
             self.handleLocationProblem(problem)
-        case .countryComplete:
-            self.delegate?.countrySelectionCompleted()
+        case .countryComplete(let country):
+            self.delegate?.countrySelectionCompleted(with: country)
         }
     }
     

@@ -22,6 +22,8 @@ protocol EKYCCoordinator: class {
     
     func showFirstStepAfterLanding()
     func ekycRejectedRetryHandler()
+    
+    func determineAndNavigateDestination(from region: RegionResponse?, animated: Bool)
 }
 
 extension EKYCCoordinator {

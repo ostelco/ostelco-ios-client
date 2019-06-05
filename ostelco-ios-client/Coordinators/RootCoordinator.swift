@@ -17,7 +17,7 @@ class RootCoordinator {
         case email
         case signUp
         case country
-        case ekyc(region: RegionResponse)
+        case ekyc(region: RegionResponse?)
         case esim(profile: SimProfile?)
         case home
     }
@@ -157,8 +157,13 @@ class RootCoordinator {
         case .signUp:
             let coordinator = SignUpCoordinator(navigationController: self.onboardingNavController)
             coordinator.delegate = self
-            let destination = coordinator.determineDestination()
-            coordinator.navigate(to: destination, animated: animated)
+            coordinator.determineDestination()
+                .done { destination in
+                    coordinator.navigate(to: destination, animated: animated)
+                }
+                .catch { error in
+                    ApplicationErrors.log(error)
+                }
             self.signUpCoordinator = coordinator
             self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .country:
@@ -174,9 +179,15 @@ class RootCoordinator {
             self.countryCoordinator = coordinator
             self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .ekyc(let region):
-            let coordinator =
-                DefaultEKYCCoordinator.forCountry(country: region.region.country, navigationController: self.onboardingNavController)
-            coordinator.showEKYCLandingPage(animated: animated)
+            let country: Country
+            if let regionCountry = region?.region.country {
+                country = regionCountry
+            } else {
+                country = OnBoardingManager.sharedInstance.selectedCountry
+            }
+            
+            let coordinator = DefaultEKYCCoordinator.forCountry(country: country, navigationController: self.onboardingNavController)
+            coordinator.determineAndNavigateDestination(from: region, animated: animated)
             coordinator.delegate = self
             self.ekycCoordinator = coordinator
             self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
@@ -257,15 +268,9 @@ extension RootCoordinator: SignUpCoordinatorDelegate {
 
 extension RootCoordinator: CountryCoordinatorDelegate {
     
-    func countrySelectionCompleted() {
-        self.determineDestination()
-            .done { [weak self] destination in
-                self?.navigate(to: destination, from: nil, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-                // TODO: What do we do if this didn't work?
-            }
+    func countrySelectionCompleted(with country: Country) {
+        self.navigate(to: .ekyc(region: nil), from: nil, animated: true)
+        self.countryCoordinator = nil
     }
 }
 
@@ -275,10 +280,12 @@ extension RootCoordinator: EKYCCoordinatorDelegate {
     
     func ekycSuccessful(region: RegionResponse) {
         self.navigate(to: .esim(profile: region.getSimProfile()), from: nil, animated: true)
+        self.ekycCoordinator = nil
     }
     
     func reselectCountry() {
         self.navigate(to: .country, from: nil, animated: true)
+        self.ekycCoordinator = nil
     }
 }
 
@@ -288,5 +295,6 @@ extension RootCoordinator: ESimCoordinatorDelegate {
     
     func esimSetupComplete() {
         self.navigate(to: .home, from: nil, animated: true)
+        self.esimCoordinator = nil
     }
 }
