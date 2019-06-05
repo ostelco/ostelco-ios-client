@@ -82,7 +82,7 @@ class CountryCoordinatorTests: XCTestCase {
     func testHasSelectedCountryAndLocationWhenInUseWithCorrectCountryKicksToCompleted() {
         self.testLocationController.mockAuthorizationStatus = .authorizedWhenInUse
         self.testLocationController.mockLocation = self.singaporeLocation
-        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self) else {
+        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
         
@@ -92,7 +92,7 @@ class CountryCoordinatorTests: XCTestCase {
     func testHasSelectedCountryAndLocationWhenInUseWithIncorrectCountryKicksToLocationProblem() {
         self.testLocationController.mockAuthorizationStatus = .authorizedWhenInUse
         self.testLocationController.mockLocation = self.americaLocation
-        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self) else {
+        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
         
@@ -103,7 +103,7 @@ class CountryCoordinatorTests: XCTestCase {
     func testHasSelectedCountryAndLocationAlwaysWithCorrectCountryKicksToCompleted() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
         self.testLocationController.mockLocation = self.americaLocation
-        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self) else {
+        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
         
@@ -113,7 +113,7 @@ class CountryCoordinatorTests: XCTestCase {
     func testHasSelectedCountryAndLocationAlwaysWithIncorrectCountry() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
         self.testLocationController.mockLocation = self.singaporeLocation
-        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self) else {
+        guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
         
@@ -124,14 +124,14 @@ class CountryCoordinatorTests: XCTestCase {
     func testDebugRoutingAlwaysThinksWereInSingapore() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
         self.testLocationController.mockLocation = self.americaLocation
-        guard let wrongLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self) else {
+        guard let wrongLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self, timeout: 30) else {
             return
         }
         
         XCTAssertEqual(wrongLocationDestination, .countryComplete(country: self.singapore))
         
         self.testLocationController.mockLocation = self.americaLocation
-        guard let correctLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america).awaitResult(in: self) else {
+        guard let correctLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america).awaitResult(in: self, timeout: 30) else {
             return
         }
         
