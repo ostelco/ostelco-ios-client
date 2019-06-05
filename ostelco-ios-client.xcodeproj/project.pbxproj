@@ -853,6 +853,7 @@
 			children = (
 				9B7466EA22A516E500C1C792 /* CountryCoordinator.swift */,
 				9B4F1A4422A6B89300FCC8CC /* EKYC */,
+				9B4F1A4D22A7F9C200FCC8CC /* EmailCoordinator.swift */,
 				9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */,
 				9B4DAD912281A2CE003810BE /* RootCoordinator.swift */,
 				9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */,
@@ -1892,6 +1893,7 @@
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
+				9B4F1A4E22A7F9C200FCC8CC /* EmailCoordinator.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
@@ -2086,6 +2088,7 @@
 				9B4F1A4022A6A9FE00FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
+				9B4F1A4F22A7FAFB00FCC8CC /* EmailCoordinator.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
