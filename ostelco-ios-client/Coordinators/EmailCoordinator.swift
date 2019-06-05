@@ -27,7 +27,6 @@ class EmailCoordinator {
     }
     
     func determineDestination(emailEntered: Bool, emailVerified: Bool = false) -> EmailCoordinator.Destination {
-        
         guard emailEntered else {
             return .enterEmail
         }

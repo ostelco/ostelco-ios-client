@@ -20,7 +20,6 @@ class SingPassCoordinator: NSObject {
     weak var delegate: SingPassCoordinatorDelegate?
     
     func startLogin(from viewController: UIViewController) {
-        
         UIApplication.shared.typedDelegate.myInfoDelegate = self
         let spinnerView = viewController.showSpinner(onView: viewController.view)
         // Fetch the configuration from prime
