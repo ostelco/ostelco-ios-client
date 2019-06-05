@@ -153,6 +153,7 @@ class RootCoordinator {
             let destination = coordinator.determineDestination()
             coordinator.navigate(to: destination, animated: animated)
             self.signUpCoordinator = coordinator
+            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .country:
             let coordinator = CountryCoordinator(navigationController: self.onboardingNavController)
             coordinator.delegate = self
@@ -164,22 +165,34 @@ class RootCoordinator {
                     ApplicationErrors.log(error)
                 }
             self.countryCoordinator = coordinator
+            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .ekyc(let region):
             let coordinator =
                 DefaultEKYCCoordinator.forCountry(country: region.region.country, navigationController: self.onboardingNavController)
             coordinator.showEKYCLandingPage(animated: animated)
             coordinator.delegate = self
             self.ekycCoordinator = coordinator
+            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .esim(let profile):
             let coordinator = ESimCoordinator(navigationController: self.onboardingNavController)
             coordinator.delegate = self
             let destination = coordinator.determineDestination(from: profile)
             coordinator.navigate(to: destination, animated: animated)
             self.esimCoordinator = coordinator
+            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .home:
             let tabs = TabBarController.fromStoryboard()
             presentingViewController.present(tabs, animated: animated)
         }
+    }
+    
+    private func presentOnboardingNavIfNotAlreadyShowing(from presentingViewController: UIViewController, animated: Bool) {
+        guard self.onboardingNavController.presentingViewController == nil else {
+            // already presented, it'll crash if we try again.
+            return
+        }
+     
+        presentingViewController.present(self.onboardingNavController, animated: animated)
     }
     
     func showNoInternet() {
