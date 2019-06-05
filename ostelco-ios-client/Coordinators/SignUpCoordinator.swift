@@ -73,9 +73,11 @@ class SignUpCoordinator {
             self.navigationController.setViewControllers([legalVC], animated: animated)
         case .enterName:
             let nameVC = GetStartedViewController.fromStoryboard()
+            nameVC.coordinator = self
             self.navigationController.setViewControllers([nameVC], animated: animated)
         case .allowPushNotifications:
             let pushVC = EnableNotificationsViewController.fromStoryboard()
+            pushVC.coordinator = self
             self.navigationController.setViewControllers([pushVC], animated: animated)
         case .signupComplete:
             self.delegate?.signUpCompleted()

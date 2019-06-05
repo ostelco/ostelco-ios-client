@@ -118,6 +118,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.navigationController.pushViewController(addressEdit, animated: animated)
         case .selectVerificationMethod:
             let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
+            selectVerificationMethodVC.coordinator = self
             self.navigationController.pushViewController(selectVerificationMethodVC, animated: animated)
         case .ekycRejected:
             self.showEKYCRejectedPage(animated: animated)
