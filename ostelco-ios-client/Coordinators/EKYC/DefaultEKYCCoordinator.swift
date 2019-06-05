@@ -12,17 +12,6 @@ import UIKit
 
 class DefaultEKYCCoordinator: EKYCCoordinator {
     
-    static func coordinator(for country: Country,
-                            navigationController: UINavigationController) -> EKYCCoordinator {
-        switch country.countryCode.lowercased() {
-        case "sg":
-            return SingaporeEKYCCoordinator(navigationController: navigationController)
-        default:
-            return DefaultEKYCCoordinator(navigationController: navigationController,
-                                          country: country)
-        }
-    }
-    
     enum Destination {
         case goBackAndChooseCountry
         case landing
