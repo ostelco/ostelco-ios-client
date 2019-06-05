@@ -89,10 +89,6 @@ class RootCoordinator {
             // Recover allows us to check for an error but continue the chain
             .recover { error -> Promise<RootCoordinator.Destination> in
                 switch error {
-                case APIHelper.Error.invalidResponseCode(let code, _):
-                    if code == 404 {
-                        return .value(.signUp)
-                    } // else, keep going.
                 case APIHelper.Error.jsonError(let requestError):
                     if requestError.httpStatusCode == 404 {
                         return .value(.signUp)
