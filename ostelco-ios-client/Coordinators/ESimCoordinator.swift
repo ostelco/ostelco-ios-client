@@ -19,7 +19,7 @@ class ESimCoordinator {
         case setup
         case instructions
         case pendingDownload
-        case success
+        case success(profile: SimProfile)
         case setupComplete
     }
     
@@ -30,16 +30,29 @@ class ESimCoordinator {
         self.navigationController = navigationController
     }
     
-    func determineDestination(from simProfile: SimProfile?) -> ESimCoordinator.Destination {
+    func determineDestination(from simProfile: SimProfile?,
+                              hasSeenSetup: Bool = false,
+                              hasSeenInstructions: Bool = false,
+                              hasAcknowledgedSuccess: Bool = false) -> ESimCoordinator.Destination {
         guard let profile = simProfile else {
-            return .setup
+            if hasSeenSetup && hasSeenInstructions {
+                return .pendingDownload
+            } else if hasSeenSetup {
+                return .instructions
+            } else {
+                return .setup
+            }
         }
         
         switch profile.status {
         case .DOWNLOADED,
              .INSTALLED,
              .ENABLED:
-            return .success
+            if hasAcknowledgedSuccess {
+                return .setupComplete
+            } else {
+                return .success(profile: profile)
+            }
         case .AVAILABLE_FOR_DOWNLOAD,
              .NOT_READY:
             // TODO: Figure out if .NOT_READY should show an error instead
@@ -61,8 +74,9 @@ class ESimCoordinator {
             let pendingDownload = ESIMPendingDownloadViewController.fromStoryboard()
             pendingDownload.coordinator = self
             self.navigationController.setViewControllers([pendingDownload], animated: animated)
-        case .success:
+        case .success(let profile):
             let successVC = SignUpCompletedViewController.fromStoryboard()
+            successVC.profile = profile
             successVC.coordinator = self
             self.navigationController.setViewControllers([successVC], animated: animated)
         case .setupComplete:
@@ -71,14 +85,20 @@ class ESimCoordinator {
     }
     
     func completedLanding() {
-        self.navigate(to: .instructions, animated: true)
+        let destination = self.determineDestination(from: nil, hasSeenSetup: true)
+        self.navigate(to: destination, animated: true)
     }
     
     func completedInstructions() {
-        self.navigate(to: .pendingDownload, animated: true)
+        let destination = self.determineDestination(from: nil, hasSeenSetup: true, hasSeenInstructions: true)
+        self.navigate(to: destination, animated: true)
     }
     
-    func acknowledgedSuccess() {
-        self.navigate(to: .setupComplete, animated: true)
+    func acknowledgedSuccess(profile: SimProfile) {
+        let destination = self.determineDestination(from: profile,
+                                                    hasSeenSetup: true,
+                                                    hasSeenInstructions: true,
+                                                    hasAcknowledgedSuccess: true)
+        self.navigate(to: destination, animated: true)
     }
 }

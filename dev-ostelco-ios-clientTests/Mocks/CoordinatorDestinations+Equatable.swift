@@ -22,7 +22,7 @@ extension RootCoordinator.Destination: Equatable {
         case (.ekyc(let lhsRegion), .ekyc(let rhsRegion)):
             return lhsRegion?.region.id == rhsRegion?.region.id
         case (.esim(let lhsProfile), .esim(let rhsProfile)):
-            return lhsProfile?.iccId == rhsProfile?.iccId
+            return lhsProfile == rhsProfile
         default:
             return false
         }
@@ -85,6 +85,23 @@ extension SingaporeEKYCCoordinator.Destination: Equatable {
                 lhsDelegate === rhsDelegate
         case (.success(let lhsRegion), .success(let rhsRegion)):
             return lhsRegion.region.id == rhsRegion.region.id
+        default:
+            return false
+        }
+    }
+}
+
+extension ESimCoordinator.Destination: Equatable {
+    
+    public static func == (lhs: ESimCoordinator.Destination, rhs: ESimCoordinator.Destination) -> Bool {
+        switch (lhs, rhs) {
+        case (.setup, setup),
+             (.instructions, .instructions),
+             (.pendingDownload, .pendingDownload),
+             (.setupComplete, .setupComplete):
+            return true
+        case (.success(let lhsProfile), .success(let rhsProfile)):
+            return lhsProfile == rhsProfile
         default:
             return false
         }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
+import ostelco_core
 import OstelcoStyles
 import UIKit
 
@@ -15,6 +16,8 @@ class SignUpCompletedViewController: UIViewController {
     
     weak var coordinator: ESimCoordinator?
     
+    var profile: SimProfile?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +26,12 @@ class SignUpCompletedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        self.coordinator?.acknowledgedSuccess()
+        guard let profile = self.profile else {
+            ApplicationErrors.assertAndLog("No profile when trying to acknowledge success?!")
+            return
+        }
+        
+        self.coordinator?.acknowledgedSuccess(profile: profile)
     }
 }
 
