@@ -28,3 +28,21 @@ public enum LocationProblem {
     /// automatically, so make sure you update the extension in the tests
     /// if you add a new case.
 }
+
+extension LocationProblem: Equatable {
+    
+    public static func == (lhs: LocationProblem, rhs: LocationProblem) -> Bool {
+        switch (lhs, rhs) {
+        case (.disabledInSettings, .disabledInSettings),
+             (.deniedByUser, .deniedByUser),
+             (.restrictedByParentalControls, .restrictedByParentalControls),
+             (.notDetermined, .notDetermined):
+            return true
+        case (.authorizedButWrongCountry(let lhsExpected, let lhsActual), .authorizedButWrongCountry(let rhsExpected, let rhsActual)):
+            return lhsExpected == rhsExpected &&
+                lhsActual == rhsActual
+        default:
+            return false
+        }
+    }
+}

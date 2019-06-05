@@ -10,17 +10,17 @@ import ostelco_core
 import PromiseKit
 import UIKit
 
-enum RootDestination {
-    case login
-    case email
-    case signUp
-    case country
-    case ekyc(region: RegionResponse)
-    case esim(profile: SimProfile?)
-    case home
-}
-
 class RootCoordinator {
+    
+    enum Destination {
+        case login
+        case email
+        case signUp
+        case country
+        case ekyc(region: RegionResponse)
+        case esim(profile: SimProfile?)
+        case home
+    }
     
     let window: UIWindow
     
@@ -32,8 +32,12 @@ class RootCoordinator {
     private var ekycCoordinator: EKYCCoordinator?
     private var esimCoordinator: ESimCoordinator?
     
-    init(window: UIWindow) {
+    private let userManager: UserManager
+    
+    init(window: UIWindow,
+         userManager: UserManager = .shared) {
         self.window = window
+        self.userManager = userManager
     }
     
     var topViewController: UIViewController? {
@@ -55,16 +59,16 @@ class RootCoordinator {
             }
     }
     
-    func determineDestination() -> Promise<RootDestination> {
-        guard UserManager.shared.hasCurrentUser else {
+    func determineDestination() -> Promise<RootCoordinator.Destination> {
+        guard self.userManager.hasCurrentUser else {
             // NOPE! We need to log in.
             return .value(.login)
         }
         
         return APIManager.shared.primeAPI
             .loadContext()
-            .map { context -> RootDestination in
-                UserManager.shared.customer = context.customer
+            .map { context -> RootCoordinator.Destination in
+                self.userManager.customer = context.customer
                 guard let region = context.getRegion() else {
                     return .country
                 }
@@ -73,7 +77,7 @@ class RootCoordinator {
                 return self.handleRegionResponse(region)
             }
             // Recover allows us to check for an error but continue the chain
-            .recover { error -> Promise<RootDestination> in
+            .recover { error -> Promise<RootCoordinator.Destination> in
                 switch error {
                 case APIHelper.Error.invalidResponseCode(let code, _):
                     if code == 404 {
@@ -92,7 +96,7 @@ class RootCoordinator {
             }
     }
     
-    func handleRegionResponse(_ region: RegionResponse) -> RootDestination {
+    func handleRegionResponse(_ region: RegionResponse) -> RootCoordinator.Destination {
         switch region.status {
         case .PENDING:
             return .ekyc(region: region)
@@ -115,7 +119,7 @@ class RootCoordinator {
         }
     }
     
-    func navigate(to destination: RootDestination,
+    func navigate(to destination: RootCoordinator.Destination,
                   from viewController: UIViewController?,
                   animated: Bool) {
         let presentingViewController: UIViewController

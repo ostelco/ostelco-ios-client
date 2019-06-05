@@ -148,6 +148,7 @@
 		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
 		9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
+		9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
@@ -504,6 +505,7 @@
 		9B4F1A3D22A6A91A00FCC8CC /* EKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
+		9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorDestinations+Equatable.swift"; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
 		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 				9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */,
 				9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */,
 				9BBEEE22228EDF0200EED7F5 /* MockUserManager.swift */,
+				9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -2038,6 +2041,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
+				9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
 				9B3FA6942289B84C001E4D60 /* XCTestCase+MockingHelpers.swift in Sources */,
