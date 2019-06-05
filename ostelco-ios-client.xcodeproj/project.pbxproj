@@ -217,6 +217,7 @@
 		9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */; };
 		9B8E925B22A8332800A1E35E /* EmailCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */; };
 		9B8E925D22A8349A00A1E35E /* SignUpCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E925C22A8349A00A1E35E /* SignUpCoordinatorTests.swift */; };
+		9B8E925F22A8384200A1E35E /* CountryCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E925E22A8384100A1E35E /* CountryCoordinatorTests.swift */; };
 		9B8E926122A838F800A1E35E /* MockLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926022A838F800A1E35E /* MockLocationController.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -563,6 +564,7 @@
 		9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioScanInfo.swift; sourceTree = "<group>"; };
 		9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCoordinatorTests.swift; sourceTree = "<group>"; };
 		9B8E925C22A8349A00A1E35E /* SignUpCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinatorTests.swift; sourceTree = "<group>"; };
+		9B8E925E22A8384100A1E35E /* CountryCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCoordinatorTests.swift; sourceTree = "<group>"; };
 		9B8E926022A838F800A1E35E /* MockLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationController.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
@@ -896,6 +898,7 @@
 				9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */,
 				9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */,
 				9B8E925C22A8349A00A1E35E /* SignUpCoordinatorTests.swift */,
+				9B8E925E22A8384100A1E35E /* CountryCoordinatorTests.swift */,
 			);
 			path = CoordinatorTests;
 			sourceTree = "<group>";
@@ -2088,6 +2091,7 @@
 				C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */,
 				9BBEEE1F228DA82600EED7F5 /* PushNotificationControllerTests.swift in Sources */,
+				9B8E925F22A8384200A1E35E /* CountryCoordinatorTests.swift in Sources */,
 				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B8E926122A838F800A1E35E /* MockLocationController.swift in Sources */,

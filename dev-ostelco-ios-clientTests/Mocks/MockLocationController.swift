@@ -17,7 +17,7 @@ class MockLocationController: LocationController {
     }
     
     var shouldAuthorize = true
-    var mockAreLocationServicesEnabled = false
+    var mockAreLocationServicesEnabled = true
     var mockAuthorizationStatus = CLAuthorizationStatus.notDetermined
     var mockLocation: CLLocation?
     

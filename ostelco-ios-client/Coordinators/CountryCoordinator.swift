@@ -35,7 +35,8 @@ class CountryCoordinator {
     }
     
     func determineDestination(hasSeenInitalVC: Bool = false,
-                              selectedCountry: Country? = nil) -> Promise<CountryCoordinator.Destination> {
+                              selectedCountry: Country? = nil,
+                              allowDebugRouting: Bool = true) -> Promise<CountryCoordinator.Destination> {
         guard hasSeenInitalVC else {
             return .value(.landing)
         }
@@ -44,24 +45,23 @@ class CountryCoordinator {
             return .value(.chooseCountry)
         }
         
+        guard self.locationController.locationServicesEnabled else {
+            return .value(.locationProblem(.disabledInSettings))
+        }
+        
         switch self.locationController.authorizationStatus {
         case .notDetermined:
             return .value(.allowLocation)
-        case .restricted:
-            return .value(.locationProblem(.restrictedByParentalControls))
-        case .denied:
-            return .value(.locationProblem(.deniedByUser))
-        case .authorizedAlways,
-             .authorizedWhenInUse:
-            // Keep going
+        default:
+            // Keep going, this should be handled by the in correct country check.
             break
-        @unknown default:
-            ApplicationErrors.assertAndLog("Apple added a new case here!")
         }
         
         var isDebug = false
         #if ENABLE_SKIP_USER_LOCATION_CHECK
-            isDebug = true
+            if allowDebugRouting {
+                isDebug = true
+            }
         #endif
         
         self.spinnerView = self.navigationController.showSpinner(onView: self.navigationController.view, loadingText: "Checking location...")

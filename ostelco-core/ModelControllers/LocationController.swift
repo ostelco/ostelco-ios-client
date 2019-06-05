@@ -59,6 +59,24 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     }
     
     public func checkInCorrectCountry(_ country: Country, isDebug: Bool = false) -> Promise<Void> {
+        guard self.locationServicesEnabled else {
+            return Promise(error: Error.locationProblem(problem: .disabledInSettings))
+        }
+        
+        switch self.authorizationStatus {
+        case .denied:
+            return Promise(error: Error.locationProblem(problem: .deniedByUser))
+        case .notDetermined:
+            return Promise(error: Error.locationProblem(problem: .notDetermined))
+        case .restricted:
+            return Promise(error: Error.locationProblem(problem: .restrictedByParentalControls))
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            break
+        @unknown default:
+            assertionFailure("Apple added something here, you should handle it!")
+        }
+        
         return self.requestLocation()
             .then { CLGeocoder().reverseGeocode(location: $0) }
             .done { placemarks in
