@@ -14,6 +14,8 @@ class EmailEntryViewController: UIViewController {
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var continueButton: UIButton!
     
+    weak var coordinator: EmailCoordinator?
+    
     private let emailValidator = EmailValidator()
     
     override func viewDidLoad() {
@@ -34,16 +36,12 @@ class EmailEntryViewController: UIViewController {
                 self?.removeSpinner(spinnerView)
             }
             .done { [weak self] in
-                self?.showCheckYourEmailVC()
+                self?.coordinator?.emailLinkSent()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
                 self?.showGenericError(error: error)
             }
-    }
-    
-    private func showCheckYourEmailVC() {
-        self.performSegue(withIdentifier: "showCheckEmail", sender: self)
     }
     
     private func configureForValidationState() {
@@ -58,6 +56,17 @@ class EmailEntryViewController: UIViewController {
             self.continueButton.isEnabled = false
             self.errorLabel.text = description
         }
+    }
+}
+
+extension EmailEntryViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .email
+    }
+    
+    static var isInitialViewController: Bool {
+        return true
     }
 }
 

@@ -31,6 +31,7 @@ class RootCoordinator {
         return nav
     }()
     
+    private var emailCoordinator: EmailCoordinator?
     private var signUpCoordinator: SignUpCoordinator?
     private var countryCoordinator: CountryCoordinator?
     private var ekycCoordinator: EKYCCoordinator?
@@ -67,6 +68,11 @@ class RootCoordinator {
         guard self.userManager.hasCurrentUser else {
             // NOPE! We need to log in.
             return .value(.login)
+        }
+        
+        guard UserDefaultsWrapper.pendingEmail == nil else {
+            // We still need to confirm the user's email
+            return .value(.email)
         }
         
         return APIManager.shared.primeAPI
@@ -141,12 +147,13 @@ class RootCoordinator {
             let loginViewController = LoginViewController.fromStoryboard()
             self.topViewController?.present(loginViewController, animated: animated)
         case .email:
-            guard let emailNav = Storyboard.email.asUIStoryboard.instantiateInitialViewController() else {
-                ApplicationErrors.assertAndLog("Could not instantiate email nav!")
-                return
-            }
-            
-            self.topViewController?.present(emailNav, animated: animated)
+            let coordinator = EmailCoordinator(navigationController: self.onboardingNavController)
+            coordinator.delegate = self
+            let hasEnteredEmail = (UserDefaultsWrapper.pendingEmail != nil)
+            let destination = coordinator.determineDestination(emailEntered: hasEnteredEmail)
+            coordinator.navigate(to: destination, animated: animated)
+            self.emailCoordinator = coordinator
+            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
         case .signUp:
             let coordinator = SignUpCoordinator(navigationController: self.onboardingNavController)
             coordinator.delegate = self
@@ -223,6 +230,16 @@ class RootCoordinator {
         
         self.noInternetVC = nil
         vc.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - EmailCoordinatorDelegate
+
+extension RootCoordinator: EmailCoordinatorDelegate {
+    
+    func emailSuccessfullyVerified() {
+        self.navigate(to: .country, from: nil, animated: true)
+        self.emailCoordinator = nil
     }
 }
 
