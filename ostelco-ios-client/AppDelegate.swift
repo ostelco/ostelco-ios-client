@@ -123,7 +123,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             EmailLinkManager.signInWithLink(incomingURL)
                 .done { [weak self] in
                     self?.rootCoordinator.determineAndNavigateToDestination()
-                    self?.rootCoordinator.navigate(to: destination, from: nil, animated: true)
                 }
                 .catch { error in
                     ApplicationErrors.log(error)
