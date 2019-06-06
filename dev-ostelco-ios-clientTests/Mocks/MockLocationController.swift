@@ -14,6 +14,7 @@ class MockLocationController: LocationController {
     
     enum Error: Swift.Error {
         case noMockLocation
+        case invalidLocationToCheck
     }
     
     var shouldAuthorize = true
@@ -43,5 +44,18 @@ class MockLocationController: LocationController {
         }
         
         return .value(location)
+    }
+    
+    override func reverseGeocode(location: CLLocation) -> Promise<[CountryDeterminablePlacemark]> {
+        switch location.coordinate.longitude {
+        case 103.851...103.853:
+            let singapore = SingaporePlacemark()
+            return .value([singapore])
+        case (-87.654)...(-87.652):
+            let america = AmericaPlacemark()
+            return .value([america])
+        default:
+            return Promise(error: Error.invalidLocationToCheck)
+        }
     }
 }

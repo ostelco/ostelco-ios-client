@@ -20,14 +20,6 @@ class CountryCoordinatorTests: XCTestCase {
     private lazy var singapore = Country("sg")
     private lazy var america = Country("us")
     
-    // Merlion statue in Singapore
-    private lazy var singaporeLocation = CLLocation(latitude: 1.28554552448,
-                                                    longitude: 103.852809922)
-    
-    // Wrigley Field in Chicago
-    private lazy var americaLocation = CLLocation(latitude: 41.942329564,
-                                                  longitude: -87.65333072)
-    
     func testHasntSeenLandingKicksToLanding() {
         guard let destination = self.testCoordinator.determineDestination().awaitResult(in: self) else {
             return
@@ -81,7 +73,7 @@ class CountryCoordinatorTests: XCTestCase {
     
     func testHasSelectedCountryAndLocationWhenInUseWithCorrectCountryKicksToCompleted() {
         self.testLocationController.mockAuthorizationStatus = .authorizedWhenInUse
-        self.testLocationController.mockLocation = self.singaporeLocation
+        self.testLocationController.mockLocation = SingaporePlacemark.location
         guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
@@ -91,7 +83,7 @@ class CountryCoordinatorTests: XCTestCase {
     
     func testHasSelectedCountryAndLocationWhenInUseWithIncorrectCountryKicksToLocationProblem() {
         self.testLocationController.mockAuthorizationStatus = .authorizedWhenInUse
-        self.testLocationController.mockLocation = self.americaLocation
+        self.testLocationController.mockLocation = AmericaPlacemark.location
         guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
@@ -102,7 +94,7 @@ class CountryCoordinatorTests: XCTestCase {
     
     func testHasSelectedCountryAndLocationAlwaysWithCorrectCountryKicksToCompleted() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
-        self.testLocationController.mockLocation = self.americaLocation
+        self.testLocationController.mockLocation = AmericaPlacemark.location
         guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
@@ -112,7 +104,7 @@ class CountryCoordinatorTests: XCTestCase {
     
     func testHasSelectedCountryAndLocationAlwaysWithIncorrectCountry() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
-        self.testLocationController.mockLocation = self.singaporeLocation
+        self.testLocationController.mockLocation = SingaporePlacemark.location
         guard let destination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america, allowDebugRouting: false).awaitResult(in: self, timeout: 30) else {
             return
         }
@@ -123,14 +115,14 @@ class CountryCoordinatorTests: XCTestCase {
     
     func testDebugRoutingAlwaysThinksWereInSingapore() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
-        self.testLocationController.mockLocation = self.americaLocation
+        self.testLocationController.mockLocation = AmericaPlacemark.location
         guard let wrongLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self, timeout: 30) else {
             return
         }
         
         XCTAssertEqual(wrongLocationDestination, .countryComplete(country: self.singapore))
         
-        self.testLocationController.mockLocation = self.americaLocation
+        self.testLocationController.mockLocation = AmericaPlacemark.location
         guard let correctLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america).awaitResult(in: self, timeout: 30) else {
             return
         }

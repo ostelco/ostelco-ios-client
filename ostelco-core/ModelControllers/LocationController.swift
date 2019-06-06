@@ -14,7 +14,8 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     
     public enum Error: Swift.Error {
         case noPlacemarksReturned
-        case couldntGetCountryCode(from: CLPlacemark)
+        case placemarksWereNil
+        case couldntGetCountryCode(from: CountryDeterminablePlacemark)
         case locationProblem(problem: LocationProblem)
     }
     
@@ -58,6 +59,24 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    open func reverseGeocode(location: CLLocation) -> Promise<[CountryDeterminablePlacemark]> {
+        return Promise { seal in
+            CLGeocoder().reverseGeocodeLocation(location, completionHandler: { placemarks, error in
+                if let geocodeError = error {
+                    seal.reject(geocodeError)
+                    return
+                }
+                
+                guard let places = placemarks else {
+                    seal.reject(Error.placemarksWereNil)
+                    return
+                }
+                
+                seal.fulfill(places)
+            })
+        }
+    }
+    
     public func checkInCorrectCountry(_ country: Country, isDebug: Bool = false) -> Promise<Void> {
         guard self.locationServicesEnabled else {
             return Promise(error: Error.locationProblem(problem: .disabledInSettings))
@@ -78,7 +97,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
         }
         
         return self.requestLocation()
-            .then { CLGeocoder().reverseGeocode(location: $0) }
+            .then { self.reverseGeocode(location: $0) }
             .done { placemarks in
                 guard let placemark = placemarks.first else {
                     throw Error.noPlacemarksReturned
