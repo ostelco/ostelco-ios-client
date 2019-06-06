@@ -13,10 +13,10 @@ public struct KYCStatusMap: Codable {
     public let ADDRESS_AND_PHONE_NUMBER: EKYCStatus?
     
     /// Testing initializer
-    init(jumio: EKYCStatus? = nil,
-         myInfo: EKYCStatus? = nil,
-         nricFin: EKYCStatus? = nil,
-         addressPhone: EKYCStatus? = nil) {
+    public init(jumio: EKYCStatus? = nil,
+                myInfo: EKYCStatus? = nil,
+                nricFin: EKYCStatus? = nil,
+                addressPhone: EKYCStatus? = nil) {
         self.JUMIO = jumio
         self.MY_INFO = myInfo
         self.NRIC_FIN = nricFin
@@ -29,8 +29,8 @@ public struct Region: Codable {
     public let name: String
     
     /// Testing initializer
-    init(id: String,
-         name: String) {
+    public init(id: String,
+                name: String) {
         self.id = id
         self.name = name
     }
@@ -48,10 +48,10 @@ public struct RegionResponse: Codable {
     public let kycStatusMap: KYCStatusMap
     
     /// Testing initializer
-    init(region: Region,
-         status: EKYCStatus,
-         simProfiles: [SimProfile]?,
-         kycStatusMap: KYCStatusMap) {
+    public init(region: Region,
+                status: EKYCStatus,
+                simProfiles: [SimProfile]?,
+                kycStatusMap: KYCStatusMap) {
         self.region = region
         self.status = status
         self.simProfiles = simProfiles

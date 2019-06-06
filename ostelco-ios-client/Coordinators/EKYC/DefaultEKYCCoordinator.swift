@@ -32,9 +32,14 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
         self.country = country
     }
     
-    func determineDestination(from region: RegionResponse?) -> DefaultEKYCCoordinator.Destination {
+    func determineDestination(from region: RegionResponse?,
+                              hasSeenLanding: Bool = false) -> DefaultEKYCCoordinator.Destination {
         guard let region = region else {
-            return .landing
+            if hasSeenLanding {
+                return .jumio
+            } else {
+                return .landing
+            }
         }
         
         switch region.status {
@@ -58,8 +63,8 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
         }
     }
     
-    func determineAndNavigateDestination(from region: RegionResponse?, animated: Bool) {
-        let destination = self.determineDestination(from: region)
+    func determineAndNavigateDestination(from region: RegionResponse?, hasSeenLanding: Bool = false, animated: Bool) {
+        let destination = self.determineDestination(from: region, hasSeenLanding: hasSeenLanding)
         self.navigate(to: destination, animated: true)
     }
     
@@ -81,19 +86,36 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
     }
     
     func showFirstStepAfterLanding() {
-        self.navigate(to: .jumio, animated: true)
+        self.determineAndNavigateDestination(from: nil,
+                                             hasSeenLanding: true,
+                                             animated: true)
     }
     
     func ekycRejectedRetryHandler() {
-        // Try another jumio scan.
-        self.navigate(to: .jumio, animated: true)
+        self.determineAndNavigateDestination(from: nil,
+                                             hasSeenLanding: true,
+                                             animated: true)
     }
 }
 
 extension DefaultEKYCCoordinator: JumioCoordinatorDelegate {
     
     func completedJumioSuccessfully(scanID: String) {
-        self.navigate(to: .waitingForVerification, animated: true)
+        let spinnerView = self.navigationController.showSpinner(onView: self.navigationController.view)
+        APIManager.shared.primeAPI
+            .loadContext()
+            .ensure {
+                self.navigationController.removeSpinner(spinnerView)
+            }
+            .done { context in
+                let destination = self.determineDestination(from: context.getRegion(),
+                                                            hasSeenLanding: true)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+                self.navigationController.showGenericError(error: error)
+            }
     }
     
     func jumioScanFailed(errorMessage: String) {

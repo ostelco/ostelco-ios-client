@@ -37,14 +37,18 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         self.navigationController = navigationController
     }
     
-    func determineAndNavigateDestination(from region: RegionResponse?, animated: Bool) {
-        let destination = self.determineDestination(from: region)
+    func determineAndNavigateDestination(from region: RegionResponse?, hasSeenLanding: Bool = false, animated: Bool) {
+        let destination = self.determineDestination(from: region, hasSeenLanding: hasSeenLanding)
         self.navigate(to: destination, animated: animated)
     }
     
-    func determineDestination(from region: RegionResponse?) -> SingaporeEKYCCoordinator.Destination {
+    func determineDestination(from region: RegionResponse?, hasSeenLanding: Bool = false) -> SingaporeEKYCCoordinator.Destination {
         guard let region = region else {
-            return .landing
+            if hasSeenLanding {
+                return .selectVerificationMethod
+            } else {
+                return .landing
+            }
         }
         
         switch region.status {

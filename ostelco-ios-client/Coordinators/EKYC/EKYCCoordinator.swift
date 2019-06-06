@@ -23,7 +23,7 @@ protocol EKYCCoordinator: class {
     func showFirstStepAfterLanding()
     func ekycRejectedRetryHandler()
     
-    func determineAndNavigateDestination(from region: RegionResponse?, animated: Bool)
+    func determineAndNavigateDestination(from region: RegionResponse?, hasSeenLanding: Bool, animated: Bool)
 }
 
 extension EKYCCoordinator {

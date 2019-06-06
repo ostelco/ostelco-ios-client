@@ -183,7 +183,9 @@ class RootCoordinator {
             }
             
             let coordinator = DefaultEKYCCoordinator.forCountry(country: country, navigationController: self.onboardingNavController)
-            coordinator.determineAndNavigateDestination(from: region, animated: animated)
+            coordinator.determineAndNavigateDestination(from: region,
+                                                        hasSeenLanding: false,
+                                                        animated: animated)
             coordinator.delegate = self
             self.ekycCoordinator = coordinator
             self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
