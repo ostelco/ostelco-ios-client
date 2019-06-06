@@ -53,7 +53,7 @@ class RootCoordinator {
         self.window.rootViewController = newRoot
     }
     
-    func determineAndNavigateToInitialDestination(animated: Bool = true) {
+    func determineAndNavigateToDestination(animated: Bool = true) {
         self.determineDestination()
             .done { [weak self] destination in
                 self?.navigate(to: destination, from: nil, animated: animated)

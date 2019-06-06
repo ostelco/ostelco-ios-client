@@ -24,6 +24,6 @@ class SplashViewController: UIViewController, StoryboardLoadable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.typedDelegate.rootCoordinator
-            .determineAndNavigateToInitialDestination()
+            .determineAndNavigateToDestination()
     }
 }
