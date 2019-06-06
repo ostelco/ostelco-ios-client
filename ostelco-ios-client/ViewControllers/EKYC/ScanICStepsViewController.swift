@@ -27,7 +27,7 @@ class ScanICStepsViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
-        self.coordinator?.wantsToEnterNRIC()
+        self.coordinator?.finishedViewingNRICSteps()
     }
 }
 

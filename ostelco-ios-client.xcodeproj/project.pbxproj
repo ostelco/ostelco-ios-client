@@ -223,6 +223,7 @@
 		9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */; };
 		9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */; };
 		9B8E926922A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926822A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift */; };
+		9B8E926B22A949B200A1E35E /* SingaporeEKYCCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926A22A949B200A1E35E /* SingaporeEKYCCoordinatorTests.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
@@ -572,6 +573,7 @@
 		9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlacemarks.swift; sourceTree = "<group>"; };
 		9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDeterminablePlacemark.swift; sourceTree = "<group>"; };
 		9B8E926822A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEKYCCoordinatorTests.swift; sourceTree = "<group>"; };
+		9B8E926A22A949B200A1E35E /* SingaporeEKYCCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeEKYCCoordinatorTests.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				9B8E926822A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift */,
 				9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */,
 				9B8E926222A847E000A1E35E /* EsimCoordinatorTests.swift */,
+				9B8E926A22A949B200A1E35E /* SingaporeEKYCCoordinatorTests.swift */,
 				9B8E925C22A8349A00A1E35E /* SignUpCoordinatorTests.swift */,
 				9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */,
 			);
@@ -2095,6 +2098,7 @@
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B49D95622930B690059C98F /* PushParsingTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
+				9B8E926B22A949B200A1E35E /* SingaporeEKYCCoordinatorTests.swift in Sources */,
 				9B8E925B22A8332800A1E35E /* EmailCoordinatorTests.swift in Sources */,
 				9B8215852279F5E000DC6B64 /* RegionResponse+Testing.swift in Sources */,
 				9BBEEE21228DA83800EED7F5 /* MockPushNotificationController.swift in Sources */,

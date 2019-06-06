@@ -161,26 +161,6 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         self.navigate(to: .selectVerificationMethod, animated: true)
     }
     
-    func selectedSingPass() {
-        self.navigate(to: .singPass, animated: true)
-    }
-    
-    func selectedNRIC() {
-        self.navigate(to: .stepsForNRIC, animated: true)
-    }
-    
-    func wantsToEnterNRIC() {
-        self.navigate(to: .enterNRIC, animated: true)
-    }
-    
-    func enteredNRICSuccessfully() {
-        self.navigate(to: .enterAddress, animated: true)
-    }
-    
-    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
-        self.navigate(to: .editSingPassAddress(address: address, delegate: delegate), animated: true)
-    }
-    
     private func updateRegionAndNavigate(animated: Bool) {
         APIManager.shared.primeAPI
             .loadRegion(code: self.country.countryCode)
@@ -190,13 +170,76 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             }
             .catch { error in
                 ApplicationErrors.log(error)
-            }
+        }
+    }
+    
+    // MARK: - SingPass flow
+    
+    func determineSingPassFlowDestination(singPassQueryItems: [URLQueryItem]? = nil,
+                                          address: MyInfoAddress? = nil,
+                                          editDelegate: MyInfoAddressUpdateDelegate? = nil) -> SingaporeEKYCCoordinator.Destination {
+        
+        if let delegate = editDelegate {
+            return .editSingPassAddress(address: address, delegate: delegate)
+        }
+        
+        if let queryItems = singPassQueryItems {
+            return .verifySingPassAddress(queryItems: queryItems)
+        }
+        
+        return .singPass
+    }
+    
+    func selectedSingPass() {
+        let destination = self.determineSingPassFlowDestination()
+        self.navigate(to: destination, animated: true)
+    }
+    
+    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
+        let destination = self.determineSingPassFlowDestination(singPassQueryItems: nil, address: address, editDelegate: delegate)
+        self.navigate(to: destination, animated: true)
     }
     
     func verifiedSingPassAddress() {
         self.updateRegionAndNavigate(animated: true)
     }
     
+    // MARK: - NRIC / Jumio / Address flow
+    
+    func determineNRICFlowDestination(viewedSteps: Bool = false,
+                                      validatedNRIC: Bool = false,
+                                      completedJumio: Bool = false) -> SingaporeEKYCCoordinator.Destination {
+        guard viewedSteps else {
+            return .stepsForNRIC
+        }
+        
+        guard validatedNRIC else {
+            return .enterNRIC
+        }
+        
+        guard completedJumio else {
+            return .jumio
+        }
+        
+        return .enterAddress
+    }
+    
+    func selectedNRIC() {
+        let destination = self.determineNRICFlowDestination()
+        self.navigate(to: destination, animated: true)
+    }
+    
+    func finishedViewingNRICSteps() {
+        let destination = self.determineNRICFlowDestination(viewedSteps: true)
+        self.navigate(to: destination, animated: true)
+    }
+    
+    func enteredNRICSuccessfully() {
+        let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                            validatedNRIC: true)
+        self.navigate(to: destination, animated: true)
+    }
+
     func enteredAddressSuccessfully() {
         self.updateRegionAndNavigate(animated: true)
     }
@@ -205,7 +248,10 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
 extension SingaporeEKYCCoordinator: JumioCoordinatorDelegate {
     
     func completedJumioSuccessfully(scanID: String) {
-        self.navigate(to: .enterAddress, animated: true)
+        let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                            validatedNRIC: true,
+                                                            completedJumio: true)
+        self.navigate(to: destination, animated: true)
     }
     
     func jumioScanFailed(errorMessage: String) {
@@ -216,7 +262,9 @@ extension SingaporeEKYCCoordinator: JumioCoordinatorDelegate {
 extension SingaporeEKYCCoordinator: SingPassCoordinatorDelegate {
     
     func signInSucceeded(myInfoQueryItems: [URLQueryItem]) {
-        self.navigate(to: .verifySingPassAddress(queryItems: myInfoQueryItems), animated: true)
+        self.navigationController.dismiss(animated: true)
+        let destination = self.determineSingPassFlowDestination(singPassQueryItems: myInfoQueryItems)
+        self.navigate(to: destination, animated: true)
     }
     
     func signInFailed(error: NSError?) {
