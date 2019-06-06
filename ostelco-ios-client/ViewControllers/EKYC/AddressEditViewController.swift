@@ -26,12 +26,12 @@ class AddressEditViewController: UITableViewController {
     var spinnerView: UIView?
     
     enum Mode {
-        case nricEdit
+        case nricEnter(hasCompletedJumio: Bool)
         case myInfoVerify(myInfo: MyInfoAddress?)
         
         var sections: [AddressEditSection] {
             switch self {
-            case .nricEdit:
+            case .nricEnter:
                 return AddressEditSection.allCases
             case .myInfoVerify:
                 // Does not need City since anything in Singapore is in...Singapore.
@@ -45,7 +45,7 @@ class AddressEditViewController: UITableViewController {
         }
     }
     
-    var mode: Mode = .nricEdit {
+    var mode: Mode = .nricEnter(hasCompletedJumio: false) {
         didSet {
             self.configureForMode()
         }
@@ -85,7 +85,7 @@ class AddressEditViewController: UITableViewController {
         }
         
         switch self.mode {
-        case .nricEdit:
+        case .nricEnter:
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.leftBarButtonItem = nil
             self.tableView.tableFooterView = self.footerView
@@ -107,7 +107,7 @@ class AddressEditViewController: UITableViewController {
     
     private func saveInput() {
         switch self.mode {
-        case .nricEdit:
+        case .nricEnter:
             self.sendAddressToServer()
         case .myInfoVerify:
             self.updateMyInfo()
@@ -115,6 +115,15 @@ class AddressEditViewController: UITableViewController {
     }
     
     private func sendAddressToServer() {
+        let hasCompletedJumio: Bool
+        switch mode {
+        case .myInfoVerify:
+            ApplicationErrors.assertAndLog("You shouldn't be able to send the address to the server from myInfo verify mode")
+            return
+        case .nricEnter(let completed):
+            hasCompletedJumio = completed
+        }
+        
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         let address = self.buildAddress()
         
@@ -127,7 +136,7 @@ class AddressEditViewController: UITableViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.coordinator?.enteredAddressSuccessfully()
+                self?.coordinator?.enteredAddressSuccessfully(hasCompletedJumio: hasCompletedJumio)
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
@@ -174,7 +183,7 @@ extension AddressEditViewController: AddressEditDataSourceDelegate {
     
     func validityChanged(to valid: Bool) {
         switch self.mode {
-        case .nricEdit:
+        case .nricEnter:
             self.primaryButton.isEnabled = valid
         case .myInfoVerify:
             self.saveBarButtton.isEnabled = valid

@@ -7,6 +7,7 @@
 //
 
 import ostelco_core
+import PromiseKit
 import UIKit
 
 class SingaporeEKYCCoordinator: EKYCCoordinator {
@@ -17,8 +18,8 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         case jumio
         case singPass
         case editSingPassAddress(address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate)
-        case verifySingPassAddress(queryItems: [URLQueryItem])
-        case enterAddress
+        case verifySingPassAddress
+        case enterAddress(hasCompletedJumio: Bool)
         case stepsForNRIC
         case enterNRIC
         case ekycRejected
@@ -32,6 +33,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     var jumioCoordinator: JumioCoordinator?
     var singPassCoordinator: SingPassCoordinator?
     let country = Country("sg")
+    private var cachedRegion: RegionResponse?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -69,37 +71,40 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             case (.PENDING, .PENDING, .PENDING, .PENDING):
                 // User hasn't selected anything yet
                 return .selectVerificationMethod
-            case (.REJECTED, _, _, _):
-                // If jumio is rejected, *everything* is rejected.
+            case (_, .REJECTED, _, _), // Address rejected
+                (.REJECTED, _, _, .REJECTED), // Jumio + SingPass rejected
+                (_, _, .REJECTED, .REJECTED): // NRIC + SingPass rejected
+                // In any of these cases, there's no way forward to being approved
+                // without either a) resubmitting to something that has already been rejected,
+                // which will confuse the backend, or b) starting over. So:
                 return .ekycRejected
+            case (.REJECTED, _, _, _), // jumio rejected
+                 (_, _, .REJECTED, _): // NRIC rejected
+                // User can only do singPass at this point
+                return self.determineSingPassFlowDestination(region: region)
             case (_, _, _, .REJECTED):
-                // If myInfo is rejected, *everything* is rejected
-                return .ekycRejected
-            case (.APPROVED, .APPROVED, .APPROVED, _):
-                // Jumio + addresss + NRCFIN = Yay!
-                return .success(region: region)
-            case (_, .APPROVED, _, .APPROVED):
-                // MyInfo + address = yay!
-                return .success(region: region)
-            case (_, .PENDING, _, .APPROVED):
-                // My info also needs an address submitted, but we've probably lost
-                // what we need to access their singpass address. Make the user enter it.
-                return .enterAddress
-            case (.PENDING, .PENDING, .APPROVED, _):
-                // The user has an approved NRIC. Now we need Jumio verification and an address. Start with jumio.
-                return .jumio
-            case (.PENDING, .APPROVED, .APPROVED, _):
-                // The user has an approved NRIC and address, now we need Jumio verification.
-                return .jumio
-            case (.APPROVED, .PENDING, .APPROVED, _):
-                // The user has an approved NRIC and verified with jumio, now we need an address.
-                return .enterAddress
+                // Singpass has been rejected, user can only still do NRIC
+                // They had to have seen the steps if one of these is true.
+                let viewedSteps = (jumio == .APPROVED || addressAndPhoneNumber == .APPROVED || nricFin == .APPROVED)
+                return self.determineNRICFlowDestination(viewedSteps: viewedSteps,
+                                                         region: region)
+            case (_, _, _, .APPROVED):
+                // User has done SingPass, so they want singPass flow
+                let destination = self.determineSingPassFlowDestination(region: region)
+                return destination
+            case (.APPROVED, _, _, _):
+                // User has done jumio, so they want NRIC flow
+                return self.determineNRICFlowDestination(viewedSteps: true,
+                                                         region: region,
+                                                         completedJumio: true)
+            
+            case (_, _, .APPROVED, _):
+                // User has done NRIC, so they want that flow
+                return self.determineNRICFlowDestination(viewedSteps: true,
+                                                         region: region)
             case (.PENDING, .APPROVED, .PENDING, _):
                 // The user has an approved addresss, but we still need something else.
                 return .selectVerificationMethod
-            default:
-                // The user has gotten into some bizarre state and should try again.
-                return .goBackAndChooseCountry
             }
         }
     }
@@ -110,9 +115,9 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             let stepsVC = ScanICStepsViewController.fromStoryboard()
             stepsVC.coordinator = self
             self.navigationController.pushViewController(stepsVC, animated: true)
-        case .enterAddress:
+        case .enterAddress(let hasCompletedJumio):
             let addressEdit = AddressEditViewController.fromStoryboard()
-            addressEdit.mode = .nricEdit
+            addressEdit.mode = .nricEnter(hasCompletedJumio: hasCompletedJumio)
             addressEdit.coordinator = self
             self.navigationController.setViewControllers([addressEdit], animated: animated)
         case .editSingPassAddress(let address, let delegate):
@@ -143,9 +148,8 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             singPassCoordinator.delegate = self
             singPassCoordinator.startLogin(from: self.navigationController)
             self.singPassCoordinator = singPassCoordinator
-        case .verifySingPassAddress(let queryItems):
+        case .verifySingPassAddress:
             let myInfoSummary = MyInfoSummaryViewController.fromStoryboard()
-            myInfoSummary.myInfoQueryItems = queryItems
             self.navigationController.setViewControllers([myInfoSummary], animated: animated)
         case .waitingForVerification:
             self.showWaitingForVerification(animated: animated)
@@ -161,97 +165,226 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         self.navigate(to: .selectVerificationMethod, animated: true)
     }
     
-    private func updateRegionAndNavigate(animated: Bool) {
-        APIManager.shared.primeAPI
+    private func getCachedOrUpdateRegion() -> Promise<RegionResponse> {
+        if let cached = self.cachedRegion {
+            return .value(cached)
+        } else {
+            return self.updateRegion()
+        }
+    }
+    
+    private func updateRegion() -> Promise<RegionResponse> {
+        return APIManager.shared.primeAPI
             .loadRegion(code: self.country.countryCode)
-            .done { region in
-                let destination = self.determineDestination(from: region)
-                self.navigate(to: destination, animated: animated)
+            .map { [weak self] region -> RegionResponse in
+                self?.cachedRegion = region
+                return region
+            }
+    }
+    
+    // MARK: - SingPass flow
+    
+    func determineSingPassFlowDestination(region: RegionResponse,
+                                          address: MyInfoAddress? = nil,
+                                          editDelegate: MyInfoAddressUpdateDelegate? = nil) -> SingaporeEKYCCoordinator.Destination {
+        guard
+            let myInfoStatus = region.kycStatusMap.MY_INFO,
+            let addressStatus = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER else {
+                return .goBackAndChooseCountry
+        }
+        
+        switch (myInfoStatus, addressStatus) {
+        case (.REJECTED, _),
+             (_, .REJECTED):
+            return .ekycRejected
+        case (.PENDING, _):
+            // User has not yet logged into SingPass.
+            return .singPass
+        case (.APPROVED, .APPROVED):
+            return .success(region: region)
+        case (.APPROVED, .PENDING):
+            if let delegate = editDelegate {
+                return .editSingPassAddress(address: address, delegate: delegate)
+            } else {
+                return .verifySingPassAddress
+            }
+        }
+    }
+
+    func selectedSingPass() {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region)
+                self.navigate(to: destination, animated: true)
             }
             .catch { error in
                 ApplicationErrors.log(error)
         }
     }
     
-    // MARK: - SingPass flow
-    
-    func determineSingPassFlowDestination(singPassQueryItems: [URLQueryItem]? = nil,
-                                          address: MyInfoAddress? = nil,
-                                          editDelegate: MyInfoAddressUpdateDelegate? = nil) -> SingaporeEKYCCoordinator.Destination {
-        
-        if let delegate = editDelegate {
-            return .editSingPassAddress(address: address, delegate: delegate)
-        }
-        
-        if let queryItems = singPassQueryItems {
-            return .verifySingPassAddress(queryItems: queryItems)
-        }
-        
-        return .singPass
-    }
-    
-    func selectedSingPass() {
-        let destination = self.determineSingPassFlowDestination()
-        self.navigate(to: destination, animated: true)
-    }
-    
     func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
-        let destination = self.determineSingPassFlowDestination(singPassQueryItems: nil, address: address, editDelegate: delegate)
-        self.navigate(to: destination, animated: true)
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region,
+                                                                        address: address,
+                                                                        editDelegate: delegate)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     func verifiedSingPassAddress() {
-        self.updateRegionAndNavigate(animated: true)
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     // MARK: - NRIC / Jumio / Address flow
     
     func determineNRICFlowDestination(viewedSteps: Bool = false,
-                                      validatedNRIC: Bool = false,
+                                      region: RegionResponse,
                                       completedJumio: Bool = false) -> SingaporeEKYCCoordinator.Destination {
         guard viewedSteps else {
             return .stepsForNRIC
         }
         
-        guard validatedNRIC else {
+        guard
+            let jumioStatus = region.kycStatusMap.JUMIO,
+            let addressStatus = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER,
+            let nricStatus = region.kycStatusMap.NRIC_FIN else {
+                return .goBackAndChooseCountry
+        }
+        
+        switch (jumioStatus, addressStatus, nricStatus) {
+        case (.REJECTED, _, _),
+             (_, .REJECTED, _),
+             (_, _, .REJECTED):
+            return .ekycRejected
+        case (.APPROVED, .APPROVED, .APPROVED):
+            return .success(region: region)
+        case (_, _, .PENDING):
+            // We don't have an NRIC and we need one.
             return .enterNRIC
+        case (.PENDING, .PENDING, .APPROVED):
+            if completedJumio {
+                // The user completed jumio and is still waiting for verification, we still need an address though
+                return .enterAddress(hasCompletedJumio: true)
+            } else {
+                // The user has not completed jumio and they need to
+                return .jumio
+            }
+        case (.PENDING, .APPROVED, .APPROVED):
+            if completedJumio {
+                // Now we're just waiting for jumio to be approved.
+                return .waitingForVerification
+            } else {
+                // We still need the user to do jumio things
+                return .jumio
+            }
+        case (.APPROVED, .PENDING, .APPROVED):
+            // The user has an approved NRIC and verified with jumio, now we need an address.
+            return .enterAddress(hasCompletedJumio: true)
         }
-        
-        guard completedJumio else {
-            return .jumio
-        }
-        
-        return .enterAddress
-    }
-    
-    func selectedNRIC() {
-        let destination = self.determineNRICFlowDestination()
-        self.navigate(to: destination, animated: true)
     }
     
     func finishedViewingNRICSteps() {
-        let destination = self.determineNRICFlowDestination(viewedSteps: true)
-        self.navigate(to: destination, animated: true)
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                    ApplicationErrors.log(error)
+            }
+    }
+    
+    func selectedNRIC() {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     func enteredNRICSuccessfully() {
-        let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                            validatedNRIC: true)
-        self.navigate(to: destination, animated: true)
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
 
-    func enteredAddressSuccessfully() {
-        self.updateRegionAndNavigate(animated: true)
+    func enteredAddressSuccessfully(hasCompletedJumio: Bool) {
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region,
+                                                                    completedJumio: hasCompletedJumio)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
 }
 
 extension SingaporeEKYCCoordinator: JumioCoordinatorDelegate {
     
     func completedJumioSuccessfully(scanID: String) {
-        let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                            validatedNRIC: true,
-                                                            completedJumio: true)
-        self.navigate(to: destination, animated: true)
+        self.updateRegion()
+            .done { region in
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region,
+                                                                    completedJumio: true)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     func jumioScanFailed(errorMessage: String) {
@@ -263,8 +396,14 @@ extension SingaporeEKYCCoordinator: SingPassCoordinatorDelegate {
     
     func signInSucceeded(myInfoQueryItems: [URLQueryItem]) {
         self.navigationController.dismiss(animated: true)
-        let destination = self.determineSingPassFlowDestination(singPassQueryItems: myInfoQueryItems)
-        self.navigate(to: destination, animated: true)
+        self.updateRegion()
+            .done { region in
+                let destination = self.determineSingPassFlowDestination(region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+            }
     }
     
     func signInFailed(error: NSError?) {

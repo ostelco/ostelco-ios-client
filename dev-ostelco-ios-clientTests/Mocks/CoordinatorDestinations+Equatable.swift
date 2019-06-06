@@ -73,13 +73,12 @@ extension SingaporeEKYCCoordinator.Destination: Equatable {
              (.jumio, .jumio),
              (.singPass, .singPass),
              (.enterAddress, .enterAddress),
+             (.verifySingPassAddress, .verifySingPassAddress),
              (.stepsForNRIC, .stepsForNRIC),
              (.enterNRIC, .enterNRIC),
              (.ekycRejected, .ekycRejected),
              (.waitingForVerification, .waitingForVerification):
             return true
-        case (.verifySingPassAddress(let lhsQueryItems), .verifySingPassAddress(let rhsQueryItems)):
-            return lhsQueryItems == rhsQueryItems
         case (.editSingPassAddress(let lhsAddress, let lhsDelegate), .editSingPassAddress(let rhsAddress, let rhsDelegate)):
             return lhsAddress?.formattedAddress == rhsAddress?.formattedAddress &&
                 lhsDelegate === rhsDelegate
