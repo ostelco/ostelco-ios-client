@@ -96,6 +96,14 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
                                              hasSeenLanding: true,
                                              animated: true)
     }
+    
+    func waitingCompletedSuccessfully(for region: RegionResponse) {
+        self.navigate(to: .success(region: region), animated: true)
+    }
+    
+    func waitingCompletedWithRejection() {
+        self.navigate(to: .ekycRejected, animated: true)
+    }
 }
 
 extension DefaultEKYCCoordinator: JumioCoordinatorDelegate {

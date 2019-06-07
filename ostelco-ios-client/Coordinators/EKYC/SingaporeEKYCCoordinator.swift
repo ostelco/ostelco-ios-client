@@ -165,6 +165,14 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         self.navigate(to: .selectVerificationMethod, animated: true)
     }
     
+    func waitingCompletedSuccessfully(for region: RegionResponse) {
+        self.navigate(to: .success(region: region), animated: true)
+    }
+    
+    func waitingCompletedWithRejection() {
+        self.navigate(to: .ekycRejected, animated: true)
+    }
+    
     private func getCachedOrUpdateRegion() -> Promise<RegionResponse> {
         if let cached = self.cachedRegion {
             return .value(cached)
