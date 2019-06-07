@@ -141,7 +141,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.launchJumio(animated: animated)
         case .enterNRIC:
             let nricVC = NRICVerifyViewController.fromStoryboard()
-           nricVC.coordinator = self
+            nricVC.coordinator = self
             self.navigationController.pushViewController(nricVC, animated: animated)
         case .singPass:
             let singPassCoordinator = SingPassCoordinator()
