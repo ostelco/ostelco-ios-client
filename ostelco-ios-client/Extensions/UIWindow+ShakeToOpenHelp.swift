@@ -9,8 +9,8 @@
 extension UIWindow {
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            guard let vc = UIApplication.shared.typedDelegate.rootCoordinator.topViewController else {
-                //
+            guard let vc = self.rootViewController else {
+                // There's no view controller to show.
                 debugPrint("Can't show need help action sheet, there's no view controller to show.")
                 return
             }
