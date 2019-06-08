@@ -133,6 +133,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
+        if UsernameAndPasswordLinkManager.isUsernameAndPasswordLink(incomingURL) {
+            UsernameAndPasswordLinkManager.signInWithUsernameAndPassword(incomingURL)
+                .done { [weak self] in
+ self?.rootCoordinator.determineAndNavigateToDestination()
+                }
+                .catch { error in
+                    ApplicationErrors.log(error)
+                    debugPrint("ERROR SIGNING IN WITH USERNAME AND PASSWORD: \(error)")
+                }
+            
+            return true
+        }
+        
         // If we've gotten here, it's some other kind of universal link.
         return DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
             guard error == nil else {
