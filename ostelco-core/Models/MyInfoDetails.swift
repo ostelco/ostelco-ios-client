@@ -92,7 +92,7 @@ public struct MyInfoDetails: Codable {
         case _name = "name"
         case _dob = "dob"
         case _email = "email"
-        case address = "regadd"
+        case address = "mailadd"
         case _sex = "sex"
         case _residentialStatus = "residentialstatus"
         case _nationality = "nationality"
