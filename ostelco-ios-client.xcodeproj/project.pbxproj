@@ -83,6 +83,10 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
+		04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
+		04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
+		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
+		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6E22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */; };
 		04978D6F22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */; };
 		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
@@ -457,6 +461,8 @@
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
+		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
 		04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ShakeToOpenHelp.swift"; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -842,6 +848,8 @@
 				9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */,
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
+				04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */,
+				04978D6A22ABA012002B09E0 /* LinkHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1926,7 +1934,9 @@
 				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
+				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
@@ -2131,7 +2141,9 @@
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
+				04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
+				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				9B4F1A4022A6A9FE00FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
