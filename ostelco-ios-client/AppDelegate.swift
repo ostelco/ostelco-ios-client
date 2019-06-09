@@ -167,28 +167,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         PushNotificationController.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
-    
-    // MARK: - UIResponder overrides
-    
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-        
-        switch motion {
-        case .motionShake:
-            guard let vc = self.window?.rootViewController else {
-                // There's no view controller to show.
-                return
-            }
-            
-            if let nav = vc as? UINavigationController {
-                nav.showNeedHelpActionSheet()
-            } else if let tab = vc as? UITabBarController {
-                tab.showNeedHelpActionSheet()
-            } else {
-                vc.topPresentedViewController().showNeedHelpActionSheet()
-            }
-        default:
-            break
-        }
-    }
 }
