@@ -47,6 +47,7 @@ public struct Request {
         
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
+        request.timeoutInterval = 180.0
         
         var headers = try Headers(loggedIn: self.loggedIn, token: self.token)
 
