@@ -87,8 +87,6 @@
 		04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
-		04978D6E22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */; };
-		04978D6F22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */; };
 		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -463,7 +461,6 @@
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
-		04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+ShakeToOpenHelp.swift"; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -1238,7 +1235,6 @@
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
-				04978D6D22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1966,7 +1962,6 @@
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
-				04978D6E22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
@@ -2173,7 +2168,6 @@
 				9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
-				04978D6F22ABACCF002B09E0 /* UIWindow+ShakeToOpenHelp.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,

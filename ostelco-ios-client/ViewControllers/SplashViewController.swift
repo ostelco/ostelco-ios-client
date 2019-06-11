@@ -26,4 +26,16 @@ class SplashViewController: UIViewController, StoryboardLoadable {
         UIApplication.shared.typedDelegate.rootCoordinator
             .determineAndNavigateToDestination()
     }
+    
+    override open func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        
+        switch motion {
+        case .motionShake:
+            let vc = self.topPresentedViewController()
+            vc.showNeedHelpActionSheet()
+        default:
+            break
+        }
+    }
 }
