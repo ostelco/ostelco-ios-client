@@ -239,8 +239,19 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
                 self.navigate(to: destination, animated: true)
             }
             .catch { error in
+                switch error {
+                case APIHelper.Error.jsonError(let error):
+                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
+                        // The user hasn't created a region
+                        let destination = self.determineSingPassFlowDestination(region: nil)
+                        self.navigate(to: destination, animated: true)
+                        return
+                } // else, keep going
+                default:
+                    break
+                }
                 ApplicationErrors.log(error)
-        }
+            }
     }
     
     func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
