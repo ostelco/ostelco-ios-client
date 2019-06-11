@@ -244,22 +244,12 @@
                         <outlet property="residentialStatus" destination="qlL-EN-MCH" id="b49-5U-bQU"/>
                         <outlet property="sex" destination="RpD-51-Wtt" id="c3V-LP-tgY"/>
                         <segue destination="OFz-aP-YwN" kind="unwind" identifier="unwindFromSingPassInfoViewController" unwindAction="unwindFromSingPassInfoViewControllerWithSender:" id="S4a-3T-cW7"/>
-                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="ALh-un-KZb"/>
-                        <segue destination="93T-a6-QaG" kind="show" identifier="editAddress" id="e1q-8T-pOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ast-8l-C3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OFz-aP-YwN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="161" y="-1009"/>
-        </scene>
-        <!--Address-->
-        <scene sceneID="ZdX-im-ugR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Address" id="93T-a6-QaG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2lL-r2-BN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1128" y="-1142"/>
         </scene>
         <!--Pending Verification View Controller-->
         <scene sceneID="Yb3-dm-dAj">
@@ -334,21 +324,12 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="gifView" destination="Jzq-FD-Yu6" id="b8m-Sh-xfZ"/>
                         <segue destination="eeW-Of-mhh" kind="unwind" identifier="unwindFromEKYCWaitViewController" unwindAction="unwindFromEKYCWaitViewControllerWithSender:" id="IfG-Jp-xgR"/>
-                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="lEw-Lv-iIN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIe-uV-Yux" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eeW-Of-mhh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2154" y="-1005"/>
-        </scene>
-        <!--ESim-->
-        <scene sceneID="GQS-FY-mjD">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ESim" id="DJz-ge-RMU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XIm-iG-RYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1113" y="-1014"/>
         </scene>
         <!--Select Identity Verification Method View Controller-->
         <scene sceneID="nqs-MO-FZ3">
@@ -453,8 +434,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <outlet property="continueButton" destination="Mc8-hP-V8V" id="HU7-u0-dFL"/>
                         <outlet property="scanICRadioButton" destination="q7f-eC-N4m" id="41k-hd-9Ew"/>
                         <outlet property="singPassRadioButton" destination="9Sx-rK-YKd" id="TsF-4d-3Q6"/>
-                        <segue destination="gvs-yG-kvc" kind="show" identifier="myInfoSummary" id="bEO-EU-hWV"/>
-                        <segue destination="FwH-jf-eYg" kind="show" identifier="nricVerify" id="Lbu-Hw-uvg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXu-Xb-Er1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,7 +443,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify Identity On Boarding View Controller-->
         <scene sceneID="FnT-Yi-gYc">
             <objects>
-                <viewController id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyIdentityOnBoardingViewController" id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EK-0t-Rjt"/>
                         <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>
@@ -565,7 +544,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="step1Icon" destination="DjD-3R-kYh" id="zHp-Dl-eEN"/>
                         <outlet property="step2Icon" destination="wHp-SC-2Gv" id="9n7-ul-Mfj"/>
-                        <segue destination="OlM-wU-Qkj" kind="show" identifier="selectIdentityVerificationMethod" id="NKR-kR-4qw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOV-rO-7eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -607,7 +585,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="6Sh-M6-Cr3" kind="show" id="wcB-5q-2Cy"/>
+                                    <action selector="continueTapped" destination="FwH-jf-eYg" eventType="touchUpInside" id="zgB-Vp-NLi"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HNL-Qz-6Vj">
@@ -710,7 +688,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify View Controller-->
         <scene sceneID="Vhr-RP-qdq">
             <objects>
-                <viewController id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NRICVerifyViewController" id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nLB-PI-vfj"/>
                         <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
@@ -776,7 +754,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="nricErrorLabel" destination="UDg-bU-7nA" id="UKf-Wc-Uuu"/>
                         <outlet property="nricTextField" destination="MrK-sD-vRV" id="xvp-EU-v5f"/>
-                        <segue destination="93T-a6-QaG" kind="show" identifier="yourAddress" id="V1P-0a-sbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-Wf-gOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,8 +767,4 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <image name="singpass" width="76" height="36"/>
         <image name="stepArrowIcon" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ALh-un-KZb"/>
-        <segue reference="V1P-0a-sbR"/>
-    </inferredMetricsTieBreakers>
 </document>

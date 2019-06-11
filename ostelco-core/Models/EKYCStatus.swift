@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum EKYCStatus: String, Codable {
+public enum EKYCStatus: String, Codable, CaseIterable {
     case APPROVED
     case REJECTED
     case PENDING

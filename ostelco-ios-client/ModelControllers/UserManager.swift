@@ -61,6 +61,7 @@ class UserManager: TokenProvider {
         
         self.customer = nil
         OnBoardingManager.sharedInstance.region = nil
+        UserDefaultsWrapper.clearAll()
     }
     
     func deleteAccount(showingIn viewController: UIViewController) {
@@ -69,15 +70,9 @@ class UserManager: TokenProvider {
             .ensure { [weak viewController] in
                 viewController?.removeSpinner(spinnerView)
             }
-            .done { [weak viewController] in
+            .done {
                 self.logOut() // no `weak self` since this is a singleton.
-                guard let vc = viewController else {
-                    // Not worth instantiating the splash VC.
-                    return
-                }
-                
-                let splashVC = SplashViewController.fromStoryboard()
-                vc.present(splashVC, animated: true)
+                UIApplication.shared.typedDelegate.rootCoordinator.goBackToLogin()
             }
             .catch { [weak viewController] error in
                 ApplicationErrors.log(error)

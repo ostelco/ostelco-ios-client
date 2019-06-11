@@ -53,6 +53,18 @@ class RootCoordinator {
         self.window.rootViewController = newRoot
     }
     
+    func goBackToLogin() {
+        if
+            let presenter = self.topViewController?.presentingViewController,
+            presenter != self.window.rootViewController {
+                presenter.dismiss(animated: false, completion: { [weak self] in
+                    self?.goBackToLogin()
+                })
+        } else {
+            self.navigate(to: .login, from: nil, animated: true)
+        }
+    }
+    
     func determineAndNavigateToDestination(animated: Bool = true) {
         self.determineDestination()
             .done { [weak self] destination in

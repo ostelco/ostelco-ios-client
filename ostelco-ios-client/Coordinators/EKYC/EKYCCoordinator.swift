@@ -23,6 +23,9 @@ protocol EKYCCoordinator: class {
     func showFirstStepAfterLanding()
     func ekycRejectedRetryHandler()
     
+    func waitingCompletedSuccessfully(for region: RegionResponse)
+    func waitingCompletedWithRejection()
+    
     func determineAndNavigateDestination(from region: RegionResponse?, hasSeenLanding: Bool, animated: Bool)
 }
 
@@ -62,6 +65,7 @@ extension EKYCCoordinator {
     
     func showWaitingForVerification(animated: Bool) {
         let waitingVC = PendingVerificationViewController.fromStoryboard()
+        waitingVC.coordinator = self
         self.navigationController.setViewControllers([waitingVC], animated: animated)
     }
 }
@@ -78,6 +82,7 @@ extension EKYCCoordinator where Self: JumioCoordinatorDelegate {
         }
         
         jumioCoordinator.startScan(from: self.navigationController)
+        jumioCoordinator.delegate = self
         self.jumioCoordinator = jumioCoordinator
     }
     

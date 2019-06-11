@@ -8,11 +8,21 @@
 
 import Foundation
 
+public enum ProfileType: String, Codable {
+    case iPhone = "iphone"
+    case test = "TEST"
+}
+
 public struct SimProfileRequest: Codable {
-    public let profileType: String
+    public let profileType: ProfileType
     
     public init() {
-        self.profileType = "iphone"
+        #if DEBUG
+            // Use a test profile when debugging so we don't create a trillion sim cards.
+            self.profileType = .test
+        #else
+            self.profileType = .iPhone
+        #endif
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -21,7 +31,7 @@ public struct SimProfileRequest: Codable {
     
     public var asQueryItems: [URLQueryItem] {
         return [
-            URLQueryItem(codingKey: CodingKeys.profileType, value: self.profileType)
+            URLQueryItem(codingKey: CodingKeys.profileType, value: self.profileType.rawValue)
         ]
     }
 }

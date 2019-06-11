@@ -660,7 +660,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockRequestingSimProfile() {
-       self.stubAbsolutePath("regions/sg/simProfiles?profileType=iphone",
+       self.stubAbsolutePath("regions/sg/simProfiles?profileType=TEST",
                                    toLoad: "create_sim_profile")
         
         guard let simProfile = self.mockAPI.createSimProfileForRegion(code: "sg").awaitResult(in: self) else {
