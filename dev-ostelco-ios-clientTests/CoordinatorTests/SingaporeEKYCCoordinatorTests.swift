@@ -15,10 +15,10 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
     private lazy var testCoordinator = SingaporeEKYCCoordinator(navigationController: UINavigationController())
     
     private func createTestRegion(status: EKYCStatus,
-                                  jumioStatus: EKYCStatus,
-                                  myInfoStatus: EKYCStatus,
-                                  nricFinStatus: EKYCStatus,
-                                  addressPhoneStatus: EKYCStatus) -> RegionResponse {
+                                  jumioStatus: EKYCStatus?,
+                                  myInfoStatus: EKYCStatus?,
+                                  nricFinStatus: EKYCStatus?,
+                                  addressPhoneStatus: EKYCStatus?) -> RegionResponse {
         let region = Region(id: "sg", name: "Singapore")
         let statusMap = KYCStatusMap(jumio: jumioStatus,
                                      myInfo: myInfoStatus,
@@ -58,6 +58,40 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
                                                addressPhoneStatus: .APPROVED)
         let destination = self.testCoordinator.determineDestination(from: testRegion)
         XCTAssertEqual(destination, .ekycRejected)
+    }
+    
+    func testAnyEKYCStatusNilKicksToChooseCountry() {
+        let nilJumio = self.createTestRegion(status: .PENDING,
+                                             jumioStatus: nil,
+                                             myInfoStatus: .PENDING,
+                                             nricFinStatus: .PENDING,
+                                             addressPhoneStatus: .PENDING)
+        let nilJumioDestination = self.testCoordinator.determineDestination(from: nilJumio)
+        XCTAssertEqual(nilJumioDestination, .goBackAndChooseCountry)
+        
+        let nilMyInfo = self.createTestRegion(status: .PENDING,
+                                              jumioStatus: .PENDING,
+                                              myInfoStatus: nil,
+                                              nricFinStatus: .PENDING,
+                                              addressPhoneStatus: .PENDING)
+        let nilMyInfoDestination = self.testCoordinator.determineDestination(from: nilMyInfo)
+        XCTAssertEqual(nilMyInfoDestination, .goBackAndChooseCountry)
+        
+        let nilNRIC = self.createTestRegion(status: .PENDING,
+                                            jumioStatus: .PENDING,
+                                            myInfoStatus: .PENDING,
+                                            nricFinStatus: nil,
+                                            addressPhoneStatus: .PENDING)
+        let nilNRICDestination = self.testCoordinator.determineDestination(from: nilNRIC)
+        XCTAssertEqual(nilNRICDestination, .goBackAndChooseCountry)
+        
+        let nilAddress = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .PENDING,
+                                               addressPhoneStatus: nil)
+        let nilAddressDestination = self.testCoordinator.determineDestination(from: nilAddress)
+        XCTAssertEqual(nilAddressDestination, .goBackAndChooseCountry)
     }
     
     // MARK: - Alllllll the pending permutations
@@ -236,7 +270,36 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
         XCTAssertEqual(destination, .verifySingPassAddress)
     }
     
+    func testAddressApprovedAndEverythingElsePendingKicksToSelectVerificationMethod() {
+        let testRegion = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .PENDING,
+                                               addressPhoneStatus: .APPROVED)
+        let destination = self.testCoordinator.determineDestination(from: testRegion)
+        XCTAssertEqual(destination, .selectVerificationMethod)
+    }
+    
     // MARK: - SingPass Flow
+    
+    func testSingPassRelatedEKYCStatusNilKicksToChooseCountry() {
+        
+        let nilMyInfo = self.createTestRegion(status: .PENDING,
+                                              jumioStatus: .PENDING,
+                                              myInfoStatus: nil,
+                                              nricFinStatus: .PENDING,
+                                              addressPhoneStatus: .PENDING)
+        let nilMyInfoDestination = self.testCoordinator.determineSingPassFlowDestination(region: nilMyInfo)
+        XCTAssertEqual(nilMyInfoDestination, .goBackAndChooseCountry)
+        
+        let nilAddress = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .PENDING,
+                                               addressPhoneStatus: nil)
+        let nilAddressDestination = self.testCoordinator.determineSingPassFlowDestination(region: nilAddress)
+        XCTAssertEqual(nilAddressDestination, .goBackAndChooseCountry)
+    }
     
     func testSingPassFlowWithNilRegionKicksToStartingPage() {
         let destination = self.testCoordinator.determineSingPassFlowDestination(region: nil)
@@ -290,7 +353,64 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
         XCTAssertEqual(destination, .editSingPassAddress(address: address, delegate: self))
     }
     
+    func testSingPassFlowWithMyInfoRejectedAlwaysKicksToGoBackAndChooseCountry() {
+        for addressStatus in EKYCStatus.allCases {
+            let testRegion = self.createTestRegion(status: .PENDING,
+                                                   jumioStatus: .PENDING,
+                                                   myInfoStatus: .REJECTED,
+                                                   nricFinStatus: .PENDING,
+                                                   addressPhoneStatus: addressStatus)
+            let destination = self.testCoordinator.determineSingPassFlowDestination(region: testRegion)
+            XCTAssertEqual(destination,
+                           .ekycRejected,
+                           "Expected ekyc rejected, got \(destination) - address \(addressStatus)")
+        }
+    }
+    
+    func testSingPassFlowWithAddressRejectedAlwaysKicksToRejected() {
+        for myInfoStatus in EKYCStatus.allCases {
+            let testRegion = self.createTestRegion(status: .PENDING,
+                                                   jumioStatus: .PENDING,
+                                                   myInfoStatus: myInfoStatus,
+                                                   nricFinStatus: .PENDING,
+                                                   addressPhoneStatus: .REJECTED)
+            let destination = self.testCoordinator.determineSingPassFlowDestination(region: testRegion)
+            XCTAssertEqual(destination,
+                           .ekycRejected,
+                           "Expected ekyc rejected, got \(destination) - address \(myInfoStatus)")
+        }
+    }
+    
     // MARK: - NRIC / Jumio / Address flow
+    
+    func testNRICRelatedEKYCStatusNilKicksToChooseCountry() {
+        let nilJumio = self.createTestRegion(status: .PENDING,
+                                             jumioStatus: nil,
+                                             myInfoStatus: .PENDING,
+                                             nricFinStatus: .PENDING,
+                                             addressPhoneStatus: .PENDING)
+        let nilJumioDestination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                    region: nilJumio)
+        XCTAssertEqual(nilJumioDestination, .goBackAndChooseCountry)
+        
+        let nilNRIC = self.createTestRegion(status: .PENDING,
+                                            jumioStatus: .PENDING,
+                                            myInfoStatus: .PENDING,
+                                            nricFinStatus: nil,
+                                            addressPhoneStatus: .PENDING)
+        let nilNRICDestination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                   region: nilNRIC)
+        XCTAssertEqual(nilNRICDestination, .goBackAndChooseCountry)
+        
+        let nilAddress = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .PENDING,
+                                               addressPhoneStatus: nil)
+        let nilAddressDestination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                      region: nilAddress)
+        XCTAssertEqual(nilAddressDestination, .goBackAndChooseCountry)
+    }
     
     func testNRICFlowWithoutHavingViewedStepsKicksToSteps() {
         let testRegion = self.createTestRegion(status: .PENDING,
@@ -338,6 +458,80 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
                                                                             region: testRegion,
                                                                             completedJumio: true)
         XCTAssertEqual(destination, .enterAddress(hasCompletedJumio: true))
+    }
+    
+    func testNRICWithAddressAndNRICApprovedButJumioNotCompletedKicksToJumio() {
+        let testRegion = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .APPROVED,
+                                               addressPhoneStatus: .APPROVED)
+        let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                            region: testRegion)
+        XCTAssertEqual(destination, .jumio)
+    }
+    
+    func testNRICWithAddressAndNRICApprovedAndJumioPendingButCompletedKicksToWaiting() {
+        let testRegion = self.createTestRegion(status: .PENDING,
+                                               jumioStatus: .PENDING,
+                                               myInfoStatus: .PENDING,
+                                               nricFinStatus: .APPROVED,
+                                               addressPhoneStatus: .APPROVED)
+        let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                            region: testRegion,
+                                                                            completedJumio: true)
+        XCTAssertEqual(destination, .waitingForVerification)
+    }
+    
+    func testNRICFlowWithAddressRejectedAlwaysKicksToRejected() {
+        for jumioStatus in EKYCStatus.allCases {
+            for nricStatus in EKYCStatus.allCases {
+                let testRegion = self.createTestRegion(status: .PENDING,
+                                                       jumioStatus: jumioStatus,
+                                                       myInfoStatus: .PENDING,
+                                                       nricFinStatus: nricStatus,
+                                                       addressPhoneStatus: .REJECTED)
+                let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                    region: testRegion)
+                XCTAssertEqual(destination,
+                               .ekycRejected,
+                               "Expected rejected, got \(destination) - jumio \(jumioStatus), nric \(nricStatus)")
+            }
+        }
+    }
+    
+    func testNRICFlowWithJumioRejectedAlwaysKicksToRejected() {
+        for addressStatus in EKYCStatus.allCases {
+            for nricStatus in EKYCStatus.allCases {
+                let testRegion = self.createTestRegion(status: .PENDING,
+                                                       jumioStatus: .REJECTED,
+                                                       myInfoStatus: .PENDING,
+                                                       nricFinStatus: nricStatus,
+                                                       addressPhoneStatus: addressStatus)
+                let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                    region: testRegion)
+                XCTAssertEqual(destination,
+                               .ekycRejected,
+                               "Expected rejected, got \(destination) - address \(addressStatus), nric \(nricStatus)")
+            }
+        }
+    }
+    
+    func testNRICFlowWithNRICAndSingPassRejectedAlwaysKicksToRejected() {
+        for jumioStatus in EKYCStatus.allCases {
+            for addressStatus in EKYCStatus.allCases {
+                let testRegion = self.createTestRegion(status: .PENDING,
+                                                       jumioStatus: jumioStatus,
+                                                       myInfoStatus: .PENDING,
+                                                       nricFinStatus: .REJECTED,
+                                                       addressPhoneStatus: addressStatus)
+                let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true,
+                                                                                    region: testRegion)
+                XCTAssertEqual(destination,
+                               .ekycRejected,
+                               "Expected rejected, got \(destination) - jumio \(jumioStatus), address \(addressStatus)")
+            }
+        }
     }
 }
 

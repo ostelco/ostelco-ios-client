@@ -16,13 +16,19 @@ class DefaultEKYCCoordinatorTests: XCTestCase {
                                                               country: Country("us"))
     
     func createTestRegion(status: EKYCStatus,
-                          jumioStatus: EKYCStatus) -> RegionResponse {
+                          jumioStatus: EKYCStatus?) -> RegionResponse {
         let region = Region(id: "us", name: "United States")
         let statusMap = KYCStatusMap(jumio: jumioStatus)
         return RegionResponse(region: region,
                               status: status,
                               simProfiles: nil,
                               kycStatusMap: statusMap)
+    }
+    
+    func testNilJumioStatusKicksToChooseCountry() {
+        let testRegion = self.createTestRegion(status: .PENDING, jumioStatus: nil)
+        let destination = self.testCoordinator.determineDestination(from: testRegion)
+        XCTAssertEqual(destination, .goBackAndChooseCountry)
     }
     
     func testNoRegionAndHasntSeenLandingKicksToLanding() {
