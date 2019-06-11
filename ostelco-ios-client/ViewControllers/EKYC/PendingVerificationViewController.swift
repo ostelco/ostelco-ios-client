@@ -20,6 +20,8 @@ class PendingVerificationViewController: UIViewController {
     
     @IBOutlet private var gifView: LoopingVideoView!
 
+    weak var coordinator: EKYCCoordinator?
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -31,6 +33,7 @@ class PendingVerificationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         self.addPushNotificationListener()
         self.addDidBecomeActiveObserver()
     }
@@ -62,7 +65,7 @@ class PendingVerificationViewController: UIViewController {
             .done { [weak self] regionResponse in
                 switch regionResponse.status {
                 case .APPROVED:
-                    self?.handleRegionApproved()
+                    self?.coordinator?.waitingCompletedSuccessfully(for: regionResponse)
                 default:
                     self?.handleRegionPendingOrRejected(silentCheck: silentCheck, regionResponse: regionResponse)
                 }
@@ -73,10 +76,6 @@ class PendingVerificationViewController: UIViewController {
             }
     }
     
-    func handleRegionApproved() {
-        performSegue(withIdentifier: "ESim", sender: nil)
-    }
-    
     func handleRegionPending(silentCheck: Bool = false) {
         if !silentCheck {
             showAlert(title: "Status", msg: "Please hold on! We are still checking your docs.")
@@ -84,14 +83,15 @@ class PendingVerificationViewController: UIViewController {
     }
     
     func handleRegionPendingOrRejected(silentCheck: Bool = false, regionResponse: RegionResponse) {
-        if let jumioStatus = regionResponse.kycStatusMap.JUMIO, let nricStatus = regionResponse.kycStatusMap.NRIC_FIN, let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
+        if
+            let jumioStatus = regionResponse.kycStatusMap.JUMIO,
+            let nricStatus = regionResponse.kycStatusMap.NRIC_FIN,
+            let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
             switch (jumioStatus, nricStatus, addressStatus) {
             case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
-                // If any of the statuses have been rejected, send user to ekyc oh no screen, they need to complete the whole ekyc again to continue
-                self.showEKYCOhNo()
+                self.coordinator?.waitingCompletedWithRejection()
             case (.APPROVED, .APPROVED, .APPROVED):
-                // Should not happend, because this case should've been handled further up the stack, but we will let them pass for now
-                self.handleRegionApproved()
+                self.coordinator?.waitingCompletedSuccessfully(for: regionResponse)
             case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
@@ -105,21 +105,6 @@ class PendingVerificationViewController: UIViewController {
             // TODO: Need to figure out what error code we should pass to generic error screen here
             showGenericOhNo()
         }
-    }
-    
-    func showEKYCOhNo() {
-        let ohNo = OhNoViewController.fromStoryboard(type: .ekycRejected)
-        ohNo.primaryButtonAction = {
-            ohNo.dismiss(animated: true, completion: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
-                self.present(selectVerificationMethodVC, animated: true)
-            })
-        }
-        self.present(ohNo, animated: true)
     }
     
     func showGenericOhNo() {
@@ -158,9 +143,9 @@ extension PendingVerificationViewController: PushNotificationHandling {
         
         switch scanInfo.status {
         case .APPROVED:
-            self.handleRegionApproved()
+            self.checkVerificationStatus()
         case .REJECTED:
-            self.showEKYCOhNo()
+            self.coordinator?.waitingCompletedWithRejection()
         case .PENDING:
             self.handleRegionPending(silentCheck: true)
         }

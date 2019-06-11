@@ -10,12 +10,34 @@ import UIKit
 
 class ScanICStepsViewController: UIViewController {
     
-    // TODO: Rip this out when we use nav controllers
-    @IBAction private func backTapped() {
-        self.dismiss(animated: true)
+    weak var coordinator: SingaporeEKYCCoordinator?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @IBAction private func needHelpTapped() {
         self.showNeedHelpActionSheet()
+    }
+    
+    @IBAction private func continueTapped() {
+        self.coordinator?.finishedViewingNRICSteps()
+    }
+}
+
+extension ScanICStepsViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
     }
 }

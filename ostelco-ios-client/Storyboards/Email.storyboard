@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7MC-T4-ZkG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Sr-ot-cFb">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Email Entry View Controller-->
         <scene sceneID="6Lf-F7-s8L">
             <objects>
-                <viewController id="8Sr-ot-cFb" customClass="EmailEntryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailEntryViewController" id="8Sr-ot-cFb" customClass="EmailEntryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ctk-Xq-LA1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,6 @@
                         <outlet property="continueButton" destination="HwT-Hr-sTl" id="J7h-3H-JGV"/>
                         <outlet property="emailTextField" destination="6Sg-FN-Gmq" id="caw-OJ-uUA"/>
                         <outlet property="errorLabel" destination="LoL-c1-WZi" id="Am5-Pa-HwR"/>
-                        <segue destination="ejA-LR-l53" kind="show" identifier="showCheckEmail" id="D3X-3Z-teV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nn1-iI-OwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +81,7 @@
         <!--Check Email View Controller-->
         <scene sceneID="aZy-RL-n2a">
             <objects>
-                <viewController id="ejA-LR-l53" customClass="CheckEmailViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckEmailViewController" id="ejA-LR-l53" customClass="CheckEmailViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vCx-56-Z2j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,23 +157,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9L-Rx-c69" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1732" y="192.85714285714286"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RgN-2v-0wV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7MC-T4-ZkG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ScK-Am-4Oq">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8Sr-ot-cFb" kind="relationship" relationship="rootViewController" id="8IJ-iM-AM5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoo-5Y-DeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="54" y="193"/>
         </scene>
     </scenes>
 </document>

@@ -51,6 +51,8 @@ class TheLegalStuffViewController: UIViewController {
     @IBOutlet private weak var ageCheck: CheckButton!
 
     @IBOutlet private weak var continueButton: UIButton!
+    
+    weak var coordinator: SignUpCoordinator?
  
     private var allChecks: [CheckButton] {
         return [
@@ -90,6 +92,11 @@ class TheLegalStuffViewController: UIViewController {
             // Everything is checked!
             self.continueButton.isEnabled = true
         }
+    }
+    
+    @IBAction private func continueTapped() {
+        OstelcoAnalytics.logEvent(.LegalStuffAgreed)
+        self.coordinator?.legaleseAgreed()
     }
 }
 

@@ -14,7 +14,8 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     
     public enum Error: Swift.Error {
         case noPlacemarksReturned
-        case couldntGetCountryCode(from: CLPlacemark)
+        case placemarksWereNil
+        case couldntGetCountryCode(from: CountryDeterminablePlacemark)
         case locationProblem(problem: LocationProblem)
     }
     
@@ -25,7 +26,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     public private(set) var isUpdating = false
     
     /// Are location services currently enabled?
-    public var locationServicesEnabled: Bool {
+    open var locationServicesEnabled: Bool {
         return CLLocationManager.locationServicesEnabled()
     }
     
@@ -43,24 +44,60 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     private var locationSeal: Resolver<CLLocation>?
     
     /// The user's current authorization status with the system.
-    public var authorizationStatus: CLAuthorizationStatus {
+    open var authorizationStatus: CLAuthorizationStatus {
         return CLLocationManager.authorizationStatus()
     }
     
-    public func requestAuthorization() {
+    open func requestAuthorization() {
         return self.locationManager.requestAlwaysAuthorization()
     }
     
-    public func requestLocation() -> Promise<CLLocation> {
+    open func requestLocation() -> Promise<CLLocation> {
         return Promise { seal in
             self.locationManager.requestLocation()
             self.locationSeal = seal
         }
     }
     
+    open func reverseGeocode(location: CLLocation) -> Promise<[CountryDeterminablePlacemark]> {
+        return Promise { seal in
+            CLGeocoder().reverseGeocodeLocation(location, completionHandler: { placemarks, error in
+                if let geocodeError = error {
+                    seal.reject(geocodeError)
+                    return
+                }
+                
+                guard let places = placemarks else {
+                    seal.reject(Error.placemarksWereNil)
+                    return
+                }
+                
+                seal.fulfill(places)
+            })
+        }
+    }
+    
     public func checkInCorrectCountry(_ country: Country, isDebug: Bool = false) -> Promise<Void> {
+        guard self.locationServicesEnabled else {
+            return Promise(error: Error.locationProblem(problem: .disabledInSettings))
+        }
+        
+        switch self.authorizationStatus {
+        case .denied:
+            return Promise(error: Error.locationProblem(problem: .deniedByUser))
+        case .notDetermined:
+            return Promise(error: Error.locationProblem(problem: .notDetermined))
+        case .restricted:
+            return Promise(error: Error.locationProblem(problem: .restrictedByParentalControls))
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            break
+        @unknown default:
+            assertionFailure("Apple added something here, you should handle it!")
+        }
+        
         return self.requestLocation()
-            .then { CLGeocoder().reverseGeocode(location: $0) }
+            .then { self.reverseGeocode(location: $0) }
             .done { placemarks in
                 guard let placemark = placemarks.first else {
                     throw Error.noPlacemarksReturned

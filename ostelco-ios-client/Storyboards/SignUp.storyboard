@@ -13,7 +13,7 @@
         <!--The Legal Stuff View Controller-->
         <scene sceneID="37Q-sc-O7O">
             <objects>
-                <viewController id="Q2B-DW-NZJ" customClass="TheLegalStuffViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TheLegalStuffViewController" id="Q2B-DW-NZJ" customClass="TheLegalStuffViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zpm-C6-zzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="Cs5-Hy-gA9" kind="show" id="dXd-2P-63T"/>
+                                    <action selector="continueTapped" destination="Q2B-DW-NZJ" eventType="touchUpInside" id="qUZ-3z-E14"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yg1-bc-UOR">
@@ -165,7 +165,7 @@
         <!--Enable Notifications View Controller-->
         <scene sceneID="hDt-F2-ZnI">
             <objects>
-                <viewController id="Cs5-Hy-gA9" customClass="EnableNotificationsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnableNotificationsViewController" id="Cs5-Hy-gA9" customClass="EnableNotificationsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KB7-u2-KQt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,18 +220,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YkK-Vz-Pfa"/>
                     </view>
-                    <connections>
-                        <segue destination="kSR-PZ-JWA" kind="show" identifier="displayGetStarted" id="KHu-RR-fCK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVr-e1-HAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855" y="30"/>
+            <point key="canvasLocation" x="1529" y="27"/>
         </scene>
         <!--Get Started View Controller-->
         <scene sceneID="NhF-Mh-PAv">
             <objects>
-                <viewController id="kSR-PZ-JWA" customClass="GetStartedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GetStartedViewController" id="kSR-PZ-JWA" customClass="GetStartedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eID-ti-S3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,20 +294,11 @@
                     <connections>
                         <outlet property="continueButton" destination="ERf-ng-eZR" id="4v5-je-1SK"/>
                         <outlet property="nameTextField" destination="j3T-mX-GWu" id="oiy-y9-b2k"/>
-                        <segue destination="ZZg-qT-9FY" kind="show" identifier="showCountry" id="5yS-Nf-uuN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9xW-GP-1Rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="30"/>
-        </scene>
-        <!--Country-->
-        <scene sceneID="Qy0-EC-lb9">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Country" id="ZZg-qT-9FY" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ok-gH-vfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2274" y="28"/>
+            <point key="canvasLocation" x="801" y="28"/>
         </scene>
     </scenes>
     <resources>

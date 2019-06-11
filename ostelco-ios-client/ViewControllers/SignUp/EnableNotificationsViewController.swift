@@ -11,10 +11,7 @@ import UserNotifications
 
 class EnableNotificationsViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        OstelcoAnalytics.logEvent(.LegalStuffAgreed)
-    }
+    var coordinator: SignUpCoordinator?
     
     @IBAction private func continueTapped() {
         self.requestNotificationAuthorization()
@@ -27,21 +24,28 @@ class EnableNotificationsViewController: UIViewController {
     private func requestNotificationAuthorization() {
         PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
             .done { [weak self] _ in
-                self?.showGetStarted()
+                self?.coordinator?.pushAgreedOrDenied()
             }
             .catch { [weak self] error in
                 switch error {
                 case PushNotificationController.Error.notAuthorized:
                     // The user declined push notifications. Oh well. Let's move on.
-                    self?.showGetStarted()
+                    self?.coordinator?.pushAgreedOrDenied()
                 default:
                     ApplicationErrors.log(error)
                     self?.showGenericError(error: error)
                 }
             }
     }
+}
+
+extension EnableNotificationsViewController: StoryboardLoadable {
     
-    private func showGetStarted() {
-        self.performSegue(withIdentifier: "displayGetStarted", sender: self)
+    static var storyboard: Storyboard {
+        return .signUp
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
     }
 }

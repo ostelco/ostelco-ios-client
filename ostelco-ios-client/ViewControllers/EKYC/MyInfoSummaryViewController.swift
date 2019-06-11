@@ -10,7 +10,6 @@ import ostelco_core
 import UIKit
 
 class MyInfoSummaryViewController: UIViewController {
-    public var myInfoQueryItems: [URLQueryItem]?
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
     
@@ -25,6 +24,8 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var reloadButton: UIButton!
     
+    weak var coordinator: SingaporeEKYCCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI(nil)
@@ -32,7 +33,6 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     private func loadMyInfo() {
-        debugPrint("Query Items: \(String(describing: self.myInfoQueryItems))")
         guard let code = getMyInfoCode() else {
             return
         }
@@ -59,33 +59,17 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     private func getMyInfoCode() -> String? {
-        if let queryItems = myInfoQueryItems {
-            if let codeItem = queryItems.first(where: { $0.name == "code" }) {
-                return codeItem.value
-            }
+        guard let queryItems = UserDefaultsWrapper.pendingSingPass else {
+            ApplicationErrors.assertAndLog("Was able to get to my info summary but there aren't any query items!")
+            return nil
         }
-        return nil
-    }
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        switch segue.identifier {
-        case "editAddress":
-            guard
-                let nav = segue.destination as? UINavigationController,
-                let addressVC = nav.topViewController as? AddressEditViewController else {
-                    ApplicationErrors.assertAndLog("Could not access correct view controller!")
-                    return
-            }
-            
-            addressVC.mode = .myInfoVerify(myInfo: self.myInfoDetails?.address)
-            addressVC.myInfoDelegate = self
-        default:
-            break
+        
+        guard let codeItem = queryItems.first(where: { $0.name == "code" }) else {
+            ApplicationErrors.assertAndLog("Was able to get my info summary but query items don't have code!")
+            return nil
         }
+        
+        return codeItem.value
     }
     
     @IBAction private func tryAgainTapped() {
@@ -93,7 +77,7 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     @IBAction private func editTapped() {
-        self.performSegue(withIdentifier: "editAddress", sender: self)
+        self.coordinator?.editSingPassAddress(self.myInfoDetails?.address, delegate: self)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -111,7 +95,7 @@ class MyInfoSummaryViewController: UIViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.performSegue(withIdentifier: "ESim", sender: self)
+                self?.coordinator?.verifiedSingPassAddress()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
@@ -153,9 +137,21 @@ class MyInfoSummaryViewController: UIViewController {
     }
 }
 
+extension MyInfoSummaryViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .ekyc
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
+    }
+}
+
 extension MyInfoSummaryViewController: MyInfoAddressUpdateDelegate {
     
     func addressUpdated(to address: MyInfoAddress) {
+        self.navigationController?.popToViewController(self, animated: true)
         self.myInfoDetails?.address = address
         self.updateUI(self.myInfoDetails)
     }

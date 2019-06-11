@@ -19,6 +19,10 @@ class APIManager {
                            tokenProvider: self.tokenProvider)
     }()
     
+    var baseURLString: String {
+        return Environment().configuration(PlistKey.ServerURL)
+    }
+    
     var tokenProvider: TokenProvider = UserManager.shared
 
     fileprivate init() {

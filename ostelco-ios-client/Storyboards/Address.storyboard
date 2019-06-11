@@ -12,7 +12,7 @@
         <!--Your Address-->
         <scene sceneID="DAU-ju-9Rl">
             <objects>
-                <tableViewController id="RH1-NC-1gY" customClass="AddressEditViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddressEditViewController" id="RH1-NC-1gY" customClass="AddressEditViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="SPO-DP-NQK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

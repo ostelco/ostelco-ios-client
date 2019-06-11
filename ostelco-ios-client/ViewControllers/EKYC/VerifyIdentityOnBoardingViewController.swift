@@ -14,6 +14,8 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
     @IBOutlet private var step1Icon: UIImageView!
     @IBOutlet private var step2Icon: UIImageView!
     
+    weak var coordinator: EKYCCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +29,7 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        performSegue(withIdentifier: "selectIdentityVerificationMethod", sender: self)
+        self.coordinator?.showFirstStepAfterLanding()
     }
 }
 

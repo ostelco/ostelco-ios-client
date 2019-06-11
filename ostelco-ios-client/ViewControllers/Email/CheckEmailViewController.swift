@@ -14,6 +14,8 @@ class CheckEmailViewController: UIViewController {
     @IBOutlet private var submitPasteboardOnSimulatorButton: UIButton!
     @IBOutlet private var gifView: LoopingVideoView!
     
+    weak var coordinator: EmailCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureSubmitPasteboardButton()
@@ -76,9 +78,8 @@ class CheckEmailViewController: UIViewController {
                 .ensure { [weak self] in
                     self?.removeSpinner(spinner)
                 }
-                .then { UserManager.shared.getDestinationFromContext() }
-                .done { destination in
-                    UIApplication.shared.typedDelegate.rootCoordinator.navigate(to: destination, from: self)
+                .done {
+                    self.coordinator?.emailVerified()
                 }
                 .catch { [weak self] error in
                     ApplicationErrors.log(error)
@@ -87,5 +88,16 @@ class CheckEmailViewController: UIViewController {
         #else
             fatalError("Submit pasteboard was somehow used when not on the simulator!")
         #endif
+    }
+}
+
+extension CheckEmailViewController: StoryboardLoadable {
+    
+    static var storyboard: Storyboard {
+        return .email
+    }
+    
+    static var isInitialViewController: Bool {
+        return false
     }
 }

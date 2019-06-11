@@ -12,7 +12,7 @@
         <!--My Info Summary View Controller-->
         <scene sceneID="3mU-yK-PLV">
             <objects>
-                <viewController id="gvs-yG-kvc" customClass="MyInfoSummaryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyInfoSummaryViewController" id="gvs-yG-kvc" customClass="MyInfoSummaryViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQM-7o-Qx8"/>
                         <viewControllerLayoutGuide type="bottom" id="p4c-8F-xgI"/>
@@ -244,22 +244,12 @@
                         <outlet property="residentialStatus" destination="qlL-EN-MCH" id="b49-5U-bQU"/>
                         <outlet property="sex" destination="RpD-51-Wtt" id="c3V-LP-tgY"/>
                         <segue destination="OFz-aP-YwN" kind="unwind" identifier="unwindFromSingPassInfoViewController" unwindAction="unwindFromSingPassInfoViewControllerWithSender:" id="S4a-3T-cW7"/>
-                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="ALh-un-KZb"/>
-                        <segue destination="93T-a6-QaG" kind="show" identifier="editAddress" id="e1q-8T-pOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ast-8l-C3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OFz-aP-YwN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="161" y="-1009"/>
-        </scene>
-        <!--Address-->
-        <scene sceneID="ZdX-im-ugR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Address" id="93T-a6-QaG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2lL-r2-BN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1128" y="-1142"/>
         </scene>
         <!--Pending Verification View Controller-->
         <scene sceneID="Yb3-dm-dAj">
@@ -334,21 +324,12 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="gifView" destination="Jzq-FD-Yu6" id="b8m-Sh-xfZ"/>
                         <segue destination="eeW-Of-mhh" kind="unwind" identifier="unwindFromEKYCWaitViewController" unwindAction="unwindFromEKYCWaitViewControllerWithSender:" id="IfG-Jp-xgR"/>
-                        <segue destination="DJz-ge-RMU" kind="show" identifier="ESim" id="lEw-Lv-iIN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIe-uV-Yux" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eeW-Of-mhh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2154" y="-1005"/>
-        </scene>
-        <!--ESim-->
-        <scene sceneID="GQS-FY-mjD">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ESim" id="DJz-ge-RMU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XIm-iG-RYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1113" y="-1014"/>
         </scene>
         <!--Select Identity Verification Method View Controller-->
         <scene sceneID="nqs-MO-FZ3">
@@ -453,8 +434,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <outlet property="continueButton" destination="Mc8-hP-V8V" id="HU7-u0-dFL"/>
                         <outlet property="scanICRadioButton" destination="q7f-eC-N4m" id="41k-hd-9Ew"/>
                         <outlet property="singPassRadioButton" destination="9Sx-rK-YKd" id="TsF-4d-3Q6"/>
-                        <segue destination="gvs-yG-kvc" kind="show" identifier="myInfoSummary" id="bEO-EU-hWV"/>
-                        <segue destination="FwH-jf-eYg" kind="show" identifier="nricVerify" id="Lbu-Hw-uvg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXu-Xb-Er1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,7 +443,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify Identity On Boarding View Controller-->
         <scene sceneID="FnT-Yi-gYc">
             <objects>
-                <viewController id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyIdentityOnBoardingViewController" id="GWU-ht-SLC" customClass="VerifyIdentityOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EK-0t-Rjt"/>
                         <viewControllerLayoutGuide type="bottom" id="3pc-Zv-e1V"/>
@@ -565,7 +544,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="step1Icon" destination="DjD-3R-kYh" id="zHp-Dl-eEN"/>
                         <outlet property="step2Icon" destination="wHp-SC-2Gv" id="9n7-ul-Mfj"/>
-                        <segue destination="OlM-wU-Qkj" kind="show" identifier="selectIdentityVerificationMethod" id="NKR-kR-4qw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOV-rO-7eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -575,7 +553,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--ScanIC Steps View Controller-->
         <scene sceneID="MjA-DR-8Up">
             <objects>
-                <viewController id="FwH-jf-eYg" customClass="ScanICStepsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScanICStepsViewController" id="FwH-jf-eYg" customClass="ScanICStepsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kK9-yC-ci8"/>
                         <viewControllerLayoutGuide type="bottom" id="F0D-Lc-Y8H"/>
@@ -607,7 +585,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="6Sh-M6-Cr3" kind="show" id="wcB-5q-2Cy"/>
+                                    <action selector="continueTapped" destination="FwH-jf-eYg" eventType="touchUpInside" id="zgB-Vp-NLi"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HNL-Qz-6Vj">
@@ -683,27 +661,17 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-ik-v5D" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="9" y="64" width="49" height="21"/>
-                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-8" maxY="0.0"/>
-                                <state key="normal" title="Back" image="backChevron"/>
-                                <connections>
-                                    <action selector="backTapped" destination="FwH-jf-eYg" eventType="touchUpInside" id="SrV-x4-oTc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rBv-vb-fbU" firstAttribute="leading" secondItem="ue5-OE-BQC" secondAttribute="leading" constant="24" id="369-gb-8Fm"/>
                             <constraint firstAttribute="trailing" secondItem="rBv-vb-fbU" secondAttribute="trailing" constant="24" id="4iB-Na-woD"/>
                             <constraint firstItem="HNL-Qz-6Vj" firstAttribute="top" secondItem="s0h-YE-5zr" secondAttribute="bottom" constant="84" id="DeP-Jm-J2c"/>
-                            <constraint firstItem="0Fv-ik-v5D" firstAttribute="leading" secondItem="ue5-OE-BQC" secondAttribute="leading" constant="9" id="HZk-o9-5Zt"/>
                             <constraint firstItem="0Wi-4e-lYI" firstAttribute="top" secondItem="3T0-Yr-iT7" secondAttribute="bottom" constant="34" id="I3R-pW-u3p"/>
                             <constraint firstItem="rBv-vb-fbU" firstAttribute="top" secondItem="kK9-yC-ci8" secondAttribute="bottom" constant="44" id="N1Y-Zt-2gZ"/>
                             <constraint firstAttribute="trailing" secondItem="s0h-YE-5zr" secondAttribute="trailing" constant="24" id="OP6-Zq-34D"/>
                             <constraint firstItem="s0h-YE-5zr" firstAttribute="leading" secondItem="ue5-OE-BQC" secondAttribute="leading" constant="24" id="OVw-N7-f2E"/>
                             <constraint firstAttribute="trailing" secondItem="0Wi-4e-lYI" secondAttribute="trailing" constant="24" id="WhK-yZ-6jC"/>
-                            <constraint firstItem="0Fv-ik-v5D" firstAttribute="top" secondItem="kK9-yC-ci8" secondAttribute="bottom" constant="20" id="YYC-vf-o9a"/>
                             <constraint firstItem="HNL-Qz-6Vj" firstAttribute="leading" secondItem="ue5-OE-BQC" secondAttribute="leading" constant="60" id="irp-yD-tNp"/>
                             <constraint firstItem="F0D-Lc-Y8H" firstAttribute="top" secondItem="0Wi-4e-lYI" secondAttribute="bottom" constant="44" id="lO2-3b-GNX"/>
                             <constraint firstItem="s0h-YE-5zr" firstAttribute="top" secondItem="rBv-vb-fbU" secondAttribute="bottom" constant="24" id="onW-fm-XNO"/>
@@ -720,7 +688,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify View Controller-->
         <scene sceneID="Vhr-RP-qdq">
             <objects>
-                <viewController id="6Sh-M6-Cr3" customClass="NRCIVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NRICVerifyViewController" id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nLB-PI-vfj"/>
                         <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
@@ -786,7 +754,6 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                     <connections>
                         <outlet property="nricErrorLabel" destination="UDg-bU-7nA" id="UKf-Wc-Uuu"/>
                         <outlet property="nricTextField" destination="MrK-sD-vRV" id="xvp-EU-v5f"/>
-                        <segue destination="93T-a6-QaG" kind="show" identifier="yourAddress" id="V1P-0a-sbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Co-Wf-gOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -795,14 +762,9 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backChevron" width="12" height="20"/>
         <image name="check" width="14" height="12"/>
         <image name="icIcon" width="26" height="14"/>
         <image name="singpass" width="76" height="36"/>
         <image name="stepArrowIcon" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lEw-Lv-iIN"/>
-        <segue reference="e1q-8T-pOn"/>
-    </inferredMetricsTieBreakers>
 </document>

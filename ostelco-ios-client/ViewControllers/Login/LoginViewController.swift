@@ -67,7 +67,8 @@ class LoginViewController: UIViewController {
     }
     
     private func signInTapped() {
-        UIApplication.shared.typedDelegate.rootCoordinator.showEmailEntry()
+        UIApplication.shared.typedDelegate.rootCoordinator
+            .navigate(to: .email, from: self, animated: true)
     }
 }
 

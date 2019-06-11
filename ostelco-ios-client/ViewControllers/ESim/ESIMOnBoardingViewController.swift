@@ -15,6 +15,8 @@ class ESIMOnBoardingViewController: UIViewController {
     @IBOutlet private var step2Icon: UIImageView!
     @IBOutlet private var step3Icon: UIImageView!
     
+    weak var coordinator: ESimCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +29,11 @@ class ESIMOnBoardingViewController: UIViewController {
     
     @IBAction private func continueTapped(_ sender: Any) {
         OstelcoAnalytics.logEvent(.DownloadingESIM)
-        performSegue(withIdentifier: "showESIMInstructionsCarousel", sender: self)
+        self.coordinator?.completedLanding()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        showNeedHelpActionSheet()
+        self.showNeedHelpActionSheet()
     }
 }
 

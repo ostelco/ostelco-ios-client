@@ -264,7 +264,7 @@
         <!--Pending Download View Controller-->
         <scene sceneID="oPj-wY-cH4">
             <objects>
-                <viewController id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ESIMPendingDownloadViewController" id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PgR-Xv-prz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

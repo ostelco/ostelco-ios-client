@@ -11,7 +11,7 @@
 			"id": "sg",
 			"name": "Singapore"
 		},
-		"status": "PENDING",
+		"status": "REJECTED",
 		"kycStatusMap": {
 			"JUMIO": "REJECTED",
 			"MY_INFO": "PENDING",

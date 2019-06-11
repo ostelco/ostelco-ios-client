@@ -121,11 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
-                .then {
-                    UserManager.shared.getDestinationFromContext()
-                }
-                .done { [weak self] destination in
-                    self?.rootCoordinator.navigate(to: destination, from: nil)
+                .done { [weak self] in
+                    self?.rootCoordinator.determineAndNavigateToDestination()
                 }
                 .catch { error in
                     ApplicationErrors.log(error)
@@ -133,6 +130,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             
             // Even though this other stuff is async, we can definitely say we've hadnled it.
+            return true
+        }
+        
+        if UsernameAndPasswordLinkManager.isUsernameAndPasswordLink(incomingURL) {
+            UsernameAndPasswordLinkManager.signInWithUsernameAndPassword(incomingURL)
+                .done { [weak self] in
+ self?.rootCoordinator.determineAndNavigateToDestination()
+                }
+                .catch { error in
+                    ApplicationErrors.log(error)
+                    debugPrint("ERROR SIGNING IN WITH USERNAME AND PASSWORD: \(error)")
+                }
+            
             return true
         }
         
@@ -169,29 +179,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         PushNotificationController.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
-    }
-    
-    // MARK: - UIResponder overrides
-    
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-        
-        switch motion {
-        case .motionShake:
-            guard let vc = self.window?.rootViewController else {
-                // There's no view controller to show.
-                return
-            }
-            
-            if let nav = vc as? UINavigationController {
-                nav.showNeedHelpActionSheet()
-            } else if let tab = vc as? UITabBarController {
-                tab.showNeedHelpActionSheet()
-            } else {
-                vc.topPresentedViewController().showNeedHelpActionSheet()
-            }
-        default:
-            break
-        }
     }
 }

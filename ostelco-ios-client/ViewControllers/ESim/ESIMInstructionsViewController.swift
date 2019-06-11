@@ -19,6 +19,8 @@ class ESIMInstructionsViewController: UIViewController {
     @IBOutlet private var primaryButton: PrimaryButton!
     @IBOutlet private var lastPageLabel: BodyTextLabel!
     
+    weak var coordinator: ESimCoordinator?
+    
     private lazy var dataSource: PageControllerDataSource = {
         let pages = ESIMPage.allCases.map { $0.viewController }
         return PageControllerDataSource(pageController: self.pageController,
@@ -54,7 +56,7 @@ class ESIMInstructionsViewController: UIViewController {
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         let index = dataSource.currentIndex
         if index == (ESIMPage.allCases.count - 1) {
-            performSegue(withIdentifier: "showESIMInstructions", sender: self)
+            self.coordinator?.completedInstructions()
         } else {
             self.dataSource.goToNextPage()
         }

@@ -26,4 +26,16 @@ public struct CustomerModel: Codable {
     public func hasSubscription() -> Bool {
         return false
     }
+    
+    public init(id: String,
+                name: String,
+                email: String,
+                analyticsId: String,
+                referralId: String) {
+        self.id = id
+        self.name = name
+        self.email = email
+        self.analyticsId = analyticsId
+        self.referralId = referralId
+    }
 }
