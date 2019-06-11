@@ -28,12 +28,12 @@ public struct LinkHelper {
     public static func linkContainsParams(_ link: URL, paramKeys: [String]) -> Bool {
         let params = parseLink(link)
         
-        for key in paramKeys {
-            if params[key] == nil {
-                return false
-            }
+        if paramKeys.contains(where: { params[$0] == nil }) {
+            // One of the parameters is nil, the link does not contain the given params
+            return false
+        } else {
+            // All passed in parameters have a value.
+            return true
         }
-        
-        return true
     }
 }
