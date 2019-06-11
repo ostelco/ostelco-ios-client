@@ -13,8 +13,8 @@ public struct LinkHelper {
         return link.pathComponents.last ?? ""
     }
     
-    public static func parseLink(_ link: URL) -> [String:String] {
-        var ret = [String:String]()
+    public static func parseLink(_ link: URL) -> [String: String] {
+        var ret = [String: String]()
         
         if let urlComponents = URLComponents(url: link, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
             for queryItem in queryItems {
