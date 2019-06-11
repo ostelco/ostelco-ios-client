@@ -238,6 +238,11 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
     
     // MARK: - SingPass Flow
     
+    func testSingPassFlowWithNilRegionKicksToStartingPage() {
+        let destination = self.testCoordinator.determineSingPassFlowDestination(region: nil)
+        XCTAssertEqual(destination, .singPass)
+    }
+    
     func testSingPassFlowWithEverythingPendingKicksToStartingPage() {
         let testRegion = self.createTestRegion(status: .PENDING,
                                                jumioStatus: .PENDING,
@@ -297,7 +302,12 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
         XCTAssertEqual(destination, .stepsForNRIC)
     }
     
-    func testNRICFlowWithStepsViewedKicksToEnterNRIC() {
+    func testNRICFlowWithStepsViewedAndNilRegionKicksToEnterNRIC() {
+        let destination = self.testCoordinator.determineNRICFlowDestination(viewedSteps: true, region: nil)
+        XCTAssertEqual(destination, .enterNRIC)
+    }
+    
+    func testNRICFlowWithStepsViewedAndPendingRegionKicksToEnterNRIC() {
         let testRegion = self.createTestRegion(status: .PENDING,
                                                jumioStatus: .PENDING,
                                                myInfoStatus: .PENDING,

@@ -192,15 +192,19 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     
     // MARK: - SingPass flow
     
-    func determineSingPassFlowDestination(region: RegionResponse,
+    func determineSingPassFlowDestination(region: RegionResponse?,
                                           address: MyInfoAddress? = nil,
                                           editDelegate: MyInfoAddressUpdateDelegate? = nil) -> SingaporeEKYCCoordinator.Destination {
+        guard let region = region else {
+            return .singPass
+        }
+        
         guard
             let myInfoStatus = region.kycStatusMap.MY_INFO,
             let addressStatus = region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER else {
                 return .goBackAndChooseCountry
         }
-        
+
         switch (myInfoStatus, addressStatus) {
         case (.REJECTED, _),
              (_, .REJECTED):
@@ -269,10 +273,15 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     // MARK: - NRIC / Jumio / Address flow
     
     func determineNRICFlowDestination(viewedSteps: Bool = false,
-                                      region: RegionResponse,
+                                      region: RegionResponse?,
                                       completedJumio: Bool = false) -> SingaporeEKYCCoordinator.Destination {
         guard viewedSteps else {
             return .stepsForNRIC
+        }
+        
+        guard let region = region else {
+            // We don't even have a region - make the user enter an NRIC
+            return .enterNRIC
         }
         
         guard
@@ -342,6 +351,19 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
                 self.navigate(to: destination, animated: true)
             }
             .catch { error in
+                switch error {
+                case APIHelper.Error.jsonError(let error):
+                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
+                        // The user hasn't created a region
+                        let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                            region: nil)
+                        self.navigate(to: destination, animated: true)
+                        return
+                    } // else, keep going
+                default:
+                    break
+                }
+                
                 ApplicationErrors.log(error)
             }
     }
