@@ -584,6 +584,9 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wi-4e-lYI" customClass="PrimaryButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueTapped" destination="FwH-jf-eYg" eventType="touchUpInside" id="zgB-Vp-NLi"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HNL-Qz-6Vj">
                                 <rect key="frame" x="60" y="272.66666666666669" width="255" height="207"/>
