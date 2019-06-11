@@ -864,7 +864,6 @@
 			isa = PBXGroup;
 			children = (
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
-				9B305F97229693EA00B89FCB /* GifVideo.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
@@ -944,6 +943,7 @@
 			isa = PBXGroup;
 			children = (
 				9B6E34C222B041500029AF76 /* ImageAsset.swift */,
+				9B305F97229693EA00B89FCB /* GifVideo.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";

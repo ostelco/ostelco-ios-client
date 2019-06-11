@@ -16,18 +16,15 @@ struct ImageGen {
         let assetsFolder = try appFolder.subfolder(named: "Assets")
         let assetCatalog = try assetsFolder.subfolder(named: "Assets.xcassets")
         
-        let boilerplate = try self.generate(from: assetCatalog)
+        let boilerplate = try self.generateBoilerplate(from: assetCatalog)
         
         let generatedCodeFolder = try appFolder.subfolder(named: "Generated")
         let targetFile = try generatedCodeFolder.file(named: "ImageAsset.swift")
-        try self.write(boilerplate: boilerplate, to: targetFile)
+        
+        try targetFile.write(string: boilerplate)
     }
     
-    static func write(boilerplate: String, to file: File) throws {
-        try file.write(string: boilerplate)
-    }
-    
-    static func generate(from assetCatalog: Folder) throws -> String {
+    static func generateBoilerplate(from assetCatalog: Folder) throws -> String {
         let imageSets = assetCatalog.subfolders
             .filter { $0.name.hasSuffix(self.imageSetPostfix) }
             .map { $0.name.replacingOccurrences(of: self.imageSetPostfix, with: "") }

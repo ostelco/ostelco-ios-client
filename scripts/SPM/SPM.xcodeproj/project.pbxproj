@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		9B6E34BF22B03C8F0029AF76 /* CodeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34BB22B03BFE0029AF76 /* CodeGen.swift */; };
 		9B6E34C022B03C8F0029AF76 /* ImageGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34BD22B03C290029AF76 /* ImageGen.swift */; };
+		9B6E34C922B047660029AF76 /* GifVideoGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34C522B045280029AF76 /* GifVideoGen.swift */; };
 		OBJ_147 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Await.swift */; };
 		OBJ_148 /* ByteString.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* ByteString.swift */; };
 		OBJ_149 /* CStringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* CStringArray.swift */; };
@@ -357,6 +358,7 @@
 /* Begin PBXFileReference section */
 		9B6E34BB22B03BFE0029AF76 /* CodeGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGen.swift; sourceTree = "<group>"; };
 		9B6E34BD22B03C290029AF76 /* ImageGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGen.swift; sourceTree = "<group>"; };
+		9B6E34C522B045280029AF76 /* GifVideoGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifVideoGen.swift; sourceTree = "<group>"; };
 		"Files::Files::Product" /* Files.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Files.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* File+Reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Reset.swift"; sourceTree = "<group>"; };
 		OBJ_100 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 			children = (
 				9B6E34BB22B03BFE0029AF76 /* CodeGen.swift */,
 				9B6E34BD22B03C290029AF76 /* ImageGen.swift */,
+				9B6E34C522B045280029AF76 /* GifVideoGen.swift */,
 			);
 			path = CodeGen;
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 				9B6E34BF22B03C8F0029AF76 /* CodeGen.swift in Sources */,
 				OBJ_207 /* SecretPlistUpdater.swift in Sources */,
 				OBJ_208 /* Secrets.swift in Sources */,
+				9B6E34C922B047660029AF76 /* GifVideoGen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

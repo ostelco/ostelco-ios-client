@@ -11,5 +11,6 @@ struct CodeGen {
     
     static func run(sourceRoot: Folder) throws {
         try ImageGen.run(sourceRoot: sourceRoot)
+        try GifVideoGen.run(sourceRoot: sourceRoot)
     }
 }
