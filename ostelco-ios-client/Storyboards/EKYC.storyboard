@@ -710,7 +710,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <!--Verify View Controller-->
         <scene sceneID="Vhr-RP-qdq">
             <objects>
-                <viewController id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NRICVerifyViewController" id="6Sh-M6-Cr3" customClass="NRICVerifyViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nLB-PI-vfj"/>
                         <viewControllerLayoutGuide type="bottom" id="Tux-FP-Dur"/>
