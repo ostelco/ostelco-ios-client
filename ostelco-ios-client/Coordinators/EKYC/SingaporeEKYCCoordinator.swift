@@ -139,6 +139,11 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.showEKYCLandingPage(animated: animated)
         case .jumio:
             self.launchJumio(animated: animated)
+            
+            // Add the steps VC underneath jumio so there's something if the user cancels
+            let stepsVC = ScanICStepsViewController.fromStoryboard()
+            stepsVC.coordinator = self
+            self.navigationController.setViewControllers([stepsVC], animated: animated)
         case .enterNRIC:
             let nricVC = NRICVerifyViewController.fromStoryboard()
             nricVC.coordinator = self

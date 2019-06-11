@@ -112,8 +112,17 @@ extension JumioCoordinator: NetverifyViewControllerDelegate {
                                  scanReference: String?) {
         debugPrint("NetverifyViewController cancelled with error: \(error?.message ?? "") scanReference: \(scanReference ?? "")")
         
-        netverifyViewController.dismiss(animated: true) {
+        netverifyViewController.presentingViewController?.dismiss(animated: true) {
             netverifyViewController.destroy()
+            if let error = error {
+                switch error.code {
+                case "G00000": // User cancelled the scan
+                    // Don't show an error when the user cancelled on purpose.
+                    return
+                default:
+                    break
+                }
+            }
             self.delegate?.jumioScanFailed(errorMessage: "\(error?.message ?? "An unknown error occurred.")")
         }
     }

@@ -82,6 +82,7 @@ extension EKYCCoordinator where Self: JumioCoordinatorDelegate {
         }
         
         jumioCoordinator.startScan(from: self.navigationController)
+        jumioCoordinator.delegate = self
         self.jumioCoordinator = jumioCoordinator
     }
     
