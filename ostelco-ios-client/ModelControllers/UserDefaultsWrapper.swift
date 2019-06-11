@@ -13,6 +13,7 @@ struct UserDefaultsWrapper {
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
         case pendingEmail = "PendingEmail"
+        case pendingSingPassQueryItems = "PendingSingPassQueryItems"
     }
     
     private static var defaults: UserDefaults {
@@ -48,6 +49,32 @@ struct UserDefaultsWrapper {
                 self.setValue(newEmail, for: .pendingEmail)
             } else {
                 self.removeValue(for: .pendingEmail)
+            }
+        }
+    }
+    
+    static var pendingSingPass: [URLQueryItem]? {
+        get {
+            guard let dict: [String: String?] = self.value(for: .pendingSingPassQueryItems) else {
+                return nil
+            }
+            
+            let queryItems = dict.map { key, value in
+                return URLQueryItem(name: key, value: value)
+            }
+            
+            return queryItems
+        }
+        set {
+            if let newQueryItems = newValue {
+                var dict = [String: String?]()
+                for item in newQueryItems {
+                    dict[item.name] = item.value
+                }
+                
+                self.setValue(dict, for: .pendingSingPassQueryItems)
+            } else {
+                self.removeValue(for: .pendingSingPassQueryItems)
             }
         }
     }

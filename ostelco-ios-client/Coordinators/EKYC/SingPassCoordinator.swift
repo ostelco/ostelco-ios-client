@@ -75,6 +75,7 @@ extension SingPassCoordinator: SFSafariViewControllerDelegate {
 extension SingPassCoordinator: MyInfoCallbackHandler {
     func handleCallback(queryItems: [URLQueryItem]?, error: NSError?) {
         if let queryItems = queryItems {
+            UserDefaultsWrapper.pendingSingPass = queryItems
             self.delegate?.signInSucceeded(myInfoQueryItems: queryItems)
         } else {
             self.delegate?.signInFailed(error: error)

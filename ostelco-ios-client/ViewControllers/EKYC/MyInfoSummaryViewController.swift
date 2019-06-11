@@ -10,7 +10,6 @@ import ostelco_core
 import UIKit
 
 class MyInfoSummaryViewController: UIViewController {
-    public var myInfoQueryItems: [URLQueryItem]?
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
     
@@ -34,7 +33,6 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     private func loadMyInfo() {
-        debugPrint("Query Items: \(String(describing: self.myInfoQueryItems))")
         guard let code = getMyInfoCode() else {
             return
         }
@@ -61,12 +59,17 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     private func getMyInfoCode() -> String? {
-        if let queryItems = myInfoQueryItems {
-            if let codeItem = queryItems.first(where: { $0.name == "code" }) {
-                return codeItem.value
-            }
+        guard let queryItems = UserDefaultsWrapper.pendingSingPass else {
+            ApplicationErrors.assertAndLog("Was able to get to my info summary but there aren't any query items!")
+            return nil
         }
-        return nil
+        
+        guard let codeItem = queryItems.first(where: { $0.name == "code" }) else {
+            ApplicationErrors.assertAndLog("Was able to get my info summary but query items don't have code!")
+            return nil
+        }
+        
+        return codeItem.value
     }
     
     @IBAction private func tryAgainTapped() {

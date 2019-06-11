@@ -201,7 +201,11 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
                                           address: MyInfoAddress? = nil,
                                           editDelegate: MyInfoAddressUpdateDelegate? = nil) -> SingaporeEKYCCoordinator.Destination {
         guard let region = region else {
-            return .singPass
+            if UserDefaultsWrapper.pendingSingPass == nil {
+                return .singPass
+            } else {
+                return .verifySingPassAddress
+            }
         }
         
         guard
@@ -215,8 +219,13 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
              (_, .REJECTED):
             return .ekycRejected
         case (.PENDING, _):
-            // User has not yet logged into SingPass.
-            return .singPass
+            if UserDefaultsWrapper.pendingSingPass == nil {
+                // User has not yet logged into SingPass.
+                return .singPass
+            } else {
+                // User has logged in but for some reason isn't showing as approved.
+                return .verifySingPassAddress
+            }
         case (.APPROVED, .APPROVED):
             return .success(region: region)
         case (.APPROVED, .PENDING):
@@ -448,6 +457,19 @@ extension SingaporeEKYCCoordinator: SingPassCoordinatorDelegate {
                 self.navigate(to: destination, animated: true)
             }
             .catch { error in
+                switch error {
+                case APIHelper.Error.jsonError(let error):
+                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
+                        // The user hasn't created a region
+                        let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                            region: nil)
+                        self.navigate(to: destination, animated: true)
+                        return
+                } // else, keep going
+                default:
+                    break
+                }
+                
                 ApplicationErrors.log(error)
             }
     }
