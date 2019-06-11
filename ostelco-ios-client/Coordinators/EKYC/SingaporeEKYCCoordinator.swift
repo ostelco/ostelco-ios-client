@@ -461,8 +461,7 @@ extension SingaporeEKYCCoordinator: SingPassCoordinatorDelegate {
                 case APIHelper.Error.jsonError(let error):
                     if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
                         // The user hasn't created a region
-                        let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                            region: nil)
+                        let destination = self.determineSingPassFlowDestination(region: nil)
                         self.navigate(to: destination, animated: true)
                         return
                 } // else, keep going
