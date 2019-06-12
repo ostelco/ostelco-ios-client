@@ -19,6 +19,7 @@ class CountryCoordinatorTests: XCTestCase {
     
     private lazy var singapore = Country("sg")
     private lazy var america = Country("us")
+    private lazy var tuvalu = Country("tv")
     
     func testHasntSeenLandingKicksToLanding() {
         guard let destination = self.testCoordinator.determineDestination().awaitResult(in: self) else {
@@ -113,21 +114,28 @@ class CountryCoordinatorTests: XCTestCase {
         XCTAssertEqual(destination, .locationProblem(wrongCountry))
     }
     
-    func testDebugRoutingAlwaysThinksWereInSingapore() {
+    func testDebugRoutingAlwaysThinksWereInSingaporeOrTheUS() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
         self.testLocationController.mockLocation = AmericaPlacemark.location
-        guard let wrongLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self, timeout: 30) else {
+        guard let wrongLocationDestinationSingapore = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self) else {
             return
         }
         
-        XCTAssertEqual(wrongLocationDestination, .countryComplete(country: self.singapore))
+        XCTAssertEqual(wrongLocationDestinationSingapore, .countryComplete(country: self.america))
         
-        self.testLocationController.mockLocation = AmericaPlacemark.location
-        guard let correctLocationDestination = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america).awaitResult(in: self, timeout: 30) else {
+        self.testLocationController.mockLocation = SingaporePlacemark.location
+        guard let wrongLocationDestinationUS = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.america).awaitResult(in: self) else {
             return
         }
         
-        let wrongCountry = LocationProblem.authorizedButWrongCountry(expected: "Singapore", actual: self.america.nameOrPlaceholder)
-        XCTAssertEqual(correctLocationDestination, .locationProblem(wrongCountry))
+        XCTAssertEqual(wrongLocationDestinationUS, .countryComplete(country: self.america))
+        
+        self.testLocationController.mockLocation = TuvaluPlacemark.location
+        guard let correctDestinationTuvalu = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.tuvalu).awaitResult(in: self) else {
+            return
+        }
+        
+        let wrongCountry = LocationProblem.authorizedButWrongCountry(expected: "Singapore or the US", actual: self.tuvalu.nameOrPlaceholder)
+        XCTAssertEqual(correctDestinationTuvalu, .locationProblem(wrongCountry))
     }
 }

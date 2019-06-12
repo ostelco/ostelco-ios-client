@@ -29,7 +29,7 @@ class AmericaPlacemark: CountryDeterminablePlacemark {
     
     // Wrigley Field in Chicago
     static let location = CLLocation(latitude: 41.942329564,
-                                            longitude: -87.65333072)
+                                     longitude: -87.65333072)
 
     var isoCountryCode: String? {
         return "US"
@@ -37,5 +37,20 @@ class AmericaPlacemark: CountryDeterminablePlacemark {
     
     var country: String? {
         return "United States"
+    }
+}
+
+class TuvaluPlacemark: CountryDeterminablePlacemark {
+    
+    // The Funafuti International Airport
+    static let location = CLLocation(latitude: -8.524590,
+                                     longitude: 179.195056)
+    
+    var isoCountryCode: String? {
+        return "TV"
+    }
+    
+    var country: String? {
+        return "Tuvalu"
     }
 }
