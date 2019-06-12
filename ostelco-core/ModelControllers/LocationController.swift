@@ -111,7 +111,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
                     // We don't actually care if we're in the correct country, we just need to validate the user is
                     // "in" a supported country, by which we mean they've selected Singapore or the US from the list.
                     let lowerCountry = country.countryCode.lowercased()
-                    guard (lowerCountry == "sg" || lowerCountry == "us") else {
+                    guard lowerCountry == "sg" || lowerCountry == "us" else {
                         let problem = LocationProblem.authorizedButWrongCountry(expected: "Singapore or the US", actual: country.nameOrPlaceholder)
                         throw Error.locationProblem(problem: problem)
                     }
