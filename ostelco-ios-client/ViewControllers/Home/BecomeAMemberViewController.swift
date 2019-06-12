@@ -18,7 +18,7 @@ class BecomeAMemberViewController: ApplePayViewController {
     @IBOutlet private var explanatoryCopyLabel: BodyTextLabel!
 
     var paymentButton: PKPaymentButton?
-    var plan: Product?
+    var membership: Product?
     
     lazy var linkableCopy: LinkableText = {
         return LinkableText(fullText: """
@@ -52,17 +52,17 @@ Read about our current prices
                 guard let self = self else {
                     return
                 }
-                self.plan = self.getFirstPlan(products)
+                self.membership = self.getFirstMembership(products)
             }
             .catch { error in
                 ApplicationErrors.log(error)
             }
     }
 
-    private func getFirstPlan(_ products: [Product]) -> Product? {
+    private func getFirstMembership(_ products: [Product]) -> Product? {
         // See if the list contains offers.
-        if let firstPlan = products.first(where: { $0.type == "plan" }) {
-            return firstPlan
+        if let membership = products.first(where: { $0.type == "membership" }) {
+            return membership
         }
         return nil
     }
@@ -114,24 +114,24 @@ Read about our current prices
     }
 
     @objc func buyButtonTapped() {
-        if let plan = plan {
+        if let membership = membership {
             #if STRIPE_PAYMENT
-                showStripePaymentActionSheet(plan: plan)
+                showStripePaymentActionSheet(membership: membership)
             #else
-                startApplePay(product: plan)
+                startApplePay(product: membership)
             #endif
         } else {
-            let error = ApplicationErrors.General.noValidPlansFound
+            let error = ApplicationErrors.General.noValidMemebershipsFound
             ApplicationErrors.log(error)
             self.showAlert(title: "Subscription Error", msg: error.localizedDescription)
         }
     }
 
     #if STRIPE_PAYMENT
-    private func showStripePaymentActionSheet(plan: Product) {
+    private func showStripePaymentActionSheet(membership: Product) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let buyAction = UIAlertAction(title: plan.label, style: .default) {_ in
-            self.startStripePay(product: plan)
+        let buyAction = UIAlertAction(title: membership.label, style: .default) {_ in
+            self.startStripePay(product: membership)
         }
         alertCtrl.addAction(buyAction)
         let addCardsAction = UIAlertAction(title: "Setup Cards", style: .default) {_ in
