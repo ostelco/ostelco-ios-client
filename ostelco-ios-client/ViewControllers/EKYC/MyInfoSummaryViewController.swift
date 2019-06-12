@@ -40,7 +40,7 @@ class MyInfoSummaryViewController: UIViewController {
         debugPrint("Code = \(code)")
         
         self.reloadButton.isHidden = true
-        self.spinnerView = self.showSpinner(onView: self.view)
+        self.spinnerView = self.showSpinner(onView: self.view, loadingText: "Loading your data from SingPass...")
         APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
             .ensure { [weak self] in

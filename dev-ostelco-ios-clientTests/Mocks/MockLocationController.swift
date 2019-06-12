@@ -51,6 +51,9 @@ class MockLocationController: LocationController {
         case 103.851...103.853:
             let singapore = SingaporePlacemark()
             return .value([singapore])
+        case 179.195...179.196:
+            let tuvalu = TuvaluPlacemark()
+            return .value([tuvalu])
         case (-87.654)...(-87.652):
             let america = AmericaPlacemark()
             return .value([america])

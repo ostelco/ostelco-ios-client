@@ -58,7 +58,7 @@ extension MyInfoDetails {
         "classification": "C",
         "value": "myinfotesting@gmail.com"
     },
-    "regadd": {
+    "mailadd": {
         "country": "SG",
         "unit": "128",
         "street": "BEDOK NORTH AVENUE 4",

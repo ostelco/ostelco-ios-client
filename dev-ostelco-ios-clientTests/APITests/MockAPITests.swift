@@ -584,7 +584,7 @@ class MockAPITests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(config.url, "https://myinfosgstg.api.gov.sg/test/v2/authorise?client_id=STG-FAKE_CLIENT_ID&attributes=name,sex,dob,residentialstatus,nationality,mobileno,email,regadd&redirect_uri=https://dl-dev.oya.world/links/myinfo")
+        XCTAssertEqual(config.url, "https://myinfosgstg.api.gov.sg/test/v2/authorise?client_id=STG-FAKE_CLIENT_ID&attributes=name,sex,dob,residentialstatus,nationality,mobileno,email,mailadd&redirect_uri=https://dl-dev.oya.world/links/myinfo")
     }
     
     func testMockFetchingMyInfo() {
