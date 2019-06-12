@@ -88,7 +88,7 @@ class MyInfoSummaryViewController: UIViewController {
                 return
         }
         
-        self.spinnerView = self.showSpinner(onView: self.view)
+        self.spinnerView = self.showSpinner(onView: self.view, loadingText: "Loading your data from SingPass...")
         APIManager.shared.primeAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
