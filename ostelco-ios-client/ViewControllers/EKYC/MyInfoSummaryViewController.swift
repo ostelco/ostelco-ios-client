@@ -133,7 +133,7 @@ class MyInfoSummaryViewController: UIViewController {
         }
         
         self.editButton.isEnabled = true
-        self.continueButton.isEnabled = true
+        self.continueButton.isEnabled = self.address.text.hasTextOtherThanWhitespace
     }
 }
 
