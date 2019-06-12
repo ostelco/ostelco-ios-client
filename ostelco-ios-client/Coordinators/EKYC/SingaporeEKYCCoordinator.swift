@@ -155,6 +155,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.singPassCoordinator = singPassCoordinator
         case .verifySingPassAddress:
             let myInfoSummary = MyInfoSummaryViewController.fromStoryboard()
+            myInfoSummary.coordinator = self
             self.navigationController.setViewControllers([myInfoSummary], animated: animated)
         case .waitingForVerification:
             self.showWaitingForVerification(animated: animated)
