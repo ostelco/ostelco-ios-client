@@ -62,6 +62,28 @@ class AddressEditViewController: UITableViewController {
         self.configureForMode()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        switch self.mode {
+        case .myInfoVerify:
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        case .nricEnter:
+            break
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        switch self.mode {
+        case .myInfoVerify:
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        case .nricEnter:
+            break
+        }
+    }
+    
     @IBAction private func saveBarButtonTapped() {
         self.saveInput()
     }
