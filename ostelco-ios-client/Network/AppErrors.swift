@@ -15,7 +15,7 @@ struct ApplicationErrors {
     enum General: LocalizedError {
         case assertionFailed(message: String, file: String, line: UInt)
         case couldntConvertUserInfoToNotificaitonData(userInfo: [AnyHashable: Any]?)
-        case noValidPlansFound
+        case noValidMemebershipsFound
         case noMyInfoConfigFound
 
         var localizedDescription: String {
@@ -28,8 +28,8 @@ struct ApplicationErrors {
                 } else {
                     return "No user info received with a push notification!"
                 }
-            case .noValidPlansFound:
-                return "Did not find a valid subscription plan"
+            case .noValidMemebershipsFound:
+                return "Did not find a valid subscription membership"
             case .noMyInfoConfigFound:
                 return "Did not find valid configuration for MyInfo"
             }
