@@ -88,3 +88,4 @@ workflows:
               only:
                 - /feature/.*/
                 - /release/.*/
+                - /fix/.*/
