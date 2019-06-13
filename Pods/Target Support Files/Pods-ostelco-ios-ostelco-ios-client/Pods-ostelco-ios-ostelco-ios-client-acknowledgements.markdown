@@ -663,6 +663,10 @@ Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is
 
 Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
 
+## FirebaseABTesting
+
+Copyright 2018 Google
+
 ## FirebaseAnalyticsInterop
 
 
@@ -1280,6 +1284,10 @@ Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## FirebaseRemoteConfig
+
+Copyright 2018 Google
 
 ## FreshchatSDK
 
