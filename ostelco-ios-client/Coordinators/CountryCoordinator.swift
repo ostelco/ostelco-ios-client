@@ -45,6 +45,7 @@ class CountryCoordinator {
             return .value(.chooseCountry)
         }
         
+        // TODO: We could skip the location service and access checks if we don't need to enforce location for selected country
         guard self.locationController.locationServicesEnabled else {
             return .value(.locationProblem(.disabledInSettings))
         }
@@ -58,11 +59,21 @@ class CountryCoordinator {
         }
         
         var isDebug = false
+        
+        // Use feature flag to skip location check
+        if ConfigManager.shared.enforceLocationCheckForRegions.contains(country.countryCode) {
+            isDebug = false
+        } else {
+            isDebug = true
+        }
+        
+        /*
         #if ENABLE_SKIP_USER_LOCATION_CHECK
             if allowDebugRouting {
                 isDebug = true
             }
         #endif
+        */
         
         self.spinnerView = self.navigationController.showSpinner(onView: self.navigationController.view, loadingText: "Checking location...")
         return self.locationController.checkInCorrectCountry(country, isDebug: isDebug)
