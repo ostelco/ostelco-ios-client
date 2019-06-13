@@ -196,5 +196,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func printRemoteConfigWelcomeMessage() {
         debugPrint("Welcome message from remote config: \(ConfigManager.shared.welcomeMessage)")
+        debugPrint("Enforce location check: \(ConfigManager.shared.enforceLocationCheckForRegions)")
     }
 }

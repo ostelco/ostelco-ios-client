@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>enforce_location_check_for_regions</key>
+	<string>[&quot;SG&quot;]</string>
 	<key>welcome_message</key>
 	<string>Hello from default remote config!</string>
 </dict>
