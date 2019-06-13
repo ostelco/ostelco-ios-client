@@ -55,7 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.registerForNotifications()
         InternetConnectionMonitor.shared.start()
-
+        
+        ConfigManager.shared.fetch().done {_ in
+            self.printRemoteConfigWelcomeMessage()
+        }
+        .cauterize()
+        
         return true
     }
     
@@ -179,5 +184,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         PushNotificationController.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Fetch new config values from remote
+        ConfigManager.shared.fetch().done {_ in
+            self.printRemoteConfigWelcomeMessage()
+        }
+        .cauterize()
+    }
+    
+    private func printRemoteConfigWelcomeMessage() {
+        debugPrint("Welcome message from remote config: \(ConfigManager.shared.welcomeMessage)")
     }
 }

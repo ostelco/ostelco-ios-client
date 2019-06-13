@@ -79,6 +79,10 @@
 		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
+		0488080122B22AA000961DF4 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488080022B22AA000961DF4 /* ConfigManager.swift */; };
+		0488080222B22AA000961DF4 /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488080022B22AA000961DF4 /* ConfigManager.swift */; };
+		0488080422B22E6D00961DF4 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0488080322B22E6D00961DF4 /* RemoteConfigDefaults.plist */; };
+		0488080522B22E6D00961DF4 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0488080322B22E6D00961DF4 /* RemoteConfigDefaults.plist */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
@@ -457,6 +461,8 @@
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
+		0488080022B22AA000961DF4 /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
+		0488080322B22E6D00961DF4 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
@@ -848,6 +854,7 @@
 				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
 				04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */,
+				0488080022B22AA000961DF4 /* ConfigManager.swift */,
 				04978D6A22ABA012002B09E0 /* LinkHelper.swift */,
 			);
 			path = Network;
@@ -1181,6 +1188,7 @@
 				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
 				04834D34222EAB4E00A01500 /* Norway.gpx */,
 				04834D31222EAA7D00A01500 /* Singapore.gpx */,
+				0488080322B22E6D00961DF4 /* RemoteConfigDefaults.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1496,6 +1504,7 @@
 				047F290F22244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				9BF27782225D15FE006428D5 /* Environment.plist in Resources */,
 				9B1745772276F66400CF321B /* TextEditCell.xib in Resources */,
+				0488080422B22E6D00961DF4 /* RemoteConfigDefaults.plist in Resources */,
 				9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
 				047F2913222451DF00FC6A8F /* Country.storyboard in Resources */,
@@ -1551,6 +1560,7 @@
 				9BE2D46B225B7FEF00B51999 /* TabController.storyboard in Resources */,
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
 				9B1745782276F66400CF321B /* TextEditCell.xib in Resources */,
+				0488080522B22E6D00961DF4 /* RemoteConfigDefaults.plist in Resources */,
 				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				047F291022244A9800FC6A8F /* SignUp.storyboard in Resources */,
 				048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */,
@@ -1950,6 +1960,7 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9B4F1A3C22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
+				0488080122B22AA000961DF4 /* ConfigManager.swift in Sources */,
 				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				9BBEEE16228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
@@ -2157,6 +2168,7 @@
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
+				0488080222B22AA000961DF4 /* ConfigManager.swift in Sources */,
 				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
