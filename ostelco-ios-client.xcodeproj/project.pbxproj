@@ -2394,7 +2394,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/SupportingFiles/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -2422,7 +2422,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/SupportingFiles/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
@@ -2677,7 +2677,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development sg.redotter.dev.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/SupportingFiles/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2707,7 +2707,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.dev.selfcare";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/SupportingFiles/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

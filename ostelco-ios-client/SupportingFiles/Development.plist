@@ -20,6 +20,8 @@
 	<string>1.1</string>
 	<key>CFBundleVersion</key>
 	<string>55</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
 		<string>https://dl-dev.oya.world/links</string>
@@ -31,11 +33,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Used for verifying your identity</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
+	<string>To give you mobile data, by law, we have to verify which country you're in.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
+	<string>To give you mobile data, by law, we have to verify which country you're in.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To give you mobile data, by law, we have to verify which country you&apos;re in.</string>
+	<string>To give you mobile data, by law, we have to verify which country you're in.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Is anyone even reading this?</string>
 	<key>UILaunchStoryboardName</key>
@@ -65,11 +67,6 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 </dict>
 </plist>
