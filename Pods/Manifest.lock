@@ -2,6 +2,8 @@ PODS:
   - Crashlytics (3.13.1):
     - Fabric (~> 1.10.1)
   - Fabric (1.10.1)
+  - Firebase/Analytics (5.20.2):
+    - Firebase/Core
   - Firebase/Auth (5.20.2):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.2)
@@ -112,8 +114,8 @@ PODS:
 DEPENDENCIES:
   - Crashlytics (~> 3.13.1)
   - Fabric (~> 1.10.0)
+  - Firebase/Analytics (~> 5.20.1)
   - Firebase/Auth (~> 5.20.1)
-  - Firebase/Core (~> 5.20.1)
   - Firebase/DynamicLinks (~> 5.20.1)
   - Firebase/Messaging (~> 5.20.1)
   - FreshchatSDK (~> 2.5.1)
@@ -172,6 +174,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: bc2e301be91700bcc06d9c4795e835a1223af22d
+PODFILE CHECKSUM: f2ce7676d85b41696cff301e9581b42aef3f1244
 
 COCOAPODS: 1.6.1
