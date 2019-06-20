@@ -83,6 +83,8 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
 		048C78DA2191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
+		0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
+		0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
 		04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
 		04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
@@ -460,6 +462,7 @@
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
@@ -1030,6 +1033,7 @@
 				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
+				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -1979,6 +1983,7 @@
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */,
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
+				0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */,
 				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
@@ -2186,6 +2191,7 @@
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
+				0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */,
 				C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
