@@ -1,4 +1,4 @@
-CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities-ac14cd06
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 OTHER_LDFLAGS = $(inherited) -l"z" -framework "Security" -framework "SystemConfiguration"
 PODS_BUILD_DIR = ${BUILD_DIR}

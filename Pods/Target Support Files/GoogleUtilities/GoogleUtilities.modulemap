@@ -1,5 +1,5 @@
 framework module GoogleUtilities {
-  umbrella header "GoogleUtilities-Environment-Logger-umbrella.h"
+  umbrella header "GoogleUtilities-umbrella.h"
 
   export *
   module * { export * }

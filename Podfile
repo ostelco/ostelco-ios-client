@@ -14,7 +14,6 @@ end
 
 # Framework target
 target 'ostelco-core' do
-  pod 'Firebase/Auth', firebase_version
   pod 'PromiseKit', '~> 6.8.4' # Promises for Swift
 end
 
@@ -22,6 +21,7 @@ abstract_target 'ostelco-ios' do
   pod 'Crashlytics', '~>3.13.1'
   pod 'Fabric', '~>1.10.0'
   pod 'FreshchatSDK', '~>2.5.1' # Customer Support live chat
+  pod 'Firebase/Auth', firebase_version
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
   pod 'Firebase/Analytics', firebase_version

@@ -114,7 +114,7 @@ class CountryCoordinatorTests: XCTestCase {
         XCTAssertEqual(destination, .locationProblem(wrongCountry))
     }
     
-    func testDebugRoutingAlwaysThinksWereInSingaporeOrTheUS() {
+    func testDebugRoutingAlwaysThinksWereInNorwayOrSingaporeOrTheUS() {
         self.testLocationController.mockAuthorizationStatus = .authorizedAlways
         self.testLocationController.mockLocation = AmericaPlacemark.location
         guard let wrongLocationDestinationSingapore = self.testCoordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: self.singapore).awaitResult(in: self) else {
@@ -135,7 +135,7 @@ class CountryCoordinatorTests: XCTestCase {
             return
         }
         
-        let wrongCountry = LocationProblem.authorizedButWrongCountry(expected: "Singapore or the US", actual: self.tuvalu.nameOrPlaceholder)
+        let wrongCountry = LocationProblem.authorizedButWrongCountry(expected: "Norway, Singapore or the US", actual: self.tuvalu.nameOrPlaceholder)
         XCTAssertEqual(correctDestinationTuvalu, .locationProblem(wrongCountry))
     }
 }

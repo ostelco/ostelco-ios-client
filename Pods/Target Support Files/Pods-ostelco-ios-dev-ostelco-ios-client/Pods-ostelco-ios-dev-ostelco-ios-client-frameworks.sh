@@ -154,8 +154,8 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-ac14cd06/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/JumioCore.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/Netverify.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/NetverifyBarcode.framework"
@@ -169,8 +169,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities-ac14cd06/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/JumioCore.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/Netverify.framework"
   install_framework "${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2/NetverifyBarcode.framework"
