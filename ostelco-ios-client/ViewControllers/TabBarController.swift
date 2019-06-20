@@ -46,7 +46,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if tabBarController.viewControllers!.firstIndex(of: viewController) == 1 {
             updateBadgeCount(to: 0)
-            Freshchat.sharedInstance().showConversations(self)
+            FreshchatManager.shared.show(self)
             return false
         }
         return true
