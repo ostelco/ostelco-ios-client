@@ -25,7 +25,6 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
   pod 'Firebase/Analytics', firebase_version
-  pod 'Firebase/Performance', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>3.1.2' # eKYC
   pod 'Stripe', '~>15.0.0' # Payments
   pod 'SwiftLint', '~>0.32.0'
