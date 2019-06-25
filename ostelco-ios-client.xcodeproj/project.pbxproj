@@ -31,6 +31,8 @@
 		042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F1223D0BE700806438 /* NRICVerifyViewController.swift */; };
 		042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
+		042CA82E22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */; };
+		042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -420,6 +422,7 @@
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRICVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
+		042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToHelpViewController.swift; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
@@ -1143,6 +1146,7 @@
 				047F28FD2224415E00FC6A8F /* Login */,
 				9BBEEE11228D952C00EED7F5 /* ReusableAlerts */,
 				047F2901222441A900FC6A8F /* SignUp */,
+				042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1950,6 +1954,7 @@
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
 				9B4F1A4E22A7F9C200FCC8CC /* EmailCoordinator.swift in Sources */,
+				042CA82E22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
@@ -2158,6 +2163,7 @@
 				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				9B4F1A4F22A7FAFB00FCC8CC /* EmailCoordinator.swift in Sources */,
+				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
