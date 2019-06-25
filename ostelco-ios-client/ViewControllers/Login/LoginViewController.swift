@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     /// Has to be set up through `prepareForSegue` when this VC is loaded
     // swiftlint:disable:next implicitly_unwrapped_optional
     private var pageController: UIPageViewController!
+    var rootCoordinator: RootCoordinator!
     
     private lazy var dataSource: PageControllerDataSource = {
         let pages = OnboardingPage.allCases.map { $0.viewController }
@@ -67,7 +68,7 @@ class LoginViewController: UIViewController {
     }
     
     private func signInTapped() {
-        UIApplication.shared.typedDelegate.rootCoordinator
+        rootCoordinator
             .navigate(to: .email, from: self, animated: true)
     }
 }

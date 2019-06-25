@@ -24,14 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var myInfoDelegate: MyInfoCallbackHandler?
     var fcmToken: String?
     
-    private(set) lazy var rootCoordinator: RootCoordinator = {
-        guard let window = self.window else {
-            fatalError("No window?!")
-        }
-        
-        return RootCoordinator(window: window)
-    }()
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
     
@@ -121,9 +113,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
-                .done { [weak self] in
-                    self?.rootCoordinator.determineAndNavigateToDestination()
-                }
                 .catch { error in
                     ApplicationErrors.log(error)
                     debugPrint("ERROR SIGNING IN: \(error)")
@@ -135,9 +124,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UsernameAndPasswordLinkManager.isUsernameAndPasswordLink(incomingURL) {
             UsernameAndPasswordLinkManager.signInWithUsernameAndPassword(incomingURL)
-                .done { [weak self] in
- self?.rootCoordinator.determineAndNavigateToDestination()
-                }
                 .catch { error in
                     ApplicationErrors.log(error)
                     debugPrint("ERROR SIGNING IN WITH USERNAME AND PASSWORD: \(error)")

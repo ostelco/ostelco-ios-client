@@ -72,7 +72,6 @@ class UserManager: TokenProvider {
             }
             .done {
                 self.logOut() // no `weak self` since this is a singleton.
-                UIApplication.shared.typedDelegate.rootCoordinator.goBackToLogin()
             }
             .catch { [weak viewController] error in
                 ApplicationErrors.log(error)

@@ -52,6 +52,8 @@ class InternetConnectionMonitor {
     }
     
     private func handleUpdatedPath(_ path: NWPath) {
+        // TODO: Split out to a separate parent view controller
+        /*
         DispatchQueue.main.async {
             let coordinator = UIApplication.shared.typedDelegate.rootCoordinator
             switch path.status {
@@ -64,5 +66,6 @@ class InternetConnectionMonitor {
                 ApplicationErrors.assertAndLog("Apple added something else here you need to handle!")
             }
         }
+         */
     }
 }

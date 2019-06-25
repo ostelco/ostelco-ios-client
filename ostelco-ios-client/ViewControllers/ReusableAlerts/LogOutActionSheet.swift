@@ -17,7 +17,6 @@ class LogOutActionSheet: UIAlertController {
         
         let logOutAction = UIAlertAction.destructiveAction(title: "Log Out") {_ in
             UserManager.shared.logOut()
-            UIApplication.shared.typedDelegate.rootCoordinator.goBackToLogin()
         }
         
         self.addAction(logOutAction)

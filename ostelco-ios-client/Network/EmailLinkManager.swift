@@ -66,6 +66,8 @@ struct EmailLinkManager {
         }
         
         return Promise { seal in
+            // We are going to login with this email, clear it now, so if it fails you start over
+            UserDefaultsWrapper.pendingEmail = nil
             Auth.auth().signIn(withEmail: email, link: link.absoluteString) { authDataResult, error in
                 if let firebaseError = error {
                     seal.reject(firebaseError)
@@ -77,8 +79,6 @@ struct EmailLinkManager {
                     return
                 }
                 
-                // We've successfully logged in, we can delete the pending email.
-                UserDefaultsWrapper.pendingEmail = nil
                 seal.fulfill(())
             }
         }

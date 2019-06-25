@@ -22,8 +22,6 @@ class RootCoordinator {
         case home
     }
     
-    let window: UIWindow
-    
     private var noInternetVC: UIViewController?
     private lazy var onboardingNavController: UINavigationController = {
         let nav = UINavigationController()
@@ -38,31 +36,24 @@ class RootCoordinator {
     private var esimCoordinator: ESimCoordinator?
     
     private let userManager: UserManager
+    private let root: UIViewController
     
-    init(window: UIWindow,
+    init(root: UIViewController,
          userManager: UserManager = .shared) {
-        self.window = window
+        self.root = root
         self.userManager = userManager
     }
     
     var topViewController: UIViewController? {
-        return self.window.rootViewController?.topPresentedViewController()
+        return self.root.topPresentedViewController()
     }
     
     func replaceRootViewController(with newRoot: UIViewController) {
-        self.window.rootViewController = newRoot
+        self.root.embedFullViewChild(newRoot)
     }
     
     func goBackToLogin() {
-        if
-            let presenter = self.topViewController?.presentingViewController,
-            presenter != self.window.rootViewController {
-                presenter.dismiss(animated: false, completion: { [weak self] in
-                    self?.goBackToLogin()
-                })
-        } else {
-            self.navigate(to: .login, from: nil, animated: true)
-        }
+        self.navigate(to: .login, from: nil, animated: true)
     }
     
     func determineAndNavigateToDestination(animated: Bool = true) {
@@ -220,7 +211,7 @@ class RootCoordinator {
             return
         }
      
-        presentingViewController.present(self.onboardingNavController, animated: animated)
+        presentingViewController.embedFullViewChild(self.onboardingNavController)
     }
     
     func showNoInternet() {

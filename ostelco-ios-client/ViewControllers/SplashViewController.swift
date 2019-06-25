@@ -20,10 +20,4 @@ class SplashViewController: UIViewController, StoryboardLoadable {
         super.viewDidLoad()
         self.view.backgroundColor = OstelcoColor.oyaBlue.toUIColor
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        UIApplication.shared.typedDelegate.rootCoordinator
-            .determineAndNavigateToDestination()
-    }
 }
