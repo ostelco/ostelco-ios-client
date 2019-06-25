@@ -292,8 +292,6 @@
 		9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */; };
 		9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */; };
 		9BBF706B2266162F00E4B9B4 /* UITableView+Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */; };
-		9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
-		9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */; };
 		9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */; };
 		9BBF707A22675C3900E4B9B4 /* Array+FancyAppend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */; };
@@ -630,7 +628,6 @@
 		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
 		9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
 		9BBF706A2266162F00E4B9B4 /* UITableView+Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generics.swift"; sourceTree = "<group>"; };
-		9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TypedDelegate.swift"; sourceTree = "<group>"; };
 		9BBF7074226751A200E4B9B4 /* Netverify+Ostelco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Netverify+Ostelco.swift"; sourceTree = "<group>"; };
 		9BBF7077226753F700E4B9B4 /* Array+FancyAppend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FancyAppend.swift"; sourceTree = "<group>"; };
 		9BC465352270AD49001951BF /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
@@ -1251,7 +1248,6 @@
 				041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */,
 				9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */,
 				9BE2D45D225B642500B51999 /* UIApplicaiton+Testing.swift */,
-				9BBF70702267423A00E4B9B4 /* UIApplication+TypedDelegate.swift */,
 				04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */,
 				04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */,
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
@@ -1975,7 +1971,6 @@
 				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9B4F1A3C22A6A77900FCC8CC /* SingaporeEKYCCoordinator.swift in Sources */,
-				9BBF70712267423A00E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* RootCoordinator.swift in Sources */,
 				9BBEEE16228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
 				042928F2223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
@@ -2212,7 +2207,6 @@
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
 				9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
-				9BBF70722267427200E4B9B4 /* UIApplication+TypedDelegate.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,

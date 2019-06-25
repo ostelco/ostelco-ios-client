@@ -19,8 +19,18 @@ class SingPassCoordinator: NSObject {
  
     weak var delegate: SingPassCoordinatorDelegate?
     
+    init(delegate: SingPassCoordinatorDelegate?) {
+        super.init()
+        self.delegate = delegate
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleCallback(notification:)), name: MyInfoNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func startLogin(from viewController: UIViewController) {
-        UIApplication.shared.typedDelegate.myInfoDelegate = self
         let spinnerView = viewController.showSpinner(onView: viewController.view)
         // Fetch the configuration from prime
         APIManager.shared.primeAPI
@@ -64,21 +74,18 @@ class SingPassCoordinator: NSObject {
         webView.delegate = self
         viewController.present(webView, animated: true)
     }
+    
+    @objc func handleCallback(notification: NSNotification) {
+        if let queryItems = notification.object as? [URLQueryItem] {
+            UserDefaultsWrapper.pendingSingPass = queryItems
+            self.delegate?.signInSucceeded(myInfoQueryItems: queryItems)
+        }
+    }
+
 }
 
 extension SingPassCoordinator: SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true)
-    }
-}
-
-extension SingPassCoordinator: MyInfoCallbackHandler {
-    func handleCallback(queryItems: [URLQueryItem]?, error: NSError?) {
-        if let queryItems = queryItems {
-            UserDefaultsWrapper.pendingSingPass = queryItems
-            self.delegate?.signInSucceeded(myInfoQueryItems: queryItems)
-        } else {
-            self.delegate?.signInFailed(error: error)
-        }
     }
 }

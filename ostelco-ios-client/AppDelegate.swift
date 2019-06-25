@@ -14,14 +14,11 @@ import PromiseKit
 import Stripe
 import UIKit
 
-protocol MyInfoCallbackHandler: class {
-    func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
-}
+let MyInfoNotification: Notification.Name = Notification.Name(rawValue: "MyInfoNotification")
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    weak var myInfoDelegate: MyInfoCallbackHandler?
     var fcmToken: String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -95,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func handleMyInfoCallback(_ url: URL) -> Bool {
         if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-            myInfoDelegate?.handleCallback(queryItems: urlComponents.queryItems, error: nil)
+            NotificationCenter.default.post(name: MyInfoNotification, object: urlComponents.queryItems)
             return true
         }
         return false

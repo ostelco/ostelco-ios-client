@@ -100,7 +100,10 @@ class LocationProblemViewController: UIViewController {
             LocationController.shared.requestAuthorization()
         case .disabledInSettings,
              .deniedByUser:
-            UIApplication.shared.openSettings()
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+                fatalError("Could not construct settings URL!")
+            }
+            UIApplication.shared.open(settingsURL)
         case .authorizedButWrongCountry:
             // Re-check the user's location
             self.checkLocation()

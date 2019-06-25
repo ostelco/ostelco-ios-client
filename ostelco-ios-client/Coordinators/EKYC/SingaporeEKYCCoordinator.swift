@@ -149,8 +149,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             nricVC.coordinator = self
             self.navigationController.pushViewController(nricVC, animated: animated)
         case .singPass:
-            let singPassCoordinator = SingPassCoordinator()
-            singPassCoordinator.delegate = self
+            let singPassCoordinator = SingPassCoordinator(delegate: self)
             singPassCoordinator.startLogin(from: self.navigationController)
             self.singPassCoordinator = singPassCoordinator
         case .verifySingPassAddress:
