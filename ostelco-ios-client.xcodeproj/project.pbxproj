@@ -33,6 +33,10 @@
 		042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */; };
 		042CA82E22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */; };
 		042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */; };
+		042CA83122C21D30000F0622 /* AuthParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83022C21D30000F0622 /* AuthParentViewController.swift */; };
+		042CA83222C21D30000F0622 /* AuthParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83022C21D30000F0622 /* AuthParentViewController.swift */; };
+		042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
+		042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -423,6 +427,8 @@
 		042928F1223D0BE700806438 /* NRICVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICVerifyViewController.swift; sourceTree = "<group>"; };
 		042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCompletedViewController.swift; sourceTree = "<group>"; };
 		042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToHelpViewController.swift; sourceTree = "<group>"; };
+		042CA83022C21D30000F0622 /* AuthParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParentViewController.swift; sourceTree = "<group>"; };
+		042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmbedFullViewChild.swift"; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
@@ -1147,6 +1153,7 @@
 				9BBEEE11228D952C00EED7F5 /* ReusableAlerts */,
 				047F2901222441A900FC6A8F /* SignUp */,
 				042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */,
+				042CA83022C21D30000F0622 /* AuthParentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1246,6 +1253,7 @@
 				04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */,
 				041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */,
 				9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */,
+				042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1977,6 +1985,7 @@
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
+				042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
@@ -2027,6 +2036,7 @@
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
+				042CA83122C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
@@ -2186,6 +2196,7 @@
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
+				042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
@@ -2236,6 +2247,7 @@
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
+				042CA83222C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				048533A1223C1882007C89F4 /* Product.swift in Sources */,
 				047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,

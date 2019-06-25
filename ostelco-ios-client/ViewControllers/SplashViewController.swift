@@ -12,7 +12,7 @@ import UIKit
 
 class SplashViewController: UIViewController, StoryboardLoadable {
     static let storyboard: Storyboard = .splash
-    static let isInitialViewController = true
+    static let isInitialViewController = false
     
     @IBOutlet private weak var imageView: UIImageView!
     var spinnerView: UIView?
