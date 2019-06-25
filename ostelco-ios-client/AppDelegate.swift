@@ -46,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationSupportsShakeToEdit = true
         
         self.registerForNotifications()
-        InternetConnectionMonitor.shared.start()
 
         return true
     }

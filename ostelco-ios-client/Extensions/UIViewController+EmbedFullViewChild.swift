@@ -18,8 +18,8 @@ extension UIViewController {
         let newView = controller.view
         view.addSubview(newView!)
         newView?.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[newView]-(0)-|", options: [], metrics: nil, views: ["newView" : newView!]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[newView]-(0)-|", options: [], metrics: nil, views: ["newView" : newView!]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[newView]-(0)-|", options: [], metrics: nil, views: ["newView": newView!]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[newView]-(0)-|", options: [], metrics: nil, views: ["newView": newView!]))
         
         addChild(controller)
         controller.didMove(toParent: self)

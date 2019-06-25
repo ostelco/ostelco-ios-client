@@ -21,7 +21,7 @@ class AuthParentViewController: UIViewController {
     }
     
     private func listenForAuthState() {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+        Auth.auth().addStateDidChangeListener { (_, user) in
             if user == nil {
                 // NOPE! We need to log in.
                 let vc = LoginViewController.fromStoryboard()

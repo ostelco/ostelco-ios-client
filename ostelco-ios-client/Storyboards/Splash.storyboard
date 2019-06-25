@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wmV-iq-aAT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kWU-KX-ZP3">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,6 +37,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEL-B7-INL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1762" y="-336"/>
+        </scene>
+        <!--Internet Connection Parent View Controller-->
+        <scene sceneID="7a0-Yw-kfh">
+            <objects>
+                <viewController id="kWU-KX-ZP3" customClass="InternetConnectionParentViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qOz-d5-gKB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBA-yF-JBY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <connections>
+                                    <segue destination="wmV-iq-aAT" kind="embed" id="LAc-XM-E9v"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FBA-yF-JBY" firstAttribute="leading" secondItem="qOz-d5-gKB" secondAttribute="leading" id="CcU-yG-bPA"/>
+                            <constraint firstAttribute="trailing" secondItem="FBA-yF-JBY" secondAttribute="trailing" id="TPL-Nn-vV4"/>
+                            <constraint firstItem="FBA-yF-JBY" firstAttribute="top" secondItem="qOz-d5-gKB" secondAttribute="top" id="YiM-78-N1T"/>
+                            <constraint firstAttribute="bottom" secondItem="FBA-yF-JBY" secondAttribute="bottom" id="iHz-Wk-2yQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TjY-XX-t8d"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rY-Tx-sMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2732" y="-1200"/>
         </scene>
         <!--Shake To Help View Controller-->
         <scene sceneID="4M5-Hf-aR9">

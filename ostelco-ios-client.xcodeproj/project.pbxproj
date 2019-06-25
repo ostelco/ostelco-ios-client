@@ -37,6 +37,8 @@
 		042CA83222C21D30000F0622 /* AuthParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83022C21D30000F0622 /* AuthParentViewController.swift */; };
 		042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
 		042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
+		0437197622C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
+		0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -429,6 +431,7 @@
 		042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeToHelpViewController.swift; sourceTree = "<group>"; };
 		042CA83022C21D30000F0622 /* AuthParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParentViewController.swift; sourceTree = "<group>"; };
 		042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmbedFullViewChild.swift"; sourceTree = "<group>"; };
+		0437197522C249D900609355 /* InternetConnectionParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionParentViewController.swift; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
@@ -1154,6 +1157,7 @@
 				047F2901222441A900FC6A8F /* SignUp */,
 				042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */,
 				042CA83022C21D30000F0622 /* AuthParentViewController.swift */,
+				0437197522C249D900609355 /* InternetConnectionParentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2038,6 +2042,7 @@
 				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				042CA83122C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
+				0437197622C249D900609355 /* InternetConnectionParentViewController.swift in Sources */,
 				9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
@@ -2249,6 +2254,7 @@
 				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				042CA83222C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
+				0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */,
 				048533A1223C1882007C89F4 /* Product.swift in Sources */,
 				047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 			);
