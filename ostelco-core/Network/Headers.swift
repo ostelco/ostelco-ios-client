@@ -24,7 +24,7 @@ public enum HeaderValue {
     case testing(String)
     case primeDirect
     case primeCanary
-
+    
     public var toString: String {
         switch self {
         case .applicationJSON:
@@ -85,6 +85,8 @@ public struct Headers {
             
             self.addValue(.token(token), for: .authorization)
         } // else adding auth is not necessary.
+        
+        self.addValue(.primeDirect, for: .mode)
     }
     
     /// Adds the given value for the given key.
