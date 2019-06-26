@@ -55,18 +55,21 @@ open class PrimeAPI: BasicNetwork {
     private let tokenProvider: TokenProvider
 
     private var apollo: ApolloClient?
+    private var apolloAuthToken = ""
 
     public func getApolloClient(token: String) -> ApolloClient {
+        // Use the last token
+        if apolloAuthToken == token {
+            return apollo!
+        }
+        apolloAuthToken = token
         apollo = {
             let configuration = URLSessionConfiguration.default
-            // Add additional headers as needed
             configuration.httpAdditionalHeaders = [
-                "Authorization": "Bearer \(token)",
+                "Authorization": "Bearer \(apolloAuthToken)",
                 "x-mode": "prime-direct"
-            ] // Replace `<token>`
-
-            let url = URL(string: "https://api.dev.oya.world/graphql")!
-
+            ]
+            let url = self.baseURL.appendingPathComponent(RootEndpoint.graphql.value, isDirectory: false)
             return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
         }()
         return apollo!
