@@ -44,4 +44,10 @@ class EnumHelperTests: XCTestCase {
                           "Could not find enum case for \(fileName).mp4")
         }
     }
+    
+    func testAllImageAssetsCreateImages() {
+        for asset in ImageAsset.allCases {
+            XCTAssertNoThrow(UIImage(from: asset))
+        }
+    }
 }

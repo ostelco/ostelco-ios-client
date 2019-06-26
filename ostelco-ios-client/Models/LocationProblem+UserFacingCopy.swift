@@ -14,11 +14,10 @@ extension LocationProblem {
     
     /// The image to use to illustrate the problem.
     var image: UIImage? {
-        // This will be addressed via codegen later
         switch self {
         case .disabledInSettings,
              .notDetermined:
-            return UIImage(named: "instructionsLocation")!
+            return .ostelco_instructionsLocation
         case .deniedByUser,
              .restrictedByParentalControls,
              .authorizedButWrongCountry:

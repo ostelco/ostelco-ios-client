@@ -187,6 +187,8 @@
 		9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6E34CB22B199840029AF76 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34CA22B199840029AF76 /* String+Empty.swift */; };
+		9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34C222B041500029AF76 /* ImageAsset.swift */; };
+		9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34C222B041500029AF76 /* ImageAsset.swift */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
@@ -548,6 +550,7 @@
 		9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCoordinator.swift; sourceTree = "<group>"; };
 		9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		9B6E34CA22B199840029AF76 /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		9B6E34C222B041500029AF76 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFontSize.swift; sourceTree = "<group>"; };
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
 		9B6E3A23227091EF0063EBAA /* LocationProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblem.swift; sourceTree = "<group>"; };
@@ -740,6 +743,7 @@
 				9BE2D440225B5CB700B51999 /* Assets */,
 				9B4DAD942281A717003810BE /* Coordinators */,
 				C2F6A3C4224E087900AF5087 /* Extensions */,
+				9B6E34C122B041350029AF76 /* Generated */,
 				047F29302224589900FC6A8F /* Models */,
 				9B920F60225B8C51001EF9CD /* ModelControllers */,
 				047F292F2224589300FC6A8F /* Network */,
@@ -860,7 +864,6 @@
 			isa = PBXGroup;
 			children = (
 				044725AE2281B7E6006184E5 /* ExternalLink.swift */,
-				9B305F97229693EA00B89FCB /* GifVideo.swift */,
 				9BC4653B2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift */,
 				0485339F223C1882007C89F4 /* Product.swift */,
 				C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */,
@@ -934,6 +937,15 @@
 				9B6A928A22844F8A007F5EC9 /* MockAPITests.swift */,
 			);
 			path = APITests;
+			sourceTree = "<group>";
+		};
+		9B6E34C122B041350029AF76 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				9B6E34C222B041500029AF76 /* ImageAsset.swift */,
+				9B305F97229693EA00B89FCB /* GifVideo.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		9B6E3A0B226F6FA70063EBAA /* fonts */ = {
@@ -1942,6 +1954,7 @@
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
+				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */,
@@ -2148,6 +2161,7 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
+				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
