@@ -8,6 +8,32 @@
 
 import PromiseKit
 import Foundation
+import Apollo
+
+public typealias Long = Int64
+
+extension Int64: JSONDecodable, JSONEncodable {
+    public init(jsonValue value: JSONValue) throws {
+        debugPrint(value)
+        if let longValue = value as? Int64 {
+            // If this is integer, grab it
+            self = longValue
+        } else {
+            // Otherwise convert form a string
+            guard let string = value as? String else {
+                throw JSONDecodingError.couldNotConvert(value: value, to: String.self)
+            }
+            guard let number = Int64(string) else {
+                throw JSONDecodingError.couldNotConvert(value: value, to: Int64.self)
+            }
+            self = number
+        }
+    }
+
+    public var jsonValue: JSONValue {
+        return String(self)
+    }
+}
 
 /// A class to wrap APIs controlled by the Prime backend.
 open class PrimeAPI: BasicNetwork {
@@ -27,7 +53,25 @@ open class PrimeAPI: BasicNetwork {
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private let tokenProvider: TokenProvider
-    
+
+    private var apollo: ApolloClient?
+
+    public func getApolloClient(token: String) -> ApolloClient {
+        apollo = {
+            let configuration = URLSessionConfiguration.default
+            // Add additional headers as needed
+            configuration.httpAdditionalHeaders = [
+                "Authorization": "Bearer \(token)",
+                "x-mode": "prime-direct"
+            ] // Replace `<token>`
+
+            let url = URL(string: "https://api.dev.oya.world/graphql")!
+
+            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        }()
+        return apollo!
+    }
+
     /// Designated Initializer.
     ///
     /// - Parameters:
@@ -49,7 +93,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter pushToken: The push token to send
     /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
-    public func sendPushToken(_ pushToken: PushToken) -> Promise<Void> {
+    public func sendPushToken(_ pushToken: PushToken) -> PromiseKit.Promise<Void> {
         return self.sendObject(pushToken, to: RootEndpoint.applicationToken.value, method: .POST)
             .map { data, response in
                 try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
@@ -57,19 +101,20 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
-    public func loadBundles() -> Promise<[BundleModel]> {
+    public func loadBundles() -> PromiseKit.Promise<[BundleModel]> {
         return self.loadData(from: RootEndpoint.bundles.value)
             .map { try self.decoder.decode([BundleModel].self, from: $0) }
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext() -> Promise<Context> {
+    public func loadContext() -> PromiseKit.Promise<Context> {
+        getContextGQL()
         return self.loadData(from: RootEndpoint.context.value)
             .map { try self.decoder.decode(Context.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
-    public func loadPurchases() -> Promise<[PurchaseModel]> {
+    public func loadPurchases() -> PromiseKit.Promise<[PurchaseModel]> {
         return self.loadData(from: RootEndpoint.purchases.value)
             .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
     }
@@ -77,7 +122,7 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
-    public func loadProducts() -> Promise<[ProductModel]> {
+    public func loadProducts() -> PromiseKit.Promise<[ProductModel]> {
         return self.loadData(from: RootEndpoint.products.value)
             .map { try self.decoder.decode([ProductModel].self, from: $0) }
     }
@@ -88,7 +133,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - sku: The SKU to purchase
     ///   - payment: The payment information to use to purchase it
     /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
-    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> Promise<Void> {
+    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<Void> {
         let productEndpoints: [ProductEndpoint] = [
             .sku(sku),
             .purchase
@@ -111,7 +156,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
-    public func createCustomer(with userSetup: UserSetup) -> Promise<CustomerModel> {
+    public func createCustomer(with userSetup: UserSetup) -> PromiseKit.Promise<CustomerModel> {
         return self.sendQuery(to: RootEndpoint.customer.value, queryItems: userSetup.asQueryItems, method: .POST)
             .map { data, response in
                 try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
@@ -122,9 +167,9 @@ open class PrimeAPI: BasicNetwork {
     /// Deletes the logged in customer.
     ///
     /// - Returns: A promise which when fulfilled, indicates successful deletion.
-    public func deleteCustomer() -> Promise<Void> {
+    public func deleteCustomer() -> PromiseKit.Promise<Void> {
         return self.tokenProvider.getToken()
-            .then { token -> Promise<Data> in
+            .then { token -> PromiseKit.Promise<Data> in
                 let request = Request(baseURL: self.baseURL,
                                       path: RootEndpoint.customer.value,
                                       method: .DELETE,
@@ -138,8 +183,22 @@ open class PrimeAPI: BasicNetwork {
         }
     }
 
+    public func getContextGQL() {
+        self.tokenProvider.getToken()
+            .done { token in
+                let apollo =  self.getApolloClient(token: token)
+                apollo.fetch(query: GetContextQuery()) { (result, error) in
+                    debugPrint(result?.data, error)
+                    if let data = result?.data {
+                        debugPrint(data.context.customer.nickname)
+                        debugPrint(data.context.customer.contactEmail)
+                    }
+                }
+            }
+    }
+
     /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
-    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> Promise<[AnyHashable: Any]> {
+    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> PromiseKit.Promise<[AnyHashable: Any]> {
         let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
         return self.loadData(from: path, queryItems: request.asQueryItems)
             .map { data -> [AnyHashable: Any] in
@@ -154,7 +213,7 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
-    public func loadRegions() -> Promise<[RegionResponse]> {
+    public func loadRegions() -> PromiseKit.Promise<[RegionResponse]> {
         return self.loadData(from: RootEndpoint.regions.value)
             .map { try self.decoder.decode([RegionResponse].self, from: $0) }
     }
@@ -163,7 +222,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request
     /// - Returns: A promise which when fulfilled contains the requested region.
-    public func loadRegion(code: String) -> Promise<RegionResponse> {
+    public func loadRegion(code: String) -> PromiseKit.Promise<RegionResponse> {
         let path = RootEndpoint.regions.pathByAddingEndpoints([RegionEndpoint.region(code: code)])
         
         return self.loadData(from: path)
@@ -174,7 +233,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request SIM profiles for
     /// - Returns: A promise which when fullfilled contains the requested profiles
-    public func loadSimProfilesForRegion(code: String) -> Promise<[SimProfile]> {
+    public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[SimProfile]> {
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .simProfiles
@@ -190,7 +249,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region code to use
     /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
-    public func createSimProfileForRegion(code: String) -> Promise<SimProfile> {
+    public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<SimProfile> {
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .simProfiles
@@ -211,7 +270,7 @@ open class PrimeAPI: BasicNetwork {
     ///     - code: The region code to use
     ///     - iccId: the iccId of the sim profile to resend QR code email
     /// - Returns: The sim profile with the given iccid
-    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> Promise<SimProfile> {
+    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<SimProfile> {
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .simProfiles,
@@ -229,7 +288,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request a Jumio scan request for
     /// - Returns: A promise which when fulfilled contains the requested data
-    public func createJumioScanForRegion(code: String) -> Promise<Scan> {
+    public func createJumioScanForRegion(code: String) -> PromiseKit.Promise<Scan> {
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .kyc,
@@ -251,7 +310,7 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
-    public func getRegionFromRegions() -> Promise<RegionResponse> {
+    public func getRegionFromRegions() -> PromiseKit.Promise<RegionResponse> {
         return self.loadRegions()
             .map { regions -> RegionResponse in
                 guard let region = RegionResponse.getRegionFromRegionResponseArray(regions) else {
@@ -269,7 +328,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - regionCode: The region to add the address for.
     /// - Returns: A promise which, when fulfilled, indicates successful completion of the operation.
     public func addAddress(_ address: EKYCAddress,
-                           forRegion regionCode: String) -> Promise<Void> {
+                           forRegion regionCode: String) -> PromiseKit.Promise<Void> {
         let profileEndpoints: [RegionEndpoint] = [
             .region(code: regionCode),
             .kyc,
@@ -290,7 +349,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - update: The info to be updated.
     ///   - code: The region to update the user profile in
     /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
-    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> Promise<Void> {
+    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> PromiseKit.Promise<Void> {
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .kyc,
@@ -314,7 +373,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - regionCode: The region code to use to create the call.
     /// - Returns: A promise, which, when fulfilled, will return true if the NRIC is valid and false if not.
     public func validateNRIC(_ nric: String,
-                             forRegion regionCode: String) -> Promise<Bool> {
+                             forRegion regionCode: String) -> PromiseKit.Promise<Bool> {
         let nricEndpoints: [RegionEndpoint] = [
             .region(code: regionCode),
             .kyc,
@@ -328,7 +387,7 @@ open class PrimeAPI: BasicNetwork {
             .map { _ in
                 return true
             }
-            .recover { error -> Promise<Bool> in
+            .recover { error -> PromiseKit.Promise<Bool> in
                 switch error {
                 case APIHelper.Error.jsonError(let jsonError):
                     if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
@@ -347,7 +406,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The code associated with the user in SingPass
     /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoDetails`.
-    public func loadSingpassInfo(code: String) -> Promise<MyInfoDetails> {
+    public func loadSingpassInfo(code: String) -> PromiseKit.Promise<MyInfoDetails> {
         let myInfoEndpoints: [RegionEndpoint] = [
             .region(code: "sg"),
             .kyc,
@@ -364,7 +423,7 @@ open class PrimeAPI: BasicNetwork {
     /// Loads configuration details of MyInfo sign in (singapore only!)
     ///
     /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoConfig`.
-    public func loadMyInfoConfig() -> Promise<MyInfoConfig> {
+    public func loadMyInfoConfig() -> PromiseKit.Promise<MyInfoConfig> {
         let myInfoEndpoints: [RegionEndpoint] = [
             .region(code: "sg"),
             .kyc,
@@ -384,7 +443,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter path: The path to load data from
     /// - Returns: A promise, which when fulfilled, will contain the loaded data.
-    public func loadData(from path: String, queryItems: [URLQueryItem]? = nil) -> Promise<Data> {
+    public func loadData(from path: String, queryItems: [URLQueryItem]? = nil) -> PromiseKit.Promise<Data> {
         return self.tokenProvider.getToken()
             .map { Request(baseURL: self.baseURL,
                            path: path,
@@ -402,7 +461,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - path: The path to send it to
     ///   - method: The `HTTPMethod` to use to send it.
     /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
-    public func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+    public func sendObject<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> PromiseKit.Promise<(data: Data, response: URLResponse)> {
         return self.tokenProvider.getToken()
             .map { token -> Request in
                 let data = try self.encoder.encode(object)
@@ -430,7 +489,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
     public func sendQuery(to path: String,
                           queryItems: [URLQueryItem],
-                          method: HTTPMethod) -> Promise<(data: Data, response: URLResponse)> {
+                          method: HTTPMethod) -> PromiseKit.Promise<(data: Data, response: URLResponse)> {
         return self.tokenProvider.getToken()
             .map { token -> Request in
                 return Request(baseURL: self.baseURL,
