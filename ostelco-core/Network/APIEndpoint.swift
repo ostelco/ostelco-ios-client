@@ -32,7 +32,8 @@ public enum RootEndpoint: String, APIEndpoint {
     case products
     case profile
     case regions
-    
+    case graphql
+
     var value: String {
         return self.rawValue
     }
