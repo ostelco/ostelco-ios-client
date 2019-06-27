@@ -39,6 +39,7 @@
 		042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
 		0437197622C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
 		0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
+		0437197B22C3731900609355 /* StageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197A22C3731900609355 /* StageDeciderTests.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -430,6 +431,7 @@
 		042CA83022C21D30000F0622 /* AuthParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParentViewController.swift; sourceTree = "<group>"; };
 		042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmbedFullViewChild.swift"; sourceTree = "<group>"; };
 		0437197522C249D900609355 /* InternetConnectionParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionParentViewController.swift; sourceTree = "<group>"; };
+		0437197A22C3731900609355 /* StageDeciderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageDeciderTests.swift; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
@@ -925,6 +927,7 @@
 		9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				0437197A22C3731900609355 /* StageDeciderTests.swift */,
 				9B8E925E22A8384100A1E35E /* CountryCoordinatorTests.swift */,
 				9B8E926822A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift */,
 				9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */,
@@ -2121,6 +2124,7 @@
 				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
 				9B8E925D22A8349A00A1E35E /* SignUpCoordinatorTests.swift in Sources */,
 				9B8E926322A847E000A1E35E /* EsimCoordinatorTests.swift in Sources */,
+				0437197B22C3731900609355 /* StageDeciderTests.swift in Sources */,
 				9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
