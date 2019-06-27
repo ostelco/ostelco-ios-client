@@ -14,7 +14,7 @@ class EsimCoordinatorTests: XCTestCase {
     
     private lazy var testCoordinator = ESimCoordinator(navigationController: UINavigationController())
     
-    private func createProfile(with status: SimProfileStatus_New) -> SimProfile {
+    private func createProfile(with status: SimProfileStatus) -> SimProfile {
         return SimProfile(eSimActivationCode: "fake",
                           alias: "something_else",
                           iccId: "identifer",
