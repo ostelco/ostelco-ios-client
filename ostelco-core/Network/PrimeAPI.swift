@@ -190,7 +190,7 @@ open class PrimeAPI: BasicNetwork {
         self.tokenProvider.getToken()
             .done { token in
                 let apollo =  self.getApolloClient(token: token)
-                apollo.fetch(query: GetContextQuery()) { (result, error) in
+                apollo.fetch(query: PrimeGQL.GetContextQuery()) { (result, error) in
                     debugPrint(result?.data, error)
                     if let data = result?.data {
                         debugPrint(data.context.customer.nickname)
