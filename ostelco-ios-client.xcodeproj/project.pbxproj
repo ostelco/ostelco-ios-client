@@ -39,7 +39,9 @@
 		042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */; };
 		0437197622C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
 		0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197522C249D900609355 /* InternetConnectionParentViewController.swift */; };
-		0437197B22C3731900609355 /* StageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197A22C3731900609355 /* StageDeciderTests.swift */; };
+		0437197B22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197A22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift */; };
+		0437197D22C4EB5D00609355 /* StageDecider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197C22C4EB5D00609355 /* StageDecider.swift */; };
+		0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
@@ -431,7 +433,9 @@
 		042CA83022C21D30000F0622 /* AuthParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthParentViewController.swift; sourceTree = "<group>"; };
 		042CA83322C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmbedFullViewChild.swift"; sourceTree = "<group>"; };
 		0437197522C249D900609355 /* InternetConnectionParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionParentViewController.swift; sourceTree = "<group>"; };
-		0437197A22C3731900609355 /* StageDeciderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageDeciderTests.swift; sourceTree = "<group>"; };
+		0437197A22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift; sourceTree = "<group>"; };
+		0437197C22C4EB5D00609355 /* StageDecider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageDecider.swift; sourceTree = "<group>"; };
+		0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeCasesInStageDeciderTests.swift; sourceTree = "<group>"; };
 		0437CF7F224D08660022A2B8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		0437CF82224D1DAE0022A2B8 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
@@ -927,7 +931,8 @@
 		9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				0437197A22C3731900609355 /* StageDeciderTests.swift */,
+				0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */,
+				0437197A22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift */,
 				9B8E925E22A8384100A1E35E /* CountryCoordinatorTests.swift */,
 				9B8E926822A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift */,
 				9B8E925A22A8332800A1E35E /* EmailCoordinatorTests.swift */,
@@ -1074,6 +1079,7 @@
 				0493B80E2253943900989F40 /* ServerError.swift */,
 				0437CF85224D1E020022A2B8 /* SimProfile.swift */,
 				9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */,
+				0437197C22C4EB5D00609355 /* StageDecider.swift */,
 				9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */,
 				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
 			);
@@ -2091,6 +2097,7 @@
 				9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */,
 				9BC465372270AD56001951BF /* LocationController.swift in Sources */,
 				9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */,
+				0437197D22C4EB5D00609355 /* StageDecider.swift in Sources */,
 				9B821596227ADCE000DC6B64 /* BasicNetwork.swift in Sources */,
 				9B5CBF512281808B00D83D7B /* TokenProvider.swift in Sources */,
 				9B8215762279B0F800DC6B64 /* Headers.swift in Sources */,
@@ -2124,7 +2131,7 @@
 				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
 				9B8E925D22A8349A00A1E35E /* SignUpCoordinatorTests.swift in Sources */,
 				9B8E926322A847E000A1E35E /* EsimCoordinatorTests.swift in Sources */,
-				0437197B22C3731900609355 /* StageDeciderTests.swift in Sources */,
+				0437197B22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift in Sources */,
 				9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
@@ -2137,6 +2144,7 @@
 				9B8E926922A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift in Sources */,
 				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
 				9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */,
+				0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B49D95622930B690059C98F /* PushParsingTests.swift in Sources */,
 				9B8215872279F7FA00DC6B64 /* RegionResponseTests.swift in Sources */,
