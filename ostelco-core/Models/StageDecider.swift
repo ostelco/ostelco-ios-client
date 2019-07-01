@@ -74,6 +74,7 @@ struct StageDecider {
     enum IdentityVerificationOption {
         case singpass
         case scanIC
+        case jumio
     }
     
     // swiftlint:disable:next cyclomatic_complexity
@@ -137,6 +138,13 @@ struct StageDecider {
         }
         if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
             let options = identityOptionsForRegion(selectedRegion)
+            
+            if options.count == 1 {
+                if localContext.hasCompletedJumio {
+                    return .pendingVerification
+                }
+                return .jumio
+            }
             return .selectIdentityVerificationMethod(options)
         }
         if localContext.selectedRegion == nil {
@@ -153,6 +161,6 @@ struct StageDecider {
         if region.id == "sg" {
             return [.scanIC, .singpass]
         }
-        return []
+        return [.jumio]
     }
 }

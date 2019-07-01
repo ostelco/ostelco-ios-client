@@ -50,6 +50,7 @@
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
+		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
@@ -453,6 +454,7 @@
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
+		046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorwayUserHappyFlowWithJumioStageDeciderTests.swift; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 				9B8E925C22A8349A00A1E35E /* SignUpCoordinatorTests.swift */,
 				9B4F1A4822A7CB9500FCC8CC /* RootCoordinatorTests.swift */,
 				046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */,
+				046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */,
 			);
 			path = CoordinatorTests;
 			sourceTree = "<group>";
@@ -2144,6 +2147,7 @@
 				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
 				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
+				046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */,
 				046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */,
 				9B8E926922A9438600A1E35E /* DefaultEKYCCoordinatorTests.swift in Sources */,
 				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
