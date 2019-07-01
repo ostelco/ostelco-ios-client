@@ -22,8 +22,11 @@ struct LocalContext {
     let hasSeenESimOnboarding: Bool
     let hasSeenESIMInstructions: Bool
     let hasSeenAwesome: Bool
+    let hasCompletedNRIC: Bool
+    let hasCompletedJumio: Bool
+    let hasCompletedAddress: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false) {
+    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedNRIC: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -37,6 +40,9 @@ struct LocalContext {
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasSeenAwesome = hasSeenAwesome
+        self.hasCompletedNRIC = hasCompletedNRIC
+        self.hasCompletedJumio = hasCompletedJumio
+        self.hasCompletedAddress = hasCompletedAddress
     }
 }
 
@@ -54,6 +60,10 @@ struct StageDecider {
         case verifyIdentityOnboarding
         case selectIdentityVerificationMethod([IdentityVerificationOption])
         case singpass
+        case nric
+        case jumio
+        case address
+        case pendingVerification
         case verifyMyInfo(code: String)
         case eSimOnboarding
         case eSimInstructions
@@ -62,11 +72,11 @@ struct StageDecider {
     }
     
     enum IdentityVerificationOption {
-        case nric
         case singpass
-        case jumio
+        case scanIC
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func compute(context: Context?, localContext: LocalContext) -> Stage {
         guard let context = context else {
             
@@ -113,6 +123,18 @@ struct StageDecider {
         if localContext.selectedVerificationOption == .singpass {
             return .singpass
         }
+        if localContext.selectedVerificationOption == .scanIC {
+            if localContext.hasCompletedNRIC {
+                if localContext.hasCompletedJumio {
+                    if localContext.hasCompletedAddress {
+                        return .pendingVerification
+                    }
+                    return .address
+                }
+                return .jumio
+            }
+            return .nric
+        }
         if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
             let options = identityOptionsForRegion(selectedRegion)
             return .selectIdentityVerificationMethod(options)
@@ -129,8 +151,8 @@ struct StageDecider {
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
     private func identityOptionsForRegion(_ region: Region) -> [IdentityVerificationOption] {
         if region.id == "sg" {
-            return [.nric, .singpass]
+            return [.scanIC, .singpass]
         }
-        return [.jumio]
+        return []
     }
 }

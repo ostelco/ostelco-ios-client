@@ -81,7 +81,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.nric, .singpass]))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasSelectedSingpass() {
