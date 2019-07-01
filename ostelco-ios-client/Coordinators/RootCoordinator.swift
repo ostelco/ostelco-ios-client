@@ -22,8 +22,6 @@ class RootCoordinator {
         case home
     }
     
-    let window: UIWindow
-    
     private var noInternetVC: UIViewController?
     private lazy var onboardingNavController: UINavigationController = {
         let nav = UINavigationController()
@@ -38,31 +36,24 @@ class RootCoordinator {
     private var esimCoordinator: ESimCoordinator?
     
     private let userManager: UserManager
+    private let root: UIViewController
     
-    init(window: UIWindow,
+    init(root: UIViewController,
          userManager: UserManager = .shared) {
-        self.window = window
+        self.root = root
         self.userManager = userManager
     }
     
     var topViewController: UIViewController? {
-        return self.window.rootViewController?.topPresentedViewController()
+        return self.root.topPresentedViewController()
     }
     
     func replaceRootViewController(with newRoot: UIViewController) {
-        self.window.rootViewController = newRoot
+        self.root.embedFullViewChild(newRoot)
     }
     
     func goBackToLogin() {
-        if
-            let presenter = self.topViewController?.presentingViewController,
-            presenter != self.window.rootViewController {
-                presenter.dismiss(animated: false, completion: { [weak self] in
-                    self?.goBackToLogin()
-                })
-        } else {
-            self.navigate(to: .login, from: nil, animated: true)
-        }
+        self.navigate(to: .login, from: nil, animated: true)
     }
     
     func determineAndNavigateToDestination(animated: Bool = true) {
@@ -220,37 +211,7 @@ class RootCoordinator {
             return
         }
      
-        presentingViewController.present(self.onboardingNavController, animated: animated)
-    }
-    
-    func showNoInternet() {
-        guard self.noInternetVC == nil else {
-            // Already showing
-            return
-        }
-        
-        let noInternet = OhNoViewController.fromStoryboard(type: .noInternet)
-        noInternet.primaryButtonAction = {
-            guard InternetConnectionMonitor.shared.isCurrentlyConnected() else {
-                // Still no internet for you.
-                return
-            }
-            
-            self.hideNoInternet()
-        }
-        
-        self.noInternetVC = noInternet
-        self.topViewController?.present(noInternet, animated: true)
-    }
-    
-    func hideNoInternet() {
-        guard let vc = self.noInternetVC else {
-            // Nothing to hide
-            return
-        }
-        
-        self.noInternetVC = nil
-        vc.dismiss(animated: true, completion: nil)
+        presentingViewController.embedFullViewChild(self.onboardingNavController)
     }
 }
 

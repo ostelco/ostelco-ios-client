@@ -14,15 +14,24 @@ import Network
 ///       on the simulator by toggling your computer wifi off
 ///       and on, it'll detect the connection going off but not
 ///       going back on. TODO: File a Radar.
+
+enum Connection {
+    case connected
+    case disconnected
+}
+
+protocol InternetConnectionMonitorDelegate: class {
+    func connectionChanged(_ connection: Connection)
+}
+
 class InternetConnectionMonitor {
-    
-    /// Singleton instance
-    static let shared = InternetConnectionMonitor()
+    weak var delegate: InternetConnectionMonitorDelegate?
     
     private let monitor = NWPathMonitor()
     
-    private init() {
+    init(delegate: InternetConnectionMonitorDelegate) {
         self.monitor.pathUpdateHandler = self.handleUpdatedPath
+        self.delegate = delegate
     }
     
     deinit {
@@ -53,13 +62,11 @@ class InternetConnectionMonitor {
     
     private func handleUpdatedPath(_ path: NWPath) {
         DispatchQueue.main.async {
-            let coordinator = UIApplication.shared.typedDelegate.rootCoordinator
             switch path.status {
             case .satisfied:
-                coordinator.hideNoInternet()
-            case .unsatisfied,
-                 .requiresConnection:
-                coordinator.showNoInternet()
+                self.delegate?.connectionChanged(.connected)
+            case .unsatisfied, .requiresConnection:
+                self.delegate?.connectionChanged(.disconnected)
             @unknown default:
                 ApplicationErrors.assertAndLog("Apple added something else here you need to handle!")
             }

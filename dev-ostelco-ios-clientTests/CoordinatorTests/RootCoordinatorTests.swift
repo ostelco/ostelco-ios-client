@@ -14,7 +14,7 @@ class RootCoordinatorTests: XCTestCase {
     
     lazy var testUserManager = MockUserManager()
     
-    lazy var testCoordinator = RootCoordinator(window: UIWindow(),
+    lazy var testCoordinator = RootCoordinator(root: UIViewController(),
                                                userManager: self.testUserManager)
     
     override func setUp() {

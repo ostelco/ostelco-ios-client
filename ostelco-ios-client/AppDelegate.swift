@@ -14,23 +14,12 @@ import PromiseKit
 import Stripe
 import UIKit
 
-protocol MyInfoCallbackHandler: class {
-    func handleCallback(queryItems: [URLQueryItem]?, error: NSError?)
-}
+let MyInfoNotification: Notification.Name = Notification.Name(rawValue: "MyInfoNotification")
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    weak var myInfoDelegate: MyInfoCallbackHandler?
     var fcmToken: String?
-    
-    private(set) lazy var rootCoordinator: RootCoordinator = {
-        guard let window = self.window else {
-            fatalError("No window?!")
-        }
-        
-        return RootCoordinator(window: window)
-    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -54,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationSupportsShakeToEdit = true
         
         self.registerForNotifications()
-        InternetConnectionMonitor.shared.start()
 
         return true
     }
@@ -104,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func handleMyInfoCallback(_ url: URL) -> Bool {
         if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-            myInfoDelegate?.handleCallback(queryItems: urlComponents.queryItems, error: nil)
+            NotificationCenter.default.post(name: MyInfoNotification, object: urlComponents.queryItems)
             return true
         }
         return false
@@ -121,9 +109,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if EmailLinkManager.isSignInLink(incomingURL) {
             EmailLinkManager.signInWithLink(incomingURL)
-                .done { [weak self] in
-                    self?.rootCoordinator.determineAndNavigateToDestination()
-                }
                 .catch { error in
                     ApplicationErrors.log(error)
                     debugPrint("ERROR SIGNING IN: \(error)")
@@ -135,9 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UsernameAndPasswordLinkManager.isUsernameAndPasswordLink(incomingURL) {
             UsernameAndPasswordLinkManager.signInWithUsernameAndPassword(incomingURL)
-                .done { [weak self] in
- self?.rootCoordinator.determineAndNavigateToDestination()
-                }
                 .catch { error in
                     ApplicationErrors.log(error)
                     debugPrint("ERROR SIGNING IN WITH USERNAME AND PASSWORD: \(error)")

@@ -25,7 +25,6 @@ class NeedHelpAlertController: UIAlertController {
         
         let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
             UserManager.shared.logOut()
-            UIApplication.shared.typedDelegate.rootCoordinator.goBackToLogin()
         }
         
         self.addAction(logOutAction)
