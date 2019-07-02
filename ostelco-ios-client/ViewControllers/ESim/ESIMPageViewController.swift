@@ -21,13 +21,13 @@ enum ESIMPage: Int, CaseIterable {
     var image: UIImage? {
         switch self {
         case .instructions:
-            return UIImage(named: "instructionsESimLaptop")
+            return .ostelco_instructionsESimLaptop
         case .scanQRCode:
-            return UIImage(named: "instructionsESimPhone")
+            return .ostelco_instructionsESimPhone
         case .tapToContinue:
-            return UIImage(named: "instructionsESimContinue")
+            return .ostelco_instructionsESimContinue
         case .forMobileDataOnly:
-            return UIImage(named: "instructionsESimUseSecondary")
+            return .ostelco_instructionsESimUseSecondary
         case .watchVideo:
             return nil
         }

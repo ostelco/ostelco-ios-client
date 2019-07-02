@@ -31,7 +31,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-package-manager.git",
-            .upToNextMajor(from: "0.1.0")
+            .upToNextMajor(from: "0.3.0")
         ),
     ],
     targets: [
@@ -47,7 +47,7 @@ let package = Package(
         ),
         .testTarget(
             name: "\(runnerName)Tests",
-            dependencies: ["SPM"]
+            dependencies: ["SPM"] // This has to be a staticString
         ),
     ]
 )

@@ -18,6 +18,7 @@ public struct Core {
                                    forProd: Bool) throws {
         let srcRootFolder = try Folder(path: sourceRootPath)
         try Secrets.run(sourceRoot: srcRootFolder, forProd: forProd)
+        try CodeGen.run(sourceRoot: srcRootFolder)
     }
     
     /// Tasks which should be run once the build has been completed.
