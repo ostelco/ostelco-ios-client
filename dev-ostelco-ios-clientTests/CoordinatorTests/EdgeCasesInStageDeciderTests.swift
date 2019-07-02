@@ -54,5 +54,97 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
+    
+    func testServerIsUnavailableOnStartUp() {
+        let decider = StageDecider()
+        let localContext = LocalContext(serverIsUnreachable: true)
+        
+        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .ohNo(.noInternet))
+    }
+    
+    // Edge cases for Singapore flow
+    
+    func testUserHasSelectedACountryAndHasLocationProblem() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasLocationProblem: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationProblem)
+    }
+    
+    func testUserHasSelectedSingpassAndCancelledSingpass() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
+    
+    func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedNRIC: true)
+        
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+                )
+            ]
+        )
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
+    
+    func testUserHasCompletedJumioButGotRejected() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.scanIC, hasCompletedNRIC: true, hasCompletedJumio: true, hasCompletedAddress: true)
+        
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
+                )
+            ]
+        )
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
+    }
+    
+    // Edge cases for Norway flow
+    func testUserHasSeenVerifyIdentifyOnboardingAndCancelledJumio() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCancelledJumio: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
+    }
+    
+    func testUserHasCompletedJumioButGotRejectedInNorway() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
+        
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "no", name: "Norway"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+                )
+            ]
+        )
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
+    }
 
 }

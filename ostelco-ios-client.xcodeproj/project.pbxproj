@@ -102,6 +102,7 @@
 		04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
+		04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */; };
 		04BA349A222587DD000359C4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BA3499222587DD000359C4 /* Splash.storyboard */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -199,9 +200,9 @@
 		9B6A9DD022A562D10036AEE4 /* ESimCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */; };
 		9B6A9DD222A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
 		9B6A9DD322A566C90036AEE4 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */; };
-		9B6E34CB22B199840029AF76 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34CA22B199840029AF76 /* String+Empty.swift */; };
 		9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34C222B041500029AF76 /* ImageAsset.swift */; };
 		9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34C222B041500029AF76 /* ImageAsset.swift */; };
+		9B6E34CB22B199840029AF76 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E34CA22B199840029AF76 /* String+Empty.swift */; };
 		9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */; };
 		9B6E3A1E227048020063EBAA /* OstelcoStyles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB6A793226F6513000D5E13 /* OstelcoStyles.framework */; };
 		9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */; };
@@ -487,6 +488,7 @@
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
+		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
 		04BA3499222587DD000359C4 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -569,8 +571,8 @@
 		9B6A9DCB22A55E850036AEE4 /* DefaultEKYCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEKYCCoordinator.swift; sourceTree = "<group>"; };
 		9B6A9DCE22A562D10036AEE4 /* ESimCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCoordinator.swift; sourceTree = "<group>"; };
 		9B6A9DD122A566C90036AEE4 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
-		9B6E34CA22B199840029AF76 /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		9B6E34C222B041500029AF76 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		9B6E34CA22B199840029AF76 /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		9B6E3A18226F70300063EBAA /* OstelcoFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoFontSize.swift; sourceTree = "<group>"; };
 		9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblemViewController.swift; sourceTree = "<group>"; };
 		9B6E3A23227091EF0063EBAA /* LocationProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProblem.swift; sourceTree = "<group>"; };
@@ -1100,6 +1102,7 @@
 				0437197C22C4EB5D00609355 /* StageDecider.swift */,
 				9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */,
 				9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */,
+				04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2120,6 +2123,7 @@
 				9B821596227ADCE000DC6B64 /* BasicNetwork.swift in Sources */,
 				9B5CBF512281808B00D83D7B /* TokenProvider.swift in Sources */,
 				9B8215762279B0F800DC6B64 /* Headers.swift in Sources */,
+				04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */,
 				9B6E34CB22B199840029AF76 /* String+Empty.swift in Sources */,
 				9B8215832279DF8700DC6B64 /* SimProfile.swift in Sources */,
 			);
