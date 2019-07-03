@@ -83,6 +83,35 @@ struct StageDecider {
         case jumio
     }
     
+    private func preLoggedInStage(_ localContext: LocalContext) -> StageDecider.Stage {
+        if localContext.hasSeenLoginCarousel {
+            if let emailAddress = localContext.enteredEmailAddress {
+                if localContext.hasFirebaseToken {
+                    if localContext.hasAgreedToTerms {
+                        if localContext.hasSeenNotificationPermissions {
+                            return .nicknameEntry
+                        }
+                        return .notificationPermissions
+                    }
+                    return .legalStuff
+                }
+                return .checkYourEmail(email: emailAddress)
+            }
+            return .emailEntry
+        }
+        
+        // Cold start cases
+        if let emailAddress = localContext.enteredEmailAddress {
+            if localContext.hasFirebaseToken {
+                return .legalStuff
+            }
+            return .checkYourEmail(email: emailAddress)
+        }
+        
+        // If you don't know where to go, go to login
+        return .loginCarousel
+    }
+    
     // swiftlint:disable:next cyclomatic_complexity
     func compute(context: Context?, localContext: LocalContext) -> Stage {
         
@@ -91,30 +120,7 @@ struct StageDecider {
         }
         
         guard let context = context else {
-            if localContext.hasSeenLoginCarousel {
-                if let emailAddress = localContext.enteredEmailAddress {
-                    if localContext.hasFirebaseToken {
-                        if localContext.hasAgreedToTerms {
-                            if localContext.hasSeenNotificationPermissions {
-                                return .nicknameEntry
-                            }
-                            return .notificationPermissions
-                        }
-                        return .legalStuff
-                    }
-                    return .checkYourEmail(email: emailAddress)
-                }
-                return .emailEntry
-            }
-            
-            if let emailAddress = localContext.enteredEmailAddress {
-                if localContext.hasFirebaseToken {
-                    return .legalStuff
-                }
-                return .checkYourEmail(email: emailAddress)
-            }
-            
-            return .loginCarousel
+            return preLoggedInStage(localContext)
         }
         
         if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
