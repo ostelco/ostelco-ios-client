@@ -111,6 +111,25 @@ struct StageDecider {
         // If you don't know where to go, go to login
         return .loginCarousel
     }
+
+    private func eSIMStage(_ region: RegionResponse, _ localContext: LocalContext) -> StageDecider.Stage {
+        if let profile = region.getSimProfile() {
+            if profile.status == .INSTALLED {
+                if localContext.hasSeenAwesome || !localContext.hasSeenESimOnboarding {
+                    return .home
+                }
+                return .awesome
+            }
+        }
+        
+        if localContext.hasSeenESimOnboarding {
+            if localContext.hasSeenESIMInstructions {
+                return .pendingESIMInstall
+            }
+            return .eSimInstructions
+        }
+        return .eSimOnboarding
+    }
     
     // swiftlint:disable:next cyclomatic_complexity
     func compute(context: Context?, localContext: LocalContext) -> Stage {
@@ -123,34 +142,38 @@ struct StageDecider {
             return preLoggedInStage(localContext)
         }
         
+        // Cold start for jumio rejection to show error screen instead of ekyc on boarding screen
         if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
             return .ohNo(.ekycRejected)
         }
         
+        // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
+        if localContext.hasCompletedJumio, localContext.selectedVerificationOption == nil {
+            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
+                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
+                    return .pendingVerification
+                }
+            }
+        }
+        
+        // 3. ESim flow.
         if let region = context.getRegion(), region.status == .APPROVED {
-            if let profile = region.getSimProfile() {
-                if profile.status == .INSTALLED {
-                    if localContext.hasSeenAwesome || !localContext.hasSeenESimOnboarding {
-                        return .home
-                    }
-                    return .awesome
-                }
-            }
-            
-            if localContext.hasSeenESimOnboarding {
-                if localContext.hasSeenESIMInstructions {
-                    return .pendingESIMInstall
-                }
-                return .eSimInstructions
-            }
-            return .eSimOnboarding
+            return eSIMStage(region, localContext)
         }
-        if let code = localContext.myInfoCode, localContext.selectedVerificationOption == .singpass {
-            return .verifyMyInfo(code: code)
-        }
+        
+        // Possible structure for context api and kYCSteps suggestion
+        // ["singpass": [.singpass, .address], "scanIC": [.nric, .jumio, .address], ["jumio": [.jumio]]]
+        
+        // 2. EKYC flow.
+        // Specific to Singapore Singpass, normal flow, not cold start
         if localContext.selectedVerificationOption == .singpass {
+            if let code = localContext.myInfoCode {
+                return .verifyMyInfo(code: code)
+            }
             return .singpass
         }
+        
+        // Specific to Singapore, normal flow, not cold start
         if localContext.selectedVerificationOption == .scanIC {
             if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
                 if localContext.hasCompletedJumio {
@@ -163,13 +186,8 @@ struct StageDecider {
             }
             return .nric
         }
-        if localContext.hasCompletedJumio {
-            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
-                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
-                    return .pendingVerification
-                }
-            }
-        }
+        
+        // All other countries ekyc flow, where you only have jumio as an option
         if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
             let options = identityOptionsForRegion(selectedRegion)
             
@@ -184,6 +202,8 @@ struct StageDecider {
             }
             return .selectIdentityVerificationMethod(options)
         }
+        
+        // 1. Select country.
         if localContext.selectedRegion == nil {
             return .selectRegion
         }
@@ -193,6 +213,7 @@ struct StageDecider {
         if localContext.hasLocationProblem {
             return .locationProblem
         }
+        
         return .locationPermissions
     }
     
