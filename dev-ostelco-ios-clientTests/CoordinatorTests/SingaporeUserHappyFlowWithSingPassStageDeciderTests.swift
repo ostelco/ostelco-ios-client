@@ -31,6 +31,13 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
     }
     
+    func testUserHasEnteredEmailThenColdStart() {
+        let decider = StageDecider()
+        let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com")
+        
+        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
+    }
+    
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
@@ -43,6 +50,13 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .notificationPermissions)
+    }
+    
+    func testUserHasAgreedToLegalStuffThenColdStart() {
+        let decider = StageDecider()
+        let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
+        
+        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .legalStuff)
     }
     
     func testUserHasSeenNotificationPermissions() {
@@ -100,6 +114,15 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyMyInfo(code: "xxx"))
+    }
+    
+    func testUserHasCompletedSingpassThenColdStart() {
+        let decider = StageDecider()
+        let localContext = LocalContext(myInfoCode: "xxx")
+        
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
     }
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
@@ -178,6 +201,27 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         )
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .awesome)
+    }
+    
+    func testUserHasInstalledESIMThenColdStart() {
+        let decider = StageDecider()
+        let localContext = LocalContext()
+        
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .APPROVED,
+                    simProfiles: [
+                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                    ],
+                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
+                )
+            ]
+        )
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
     
     func testUserHasInstalledESIMAndSeenAwesome() {

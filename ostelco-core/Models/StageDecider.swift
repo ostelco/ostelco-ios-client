@@ -11,25 +11,24 @@ import Foundation
 struct LocalContext {
     let selectedRegion: Region?
     let hasSeenLoginCarousel: Bool
-    let enteredEmailAddress: String?
-    let hasFirebaseToken: Bool
+    let enteredEmailAddress: String? // Needs to be persisted
+    let hasFirebaseToken: Bool // Needs to be persisted
     let hasAgreedToTerms: Bool
     let hasSeenNotificationPermissions: Bool
     let regionVerified: Bool
     let hasSeenVerifyIdentifyOnboarding: Bool
     let selectedVerificationOption: StageDecider.IdentityVerificationOption?
-    let myInfoCode: String?
+    let myInfoCode: String? // Needs to be persisted
     let hasSeenESimOnboarding: Bool
     let hasSeenESIMInstructions: Bool
     let hasSeenAwesome: Bool
-    let hasCompletedNRIC: Bool
-    let hasCompletedJumio: Bool
+    let hasCompletedJumio: Bool // Needs to be persisted
     let hasCompletedAddress: Bool
     let serverIsUnreachable: Bool
     let hasLocationProblem: Bool
     let hasCancelledJumio: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedNRIC: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false) {
+    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -43,7 +42,6 @@ struct LocalContext {
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasSeenAwesome = hasSeenAwesome
-        self.hasCompletedNRIC = hasCompletedNRIC
         self.hasCompletedJumio = hasCompletedJumio
         self.hasCompletedAddress = hasCompletedAddress
         self.serverIsUnreachable = serverIsUnreachable
@@ -109,6 +107,13 @@ struct StageDecider {
                 return .emailEntry
             }
             
+            if let emailAddress = localContext.enteredEmailAddress {
+                if localContext.hasFirebaseToken {
+                    return .legalStuff
+                }
+                return .checkYourEmail(email: emailAddress)
+            }
+            
             return .loginCarousel
         }
         
@@ -134,14 +139,14 @@ struct StageDecider {
             }
             return .eSimOnboarding
         }
-        if let code = localContext.myInfoCode {
+        if let code = localContext.myInfoCode, localContext.selectedVerificationOption == .singpass {
             return .verifyMyInfo(code: code)
         }
         if localContext.selectedVerificationOption == .singpass {
             return .singpass
         }
         if localContext.selectedVerificationOption == .scanIC {
-            if localContext.hasCompletedNRIC {
+            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
                 if localContext.hasCompletedJumio {
                     if localContext.hasCompletedAddress {
                         return .pendingVerification
@@ -151,6 +156,13 @@ struct StageDecider {
                 return .jumio
             }
             return .nric
+        }
+        if localContext.hasCompletedJumio {
+            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
+                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
+                    return .pendingVerification
+                }
+            }
         }
         if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
             let options = identityOptionsForRegion(selectedRegion)
