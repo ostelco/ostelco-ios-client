@@ -187,11 +187,11 @@ struct StageDecider {
             return .nric
         }
         
-        // All other countries ekyc flow, where you only have jumio as an option
+        // All other countries ekyc flow, where you only have jumio as an option, also handles showing of selectIdentityVerificationMethod for Singapore flow
         if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
             let options = identityOptionsForRegion(selectedRegion)
             
-            if options.count == 1 {
+            if options.count == 1 { // All other countries
                 if localContext.hasCompletedJumio {
                     return .pendingVerification
                 }
@@ -200,7 +200,7 @@ struct StageDecider {
                 }
                 return .jumio
             }
-            return .selectIdentityVerificationMethod(options)
+            return .selectIdentityVerificationMethod(options) // Singapore flow specific
         }
         
         // 1. Select country.
