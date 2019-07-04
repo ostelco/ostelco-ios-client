@@ -25,8 +25,11 @@ struct LocalContext {
     let hasCompletedNRIC: Bool
     let hasCompletedJumio: Bool
     let hasCompletedAddress: Bool
+    let serverIsUnreachable: Bool
+    let hasLocationProblem: Bool
+    let hasCancelledJumio: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedNRIC: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false) {
+    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedNRIC: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -43,6 +46,9 @@ struct LocalContext {
         self.hasCompletedNRIC = hasCompletedNRIC
         self.hasCompletedJumio = hasCompletedJumio
         self.hasCompletedAddress = hasCompletedAddress
+        self.serverIsUnreachable = serverIsUnreachable
+        self.hasLocationProblem = hasLocationProblem
+        self.hasCancelledJumio = hasCancelledJumio
     }
 }
 
@@ -69,6 +75,8 @@ struct StageDecider {
         case eSimInstructions
         case pendingESIMInstall
         case awesome
+        case ohNo(OhNoIssueType)
+        case locationProblem
     }
     
     enum IdentityVerificationOption {
@@ -79,8 +87,12 @@ struct StageDecider {
     
     // swiftlint:disable:next cyclomatic_complexity
     func compute(context: Context?, localContext: LocalContext) -> Stage {
+        
+        if localContext.serverIsUnreachable {
+            return .ohNo(.noInternet)
+        }
+        
         guard let context = context else {
-            
             if localContext.hasSeenLoginCarousel {
                 if let emailAddress = localContext.enteredEmailAddress {
                     if localContext.hasFirebaseToken {
@@ -98,6 +110,10 @@ struct StageDecider {
             }
             
             return .loginCarousel
+        }
+        
+        if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
+            return .ohNo(.ekycRejected)
         }
         
         if let region = context.getRegion(), region.status == .APPROVED {
@@ -143,6 +159,9 @@ struct StageDecider {
                 if localContext.hasCompletedJumio {
                     return .pendingVerification
                 }
+                if localContext.hasCancelledJumio {
+                    return .verifyIdentityOnboarding
+                }
                 return .jumio
             }
             return .selectIdentityVerificationMethod(options)
@@ -152,6 +171,9 @@ struct StageDecider {
         }
         if localContext.regionVerified {
             return .verifyIdentityOnboarding
+        }
+        if localContext.hasLocationProblem {
+            return .locationProblem
         }
         return .locationPermissions
     }

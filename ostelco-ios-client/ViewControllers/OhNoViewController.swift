@@ -8,107 +8,10 @@
 
 import OstelcoStyles
 import UIKit
+import ostelco_core
 
 /// A view controller for handling errors
 class OhNoViewController: UIViewController {
-    
-    enum IssueType {
-        case generic(code: String?)
-        case ekycRejected
-        case myInfoFailed
-        case noInternet
-        case paymentFailedGeneric
-        case paymentFailedCardDeclined
-
-        var displayTitle: String {
-            switch self {
-            case .generic,
-                 .ekycRejected,
-                 .myInfoFailed:
-                return "Oh no"
-            case .noInternet:
-                return "No internet connection"
-            case .paymentFailedGeneric:
-                return "Payment Failed"
-            case .paymentFailedCardDeclined:
-                return "Card Declined"
-            }
-        }
-        
-        var gifVideo: GifVideo {
-            switch self {
-            case .generic,
-                 .myInfoFailed:
-                return .taken
-            case .ekycRejected:
-                return .blank_canvas
-            case .noInternet,
-                 .paymentFailedGeneric,
-                 .paymentFailedCardDeclined:
-                return .no_connection
-            }
-        }
-        
-        var linkableText: LinkableText? {
-            switch self {
-            case .noInternet:
-                return LinkableText(fullText: """
-Try again in a while or contact support
-
-support@oya.world
-""",
-                                    linkedBits: ["support@oya.world"])
-            case .ekycRejected,
-                 .generic,
-                 .myInfoFailed,
-                 .paymentFailedCardDeclined,
-                 .paymentFailedGeneric:
-                return nil
-            }
-        }
-        
-        var boldableText: BoldableText? {
-            switch self {
-            case .noInternet:
-                return nil
-            case .generic(let code):
-                guard let errorCode = code else {
-                    return BoldableText(fullText: "Something went wrong. Try again in a while.",
-                                        boldedPortion: nil)
-                }
-                
-                return BoldableText(fullText:
-                    "Something went wrong. Try again in a while. If you contact customer support, please use this error code: \(errorCode)", boldedPortion: "\(errorCode)")
-            case .ekycRejected:
-                return BoldableText(fullText: "Something went wrong.\n\nTry again in a while, or contact support",
-                                    boldedPortion: nil)
-            case .myInfoFailed:
-                return BoldableText(fullText: "We're unable to retrieve your info from MyInfo.\n\n. Try later.",
-                                    boldedPortion: nil)
-            case .paymentFailedGeneric:
-                return BoldableText(fullText: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.",
-                                    boldedPortion: nil)
-            case .paymentFailedCardDeclined:
-                return BoldableText(fullText: "Your card was declined. Contact your bank or try with another card.",
-                                    boldedPortion: nil)
-            }
-        }
-        
-        var buttonTitle: String {
-            switch self {
-            case .generic,
-                 .myInfoFailed:
-                return "Try again"
-            case .ekycRejected:
-                return "Retry"
-            case .noInternet:
-                return "Check again"
-            case .paymentFailedGeneric,
-                 .paymentFailedCardDeclined:
-                return "OK"
-            }
-        }
-    }
     
     @IBOutlet private var primaryButton: UIButton!
     @IBOutlet private var titleLabel: UILabel!
@@ -119,7 +22,7 @@ support@oya.world
     ///
     /// - Parameter type: The type to use to configure copy and image
     /// - Returns: The instantiated and configured VC.
-    static func fromStoryboard(type: IssueType) -> OhNoViewController {
+    static func fromStoryboard(type: OhNoIssueType) -> OhNoViewController {
         let vc = self.fromStoryboard()
         vc.displayTitle = type.displayTitle
         vc.videoURL = type.gifVideo.url
@@ -227,5 +130,96 @@ extension OhNoViewController: StoryboardLoadable {
     
     static var storyboard: Storyboard {
         return .ohNo
+    }
+}
+
+extension OhNoIssueType {
+    var displayTitle: String {
+        switch self {
+        case .generic,
+             .ekycRejected,
+             .myInfoFailed:
+            return "Oh no"
+        case .noInternet:
+            return "No internet connection"
+        case .paymentFailedGeneric:
+            return "Payment Failed"
+        case .paymentFailedCardDeclined:
+            return "Card Declined"
+        }
+    }
+    
+    var gifVideo: GifVideo {
+        switch self {
+        case .generic,
+             .myInfoFailed:
+            return .taken
+        case .ekycRejected:
+            return .blank_canvas
+        case .noInternet,
+             .paymentFailedGeneric,
+             .paymentFailedCardDeclined:
+            return .no_connection
+        }
+    }
+    
+    var linkableText: LinkableText? {
+        switch self {
+        case .noInternet:
+            return LinkableText(fullText: """
+Try again in a while or contact support
+
+support@oya.world
+""",
+                                linkedBits: ["support@oya.world"])
+        case .ekycRejected,
+             .generic,
+             .myInfoFailed,
+             .paymentFailedCardDeclined,
+             .paymentFailedGeneric:
+            return nil
+        }
+    }
+    
+    var boldableText: BoldableText? {
+        switch self {
+        case .noInternet:
+            return nil
+        case .generic(let code):
+            guard let errorCode = code else {
+                return BoldableText(fullText: "Something went wrong. Try again in a while.",
+                                    boldedPortion: nil)
+            }
+            
+            return BoldableText(fullText:
+                "Something went wrong. Try again in a while. If you contact customer support, please use this error code: \(errorCode)", boldedPortion: "\(errorCode)")
+        case .ekycRejected:
+            return BoldableText(fullText: "Something went wrong.\n\nTry again in a while, or contact support",
+                                boldedPortion: nil)
+        case .myInfoFailed:
+            return BoldableText(fullText: "We're unable to retrieve your info from MyInfo.\n\n. Try later.",
+                                boldedPortion: nil)
+        case .paymentFailedGeneric:
+            return BoldableText(fullText: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.",
+                                boldedPortion: nil)
+        case .paymentFailedCardDeclined:
+            return BoldableText(fullText: "Your card was declined. Contact your bank or try with another card.",
+                                boldedPortion: nil)
+        }
+    }
+    
+    var buttonTitle: String {
+        switch self {
+        case .generic,
+             .myInfoFailed:
+            return "Try again"
+        case .ekycRejected:
+            return "Retry"
+        case .noInternet:
+            return "Check again"
+        case .paymentFailedGeneric,
+             .paymentFailedCardDeclined:
+            return "OK"
+        }
     }
 }
