@@ -109,7 +109,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             regions: [
                 RegionResponse(
                     region: Region(id: "sg", name: "Singapore"),
-                    status: .REJECTED,
+                    status: .PENDING,
                     simProfiles: nil,
                     kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
                 )
