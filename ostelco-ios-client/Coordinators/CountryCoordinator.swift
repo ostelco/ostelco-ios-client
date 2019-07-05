@@ -125,8 +125,7 @@ extension CountryCoordinator: AllowLocationAccessDelegate {
     func handleLocationProblem(_ problem: LocationProblem, animated: Bool) {
         let problemVC = LocationProblemViewController.fromStoryboard()
         problemVC.locationProblem = problem
-        // TODO: Update to set delegate instead of coordinator
-        problemVC.coordinator = self
+        problemVC.delegate = self
         self.navigationController.setViewControllers([problemVC], animated: animated)
     }
     
@@ -152,6 +151,25 @@ extension CountryCoordinator: ChooseCountryDelegate {
         self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
             .done { destination in
                 self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: LocationProblemDelegate {
+    // TODO: Refactor to avoid passing view controller as parameter when implementing the new StageDecider. We might need to refactor the LocationProblemViewController itself.
+    func checkLocation(_ viewController: LocationProblemViewController) {
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: OnBoardingManager.sharedInstance.selectedCountry)
+            .done { [weak self] destination in
+                switch destination {
+                case .locationProblem(let problem):
+                    viewController.locationProblem = problem
+                    viewController.listenForChanges()
+                default:
+                    self?.navigate(to: destination, animated: true)
+                }
             }
             .catch { error in
                 ApplicationErrors.log(error)
