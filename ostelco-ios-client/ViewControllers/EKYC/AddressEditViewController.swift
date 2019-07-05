@@ -15,6 +15,10 @@ protocol MyInfoAddressUpdateDelegate: class {
     func addressUpdated(to address: MyInfoAddress)
 }
 
+protocol AddressEditDelegate: class {
+    func enteredAddressSuccessfully(hasCompletedJumio: Bool)
+}
+
 class AddressEditViewController: UITableViewController {
     
     @IBOutlet private var primaryButton: UIButton!
@@ -22,7 +26,7 @@ class AddressEditViewController: UITableViewController {
     @IBOutlet private var saveBarButtton: UIBarButtonItem!
     @IBOutlet private var cancelBarButton: UIBarButtonItem!
     
-    weak var coordinator: SingaporeEKYCCoordinator?
+    weak var delegate: AddressEditDelegate?
     var spinnerView: UIView?
     
     enum Mode {
@@ -158,7 +162,7 @@ class AddressEditViewController: UITableViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.coordinator?.enteredAddressSuccessfully(hasCompletedJumio: hasCompletedJumio)
+                self?.delegate?.enteredAddressSuccessfully(hasCompletedJumio: hasCompletedJumio)
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
