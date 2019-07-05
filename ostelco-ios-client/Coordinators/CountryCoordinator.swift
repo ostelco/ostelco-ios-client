@@ -93,7 +93,7 @@ class CountryCoordinator {
         switch destination {
         case .allowLocation:
             let allowLocation = AllowLocationAccessViewController.fromStoryboard()
-            allowLocation.coordinator = self
+            allowLocation.delegate = self
             self.navigationController.setViewControllers([allowLocation], animated: animated)
         case .chooseCountry:
             let chooseCountry = ChooseCountryViewController.fromStoryboard()
