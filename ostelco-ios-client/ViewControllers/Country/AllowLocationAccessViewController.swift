@@ -11,11 +11,15 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol AllowLocationAccessDelegate: class {
+    func handleLocationProblem(_ problem: LocationProblem, animated: Bool)
+}
+
 class AllowLocationAccessViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
-    weak var coordinator: CountryCoordinator?
+    weak var delegate: AllowLocationAccessDelegate?
 
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
@@ -49,7 +53,7 @@ class AllowLocationAccessViewController: UIViewController {
     private func requestAuthorization() {
         let locationController = LocationController.shared
         guard locationController.locationServicesEnabled else {
-            self.coordinator?.handleLocationProblem(.disabledInSettings)
+            self.delegate?.handleLocationProblem(.disabledInSettings)
             return
         }
         
