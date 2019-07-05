@@ -97,7 +97,7 @@ class CountryCoordinator {
             self.navigationController.setViewControllers([allowLocation], animated: animated)
         case .chooseCountry:
             let chooseCountry = ChooseCountryViewController.fromStoryboard()
-            chooseCountry.coordinator = self
+            chooseCountry.delegate = self
             self.navigationController.setViewControllers([chooseCountry], animated: animated)
         case .landing:
             let landing = VerifyCountryOnBoardingViewController.fromStoryboard()
@@ -119,18 +119,6 @@ class CountryCoordinator {
                 ApplicationErrors.log(error)
             }
     }
-    
-    func selectedCountry(_ country: Country) {
-        OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
-        OnBoardingManager.sharedInstance.selectedCountry = country
-        self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
-            .done { destination in
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
 }
 
 extension CountryCoordinator: AllowLocationAccessDelegate {
@@ -147,6 +135,20 @@ extension CountryCoordinator: AllowLocationAccessDelegate {
     }
     
     func locationUsageAuthorized(for country: Country) {
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
+            .done { destination in
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: ChooseCountryDelegate {
+    func selectedCountry(_ country: Country) {
+        OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
+        OnBoardingManager.sharedInstance.selectedCountry = country
         self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
             .done { destination in
                 self.navigate(to: destination, animated: true)
