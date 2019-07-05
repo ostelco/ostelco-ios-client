@@ -131,6 +131,20 @@ class CountryCoordinator {
                 ApplicationErrors.log(error)
             }
     }
+}
+
+extension CountryCoordinator: AllowLocationAccessDelegate {
+    func handleLocationProblem(_ problem: LocationProblem, animated: Bool) {
+        let problemVC = LocationProblemViewController.fromStoryboard()
+        problemVC.locationProblem = problem
+        // TODO: Update to set delegate instead of coordinator
+        problemVC.coordinator = self
+        self.navigationController.setViewControllers([problemVC], animated: animated)
+    }
+    
+    func handleLocationProblem(_ problem: LocationProblem) {
+        self.handleLocationProblem(problem, animated: true)
+    }
     
     func locationUsageAuthorized(for country: Country) {
         self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
@@ -139,16 +153,6 @@ class CountryCoordinator {
             }
             .catch { error in
                 ApplicationErrors.log(error)
-            }
-    }
-}
-
-extension CountryCoordinator: AllowLocationAccessDelegate {
-    func handleLocationProblem(_ problem: LocationProblem, animated: Bool = true) {
-        let problemVC = LocationProblemViewController.fromStoryboard()
-        problemVC.locationProblem = problem
-        // TODO: Update to set delegate instead of coordinator
-        problemVC.coordinator = self
-        self.navigationController.setViewControllers([problemVC], animated: animated)
+        }
     }
 }

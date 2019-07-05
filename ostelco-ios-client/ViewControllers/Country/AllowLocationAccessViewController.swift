@@ -12,7 +12,9 @@ import OstelcoStyles
 import UIKit
 
 protocol AllowLocationAccessDelegate: class {
+    func handleLocationProblem(_ problem: LocationProblem)
     func handleLocationProblem(_ problem: LocationProblem, animated: Bool)
+    func locationUsageAuthorized(for country: Country)
 }
 
 class AllowLocationAccessViewController: UIViewController {
@@ -69,12 +71,12 @@ class AllowLocationAccessViewController: UIViewController {
                 self?.handleAuthorizationStatus(status)
             }
         case .restricted:
-            self.coordinator?.handleLocationProblem(.restrictedByParentalControls)
+            self.delegate?.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
-            self.coordinator?.handleLocationProblem(.deniedByUser)
+            self.delegate?.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.coordinator?.locationUsageAuthorized(for: self.selectedCountry)
+            self.delegate?.locationUsageAuthorized(for: self.selectedCountry)
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }
