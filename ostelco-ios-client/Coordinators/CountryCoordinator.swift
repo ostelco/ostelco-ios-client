@@ -101,23 +101,13 @@ class CountryCoordinator {
             self.navigationController.setViewControllers([chooseCountry], animated: animated)
         case .landing:
             let landing = VerifyCountryOnBoardingViewController.fromStoryboard()
-            landing.coordinator = self
+            landing.delegate = self
             self.navigationController.setViewControllers([landing], animated: animated)
         case .locationProblem(let problem):
             self.handleLocationProblem(problem)
         case .countryComplete(let country):
             self.delegate?.countrySelectionCompleted(with: country)
         }
-    }
-    
-    func finishedViewingCountryLandingScreen() {
-        self.determineDestination(hasSeenInitalVC: true, selectedCountry: nil)
-            .done { [weak self] destination in
-                self?.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
     }
 }
 
@@ -170,6 +160,18 @@ extension CountryCoordinator: LocationProblemDelegate {
                 default:
                     self?.navigate(to: destination, animated: true)
                 }
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: VerifyCountryOnBoardingDelegate {
+    func finishedViewingCountryLandingScreen() {
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: nil)
+            .done { [weak self] destination in
+                self?.navigate(to: destination, animated: true)
             }
             .catch { error in
                 ApplicationErrors.log(error)
