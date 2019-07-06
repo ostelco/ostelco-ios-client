@@ -10,6 +10,10 @@ import OstelcoStyles
 import ostelco_core
 import UIKit
 
+protocol ChooseCountryDelegate: class {
+    func selectedCountry(_ country: Country)
+}
+
 class ChooseCountryViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
@@ -21,7 +25,7 @@ class ChooseCountryViewController: UIViewController {
                                  delegate: self)
     }()
     
-    weak var coordinator: CountryCoordinator?
+    weak var delegate: ChooseCountryDelegate?
     private var currentSelectedCountry: Country? {
         didSet {
             if self.currentSelectedCountry == nil {
@@ -50,7 +54,7 @@ class ChooseCountryViewController: UIViewController {
             return
         }
         
-        self.coordinator?.selectedCountry(country)
+        self.delegate?.selectedCountry(country)
     }
 }
 

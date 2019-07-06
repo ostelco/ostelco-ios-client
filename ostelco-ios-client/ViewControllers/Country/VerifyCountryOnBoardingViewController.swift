@@ -9,12 +9,16 @@
 import OstelcoStyles
 import UIKit
 
+protocol VerifyCountryOnBoardingDelegate: class {
+    func finishedViewingCountryLandingScreen()
+}
+
 class VerifyCountryOnBoardingViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var selectedStepIcon: UIImageView!
     
-    weak var coordinator: CountryCoordinator?
+    weak var delegate: VerifyCountryOnBoardingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,7 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: UIButton) {
-        self.coordinator?.finishedViewingCountryLandingScreen()
+        self.delegate?.finishedViewingCountryLandingScreen()
     }
     
     private func setTitle() {

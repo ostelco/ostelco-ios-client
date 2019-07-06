@@ -11,6 +11,10 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol LocationProblemDelegate: class {
+    func checkLocation(_ viewController: LocationProblemViewController)
+}
+
 class LocationProblemViewController: UIViewController {
     
     @IBOutlet private var titleLabel: UILabel!
@@ -19,7 +23,7 @@ class LocationProblemViewController: UIViewController {
     @IBOutlet private var explanationLabel: BodyTextLabel!
     @IBOutlet private var primaryButton: UIButton!
     
-    weak var coordinator: CountryCoordinator?
+    weak var delegate: LocationProblemDelegate?
     
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
@@ -112,7 +116,7 @@ class LocationProblemViewController: UIViewController {
         }
     }
     
-    private func listenForChanges() {
+    func listenForChanges() {
         LocationController.shared.authChangeCallback = { [weak self] status in
             self?.handleAuthorzationStatusChange(to: status)
         }
@@ -142,23 +146,7 @@ class LocationProblemViewController: UIViewController {
     }
     
     private func checkLocation() {
-        guard let coordinator = self.coordinator else {
-            return
-        }
-       
-        coordinator.determineDestination(hasSeenInitalVC: true, selectedCountry: OnBoardingManager.sharedInstance.selectedCountry)
-            .done { [weak self] destination in
-                switch destination {
-                case .locationProblem(let problem):
-                    self?.locationProblem = problem
-                    self?.listenForChanges()
-                default:
-                    coordinator.navigate(to: destination, animated: true)
-                }
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
+        delegate?.checkLocation(self)
     }
 }
 
