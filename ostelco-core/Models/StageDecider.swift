@@ -27,8 +27,9 @@ struct LocalContext {
     let serverIsUnreachable: Bool
     let hasLocationProblem: Bool
     let hasCancelledJumio: Bool
+    let hasSeenRegionOnboarding: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false) {
+    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -47,6 +48,7 @@ struct LocalContext {
         self.serverIsUnreachable = serverIsUnreachable
         self.hasLocationProblem = hasLocationProblem
         self.hasCancelledJumio = hasCancelledJumio
+        self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
     }
 }
 
@@ -206,6 +208,9 @@ struct StageDecider {
         
         // 1. Select country.
         if localContext.selectedRegion == nil {
+            if localContext.hasSeenRegionOnboarding {
+                return .selectRegion
+            }
             return .regionOnboarding
         }
         if localContext.regionVerified {

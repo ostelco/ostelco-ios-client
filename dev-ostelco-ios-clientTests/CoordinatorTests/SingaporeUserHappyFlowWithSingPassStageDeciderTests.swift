@@ -76,6 +76,14 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     // TODO: Create a test for when user has seen SelectRegionOnBoarding -> SelectRegion
     
+    func testUserHasSeenRegionOnboarding() {
+        let decider = StageDecider()
+        let localContext = LocalContext(hasSeenRegionOnboarding: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
+    }
+    
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"))
