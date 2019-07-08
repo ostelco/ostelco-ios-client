@@ -9,13 +9,17 @@
 import OstelcoStyles
 import UIKit
 
+protocol ESIMOnBoardingDelegate: class {
+    func completedLanding()
+}
+
 class ESIMOnBoardingViewController: UIViewController {
     
     @IBOutlet private var step1Icon: UIImageView!
     @IBOutlet private var step2Icon: UIImageView!
     @IBOutlet private var step3Icon: UIImageView!
     
-    weak var coordinator: ESimCoordinator?
+    weak var delegate: ESIMOnBoardingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ class ESIMOnBoardingViewController: UIViewController {
     
     @IBAction private func continueTapped(_ sender: Any) {
         OstelcoAnalytics.logEvent(.DownloadingESIM)
-        self.coordinator?.completedLanding()
+        self.delegate?.completedLanding()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {

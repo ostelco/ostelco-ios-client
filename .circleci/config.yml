@@ -89,3 +89,4 @@ workflows:
                 - /feature/.*/
                 - /release/.*/
                 - /fix/.*/
+                - /refactor/.*/

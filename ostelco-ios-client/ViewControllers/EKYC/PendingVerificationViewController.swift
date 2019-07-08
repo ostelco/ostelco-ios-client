@@ -10,6 +10,11 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol PendingVerificationDelegate: class {
+    func waitingCompletedSuccessfully(for region: RegionResponse)
+    func waitingCompletedWithRejection()
+}
+
 class PendingVerificationViewController: UIViewController {
     
     // for PushNotificationHandling
@@ -20,7 +25,7 @@ class PendingVerificationViewController: UIViewController {
     
     @IBOutlet private var gifView: LoopingVideoView!
 
-    weak var coordinator: EKYCCoordinator?
+    weak var delegate: PendingVerificationDelegate?
     
     // MARK: - View Lifecycle
     
@@ -65,7 +70,7 @@ class PendingVerificationViewController: UIViewController {
             .done { [weak self] regionResponse in
                 switch regionResponse.status {
                 case .APPROVED:
-                    self?.coordinator?.waitingCompletedSuccessfully(for: regionResponse)
+                    self?.delegate?.waitingCompletedSuccessfully(for: regionResponse)
                 default:
                     self?.handleRegionPendingOrRejected(silentCheck: silentCheck, regionResponse: regionResponse)
                 }
@@ -89,9 +94,9 @@ class PendingVerificationViewController: UIViewController {
             let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
             switch (jumioStatus, nricStatus, addressStatus) {
             case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
-                self.coordinator?.waitingCompletedWithRejection()
+                self.delegate?.waitingCompletedWithRejection()
             case (.APPROVED, .APPROVED, .APPROVED):
-                self.coordinator?.waitingCompletedSuccessfully(for: regionResponse)
+                self.delegate?.waitingCompletedSuccessfully(for: regionResponse)
             case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
@@ -145,7 +150,7 @@ extension PendingVerificationViewController: PushNotificationHandling {
         case .APPROVED:
             self.checkVerificationStatus()
         case .REJECTED:
-            self.coordinator?.waitingCompletedWithRejection()
+            self.delegate?.waitingCompletedWithRejection()
         case .PENDING:
             self.handleRegionPending(silentCheck: true)
         }

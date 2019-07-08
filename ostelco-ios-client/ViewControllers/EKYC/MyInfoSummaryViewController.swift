@@ -9,6 +9,11 @@
 import ostelco_core
 import UIKit
 
+protocol MyInfoSummaryDelegate: class {
+    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate)
+    func verifiedSingPassAddress()
+}
+
 class MyInfoSummaryViewController: UIViewController {
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
@@ -24,7 +29,7 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var reloadButton: UIButton!
     
-    weak var coordinator: SingaporeEKYCCoordinator?
+    weak var delegate: MyInfoSummaryDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +82,7 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     @IBAction private func editTapped() {
-        self.coordinator?.editSingPassAddress(self.myInfoDetails?.address, delegate: self)
+        self.delegate?.editSingPassAddress(self.myInfoDetails?.address, delegate: self)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -95,7 +100,7 @@ class MyInfoSummaryViewController: UIViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.coordinator?.verifiedSingPassAddress()
+                self?.delegate?.verifiedSingPassAddress()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)

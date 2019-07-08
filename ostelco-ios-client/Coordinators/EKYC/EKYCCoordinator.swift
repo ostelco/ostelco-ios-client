@@ -46,7 +46,9 @@ extension EKYCCoordinator {
     
     func showEKYCLandingPage(animated: Bool) {
         let verifyOnboarding = VerifyIdentityOnBoardingViewController.fromStoryboard()
-        verifyOnboarding.coordinator = self
+        // This casting is only necessary because this behavior is defined in a protocol.
+        // Once coordinators are simplified with the new stage decider,
+        verifyOnboarding.delegate = self as? VerifyIdentityOnboardingDelegate
         self.navigationController.setViewControllers([verifyOnboarding], animated: animated)
     }
     
@@ -65,7 +67,7 @@ extension EKYCCoordinator {
     
     func showWaitingForVerification(animated: Bool) {
         let waitingVC = PendingVerificationViewController.fromStoryboard()
-        waitingVC.coordinator = self
+        waitingVC.delegate = self as? PendingVerificationDelegate
         self.navigationController.setViewControllers([waitingVC], animated: animated)
     }
 }
@@ -89,4 +91,8 @@ extension EKYCCoordinator where Self: JumioCoordinatorDelegate {
     func handleError(message: String) {
         self.navigationController.showAlert(title: "Error", msg: message)
     }
+}
+
+extension EKYCCoordinator where Self: VerifyIdentityOnboardingDelegate {
+    
 }

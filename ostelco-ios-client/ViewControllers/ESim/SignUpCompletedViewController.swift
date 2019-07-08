@@ -10,11 +10,15 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol SignUpCompletedDelegate: class {
+    func acknowledgedSuccess(profile: SimProfile)
+}
+
 class SignUpCompletedViewController: UIViewController {
 
     @IBOutlet private var gifView: LoopingVideoView!
     
-    weak var coordinator: ESimCoordinator?
+    weak var delegate: SignUpCompletedDelegate?
     
     var profile: SimProfile?
     
@@ -31,7 +35,7 @@ class SignUpCompletedViewController: UIViewController {
             return
         }
         
-        self.coordinator?.acknowledgedSuccess(profile: profile)
+        self.delegate?.acknowledgedSuccess(profile: profile)
     }
 }
 

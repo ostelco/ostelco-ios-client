@@ -11,13 +11,17 @@ import ostelco_core
 import PromiseKit
 import UIKit
 
+protocol NRICVerifyDelegate: class {
+    func enteredNRICSuccessfully()
+}
+
 class NRICVerifyViewController: UIViewController {
     
     var spinnerView: UIView?
     @IBOutlet private weak var nricTextField: UITextField!
     @IBOutlet private weak var nricErrorLabel: UILabel!
     
-    weak var coordinator: SingaporeEKYCCoordinator?
+    weak var delegate: NRICVerifyDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +50,7 @@ class NRICVerifyViewController: UIViewController {
             }
             .done { [weak self] isValid in
                 if isValid {
-                    self?.coordinator?.enteredNRICSuccessfully()
+                    self?.delegate?.enteredNRICSuccessfully()
                 } else {
                     self?.nricErrorLabel.isHidden = false
                 }

@@ -64,41 +64,56 @@ class ESimCoordinator {
         switch destination {
         case .setup:
             let onboarding = ESIMOnBoardingViewController.fromStoryboard()
-            onboarding.coordinator = self
+            onboarding.delegate = self
             self.navigationController.setViewControllers([onboarding], animated: animated)
         case .instructions:
             let instructions = ESIMInstructionsViewController.fromStoryboard()
-            instructions.coordinator = self
+            instructions.delegate = self
             self.navigationController.setViewControllers([instructions], animated: animated)
         case .pendingDownload:
             let pendingDownload = ESIMPendingDownloadViewController.fromStoryboard()
-            pendingDownload.coordinator = self
+            pendingDownload.delegate = self
             self.navigationController.setViewControllers([pendingDownload], animated: animated)
         case .success(let profile):
             let successVC = SignUpCompletedViewController.fromStoryboard()
             successVC.profile = profile
-            successVC.coordinator = self
+            successVC.delegate = self
             self.navigationController.setViewControllers([successVC], animated: animated)
         case .setupComplete:
             self.delegate?.esimSetupComplete()
         }
     }
-    
+}
+
+extension ESimCoordinator: ESIMOnBoardingDelegate {
     func completedLanding() {
         let destination = self.determineDestination(from: nil, hasSeenSetup: true)
         self.navigate(to: destination, animated: true)
     }
-    
+}
+
+extension ESimCoordinator: ESIMInstructionsDelegate {
     func completedInstructions() {
         let destination = self.determineDestination(from: nil, hasSeenSetup: true, hasSeenInstructions: true)
         self.navigate(to: destination, animated: true)
     }
-    
+}
+
+extension ESimCoordinator: ESIMPendingDownloadDelegate {
+    func profileChanged(_ profile: SimProfile) {
+        let destination = self.determineDestination(from: profile)
+        self.navigate(to: destination, animated: true)
+    }
+}
+
+extension ESimCoordinator: SignUpCompletedDelegate {
     func acknowledgedSuccess(profile: SimProfile) {
-        let destination = self.determineDestination(from: profile,
-                                                    hasSeenSetup: true,
-                                                    hasSeenInstructions: true,
-                                                    hasAcknowledgedSuccess: true)
+        let destination = self.determineDestination(
+            from: profile,
+            hasSeenSetup: true,
+            hasSeenInstructions: true,
+            hasAcknowledgedSuccess: true
+        )
         self.navigate(to: destination, animated: true)
     }
 }

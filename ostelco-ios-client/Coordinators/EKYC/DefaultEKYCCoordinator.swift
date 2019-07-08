@@ -96,7 +96,9 @@ class DefaultEKYCCoordinator: EKYCCoordinator {
                                              hasSeenLanding: true,
                                              animated: true)
     }
-    
+}
+
+extension DefaultEKYCCoordinator: PendingVerificationDelegate {
     func waitingCompletedSuccessfully(for region: RegionResponse) {
         self.navigate(to: .success(region: region), animated: true)
     }

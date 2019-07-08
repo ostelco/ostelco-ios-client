@@ -113,12 +113,12 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
         switch destination {
         case .stepsForNRIC:
             let stepsVC = ScanICStepsViewController.fromStoryboard()
-            stepsVC.coordinator = self
+            stepsVC.delegate = self
             self.navigationController.pushViewController(stepsVC, animated: true)
         case .enterAddress(let hasCompletedJumio):
             let addressEdit = AddressEditViewController.fromStoryboard()
             addressEdit.mode = .nricEnter(hasCompletedJumio: hasCompletedJumio)
-            addressEdit.coordinator = self
+            addressEdit.delegate = self
             self.navigationController.setViewControllers([addressEdit], animated: animated)
         case .editSingPassAddress(let address, let delegate):
             let addressEdit = AddressEditViewController.fromStoryboard()
@@ -127,7 +127,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.navigationController.pushViewController(addressEdit, animated: animated)
         case .selectVerificationMethod:
             let selectVerificationMethodVC = SelectIdentityVerificationMethodViewController.fromStoryboard()
-            selectVerificationMethodVC.coordinator = self
+            selectVerificationMethodVC.delegate = self
             self.navigationController.pushViewController(selectVerificationMethodVC, animated: animated)
         case .ekycRejected:
             self.showEKYCRejectedPage(animated: animated)
@@ -142,11 +142,11 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             
             // Add the steps VC underneath jumio so there's something if the user cancels
             let stepsVC = ScanICStepsViewController.fromStoryboard()
-            stepsVC.coordinator = self
+            stepsVC.delegate = self
             self.navigationController.setViewControllers([stepsVC], animated: animated)
         case .enterNRIC:
             let nricVC = NRICVerifyViewController.fromStoryboard()
-            nricVC.coordinator = self
+            nricVC.delegate = self
             self.navigationController.pushViewController(nricVC, animated: animated)
         case .singPass:
             let singPassCoordinator = SingPassCoordinator(delegate: self)
@@ -154,7 +154,7 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             self.singPassCoordinator = singPassCoordinator
         case .verifySingPassAddress:
             let myInfoSummary = MyInfoSummaryViewController.fromStoryboard()
-            myInfoSummary.coordinator = self
+            myInfoSummary.delegate = self
             self.navigationController.setViewControllers([myInfoSummary], animated: animated)
         case .waitingForVerification:
             self.showWaitingForVerification(animated: animated)
@@ -168,14 +168,6 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
     
     func showFirstStepAfterLanding() {
         self.navigate(to: .selectVerificationMethod, animated: true)
-    }
-    
-    func waitingCompletedSuccessfully(for region: RegionResponse) {
-        self.navigate(to: .success(region: region), animated: true)
-    }
-    
-    func waitingCompletedWithRejection() {
-        self.navigate(to: .ekycRejected, animated: true)
     }
     
     private func getCachedOrUpdateRegion() -> Promise<RegionResponse> {
@@ -236,64 +228,6 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             }
         }
     }
-
-    func selectedSingPass() {
-        self.getCachedOrUpdateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineSingPassFlowDestination(region: region)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                switch error {
-                case APIHelper.Error.jsonError(let error):
-                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
-                        // The user hasn't created a region
-                        let destination = self.determineSingPassFlowDestination(region: nil)
-                        self.navigate(to: destination, animated: true)
-                        return
-                } // else, keep going
-                default:
-                    break
-                }
-                ApplicationErrors.log(error)
-            }
-    }
-    
-    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
-        self.getCachedOrUpdateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineSingPassFlowDestination(region: region,
-                                                                        address: address,
-                                                                        editDelegate: delegate)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
-    
-    func verifiedSingPassAddress() {
-        self.updateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineSingPassFlowDestination(region: region)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
     
     // MARK: - NRIC / Jumio / Address flow
     
@@ -347,84 +281,6 @@ class SingaporeEKYCCoordinator: EKYCCoordinator {
             return .enterAddress(hasCompletedJumio: true)
         }
     }
-    
-    func finishedViewingNRICSteps() {
-        self.getCachedOrUpdateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                    region: region)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                    ApplicationErrors.log(error)
-            }
-    }
-    
-    func selectedNRIC() {
-        self.getCachedOrUpdateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                    region: region)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                switch error {
-                case APIHelper.Error.jsonError(let error):
-                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
-                        // The user hasn't created a region
-                        let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                            region: nil)
-                        self.navigate(to: destination, animated: true)
-                        return
-                    } // else, keep going
-                default:
-                    break
-                }
-                
-                ApplicationErrors.log(error)
-            }
-    }
-    
-    func enteredNRICSuccessfully() {
-        self.updateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                    region: region)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
-
-    func enteredAddressSuccessfully(hasCompletedJumio: Bool) {
-        self.updateRegion()
-            .done { [weak self] region in
-                guard let self = self else {
-                    return
-                }
-                
-                let destination = self.determineNRICFlowDestination(viewedSteps: true,
-                                                                    region: region,
-                                                                    completedJumio: hasCompletedJumio)
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
 }
 
 extension SingaporeEKYCCoordinator: JumioCoordinatorDelegate {
@@ -476,5 +332,161 @@ extension SingaporeEKYCCoordinator: SingPassCoordinatorDelegate {
     func signInFailed(error: NSError?) {
         // TODO: This wasn't handled before, do we need to do anything here?
         debugPrint("Error: \(String(describing: error))")
+    }
+}
+
+extension SingaporeEKYCCoordinator: ScanICStepsDelegate {
+    func finishedViewingNRICSteps() {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension SingaporeEKYCCoordinator: NRICVerifyDelegate {
+    func enteredNRICSuccessfully() {
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension SingaporeEKYCCoordinator: AddressEditDelegate {
+    func enteredAddressSuccessfully(hasCompletedJumio: Bool) {
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region,
+                                                                    completedJumio: hasCompletedJumio)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension SingaporeEKYCCoordinator: SelectIdentityVerificationMethodDelegate {
+    func selectedNRIC() {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                    region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                switch error {
+                case APIHelper.Error.jsonError(let error):
+                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
+                        // The user hasn't created a region
+                        let destination = self.determineNRICFlowDestination(viewedSteps: true,
+                                                                            region: nil)
+                        self.navigate(to: destination, animated: true)
+                        return
+                } // else, keep going
+                default:
+                    break
+                }
+                
+                ApplicationErrors.log(error)
+        }
+    }
+    
+    func selectedSingPass() {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                switch error {
+                case APIHelper.Error.jsonError(let error):
+                    if error.errorCode == "FAILED_TO_FETCH_REGIONS" {
+                        // The user hasn't created a region
+                        let destination = self.determineSingPassFlowDestination(region: nil)
+                        self.navigate(to: destination, animated: true)
+                        return
+                } // else, keep going
+                default:
+                    break
+                }
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension SingaporeEKYCCoordinator: MyInfoSummaryDelegate {
+    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
+        self.getCachedOrUpdateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region,
+                                                                        address: address,
+                                                                        editDelegate: delegate)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+    
+    func verifiedSingPassAddress() {
+        self.updateRegion()
+            .done { [weak self] region in
+                guard let self = self else {
+                    return
+                }
+                
+                let destination = self.determineSingPassFlowDestination(region: region)
+                self.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension SingaporeEKYCCoordinator: PendingVerificationDelegate {
+    func waitingCompletedSuccessfully(for region: RegionResponse) {
+        self.navigate(to: .success(region: region), animated: true)
+    }
+    
+    func waitingCompletedWithRejection() {
+        self.navigate(to: .ekycRejected, animated: true)
     }
 }

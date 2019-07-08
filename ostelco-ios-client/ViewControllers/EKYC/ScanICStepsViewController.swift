@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol ScanICStepsDelegate: class {
+    func finishedViewingNRICSteps()
+}
+
 class ScanICStepsViewController: UIViewController {
     
-    weak var coordinator: SingaporeEKYCCoordinator?
+    weak var delegate: ScanICStepsDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,7 +31,7 @@ class ScanICStepsViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
-        self.coordinator?.finishedViewingNRICSteps()
+        self.delegate?.finishedViewingNRICSteps()
     }
 }
 
