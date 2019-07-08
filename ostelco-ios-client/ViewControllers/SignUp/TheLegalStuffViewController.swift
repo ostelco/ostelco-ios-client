@@ -40,6 +40,10 @@ enum LegalLink: CaseIterable {
     }
 }
 
+protocol TheLegalStuffDelegate: class {
+    func legaleseAgreed()
+}
+
 class TheLegalStuffViewController: UIViewController {
     
     @IBOutlet private weak var termsAndConditionsLabel: BodyTextLabel!
@@ -52,7 +56,7 @@ class TheLegalStuffViewController: UIViewController {
 
     @IBOutlet private weak var continueButton: UIButton!
     
-    weak var coordinator: SignUpCoordinator?
+    weak var delegate: TheLegalStuffDelegate?
  
     private var allChecks: [CheckButton] {
         return [
@@ -96,7 +100,7 @@ class TheLegalStuffViewController: UIViewController {
     
     @IBAction private func continueTapped() {
         OstelcoAnalytics.logEvent(.LegalStuffAgreed)
-        self.coordinator?.legaleseAgreed()
+        self.delegate?.legaleseAgreed()
     }
 }
 
