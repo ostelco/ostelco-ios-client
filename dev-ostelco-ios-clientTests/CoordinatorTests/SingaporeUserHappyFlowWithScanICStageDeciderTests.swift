@@ -133,6 +133,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             ]
         )
         
+        // TODO: send user to ekyc on boarding, then select identity verification method, THEN show pending verification IF they selected ScanIC
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .pendingVerification)
     }
     
@@ -152,6 +153,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             ]
         )
         
+        // TODO: send user to ekyc on boarding, then select identity verification method, THEN show .ohNo(.ekycRejected) IF they selected ScanIC
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
     }
 

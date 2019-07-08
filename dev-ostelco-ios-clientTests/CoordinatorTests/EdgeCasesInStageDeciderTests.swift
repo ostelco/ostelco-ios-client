@@ -34,6 +34,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
     
+    // What does this actually mean? Rename test
     func testUserKillsAppAfterFinishing() {
         let decider = StageDecider()
         let localContext = LocalContext(hasFirebaseToken: true)
@@ -116,6 +117,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             ]
         )
         
+        // TODO: send user to ekyc on boarding, then select identity verification method, THEN show .ohNo(.ekycRejected) IF they selected ScanIC
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
     }
     
@@ -144,6 +146,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             ]
         )
         
+        // TODO: send user to ekyc on boarding, THEN show .ohNo(.ekycRejected) 
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
     }
 
