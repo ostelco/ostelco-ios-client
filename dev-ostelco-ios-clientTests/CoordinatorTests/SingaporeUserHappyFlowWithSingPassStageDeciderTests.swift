@@ -74,8 +74,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
     }
     
-    // TODO: Create a test for when user has seen SelectRegionOnBoarding -> SelectRegion
-    
     func testUserHasSeenRegionOnboarding() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenRegionOnboarding: true)
