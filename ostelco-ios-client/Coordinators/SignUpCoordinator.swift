@@ -69,31 +69,19 @@ class SignUpCoordinator {
         switch destination {
         case .legalese:
             let legalVC = TheLegalStuffViewController.fromStoryboard()
-            legalVC.coordinator = self
+            legalVC.delegate = self
             self.navigationController.setViewControllers([legalVC], animated: animated)
         case .enterName:
             let nameVC = GetStartedViewController.fromStoryboard()
-            nameVC.coordinator = self
+            nameVC.delegate = self
             self.navigationController.setViewControllers([nameVC], animated: animated)
         case .allowPushNotifications:
             let pushVC = EnableNotificationsViewController.fromStoryboard()
-            pushVC.coordinator = self
+            pushVC.delegate = self
             self.navigationController.setViewControllers([pushVC], animated: animated)
         case .signupComplete:
             self.delegate?.signUpCompleted()
         }
-    }
-    
-    func legaleseAgreed() {
-        self.determineDestinationAndNavigate()
-    }
-    
-    func nameEnteredSuccessfully() {
-        self.determineDestinationAndNavigate()
-    }
-    
-    func pushAgreedOrDenied() {
-        self.determineDestinationAndNavigate()
     }
     
     private func determineDestinationAndNavigate() {
@@ -104,5 +92,23 @@ class SignUpCoordinator {
             .catch { error in
                 ApplicationErrors.log(error)
             }
+    }
+}
+
+extension SignUpCoordinator: TheLegalStuffDelegate {
+    func legaleseAgreed() {
+        self.determineDestinationAndNavigate()
+    }
+}
+
+extension SignUpCoordinator: GetStartedDelegate {
+    func nameEnteredSuccessfully() {
+        self.determineDestinationAndNavigate()
+    }
+}
+
+extension SignUpCoordinator: EnableNotificationsDelegate {
+    func pushAgreedOrDenied() {
+        self.determineDestinationAndNavigate()
     }
 }

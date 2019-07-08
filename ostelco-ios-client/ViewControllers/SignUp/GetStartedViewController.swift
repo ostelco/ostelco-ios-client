@@ -9,6 +9,10 @@
 import UIKit
 import ostelco_core
 
+protocol GetStartedDelegate: class {
+    func nameEnteredSuccessfully()
+}
+
 class GetStartedViewController: UIViewController {
     
     @IBOutlet private weak var continueButton: UIButton!
@@ -16,7 +20,7 @@ class GetStartedViewController: UIViewController {
     
     var spinnerView: UIView?
     
-    var coordinator: SignUpCoordinator?
+    weak var delegate: GetStartedDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +55,7 @@ class GetStartedViewController: UIViewController {
             .done { [weak self] customer in
                 OstelcoAnalytics.logEvent(.EnteredNickname)
                 UserManager.shared.customer = customer
-                self?.coordinator?.nameEnteredSuccessfully()
+                self?.delegate?.nameEnteredSuccessfully()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
