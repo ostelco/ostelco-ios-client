@@ -9,12 +9,16 @@
 import OstelcoStyles
 import UIKit
 
+protocol VerifyIdentityOnboardingDelegate: class {
+    func showFirstStepAfterLanding()
+}
+
 class VerifyIdentityOnBoardingViewController: UIViewController {
     
     @IBOutlet private var step1Icon: UIImageView!
     @IBOutlet private var step2Icon: UIImageView!
     
-    weak var coordinator: EKYCCoordinator?
+    weak var delegate: VerifyIdentityOnboardingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ class VerifyIdentityOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        self.coordinator?.showFirstStepAfterLanding()
+        self.delegate?.showFirstStepAfterLanding()
     }
 }
 
