@@ -34,7 +34,6 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
     
-    // What does this actually mean? Rename test
     func testUserKillsAppAfterCompletingOnboardingSuccessfullyButBeforeAwesomeScreen() {
         let decider = StageDecider()
         let localContext = LocalContext(hasFirebaseToken: true)
