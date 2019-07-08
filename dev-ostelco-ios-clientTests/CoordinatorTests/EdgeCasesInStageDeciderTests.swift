@@ -35,7 +35,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     }
     
     // What does this actually mean? Rename test
-    func testUserKillsAppAfterFinishing() {
+    func testUserKillsAppAfterCompletingOnboardingSuccessfullyButBeforeAwesomeScreen() {
         let decider = StageDecider()
         let localContext = LocalContext(hasFirebaseToken: true)
         
