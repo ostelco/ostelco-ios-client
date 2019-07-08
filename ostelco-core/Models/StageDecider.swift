@@ -59,6 +59,7 @@ struct StageDecider {
         case legalStuff
         case notificationPermissions
         case nicknameEntry
+        case regionOnboarding
         case selectRegion
         case locationPermissions
         case verifyIdentityOnboarding
@@ -205,7 +206,7 @@ struct StageDecider {
         
         // 1. Select country.
         if localContext.selectedRegion == nil {
-            return .selectRegion
+            return .regionOnboarding
         }
         if localContext.regionVerified {
             return .verifyIdentityOnboarding
