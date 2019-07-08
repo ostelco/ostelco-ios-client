@@ -10,6 +10,10 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol ESIMInstructionsDelegate: class {
+    func completedInstructions()
+}
+
 class ESIMInstructionsViewController: UIViewController {
 
     /// Has to be set up through `prepareForSegue` when this VC is loaded
@@ -19,7 +23,7 @@ class ESIMInstructionsViewController: UIViewController {
     @IBOutlet private var primaryButton: PrimaryButton!
     @IBOutlet private var lastPageLabel: BodyTextLabel!
     
-    weak var coordinator: ESimCoordinator?
+    weak var delegate: ESIMInstructionsDelegate?
     
     private lazy var dataSource: PageControllerDataSource = {
         let pages = ESIMPage.allCases.map { $0.viewController }
@@ -56,7 +60,7 @@ class ESIMInstructionsViewController: UIViewController {
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         let index = dataSource.currentIndex
         if index == (ESIMPage.allCases.count - 1) {
-            self.coordinator?.completedInstructions()
+            self.delegate?.completedInstructions()
         } else {
             self.dataSource.goToNextPage()
         }

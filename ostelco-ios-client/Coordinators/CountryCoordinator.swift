@@ -93,15 +93,15 @@ class CountryCoordinator {
         switch destination {
         case .allowLocation:
             let allowLocation = AllowLocationAccessViewController.fromStoryboard()
-            allowLocation.coordinator = self
+            allowLocation.delegate = self
             self.navigationController.setViewControllers([allowLocation], animated: animated)
         case .chooseCountry:
             let chooseCountry = ChooseCountryViewController.fromStoryboard()
-            chooseCountry.coordinator = self
+            chooseCountry.delegate = self
             self.navigationController.setViewControllers([chooseCountry], animated: animated)
         case .landing:
             let landing = VerifyCountryOnBoardingViewController.fromStoryboard()
-            landing.coordinator = self
+            landing.delegate = self
             self.navigationController.setViewControllers([landing], animated: animated)
         case .locationProblem(let problem):
             self.handleLocationProblem(problem)
@@ -109,34 +109,18 @@ class CountryCoordinator {
             self.delegate?.countrySelectionCompleted(with: country)
         }
     }
-    
-    func finishedViewingCountryLandingScreen() {
-        self.determineDestination(hasSeenInitalVC: true, selectedCountry: nil)
-            .done { [weak self] destination in
-                self?.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
-    
-    func selectedCountry(_ country: Country) {
-        OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
-        OnBoardingManager.sharedInstance.selectedCountry = country
-        self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
-            .done { destination in
-                self.navigate(to: destination, animated: true)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
-    }
-    
-    func handleLocationProblem(_ problem: LocationProblem, animated: Bool = true) {
+}
+
+extension CountryCoordinator: AllowLocationAccessDelegate {
+    func handleLocationProblem(_ problem: LocationProblem, animated: Bool) {
         let problemVC = LocationProblemViewController.fromStoryboard()
         problemVC.locationProblem = problem
-        problemVC.coordinator = self
+        problemVC.delegate = self
         self.navigationController.setViewControllers([problemVC], animated: animated)
+    }
+    
+    func handleLocationProblem(_ problem: LocationProblem) {
+        self.handleLocationProblem(problem, animated: true)
     }
     
     func locationUsageAuthorized(for country: Country) {
@@ -146,6 +130,51 @@ class CountryCoordinator {
             }
             .catch { error in
                 ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: ChooseCountryDelegate {
+    func selectedCountry(_ country: Country) {
+        OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
+        OnBoardingManager.sharedInstance.selectedCountry = country
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: country)
+            .done { destination in
+                self.navigate(to: destination, animated: true)
             }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: LocationProblemDelegate {
+    // TODO: Refactor to avoid passing view controller as parameter when implementing the new StageDecider. We might need to refactor the LocationProblemViewController itself.
+    func checkLocation(_ viewController: LocationProblemViewController) {
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: OnBoardingManager.sharedInstance.selectedCountry)
+            .done { [weak self] destination in
+                switch destination {
+                case .locationProblem(let problem):
+                    viewController.locationProblem = problem
+                    viewController.listenForChanges()
+                default:
+                    self?.navigate(to: destination, animated: true)
+                }
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
+    }
+}
+
+extension CountryCoordinator: VerifyCountryOnBoardingDelegate {
+    func finishedViewingCountryLandingScreen() {
+        self.determineDestination(hasSeenInitalVC: true, selectedCountry: nil)
+            .done { [weak self] destination in
+                self?.navigate(to: destination, animated: true)
+            }
+            .catch { error in
+                ApplicationErrors.log(error)
+        }
     }
 }

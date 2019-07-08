@@ -11,11 +11,17 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 
+protocol AllowLocationAccessDelegate: class {
+    func handleLocationProblem(_ problem: LocationProblem)
+    func handleLocationProblem(_ problem: LocationProblem, animated: Bool)
+    func locationUsageAuthorized(for country: Country)
+}
+
 class AllowLocationAccessViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
-    weak var coordinator: CountryCoordinator?
+    weak var delegate: AllowLocationAccessDelegate?
 
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
@@ -49,7 +55,7 @@ class AllowLocationAccessViewController: UIViewController {
     private func requestAuthorization() {
         let locationController = LocationController.shared
         guard locationController.locationServicesEnabled else {
-            self.coordinator?.handleLocationProblem(.disabledInSettings)
+            self.delegate?.handleLocationProblem(.disabledInSettings)
             return
         }
         
@@ -65,12 +71,12 @@ class AllowLocationAccessViewController: UIViewController {
                 self?.handleAuthorizationStatus(status)
             }
         case .restricted:
-            self.coordinator?.handleLocationProblem(.restrictedByParentalControls)
+            self.delegate?.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
-            self.coordinator?.handleLocationProblem(.deniedByUser)
+            self.delegate?.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.coordinator?.locationUsageAuthorized(for: self.selectedCountry)
+            self.delegate?.locationUsageAuthorized(for: self.selectedCountry)
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }

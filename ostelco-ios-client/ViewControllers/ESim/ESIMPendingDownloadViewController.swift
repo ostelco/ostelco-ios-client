@@ -10,9 +10,13 @@ import UIKit
 import Crashlytics
 import ostelco_core
 
+protocol ESIMPendingDownloadDelegate: class {
+    func profileChanged(_ profile: SimProfile)
+}
+
 class ESIMPendingDownloadViewController: UIViewController {
     
-    weak var coordinator: ESimCoordinator?
+    weak var delegate: ESIMPendingDownloadDelegate?
     var spinnerView: UIView?
     var simProfile: SimProfile? {
         didSet {
@@ -109,21 +113,13 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
         
         self.simProfile = profile
-        let destination = self.coordinator!.determineDestination(from: profile)
-        switch destination {
-        case .pendingDownload:
-            self.showAlert(title: "Message", msg: "Esim has not been downloaded yet. Current status: \(profile.status.rawValue)")
-        default:
-            self.coordinator?.navigate(to: destination, animated: true)
-        }
+        self.delegate!.profileChanged(profile)
     }
     
     func getSimProfileForRegion(region: RegionResponse) {
-        guard
-            let existingProfiles = region.simProfiles,
-            existingProfiles.isNotEmpty else {
-                self.createSimProfileForRegion(region)
-                return
+        guard let existingProfiles = region.simProfiles, existingProfiles.isNotEmpty else {
+            self.createSimProfileForRegion(region)
+            return
         }
         
         if let enabledProfile = existingProfiles.first(where: { $0.status == .ENABLED }) {
