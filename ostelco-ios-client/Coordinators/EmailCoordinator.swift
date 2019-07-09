@@ -42,22 +42,26 @@ class EmailCoordinator {
         switch destination {
         case .enterEmail:
             let enterEmailVC = EmailEntryViewController.fromStoryboard()
-           enterEmailVC.coordinator = self
+           enterEmailVC.delegate = self
             self.navigationController.setViewControllers([enterEmailVC], animated: animated)
         case .verifyEmail:
             let checkVC = CheckEmailViewController.fromStoryboard()
-           checkVC.coordinator = self
+           checkVC.delegate = self
             self.navigationController.setViewControllers([checkVC], animated: animated)
         case .emailVerified:
             self.delegate?.emailSuccessfullyVerified()
         }
     }
-    
+}
+
+extension EmailCoordinator: EmailEntryDelegate {
     func emailLinkSent() {
         let destination = self.determineDestination(emailEntered: true)
         self.navigate(to: destination, animated: true)
     }
-    
+}
+
+extension EmailCoordinator: CheckEmailDelegate {
     func emailVerified() {
         let destination = self.determineDestination(emailEntered: true, emailVerified: true)
         self.navigate(to: destination, animated: true)
