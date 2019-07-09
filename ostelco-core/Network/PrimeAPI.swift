@@ -256,7 +256,7 @@ open class PrimeAPI: BasicNetwork {
             .map { regions -> RegionResponse in
                 guard let region = RegionResponse.getRegionFromRegionResponseArray(regions) else {
                     throw Error.failedToGetRegion
-                }   
+                }
                 
                 return region
             }

@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol EmailEntryDelegate: class {
+    func emailLinkSent()
+}
+
 class EmailEntryViewController: UIViewController {
     
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var continueButton: UIButton!
     
-    weak var coordinator: EmailCoordinator?
+    weak var delegate: EmailEntryDelegate?
     
     private let emailValidator = EmailValidator()
     
@@ -36,7 +40,7 @@ class EmailEntryViewController: UIViewController {
                 self?.removeSpinner(spinnerView)
             }
             .done { [weak self] in
-                self?.coordinator?.emailLinkSent()
+                self?.delegate?.emailLinkSent()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
