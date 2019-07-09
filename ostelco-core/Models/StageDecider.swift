@@ -14,7 +14,7 @@ struct LocalContext {
     let enteredEmailAddress: String? // Needs to be persisted
     let hasFirebaseToken: Bool // Needs to be persisted
     let hasAgreedToTerms: Bool
-    let hasSeenNotificationPermissions: Bool
+    let hasSeenNotificationPermissions: Bool // Needs to be persisted
     let regionVerified: Bool
     let hasSeenVerifyIdentifyOnboarding: Bool
     let selectedVerificationOption: StageDecider.IdentityVerificationOption?
@@ -27,8 +27,9 @@ struct LocalContext {
     let serverIsUnreachable: Bool
     let hasLocationProblem: Bool
     let hasCancelledJumio: Bool
+    let hasSeenRegionOnboarding: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false) {
+    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -47,6 +48,7 @@ struct LocalContext {
         self.serverIsUnreachable = serverIsUnreachable
         self.hasLocationProblem = hasLocationProblem
         self.hasCancelledJumio = hasCancelledJumio
+        self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
     }
 }
 
@@ -59,6 +61,7 @@ struct StageDecider {
         case legalStuff
         case notificationPermissions
         case nicknameEntry
+        case regionOnboarding
         case selectRegion
         case locationPermissions
         case verifyIdentityOnboarding
@@ -88,10 +91,7 @@ struct StageDecider {
             if let emailAddress = localContext.enteredEmailAddress {
                 if localContext.hasFirebaseToken {
                     if localContext.hasAgreedToTerms {
-                        if localContext.hasSeenNotificationPermissions {
-                            return .nicknameEntry
-                        }
-                        return .notificationPermissions
+                        return .nicknameEntry
                     }
                     return .legalStuff
                 }
@@ -142,18 +142,9 @@ struct StageDecider {
             return preLoggedInStage(localContext)
         }
         
-        // Cold start for jumio rejection to show error screen instead of ekyc on boarding screen
-        if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
-            return .ohNo(.ekycRejected)
-        }
-        
-        // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
-        if localContext.hasCompletedJumio, localContext.selectedVerificationOption == nil {
-            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
-                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
-                    return .pendingVerification
-                }
-            }
+        // Always show notification permissions if you are logged in, have a user, but haven't accepted or rejected notification permissions. This case handles both cold cases, happy flow and edge cases.
+        if !localContext.hasSeenNotificationPermissions {
+            return .notificationPermissions
         }
         
         // 3. ESim flow.
@@ -175,9 +166,12 @@ struct StageDecider {
         
         // Specific to Singapore, normal flow, not cold start
         if localContext.selectedVerificationOption == .scanIC {
-            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
+            if let region = context.getRegion(), region.kycStatusMap.NRIC_FIN == .APPROVED {
                 if localContext.hasCompletedJumio {
                     if localContext.hasCompletedAddress {
+                        if region.kycStatusMap.JUMIO == .REJECTED {
+                            return .ohNo(.ekycRejected)
+                        }
                         return .pendingVerification
                     }
                     return .address
@@ -193,6 +187,9 @@ struct StageDecider {
             
             if options.count == 1 { // All other countries
                 if localContext.hasCompletedJumio {
+                    if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
+                        return .ohNo(.ekycRejected)
+                    }
                     return .pendingVerification
                 }
                 if localContext.hasCancelledJumio {
@@ -203,10 +200,28 @@ struct StageDecider {
             return .selectIdentityVerificationMethod(options) // Singapore flow specific
         }
         
+        // Cold start for jumio rejection to show error screen instead of ekyc on boarding screen
+        if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
+            return .verifyIdentityOnboarding
+        }
+        
+        // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
+        if localContext.hasCompletedJumio, localContext.selectedVerificationOption == nil {
+            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
+                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
+                    return .verifyIdentityOnboarding
+                }
+            }
+        }
+        
         // 1. Select country.
         if localContext.selectedRegion == nil {
-            return .selectRegion
+            if localContext.hasSeenRegionOnboarding {
+                return .selectRegion
+            }
+            return .regionOnboarding
         }
+        
         if localContext.regionVerified {
             return .verifyIdentityOnboarding
         }

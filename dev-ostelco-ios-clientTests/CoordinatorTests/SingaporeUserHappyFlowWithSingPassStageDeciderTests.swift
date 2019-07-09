@@ -49,7 +49,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .notificationPermissions)
+        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .nicknameEntry)
     }
     
     func testUserHasAgreedToLegalStuffThenColdStart() {
@@ -59,16 +59,25 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .legalStuff)
     }
     
-    func testUserHasSeenNotificationPermissions() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true)
-        
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .nicknameEntry)
-    }
-    
     func testUserHasEnteredNickname() {
         let decider = StageDecider()
         let localContext = LocalContext()
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .notificationPermissions)
+    }
+    
+    func testUserHasSeenNotificationPermissions() {
+        let decider = StageDecider()
+        let localContext = LocalContext(hasSeenNotificationPermissions: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
+    }
+    
+    func testUserHasSeenRegionOnboarding() {
+        let decider = StageDecider()
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenRegionOnboarding: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
@@ -76,7 +85,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"))
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
@@ -84,7 +93,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
@@ -92,7 +101,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenVerifyIdentifyOnboarding() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
@@ -100,7 +109,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.singpass)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.singpass)
         
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
@@ -109,7 +118,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.singpass, myInfoCode: "xxx")
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.singpass, myInfoCode: "xxx")
         
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
@@ -118,16 +127,15 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpassThenColdStart() {
         let decider = StageDecider()
-        let localContext = LocalContext(myInfoCode: "xxx")
-        
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, myInfoCode: "xxx")
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
     }
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
         let decider = StageDecider()
-        let localContext = LocalContext()
+        let localContext = LocalContext(hasSeenNotificationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -146,7 +154,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimOnboarding() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenESimOnboarding: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -165,7 +173,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimInstructions() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -184,7 +192,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIM() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -205,7 +213,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIMThenColdStart() {
         let decider = StageDecider()
-        let localContext = LocalContext()
+        let localContext = LocalContext(hasSeenNotificationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -226,7 +234,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIMAndSeenAwesome() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true, hasSeenAwesome: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true, hasSeenAwesome: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
