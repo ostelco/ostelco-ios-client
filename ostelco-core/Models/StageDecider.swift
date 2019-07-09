@@ -14,7 +14,7 @@ struct LocalContext {
     let enteredEmailAddress: String? // Needs to be persisted
     let hasFirebaseToken: Bool // Needs to be persisted
     let hasAgreedToTerms: Bool
-    let hasSeenNotificationPermissions: Bool
+    let hasSeenNotificationPermissions: Bool // Needs to be persisted
     let regionVerified: Bool
     let hasSeenVerifyIdentifyOnboarding: Bool
     let selectedVerificationOption: StageDecider.IdentityVerificationOption?
@@ -91,10 +91,7 @@ struct StageDecider {
             if let emailAddress = localContext.enteredEmailAddress {
                 if localContext.hasFirebaseToken {
                     if localContext.hasAgreedToTerms {
-                        if localContext.hasSeenNotificationPermissions {
-                            return .nicknameEntry
-                        }
-                        return .notificationPermissions
+                        return .nicknameEntry
                     }
                     return .legalStuff
                 }
@@ -214,10 +211,14 @@ struct StageDecider {
         
         // 1. Select country.
         if localContext.selectedRegion == nil {
-            if localContext.hasSeenRegionOnboarding {
-                return .selectRegion
+            if localContext.hasSeenNotificationPermissions {
+                if localContext.hasSeenRegionOnboarding {
+                    return .selectRegion
+                }
+                return .regionOnboarding
             }
-            return .regionOnboarding
+            
+            return .notificationPermissions
         }
         if localContext.regionVerified {
             return .verifyIdentityOnboarding
