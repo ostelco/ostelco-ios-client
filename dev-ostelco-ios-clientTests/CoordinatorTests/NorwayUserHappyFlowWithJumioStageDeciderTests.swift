@@ -12,7 +12,7 @@ import XCTest
 class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"))
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
@@ -20,7 +20,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
@@ -28,7 +28,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasSeenVerifyIdentifyOnboarding() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
@@ -36,7 +36,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -55,7 +55,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioAndIsApproved() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),

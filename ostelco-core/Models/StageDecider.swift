@@ -142,6 +142,11 @@ struct StageDecider {
             return preLoggedInStage(localContext)
         }
         
+        // Always show notification permissions if you are logged in, have a user, but haven't accepted or rejected notification permissions. This case handles both cold cases, happy flow and edge cases.
+        if !localContext.hasSeenNotificationPermissions {
+            return .notificationPermissions
+        }
+        
         // 3. ESim flow.
         if let region = context.getRegion(), region.status == .APPROVED {
             return eSIMStage(region, localContext)
@@ -211,15 +216,12 @@ struct StageDecider {
         
         // 1. Select country.
         if localContext.selectedRegion == nil {
-            if localContext.hasSeenNotificationPermissions {
-                if localContext.hasSeenRegionOnboarding {
-                    return .selectRegion
-                }
-                return .regionOnboarding
+            if localContext.hasSeenRegionOnboarding {
+                return .selectRegion
             }
-            
-            return .notificationPermissions
+            return .regionOnboarding
         }
+        
         if localContext.regionVerified {
             return .verifyIdentityOnboarding
         }
