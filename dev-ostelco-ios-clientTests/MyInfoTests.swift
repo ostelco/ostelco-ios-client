@@ -20,7 +20,7 @@ class MyInfoTests: XCTestCase {
         
         XCTAssertEqual(testInfo.name, "TAN XIAO HUI")
         XCTAssertEqual(testInfo.sex, "F")
-        XCTAssertEqual(testInfo.dob, "1970-05-17")
+        XCTAssertEqual(testInfo.dob, "1998-06-06")
         XCTAssertEqual(testInfo.residentialStatus, "C")
         XCTAssertEqual(testInfo.nationality, "SG")
         XCTAssertEqual(testInfo.email, "myinfotesting@gmail.com")

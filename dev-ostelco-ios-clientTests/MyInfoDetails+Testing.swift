@@ -15,42 +15,43 @@ extension MyInfoDetails {
         return """
 {
     "name": {
-        "lastupdated": "2018-03-20",
+        "lastupdated": "2019-04-05",
         "source": "1",
         "classification": "C",
         "value": "TAN XIAO HUI"
     },
     "sex": {
-        "lastupdated": "2018-03-20",
+        "lastupdated": "2019-04-05",
+        "code": "F",
         "source": "1",
         "classification": "C",
-        "value": "F"
+        "desc": "FEMALE"
     },
     "dob": {
-        "lastupdated": "2018-03-20",
+        "lastupdated": "2019-04-05",
         "source": "1",
         "classification": "C",
-        "value": "1970-05-17"
+        "value": "1998-06-06"
     },
     "residentialstatus": {
-        "lastupdated": "2018-03-23",
-        "source": "1",
+        "code": "C",
+        "desc": "CITIZEN",
         "classification": "C",
-        "value": "C"
+        "source": "1",
+        "lastupdated": "2019-03-26"
     },
     "nationality": {
-        "lastupdated": "2018-03-20",
+        "lastupdated": "2019-04-05",
+        "code": "SG",
         "source": "1",
         "classification": "C",
-        "value": "SG"
+        "desc": "SINGAPORE CITIZEN"
     },
-    "mobileno_old": {
-        "lastupdated": "2018-08-23",
-        "code": "65",
-        "source": "4",
+    "email": {
+        "lastupdated": "2019-04-05",
+        "source": "2",
         "classification": "C",
-        "prefix": "+",
-        "nbr": "97399245"
+        "value": "myinfotesting@gmail.com"
     },
     "mobileno": {
         "lastupdated": "2019-04-05",
@@ -66,25 +67,7 @@ extension MyInfoDetails {
             "value": "97399245"
         }
     },
-    "email": {
-        "lastupdated": "2018-08-23",
-        "source": "4",
-        "classification": "C",
-        "value": "myinfotesting@gmail.com"
-    },
     "mailadd": {
-        "country": "SG",
-        "unit": "128",
-        "street": "BEDOK NORTH AVENUE 4",
-        "lastupdated": "2018-03-20",
-        "block": "102",
-        "postal": "460102",
-        "source": "1",
-        "classification": "C",
-        "floor": "09",
-        "building": "PEARL GARDEN"
-    },
-    "mailadd_new": {
         "country": {
             "code": "SG",
             "desc": "SINGAPORE"
