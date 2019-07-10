@@ -44,13 +44,27 @@ extension MyInfoDetails {
         "classification": "C",
         "value": "SG"
     },
-    "mobileno": {
+    "mobileno_old": {
         "lastupdated": "2018-08-23",
         "code": "65",
         "source": "4",
         "classification": "C",
         "prefix": "+",
         "nbr": "97399245"
+    },
+    "mobileno": {
+        "lastupdated": "2019-04-05",
+        "source": "2",
+        "classification": "C",
+        "areacode": {
+            "value": "65"
+        },
+        "prefix": {
+            "value": "+"
+        },
+        "nbr": {
+            "value": "97399245"
+        }
     },
     "email": {
         "lastupdated": "2018-08-23",
@@ -69,6 +83,34 @@ extension MyInfoDetails {
         "classification": "C",
         "floor": "09",
         "building": "PEARL GARDEN"
+    },
+    "mailadd_new": {
+        "country": {
+            "code": "SG",
+            "desc": "SINGAPORE"
+        },
+        "unit": {
+            "value": "128"
+        },
+        "street": {
+            "value": "BEDOK NORTH AVENUE 4"
+        },
+        "lastupdated": "2019-04-05",
+        "block": {
+            "value": "102"
+        },
+        "source": "1",
+        "postal": {
+            "value": "460102"
+        },
+        "classification": "C",
+        "floor": {
+            "value": "09"
+        },
+        "type": "SG",
+        "building": {
+            "value": "PEARL GARDEN"
+        }
     }
 }
 """

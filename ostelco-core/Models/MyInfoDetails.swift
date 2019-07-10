@@ -109,14 +109,23 @@ struct MyInfoOptionalValue: Codable {
 }
 
 public struct MyInfoMobileNumber: Codable {
-    public let number: String?
-    public let code: String?
-    public let prefix: String?
-    
+    private let _number: MyInfoOptionalValue?
+    public var number: String? {
+        return _number?.value
+    }
+    private let _code: MyInfoOptionalValue?
+    public var code: String? {
+        return _code?.value
+    }
+    private let _prefix: MyInfoOptionalValue?
+    public var prefix: String? {
+        return _prefix?.value
+    }
+
     enum CodingKeys: String, CodingKey {
-        case number = "nbr"
-        case code
-        case prefix
+        case _number = "nbr"
+        case _code = "areacode"
+        case _prefix = "prefix"
     }
     
     public var formattedNumber: String? {
