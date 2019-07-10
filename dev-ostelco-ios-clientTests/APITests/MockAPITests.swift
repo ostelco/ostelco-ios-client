@@ -596,7 +596,7 @@ class MockAPITests: XCTestCase {
         }
         
         XCTAssertEqual(info.name, "TAN XIAO HUI")
-        XCTAssertEqual(info.dob, "1970-05-17")
+        XCTAssertEqual(info.dob, "1998-06-06")
         XCTAssertEqual(info.email, "myinfotesting@gmail.com")
         XCTAssertEqual(info.nationality, "SG")
         XCTAssertEqual(info.residentialStatus, "C")
