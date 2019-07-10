@@ -31,7 +31,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-package-manager.git",
-            .upToNextMinor(from: "0.3.0")
+            .upToNextMajor(from: "0.4.0")
         ),
     ],
     targets: [
@@ -39,7 +39,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: runnerName,
-            dependencies: ["Core", "Utility"]
+            dependencies: ["Core", "SPMUtility"]
         ),
         .target(
             name: frameworkName,

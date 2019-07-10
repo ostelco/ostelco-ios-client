@@ -11,7 +11,7 @@ import UIKit
 // ref: https://github.com/vincechan/SwiftLoadingIndicator/blob/master/SwiftLoadingIndicator/LoadingIndicatorView.swift
 
 extension UIViewController {
-    func showSpinner(onView: UIView, loadingText: String? = nil) -> UIView {
+    @discardableResult func showSpinner(onView: UIView, loadingText: String? = nil) -> UIView {
         
         // Create the overlay
         let overlay = UIView()

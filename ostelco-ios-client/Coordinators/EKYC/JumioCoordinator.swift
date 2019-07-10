@@ -12,8 +12,9 @@ import OstelcoStyles
 import PromiseKit
 
 protocol JumioCoordinatorDelegate: class {
-    func completedJumioSuccessfully(scanID: String)
-    func jumioScanFailed(errorMessage: String)
+    func scanSucceeded(scanID: String)
+    func scanCancelled()
+    func scanFailed(errorMessage: String)
 }
 
 class JumioCoordinator: NSObject {
@@ -30,6 +31,7 @@ class JumioCoordinator: NSObject {
     }
     
     private let country: Country
+    private var netverifyController: NetverifyViewController?
     
     weak var delegate: JumioCoordinatorDelegate?
     
@@ -42,8 +44,12 @@ class JumioCoordinator: NSObject {
         self.country = country
     }
     
+    deinit {
+        netverifyController?.destroy()
+    }
+    
     func startScan(from viewController: UIViewController) {
-        self.getNewScanID()
+        createScanID()
             .map { self.createNetverifyController(with: $0) }
             .done { netverifyVC in
                 if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
@@ -54,11 +60,11 @@ class JumioCoordinator: NSObject {
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
-                self?.delegate?.jumioScanFailed(errorMessage: error.localizedDescription)
+                self?.delegate?.scanFailed(errorMessage: error.localizedDescription)
             }
     }
 
-    private func getNewScanID() -> Promise<String> {
+    private func createScanID() -> Promise<String> {
         let countryCode = self.country.countryCode.lowercased()
         return APIManager.shared.primeAPI
             .createJumioScanForRegion(code: countryCode)
@@ -70,8 +76,9 @@ class JumioCoordinator: NSObject {
     private func createNetverifyController(with scanID: String) -> NetverifyViewController {
         // Setup the Configuration for Netverify - use tokens from JUMIO console
         let config: NetverifyConfiguration = NetverifyConfiguration()
-        config.apiToken = Environment().configuration(.JumioToken)
-        config.apiSecret = Environment().configuration(.JumioSecret)
+        let environment = Environment()
+        config.apiToken = environment.configuration(.JumioToken)
+        config.apiSecret = environment.configuration(.JumioSecret)
         
         config.customerInternalReference = scanID
         config.enableVerification = true
@@ -79,17 +86,17 @@ class JumioCoordinator: NSObject {
         config.delegate = self
         
         // This must be a 3-letter code following ISO-3166
-        config.preselectedCountry = self.country.threeLetterCountryCode
+        config.preselectedCountry = country.threeLetterCountryCode
         
         // General appearance
-        NetverifyBaseView.jumioAppearance().disableBlur = true
-        NetverifyBaseView.jumioAppearance().backgroundColor = OstelcoColor.white.toUIColor
-        NetverifyPositiveButton.jumioAppearance().setBackgroundColor(
-            OstelcoColor.oyaBlue.toUIColor,
-            for: .normal
-        )
+        let baseAppearance = NetverifyBaseView.jumioAppearance()
+        baseAppearance.disableBlur = true
+        baseAppearance.backgroundColor = OstelcoColor.white.toUIColor
+        NetverifyPositiveButton.jumioAppearance().setBackgroundColor(OstelcoColor.oyaBlue.toUIColor, for: .normal)
         
-        return NetverifyViewController(configuration: config)
+        let controller = NetverifyViewController(configuration: config)
+        self.netverifyController = controller
+        return controller
     }
 }
 
@@ -101,29 +108,20 @@ extension JumioCoordinator: NetverifyViewControllerDelegate {
         debugPrint("NetverifyViewController finished successfully with scan reference: \(scanReference)")
         let message = documentData.toOstelcoString()
         debugPrint(message)
-        netverifyViewController.dismiss(animated: true) {
-            netverifyViewController.destroy()
-            self.delegate?.completedJumioSuccessfully(scanID: scanReference)
-        }
+        delegate?.scanSucceeded(scanID: scanReference)
     }
     
     func netverifyViewController(_ netverifyViewController: NetverifyViewController,
                                  didCancelWithError error: NetverifyError?,
                                  scanReference: String?) {
         debugPrint("NetverifyViewController cancelled with error: \(error?.message ?? "") scanReference: \(scanReference ?? "")")
-        
-        netverifyViewController.presentingViewController?.dismiss(animated: true) {
-            netverifyViewController.destroy()
-            if let error = error {
-                switch error.code {
-                case "G00000": // User cancelled the scan
-                    // Don't show an error when the user cancelled on purpose.
-                    return
-                default:
-                    break
-                }
+        if let error = error {
+            switch error.code {
+            case "G00000": // User cancelled the scan
+                delegate?.scanCancelled()
+            default:
+                delegate?.scanFailed(errorMessage: "\(error.message ?? "An unknown error occurred.")")
             }
-            self.delegate?.jumioScanFailed(errorMessage: "\(error?.message ?? "An unknown error occurred.")")
         }
     }
 }

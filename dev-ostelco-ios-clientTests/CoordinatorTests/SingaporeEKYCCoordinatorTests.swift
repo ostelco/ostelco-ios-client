@@ -10,6 +10,7 @@ import ostelco_core
 @testable import Oya_Development_app
 import XCTest
 
+/*
 class SingaporeEKYCCoordinatorTests: XCTestCase {
     
     private lazy var testCoordinator = SingaporeEKYCCoordinator(navigationController: UINavigationController())
@@ -538,3 +539,4 @@ class SingaporeEKYCCoordinatorTests: XCTestCase {
 extension SingaporeEKYCCoordinatorTests: MyInfoAddressUpdateDelegate {
     func addressUpdated(to address: MyInfoAddress) {}
 }
+*/

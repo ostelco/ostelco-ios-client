@@ -11,7 +11,7 @@ import OstelcoStyles
 import UIKit
 
 protocol SignUpCompletedDelegate: class {
-    func acknowledgedSuccess(profile: SimProfile)
+    func acknowledgedSuccess()
 }
 
 class SignUpCompletedViewController: UIViewController {
@@ -20,22 +20,15 @@ class SignUpCompletedViewController: UIViewController {
     
     weak var delegate: SignUpCompletedDelegate?
     
-    var profile: SimProfile?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.gifView.videoURL = GifVideo.rocket.url
-        self.gifView.play()
+        gifView.videoURL = GifVideo.rocket.url
+        gifView.play()
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let profile = self.profile else {
-            ApplicationErrors.assertAndLog("No profile when trying to acknowledge success?!")
-            return
-        }
-        
-        self.delegate?.acknowledgedSuccess(profile: profile)
+        delegate?.acknowledgedSuccess()
     }
 }
 

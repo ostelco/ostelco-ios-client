@@ -8,28 +8,29 @@
 
 import Foundation
 
-struct LocalContext {
-    let selectedRegion: Region?
-    let hasSeenLoginCarousel: Bool
-    let enteredEmailAddress: String? // Needs to be persisted
-    let hasFirebaseToken: Bool // Needs to be persisted
-    let hasAgreedToTerms: Bool
-    let hasSeenNotificationPermissions: Bool // Needs to be persisted
-    let regionVerified: Bool
-    let hasSeenVerifyIdentifyOnboarding: Bool
-    let selectedVerificationOption: StageDecider.IdentityVerificationOption?
-    let myInfoCode: String? // Needs to be persisted
-    let hasSeenESimOnboarding: Bool
-    let hasSeenESIMInstructions: Bool
-    let hasSeenAwesome: Bool
-    let hasCompletedJumio: Bool // Needs to be persisted
+public struct LocalContext {
+    public var hasSeenLoginCarousel: Bool
+    public var enteredEmailAddress: String?
+    public var hasFirebaseToken: Bool
+    public var hasAgreedToTerms: Bool
+    public var hasSeenNotificationPermissions: Bool // Needs to be persisted
+    public var hasSeenRegionOnboarding: Bool
+    public var selectedRegion: Region?
+    public var regionVerified: Bool
+    public var locationProblem: LocationProblem?
+    public var hasSeenVerifyIdentifyOnboarding: Bool
+    public var selectedVerificationOption: IdentityVerificationOption?
+    public var myInfoCode: String? // Needs to be persisted
+    public var hasSeenESimOnboarding: Bool
+    public var hasSeenESIMInstructions: Bool
+    public var hasSeenAwesome: Bool
+    public var hasCompletedJumio: Bool // Needs to be persisted
     let hasCompletedAddress: Bool
     let serverIsUnreachable: Bool
-    let hasLocationProblem: Bool
-    let hasCancelledJumio: Bool
-    let hasSeenRegionOnboarding: Bool
     
-    init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: StageDecider.IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, hasLocationProblem: Bool = false, hasCancelledJumio: Bool = false, hasSeenRegionOnboarding: Bool = false) {
+    public var hasCancelledJumio: Bool
+    
+    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasCancelledJumio: Bool = false, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -46,14 +47,20 @@ struct LocalContext {
         self.hasCompletedJumio = hasCompletedJumio
         self.hasCompletedAddress = hasCompletedAddress
         self.serverIsUnreachable = serverIsUnreachable
-        self.hasLocationProblem = hasLocationProblem
+        self.locationProblem = locationProblem
         self.hasCancelledJumio = hasCancelledJumio
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
     }
 }
 
-struct StageDecider {
-    enum Stage: Equatable {
+public enum IdentityVerificationOption {
+    case singpass
+    case scanIC
+    case jumio
+}
+
+public struct StageDecider {
+    public enum Stage: Equatable {
         case home
         case loginCarousel
         case emailEntry
@@ -77,39 +84,31 @@ struct StageDecider {
         case pendingESIMInstall
         case awesome
         case ohNo(OhNoIssueType)
-        case locationProblem
+        case locationProblem(LocationProblem)
     }
     
-    enum IdentityVerificationOption {
-        case singpass
-        case scanIC
-        case jumio
-    }
+    public init() {}
     
     private func preLoggedInStage(_ localContext: LocalContext) -> StageDecider.Stage {
-        if localContext.hasSeenLoginCarousel {
-            if let emailAddress = localContext.enteredEmailAddress {
-                if localContext.hasFirebaseToken {
-                    if localContext.hasAgreedToTerms {
-                        return .nicknameEntry
-                    }
-                    return .legalStuff
+        if localContext.hasFirebaseToken {
+            if localContext.hasAgreedToTerms {
+                return .nicknameEntry
+            }
+            return .legalStuff
+        } else {
+            // This is the cold-start shortcut.
+            if let email = localContext.enteredEmailAddress, !localContext.hasSeenLoginCarousel {
+                return .checkYourEmail(email: email)
+            }
+            
+            if localContext.hasSeenLoginCarousel {
+                if let emailAddress = localContext.enteredEmailAddress {
+                    return .checkYourEmail(email: emailAddress)
                 }
-                return .checkYourEmail(email: emailAddress)
+                return .emailEntry
             }
-            return .emailEntry
+            return .loginCarousel
         }
-        
-        // Cold start cases
-        if let emailAddress = localContext.enteredEmailAddress {
-            if localContext.hasFirebaseToken {
-                return .legalStuff
-            }
-            return .checkYourEmail(email: emailAddress)
-        }
-        
-        // If you don't know where to go, go to login
-        return .loginCarousel
     }
 
     private func eSIMStage(_ region: RegionResponse, _ localContext: LocalContext) -> StageDecider.Stage {
@@ -132,7 +131,7 @@ struct StageDecider {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    func compute(context: Context?, localContext: LocalContext) -> Stage {
+    public func compute(context: Context?, localContext: LocalContext) -> Stage {
         
         if localContext.serverIsUnreachable {
             return .ohNo(.noInternet)
@@ -222,11 +221,11 @@ struct StageDecider {
             return .regionOnboarding
         }
         
-        if localContext.regionVerified {
+        if localContext.regionVerified || context.getRegion() != nil {
             return .verifyIdentityOnboarding
         }
-        if localContext.hasLocationProblem {
-            return .locationProblem
+        if let problem = localContext.locationProblem {
+            return .locationProblem(problem)
         }
         
         return .locationPermissions
@@ -234,7 +233,7 @@ struct StageDecider {
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
     private func identityOptionsForRegion(_ region: Region) -> [IdentityVerificationOption] {
-        if region.id == "sg" {
+        if region.id.lowercased() == "sg" {
             return [.scanIC, .singpass]
         }
         return [.jumio]

@@ -9,30 +9,34 @@
 import UIKit
 import FirebaseAuth
 
-class AuthParentViewController: UIViewController {
-    
-    private(set) lazy var rootCoordinator: RootCoordinator = {
-        return RootCoordinator(root: self)
-    }()
-    
+class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate {
+    var onboarding: OnboardingCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        listenForAuthState()
-    }
-    
-    private func listenForAuthState() {
+        
+        setupOnboarding()
+        
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user == nil {
-                // NOPE! We need to log in.
-                let vc = LoginViewController.fromStoryboard()
-                vc.rootCoordinator = self.rootCoordinator
-                self.embedFullViewChild(vc)
-            } else {
-                self.embedFullViewChild(SplashViewController.fromStoryboard())
-                self.rootCoordinator
-                    .determineAndNavigateToDestination()
+                self.setupOnboarding()
             }
         }
     }
 
+    func onboardingComplete() {
+        onboarding = nil
+        
+        let tabs = TabBarController.fromStoryboard()
+        embedFullViewChild(tabs)
+    }
+    
+    func setupOnboarding() {
+        let navigationController = UINavigationController()
+        embedFullViewChild(navigationController)
+        
+        let onboarding = OnboardingCoordinator(navigationController: navigationController)
+        onboarding.delegate = self
+        self.onboarding = onboarding
+    }
 }

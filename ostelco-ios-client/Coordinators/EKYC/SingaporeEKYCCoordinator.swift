@@ -10,6 +10,7 @@ import ostelco_core
 import PromiseKit
 import UIKit
 
+/*
 class SingaporeEKYCCoordinator: EKYCCoordinator {
     enum Destination {
         case goBackAndChooseCountry
@@ -372,7 +373,7 @@ extension SingaporeEKYCCoordinator: NRICVerifyDelegate {
 }
 
 extension SingaporeEKYCCoordinator: AddressEditDelegate {
-    func enteredAddressSuccessfully(hasCompletedJumio: Bool) {
+    func enteredAddressSuccessfully {
         self.updateRegion()
             .done { [weak self] region in
                 guard let self = self else {
@@ -388,9 +389,24 @@ extension SingaporeEKYCCoordinator: AddressEditDelegate {
                 ApplicationErrors.log(error)
         }
     }
+    
+    func cancel() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SingaporeEKYCCoordinator: SelectIdentityVerificationMethodDelegate {
+    func selected(option: IdentityVerificationOption) {
+        switch option {
+        case .jumio:
+            selectedNRIC()
+        case .singpass:
+            selectedSingPass()
+        default:
+            return
+        }
+    }
+    
     func selectedNRIC() {
         self.getCachedOrUpdateRegion()
             .done { [weak self] region in
@@ -490,3 +506,4 @@ extension SingaporeEKYCCoordinator: PendingVerificationDelegate {
         self.navigate(to: .ekycRejected, animated: true)
     }
 }
+*/

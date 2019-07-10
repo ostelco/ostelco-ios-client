@@ -10,6 +10,7 @@ import ostelco_core
 import PromiseKit
 import UIKit
 
+/*
 class DefaultEKYCCoordinator: EKYCCoordinator {
     
     enum Destination {
@@ -132,3 +133,4 @@ extension DefaultEKYCCoordinator: JumioCoordinatorDelegate {
         self.handleError(message: errorMessage)
     }
 }
+*/

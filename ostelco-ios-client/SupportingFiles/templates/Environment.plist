@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>apple_merchant_id</key>
-	<string>SCRIPT_ME</string>
+	<string>merchant.sg.redotter.dev.selfcare</string>
 	<key>firebase_project_id</key>
-	<string>SCRIPT_ME</string>
+	<string>pi-ostelco-dev</string>
 	<key>freshchat_app_id</key>
-	<string>SCRIPT_ME</string>
+	<string>bac5e183-2868-4e75-b443-a6db161965d9</string>
 	<key>freshchat_app_key</key>
-	<string>SCRIPT_ME</string>
+	<string>82573f6a-6494-4cde-a77a-b882092e93ff</string>
 	<key>jumio_secret</key>
-	<string>SCRIPT_ME</string>
+	<string>uWmPnqoQoCPc4MQi6578T6S8vP69QMW7</string>
 	<key>jumio_token</key>
-	<string>SCRIPT_ME</string>
+	<string>c9cc3e37-5464-4f04-94de-afc9a447a9f3</string>
 	<key>myinfo_callback_url</key>
-	<string>SCRIPT_ME</string>
+	<string>https://dl-dev.oya.world/links/myinfo</string>
 	<key>myinfo_client_id</key>
-	<string>SCRIPT_ME</string>
+	<string>STG-201817245Z-REDOTTER-POSTPAID</string>
 	<key>myinfo_url</key>
-	<string>SCRIPT_ME</string>
+	<string>https://myinfosgstg.api.gov.sg/test/v2/authorise</string>
 	<key>server_url</key>
-	<string>SCRIPT_ME</string>
+	<string>https://api.dev.oya.world</string>
 	<key>stripe_publishable_key</key>
-	<string>SCRIPT_ME</string>
+	<string>pk_test_4XDOdDMQvGeW9fr31gIlcg5z</string>
 </dict>
 </plist>

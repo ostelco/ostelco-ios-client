@@ -3,25 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>SCRIPT_ME</string>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>SCRIPT_ME</string>
-	<key>CLIENT_ID</key>
-	<string>SCRIPT_ME</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>SCRIPT_ME</string>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>API_KEY</key>
-	<string>SCRIPT_ME</string>
-	<key>GCM_SENDER_ID</key>
-	<string>SCRIPT_ME</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
+	<string>AIzaSyBSxWSeHfJYWbrXqmGSIz6lTsoew-oJ13s</string>
 	<key>BUNDLE_ID</key>
-	<string>SCRIPT_ME</string>
-	<key>PROJECT_ID</key>
-	<string>SCRIPT_ME</string>
-	<key>STORAGE_BUCKET</key>
-	<string>SCRIPT_ME</string>
+	<string>sg.redotter.dev.selfcare</string>
+	<key>CLIENT_ID</key>
+	<string>914309825575-7slv6emo1dmsbi65s3ctcgcs3s0jgl1k.apps.googleusercontent.com</string>
+	<key>DATABASE_URL</key>
+	<string>https://pi-ostelco-dev.firebaseio.com</string>
+	<key>GCM_SENDER_ID</key>
+	<string>914309825575</string>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:914309825575:ios:f6968f22b6e5271b</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -32,9 +28,13 @@
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
-	<key>GOOGLE_APP_ID</key>
-	<string>SCRIPT_ME</string>
-	<key>DATABASE_URL</key>
-	<string>SCRIPT_ME</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>PROJECT_ID</key>
+	<string>pi-ostelco-dev</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.914309825575-7slv6emo1dmsbi65s3ctcgcs3s0jgl1k</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pi-ostelco-dev.appspot.com</string>
 </dict>
 </plist>

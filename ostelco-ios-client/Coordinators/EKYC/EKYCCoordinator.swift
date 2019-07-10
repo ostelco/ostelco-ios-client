@@ -9,6 +9,7 @@
 import Netverify
 import ostelco_core
 
+/*
 protocol EKYCCoordinatorDelegate: class {
     func reselectCountry()
     func ekycSuccessful(region: RegionResponse)
@@ -96,3 +97,4 @@ extension EKYCCoordinator where Self: JumioCoordinatorDelegate {
 extension EKYCCoordinator where Self: VerifyIdentityOnboardingDelegate {
     
 }
+*/

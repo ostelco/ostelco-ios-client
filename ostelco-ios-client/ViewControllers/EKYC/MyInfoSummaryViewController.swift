@@ -18,6 +18,8 @@ class MyInfoSummaryViewController: UIViewController {
     var spinnerView: UIView?
     var myInfoDetails: MyInfoDetails?
     
+    var myInfoCode: String?
+    
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var sex: UILabel!
     @IBOutlet private weak var dob: UILabel!
@@ -38,11 +40,9 @@ class MyInfoSummaryViewController: UIViewController {
     }
     
     private func loadMyInfo() {
-        guard let code = getMyInfoCode() else {
+        guard let code = myInfoCode else {
             return
         }
-        
-        debugPrint("Code = \(code)")
         
         self.reloadButton.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view, loadingText: "Loading your data from SingPass...")
@@ -61,20 +61,6 @@ class MyInfoSummaryViewController: UIViewController {
                 self?.showGenericError(error: error)
                 self?.reloadButton.isHidden = false
             }
-    }
-    
-    private func getMyInfoCode() -> String? {
-        guard let queryItems = UserDefaultsWrapper.pendingSingPass else {
-            ApplicationErrors.assertAndLog("Was able to get to my info summary but there aren't any query items!")
-            return nil
-        }
-        
-        guard let codeItem = queryItems.first(where: { $0.name == "code" }) else {
-            ApplicationErrors.assertAndLog("Was able to get my info summary but query items don't have code!")
-            return nil
-        }
-        
-        return codeItem.value
     }
     
     @IBAction private func tryAgainTapped() {

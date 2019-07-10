@@ -9,10 +9,10 @@
 import UIKit
 import SafariServices
 import OstelcoStyles
+import ostelco_core
 
 protocol SelectIdentityVerificationMethodDelegate: class {
-    func selectedSingPass()
-    func selectedNRIC()
+    func selected(option: IdentityVerificationOption)
 }
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
@@ -21,12 +21,20 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     @IBOutlet private var scanICRadioButton: RadioButton!
     @IBOutlet private var continueButton: UIButton!
     
+    var spinnerView: UIView?
+    
     private lazy var radioButtons: [RadioButton] = [
         self.singPassRadioButton,
         self.scanICRadioButton
     ]
         
     weak var delegate: SelectIdentityVerificationMethodDelegate?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        removeSpinner(spinnerView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +54,14 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
+        spinnerView = showSpinner(onView: self.view)
+        
         if self.singPassRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
-            self.delegate?.selectedSingPass()
+            self.delegate?.selected(option: .singpass)
         } else if self.scanICRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
-            self.delegate?.selectedNRIC()
+            self.delegate?.selected(option: .scanIC)
         } else {
             ApplicationErrors.assertAndLog("At least one of these should be checked if continue is enabled!")
         }

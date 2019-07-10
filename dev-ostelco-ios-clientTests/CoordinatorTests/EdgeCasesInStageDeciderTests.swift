@@ -87,10 +87,10 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndHasLocationProblem() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, hasLocationProblem: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, locationProblem: .deniedByUser)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationProblem)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationProblem(.deniedByUser))
     }
     
     func testUserHasSelectedSingpassAndCancelledSingpass() {
@@ -123,7 +123,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejected() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: StageDecider.IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasCompletedAddress: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasCompletedAddress: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
