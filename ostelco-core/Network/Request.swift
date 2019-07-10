@@ -53,7 +53,17 @@ public struct Request {
         if let additional = self.additionalHeaders {
             additional.forEach { key, value in headers.addValue(value, for: key) }
         }
-        
+
+        #if PRIME_DIRECT
+            debugPrint("prime-direct mode enabled")
+            headers.addValue(.primeDirect, for: .mode)
+        #endif
+
+        #if PRIME_CANARY
+            debugPrint("prime-canary mode enabled")
+            headers.addValue(.primeCanary, for: .mode)
+        #endif
+
         request.allHTTPHeaderFields = headers.toStringDict
         if let body = self.bodyData {
             request.httpBody = body

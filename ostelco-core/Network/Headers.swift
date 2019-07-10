@@ -13,6 +13,7 @@ public enum HeaderKey: String {
     case authorization = "Authorization"
     case contentType = "Content-Type"
     case testing = "Testing"
+    case mode = "x-mode"
 }
 
 /// Values to include in headers.
@@ -21,7 +22,9 @@ public enum HeaderValue {
     case applicationJSON
     case token(String)
     case testing(String)
-    
+    case primeDirect
+    case primeCanary
+
     public var toString: String {
         switch self {
         case .applicationJSON:
@@ -30,6 +33,10 @@ public enum HeaderValue {
             return "Bearer \(token)"
         case .testing(let testString):
             return testString
+        case .primeDirect:
+            return "prime-direct"
+        case .primeCanary:
+            return "prime-canary"
         }
     }
 }
