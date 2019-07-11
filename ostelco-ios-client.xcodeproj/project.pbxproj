@@ -1802,10 +1802,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/ostelco-ios-client/SupportingFiles/Environment.plist",
+				"$(SRCROOT)/ostelco-ios-client/SupportingFiles/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -prod -src=\"$SRCROOT\"\n";
+			shellScript = "# Copy the templates\necho 'Copy template plist files.'\ncp ostelco-ios-client/SupportingFiles/templates/* ostelco-ios-client/SupportingFiles/\n# Update templates using SPM\ncd scripts/SPM\nswift build\nswift run SPM -pre -prod -src=\"$SRCROOT\"\n";
 		};
 		9B851AB5225DD93F0076ABF3 /* SPM Post-build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1823,7 +1825,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -prod -src=\"$SRCROOT\"\n";
+			shellScript = "rm ostelco-ios-client/SupportingFiles/Environment.plist\nrm ostelco-ios-client/SupportingFiles/GoogleService-Info.plist\n# cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\n# swift run SPM -post -prod -src=\"$SRCROOT\"\n";
 		};
 		9BBF706F226652AC00E4B9B4 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1856,10 +1858,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/ostelco-ios-client/SupportingFiles/Environment.plist",
+				"$(SRCROOT)/ostelco-ios-client/SupportingFiles/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -src=\"$SRCROOT\"\n";
+			shellScript = "# Copy the templates\necho 'Copy template plist files.'\ncp ostelco-ios-client/SupportingFiles/templates/* ostelco-ios-client/SupportingFiles/\n# Update templates using SPM\ncd scripts/SPM\nswift build\nswift run SPM -pre -src=\"$SRCROOT\"\n";
 		};
 		9BF2777C225D10DC006428D5 /* SPM Post-build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1877,7 +1881,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -src=\"$SRCROOT\"\n";
+			shellScript = "rm ostelco-ios-client/SupportingFiles/Environment.plist\nrm ostelco-ios-client/SupportingFiles/GoogleService-Info.plist\n\n#cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\n#swift run SPM -post -src=\"$SRCROOT\"\n";
 		};
 		BBC6D59B2EE331559138882F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
