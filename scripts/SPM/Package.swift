@@ -31,7 +31,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-package-manager.git",
-            .upToNextMajor(from: "0.3.0")
+            .upToNextMinor(from: "0.3.0")
         ),
     ],
     targets: [
