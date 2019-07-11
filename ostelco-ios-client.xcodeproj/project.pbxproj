@@ -1805,7 +1805,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -prod -src=\"$SRCROOT\"\n";
+			shellScript = "cp .secrets/Environment_prod.plist ostelco-ios-client/SupportingFiles/Environment.plist\ncp .secrets/GoogleService-Info_prod.plist ostelco-ios-client/SupportingFiles/GoogleService-Info.plist\n# cd scripts/SPM\n# swift build\n# swift run SPM -pre -prod -src=\"$SRCROOT\"\n";
 		};
 		9B851AB5225DD93F0076ABF3 /* SPM Post-build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1823,7 +1823,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -prod -src=\"$SRCROOT\"\n";
+			shellScript = "# cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\n# swift run SPM -post -prod -src=\"$SRCROOT\"\n";
 		};
 		9BBF706F226652AC00E4B9B4 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1859,7 +1859,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\nswift build\nswift run SPM -pre -src=\"$SRCROOT\"\n";
+			shellScript = "cp .secrets/Environment_dev.plist ostelco-ios-client/SupportingFiles/Environment.plist\ncp .secrets/GoogleService-Info_dev.plist ostelco-ios-client/SupportingFiles/GoogleService-Info.plist\n# cd scripts/SPM\n# swift build\n# swift run SPM -pre -src=\"$SRCROOT\"\n";
 		};
 		9BF2777C225D10DC006428D5 /* SPM Post-build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1877,7 +1877,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\nswift run SPM -post -src=\"$SRCROOT\"\n";
+			shellScript = "# cd scripts/SPM\n# we already built this in the pre-build, don't try to rebuild\n# swift run SPM -post -src=\"$SRCROOT\"\n";
 		};
 		BBC6D59B2EE331559138882F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
