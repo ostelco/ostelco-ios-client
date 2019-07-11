@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apple_merchant_id</key>
+	<string>SCRIPT_ME</string>
+	<key>firebase_project_id</key>
+	<string>SCRIPT_ME</string>
+	<key>freshchat_app_id</key>
+	<string>SCRIPT_ME</string>
+	<key>freshchat_app_key</key>
+	<string>SCRIPT_ME</string>
+	<key>jumio_secret</key>
+	<string>SCRIPT_ME</string>
+	<key>jumio_token</key>
+	<string>SCRIPT_ME</string>
+	<key>myinfo_callback_url</key>
+	<string>SCRIPT_ME</string>
+	<key>myinfo_client_id</key>
+	<string>SCRIPT_ME</string>
+	<key>myinfo_url</key>
+	<string>SCRIPT_ME</string>
+	<key>server_url</key>
+	<string>SCRIPT_ME</string>
+	<key>stripe_publishable_key</key>
+	<string>SCRIPT_ME</string>
+</dict>
+</plist>
