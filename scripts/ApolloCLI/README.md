@@ -24,6 +24,7 @@ Here are a few things we are handling with Apollo CLI:
 
 - Download latest graphQL schema from server
 ```
-apollo client:download-schema
+npm run downloadschema
+cp schema.json ostelco-core/.
 ```
 
