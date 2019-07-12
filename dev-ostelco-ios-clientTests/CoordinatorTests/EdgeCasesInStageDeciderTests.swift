@@ -143,7 +143,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     // Edge cases for Norway flow
     func testUserHasSeenVerifyIdentifyOnboardingAndCancelledJumio() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCancelledJumio: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)

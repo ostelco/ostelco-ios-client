@@ -13,7 +13,7 @@ public struct LocalContext {
     public var enteredEmailAddress: String?
     public var hasFirebaseToken: Bool
     public var hasAgreedToTerms: Bool
-    public var hasSeenNotificationPermissions: Bool // Needs to be persisted
+    public var hasSeenNotificationPermissions: Bool
     public var hasSeenRegionOnboarding: Bool
     public var selectedRegion: Region?
     public var regionVerified: Bool
@@ -25,12 +25,10 @@ public struct LocalContext {
     public var hasSeenESIMInstructions: Bool
     public var hasSeenAwesome: Bool
     public var hasCompletedJumio: Bool // Needs to be persisted
-    let hasCompletedAddress: Bool
+    public var hasCompletedAddress: Bool
     let serverIsUnreachable: Bool
     
-    public var hasCancelledJumio: Bool
-    
-    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasCancelledJumio: Bool = false, hasSeenRegionOnboarding: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.enteredEmailAddress = enteredEmailAddress
@@ -48,7 +46,6 @@ public struct LocalContext {
         self.hasCompletedAddress = hasCompletedAddress
         self.serverIsUnreachable = serverIsUnreachable
         self.locationProblem = locationProblem
-        self.hasCancelledJumio = hasCancelledJumio
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
     }
 }
@@ -191,9 +188,6 @@ public struct StageDecider {
                     }
                     return .pendingVerification
                 }
-                if localContext.hasCancelledJumio {
-                    return .verifyIdentityOnboarding
-                }
                 return .jumio
             }
             return .selectIdentityVerificationMethod(options) // Singapore flow specific
@@ -201,7 +195,7 @@ public struct StageDecider {
         
         // Cold start for jumio rejection to show error screen instead of ekyc on boarding screen
         if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
-            return .verifyIdentityOnboarding
+            return .ohNo(.ekycRejected)
         }
         
         // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.

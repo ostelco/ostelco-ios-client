@@ -44,8 +44,6 @@ class OnboardingCoordinator {
         APIManager.shared.primeAPI.loadContext()
             .done { (context) in
                 UserManager.shared.customer = context.customer
-                self.localContext.selectedRegion = self.localContext.selectedRegion ?? context.getRegion()?.region
-                
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 print(stage)
                 self.afterDismissing {
@@ -172,6 +170,28 @@ class OnboardingCoordinator {
     
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
+    
+    private func checkLocation() {
+        guard let country = localContext.selectedRegion?.country else {
+            fatalError("Shouldn't be possible to be here without a country!")
+        }
+        LocationController.shared.checkInCorrectCountry(country)
+            .done {
+                self.localContext.regionVerified = true
+                self.localContext.locationProblem = nil
+                self.advance()
+            }.catch { (error) in
+                if case LocationController.Error.locationProblem(let problem) = error {
+                    if case .authorizedButWrongCountry = problem {
+                        self.localContext.selectedRegion = nil
+                        self.localContext.locationProblem = nil
+                    } else {
+                        self.localContext.locationProblem = problem
+                    }
+                }
+                self.advance()
+        }
+    }
 }
 
 extension OnboardingCoordinator: LoginDelegate {
@@ -222,18 +242,7 @@ extension OnboardingCoordinator: ChooseCountryDelegate {
         
         let locationStatus = CLLocationManager.authorizationStatus()
         if locationStatus == .authorizedAlways || locationStatus == .authorizedWhenInUse {
-            LocationController.shared.checkInCorrectCountry(country)
-            .done {
-                self.localContext.regionVerified = true
-            }
-            .ensure {
-                self.advance()
-            }
-            .catch { error in
-                if case LocationController.Error.locationProblem(let problem) = error {
-                    self.localContext.locationProblem = problem
-                }
-            }
+            checkLocation()
         } else {
             advance()
         }
@@ -257,26 +266,7 @@ extension OnboardingCoordinator: AllowLocationAccessDelegate {
 
 extension OnboardingCoordinator: LocationProblemDelegate {
     func checkLocation(_ viewController: LocationProblemViewController) {
-        guard let country = localContext.selectedRegion?.country else {
-            fatalError("This is a problem!")
-        }
-        
-        LocationController.shared.checkInCorrectCountry(country, isDebug: false)
-        .done {
-            self.localContext.regionVerified = true
-            self.advance()
-        }.recover { (error) in
-            if case LocationController.Error.locationProblem(let problem) = error {
-                if case .authorizedButWrongCountry = problem {
-                    self.localContext.selectedRegion = nil
-                    self.localContext.locationProblem = nil
-                } else {
-                    self.localContext.locationProblem = problem
-                }
-                self.advance()
-            }
-            throw error
-        }.cauterize()
+        checkLocation()
     }
 }
 
@@ -322,6 +312,7 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
 
 extension OnboardingCoordinator: AddressEditDelegate {
     func enteredAddressSuccessfully() {
+        localContext.hasCompletedAddress = true
         advance()
     }
     
@@ -370,7 +361,7 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
     }
     
     func scanCancelled() {
-        localContext.hasCancelledJumio = true
+        localContext.hasSeenVerifyIdentifyOnboarding = false
         localContext.selectedVerificationOption = nil
         advance()
     }
