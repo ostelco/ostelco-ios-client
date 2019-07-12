@@ -1,0 +1,95 @@
+{
+  "customer": {
+    "id": "b3160932-6858-4ae2-8f0a-9404390e3873",
+    "nickname": "no",
+    "contactEmail": "havard+no@redotter.sg",
+    "analyticsId": "ae1a5789-5c13-4d72-8c3f-9753af9744bc",
+    "referralId": "108d49eb-1feb-4468-8a98-e17e3bb16cce"
+  },
+  "regions": [
+    {
+      "region": {
+        "id": "no",
+        "name": "Norway"
+      },
+      "status": "APPROVED",
+      "kycStatusMap": {
+        "JUMIO": "APPROVED"
+      },
+      "simProfiles": [
+        {
+          "iccId": "8947000000000006852",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$CIGJF-OA7UD-QO2DZ-RNAK7",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006860",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$P42RB-Y77TA-YHZCF-2PWYY",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006878",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$CUN2V-HGQKU-7DXWT-0CIJD",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006662",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$X46M0-C1UYI-AX3HN-7TFBS",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006670",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$RBCCN-8IATJ-OE1V3-TI09E",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006738",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$4HH2E-9F6HZ-Q4S7Q-MQRY9",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006688",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$QOCUW-SRIES-YXVMF-STNL7",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006746",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$XYJDR-TAO29-L9QWR-K4RSW",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006753",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$DOL6X-PYVTD-3J1J8-JOKU7",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006696",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$MWOTD-RTHSH-Q4K3T-1MTEY",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006761",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$FPYL4-1QXEB-UIXT9-M8MWN",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        },
+        {
+          "iccId": "8947000000000006704",
+          "eSimActivationCode": "LPA:1$rsp-0002.oberthur.net$BITPO-K9VGY-LLRVK-0CCK1",
+          "status": "AVAILABLE_FOR_DOWNLOAD",
+          "alias": ""
+        }
+      ]
+    }
+  ]
+}
