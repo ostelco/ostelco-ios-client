@@ -92,6 +92,8 @@
 		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
+		0485E4CF22D8650D005C0997 /* apollo.config.js in Resources */ = {isa = PBXBuildFile; fileRef = 0485E4CE22D8650C005C0997 /* apollo.config.js */; };
+		0485E4D322D868E1005C0997 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0485E4D222D868E1005C0997 /* README.md */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		048C78D92191F46D0041F135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048C78D82191F46D0041F135 /* LaunchScreen.storyboard */; };
@@ -464,6 +466,8 @@
 		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeAMemberViewController.swift; sourceTree = "<group>"; };
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		0485E4CE22D8650C005C0997 /* apollo.config.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = apollo.config.js; sourceTree = "<group>"; };
+		0485E4D222D868E1005C0997 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
 		048C78D82191F46D0041F135 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -973,6 +977,8 @@
 				9B3FA95622649DBE0001641A /* Protocols */,
 				9B851ADD225E32E90076ABF3 /* ViewControllers */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
+				0485E4CE22D8650C005C0997 /* apollo.config.js */,
+				0485E4D222D868E1005C0997 /* README.md */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1525,8 +1531,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0485E4D322D868E1005C0997 /* README.md in Resources */,
 				C26274B122C2050200F0AA36 /* context.graphql in Resources */,
 				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
+				0485E4CF22D8650D005C0997 /* apollo.config.js in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
