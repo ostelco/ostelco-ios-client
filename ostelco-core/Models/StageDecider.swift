@@ -164,7 +164,7 @@ public struct StageDecider {
         if localContext.selectedVerificationOption == .scanIC {
             if let region = context.getRegion(), region.kycStatusMap.NRIC_FIN == .APPROVED {
                 if localContext.hasCompletedJumio {
-                    if localContext.hasCompletedAddress {
+                    if region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
                         if region.kycStatusMap.JUMIO == .REJECTED {
                             return .ohNo(.ekycRejected)
                         }
@@ -191,11 +191,6 @@ public struct StageDecider {
                 return .jumio
             }
             return .selectIdentityVerificationMethod(options) // Singapore flow specific
-        }
-        
-        // Cold start for jumio rejection to show error screen instead of ekyc on boarding screen
-        if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
-            return .ohNo(.ekycRejected)
         }
         
         // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
