@@ -7,14 +7,15 @@ The instructions should also be updated to multiple environments, currently it i
 
 [Apollo CLI](https://github.com/apollographql/apollo-tooling) brings together your GraphQL clients and servers with tools for validating your schema, linting your operations for compatibility with your server, and generating static types for improved client-side type safety.
 
-- You will need to visit the documentation and follow the installation instructions to install Apollo CLI globally
-- You will also need to install dotenv
+- Install dependencies
 ```
-npm install dotenv
+npm install
 ```
-- As well as setup a .env file with corresponding values
+
 ```
-echo -e "TOKEN=\"...\"\nURL=\"...\"" > .env
+- Setup a .env file with corresponding values
+```
+echo -e "TOKEN=\"...\"\nURL=\"https://api.dev.oya.world/graphql\"" > .env
 ```
 
 Here are a few things we are handling with Apollo CLI:

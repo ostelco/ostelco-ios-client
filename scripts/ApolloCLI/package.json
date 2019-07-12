@@ -1,0 +1,16 @@
+{
+  "name": "apollocli",
+  "version": "1.0.0",
+  "description": "This is a draft of how we work with apollo cli, the installation process should be improved and we should possibly move the logic regarding this to a separate folder. The instructions should also be updated to multiple environments, currently it is only configured for development, not production.",
+  "main": "apollo.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "downloadschema" : "apollo client:download-schema"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo": "^2.15.0",
+    "dotenv": "^8.0.0"
+  }
+}
