@@ -45,14 +45,11 @@ class OnboardingCoordinator {
             .done { (context) in
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
-                print(stage)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
             }.recover { error in
-                print(error)
                 let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
-                print(stage)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
@@ -182,12 +179,7 @@ class OnboardingCoordinator {
                 self.advance()
             }.catch { (error) in
                 if case LocationController.Error.locationProblem(let problem) = error {
-                    if case .authorizedButWrongCountry = problem {
-                        self.localContext.selectedRegion = nil
-                        self.localContext.locationProblem = nil
-                    } else {
-                        self.localContext.locationProblem = problem
-                    }
+                    self.localContext.locationProblem = problem
                 }
                 self.advance()
         }
@@ -265,8 +257,9 @@ extension OnboardingCoordinator: AllowLocationAccessDelegate {
 }
 
 extension OnboardingCoordinator: LocationProblemDelegate {
-    func checkLocation(_ viewController: LocationProblemViewController) {
-        checkLocation()
+    func retry() {
+        localContext.selectedRegion = nil
+        advance()
     }
 }
 

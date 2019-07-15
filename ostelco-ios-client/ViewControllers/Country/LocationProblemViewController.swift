@@ -12,7 +12,7 @@ import OstelcoStyles
 import UIKit
 
 protocol LocationProblemDelegate: class {
-    func checkLocation(_ viewController: LocationProblemViewController)
+    func retry()
 }
 
 class LocationProblemViewController: UIViewController {
@@ -110,7 +110,7 @@ class LocationProblemViewController: UIViewController {
             UIApplication.shared.open(settingsURL)
         case .authorizedButWrongCountry:
             // Re-check the user's location
-            self.checkLocation()
+            delegate?.retry()
         case .restrictedByParentalControls:
             ApplicationErrors.assertAndLog("You shouldn't be able to get here, this button should be gone!")
         }
@@ -139,14 +139,10 @@ class LocationProblemViewController: UIViewController {
             self.listenForChanges()
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.checkLocation()
+            self.delegate?.retry()
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added a new status here! You should update this handling.")
         }
-    }
-    
-    private func checkLocation() {
-        delegate?.checkLocation(self)
     }
 }
 
