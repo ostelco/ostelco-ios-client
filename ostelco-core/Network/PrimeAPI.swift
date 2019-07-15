@@ -49,31 +49,24 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
+    public enum Mode {
+        case rest
+        case graphQL
+    }
+    
     private let baseURL: URL
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private let tokenProvider: TokenProvider
+    private var token: String = ""
 
-    private var apollo: ApolloClient?
-    private var apolloAuthToken = ""
-
-    public func getApolloClient(token: String) -> ApolloClient {
-        // Use the last token
-        if apolloAuthToken == token {
-            return apollo!
-        }
-        apolloAuthToken = token
-        apollo = {
-            let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = [
-                "Authorization": "Bearer \(apolloAuthToken)",
-                "x-mode": "prime-direct"
-            ]
-            let url = self.baseURL.appendingPathComponent(RootEndpoint.graphql.value, isDirectory: false)
-            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
-        }()
-        return apollo!
-    }
+    // Configure the network transport to use the singleton as the delegate.
+    private lazy var networkTransport = HTTPNetworkTransport(
+        url: self.baseURL.appendingPathComponent(RootEndpoint.graphql.value, isDirectory: false),
+        delegate: self
+    )
+    
+    private(set) lazy var client = ApolloClient(networkTransport: self.networkTransport)
 
     /// Designated Initializer.
     ///
@@ -110,8 +103,39 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext() -> PromiseKit.Promise<Context> {
-        getContextGQL()
+    public func loadContext(mode: Mode = Mode.rest) -> PromiseKit.Promise<Context> {
+        
+        if mode == .graphQL {
+            return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise<Context> { seal in
+                    self.client.fetch(query: PrimeGQL.GetContextQuery()) { (result, error) in
+                        debugPrint("-----------", result?.data, error, result)
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        if let data = result?.data {
+                            let customer = data.context.customer
+                            var regionResponseList: [RegionResponse] = []
+                            let customerModel = CustomerModel(gqlCustomer: customer)
+                            
+                            if let regions = data.context.regions {
+                                regionResponseList = regions.map({ RegionResponse(gqlRegionDetails: $0!) })
+                            }
+                            
+                            seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
+                        } else {
+                            // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
+                            // swiftlint:disable:next force_cast
+                            seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
         return self.loadData(from: RootEndpoint.context.value)
             .map { try self.decoder.decode(Context.self, from: $0) }
     }
@@ -184,20 +208,6 @@ open class PrimeAPI: BasicNetwork {
                 let dataString = String(bytes: data, encoding: .utf8)
                 debugPrint("Delete customer response: \(String(describing: dataString))")
         }
-    }
-
-    public func getContextGQL() {
-        self.tokenProvider.getToken()
-            .done { token in
-                let apollo =  self.getApolloClient(token: token)
-                apollo.fetch(query: PrimeGQL.GetContextQuery()) { (result, error) in
-                    debugPrint(result?.data, error)
-                    if let data = result?.data {
-                        debugPrint(data.context.customer.nickname)
-                        debugPrint(data.context.customer.contactEmail)
-                    }
-                }
-            }
     }
 
     /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
@@ -505,5 +515,24 @@ open class PrimeAPI: BasicNetwork {
             .then {
                 self.performRequest($0)
             }
+    }
+    
+    private func getToken() -> PromiseKit.Promise<String> {
+        return self.tokenProvider.getToken()
+            .map { token -> String in
+                self.token = token
+                return token
+        }
+    }
+}
+
+// MARK: - Pre-flight delegate
+extension PrimeAPI: HTTPNetworkTransportPreflightDelegate {
+    public func networkTransport(_ networkTransport: HTTPNetworkTransport, shouldSend request: URLRequest) -> Bool {
+        return true
+    }
+    
+    public func networkTransport(_ networkTransport: HTTPNetworkTransport, willSend request: inout URLRequest) {
+        request.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
     }
 }

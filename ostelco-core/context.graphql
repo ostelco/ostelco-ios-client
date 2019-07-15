@@ -1,12 +1,11 @@
 query GetContext {
     context {
         customer {
-            nickname
-            contactEmail
-        }
-        bundles {
             id
-            balance
+            contactEmail
+            nickname
+            referralId
+            analyticsId
         }
         regions {
             region {
@@ -21,14 +20,11 @@ query GetContext {
                 ADDRESS_AND_PHONE_NUMBER
             }
             simProfiles {
-                iccId
                 eSimActivationCode
-                status
                 alias
+                iccId
+                status
             }
-        }
-        subscriptions {
-            msisdn
         }
     }
 }

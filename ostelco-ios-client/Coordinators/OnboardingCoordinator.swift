@@ -43,7 +43,7 @@ class OnboardingCoordinator {
     }
     
     func advance() {
-        primeAPI.loadContext()
+        APIManager.shared.primeAPI.loadContext(mode: .graphQL)
             .done { (context) in
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)

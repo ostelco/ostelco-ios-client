@@ -121,7 +121,7 @@ public enum PrimeGQL {
 
   public final class GetContextQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      nickname\n      contactEmail\n    }\n    bundles {\n      __typename\n      id\n      balance\n    }\n    regions {\n      __typename\n      region {\n        __typename\n        id\n        name\n      }\n      status\n      kycStatusMap {\n        __typename\n        JUMIO\n        MY_INFO\n        NRIC_FIN\n        ADDRESS_AND_PHONE_NUMBER\n      }\n      simProfiles {\n        __typename\n        iccId\n        eSimActivationCode\n        status\n        alias\n      }\n    }\n    subscriptions {\n      __typename\n      msisdn\n    }\n  }\n}"
+      "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      region {\n        __typename\n        id\n        name\n      }\n      status\n      kycStatusMap {\n        __typename\n        JUMIO\n        MY_INFO\n        NRIC_FIN\n        ADDRESS_AND_PHONE_NUMBER\n      }\n      simProfiles {\n        __typename\n        eSimActivationCode\n        alias\n        iccId\n        status\n      }\n    }\n  }\n}"
 
     public init() {
     }
@@ -158,9 +158,7 @@ public enum PrimeGQL {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
-          GraphQLField("bundles", type: .list(.object(Bundle.selections))),
           GraphQLField("regions", type: .list(.object(Region.selections))),
-          GraphQLField("subscriptions", type: .list(.object(Subscription.selections))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -169,8 +167,8 @@ public enum PrimeGQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(customer: Customer, bundles: [Bundle?]? = nil, regions: [Region?]? = nil, subscriptions: [Subscription?]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "customer": customer.resultMap, "bundles": bundles.flatMap { (value: [Bundle?]) -> [ResultMap?] in value.map { (value: Bundle?) -> ResultMap? in value.flatMap { (value: Bundle) -> ResultMap in value.resultMap } } }, "regions": regions.flatMap { (value: [Region?]) -> [ResultMap?] in value.map { (value: Region?) -> ResultMap? in value.flatMap { (value: Region) -> ResultMap in value.resultMap } } }, "subscriptions": subscriptions.flatMap { (value: [Subscription?]) -> [ResultMap?] in value.map { (value: Subscription?) -> ResultMap? in value.flatMap { (value: Subscription) -> ResultMap in value.resultMap } } }])
+        public init(customer: Customer, regions: [Region?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "customer": customer.resultMap, "regions": regions.flatMap { (value: [Region?]) -> [ResultMap?] in value.map { (value: Region?) -> ResultMap? in value.flatMap { (value: Region) -> ResultMap in value.resultMap } } }])
         }
 
         public var __typename: String {
@@ -191,15 +189,6 @@ public enum PrimeGQL {
           }
         }
 
-        public var bundles: [Bundle?]? {
-          get {
-            return (resultMap["bundles"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Bundle?] in value.map { (value: ResultMap?) -> Bundle? in value.flatMap { (value: ResultMap) -> Bundle in Bundle(unsafeResultMap: value) } } }
-          }
-          set {
-            resultMap.updateValue(newValue.flatMap { (value: [Bundle?]) -> [ResultMap?] in value.map { (value: Bundle?) -> ResultMap? in value.flatMap { (value: Bundle) -> ResultMap in value.resultMap } } }, forKey: "bundles")
-          }
-        }
-
         public var regions: [Region?]? {
           get {
             return (resultMap["regions"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Region?] in value.map { (value: ResultMap?) -> Region? in value.flatMap { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } } }
@@ -209,69 +198,16 @@ public enum PrimeGQL {
           }
         }
 
-        public var subscriptions: [Subscription?]? {
-          get {
-            return (resultMap["subscriptions"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Subscription?] in value.map { (value: ResultMap?) -> Subscription? in value.flatMap { (value: ResultMap) -> Subscription in Subscription(unsafeResultMap: value) } } }
-          }
-          set {
-            resultMap.updateValue(newValue.flatMap { (value: [Subscription?]) -> [ResultMap?] in value.map { (value: Subscription?) -> ResultMap? in value.flatMap { (value: Subscription) -> ResultMap in value.resultMap } } }, forKey: "subscriptions")
-          }
-        }
-
         public struct Customer: GraphQLSelectionSet {
           public static let possibleTypes = ["Customer"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
-            GraphQLField("contactEmail", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(nickname: String, contactEmail: String) {
-            self.init(unsafeResultMap: ["__typename": "Customer", "nickname": nickname, "contactEmail": contactEmail])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var nickname: String {
-            get {
-              return resultMap["nickname"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "nickname")
-            }
-          }
-
-          public var contactEmail: String {
-            get {
-              return resultMap["contactEmail"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "contactEmail")
-            }
-          }
-        }
-
-        public struct Bundle: GraphQLSelectionSet {
-          public static let possibleTypes = ["Bundle"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(String.self))),
-            GraphQLField("balance", type: .nonNull(.scalar(Long.self))),
+            GraphQLField("contactEmail", type: .nonNull(.scalar(String.self))),
+            GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
+            GraphQLField("referralId", type: .nonNull(.scalar(String.self))),
+            GraphQLField("analyticsId", type: .nonNull(.scalar(String.self))),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -280,8 +216,8 @@ public enum PrimeGQL {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: String, balance: Long) {
-            self.init(unsafeResultMap: ["__typename": "Bundle", "id": id, "balance": balance])
+          public init(id: String, contactEmail: String, nickname: String, referralId: String, analyticsId: String) {
+            self.init(unsafeResultMap: ["__typename": "Customer", "id": id, "contactEmail": contactEmail, "nickname": nickname, "referralId": referralId, "analyticsId": analyticsId])
           }
 
           public var __typename: String {
@@ -302,12 +238,39 @@ public enum PrimeGQL {
             }
           }
 
-          public var balance: Long {
+          public var contactEmail: String {
             get {
-              return resultMap["balance"]! as! Long
+              return resultMap["contactEmail"]! as! String
             }
             set {
-              resultMap.updateValue(newValue, forKey: "balance")
+              resultMap.updateValue(newValue, forKey: "contactEmail")
+            }
+          }
+
+          public var nickname: String {
+            get {
+              return resultMap["nickname"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "nickname")
+            }
+          }
+
+          public var referralId: String {
+            get {
+              return resultMap["referralId"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "referralId")
+            }
+          }
+
+          public var analyticsId: String {
+            get {
+              return resultMap["analyticsId"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "analyticsId")
             }
           }
         }
@@ -497,10 +460,10 @@ public enum PrimeGQL {
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
               GraphQLField("eSimActivationCode", type: .nonNull(.scalar(String.self))),
-              GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
               GraphQLField("alias", type: .nonNull(.scalar(String.self))),
+              GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
+              GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
             ]
 
             public private(set) var resultMap: ResultMap
@@ -509,8 +472,8 @@ public enum PrimeGQL {
               self.resultMap = unsafeResultMap
             }
 
-            public init(iccId: String, eSimActivationCode: String, status: SimProfileStatus, alias: String) {
-              self.init(unsafeResultMap: ["__typename": "SimProfile", "iccId": iccId, "eSimActivationCode": eSimActivationCode, "status": status, "alias": alias])
+            public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
+              self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
             }
 
             public var __typename: String {
@@ -519,15 +482,6 @@ public enum PrimeGQL {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var iccId: String {
-              get {
-                return resultMap["iccId"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "iccId")
               }
             }
 
@@ -540,15 +494,6 @@ public enum PrimeGQL {
               }
             }
 
-            public var status: SimProfileStatus {
-              get {
-                return resultMap["status"]! as! SimProfileStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "status")
-              }
-            }
-
             public var alias: String {
               get {
                 return resultMap["alias"]! as! String
@@ -557,42 +502,23 @@ public enum PrimeGQL {
                 resultMap.updateValue(newValue, forKey: "alias")
               }
             }
-          }
-        }
 
-        public struct Subscription: GraphQLSelectionSet {
-          public static let possibleTypes = ["Subscription"]
-
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("msisdn", type: .nonNull(.scalar(String.self))),
-          ]
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public init(msisdn: String) {
-            self.init(unsafeResultMap: ["__typename": "Subscription", "msisdn": msisdn])
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
+            public var iccId: String {
+              get {
+                return resultMap["iccId"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "iccId")
+              }
             }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
 
-          public var msisdn: String {
-            get {
-              return resultMap["msisdn"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "msisdn")
+            public var status: SimProfileStatus {
+              get {
+                return resultMap["status"]! as! SimProfileStatus
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "status")
+              }
             }
           }
         }

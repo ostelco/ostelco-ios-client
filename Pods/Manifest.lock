@@ -1,7 +1,7 @@
 PODS:
-  - Apollo (0.10.1):
-    - Apollo/Core (= 0.10.1)
-  - Apollo/Core (0.10.1)
+  - Apollo (0.11.1):
+    - Apollo/Core (= 0.11.1)
+  - Apollo/Core (0.11.1)
   - Crashlytics (3.13.1):
     - Fabric (~> 1.10.1)
   - Fabric (1.10.1)
@@ -191,7 +191,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Apollo: 4d690a9b2e48e8820182df4b988d7a253e1ee589
+  Apollo: 73985134be57195be9fdeed1d8d1d74037bacd98
   Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
   Fabric: f6f21452846788bb44595d73e9909d79d328e617
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c

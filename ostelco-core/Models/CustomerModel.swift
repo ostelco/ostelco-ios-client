@@ -39,3 +39,13 @@ public struct CustomerModel: Codable {
         self.referralId = referralId
     }
 }
+
+extension CustomerModel {
+    public init(gqlCustomer: PrimeGQL.GetContextQuery.Data.Context.Customer) {
+        self.id = gqlCustomer.id
+        self.name = gqlCustomer.nickname
+        self.email = gqlCustomer.contactEmail
+        self.analyticsId = gqlCustomer.analyticsId
+        self.referralId = gqlCustomer.referralId
+    }
+}
