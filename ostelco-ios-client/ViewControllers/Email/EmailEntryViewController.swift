@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmailEntryDelegate: class {
-    func emailLinkSent()
+    func emailLinkSent(email: String)
 }
 
 class EmailEntryViewController: UIViewController {
@@ -40,7 +40,7 @@ class EmailEntryViewController: UIViewController {
                 self?.removeSpinner(spinnerView)
             }
             .done { [weak self] in
-                self?.delegate?.emailLinkSent()
+                self?.delegate?.emailLinkSent(email: email)
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)

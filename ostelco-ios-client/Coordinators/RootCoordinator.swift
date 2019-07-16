@@ -9,263 +9,368 @@
 import ostelco_core
 import PromiseKit
 import UIKit
+import FirebaseAuth
+import UserNotifications
+import CoreLocation
 
-class RootCoordinator {
+protocol OnboardingCoordinatorDelegate: class {
+    func onboardingComplete()
+}
+
+class OnboardingCoordinator {
+    weak var delegate: OnboardingCoordinatorDelegate?
     
-    enum Destination {
-        case login
-        case email
-        case signUp
-        case country
-        case ekyc(region: RegionResponse?)
-        case esim(profile: SimProfile?)
-        case home
-    }
+    var localContext = LocalContext()
+    let stageDecider = StageDecider()
     
-    private var noInternetVC: UIViewController?
-    private lazy var onboardingNavController: UINavigationController = {
-        let nav = UINavigationController()
-        nav.isNavigationBarHidden = true
-        return nav
-    }()
+    let navigationController: UINavigationController
     
-    private var emailCoordinator: EmailCoordinator?
-    private var signUpCoordinator: SignUpCoordinator?
-    private var countryCoordinator: CountryCoordinator?
-    private var ekycCoordinator: EKYCCoordinator?
-    private var esimCoordinator: ESimCoordinator?
-    
-    private let userManager: UserManager
-    private let root: UIViewController
-    
-    init(root: UIViewController,
-         userManager: UserManager = .shared) {
-        self.root = root
-        self.userManager = userManager
-    }
-    
-    var topViewController: UIViewController? {
-        return self.root.topPresentedViewController()
-    }
-    
-    func replaceRootViewController(with newRoot: UIViewController) {
-        self.root.embedFullViewChild(newRoot)
-    }
-    
-    func goBackToLogin() {
-        self.navigate(to: .login, from: nil, animated: true)
-    }
-    
-    func determineAndNavigateToDestination(animated: Bool = true) {
-        self.determineDestination()
-            .done { [weak self] destination in
-                self?.navigate(to: destination, from: nil, animated: animated)
-            }
-            .catch { error in
-                ApplicationErrors.log(error)
-                // TODO: Figure out how to deal with this failing.
-            }
-    }
-    
-    func determineDestination() -> Promise<RootCoordinator.Destination> {
-        guard self.userManager.hasCurrentUser else {
-            // NOPE! We need to log in.
-            return .value(.login)
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            let status = settings.authorizationStatus
+            self.localContext.hasSeenNotificationPermissions = status != .notDetermined
         }
         
-        guard UserDefaultsWrapper.pendingEmail == nil else {
-            // We still need to confirm the user's email
-            return .value(.email)
-        }
-        
-        return APIManager.shared.primeAPI
-            .loadContext()
-            .map { context -> RootCoordinator.Destination in
-                self.userManager.customer = context.customer
-                guard let region = context.getRegion() else {
-                    return .country
-                }
-                
-                OnBoardingManager.sharedInstance.region = region
-                return self.handleRegionResponse(region)
-            }
-            // Recover allows us to check for an error but continue the chain
-            .recover { error -> Promise<RootCoordinator.Destination> in
-                switch error {
-                case APIHelper.Error.jsonError(let requestError):
-                    if requestError.httpStatusCode == 404 {
-                        return .value(.signUp)
-                    } // else, keep going.
-                default:
-                    break
-                }
-                
-                // Re-throw the error if we got here.
-                throw error
-            }
-    }
-    
-    func handleRegionResponse(_ region: RegionResponse) -> RootCoordinator.Destination {
-        switch region.status {
-        case .PENDING:
-            return .ekyc(region: region)
-        case .APPROVED:
-            guard let simProfile = region.getSimProfile() else {
-                return .esim(profile: nil)
-            }
-            
-            switch simProfile.status {
-            case .AVAILABLE_FOR_DOWNLOAD,
-                 .NOT_READY:
-                // Something needs to happen with the profile, kick to that coordinator.
-                return .esim(profile: simProfile)
-            default:
-                // We're already set up, just show the main screen.
-                return .home
-            }
-        case .REJECTED:
-            return .ekyc(region: region)
+        Auth.auth().addStateDidChangeListener { (_, user) in
+            self.localContext.enteredEmailAddress = UserDefaultsWrapper.pendingEmail
+            self.localContext.hasFirebaseToken = user != nil
+            self.advance()
         }
     }
     
-    func navigate(to destination: RootCoordinator.Destination,
-                  from viewController: UIViewController?,
-                  animated: Bool) {
-        let presentingViewController: UIViewController
-        if let passedInVC = viewController {
-            presentingViewController = passedInVC
-        } else if let topVC = self.topViewController {
-            presentingViewController = topVC
+    func advance() {
+        APIManager.shared.primeAPI.loadContext()
+            .done { (context) in
+                UserManager.shared.customer = context.customer
+                let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
+                self.afterDismissing {
+                    self.navigateTo(stage)
+                }
+            }.recover { error in
+                let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
+                self.afterDismissing {
+                    self.navigateTo(stage)
+                }
+            }
+    }
+    
+    private func afterDismissing(completion: @escaping () -> Void) {
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: true, completion: completion)
         } else {
-            ApplicationErrors.assertAndLog("No view controller?!")
-            return
+            completion()
         }
-        
-        switch destination {
-        case .login:
+    }
+    
+    private func navigateTo(_ stage: StageDecider.Stage) {
+        switch stage {
+        case .loginCarousel:
             let loginViewController = LoginViewController.fromStoryboard()
-            self.topViewController?.present(loginViewController, animated: animated)
-        case .email:
-            let coordinator = EmailCoordinator(navigationController: self.onboardingNavController)
-            coordinator.delegate = self
-            let hasEnteredEmail = (UserDefaultsWrapper.pendingEmail != nil)
-            let destination = coordinator.determineDestination(emailEntered: hasEnteredEmail)
-            coordinator.navigate(to: destination, animated: animated)
-            self.emailCoordinator = coordinator
-            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
-        case .signUp:
-            let coordinator = SignUpCoordinator(navigationController: self.onboardingNavController)
-            coordinator.delegate = self
-            coordinator.determineDestination()
-                .done { destination in
-                    coordinator.navigate(to: destination, animated: animated)
-                }
-                .catch { error in
-                    ApplicationErrors.log(error)
-                }
-            self.signUpCoordinator = coordinator
-            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
-        case .country:
-            let coordinator = CountryCoordinator(navigationController: self.onboardingNavController)
-            coordinator.delegate = self
-            coordinator.determineDestination()
-                .done { destination in
-                    coordinator.navigate(to: destination, animated: animated)
-                }
-                .catch { error in
-                    ApplicationErrors.log(error)
-                }
-            self.countryCoordinator = coordinator
-            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
-        case .ekyc(let region):
-            let country: Country
-            if let regionCountry = region?.region.country {
-                country = regionCountry
-            } else {
-                country = OnBoardingManager.sharedInstance.selectedCountry
-            }
-            
-            let coordinator = DefaultEKYCCoordinator.forCountry(country: country, navigationController: self.onboardingNavController)
-            coordinator.determineAndNavigateDestination(from: region,
-                                                        hasSeenLanding: false,
-                                                        animated: animated)
-            coordinator.delegate = self
-            self.ekycCoordinator = coordinator
-            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
-        case .esim(let profile):
-            let coordinator = ESimCoordinator(navigationController: self.onboardingNavController)
-            coordinator.delegate = self
-            let destination = coordinator.determineDestination(from: profile)
-            coordinator.navigate(to: destination, animated: animated)
-            self.esimCoordinator = coordinator
-            self.presentOnboardingNavIfNotAlreadyShowing(from: presentingViewController, animated: animated)
+            loginViewController.delegate = self
+            navigationController.setViewControllers([loginViewController], animated: true)
+        case .emailEntry:
+            let emailEntry = EmailEntryViewController.fromStoryboard()
+            emailEntry.delegate = self
+            navigationController.setViewControllers([emailEntry], animated: true)
+        case .checkYourEmail:
+            let checkYourEmail = CheckEmailViewController.fromStoryboard()
+            navigationController.setViewControllers([checkYourEmail], animated: true)
+        case .legalStuff:
+            let legalStuff = TheLegalStuffViewController.fromStoryboard()
+            legalStuff.delegate = self
+            navigationController.setViewControllers([legalStuff], animated: true)
+        case .nicknameEntry:
+            let nicknameEntry = GetStartedViewController.fromStoryboard()
+            nicknameEntry.delegate = self
+            navigationController.setViewControllers([nicknameEntry], animated: true)
+        case .notificationPermissions:
+            let notificationPermissions = EnableNotificationsViewController.fromStoryboard()
+            notificationPermissions.delegate = self
+            navigationController.setViewControllers([notificationPermissions], animated: true)
+        case .regionOnboarding:
+            let regionOnboarding = VerifyCountryOnBoardingViewController.fromStoryboard()
+            regionOnboarding.delegate = self
+            navigationController.setViewControllers([regionOnboarding], animated: true)
+        case .selectRegion:
+            let chooseCountry = ChooseCountryViewController.fromStoryboard()
+            chooseCountry.delegate = self
+            navigationController.setViewControllers([chooseCountry], animated: true)
+        case .locationPermissions:
+            let locationPermissions = AllowLocationAccessViewController.fromStoryboard()
+            locationPermissions.delegate = self
+            navigationController.setViewControllers([locationPermissions], animated: true)
+        case .locationProblem(let problem):
+            let locationProblem = LocationProblemViewController.fromStoryboard()
+            locationProblem.delegate = self
+            locationProblem.locationProblem = problem
+            navigationController.present(locationProblem, animated: true, completion: nil)
+        case .verifyIdentityOnboarding:
+            let verifyIdentify = VerifyIdentityOnBoardingViewController.fromStoryboard()
+            verifyIdentify.delegate = self
+            navigationController.setViewControllers([verifyIdentify], animated: true)
+        case .selectIdentityVerificationMethod:
+            let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
+            selectEKYCMethod.delegate = self
+            navigationController.setViewControllers([selectEKYCMethod], animated: true)
+        case .singpass:
+            singpassCoordinator = SingPassCoordinator(delegate: self)
+            singpassCoordinator?.startLogin(from: navigationController)
+        case .verifyMyInfo(let code):
+            let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
+            verifyMyInfo.myInfoCode = code
+            verifyMyInfo.delegate = self
+            navigationController.setViewControllers([verifyMyInfo], animated: true)
+        case .eSimOnboarding:
+            let eSimOnboarding = ESIMOnBoardingViewController.fromStoryboard()
+            eSimOnboarding.delegate = self
+            navigationController.setViewControllers([eSimOnboarding], animated: true)
+        case .eSimInstructions:
+            let instructions = ESIMInstructionsViewController.fromStoryboard()
+            instructions.delegate = self
+            navigationController.setViewControllers([instructions], animated: true)
+        case .pendingESIMInstall:
+            let pending = ESIMPendingDownloadViewController.fromStoryboard()
+            pending.delegate = self
+            navigationController.setViewControllers([pending], animated: true)
+        case .awesome:
+            let awesome = SignUpCompletedViewController.fromStoryboard()
+            awesome.delegate = self
+            navigationController.setViewControllers([awesome], animated: true)
         case .home:
-            let tabs = TabBarController.fromStoryboard()
-            presentingViewController.present(tabs, animated: animated)
+            delegate?.onboardingComplete()
+        case .nric:
+            let nric = NRICVerifyViewController.fromStoryboard()
+            nric.delegate = self
+            navigationController.setViewControllers([nric], animated: true)
+        case .jumio:
+            if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country) {
+                jumio.delegate = self
+                jumio.startScan(from: navigationController)
+                self.jumioCoordinator = jumio
+            }
+        case .address:
+            let addressController = AddressEditViewController.fromStoryboard()
+            addressController.mode = .nricEnter
+            addressController.delegate = self
+            navigationController.setViewControllers([addressController], animated: true)
+        case .pendingVerification:
+            let pending = PendingVerificationViewController.fromStoryboard()
+            pending.delegate = self
+            navigationController.setViewControllers([pending], animated: true)
+        case .ohNo(let issue):
+            let ohNo = OhNoViewController.fromStoryboard(type: issue)
+            navigationController.present(ohNo, animated: true, completion: nil)
         }
     }
     
-    private func presentOnboardingNavIfNotAlreadyShowing(from presentingViewController: UIViewController, animated: Bool) {
-        guard self.onboardingNavController.presentingViewController == nil else {
-            // already presented, it'll crash if we try again.
-            return
+    var singpassCoordinator: SingPassCoordinator?
+    var jumioCoordinator: JumioCoordinator?
+    
+    private func checkLocation() {
+        guard let country = localContext.selectedRegion?.country else {
+            fatalError("Shouldn't be possible to be here without a country!")
         }
-     
-        presentingViewController.embedFullViewChild(self.onboardingNavController)
+        LocationController.shared.checkInCorrectCountry(country)
+            .done {
+                self.localContext.regionVerified = true
+                self.localContext.locationProblem = nil
+                self.advance()
+            }.catch { (error) in
+                if case LocationController.Error.locationProblem(let problem) = error {
+                    self.localContext.locationProblem = problem
+                }
+                self.advance()
+        }
     }
 }
 
-// MARK: - EmailCoordinatorDelegate
-
-extension RootCoordinator: EmailCoordinatorDelegate {
-    
-    func emailSuccessfullyVerified() {
-        self.navigate(to: .signUp, from: nil, animated: true)
-        self.emailCoordinator = nil
+extension OnboardingCoordinator: LoginDelegate {
+    func loginCarouselSeen() {
+        localContext.hasSeenLoginCarousel = true
+        advance()
     }
 }
 
-// MARK: - SignUpCoordinatorDelegate
-
-extension RootCoordinator: SignUpCoordinatorDelegate {
-    
-    func signUpCompleted() {
-        self.navigate(to: .country, from: nil, animated: true)
-        self.signUpCoordinator = nil
+extension OnboardingCoordinator: EmailEntryDelegate {
+    func emailLinkSent(email: String) {
+        localContext.enteredEmailAddress = email
+        UserDefaultsWrapper.pendingEmail = email
+        advance()
     }
 }
 
-// MARK: - CountryCoordinatorDelegate
-
-extension RootCoordinator: CountryCoordinatorDelegate {
-    
-    func countrySelectionCompleted(with country: Country) {
-        self.navigate(to: .ekyc(region: nil), from: nil, animated: true)
-        self.countryCoordinator = nil
+extension OnboardingCoordinator: TheLegalStuffDelegate {
+    func legaleseAgreed() {
+        localContext.hasAgreedToTerms = true
+        advance()
     }
 }
 
-// MARK: - EKYCCoordinatorDelegate
-
-extension RootCoordinator: EKYCCoordinatorDelegate {
-    
-    func ekycSuccessful(region: RegionResponse) {
-        self.navigate(to: .esim(profile: region.getSimProfile()), from: nil, animated: true)
-        self.ekycCoordinator = nil
-    }
-    
-    func reselectCountry() {
-        self.navigate(to: .country, from: nil, animated: true)
-        self.ekycCoordinator = nil
+extension OnboardingCoordinator: GetStartedDelegate {
+    func nameEnteredSuccessfully() {
+        advance()
     }
 }
 
-// MARK: - ESimCoordinatorDelegate
+extension OnboardingCoordinator: EnableNotificationsDelegate {
+    func pushAgreedOrDenied() {
+        localContext.hasSeenNotificationPermissions = true
+        advance()
+    }
+}
 
-extension RootCoordinator: ESimCoordinatorDelegate {
+extension OnboardingCoordinator: VerifyCountryOnBoardingDelegate {
+    func finishedViewingCountryLandingScreen() {
+        localContext.hasSeenRegionOnboarding = true
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: ChooseCountryDelegate {
+    func selectedCountry(_ country: Country) {
+        localContext.selectedRegion = Region(id: country.countryCode, name: country.name!)
+        
+        let locationStatus = CLLocationManager.authorizationStatus()
+        if locationStatus == .authorizedAlways || locationStatus == .authorizedWhenInUse {
+            checkLocation()
+        } else {
+            advance()
+        }
+    }
+}
+
+extension OnboardingCoordinator: AllowLocationAccessDelegate {
+    func handleLocationProblem(_ problem: LocationProblem) {
+        localContext.locationProblem = problem
+        advance()
+    }
     
-    func esimSetupComplete() {
-        self.navigate(to: .home, from: nil, animated: true)
-        self.esimCoordinator = nil
+    func locationUsageAuthorized(for country: Country) {
+        if country == localContext.selectedRegion?.country {
+            localContext.regionVerified = true
+            advance()
+        }
+    }
+    
+}
+
+extension OnboardingCoordinator: LocationProblemDelegate {
+    func retry() {
+        localContext.selectedRegion = nil
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: VerifyIdentityOnboardingDelegate {
+    func showFirstStepAfterLanding() {
+        localContext.hasSeenVerifyIdentifyOnboarding = true
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: SelectIdentityVerificationMethodDelegate {
+    func selected(option: IdentityVerificationOption) {
+        localContext.selectedVerificationOption = option
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: SingPassCoordinatorDelegate {
+    func signInSucceeded(myInfoQueryItems: [URLQueryItem]) {
+        let code = myInfoQueryItems.first(where: { $0.name == "code" })?.value
+        localContext.myInfoCode = code
+        advance()
+    }
+    
+    func signInFailed(error: NSError?) {
+        print(error ?? "no error")
+    }
+}
+
+extension OnboardingCoordinator: MyInfoSummaryDelegate {
+    func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
+        let addressController = AddressEditViewController.fromStoryboard()
+        addressController.mode = .myInfoVerify(myInfo: address)
+        addressController.myInfoDelegate = delegate
+        addressController.delegate = self
+        navigationController.pushViewController(addressController, animated: true)
+    }
+    
+    func verifiedSingPassAddress() {
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: AddressEditDelegate {
+    func enteredAddressSuccessfully() {
+        localContext.hasCompletedAddress = true
+        advance()
+    }
+    
+    func cancel() {
+        navigationController.popViewController(animated: true)
+    }
+}
+
+extension OnboardingCoordinator: ESIMOnBoardingDelegate {
+    func completedLanding() {
+        localContext.hasSeenESimOnboarding = true
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: ESIMInstructionsDelegate {
+    func completedInstructions() {
+        localContext.hasSeenESIMInstructions = true
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
+    func profileChanged(_ profile: SimProfile) {
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: SignUpCompletedDelegate {
+    func acknowledgedSuccess() {
+        localContext.hasSeenAwesome = true
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: NRICVerifyDelegate {
+    func enteredNRICSuccessfully() {
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: JumioCoordinatorDelegate {
+    func scanSucceeded(scanID: String) {
+        localContext.hasCompletedJumio = true
+        advance()
+    }
+    
+    func scanCancelled() {
+        localContext.hasSeenVerifyIdentifyOnboarding = false
+        localContext.selectedVerificationOption = nil
+        advance()
+    }
+    
+    func scanFailed(errorMessage: String) {
+        localContext.selectedVerificationOption = nil
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: PendingVerificationDelegate {
+    func waitingCompletedSuccessfully(for region: RegionResponse) {
+        advance()
+    }
+    
+    func waitingCompletedWithRejection() {
+        advance()
     }
 }

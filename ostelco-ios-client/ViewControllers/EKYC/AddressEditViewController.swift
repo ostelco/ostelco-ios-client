@@ -16,7 +16,8 @@ protocol MyInfoAddressUpdateDelegate: class {
 }
 
 protocol AddressEditDelegate: class {
-    func enteredAddressSuccessfully(hasCompletedJumio: Bool)
+    func enteredAddressSuccessfully()
+    func cancel()
 }
 
 class AddressEditViewController: UITableViewController {
@@ -30,7 +31,7 @@ class AddressEditViewController: UITableViewController {
     var spinnerView: UIView?
     
     enum Mode {
-        case nricEnter(hasCompletedJumio: Bool)
+        case nricEnter
         case myInfoVerify(myInfo: MyInfoAddress?)
         
         var sections: [AddressEditSection] {
@@ -49,7 +50,7 @@ class AddressEditViewController: UITableViewController {
         }
     }
     
-    var mode: Mode = .nricEnter(hasCompletedJumio: false) {
+    var mode: Mode = .nricEnter {
         didSet {
             self.configureForMode()
         }
@@ -93,7 +94,7 @@ class AddressEditViewController: UITableViewController {
     }
     
     @IBAction private func cancelBarButtonTapped() {
-        self.dismiss(animated: true)
+        delegate?.cancel()
     }
     
     @IBAction private func continueTapped() {
@@ -141,13 +142,8 @@ class AddressEditViewController: UITableViewController {
     }
     
     private func sendAddressToServer() {
-        let hasCompletedJumio: Bool
-        switch mode {
-        case .myInfoVerify:
+        if case .myInfoVerify = mode {
             ApplicationErrors.assertAndLog("You shouldn't be able to send the address to the server from myInfo verify mode")
-            return
-        case .nricEnter(let completed):
-            hasCompletedJumio = completed
         }
         
         let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
@@ -162,7 +158,7 @@ class AddressEditViewController: UITableViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] in
-                self?.delegate?.enteredAddressSuccessfully(hasCompletedJumio: hasCompletedJumio)
+                self?.delegate?.enteredAddressSuccessfully()
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)

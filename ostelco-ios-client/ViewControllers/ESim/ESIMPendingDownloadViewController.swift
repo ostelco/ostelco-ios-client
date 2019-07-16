@@ -113,7 +113,9 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
         
         self.simProfile = profile
-        self.delegate!.profileChanged(profile)
+        if profile.status == .INSTALLED {
+            self.delegate!.profileChanged(profile)
+        }
     }
     
     func getSimProfileForRegion(region: RegionResponse) {

@@ -54,7 +54,8 @@ class ChooseCountryViewController: UIViewController {
             return
         }
         
-        self.delegate?.selectedCountry(country)
+        showSpinner(onView: self.view)
+        delegate?.selectedCountry(country)
     }
 }
 

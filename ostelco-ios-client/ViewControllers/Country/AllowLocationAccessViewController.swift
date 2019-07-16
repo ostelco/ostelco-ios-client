@@ -13,7 +13,6 @@ import UIKit
 
 protocol AllowLocationAccessDelegate: class {
     func handleLocationProblem(_ problem: LocationProblem)
-    func handleLocationProblem(_ problem: LocationProblem, animated: Bool)
     func locationUsageAuthorized(for country: Country)
 }
 

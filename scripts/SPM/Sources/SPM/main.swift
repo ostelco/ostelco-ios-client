@@ -1,6 +1,6 @@
 import Foundation
 import Core
-import Utility
+import SPMUtility
 
 /// Here, we let the SPM script do all the argument parsing using the `ArgumentParser` from
 /// Swift Package Manager's `Utility` package. This will then call into the `Core` framework,

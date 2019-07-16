@@ -9,16 +9,10 @@
 import OstelcoStyles
 import UIKit
 
-protocol CheckEmailDelegate: class {
-    func emailVerified()
-}
-
 class CheckEmailViewController: UIViewController {
     
     @IBOutlet private var submitPasteboardOnSimulatorButton: UIButton!
     @IBOutlet private var gifView: LoopingVideoView!
-    
-    weak var delegate: CheckEmailDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +75,6 @@ class CheckEmailViewController: UIViewController {
             EmailLinkManager.signInWithLink(url)
                 .ensure { [weak self] in
                     self?.removeSpinner(spinner)
-                }
-                .done {
-                    self.delegate?.emailVerified()
                 }
                 .catch { [weak self] error in
                     ApplicationErrors.log(error)
