@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureAppearance()
         
         let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        freschatConfig.domain = "msdk.eu.freshchat.com"
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
         // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera
         // freschatConfig.teamMemberInfoVisible = true; // set to NO to turn off showing an team member avatar. To customize the avatar shown, use the theme file
