@@ -22,11 +22,13 @@ class OnboardingCoordinator {
     
     var localContext = LocalContext()
     let stageDecider = StageDecider()
+    let primeAPI: PrimeAPI
     
     let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, primeAPI: PrimeAPI = APIManager.shared.primeAPI) {
         self.navigationController = navigationController
+        self.primeAPI = primeAPI
         
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             let status = settings.authorizationStatus
@@ -41,14 +43,14 @@ class OnboardingCoordinator {
     }
     
     func advance() {
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
             .done { (context) in
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
-            }.recover { error in
+            }.recover { _ in
                 let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)

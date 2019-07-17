@@ -68,7 +68,6 @@ class OnboardingPageViewController: UIViewController {
     @IBOutlet private var gifView: LoopingVideoView!
     
     // This is set up in the convenience constructor
-    // swiftlint:disable:next implicitly_unwrapped_optional
     private(set) var onboardingPage: OnboardingPage!
     
     /// Convenience constructor

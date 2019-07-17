@@ -27,11 +27,8 @@ class AllowLocationAccessViewController: UIViewController {
     
     private var hasRequestedAuthorization = false
     
-    // These are set in viewDidLoad
-    // swiftlint:disable implicitly_unwrapped_optional
     private var selectedCountry: Country!
     private var linkableText: LinkableText!
-    // swiftlint:enable implicitly_unwrapped_optional
     
     override func viewDidLoad() {
         super.viewDidLoad()
