@@ -77,7 +77,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    public func checkInCorrectCountry(_ country: Country, isDebug: Bool = false) -> Promise<Void> {
+    public func checkInCorrectCountry(_ country: Country) -> Promise<Void> {
         guard self.locationServicesEnabled else {
             return Promise(error: Error.locationProblem(problem: .disabledInSettings))
         }
@@ -105,20 +105,6 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
                     
                 guard let isoCountryCode = placemark.isoCountryCode else {
                     throw Error.couldntGetCountryCode(from: placemark)
-                }
-                
-                if isDebug {
-                    // We don't actually care if we're in the correct country, we just need to validate the user is
-                    // "in" a supported country, by which we mean they've selected Singapore or the US from the list.
-                    let lowerCountry = country.countryCode.lowercased()
-                    guard lowerCountry == "no" || lowerCountry == "sg" || lowerCountry == "us" else {
-                        let problem = LocationProblem.authorizedButWrongCountry(expected: "Norway, Singapore or the US", actual: country.nameOrPlaceholder)
-                        throw Error.locationProblem(problem: problem)
-                    }
-                    
-                    // If we got here, they picked Singapore from the list, and we're skipping validation of the
-                    // actual country for debugging purposes.
-                    return
                 }
                 
                 let actualCountry = Country(isoCountryCode)

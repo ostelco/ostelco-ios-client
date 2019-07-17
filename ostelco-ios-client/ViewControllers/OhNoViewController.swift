@@ -100,7 +100,8 @@ class OhNoViewController: UIViewController {
     }
     
     private func configurePrimaryButton() {
-        self.primaryButton?.setTitle(self.buttonTitle, for: .normal)
+        primaryButton?.isHidden = primaryButtonAction == nil
+        primaryButton?.setTitle(self.buttonTitle, for: .normal)
     }
     
     private func configureGIFVideo() {
@@ -136,9 +137,9 @@ extension OhNoViewController: StoryboardLoadable {
 extension OhNoIssueType {
     var displayTitle: String {
         switch self {
-        case .generic,
-             .ekycRejected,
-             .myInfoFailed:
+        case .ekycRejected:
+            return "EKYC Rejected"
+        case .generic, .myInfoFailed:
             return "Oh no"
         case .noInternet:
             return "No internet connection"
@@ -156,29 +157,21 @@ extension OhNoIssueType {
             return .taken
         case .ekycRejected:
             return .blank_canvas
-        case .noInternet,
-             .paymentFailedGeneric,
-             .paymentFailedCardDeclined:
+        case .noInternet, .paymentFailedGeneric, .paymentFailedCardDeclined:
             return .no_connection
         }
     }
     
     var linkableText: LinkableText? {
-        switch self {
-        case .noInternet:
+        if case .noInternet = self {
             return LinkableText(fullText: """
 Try again in a while or contact support
 
 support@oya.world
 """,
                                 linkedBits: ["support@oya.world"])
-        case .ekycRejected,
-             .generic,
-             .myInfoFailed,
-             .paymentFailedCardDeclined,
-             .paymentFailedGeneric:
-            return nil
         }
+        return nil
     }
     
     var boldableText: BoldableText? {
