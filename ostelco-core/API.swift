@@ -525,4 +525,123 @@ public enum PrimeGQL {
       }
     }
   }
+
+  public final class GetBundlesQuery: GraphQLQuery {
+    public let operationDefinition =
+      "query GetBundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["QueryType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(context: Context) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      }
+
+      public var context: Context {
+        get {
+          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "context")
+        }
+      }
+
+      public struct Context: GraphQLSelectionSet {
+        public static let possibleTypes = ["Context"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("bundles", type: .list(.object(Bundle.selections))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(bundles: [Bundle?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "bundles": bundles.flatMap { (value: [Bundle?]) -> [ResultMap?] in value.map { (value: Bundle?) -> ResultMap? in value.flatMap { (value: Bundle) -> ResultMap in value.resultMap } } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var bundles: [Bundle?]? {
+          get {
+            return (resultMap["bundles"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Bundle?] in value.map { (value: ResultMap?) -> Bundle? in value.flatMap { (value: ResultMap) -> Bundle in Bundle(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Bundle?]) -> [ResultMap?] in value.map { (value: Bundle?) -> ResultMap? in value.flatMap { (value: Bundle) -> ResultMap in value.resultMap } } }, forKey: "bundles")
+          }
+        }
+
+        public struct Bundle: GraphQLSelectionSet {
+          public static let possibleTypes = ["Bundle"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(String.self))),
+            GraphQLField("balance", type: .nonNull(.scalar(Long.self))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: String, balance: Long) {
+            self.init(unsafeResultMap: ["__typename": "Bundle", "id": id, "balance": balance])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: String {
+            get {
+              return resultMap["id"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var balance: Long {
+            get {
+              return resultMap["balance"]! as! Long
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "balance")
+            }
+          }
+        }
+      }
+    }
+  }
 }

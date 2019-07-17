@@ -98,19 +98,37 @@ open class PrimeAPI: BasicNetwork {
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> PromiseKit.Promise<[BundleModel]> {
-        return self.loadData(from: RootEndpoint.bundles.value)
-            .map { try self.decoder.decode([BundleModel].self, from: $0) }
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise<[BundleModel]> { seal in
+                    self.client.fetch(query: PrimeGQL.GetBundlesQuery()) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        
+                        var bundlesList: [BundleModel] = []
+                        
+                        if let data = result?.data {
+                            if let bundles = data.context.bundles {
+                                bundlesList = bundles.map({ BundleModel(gqlData: $0!) })
+                            }
+                        }
+                        
+                        seal.fulfill(bundlesList)
+                    }
+                }
+            }
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext(mode: Mode = Mode.rest) -> PromiseKit.Promise<Context> {
+    public func loadContext(mode: Mode = Mode.graphQL) -> PromiseKit.Promise<Context> {
         
         if mode == .graphQL {
             return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<Context> { seal in
                     self.client.fetch(query: PrimeGQL.GetContextQuery()) { (result, error) in
-                        debugPrint("-----------", result?.data, error, result)
                         if let error = error {
                             seal.reject(error)
                             return
