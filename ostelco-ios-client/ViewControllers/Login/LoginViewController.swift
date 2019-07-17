@@ -21,8 +21,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private var primaryButton: UIButton!
     @IBOutlet private var logoImageView: UIImageView!
     
-    /// Has to be set up through `prepareForSegue` when this VC is loaded
-    // swiftlint:disable:next implicitly_unwrapped_optional
     private var pageController: UIPageViewController!
     
     weak var delegate: LoginDelegate?

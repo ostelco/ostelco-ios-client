@@ -42,8 +42,7 @@ extension ApplePayError: LocalizedError {
     }
 }
 
-// swiftlint:disable:next class_delegate_protocol
-protocol ApplePayDelegate: UIViewController {
+protocol ApplePayDelegate: class {
     var shownApplePay: Bool { get set }
     var authorizedApplePay: Bool { get set }
     var purchasingProduct: Product? { get set }
@@ -58,7 +57,7 @@ protocol ApplePayDelegate: UIViewController {
     func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController)
 }
 
-extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDelegate {
+extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDelegate & UIViewController {
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
 
     func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
