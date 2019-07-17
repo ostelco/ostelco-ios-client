@@ -139,7 +139,7 @@ open class PrimeAPI: BasicNetwork {
                             let customerModel = CustomerModel(gqlCustomer: customer)
                             
                             if let regions = data.context.regions {
-                                regionResponseList = regions.map({ RegionResponse(gqlRegionDetails: $0!) })
+                                regionResponseList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
                             }
                             
                             seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
@@ -283,8 +283,27 @@ open class PrimeAPI: BasicNetwork {
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions() -> PromiseKit.Promise<[RegionResponse]> {
-        return self.loadData(from: RootEndpoint.regions.value)
-            .map { try self.decoder.decode([RegionResponse].self, from: $0) }
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise<[RegionResponse]> { seal in
+                    self.client.fetch(query: PrimeGQL.RegionsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        
+                        var resultList: [RegionResponse] = []
+                        
+                        if let data = result?.data {
+                            if let regions = data.context.regions {
+                                resultList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
+                            }
+                        }
+                        
+                        seal.fulfill(resultList)
+                    }
+                }
+        }
     }
     
     /// Loads the region response for the specified region

@@ -1,0 +1,7 @@
+query Regions {
+    context {
+        regions {
+            ...regionDetailsFragment
+        }
+    }
+}

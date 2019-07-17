@@ -54,6 +54,7 @@
 		046FE92722DEFC6000CF57E4 /* bundles.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92622DEFC6000CF57E4 /* bundles.graphql */; };
 		046FE92B22DF02BC00CF57E4 /* purchases.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92A22DF02BC00CF57E4 /* purchases.graphql */; };
 		046FE92D22DF075E00CF57E4 /* products.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92C22DF075E00CF57E4 /* products.graphql */; };
+		046FE92F22DF0A5200CF57E4 /* regions.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92E22DF0A5200CF57E4 /* regions.graphql */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
@@ -448,6 +449,7 @@
 		046FE92622DEFC6000CF57E4 /* bundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = bundles.graphql; sourceTree = "<group>"; };
 		046FE92A22DF02BC00CF57E4 /* purchases.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchases.graphql; sourceTree = "<group>"; };
 		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
+		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -982,6 +984,7 @@
 				046FE92622DEFC6000CF57E4 /* bundles.graphql */,
 				046FE92A22DF02BC00CF57E4 /* purchases.graphql */,
 				046FE92C22DF075E00CF57E4 /* products.graphql */,
+				046FE92E22DF0A5200CF57E4 /* regions.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1534,6 +1537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046FE92F22DF0A5200CF57E4 /* regions.graphql in Resources */,
 				046FE92B22DF02BC00CF57E4 /* purchases.graphql in Resources */,
 				C26274B122C2050200F0AA36 /* context.graphql in Resources */,
 				046FE92722DEFC6000CF57E4 /* bundles.graphql in Resources */,

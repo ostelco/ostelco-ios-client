@@ -32,7 +32,7 @@ public struct SimProfile: Codable, Equatable {
 }
 
 extension SimProfile {
-    public init(gqlSimProfile: PrimeGQL.GetContextQuery.Data.Context.Region.SimProfile) {
+    public init(gqlSimProfile: PrimeGQL.RegionDetailsFragment.SimProfile) {
         let status = SimProfileStatus(rawValue: gqlSimProfile.status.rawValue)!
         self.init(eSimActivationCode: gqlSimProfile.eSimActivationCode,
                   alias: gqlSimProfile.alias,

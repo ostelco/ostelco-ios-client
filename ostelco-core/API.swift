@@ -119,6 +119,130 @@ public enum PrimeGQL {
     }
   }
 
+  public final class RegionsQuery: GraphQLQuery {
+    public let operationDefinition =
+      "query Regions {\n  context {\n    __typename\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition) }
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["QueryType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(context: Context) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      }
+
+      public var context: Context {
+        get {
+          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "context")
+        }
+      }
+
+      public struct Context: GraphQLSelectionSet {
+        public static let possibleTypes = ["Context"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("regions", type: .list(.object(Region.selections))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(regions: [Region?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.flatMap { (value: [Region?]) -> [ResultMap?] in value.map { (value: Region?) -> ResultMap? in value.flatMap { (value: Region) -> ResultMap in value.resultMap } } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var regions: [Region?]? {
+          get {
+            return (resultMap["regions"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Region?] in value.map { (value: ResultMap?) -> Region? in value.flatMap { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Region?]) -> [ResultMap?] in value.map { (value: Region?) -> ResultMap? in value.flatMap { (value: Region) -> ResultMap in value.resultMap } } }, forKey: "regions")
+          }
+        }
+
+        public struct Region: GraphQLSelectionSet {
+          public static let possibleTypes = ["RegionDetails"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(RegionDetailsFragment.self),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var regionDetailsFragment: RegionDetailsFragment {
+              get {
+                return RegionDetailsFragment(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class ProductsQuery: GraphQLQuery {
     public let operationDefinition =
       "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      sku\n      price {\n        __typename\n        amount\n        currency\n      }\n    }\n  }\n}"
@@ -287,7 +411,9 @@ public enum PrimeGQL {
 
   public final class GetContextQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      region {\n        __typename\n        id\n        name\n      }\n      status\n      kycStatusMap {\n        __typename\n        JUMIO\n        MY_INFO\n        NRIC_FIN\n        ADDRESS_AND_PHONE_NUMBER\n      }\n      simProfiles {\n        __typename\n        eSimActivationCode\n        alias\n        iccId\n        status\n      }\n    }\n  }\n}"
+      "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition) }
 
     public init() {
     }
@@ -446,20 +572,13 @@ public enum PrimeGQL {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("region", type: .nonNull(.object(Region.selections))),
-            GraphQLField("status", type: .scalar(CustomerRegionStatus.self)),
-            GraphQLField("kycStatusMap", type: .object(KycStatusMap.selections)),
-            GraphQLField("simProfiles", type: .list(.object(SimProfile.selections))),
+            GraphQLFragmentSpread(RegionDetailsFragment.self),
           ]
 
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
-          }
-
-          public init(region: Region, status: CustomerRegionStatus? = nil, kycStatusMap: KycStatusMap? = nil, simProfiles: [SimProfile?]? = nil) {
-            self.init(unsafeResultMap: ["__typename": "RegionDetails", "region": region.resultMap, "status": status, "kycStatusMap": kycStatusMap.flatMap { (value: KycStatusMap) -> ResultMap in value.resultMap }, "simProfiles": simProfiles.flatMap { (value: [SimProfile?]) -> [ResultMap?] in value.map { (value: SimProfile?) -> ResultMap? in value.flatMap { (value: SimProfile) -> ResultMap in value.resultMap } } }])
           }
 
           public var __typename: String {
@@ -471,219 +590,28 @@ public enum PrimeGQL {
             }
           }
 
-          public var region: Region {
+          public var fragments: Fragments {
             get {
-              return Region(unsafeResultMap: resultMap["region"]! as! ResultMap)
+              return Fragments(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue.resultMap, forKey: "region")
+              resultMap += newValue.resultMap
             }
           }
 
-          public var status: CustomerRegionStatus? {
-            get {
-              return resultMap["status"] as? CustomerRegionStatus
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "status")
-            }
-          }
-
-          public var kycStatusMap: KycStatusMap? {
-            get {
-              return (resultMap["kycStatusMap"] as? ResultMap).flatMap { KycStatusMap(unsafeResultMap: $0) }
-            }
-            set {
-              resultMap.updateValue(newValue?.resultMap, forKey: "kycStatusMap")
-            }
-          }
-
-          public var simProfiles: [SimProfile?]? {
-            get {
-              return (resultMap["simProfiles"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SimProfile?] in value.map { (value: ResultMap?) -> SimProfile? in value.flatMap { (value: ResultMap) -> SimProfile in SimProfile(unsafeResultMap: value) } } }
-            }
-            set {
-              resultMap.updateValue(newValue.flatMap { (value: [SimProfile?]) -> [ResultMap?] in value.map { (value: SimProfile?) -> ResultMap? in value.flatMap { (value: SimProfile) -> ResultMap in value.resultMap } } }, forKey: "simProfiles")
-            }
-          }
-
-          public struct Region: GraphQLSelectionSet {
-            public static let possibleTypes = ["Region"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .nonNull(.scalar(String.self))),
-              GraphQLField("name", type: .nonNull(.scalar(String.self))),
-            ]
-
+          public struct Fragments {
             public private(set) var resultMap: ResultMap
 
             public init(unsafeResultMap: ResultMap) {
               self.resultMap = unsafeResultMap
             }
 
-            public init(id: String, name: String) {
-              self.init(unsafeResultMap: ["__typename": "Region", "id": id, "name": name])
-            }
-
-            public var __typename: String {
+            public var regionDetailsFragment: RegionDetailsFragment {
               get {
-                return resultMap["__typename"]! as! String
+                return RegionDetailsFragment(unsafeResultMap: resultMap)
               }
               set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var id: String {
-              get {
-                return resultMap["id"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "id")
-              }
-            }
-
-            public var name: String {
-              get {
-                return resultMap["name"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "name")
-              }
-            }
-          }
-
-          public struct KycStatusMap: GraphQLSelectionSet {
-            public static let possibleTypes = ["KycStatusMap"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("JUMIO", type: .scalar(KycStatus.self)),
-              GraphQLField("MY_INFO", type: .scalar(KycStatus.self)),
-              GraphQLField("NRIC_FIN", type: .scalar(KycStatus.self)),
-              GraphQLField("ADDRESS_AND_PHONE_NUMBER", type: .scalar(KycStatus.self)),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(jumio: KycStatus? = nil, myInfo: KycStatus? = nil, nricFin: KycStatus? = nil, addressAndPhoneNumber: KycStatus? = nil) {
-              self.init(unsafeResultMap: ["__typename": "KycStatusMap", "JUMIO": jumio, "MY_INFO": myInfo, "NRIC_FIN": nricFin, "ADDRESS_AND_PHONE_NUMBER": addressAndPhoneNumber])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var jumio: KycStatus? {
-              get {
-                return resultMap["JUMIO"] as? KycStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "JUMIO")
-              }
-            }
-
-            public var myInfo: KycStatus? {
-              get {
-                return resultMap["MY_INFO"] as? KycStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "MY_INFO")
-              }
-            }
-
-            public var nricFin: KycStatus? {
-              get {
-                return resultMap["NRIC_FIN"] as? KycStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "NRIC_FIN")
-              }
-            }
-
-            public var addressAndPhoneNumber: KycStatus? {
-              get {
-                return resultMap["ADDRESS_AND_PHONE_NUMBER"] as? KycStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "ADDRESS_AND_PHONE_NUMBER")
-              }
-            }
-          }
-
-          public struct SimProfile: GraphQLSelectionSet {
-            public static let possibleTypes = ["SimProfile"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("eSimActivationCode", type: .nonNull(.scalar(String.self))),
-              GraphQLField("alias", type: .nonNull(.scalar(String.self))),
-              GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
-              GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
-            ]
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
-              self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var eSimActivationCode: String {
-              get {
-                return resultMap["eSimActivationCode"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "eSimActivationCode")
-              }
-            }
-
-            public var alias: String {
-              get {
-                return resultMap["alias"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "alias")
-              }
-            }
-
-            public var iccId: String {
-              get {
-                return resultMap["iccId"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "iccId")
-              }
-            }
-
-            public var status: SimProfileStatus {
-              get {
-                return resultMap["status"]! as! SimProfileStatus
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "status")
+                resultMap += newValue.resultMap
               }
             }
           }
@@ -1029,6 +957,257 @@ public enum PrimeGQL {
               resultMap.updateValue(newValue, forKey: "balance")
             }
           }
+        }
+      }
+    }
+  }
+
+  public struct RegionDetailsFragment: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment regionDetailsFragment on RegionDetails {\n  __typename\n  region {\n    __typename\n    id\n    name\n  }\n  status\n  kycStatusMap {\n    __typename\n    JUMIO\n    MY_INFO\n    NRIC_FIN\n    ADDRESS_AND_PHONE_NUMBER\n  }\n  simProfiles {\n    __typename\n    eSimActivationCode\n    alias\n    iccId\n    status\n  }\n}"
+
+    public static let possibleTypes = ["RegionDetails"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("region", type: .nonNull(.object(Region.selections))),
+      GraphQLField("status", type: .scalar(CustomerRegionStatus.self)),
+      GraphQLField("kycStatusMap", type: .object(KycStatusMap.selections)),
+      GraphQLField("simProfiles", type: .list(.object(SimProfile.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(region: Region, status: CustomerRegionStatus? = nil, kycStatusMap: KycStatusMap? = nil, simProfiles: [SimProfile?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RegionDetails", "region": region.resultMap, "status": status, "kycStatusMap": kycStatusMap.flatMap { (value: KycStatusMap) -> ResultMap in value.resultMap }, "simProfiles": simProfiles.flatMap { (value: [SimProfile?]) -> [ResultMap?] in value.map { (value: SimProfile?) -> ResultMap? in value.flatMap { (value: SimProfile) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var region: Region {
+      get {
+        return Region(unsafeResultMap: resultMap["region"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "region")
+      }
+    }
+
+    public var status: CustomerRegionStatus? {
+      get {
+        return resultMap["status"] as? CustomerRegionStatus
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var kycStatusMap: KycStatusMap? {
+      get {
+        return (resultMap["kycStatusMap"] as? ResultMap).flatMap { KycStatusMap(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "kycStatusMap")
+      }
+    }
+
+    public var simProfiles: [SimProfile?]? {
+      get {
+        return (resultMap["simProfiles"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SimProfile?] in value.map { (value: ResultMap?) -> SimProfile? in value.flatMap { (value: ResultMap) -> SimProfile in SimProfile(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SimProfile?]) -> [ResultMap?] in value.map { (value: SimProfile?) -> ResultMap? in value.flatMap { (value: SimProfile) -> ResultMap in value.resultMap } } }, forKey: "simProfiles")
+      }
+    }
+
+    public struct Region: GraphQLSelectionSet {
+      public static let possibleTypes = ["Region"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: String, name: String) {
+        self.init(unsafeResultMap: ["__typename": "Region", "id": id, "name": name])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: String {
+        get {
+          return resultMap["id"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+    }
+
+    public struct KycStatusMap: GraphQLSelectionSet {
+      public static let possibleTypes = ["KycStatusMap"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("JUMIO", type: .scalar(KycStatus.self)),
+        GraphQLField("MY_INFO", type: .scalar(KycStatus.self)),
+        GraphQLField("NRIC_FIN", type: .scalar(KycStatus.self)),
+        GraphQLField("ADDRESS_AND_PHONE_NUMBER", type: .scalar(KycStatus.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(jumio: KycStatus? = nil, myInfo: KycStatus? = nil, nricFin: KycStatus? = nil, addressAndPhoneNumber: KycStatus? = nil) {
+        self.init(unsafeResultMap: ["__typename": "KycStatusMap", "JUMIO": jumio, "MY_INFO": myInfo, "NRIC_FIN": nricFin, "ADDRESS_AND_PHONE_NUMBER": addressAndPhoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var jumio: KycStatus? {
+        get {
+          return resultMap["JUMIO"] as? KycStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "JUMIO")
+        }
+      }
+
+      public var myInfo: KycStatus? {
+        get {
+          return resultMap["MY_INFO"] as? KycStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "MY_INFO")
+        }
+      }
+
+      public var nricFin: KycStatus? {
+        get {
+          return resultMap["NRIC_FIN"] as? KycStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "NRIC_FIN")
+        }
+      }
+
+      public var addressAndPhoneNumber: KycStatus? {
+        get {
+          return resultMap["ADDRESS_AND_PHONE_NUMBER"] as? KycStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ADDRESS_AND_PHONE_NUMBER")
+        }
+      }
+    }
+
+    public struct SimProfile: GraphQLSelectionSet {
+      public static let possibleTypes = ["SimProfile"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("eSimActivationCode", type: .nonNull(.scalar(String.self))),
+        GraphQLField("alias", type: .nonNull(.scalar(String.self))),
+        GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
+        GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
+        self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var eSimActivationCode: String {
+        get {
+          return resultMap["eSimActivationCode"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "eSimActivationCode")
+        }
+      }
+
+      public var alias: String {
+        get {
+          return resultMap["alias"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "alias")
+        }
+      }
+
+      public var iccId: String {
+        get {
+          return resultMap["iccId"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "iccId")
+        }
+      }
+
+      public var status: SimProfileStatus {
+        get {
+          return resultMap["status"]! as! SimProfileStatus
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "status")
         }
       }
     }

@@ -23,7 +23,7 @@ public struct KYCStatusMap: Codable {
         self.ADDRESS_AND_PHONE_NUMBER = addressPhone
     }
     
-    public init(gqlKYCStatusMap: PrimeGQL.GetContextQuery.Data.Context.Region.KycStatusMap) {
+    public init(gqlKYCStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap) {
         if let jumio = gqlKYCStatusMap.jumio?.rawValue {
             self.JUMIO = EKYCStatus(rawValue: jumio)!
         } else {
@@ -63,7 +63,7 @@ public struct Region: Codable {
         return Country(self.id)
     }
     
-    public init(gqlRegion: PrimeGQL.GetContextQuery.Data.Context.Region.Region) {
+    public init(gqlRegion: PrimeGQL.RegionDetailsFragment.Region) {
         self.id = gqlRegion.id
         self.name = gqlRegion.name
     }
@@ -105,8 +105,7 @@ public struct RegionResponse: Codable {
 }
 
 extension RegionResponse {
-    public init(gqlRegionDetails: PrimeGQL.GetContextQuery.Data.Context.Region) {
-        let regionDetails = gqlRegionDetails
+    public init(gqlData regionDetails: PrimeGQL.RegionDetailsFragment) {
         let region = regionDetails.region
         let status = regionDetails.status!
         let kycStatusMap = regionDetails.kycStatusMap!
