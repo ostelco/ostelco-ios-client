@@ -82,5 +82,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 .secrets
-ostelco-ios-client/SupportingFiles/
+ostelco-ios-client/SupportingFiles/Environment.plist
+ostelco-ios-client/SupportingFiles/GoogleService-Info.plist
 node_modules/
