@@ -122,40 +122,34 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext(mode: Mode = Mode.graphQL) -> PromiseKit.Promise<Context> {
-        
-        if mode == .graphQL {
-            return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise<Context> { seal in
-                    self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        if let data = result?.data {
-                            let customer = data.context.customer
-                            var regionResponseList: [RegionResponse] = []
-                            let customerModel = CustomerModel(gqlCustomer: customer)
-                            
-                            if let regions = data.context.regions {
-                                regionResponseList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
-                            }
-                            
-                            seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
-                        } else {
-                            // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
-                            // swiftlint:disable:next force_cast
-                            seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
-                        }
+    public func loadContext() -> PromiseKit.Promise<Context> {
+        return self.getToken()
+        .then { _ in
+            return PromiseKit.Promise<Context> { seal in
+                self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
-                    
+                    if let data = result?.data {
+                        let customer = data.context.customer
+                        var regionResponseList: [RegionResponse] = []
+                        let customerModel = CustomerModel(gqlCustomer: customer)
+                        
+                        if let regions = data.context.regions {
+                            regionResponseList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
+                        }
+                        
+                        seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
+                    } else {
+                        // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
+                        // swiftlint:disable:next force_cast
+                        seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
+                    }
                 }
+                
             }
         }
-        
-        return self.loadData(from: RootEndpoint.context.value)
-            .map { try self.decoder.decode(Context.self, from: $0) }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
@@ -266,6 +260,7 @@ open class PrimeAPI: BasicNetwork {
         }
     }
 
+    // TODO: Convert to GraphQL
     /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
     public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> PromiseKit.Promise<[AnyHashable: Any]> {
         let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
@@ -306,6 +301,7 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
+    // TODO: Load from GraphQL
     /// Loads the region response for the specified region
     ///
     /// - Parameter code: The region to request
@@ -317,6 +313,7 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(RegionResponse.self, from: $0) }
     }
     
+    // TODO: Load from GraphQL
     /// Loads the SIM profiles for the specified region
     ///
     /// - Parameter code: The region to request SIM profiles for
@@ -352,6 +349,7 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(SimProfile.self, from: $0) }
     }
     
+    // TODO: Load from GraphQL
     /// Resend QR code email for given sim profile
     ///
     /// - Parameters:
@@ -397,6 +395,7 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(Scan.self, from: $0) }
     }
 
+    // TODO: Load from GraphQL
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> PromiseKit.Promise<RegionResponse> {
         return self.loadRegions()
@@ -454,6 +453,7 @@ open class PrimeAPI: BasicNetwork {
             }
     }
     
+    // TODO: Load from GraphQL
     /// Validates the given NRIC.
     ///
     /// - Parameters:
@@ -490,6 +490,7 @@ open class PrimeAPI: BasicNetwork {
             }
     }
     
+    // TODO: Load from GraphQL
     /// Loads details based on a SingPass sign in (singapore only!)
     ///
     /// - Parameter code: The code associated with the user in SingPass
@@ -508,6 +509,7 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(MyInfoDetails.self, from: $0) }
     }
 
+    // TODO: Load from GraphQL
     /// Loads configuration details of MyInfo sign in (singapore only!)
     ///
     /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoConfig`.
