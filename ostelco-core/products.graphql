@@ -1,0 +1,11 @@
+query Products {
+    context {
+        products {
+            sku
+            price {
+                amount
+                currency
+            }
+        }
+    }
+}

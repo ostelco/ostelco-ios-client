@@ -36,6 +36,11 @@ public struct PriceModel: Codable {
         self.amount = data.amount
         self.currency = data.currency
     }
+    
+    public init(gqlData data: PrimeGQL.ProductsQuery.Data.Context.Product.Price) {
+        self.amount = data.amount
+        self.currency = data.currency
+    }
 }
 
 public struct ProductModel: Codable {
@@ -53,6 +58,13 @@ public struct ProductModel: Codable {
     }
     
     public init(gqlData data: PrimeGQL.GetPurchasesQuery.Data.Context.Purchase.Product) {
+        self.sku = data.sku
+        self.price = PriceModel(gqlData: data.price)
+        self.presentation = PresentationModel(label: "???", price: "???", taxLabel: "???", tax: "???", subTotalLabel: "???", subTotal: "???", payeeLabel: "???")
+        self.properties = ["test":"test"]
+    }
+    
+    public init(gqlData data: PrimeGQL.ProductsQuery.Data.Context.Product) {
         self.sku = data.sku
         self.price = PriceModel(gqlData: data.price)
         self.presentation = PresentationModel(label: "???", price: "???", taxLabel: "???", tax: "???", subTotalLabel: "???", subTotal: "???", payeeLabel: "???")

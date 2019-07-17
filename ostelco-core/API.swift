@@ -119,6 +119,172 @@ public enum PrimeGQL {
     }
   }
 
+  public final class ProductsQuery: GraphQLQuery {
+    public let operationDefinition =
+      "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      sku\n      price {\n        __typename\n        amount\n        currency\n      }\n    }\n  }\n}"
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["QueryType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(context: Context) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      }
+
+      public var context: Context {
+        get {
+          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "context")
+        }
+      }
+
+      public struct Context: GraphQLSelectionSet {
+        public static let possibleTypes = ["Context"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("products", type: .list(.object(Product.selections))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(products: [Product?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "products": products.flatMap { (value: [Product?]) -> [ResultMap?] in value.map { (value: Product?) -> ResultMap? in value.flatMap { (value: Product) -> ResultMap in value.resultMap } } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var products: [Product?]? {
+          get {
+            return (resultMap["products"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Product?] in value.map { (value: ResultMap?) -> Product? in value.flatMap { (value: ResultMap) -> Product in Product(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Product?]) -> [ResultMap?] in value.map { (value: Product?) -> ResultMap? in value.flatMap { (value: Product) -> ResultMap in value.resultMap } } }, forKey: "products")
+          }
+        }
+
+        public struct Product: GraphQLSelectionSet {
+          public static let possibleTypes = ["Product"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("sku", type: .nonNull(.scalar(String.self))),
+            GraphQLField("price", type: .nonNull(.object(Price.selections))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(sku: String, price: Price) {
+            self.init(unsafeResultMap: ["__typename": "Product", "sku": sku, "price": price.resultMap])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var sku: String {
+            get {
+              return resultMap["sku"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "sku")
+            }
+          }
+
+          public var price: Price {
+            get {
+              return Price(unsafeResultMap: resultMap["price"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "price")
+            }
+          }
+
+          public struct Price: GraphQLSelectionSet {
+            public static let possibleTypes = ["Price"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+              GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(amount: Int, currency: String) {
+              self.init(unsafeResultMap: ["__typename": "Price", "amount": amount, "currency": currency])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var amount: Int {
+              get {
+                return resultMap["amount"]! as! Int
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "amount")
+              }
+            }
+
+            public var currency: String {
+              get {
+                return resultMap["currency"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "currency")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class GetContextQuery: GraphQLQuery {
     public let operationDefinition =
       "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      region {\n        __typename\n        id\n        name\n      }\n      status\n      kycStatusMap {\n        __typename\n        JUMIO\n        MY_INFO\n        NRIC_FIN\n        ADDRESS_AND_PHONE_NUMBER\n      }\n      simProfiles {\n        __typename\n        eSimActivationCode\n        alias\n        iccId\n        status\n      }\n    }\n  }\n}"

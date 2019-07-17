@@ -160,7 +160,6 @@ open class PrimeAPI: BasicNetwork {
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> PromiseKit.Promise<[PurchaseModel]> {
-        
         return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<[PurchaseModel]> { seal in
@@ -181,15 +180,34 @@ open class PrimeAPI: BasicNetwork {
                         seal.fulfill(resultList)
                     }
                 }
-        }
+            }
     }
 
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> PromiseKit.Promise<[ProductModel]> {
-        return self.loadData(from: RootEndpoint.products.value)
-            .map { try self.decoder.decode([ProductModel].self, from: $0) }
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise<[ProductModel]> { seal in
+                    self.client.fetch(query: PrimeGQL.ProductsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        
+                        var resultList: [ProductModel] = []
+                        
+                        if let data = result?.data {
+                            if let products = data.context.products {
+                                resultList = products.map({ ProductModel(gqlData: $0!) })
+                            }
+                        }
+                        
+                        seal.fulfill(resultList)
+                    }
+                }
+        }
     }
     
     /// Purchases a product with the given SKU and the given payment information
