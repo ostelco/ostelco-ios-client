@@ -31,6 +31,11 @@ public struct PresentationModel: Codable {
 public struct PriceModel: Codable {
     public let amount: Int
     public let currency: String
+    
+    public init(gqlData data: PrimeGQL.GetPurchasesQuery.Data.Context.Purchase.Product.Price) {
+        self.amount = data.amount
+        self.currency = data.currency
+    }
 }
 
 public struct ProductModel: Codable {
@@ -45,5 +50,12 @@ public struct ProductModel: Codable {
         }
         // default type is simple_data
         return "simple_data"
+    }
+    
+    public init(gqlData data: PrimeGQL.GetPurchasesQuery.Data.Context.Purchase.Product) {
+        self.sku = data.sku
+        self.price = PriceModel(gqlData: data.price)
+        self.presentation = PresentationModel(label: "???", price: "???", taxLabel: "???", tax: "???", subTotalLabel: "???", subTotal: "???", payeeLabel: "???")
+        self.properties = ["test":"test"]
     }
 }

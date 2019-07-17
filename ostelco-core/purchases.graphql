@@ -1,0 +1,15 @@
+query GetPurchases {
+    context {
+        purchases {
+            id
+            product {
+                sku
+                price {
+                    amount
+                    currency
+                }
+            }
+            timestamp
+        }
+    }
+}

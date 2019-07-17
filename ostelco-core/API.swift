@@ -526,6 +526,229 @@ public enum PrimeGQL {
     }
   }
 
+  public final class GetPurchasesQuery: GraphQLQuery {
+    public let operationDefinition =
+      "query GetPurchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        sku\n        price {\n          __typename\n          amount\n          currency\n        }\n      }\n      timestamp\n    }\n  }\n}"
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["QueryType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(context: Context) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      }
+
+      public var context: Context {
+        get {
+          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "context")
+        }
+      }
+
+      public struct Context: GraphQLSelectionSet {
+        public static let possibleTypes = ["Context"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("purchases", type: .list(.object(Purchase.selections))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(purchases: [Purchase?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "purchases": purchases.flatMap { (value: [Purchase?]) -> [ResultMap?] in value.map { (value: Purchase?) -> ResultMap? in value.flatMap { (value: Purchase) -> ResultMap in value.resultMap } } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var purchases: [Purchase?]? {
+          get {
+            return (resultMap["purchases"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Purchase?] in value.map { (value: ResultMap?) -> Purchase? in value.flatMap { (value: ResultMap) -> Purchase in Purchase(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Purchase?]) -> [ResultMap?] in value.map { (value: Purchase?) -> ResultMap? in value.flatMap { (value: Purchase) -> ResultMap in value.resultMap } } }, forKey: "purchases")
+          }
+        }
+
+        public struct Purchase: GraphQLSelectionSet {
+          public static let possibleTypes = ["Purchase"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(String.self))),
+            GraphQLField("product", type: .nonNull(.object(Product.selections))),
+            GraphQLField("timestamp", type: .nonNull(.scalar(Long.self))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: String, product: Product, timestamp: Long) {
+            self.init(unsafeResultMap: ["__typename": "Purchase", "id": id, "product": product.resultMap, "timestamp": timestamp])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: String {
+            get {
+              return resultMap["id"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var product: Product {
+            get {
+              return Product(unsafeResultMap: resultMap["product"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "product")
+            }
+          }
+
+          public var timestamp: Long {
+            get {
+              return resultMap["timestamp"]! as! Long
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "timestamp")
+            }
+          }
+
+          public struct Product: GraphQLSelectionSet {
+            public static let possibleTypes = ["Product"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("sku", type: .nonNull(.scalar(String.self))),
+              GraphQLField("price", type: .nonNull(.object(Price.selections))),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(sku: String, price: Price) {
+              self.init(unsafeResultMap: ["__typename": "Product", "sku": sku, "price": price.resultMap])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var sku: String {
+              get {
+                return resultMap["sku"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "sku")
+              }
+            }
+
+            public var price: Price {
+              get {
+                return Price(unsafeResultMap: resultMap["price"]! as! ResultMap)
+              }
+              set {
+                resultMap.updateValue(newValue.resultMap, forKey: "price")
+              }
+            }
+
+            public struct Price: GraphQLSelectionSet {
+              public static let possibleTypes = ["Price"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+                GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+              ]
+
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public init(amount: Int, currency: String) {
+                self.init(unsafeResultMap: ["__typename": "Price", "amount": amount, "currency": currency])
+              }
+
+              public var __typename: String {
+                get {
+                  return resultMap["__typename"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var amount: Int {
+                get {
+                  return resultMap["amount"]! as! Int
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "amount")
+                }
+              }
+
+              public var currency: String {
+                get {
+                  return resultMap["currency"]! as! String
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "currency")
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class GetBundlesQuery: GraphQLQuery {
     public let operationDefinition =
       "query GetBundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"

@@ -101,7 +101,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<[BundleModel]> { seal in
-                    self.client.fetch(query: PrimeGQL.GetBundlesQuery()) { (result, error) in
+                    self.client.fetch(query: PrimeGQL.GetBundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
@@ -160,8 +160,28 @@ open class PrimeAPI: BasicNetwork {
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> PromiseKit.Promise<[PurchaseModel]> {
-        return self.loadData(from: RootEndpoint.purchases.value)
-            .map { try self.decoder.decode([PurchaseModel].self, from: $0) }
+        
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise<[PurchaseModel]> { seal in
+                    self.client.fetch(query: PrimeGQL.GetPurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        
+                        var resultList: [PurchaseModel] = []
+                        
+                        if let data = result?.data {
+                            if let purchases = data.context.purchases {
+                                resultList = purchases.map({ PurchaseModel(gqlData: $0!) })
+                            }
+                        }
+                        
+                        seal.fulfill(resultList)
+                    }
+                }
+        }
     }
 
     // MARK: - Products
