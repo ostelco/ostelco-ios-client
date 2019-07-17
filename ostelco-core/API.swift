@@ -245,7 +245,9 @@ public enum PrimeGQL {
 
   public final class ProductsQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      sku\n      price {\n        __typename\n        amount\n        currency\n      }\n    }\n  }\n}"
+      "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      ...productFragment\n    }\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
     public init() {
     }
@@ -317,18 +319,13 @@ public enum PrimeGQL {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("sku", type: .nonNull(.scalar(String.self))),
-            GraphQLField("price", type: .nonNull(.object(Price.selections))),
+            GraphQLFragmentSpread(ProductFragment.self),
           ]
 
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
-          }
-
-          public init(sku: String, price: Price) {
-            self.init(unsafeResultMap: ["__typename": "Product", "sku": sku, "price": price.resultMap])
           }
 
           public var __typename: String {
@@ -340,67 +337,28 @@ public enum PrimeGQL {
             }
           }
 
-          public var sku: String {
+          public var fragments: Fragments {
             get {
-              return resultMap["sku"]! as! String
+              return Fragments(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue, forKey: "sku")
+              resultMap += newValue.resultMap
             }
           }
 
-          public var price: Price {
-            get {
-              return Price(unsafeResultMap: resultMap["price"]! as! ResultMap)
-            }
-            set {
-              resultMap.updateValue(newValue.resultMap, forKey: "price")
-            }
-          }
-
-          public struct Price: GraphQLSelectionSet {
-            public static let possibleTypes = ["Price"]
-
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
-              GraphQLField("currency", type: .nonNull(.scalar(String.self))),
-            ]
-
+          public struct Fragments {
             public private(set) var resultMap: ResultMap
 
             public init(unsafeResultMap: ResultMap) {
               self.resultMap = unsafeResultMap
             }
 
-            public init(amount: Int, currency: String) {
-              self.init(unsafeResultMap: ["__typename": "Price", "amount": amount, "currency": currency])
-            }
-
-            public var __typename: String {
+            public var productFragment: ProductFragment {
               get {
-                return resultMap["__typename"]! as! String
+                return ProductFragment(unsafeResultMap: resultMap)
               }
               set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var amount: Int {
-              get {
-                return resultMap["amount"]! as! Int
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "amount")
-              }
-            }
-
-            public var currency: String {
-              get {
-                return resultMap["currency"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "currency")
+                resultMap += newValue.resultMap
               }
             }
           }
@@ -622,7 +580,9 @@ public enum PrimeGQL {
 
   public final class GetPurchasesQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetPurchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        sku\n        price {\n          __typename\n          amount\n          currency\n        }\n      }\n      timestamp\n    }\n  }\n}"
+      "query GetPurchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        ...productFragment\n      }\n      timestamp\n    }\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
     public init() {
     }
@@ -750,18 +710,13 @@ public enum PrimeGQL {
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("sku", type: .nonNull(.scalar(String.self))),
-              GraphQLField("price", type: .nonNull(.object(Price.selections))),
+              GraphQLFragmentSpread(ProductFragment.self),
             ]
 
             public private(set) var resultMap: ResultMap
 
             public init(unsafeResultMap: ResultMap) {
               self.resultMap = unsafeResultMap
-            }
-
-            public init(sku: String, price: Price) {
-              self.init(unsafeResultMap: ["__typename": "Product", "sku": sku, "price": price.resultMap])
             }
 
             public var __typename: String {
@@ -773,67 +728,28 @@ public enum PrimeGQL {
               }
             }
 
-            public var sku: String {
+            public var fragments: Fragments {
               get {
-                return resultMap["sku"]! as! String
+                return Fragments(unsafeResultMap: resultMap)
               }
               set {
-                resultMap.updateValue(newValue, forKey: "sku")
+                resultMap += newValue.resultMap
               }
             }
 
-            public var price: Price {
-              get {
-                return Price(unsafeResultMap: resultMap["price"]! as! ResultMap)
-              }
-              set {
-                resultMap.updateValue(newValue.resultMap, forKey: "price")
-              }
-            }
-
-            public struct Price: GraphQLSelectionSet {
-              public static let possibleTypes = ["Price"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
-                GraphQLField("currency", type: .nonNull(.scalar(String.self))),
-              ]
-
+            public struct Fragments {
               public private(set) var resultMap: ResultMap
 
               public init(unsafeResultMap: ResultMap) {
                 self.resultMap = unsafeResultMap
               }
 
-              public init(amount: Int, currency: String) {
-                self.init(unsafeResultMap: ["__typename": "Price", "amount": amount, "currency": currency])
-              }
-
-              public var __typename: String {
+              public var productFragment: ProductFragment {
                 get {
-                  return resultMap["__typename"]! as! String
+                  return ProductFragment(unsafeResultMap: resultMap)
                 }
                 set {
-                  resultMap.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              public var amount: Int {
-                get {
-                  return resultMap["amount"]! as! Int
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "amount")
-                }
-              }
-
-              public var currency: String {
-                get {
-                  return resultMap["currency"]! as! String
-                }
-                set {
-                  resultMap.updateValue(newValue, forKey: "currency")
+                  resultMap += newValue.resultMap
                 }
               }
             }
@@ -957,6 +873,103 @@ public enum PrimeGQL {
               resultMap.updateValue(newValue, forKey: "balance")
             }
           }
+        }
+      }
+    }
+  }
+
+  public struct ProductFragment: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment productFragment on Product {\n  __typename\n  sku\n  price {\n    __typename\n    amount\n    currency\n  }\n}"
+
+    public static let possibleTypes = ["Product"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("sku", type: .nonNull(.scalar(String.self))),
+      GraphQLField("price", type: .nonNull(.object(Price.selections))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(sku: String, price: Price) {
+      self.init(unsafeResultMap: ["__typename": "Product", "sku": sku, "price": price.resultMap])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var sku: String {
+      get {
+        return resultMap["sku"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "sku")
+      }
+    }
+
+    public var price: Price {
+      get {
+        return Price(unsafeResultMap: resultMap["price"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "price")
+      }
+    }
+
+    public struct Price: GraphQLSelectionSet {
+      public static let possibleTypes = ["Price"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("amount", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("currency", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(amount: Int, currency: String) {
+        self.init(unsafeResultMap: ["__typename": "Price", "amount": amount, "currency": currency])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var amount: Int {
+        get {
+          return resultMap["amount"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "amount")
+        }
+      }
+
+      public var currency: String {
+        get {
+          return resultMap["currency"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "currency")
         }
       }
     }

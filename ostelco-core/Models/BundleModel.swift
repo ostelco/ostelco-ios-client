@@ -12,7 +12,9 @@ public struct BundleModel: Codable {
 
     public let id: String
     public let balance: Int64
-    
+}
+
+extension BundleModel {
     public init(gqlData: PrimeGQL.GetBundlesQuery.Data.Context.Bundle) {
         self.id = gqlData.id
         self.balance = gqlData.balance

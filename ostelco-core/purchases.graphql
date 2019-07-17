@@ -3,11 +3,7 @@ query GetPurchases {
         purchases {
             id
             product {
-                sku
-                price {
-                    amount
-                    currency
-                }
+                ...productFragment
             }
             timestamp
         }

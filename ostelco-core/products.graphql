@@ -1,11 +1,15 @@
 query Products {
     context {
         products {
-            sku
-            price {
-                amount
-                currency
-            }
+            ...productFragment
         }
+    }
+}
+
+fragment productFragment on Product {
+    sku
+    price {
+        amount
+        currency
     }
 }

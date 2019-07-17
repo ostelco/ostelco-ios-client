@@ -173,7 +173,7 @@ open class PrimeAPI: BasicNetwork {
                         
                         if let data = result?.data {
                             if let purchases = data.context.purchases {
-                                resultList = purchases.map({ PurchaseModel(gqlData: $0!) })
+                                resultList = purchases.compactMap({$0}).map({ PurchaseModel(gqlData: $0!) })
                             }
                         }
                         
@@ -200,7 +200,7 @@ open class PrimeAPI: BasicNetwork {
                         
                         if let data = result?.data {
                             if let products = data.context.products {
-                                resultList = products.map({ ProductModel(gqlData: $0!) })
+                                resultList = products.compactMap({$0}).map({ ProductModel(gqlData: $0.fragments.productFragment) })
                             }
                         }
                         
