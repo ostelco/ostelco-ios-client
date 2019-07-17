@@ -95,11 +95,9 @@ class ESIMPageViewController: UIViewController {
     @IBOutlet private var playerView: UIView!
     
     // This is set up in the convenience constructor
-    // swiftlint:disable:next implicitly_unwrapped_optional
     private(set) var esimPage: ESIMPage!
     
     /// Has to be set up through `prepareForSegue` when this VC is loaded
-    // swiftlint:disable:next implicitly_unwrapped_optional
     private var playerController: AVPlayerViewController!
     
     /// Convenience constructor

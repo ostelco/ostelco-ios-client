@@ -16,8 +16,6 @@ protocol ESIMInstructionsDelegate: class {
 
 class ESIMInstructionsViewController: UIViewController {
 
-    /// Has to be set up through `prepareForSegue` when this VC is loaded
-    // swiftlint:disable:next implicitly_unwrapped_optional
     private var pageController: UIPageViewController!
     
     @IBOutlet private var primaryButton: PrimaryButton!

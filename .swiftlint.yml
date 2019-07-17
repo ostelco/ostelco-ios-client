@@ -9,6 +9,7 @@ disabled_rules:
   - trailing_comma # Trailing commas in arrays and dictionaries should be avoided/enforced - Too nitpicky.
   - type_body_length # Type bodies should not span too many lines - They shouldn't, but we're not enforcing a specific limit on this.
   - type_name # Various naming restrictions - These are too restrictive.
+  - implicitly_unwrapped_optional # These are not bad.
 opt_in_rules:
   - contains_over_first_not_nil # Prefer contains over first(where:) != nil
   - discouraged_object_literal # Prefer initializers over object literals - If you are using generated code for images and/or colors, you should use that code instead of literals.

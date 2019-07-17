@@ -151,8 +151,6 @@ open class OstelcoLabel: UILabel {
 
 public class DataAmountOnHomeLabel: OstelcoLabel {
     
-    /// This is set up in `commonInit`.
-    // swiftlint:disable:next implicitly_unwrapped_optional
     public var smallFont: OstelcoFont!
     
     @IBInspectable
