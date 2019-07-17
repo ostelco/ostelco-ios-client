@@ -165,6 +165,8 @@ platform :ios do
   desc "Pass in a value for `prod` to use the prod argument"
   lane :run_spm_pre_script do |options|
     srcroot = sh("cd .. && pwd")
+    # Copy the template files to the location used by SPM.
+    sh("cp ../ostelco-ios-client/SupportingFiles/templates/* ../ostelco-ios-client/SupportingFiles/")
     sh("cd ../scripts/SPM && swift build")
 
     if options[:prod]
@@ -178,11 +180,9 @@ platform :ios do
   desc "Pass in a value for `prod` to use the prod argument"
   lane :run_spm_post_script do |options|
     srcroot = sh("cd .. && pwd")
-    if options[:prod]
-      sh("cd ../scripts/SPM && swift run SPM -post -prod -src=#{srcroot}")
-    else
-      sh("cd ../scripts/SPM && swift run SPM -post -src=#{srcroot}")
-    end
+    # Remove the modifed templates that were copied by the pre-build step.
+    sh("rm ../ostelco-ios-client/SupportingFiles/Environment.plist")
+    sh("rm ../ostelco-ios-client/SupportingFiles/GoogleService-Info.plist")
   end
 
  desc "Push production build to TestFlight from developer machine using testflight build numbers"
