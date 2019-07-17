@@ -1,4 +1,4 @@
-query GetContext {
+query Context {
     context {
         customer {
             id

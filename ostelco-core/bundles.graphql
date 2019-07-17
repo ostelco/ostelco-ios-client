@@ -1,4 +1,4 @@
-query GetBundles {
+query Bundles {
     context {
         bundles {
             id

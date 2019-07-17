@@ -101,7 +101,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<[BundleModel]> { seal in
-                    self.client.fetch(query: PrimeGQL.GetBundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    self.client.fetch(query: PrimeGQL.BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
@@ -128,7 +128,7 @@ open class PrimeAPI: BasicNetwork {
             return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<Context> { seal in
-                    self.client.fetch(query: PrimeGQL.GetContextQuery()) { (result, error) in
+                    self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
@@ -163,7 +163,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<[PurchaseModel]> { seal in
-                    self.client.fetch(query: PrimeGQL.GetPurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    self.client.fetch(query: PrimeGQL.PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return

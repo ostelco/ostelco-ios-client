@@ -367,9 +367,9 @@ public enum PrimeGQL {
     }
   }
 
-  public final class GetContextQuery: GraphQLQuery {
+  public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetContext {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+      "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition) }
 
@@ -578,9 +578,9 @@ public enum PrimeGQL {
     }
   }
 
-  public final class GetPurchasesQuery: GraphQLQuery {
+  public final class PurchasesQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetPurchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        ...productFragment\n      }\n      timestamp\n    }\n  }\n}"
+      "query Purchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        ...productFragment\n      }\n      timestamp\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
@@ -759,9 +759,9 @@ public enum PrimeGQL {
     }
   }
 
-  public final class GetBundlesQuery: GraphQLQuery {
+  public final class BundlesQuery: GraphQLQuery {
     public let operationDefinition =
-      "query GetBundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
+      "query Bundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
 
     public init() {
     }

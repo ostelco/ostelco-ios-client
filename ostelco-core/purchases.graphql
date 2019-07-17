@@ -1,4 +1,4 @@
-query GetPurchases {
+query Purchases {
     context {
         purchases {
             id
