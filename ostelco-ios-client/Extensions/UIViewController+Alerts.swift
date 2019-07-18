@@ -13,8 +13,10 @@ extension UIViewController {
     
     /// Shows a generic error message based on a Swift error, particularly if it's localizable.
     ///
-    /// - Parameter error: The error to show.
-    func showGenericError(error: Error) {
+    /// - Parameters:
+    ///   - error: The error to show.
+    ///   - completion: [optional] The completion block to execute as the alert is dismissed. Defaults to nil.
+    func showGenericError(error: Error, completion: ((UIAlertAction) -> Void)? = nil) {
         let message: String
             
         switch error {
@@ -30,7 +32,7 @@ extension UIViewController {
             }
         }
         
-        self.showAlert(title: "Error", msg: message)
+        self.showAlert(title: "Error", msg: message, completion: completion)
     }
     
     /// Shows an alert with an OK button.
@@ -38,12 +40,13 @@ extension UIViewController {
     /// - Parameters:
     ///   - title: The title of the alert
     ///   - msg: The message of the alert.
-    func showAlert(title: String, msg: String) {
+    ///   - completion: [optional] The completion block to execute as the alert is dismissed. Defaults to nil.
+    func showAlert(title: String, msg: String, completion: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title,
                                       message: msg,
                                       preferredStyle: .alert)
-        alert.addAction(.okAction())
-        self.present(alert, animated: true, completion: nil)
+        alert.addAction(.okAction(completion: completion))
+        self.present(alert, animated: true)
     }
     
     /// Method to compensate for action sheet crashes on the iPad
