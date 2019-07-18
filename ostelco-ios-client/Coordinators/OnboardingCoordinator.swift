@@ -45,12 +45,16 @@ class OnboardingCoordinator {
     func advance() {
         primeAPI.loadContext()
             .done { (context) in
+                self.localContext.serverIsUnreachable = true
+                
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
-            }.recover { _ in
+            }.recover { error in
+                self.localContext.serverIsUnreachable = (error as NSError).code == -1004
+                
                 let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
@@ -163,6 +167,9 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([pending], animated: true)
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
+            ohNo.primaryButtonAction = { [weak self] in
+                self?.advance()
+            }
             navigationController.present(ohNo, animated: true, completion: nil)
         }
     }

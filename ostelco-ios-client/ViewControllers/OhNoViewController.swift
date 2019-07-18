@@ -147,6 +147,8 @@ extension OhNoIssueType {
             return "Payment Failed"
         case .paymentFailedCardDeclined:
             return "Card Declined"
+        case .serverUnreachable:
+            return "Server Unreachable"
         }
     }
     
@@ -157,7 +159,7 @@ extension OhNoIssueType {
             return .taken
         case .ekycRejected:
             return .blank_canvas
-        case .noInternet, .paymentFailedGeneric, .paymentFailedCardDeclined:
+        case .noInternet, .paymentFailedGeneric, .paymentFailedCardDeclined, .serverUnreachable:
             return .no_connection
         }
     }
@@ -198,6 +200,9 @@ support@oya.world
         case .paymentFailedCardDeclined:
             return BoldableText(fullText: "Your card was declined. Contact your bank or try with another card.",
                                 boldedPortion: nil)
+        case .serverUnreachable:
+            return BoldableText(fullText: "We were not able to reach our servers. Please try again later.",
+                                boldedPortion: nil)
         }
     }
     
@@ -208,7 +213,7 @@ support@oya.world
             return "Try again"
         case .ekycRejected:
             return "Retry"
-        case .noInternet:
+        case .noInternet, .serverUnreachable:
             return "Check again"
         case .paymentFailedGeneric,
              .paymentFailedCardDeclined:
