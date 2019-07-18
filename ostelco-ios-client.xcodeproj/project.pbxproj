@@ -51,10 +51,6 @@
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
-		046FE92722DEFC6000CF57E4 /* bundles.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92622DEFC6000CF57E4 /* bundles.graphql */; };
-		046FE92B22DF02BC00CF57E4 /* purchases.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92A22DF02BC00CF57E4 /* purchases.graphql */; };
-		046FE92D22DF075E00CF57E4 /* products.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92C22DF075E00CF57E4 /* products.graphql */; };
-		046FE92F22DF0A5200CF57E4 /* regions.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE92E22DF0A5200CF57E4 /* regions.graphql */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
@@ -326,7 +322,6 @@
 		C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
 		C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
 		C26274AF22C204CB00F0AA36 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = C26274AE22C204CB00F0AA36 /* schema.json */; };
-		C26274B122C2050200F0AA36 /* context.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C26274B022C2050200F0AA36 /* context.graphql */; };
 		C26274B322C2092000F0AA36 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26274B222C2092000F0AA36 /* API.swift */; };
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1537,13 +1532,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046FE92F22DF0A5200CF57E4 /* regions.graphql in Resources */,
-				046FE92B22DF02BC00CF57E4 /* purchases.graphql in Resources */,
-				C26274B122C2050200F0AA36 /* context.graphql in Resources */,
-				046FE92722DEFC6000CF57E4 /* bundles.graphql in Resources */,
 				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
-				046FE92D22DF075E00CF57E4 /* products.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

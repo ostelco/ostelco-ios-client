@@ -127,6 +127,7 @@ open class PrimeAPI: BasicNetwork {
         .then { _ in
             return PromiseKit.Promise<Context> { seal in
                 self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
+                    // TODO: Make sure we handle the case where we fetch context and there is no customer from server.
                     if let error = error {
                         seal.reject(error)
                         return
