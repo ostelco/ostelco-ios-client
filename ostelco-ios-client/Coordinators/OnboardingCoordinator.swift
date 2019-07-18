@@ -303,6 +303,13 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
     func verifiedSingPassAddress() {
         advance()
     }
+
+    func failedToLoadMyInfo() {
+        if localContext.selectedVerificationOption == .singpass {
+           localContext.myInfoCode = nil
+            advance()
+        }
+    }
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {

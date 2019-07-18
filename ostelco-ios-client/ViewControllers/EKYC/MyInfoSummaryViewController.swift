@@ -12,6 +12,7 @@ import UIKit
 protocol MyInfoSummaryDelegate: class {
     func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate)
     func verifiedSingPassAddress()
+    func failedToLoadMyInfo()
 }
 
 class MyInfoSummaryViewController: UIViewController {
@@ -29,7 +30,6 @@ class MyInfoSummaryViewController: UIViewController {
     @IBOutlet private weak var mobileNumber: UILabel!
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var editButton: UIButton!
-    @IBOutlet private weak var reloadButton: UIButton!
     
     weak var delegate: MyInfoSummaryDelegate?
     
@@ -44,7 +44,6 @@ class MyInfoSummaryViewController: UIViewController {
             return
         }
         
-        self.reloadButton.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view, loadingText: "Loading your data from SingPass...")
         APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
@@ -58,13 +57,10 @@ class MyInfoSummaryViewController: UIViewController {
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-                self?.reloadButton.isHidden = false
+                self?.showGenericError(error: error) { _ in
+                    self?.delegate?.failedToLoadMyInfo()
+                }
             }
-    }
-    
-    @IBAction private func tryAgainTapped() {
-        self.loadMyInfo()
     }
     
     @IBAction private func editTapped() {
