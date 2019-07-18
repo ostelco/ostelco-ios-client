@@ -51,6 +51,7 @@
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
+		046FE93922E136AA00CF57E4 /* simProfilesForRegion.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F28FF2224419700FC6A8F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047F28FE2224419700FC6A8F /* Login.storyboard */; };
@@ -445,6 +446,7 @@
 		046FE92A22DF02BC00CF57E4 /* purchases.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchases.graphql; sourceTree = "<group>"; };
 		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
 		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
+		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 				046FE92A22DF02BC00CF57E4 /* purchases.graphql */,
 				046FE92C22DF075E00CF57E4 /* products.graphql */,
 				046FE92E22DF0A5200CF57E4 /* regions.graphql */,
+				046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1534,6 +1537,7 @@
 			files = (
 				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
+				046FE93922E136AA00CF57E4 /* simProfilesForRegion.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

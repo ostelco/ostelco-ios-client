@@ -26,9 +26,6 @@ fragment regionDetailsFragment on RegionDetails {
         ADDRESS_AND_PHONE_NUMBER
     }
     simProfiles {
-        eSimActivationCode
-        alias
-        iccId
-        status
+        ...simProfileFields
     }
 }

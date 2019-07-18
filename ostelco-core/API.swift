@@ -4,6 +4,51 @@ import Apollo
 
 /// PrimeGQL namespace
 public enum PrimeGQL {
+  public enum SimProfileStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case availableForDownload
+    case downloaded
+    case enabled
+    case installed
+    case notReady
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "AVAILABLE_FOR_DOWNLOAD": self = .availableForDownload
+        case "DOWNLOADED": self = .downloaded
+        case "ENABLED": self = .enabled
+        case "INSTALLED": self = .installed
+        case "NOT_READY": self = .notReady
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .availableForDownload: return "AVAILABLE_FOR_DOWNLOAD"
+        case .downloaded: return "DOWNLOADED"
+        case .enabled: return "ENABLED"
+        case .installed: return "INSTALLED"
+        case .notReady: return "NOT_READY"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: SimProfileStatus, rhs: SimProfileStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.availableForDownload, .availableForDownload): return true
+        case (.downloaded, .downloaded): return true
+        case (.enabled, .enabled): return true
+        case (.installed, .installed): return true
+        case (.notReady, .notReady): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+  }
+
   public enum CustomerRegionStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case approved
@@ -74,58 +119,20 @@ public enum PrimeGQL {
     }
   }
 
-  public enum SimProfileStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case availableForDownload
-    case downloaded
-    case enabled
-    case installed
-    case notReady
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "AVAILABLE_FOR_DOWNLOAD": self = .availableForDownload
-        case "DOWNLOADED": self = .downloaded
-        case "ENABLED": self = .enabled
-        case "INSTALLED": self = .installed
-        case "NOT_READY": self = .notReady
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .availableForDownload: return "AVAILABLE_FOR_DOWNLOAD"
-        case .downloaded: return "DOWNLOADED"
-        case .enabled: return "ENABLED"
-        case .installed: return "INSTALLED"
-        case .notReady: return "NOT_READY"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: SimProfileStatus, rhs: SimProfileStatus) -> Bool {
-      switch (lhs, rhs) {
-        case (.availableForDownload, .availableForDownload): return true
-        case (.downloaded, .downloaded): return true
-        case (.enabled, .enabled): return true
-        case (.installed, .installed): return true
-        case (.notReady, .notReady): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-  }
-
   public final class RegionsQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Regions {\n  context {\n    __typename\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+      "query Regions($countryCode: String = null) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
-    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition) }
+    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
 
-    public init() {
+    public var countryCode: String?
+
+    public init(countryCode: String? = nil) {
+      self.countryCode = countryCode
+    }
+
+    public var variables: GraphQLMap? {
+      return ["countryCode": countryCode]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -159,7 +166,7 @@ public enum PrimeGQL {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("regions", type: .list(.nonNull(.object(Region.selections)))),
+          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .list(.nonNull(.object(Region.selections)))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -367,11 +374,183 @@ public enum PrimeGQL {
     }
   }
 
+  public final class SimProfilesForRegionQuery: GraphQLQuery {
+    public let operationDefinition =
+      "query SimProfilesForRegion($countryCode: String!) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      simProfiles {\n        __typename\n        ...simProfileFields\n      }\n    }\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(SimProfileFields.fragmentDefinition) }
+
+    public var countryCode: String
+
+    public init(countryCode: String) {
+      self.countryCode = countryCode
+    }
+
+    public var variables: GraphQLMap? {
+      return ["countryCode": countryCode]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["QueryType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(context: Context) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      }
+
+      public var context: Context {
+        get {
+          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "context")
+        }
+      }
+
+      public struct Context: GraphQLSelectionSet {
+        public static let possibleTypes = ["Context"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .list(.nonNull(.object(Region.selections)))),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(regions: [Region]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var regions: [Region]? {
+          get {
+            return (resultMap["regions"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Region] in value.map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }, forKey: "regions")
+          }
+        }
+
+        public struct Region: GraphQLSelectionSet {
+          public static let possibleTypes = ["RegionDetails"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("simProfiles", type: .list(.nonNull(.object(SimProfile.selections)))),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(simProfiles: [SimProfile]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "RegionDetails", "simProfiles": simProfiles.flatMap { (value: [SimProfile]) -> [ResultMap] in value.map { (value: SimProfile) -> ResultMap in value.resultMap } }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var simProfiles: [SimProfile]? {
+            get {
+              return (resultMap["simProfiles"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [SimProfile] in value.map { (value: ResultMap) -> SimProfile in SimProfile(unsafeResultMap: value) } }
+            }
+            set {
+              resultMap.updateValue(newValue.flatMap { (value: [SimProfile]) -> [ResultMap] in value.map { (value: SimProfile) -> ResultMap in value.resultMap } }, forKey: "simProfiles")
+            }
+          }
+
+          public struct SimProfile: GraphQLSelectionSet {
+            public static let possibleTypes = ["SimProfile"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLFragmentSpread(SimProfileFields.self),
+            ]
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
+              self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var fragments: Fragments {
+              get {
+                return Fragments(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+
+            public struct Fragments {
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
+
+              public var simProfileFields: SimProfileFields {
+                get {
+                  return SimProfileFields(unsafeResultMap: resultMap)
+                }
+                set {
+                  resultMap += newValue.resultMap
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
       "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
-    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition) }
+    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
 
     public init() {
     }
@@ -1129,9 +1308,79 @@ public enum PrimeGQL {
     }
   }
 
+  public struct SimProfileFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment simProfileFields on SimProfile {\n  __typename\n  eSimActivationCode\n  alias\n  iccId\n  status\n}"
+
+    public static let possibleTypes = ["SimProfile"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("eSimActivationCode", type: .nonNull(.scalar(String.self))),
+      GraphQLField("alias", type: .nonNull(.scalar(String.self))),
+      GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
+      GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
+      self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var eSimActivationCode: String {
+      get {
+        return resultMap["eSimActivationCode"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "eSimActivationCode")
+      }
+    }
+
+    public var alias: String {
+      get {
+        return resultMap["alias"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "alias")
+      }
+    }
+
+    public var iccId: String {
+      get {
+        return resultMap["iccId"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "iccId")
+      }
+    }
+
+    public var status: SimProfileStatus {
+      get {
+        return resultMap["status"]! as! SimProfileStatus
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "status")
+      }
+    }
+  }
+
   public struct RegionDetailsFragment: GraphQLFragment {
     public static let fragmentDefinition =
-      "fragment regionDetailsFragment on RegionDetails {\n  __typename\n  region {\n    __typename\n    id\n    name\n  }\n  status\n  kycStatusMap {\n    __typename\n    JUMIO\n    MY_INFO\n    NRIC_FIN\n    ADDRESS_AND_PHONE_NUMBER\n  }\n  simProfiles {\n    __typename\n    eSimActivationCode\n    alias\n    iccId\n    status\n  }\n}"
+      "fragment regionDetailsFragment on RegionDetails {\n  __typename\n  region {\n    __typename\n    id\n    name\n  }\n  status\n  kycStatusMap {\n    __typename\n    JUMIO\n    MY_INFO\n    NRIC_FIN\n    ADDRESS_AND_PHONE_NUMBER\n  }\n  simProfiles {\n    __typename\n    ...simProfileFields\n  }\n}"
 
     public static let possibleTypes = ["RegionDetails"]
 
@@ -1317,10 +1566,7 @@ public enum PrimeGQL {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("eSimActivationCode", type: .nonNull(.scalar(String.self))),
-        GraphQLField("alias", type: .nonNull(.scalar(String.self))),
-        GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
-        GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
+        GraphQLFragmentSpread(SimProfileFields.self),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1342,39 +1588,29 @@ public enum PrimeGQL {
         }
       }
 
-      public var eSimActivationCode: String {
+      public var fragments: Fragments {
         get {
-          return resultMap["eSimActivationCode"]! as! String
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "eSimActivationCode")
+          resultMap += newValue.resultMap
         }
       }
 
-      public var alias: String {
-        get {
-          return resultMap["alias"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "alias")
-        }
-      }
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
 
-      public var iccId: String {
-        get {
-          return resultMap["iccId"]! as! String
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
-        set {
-          resultMap.updateValue(newValue, forKey: "iccId")
-        }
-      }
 
-      public var status: SimProfileStatus {
-        get {
-          return resultMap["status"]! as! SimProfileStatus
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "status")
+        public var simProfileFields: SimProfileFields {
+          get {
+            return SimProfileFields(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }

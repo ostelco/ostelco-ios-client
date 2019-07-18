@@ -278,11 +278,11 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
-    public func loadRegions() -> PromiseKit.Promise<[RegionResponse]> {
+    public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[RegionResponse]> {
         return self.getToken()
             .then { _ in
                 return PromiseKit.Promise<[RegionResponse]> { seal in
-                    self.client.fetch(query: PrimeGQL.RegionsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    self.client.fetch(query: PrimeGQL.RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
@@ -302,16 +302,12 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
-    // TODO: Load from GraphQL
     /// Loads the region response for the specified region
     ///
     /// - Parameter code: The region to request
     /// - Returns: A promise which when fulfilled contains the requested region.
     public func loadRegion(code: String) -> PromiseKit.Promise<RegionResponse> {
-        let path = RootEndpoint.regions.pathByAddingEndpoints([RegionEndpoint.region(code: code)])
-        
-        return self.loadData(from: path)
-            .map { try self.decoder.decode(RegionResponse.self, from: $0) }
+        return loadRegions(countryCode: code).firstValue
     }
     
     // TODO: Load from GraphQL
@@ -320,15 +316,28 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter code: The region to request SIM profiles for
     /// - Returns: A promise which when fullfilled contains the requested profiles
     public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[SimProfile]> {
-        let endpoints: [RegionEndpoint] = [
-            .region(code: code),
-            .simProfiles
-        ]
-        
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        
-        return self.loadData(from: path)
-            .map { try self.decoder.decode([SimProfile].self, from: $0) }
+        return self.getToken()
+        .then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.fetch(query: PrimeGQL.SimProfilesForRegionQuery(countryCode: code)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
+                    }
+                    
+                    var resultList: [SimProfile] = []
+                    
+                    if let data = result?.data {
+                        if let region = data.context.regions?.first, let simProfiles = region.simProfiles {
+                            // TODO: Why does $0 (simProfile) not have fragments?
+                            resultList = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
+                        }
+                    }
+                    
+                    seal.fulfill(resultList)
+                }
+            }
+        }
     }
     
     /// Creates a SIM profile for the given region
@@ -396,7 +405,6 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(Scan.self, from: $0) }
     }
 
-    // TODO: Load from GraphQL
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
     public func getRegionFromRegions() -> PromiseKit.Promise<RegionResponse> {
         return self.loadRegions()
