@@ -59,7 +59,12 @@ extension ProductModel {
     public init(gqlData data: PrimeGQL.ProductFragment) {
         self.sku = data.sku
         self.price = PriceModel(gqlData: data.price)
-        self.presentation = PresentationModel(label: "???", price: "???", taxLabel: "???", tax: "???", subTotalLabel: "???", subTotal: "???", payeeLabel: "???")
-        self.properties = ["test":"test"]
+        self.presentation = PresentationModel(label: data.presentation?.productLabel ?? "", price: data.presentation?.priceLabel ?? "", taxLabel: data.presentation?.taxLabel, tax: data.presentation?.tax, subTotalLabel: data.presentation?.subTotalLabel, subTotal: data.presentation?.subTotal, payeeLabel: data.presentation?.payeeLabel)
+        
+        if let productClass = data.properties?.productClass {
+            self.properties = ["productClass": productClass]
+        } else {
+            self.properties = [:]
+        }
     }
 }

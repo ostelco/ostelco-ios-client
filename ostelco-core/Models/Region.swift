@@ -114,6 +114,6 @@ extension RegionResponse {
         self.region = Region(gqlRegion: region)
         self.status = EKYCStatus(rawValue: status.rawValue)!
         self.kycStatusMap = KYCStatusMap(gqlKYCStatusMap: kycStatusMap)
-        self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0!) })
+        self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0) })
     }
 }
