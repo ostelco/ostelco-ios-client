@@ -305,11 +305,9 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
     }
 
     func failedToLoadMyInfo() {
-        if localContext.selectedVerificationOption == .singpass {
-            localContext.selectedVerificationOption = nil
-            localContext.myInfoCode = nil
-            advance()
-        }
+        localContext.selectedVerificationOption = nil
+        localContext.myInfoCode = nil
+        advance()
     }
 }
 
