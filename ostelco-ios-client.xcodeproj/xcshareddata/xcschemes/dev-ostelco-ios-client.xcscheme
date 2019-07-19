@@ -154,6 +154,16 @@
             value = "3"
             isEnabled = "NO">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "HTTP_HEADER_X_MODE"
+            value = "canary"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "HTTP_HEADER_X_MODE"
+            value = "prime-direct"
+            isEnabled = "NO">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>

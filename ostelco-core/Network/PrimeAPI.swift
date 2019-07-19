@@ -620,5 +620,9 @@ extension PrimeAPI: HTTPNetworkTransportPreflightDelegate {
     
     public func networkTransport(_ networkTransport: HTTPNetworkTransport, willSend request: inout URLRequest) {
         request.setValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+        
+        if let xMode = ProcessInfo.processInfo.environment["HTTP_HEADER_X_MODE"] {
+            request.setValue("X-Mode", forHTTPHeaderField: xMode)
+        }
     }
 }
