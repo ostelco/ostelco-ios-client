@@ -44,8 +44,6 @@
 		0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
-		043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
-		043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E711A223AF3CF00E01993 /* OnBoardingManager.swift */; };
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
@@ -427,7 +425,6 @@
 		0437CF85224D1E020022A2B8 /* SimProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfile.swift; sourceTree = "<group>"; };
 		0437CF88224D3B380022A2B8 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		043E711A223AF3CF00E01993 /* OnBoardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingManager.swift; sourceTree = "<group>"; };
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -842,7 +839,6 @@
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
 				9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */,
 				9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */,
-				043E711A223AF3CF00E01993 /* OnBoardingManager.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
 				04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */,
 				04978D6A22ABA012002B09E0 /* LinkHelper.swift */,
@@ -1941,7 +1937,6 @@
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
-				043E711B223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
@@ -2162,7 +2157,6 @@
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */,
-				043E711C223AF3CF00E01993 /* OnBoardingManager.swift in Sources */,
 				0412168D2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,

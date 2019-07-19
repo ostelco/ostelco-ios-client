@@ -12,47 +12,31 @@ import ostelco_core
 
 protocol ESIMPendingDownloadDelegate: class {
     func profileChanged(_ profile: SimProfile)
+    func countryCode() -> String
 }
 
 class ESIMPendingDownloadViewController: UIViewController {
     
     weak var delegate: ESIMPendingDownloadDelegate?
     var spinnerView: UIView?
-    var simProfile: SimProfile? {
-        didSet {
-            let region = OnBoardingManager.sharedInstance.region!
-            
-            if let profile = self.simProfile {
-                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: profile.status.rawValue)
-            } else {
-                Freshchat.sharedInstance()?.setUserPropertyforKey("\(region.region.name)SimProfileStatus", withValue: "")
-            }
-        }
-    }
+    var simProfile: SimProfile?
     
     @IBOutlet private weak var continueButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let region = OnBoardingManager.sharedInstance.region {
-            self.getSimProfileForRegion(region: region)
-        } else {
-            self.loadRegion()
-        }
+        loadRegion()
     }
     
     @IBAction private func sendAgainTapped(_ sender: Any) {
-        guard
-            let simProfile = self.simProfile,
-            let region = OnBoardingManager.sharedInstance.region else {
-                fatalError("Error sending email, simProfile or region is null?!")
-        }
+        let simProfile = self.simProfile!
+        let countryCode = delegate?.countryCode()
         
         self.spinnerView = self.showSpinner(onView: self.view)
         
         APIManager.shared.primeAPI
-            .resendEmailForSimProfileInRegion(code: region.region.id, iccId: simProfile.iccId)
+            .resendEmailForSimProfileInRegion(code: countryCode!, iccId: simProfile.iccId)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
                 self?.spinnerView = nil
@@ -67,13 +51,12 @@ class ESIMPendingDownloadViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        let region = OnBoardingManager.sharedInstance.region!
-        let countryCode = region.region.id
+        let countryCode = delegate?.countryCode()
         
         self.spinnerView = self.showSpinner(onView: self.view)
         
         APIManager.shared.primeAPI
-            .loadSimProfilesForRegion(code: countryCode)
+            .loadSimProfilesForRegion(code: countryCode!)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
                 self?.spinnerView = nil
@@ -95,7 +78,6 @@ class ESIMPendingDownloadViewController: UIViewController {
         APIManager.shared.primeAPI
             .getRegionFromRegions()
             .done { [weak self] regionResponse in
-                OnBoardingManager.sharedInstance.region = regionResponse
                 self?.getSimProfileForRegion(region: regionResponse)
             }
             .catch { [weak self] error in
