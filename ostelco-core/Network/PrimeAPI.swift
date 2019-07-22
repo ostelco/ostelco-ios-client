@@ -144,7 +144,6 @@ open class PrimeAPI: BasicNetwork {
                         seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
                     } else {
                         // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
-                        // swiftlint:disable:next force_cast
                         seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
                     }
                 }
