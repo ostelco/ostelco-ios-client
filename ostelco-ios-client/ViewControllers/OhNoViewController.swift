@@ -202,6 +202,9 @@ support@oya.world
         case .serverUnreachable:
             return BoldableText(fullText: NSLocalizedString("We were not able to reach our servers. Please try again later.", comment: "Error explanation when server is unreachable."),
                                 boldedPortion: nil)
+        case .serverUnreachable:
+            return BoldableText(fullText: "We were not able to reach our servers. Please try again later.",
+                                boldedPortion: nil)
         }
     }
     

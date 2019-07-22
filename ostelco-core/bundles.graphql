@@ -1,0 +1,8 @@
+query Bundles {
+    context {
+        bundles {
+            id
+            balance
+        }
+    }
+}

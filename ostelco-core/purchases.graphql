@@ -1,0 +1,11 @@
+query Purchases {
+    context {
+        purchases {
+            id
+            product {
+                ...productFragment
+            }
+            timestamp
+        }
+    }
+}

@@ -43,14 +43,18 @@ class OnboardingCoordinator {
     }
     
     func advance() {
-        primeAPI.loadContext()
+        APIManager.shared.primeAPI.loadContext()
             .done { (context) in
+                self.localContext.serverIsUnreachable = true
+                
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
-            }.recover { _ in
+            }.recover { error in
+                self.localContext.serverIsUnreachable = (error as NSError).code == -1004
+                
                 let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
@@ -163,6 +167,9 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([pending], animated: true)
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
+            ohNo.primaryButtonAction = { [weak self] in
+                self?.advance()
+            }
             navigationController.present(ohNo, animated: true, completion: nil)
         }
     }
@@ -244,16 +251,20 @@ extension OnboardingCoordinator: ChooseCountryDelegate {
 }
 
 extension OnboardingCoordinator: AllowLocationAccessDelegate {
+    func selectedCountry() -> Country {
+        guard let country = localContext.selectedRegion?.country else {
+            fatalError("There is no selected region in the local context!")
+        }
+        return country
+    }
+    
     func handleLocationProblem(_ problem: LocationProblem) {
         localContext.locationProblem = problem
         advance()
     }
     
-    func locationUsageAuthorized(for country: Country) {
-        if country == localContext.selectedRegion?.country {
-            localContext.regionVerified = true
-            advance()
-        }
+    func locationUsageAuthorized() {
+        checkLocation()
     }
     
 }
@@ -306,6 +317,10 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {
+    func countryCode() -> String {
+        return selectedCountry().countryCode
+    }
+    
     func enteredAddressSuccessfully() {
         localContext.hasCompletedAddress = true
         advance()

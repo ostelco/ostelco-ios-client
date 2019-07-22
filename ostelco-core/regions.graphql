@@ -1,0 +1,7 @@
+query Regions($countryCode: String = null) {
+    context {
+    regions(regionCode: $countryCode) {
+            ...regionDetailsFragment
+        }
+    }
+}
