@@ -13,3 +13,11 @@ public struct PurchaseModel: Codable {
     public let timestamp: Int64
     public let product: ProductModel
 }
+
+extension PurchaseModel {
+    public init(gqlData data: PrimeGQL.PurchasesQuery.Data.Context.Purchase) {
+        self.id = data.id
+        self.timestamp = data.timestamp
+        self.product = ProductModel(gqlData: data.product.fragments.productFragment)
+    }
+}

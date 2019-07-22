@@ -17,8 +17,8 @@ class EmailValidator {
     
     private(set) var validationState = ValidationState.notChecked
     
-    let pleaseEnterAnythingErrorCopy = "Please enter an email address."
-    let pleaseEnterValidErrorCopy = "Please enter a valid email address."
+    let pleaseEnterAnythingErrorCopy = NSLocalizedString("Please enter an email address.", comment: "Error message when user has not entered an email address")
+    let pleaseEnterValidErrorCopy = NSLocalizedString("Please enter a valid email address.", comment: "Error message when user has entered invalid email address")
     
     private func validate() -> ValidationState {
         if self.validationState == .notChecked {

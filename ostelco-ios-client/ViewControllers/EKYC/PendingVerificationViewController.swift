@@ -12,6 +12,7 @@ import UIKit
 
 protocol PendingVerificationDelegate: class {
     func waitingCompletedSuccessfully(for region: RegionResponse)
+    func countryCode() -> String
     func waitingCompletedWithRejection()
 }
 
@@ -60,7 +61,10 @@ class PendingVerificationViewController: UIViewController {
     }
     
     func checkVerificationStatus(silentCheck: Bool = false) {
-        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        guard let countryCode = delegate?.countryCode() else {
+            fatalError("Missing country code!")
+        }
+        
         let spinnerView = showSpinner(onView: self.view)
         APIManager.shared.primeAPI
             .loadRegion(code: countryCode)

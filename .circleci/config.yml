@@ -90,3 +90,4 @@ workflows:
                 - /release/.*/
                 - /fix/.*/
                 - /refactor/.*/
+                - /bugfix/.*/

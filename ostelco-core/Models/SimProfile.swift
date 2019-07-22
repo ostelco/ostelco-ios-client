@@ -30,3 +30,14 @@ public struct SimProfile: Codable, Equatable {
         self.status = status
     }
 }
+
+extension SimProfile {
+    public init(gqlSimProfile: PrimeGQL.SimProfileFields) {
+        let status = SimProfileStatus(rawValue: gqlSimProfile.status.rawValue)!
+        self.init(eSimActivationCode: gqlSimProfile.eSimActivationCode,
+                  alias: gqlSimProfile.alias,
+                  iccId: gqlSimProfile.iccId,
+                  status: status
+        )
+    }
+}

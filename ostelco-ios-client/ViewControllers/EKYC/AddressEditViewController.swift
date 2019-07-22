@@ -17,6 +17,7 @@ protocol MyInfoAddressUpdateDelegate: class {
 
 protocol AddressEditDelegate: class {
     func enteredAddressSuccessfully()
+    func countryCode() -> String
     func cancel()
 }
 
@@ -146,13 +147,13 @@ class AddressEditViewController: UITableViewController {
             ApplicationErrors.assertAndLog("You shouldn't be able to send the address to the server from myInfo verify mode")
         }
         
-        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
+        let countryCode = delegate?.countryCode()
         let address = self.buildAddress()
         
         self.spinnerView = showSpinner(onView: self.view)
 
         APIManager.shared.primeAPI
-            .addAddress(address, forRegion: countryCode)
+            .addAddress(address, forRegion: countryCode!)
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)
                 self?.spinnerView = nil
