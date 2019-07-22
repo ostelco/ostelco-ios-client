@@ -138,17 +138,17 @@ extension OhNoIssueType {
     var displayTitle: String {
         switch self {
         case .ekycRejected:
-            return "EKYC Rejected"
+            return NSLocalizedString("EKYC Rejected", comment: "Error title when eKYC is rejected")
         case .generic, .myInfoFailed:
-            return "Oh no"
+            return NSLocalizedString("Oh no", comment: "Generic error title")
         case .noInternet:
-            return "No internet connection"
+            return NSLocalizedString("No internet connection", comment: "Error title for no internet.")
         case .paymentFailedGeneric:
-            return "Payment Failed"
+            return NSLocalizedString("Payment Failed", comment: "Error title when payment failed.")
         case .paymentFailedCardDeclined:
-            return "Card Declined"
+            return NSLocalizedString("Card Declined", comment: "Error title when card is declined.")
         case .serverUnreachable:
-            return "Server Unreachable"
+            return NSLocalizedString("Server Unreachable", comment: "Error title when server is unreachable.")
         }
     }
     
@@ -182,23 +182,25 @@ support@oya.world
             return nil
         case .generic(let code):
             guard let errorCode = code else {
-                return BoldableText(fullText: "Something went wrong. Try again in a while.",
+                return BoldableText(fullText: NSLocalizedString("Something went wrong. Try again in a while.", comment: "Error explanation for generic errors."),
                                     boldedPortion: nil)
             }
-            
-            return BoldableText(fullText:
-                "Something went wrong. Try again in a while. If you contact customer support, please use this error code: \(errorCode)", boldedPortion: "\(errorCode)")
+            let format = NSLocalizedString("Something went wrong. Try again in a while. If you contact customer support, please use this error code: %@", comment: "Generic error explanation.")
+            return BoldableText(fullText: String(format: format, errorCode), boldedPortion: errorCode)
         case .ekycRejected:
-            return BoldableText(fullText: "Something went wrong.\n\nTry again in a while, or contact support",
+            return BoldableText(fullText: NSLocalizedString("Something went wrong.\n\nTry again in a while, or contact support", comment: "Error explanation when eKYC is rejected."),
                                 boldedPortion: nil)
         case .myInfoFailed:
-            return BoldableText(fullText: "We're unable to retrieve your info from MyInfo.\n\n. Try later.",
+            return BoldableText(fullText: NSLocalizedString("We're unable to retrieve your info from MyInfo.\n\n. Try later.", comment: "Error explanation when MyInfo fails."),
                                 boldedPortion: nil)
         case .paymentFailedGeneric:
-            return BoldableText(fullText: "Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.",
+            return BoldableText(fullText: NSLocalizedString("Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.", comment: "Generic error explanation when payment fails."),
                                 boldedPortion: nil)
         case .paymentFailedCardDeclined:
-            return BoldableText(fullText: "Your card was declined. Contact your bank or try with another card.",
+            return BoldableText(fullText: NSLocalizedString("Your card was declined. Contact your bank or try with another card.", comment: "Error explanation when credit card is declined."),
+                                boldedPortion: nil)
+        case .serverUnreachable:
+            return BoldableText(fullText: NSLocalizedString("We were not able to reach our servers. Please try again later.", comment: "Error explanation when server is unreachable."),
                                 boldedPortion: nil)
         case .serverUnreachable:
             return BoldableText(fullText: "We were not able to reach our servers. Please try again later.",
@@ -210,14 +212,14 @@ support@oya.world
         switch self {
         case .generic,
              .myInfoFailed:
-            return "Try again"
+            return NSLocalizedString("Try again", comment: "Retry button title when MyInfo fails.")
         case .ekycRejected:
-            return "Retry"
+            return NSLocalizedString("Retry", comment: "Retry button title when eKYC is rejected.")
         case .noInternet, .serverUnreachable:
-            return "Check again"
+            return NSLocalizedString("Check again", comment: "Retry button title when server is unreachable or no network.")
         case .paymentFailedGeneric,
              .paymentFailedCardDeclined:
-            return "OK"
+            return NSLocalizedString("OK", comment: "Retry button title when payment fails.")
         }
     }
 }

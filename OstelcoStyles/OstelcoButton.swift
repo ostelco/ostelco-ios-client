@@ -229,13 +229,12 @@ public class CheckButton: OstelcoButton {
                 self.setTitle("✓", for: .normal)
             }
             
-            // TODO: Localize accessibility
-            self.accessibilityLabel = "Checked"
+            self.accessibilityLabel = NSLocalizedString("Checked", comment: "Accessibility label for when a checked button is checked")
             self.shapeLayer.fillColor = OstelcoColor.oyaBlue.toUIColor.cgColor
         } else {
             self.setTitle(nil, for: .normal)
             self.setImage(nil, for: .normal)
-            self.accessibilityLabel = "Unchecked"
+            self.accessibilityLabel = NSLocalizedString("Unchecked", comment: "Accessibility label for when a checked button is unchecked")
             self.shapeLayer.fillColor = nil
         }
     }
@@ -280,12 +279,10 @@ public class RadioButton: OstelcoButton {
     private func configureForSelected() {
         if self.isCurrentSelected {
             self.layer.addSublayer(self.innerLayer)
-            // TODO: Localize accessibility
-            self.accessibilityLabel = "Selected"
-            self.layer.addSublayer(self.innerLayer)
+            self.accessibilityLabel = NSLocalizedString("Selected", comment: "Accessibility label when a radio button is selected.")
         } else {
             self.innerLayer.removeFromSuperlayer()
-            self.accessibilityLabel = "Deselected"
+            self.accessibilityLabel = NSLocalizedString("Deselected", comment: "Accessibility label when a radio button is unselected.")
         }
     }
     

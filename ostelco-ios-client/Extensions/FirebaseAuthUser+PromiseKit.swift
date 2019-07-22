@@ -16,10 +16,9 @@ extension FirebaseAuth.User {
         case noErrorAndNoToken
         
         var localizedDescription: String {
-            // TODO: Actually localize
             switch self {
             case .noErrorAndNoToken:
-                return "Atttempted to get ID token from Firebase, but got neither an error nor a token"
+                return NSLocalizedString("Atttempted to get ID token from Firebase, but got neither an error nor a token", comment: "Failed to authorize with Firebase error.")
             }
         }
     }

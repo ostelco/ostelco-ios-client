@@ -18,14 +18,13 @@ struct EmailLinkManager {
         case noPendingEmailStored
         
         var localizedDescription: String {
-            // TODO: Actually localize
             switch self {
             case .couldntCreateFirebaseURL:
-                return "Couldn't create a URL from the firebase projectID!"
+                return NSLocalizedString("Couldn't create a URL from the firebase projectID!", comment: "Error case during firebase auth when it fails to create a signin url.")
             case .noErrorAndNoUser:
-                return "Signed into Firebase and received neither a user nor an error!"
+                return NSLocalizedString("Signed into Firebase and received neither a user nor an error!", comment: "Error case during firebase auth when we could not get a user.")
             case .noPendingEmailStored:
-                return "The pending email was not stored locally, so we could not validate the sign in."
+                return NSLocalizedString("The pending email was not stored locally, so we could not validate the sign in.", comment: "Error case during firebase auth when we could not validate sign-in.")
             }
         }
     }
