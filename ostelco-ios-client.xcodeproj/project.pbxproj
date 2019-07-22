@@ -319,6 +319,8 @@
 		C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EE404222838950053937E /* PendingVerificationViewController.swift */; };
 		C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
 		C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */; };
+		C26274AF22C204CB00F0AA36 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = C26274AE22C204CB00F0AA36 /* schema.json */; };
+		C26274B322C2092000F0AA36 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26274B222C2092000F0AA36 /* API.swift */; };
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
@@ -436,6 +438,11 @@
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
 		046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorwayUserHappyFlowWithJumioStageDeciderTests.swift; sourceTree = "<group>"; };
+		046FE92622DEFC6000CF57E4 /* bundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = bundles.graphql; sourceTree = "<group>"; };
+		046FE92A22DF02BC00CF57E4 /* purchases.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchases.graphql; sourceTree = "<group>"; };
+		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
+		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
+		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F28FE2224419700FC6A8F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -635,6 +642,9 @@
 		C23CFC8A227610E5000117A8 /* ApplePayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayDelegate.swift; sourceTree = "<group>"; };
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
+		C26274AE22C204CB00F0AA36 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		C26274B022C2050200F0AA36 /* context.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = context.graphql; sourceTree = "<group>"; };
+		C26274B222C2092000F0AA36 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C274A67B229689BC00209C23 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
@@ -952,6 +962,9 @@
 		9B851ABC225E29BE0076ABF3 /* ostelco-core */ = {
 			isa = PBXGroup;
 			children = (
+				C26274B222C2092000F0AA36 /* API.swift */,
+				C26274AE22C204CB00F0AA36 /* schema.json */,
+				C26274B022C2050200F0AA36 /* context.graphql */,
 				9B851ABD225E29BE0076ABF3 /* ostelco_core.h */,
 				9B851AE2225E334C0076ABF3 /* Extensions */,
 				9B851ADF225E331D0076ABF3 /* ModelControllers */,
@@ -960,6 +973,11 @@
 				9B3FA95622649DBE0001641A /* Protocols */,
 				9B851ADD225E32E90076ABF3 /* ViewControllers */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
+				046FE92622DEFC6000CF57E4 /* bundles.graphql */,
+				046FE92A22DF02BC00CF57E4 /* purchases.graphql */,
+				046FE92C22DF075E00CF57E4 /* products.graphql */,
+				046FE92E22DF0A5200CF57E4 /* regions.graphql */,
+				046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1312,6 +1330,7 @@
 			buildConfigurationList = 9B851AD6225E29BE0076ABF3 /* Build configuration list for PBXNativeTarget "ostelco-core" */;
 			buildPhases = (
 				BBC6D59B2EE331559138882F /* [CP] Check Pods Manifest.lock */,
+				C26274AD22C2048F00F0AA36 /* Generate Apollo GraphQL API */,
 				9B851AB6225E29BE0076ABF3 /* Headers */,
 				9B851AB7225E29BE0076ABF3 /* Sources */,
 				9B851AB8225E29BE0076ABF3 /* Frameworks */,
@@ -1511,6 +1530,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1604,6 +1624,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1622,6 +1643,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1718,6 +1740,7 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1736,6 +1759,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1882,6 +1906,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh\"\n";
+		};
+		C26274AD22C2048F00F0AA36 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --passthroughCustomScalars  --namespace=PrimeGQL --schema=schema.json API.swift\n\n#echo \"Hei hei\"\n# Do some magic so we can make sure `FRAMEWORK_SEARCH_PATHS` works correctly when there's a space in the scheme or the folder name.\n#QUOTED_FRAMEWORK_SEARCH_PATHS=\\\"$(echo $FRAMEWORK_SEARCH_PATHS | tr -d '\"' | sed -e 's/ \\//\" \"\\//g')\\\"\n#echo \"testtest\"\n# Get the first result searching for the framework\n#APOLLO_FRAMEWORK_PATH=\"$(eval find ${QUOTED_FRAMEWORK_SEARCH_PATHS} -name \"Apollo.framework\" -maxdepth 1 -print | head -n 1)\"\n#echo \"more test\"\n#if [ -z \"${APOLLO_FRAMEWORK_PATH}\" ]; then\n#echo \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\n#exit 1\n#fi\n#echo \"last test\"\n#cd \"${SRCROOT}/${TARGET_NAME}\"\n#echo $APOLLO_FRAMEWORK_PATH\n#\"${APOLLO_FRAMEWORK_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --passthroughCustomScalars  --namespace=PrimeGQL --schema=schema.json API.swift\n";
 		};
 		CC8EE19833175CB429C7CA9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2061,6 +2103,7 @@
 				9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */,
 				9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */,
 				9B5CBF3C22803D3300D83D7B /* Context.swift in Sources */,
+				C26274B322C2092000F0AA36 /* API.swift in Sources */,
 				9B821590227AD6D200DC6B64 /* EKYCAddress.swift in Sources */,
 				9B82159C227B254B00DC6B64 /* JSONRequestError.swift in Sources */,
 				9B82159B227B225400DC6B64 /* String+Static.swift in Sources */,

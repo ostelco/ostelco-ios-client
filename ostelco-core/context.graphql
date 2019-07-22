@@ -1,0 +1,31 @@
+query Context {
+    context {
+        customer {
+            id
+            contactEmail
+            nickname
+            referralId
+            analyticsId
+        }
+        regions {
+            ...regionDetailsFragment
+        }
+    }
+}
+
+fragment regionDetailsFragment on RegionDetails {
+    region {
+        id
+        name
+    }
+    status
+    kycStatusMap {
+        JUMIO
+        MY_INFO
+        NRIC_FIN
+        ADDRESS_AND_PHONE_NUMBER
+    }
+    simProfiles {
+        ...simProfileFields
+    }
+}

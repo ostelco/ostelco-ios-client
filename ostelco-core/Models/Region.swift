@@ -22,6 +22,29 @@ public struct KYCStatusMap: Codable {
         self.NRIC_FIN = nricFin
         self.ADDRESS_AND_PHONE_NUMBER = addressPhone
     }
+    
+    public init(gqlKYCStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap) {
+        if let jumio = gqlKYCStatusMap.jumio?.rawValue {
+            self.JUMIO = EKYCStatus(rawValue: jumio)!
+        } else {
+            self.JUMIO = nil
+        }
+        if let myInfo = gqlKYCStatusMap.myInfo?.rawValue {
+            self.MY_INFO = EKYCStatus(rawValue: myInfo)!
+        } else {
+            self.MY_INFO = nil
+        }
+        if let addressAndPhone = gqlKYCStatusMap.addressAndPhoneNumber?.rawValue {
+            self.ADDRESS_AND_PHONE_NUMBER = EKYCStatus(rawValue: addressAndPhone)!
+        } else {
+            self.ADDRESS_AND_PHONE_NUMBER = nil
+        }
+        if let nricFin = gqlKYCStatusMap.nricFin?.rawValue {
+            self.NRIC_FIN = EKYCStatus(rawValue: nricFin)!
+        } else {
+            self.NRIC_FIN = nil
+        }
+    }
 }
 
 public struct Region: Codable {
@@ -38,6 +61,11 @@ public struct Region: Codable {
     // Convenience method to access the related country object.
     public var country: Country {
         return Country(self.id)
+    }
+    
+    public init(gqlRegion: PrimeGQL.RegionDetailsFragment.Region) {
+        self.id = gqlRegion.id
+        self.name = gqlRegion.name
     }
 }
 
@@ -73,5 +101,19 @@ public struct RegionResponse: Codable {
     
     public func getSimProfile() -> SimProfile? {
         return self.simProfiles?.first
+    }
+}
+
+extension RegionResponse {
+    public init(gqlData regionDetails: PrimeGQL.RegionDetailsFragment) {
+        let region = regionDetails.region
+        let status = regionDetails.status!
+        let kycStatusMap = regionDetails.kycStatusMap!
+        let simProfiles = regionDetails.simProfiles!
+        
+        self.region = Region(gqlRegion: region)
+        self.status = EKYCStatus(rawValue: status.rawValue)!
+        self.kycStatusMap = KYCStatusMap(gqlKYCStatusMap: kycStatusMap)
+        self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
     }
 }

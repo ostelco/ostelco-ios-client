@@ -1,0 +1,27 @@
+query Products {
+    context {
+        products {
+            ...productFragment
+        }
+    }
+}
+
+fragment productFragment on Product {
+    sku
+    price {
+        amount
+        currency
+    }
+    presentation {
+        payeeLabel
+        priceLabel
+        productLabel
+        subTotal
+        subTotalLabel
+        tax
+        taxLabel
+    }
+    properties {
+        productClass
+    }
+}
