@@ -60,7 +60,6 @@ class UserManager: TokenProvider {
         }
         
         self.customer = nil
-        OnBoardingManager.sharedInstance.region = nil
         UserDefaultsWrapper.clearAll()
     }
     

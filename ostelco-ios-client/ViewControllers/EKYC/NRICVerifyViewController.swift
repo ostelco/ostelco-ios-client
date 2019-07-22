@@ -12,6 +12,7 @@ import PromiseKit
 import UIKit
 
 protocol NRICVerifyDelegate: class {
+    func countryCode() -> String
     func enteredNRICSuccessfully()
 }
 
@@ -33,14 +34,11 @@ class NRICVerifyViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard
-            let nric = self.nricTextField.text,
-            nric.isNotEmpty else {
-                self.showAlert(title: "Error", msg: "NRIC field can't be empty")
-                return
+        guard let nric = self.nricTextField.text, nric.isNotEmpty, let countryCode = delegate?.countryCode() else {
+            self.showAlert(title: "Error", msg: "NRIC field can't be empty")
+            return
         }
         
-        let countryCode = OnBoardingManager.sharedInstance.selectedCountry.countryCode.lowercased()
         self.nricErrorLabel.isHidden = true
         self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.shared.primeAPI

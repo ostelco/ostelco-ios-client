@@ -12,28 +12,28 @@ import OstelcoStyles
 import UIKit
 
 protocol AllowLocationAccessDelegate: class {
+    func selectedCountry() -> Country
     func handleLocationProblem(_ problem: LocationProblem)
-    func locationUsageAuthorized(for country: Country)
+    func locationUsageAuthorized()
 }
 
 class AllowLocationAccessViewController: UIViewController {
     
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
-    weak var delegate: AllowLocationAccessDelegate?
+    weak var delegate: AllowLocationAccessDelegate!
 
     /// For the `LocationChecking` protocol
     var spinnerView: UIView?
     
     private var hasRequestedAuthorization = false
     
-    private var selectedCountry: Country!
     private var linkableText: LinkableText!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedCountry = OnBoardingManager.sharedInstance.selectedCountry
-        self.linkableText = self.generateLinkableText(for: self.selectedCountry)
+        let country = delegate.selectedCountry()
+        self.linkableText = self.generateLinkableText(for: country)
         self.descriptionLabel.tapDelegate = self
         self.descriptionLabel.setLinkableText(self.linkableText)
     }
@@ -51,7 +51,7 @@ class AllowLocationAccessViewController: UIViewController {
     private func requestAuthorization() {
         let locationController = LocationController.shared
         guard locationController.locationServicesEnabled else {
-            self.delegate?.handleLocationProblem(.disabledInSettings)
+            self.delegate.handleLocationProblem(.disabledInSettings)
             return
         }
         
@@ -67,12 +67,12 @@ class AllowLocationAccessViewController: UIViewController {
                 self?.handleAuthorizationStatus(status)
             }
         case .restricted:
-            self.delegate?.handleLocationProblem(.restrictedByParentalControls)
+            self.delegate.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
-            self.delegate?.handleLocationProblem(.deniedByUser)
+            self.delegate.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.delegate?.locationUsageAuthorized(for: self.selectedCountry)
+            self.delegate.locationUsageAuthorized()
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }

@@ -41,8 +41,7 @@ class ChooseCountryViewController: UIViewController {
         
         self.tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
         self.tableView.addEmptyFooter()
-        self.currentSelectedCountry = OnBoardingManager.sharedInstance.selectedCountry
-        self.dataSource.selectedCountry = self.currentSelectedCountry
+        self.dataSource.reloadData()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {

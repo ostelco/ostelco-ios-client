@@ -244,16 +244,20 @@ extension OnboardingCoordinator: ChooseCountryDelegate {
 }
 
 extension OnboardingCoordinator: AllowLocationAccessDelegate {
+    func selectedCountry() -> Country {
+        guard let country = localContext.selectedRegion?.country else {
+            fatalError("There is no selected region in the local context!")
+        }
+        return country
+    }
+    
     func handleLocationProblem(_ problem: LocationProblem) {
         localContext.locationProblem = problem
         advance()
     }
     
-    func locationUsageAuthorized(for country: Country) {
-        if country == localContext.selectedRegion?.country {
-            localContext.regionVerified = true
-            advance()
-        }
+    func locationUsageAuthorized() {
+        checkLocation()
     }
     
 }
@@ -306,6 +310,10 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {
+    func countryCode() -> String {
+        return selectedCountry().countryCode
+    }
+    
     func enteredAddressSuccessfully() {
         localContext.hasCompletedAddress = true
         advance()
