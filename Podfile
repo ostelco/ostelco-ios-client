@@ -15,6 +15,7 @@ end
 # Framework target
 target 'ostelco-core' do
   pod 'PromiseKit', '~> 6.8.4' # Promises for Swift
+  pod "Apollo"
 end
 
 abstract_target 'ostelco-ios' do

@@ -180,10 +180,7 @@ extension BecomeAMemberViewController: LabelTapDelegate {
             return
         }
         
-        guard
-            let bits = self.linkableCopy.linkedBits,
-            bits.count == 2,
-            bits.contains(tappedLink) else {
+        guard let bits = self.linkableCopy.linkedBits, bits.count == 2, bits.contains(tappedLink) else {
                 ApplicationErrors.assertAndLog("Unexpected link copy \(tappedLink)")
                 return
         }

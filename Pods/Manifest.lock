@@ -1,4 +1,7 @@
 PODS:
+  - Apollo (0.11.1):
+    - Apollo/Core (= 0.11.1)
+  - Apollo/Core (0.11.1)
   - Crashlytics (3.13.1):
     - Fabric (~> 1.10.1)
   - Fabric (1.10.1)
@@ -142,6 +145,7 @@ PODS:
   - SwiftLint (0.32.0)
 
 DEPENDENCIES:
+  - Apollo
   - Crashlytics (~> 3.13.1)
   - Fabric (~> 1.10.0)
   - Firebase/Analytics (~> 5.20.1)
@@ -158,6 +162,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Apollo
     - Crashlytics
     - Fabric
     - Firebase
@@ -186,6 +191,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Apollo: 73985134be57195be9fdeed1d8d1d74037bacd98
   Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
   Fabric: f6f21452846788bb44595d73e9909d79d328e617
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
@@ -213,6 +219,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: e60901cd83e274a0698bf47b7571d069ea8df6da
+PODFILE CHECKSUM: 0017fd945abbfb97c786bb5dcbadd27cd30d20d3
 
 COCOAPODS: 1.6.1

@@ -44,7 +44,7 @@ class MyInfoSummaryViewController: UIViewController {
             return
         }
         
-        self.spinnerView = self.showSpinner(onView: self.view, loadingText: "Loading your data from SingPass...")
+        self.spinnerView = self.showSpinner(onView: self.view, loadingText: NSLocalizedString("Loading your data from SingPass...", comment: "Loading text after user approves SingPass"))
         APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
             .ensure { [weak self] in

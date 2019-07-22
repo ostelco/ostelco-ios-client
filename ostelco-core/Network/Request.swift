@@ -68,7 +68,6 @@ public struct Request {
         if let body = self.bodyData {
             request.httpBody = body
         }
-        
         return request
     }
 }

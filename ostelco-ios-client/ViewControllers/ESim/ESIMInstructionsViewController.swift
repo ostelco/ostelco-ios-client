@@ -47,10 +47,10 @@ class ESIMInstructionsViewController: UIViewController {
     
     private func updateUI(for index: Int) {
         if index == (ESIMPage.allCases.count - 1) {
-            primaryButton.setTitle("Send me the QR code", for: .normal)
+            primaryButton.setTitle(NSLocalizedString("Send me the QR code", comment: "Last action button in eSim Carousel"), for: .normal)
             lastPageLabel.isHidden = false
         } else {
-            primaryButton.setTitle("Next", for: .normal)
+            primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in eSim Carousel"), for: .normal)
             lastPageLabel.isHidden = true
         }
     }

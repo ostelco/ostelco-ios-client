@@ -15,7 +15,7 @@ class APIManager {
     
     lazy var primeAPI: PrimeAPI = {
         let baseURLString = Environment().configuration(PlistKey.ServerURL)
-        return PrimeAPI(baseURL: baseURLString,
+        return PrimeAPI(baseURLString: baseURLString,
                            tokenProvider: self.tokenProvider)
     }()
     

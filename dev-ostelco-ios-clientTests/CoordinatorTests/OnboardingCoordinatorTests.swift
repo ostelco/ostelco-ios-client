@@ -44,7 +44,7 @@ class OnboardingCoordinatorTests: XCTestCase {
         
         convenience init() {
             
-            self.init(baseURL: "https://google.com", tokenProvider: FakeTokenProvider())
+            self.init(baseURLString: "https://google.com", tokenProvider: FakeTokenProvider())
         }
         
         override func loadContext() -> Promise<Context> {

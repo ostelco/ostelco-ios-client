@@ -24,9 +24,9 @@ class HomeViewController: ApplePayViewController {
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var welcomeLabel: UILabel!
 
-    let unlockText = "Unlock More Data"
-    let buyText = "Buy Data"
-    let refreshBalanceText = "Updating data balance..."
+    let unlockText = NSLocalizedString("Unlock More Data", comment: "Primary action button before user is a member")
+    let buyText = NSLocalizedString("Buy Data", comment: "Primary action button on Home")
+    let refreshBalanceText = NSLocalizedString("Updating data balance...", comment: "Loading text while determining data balance.")
 
     private lazy var refreshControl = UIRefreshControl()
     var hasSubscription = false {
@@ -73,8 +73,8 @@ class HomeViewController: ApplePayViewController {
     }
 
     private func showToppedUpMessage() {
-        welcomeLabel.text = "You have been topped up! 🎉"
-        messageLabel.text = "Thanks for using OYA"
+        welcomeLabel.text = NSLocalizedString("You have been topped up! 🎉", comment: "Success message when user buys more data.")
+        messageLabel.text = NSLocalizedString("Thanks for using OYA", comment: "Thank you message when user buys more data")
         showMessage()
     }
 

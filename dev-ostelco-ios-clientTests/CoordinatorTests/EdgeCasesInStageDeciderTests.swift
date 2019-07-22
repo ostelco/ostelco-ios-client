@@ -80,7 +80,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         let decider = StageDecider()
         let localContext = LocalContext(serverIsUnreachable: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .ohNo(.noInternet))
+        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .ohNo(.serverUnreachable))
     }
     
     // Edge cases for Singapore flow

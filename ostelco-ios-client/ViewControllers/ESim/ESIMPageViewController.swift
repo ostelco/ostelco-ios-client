@@ -36,34 +36,45 @@ enum ESIMPage: Int, CaseIterable {
     var topText: BoldableText {
         switch self {
         case .instructions:
-            return BoldableText(fullText: """
-            We are about to send you an email with a QR
-            code. Before we do that, please read these
-            instructions.
-            """, boldedPortion: nil)
+            return BoldableText(
+                fullText: NSLocalizedString("We are about to send you an email with a QR\ncode. Before we do that, please read these\ninstructions.", comment: "eSim download instructions. step 1"),
+                boldedPortion: nil
+            )
         case .scanQRCode:
-            return BoldableText(fullText: """
-            On your phone, go to:
-            Settings - Mobile Data - Add Data Plan
-            """, boldedPortion: "Settings - Mobile Data - Add Data Plan")
+            return BoldableText(
+                fullText: NSLocalizedString("On your phone, go to:\nSettings - Mobile Data - Add Data Plan", comment: "eSim download instructions. step 2"),
+                boldedPortion: NSLocalizedString("Settings - Mobile Data - Add Data Plan", comment: "eSim download instructions. step 2 (downloaded part)")
+            )
         case .tapToContinue:
-            return BoldableText(fullText: "Then tap continue...", boldedPortion: nil)
+            return BoldableText(
+                fullText: NSLocalizedString("Then tap continue...", comment: "eSim download instructions. step 3"),
+                boldedPortion: nil
+            )
         case .forMobileDataOnly:
-            return BoldableText(fullText: "Choose \"...for mobile data only\"", boldedPortion: nil)
+            return BoldableText(
+                fullText: NSLocalizedString("Choose \"...for mobile data only\"", comment: "eSim download instructions. step 4"),
+                boldedPortion: nil
+            )
         case .watchVideo:
-            return BoldableText(fullText: "Still unsure? Watch this video!", boldedPortion: nil)
+            return BoldableText(
+                fullText: NSLocalizedString("Still unsure? Watch this video!", comment: "eSim download instructions. step 5"),
+                boldedPortion: nil
+            )
         }
     }
     
     var bottomText: BoldableText? {
         switch self {
         case .instructions:
-            return BoldableText(fullText: """
-            Open the email on
-            another device
-            """, boldedPortion: "another device")
+            return BoldableText(
+                fullText: NSLocalizedString("Open the email on\nanother device", comment: "eSim instructions bottom text step 1"),
+                boldedPortion: NSLocalizedString("another device", comment: "eSim instructions bottom text step 1 (boldable part)")
+            )
         case .scanQRCode:
-            return BoldableText(fullText: "Scan the QR code", boldedPortion: nil)
+            return BoldableText(
+                fullText: NSLocalizedString("Scan the QR code", comment: "eSim instructions bottom text step 2"),
+                boldedPortion: nil
+            )
         case .tapToContinue:
             return nil
         case .forMobileDataOnly:

@@ -1,0 +1,16 @@
+query SimProfilesForRegion($countryCode: String!) {
+    context {
+        regions(regionCode: $countryCode) {
+            simProfiles {
+                ...simProfileFields
+            }
+        }
+    }
+}
+
+fragment simProfileFields on SimProfile {
+    eSimActivationCode
+    alias
+    iccId
+    status
+}

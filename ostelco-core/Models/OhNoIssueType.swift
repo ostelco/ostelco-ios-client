@@ -13,4 +13,5 @@ public enum OhNoIssueType: Equatable {
     case noInternet
     case paymentFailedGeneric
     case paymentFailedCardDeclined
+    case serverUnreachable
 }
