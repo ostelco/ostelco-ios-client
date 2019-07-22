@@ -75,10 +75,10 @@ open class PrimeAPI: BasicNetwork {
     ///              the passed in string does not resolve to a valid URL,
     ///              a fatal error will be thrown
     ///   - tokenProvider: The `TokenProvider` instance to use to access user creds.
-    public init(baseURL: String,
+    public init(baseURLString: String,
                 tokenProvider: TokenProvider) {
-        guard let url = URL(string: baseURL) else {
-            fatalError("Could not create base URL from passed-in string \(baseURL)")
+        guard let url = URL(string: baseURLString) else {
+            fatalError("Could not create base URL from passed-in string \(baseURLString)")
         }
         
         self.baseURL = url

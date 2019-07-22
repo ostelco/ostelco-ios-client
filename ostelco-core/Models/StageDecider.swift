@@ -26,7 +26,7 @@ public struct LocalContext {
     public var hasSeenAwesome: Bool
     public var hasCompletedJumio: Bool // Needs to be persisted
     public var hasCompletedAddress: Bool
-    let serverIsUnreachable: Bool
+    public var serverIsUnreachable: Bool
     
     public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
@@ -131,7 +131,7 @@ public struct StageDecider {
     public func compute(context: Context?, localContext: LocalContext) -> Stage {
         
         if localContext.serverIsUnreachable {
-            return .ohNo(.noInternet)
+            return .ohNo(.serverUnreachable)
         }
         
         guard let context = context else {

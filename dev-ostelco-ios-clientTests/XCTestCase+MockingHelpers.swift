@@ -17,7 +17,7 @@ extension XCTestCase {
     }
 
     var mockAPI: PrimeAPI {
-        return PrimeAPI(baseURL: self.baseURL.absoluteString, tokenProvider: self.mockTokenProvider)
+        return PrimeAPI(baseURLString: self.baseURL.absoluteString, tokenProvider: self.mockTokenProvider)
     }
     
     func setupStubbing() {
