@@ -45,7 +45,7 @@ class OnboardingCoordinator {
     func advance() {
         APIManager.shared.primeAPI.loadContext()
             .done { (context) in
-                self.localContext.serverIsUnreachable = true
+                self.localContext.serverIsUnreachable = false
                 
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
