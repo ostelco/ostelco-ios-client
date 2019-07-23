@@ -126,7 +126,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
         .then { _ in
             return PromiseKit.Promise<Context> { seal in
-                self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
+                self.client.fetch(query: PrimeGQL.ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     // TODO: Make sure we handle the case where we fetch context and there is no customer from server.
                     if let error = error {
                         seal.reject(error)
@@ -306,7 +306,15 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter code: The region to request
     /// - Returns: A promise which when fulfilled contains the requested region.
     public func loadRegion(code: String) -> PromiseKit.Promise<RegionResponse> {
-        return loadRegions(countryCode: code).firstValue
+        return loadRegions(countryCode: code).then { regionResponse in
+            return PromiseKit.Promise<RegionResponse> { seal in
+                if let value = regionResponse.first {
+                    seal.fulfill(value)
+                } else {
+                    seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_REGIONS", httpStatusCode: 404, message: "Failed to fetch region.")))
+                }
+            }
+        }
     }
     
     // TODO: Load from GraphQL
@@ -318,7 +326,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
         .then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: PrimeGQL.SimProfilesForRegionQuery(countryCode: code)) { (result, error) in
+                self.client.fetch(query: PrimeGQL.SimProfilesForRegionQuery(countryCode: code), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     if let error = error {
                         seal.reject(error)
                         return
