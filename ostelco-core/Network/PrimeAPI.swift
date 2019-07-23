@@ -150,23 +150,16 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
-    public func loadPurchases() -> PromiseKit.Promise<[PurchaseModel]> {
+    public func loadPurchases() -> PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Context.Purchase]> {
         return self.getToken()
             .then { _ in
-                return PromiseKit.Promise<[PurchaseModel]> { seal in
+                return PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Context.Purchase]> { seal in
                     self.client.fetch(query: PrimeGQL.PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
                         }
-                        
-                        var resultList: [PurchaseModel] = []
-                        
-                        if let data = result?.data {
-                            resultList = data.context.purchases.map({ PurchaseModel(gqlData: $0) })
-                        }
-                        
-                        seal.fulfill(resultList)
+                        seal.fulfill(result?.data?.context.purchases ?? [])
                     }
                 }
             }
