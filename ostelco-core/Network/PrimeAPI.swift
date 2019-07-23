@@ -110,9 +110,7 @@ open class PrimeAPI: BasicNetwork {
                         var bundlesList: [BundleModel] = []
                         
                         if let data = result?.data {
-                            if let bundles = data.context.bundles {
-                                bundlesList = bundles.map({ BundleModel(gqlData: $0) })
-                            }
+                            bundlesList = data.context.bundles.map({ BundleModel(gqlData: $0) })
                         }
                         
                         seal.fulfill(bundlesList)
@@ -135,7 +133,13 @@ open class PrimeAPI: BasicNetwork {
                     if let data = result?.data {
                         let customer = data.context.customer
                         var regionResponseList: [RegionResponse] = []
-                        let customerModel = CustomerModel(gqlCustomer: customer)
+                        
+                        var customerModel: CustomerModel? = nil
+                        
+                        if let customer = customer {
+                            customerModel = CustomerModel(gqlCustomer: customer)
+                        }
+                        
                         
                         if let regions = data.context.regions {
                             regionResponseList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
@@ -166,9 +170,7 @@ open class PrimeAPI: BasicNetwork {
                         var resultList: [PurchaseModel] = []
                         
                         if let data = result?.data {
-                            if let purchases = data.context.purchases {
-                                resultList = purchases.map({ PurchaseModel(gqlData: $0) })
-                            }
+                            resultList = data.context.purchases.map({ PurchaseModel(gqlData: $0) })
                         }
                         
                         seal.fulfill(resultList)
@@ -193,9 +195,7 @@ open class PrimeAPI: BasicNetwork {
                         var resultList: [ProductModel] = []
                         
                         if let data = result?.data {
-                            if let products = data.context.products {
-                                resultList = products.compactMap({$0}).map({ ProductModel(gqlData: $0.fragments.productFragment) })
-                            }
+                            resultList = data.context.products.compactMap({$0}).map({ ProductModel(gqlData: $0.fragments.productFragment) })
                         }
                         
                         seal.fulfill(resultList)

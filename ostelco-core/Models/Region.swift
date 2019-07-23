@@ -107,13 +107,18 @@ public struct RegionResponse: Codable {
 extension RegionResponse {
     public init(gqlData regionDetails: PrimeGQL.RegionDetailsFragment) {
         let region = regionDetails.region
-        let status = regionDetails.status!
-        let kycStatusMap = regionDetails.kycStatusMap!
-        let simProfiles = regionDetails.simProfiles!
+        let status = regionDetails.status
+        let kycStatusMap = regionDetails.kycStatusMap
+        let simProfiles = regionDetails.simProfiles
         
         self.region = Region(gqlRegion: region)
         self.status = EKYCStatus(rawValue: status.rawValue)!
         self.kycStatusMap = KYCStatusMap(gqlKYCStatusMap: kycStatusMap)
-        self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
+        
+        if let simProfiles = simProfiles {
+            self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
+        } else {
+            self.simProfiles = nil
+        }
     }
 }
