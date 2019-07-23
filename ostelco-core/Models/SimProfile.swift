@@ -16,7 +16,7 @@ public enum SimProfileStatus: String, Codable {
 
 extension SimProfileStatus {
     func getGraphQLModel() -> PrimeGQL.SimProfileStatus {
-        return PrimeGQL.SimProfileStatus(rawValue: self.rawValue.lowercased())!
+        return PrimeGQL.SimProfileStatus(rawValue: self.rawValue)!
     }
 }
 
