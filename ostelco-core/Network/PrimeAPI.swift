@@ -113,10 +113,10 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext() -> PromiseKit.Promise<Context> {
+    public func loadContext() -> PromiseKit.Promise<PrimeGQL.ContextQuery.Data.Context> {
         return self.getToken()
         .then { _ in
-            return PromiseKit.Promise<Context> { seal in
+            return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     // TODO: Make sure we handle the case where we fetch context and there is no customer from server.
                     if let error = error {
@@ -124,17 +124,7 @@ open class PrimeAPI: BasicNetwork {
                         return
                     }
                     if let data = result?.data {
-                        let customer = data.context.customer
-                        
-                        var customerModel: CustomerModel?
-                        
-                        if let customer = customer {
-                            customerModel = CustomerModel(gqlCustomer: customer)
-                        }
-                        
-                        let regionResponseList = data.context.regions.map({ $0.fragments.regionDetailsFragment })
-                        
-                        seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
+                        seal.fulfill(data.context)
                     } else {
                         // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
                         seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))

@@ -78,9 +78,10 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testServerIsUnavailableOnStartUp() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(serverIsUnreachable: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .ohNo(.serverUnreachable))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.serverUnreachable))
     }
     
     // Edge cases for Singapore flow

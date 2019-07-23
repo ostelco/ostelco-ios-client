@@ -127,6 +127,10 @@ public struct StageDecider {
         return .eSimOnboarding
     }
     
+    public func compute(context: PrimeGQL.ContextQuery.Data.Context?, localContext: LocalContext) -> Stage {
+        return self.compute(context: context?.toLegacyModel(), localContext: localContext)
+    }
+    
     // swiftlint:disable:next cyclomatic_complexity
     public func compute(context: Context?, localContext: LocalContext) -> Stage {
         

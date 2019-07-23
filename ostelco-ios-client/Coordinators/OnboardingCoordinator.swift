@@ -54,8 +54,8 @@ class OnboardingCoordinator {
                 }
             }.recover { error in
                 self.localContext.serverIsUnreachable = (error as NSError).code == -1004
-                
-                let stage = self.stageDecider.compute(context: nil, localContext: self.localContext)
+                let context: Context? = nil
+                let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }

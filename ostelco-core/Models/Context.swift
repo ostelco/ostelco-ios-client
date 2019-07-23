@@ -23,6 +23,27 @@ public struct Context {
     public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
         return RegionResponse.getRegionFromRegionResponseArray(regions)
     }
+    
+    public func toGraphQLModel() -> PrimeGQL.ContextQuery.Data.Context {
+        var gqlCustomer: PrimeGQL.ContextQuery.Data.Context.Customer? = nil
+        if let customer = customer {
+            gqlCustomer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
+        }
+        return PrimeGQL.ContextQuery.Data.Context(
+            customer: gqlCustomer,
+            regions: regions.map({ PrimeGQL.ContextQuery.Data.Context.Region(unsafeResultMap: $0.resultMap) })
+        )
+    }
+}
+
+extension PrimeGQL.ContextQuery.Data.Context {
+    public func toLegacyModel() -> Context {
+        var legacyCustomer: CustomerModel? = nil
+        if let customer = customer {
+            legacyCustomer = CustomerModel(gqlCustomer: customer)
+        }
+        return Context(customer: legacyCustomer, regions: self.regions.map({ $0.fragments.regionDetailsFragment }))
+    }
 }
 
 public struct DecodableContext: Decodable {

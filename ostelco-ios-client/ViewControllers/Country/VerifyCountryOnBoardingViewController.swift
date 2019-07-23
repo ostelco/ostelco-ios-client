@@ -41,7 +41,7 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     
     private func setTitle() {
         if let user = UserManager.shared.customer {
-            self.titleLabel.text = String(format: NSLocalizedString("Hi %@", comment: "User greeting during onboarding"), user.name)
+            self.titleLabel.text = String(format: NSLocalizedString("Hi %@", comment: "User greeting during onboarding"), user.nickname)
         }
     }
 }

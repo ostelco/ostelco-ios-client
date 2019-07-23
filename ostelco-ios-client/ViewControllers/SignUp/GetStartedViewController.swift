@@ -54,7 +54,7 @@ class GetStartedViewController: UIViewController {
             }
             .done { [weak self] customer in
                 OstelcoAnalytics.logEvent(.EnteredNickname)
-                UserManager.shared.customer = customer
+                UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
                 self?.delegate?.nameEnteredSuccessfully()
             }
             .catch { [weak self] error in

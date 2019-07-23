@@ -14,56 +14,64 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testColdStartForAUser() {
         let decider = StageDecider()
+        let context: Context? = nil
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: LocalContext()), .loginCarousel)
+        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext()), .loginCarousel)
     }
     
     func testUserHasSeenLoginCarousel() {
         let decider = StageDecider()
+        let context: Context? = nil
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: LocalContext(hasSeenLoginCarousel: true)), .emailEntry)
+        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext(hasSeenLoginCarousel: true)), .emailEntry)
     }
     
     func testUserHasEnteredEmail() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com")
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
     }
     
     func testUserHasEnteredEmailThenColdStart() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com")
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
     }
     
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .legalStuff)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
     
     func testUserHasAgreedToLegalStuff() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .nicknameEntry)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
     
     func testUserHasAgreedToLegalStuffThenColdStart() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .legalStuff)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
     
     func testUserHasFirebasedThenColdStartedThenAgreedToLegalStuff() {
         let decider = StageDecider()
+        let context: Context? = nil
         let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
         
-        XCTAssertEqual(decider.compute(context: nil, localContext: localContext), .nicknameEntry)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
     
     func testUserHasEnteredNickname() {
