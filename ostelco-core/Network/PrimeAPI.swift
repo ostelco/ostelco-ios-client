@@ -168,23 +168,16 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
-    public func loadProducts() -> PromiseKit.Promise<[ProductModel]> {
+    public func loadProducts() -> PromiseKit.Promise<[PrimeGQL.ProductFragment]> {
         return self.getToken()
             .then { _ in
-                return PromiseKit.Promise<[ProductModel]> { seal in
+                return PromiseKit.Promise<[PrimeGQL.ProductFragment]> { seal in
                     self.client.fetch(query: PrimeGQL.ProductsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
                         }
-                        
-                        var resultList: [ProductModel] = []
-                        
-                        if let data = result?.data {
-                            resultList = data.context.products.compactMap({$0}).map({ ProductModel(gqlData: $0.fragments.productFragment) })
-                        }
-                        
-                        seal.fulfill(resultList)
+                        seal.fulfill(result?.data?.context.products.map({ $0.fragments.productFragment }) ?? [])
                     }
                 }
         }
