@@ -9,7 +9,6 @@
 @testable import Oya_Development_app
 import ostelco_core
 import XCTest
-import PromiseKit
 
 class LiveAPITests: XCTestCase {
     
@@ -102,9 +101,12 @@ class LiveAPITests: XCTestCase {
             // Failures handled in `awaitResult`
             return
         }
-        // GraphQL client returns 200 with empty reqions array.
-        // In this case, loadRegion fails with emptySequence
-        if case PMKError.emptySequence = error {} else {
+        
+        switch error {
+        case APIHelper.Error.jsonError(let jsonError):
+            XCTAssertEqual(jsonError.httpStatusCode, 404)
+            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_REGIONS")
+        default:
             XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
         }
     }
