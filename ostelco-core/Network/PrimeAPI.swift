@@ -97,23 +97,16 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
-    public func loadBundles() -> PromiseKit.Promise<[BundleModel]> {
+    public func loadBundles() -> PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Context.Bundle]> {
         return self.getToken()
             .then { _ in
-                return PromiseKit.Promise<[BundleModel]> { seal in
+                return PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Context.Bundle]> { seal in
                     self.client.fetch(query: PrimeGQL.BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
                         }
-                        
-                        var bundlesList: [BundleModel] = []
-                        
-                        if let data = result?.data {
-                            bundlesList = data.context.bundles.map({ BundleModel(gqlData: $0) })
-                        }
-                        
-                        seal.fulfill(bundlesList)
+                        seal.fulfill(result?.data?.context.bundles ?? [])
                     }
                 }
             }
