@@ -125,18 +125,14 @@ open class PrimeAPI: BasicNetwork {
                     }
                     if let data = result?.data {
                         let customer = data.context.customer
-                        var regionResponseList: [RegionResponse] = []
                         
-                        var customerModel: CustomerModel? = nil
+                        var customerModel: CustomerModel?
                         
                         if let customer = customer {
                             customerModel = CustomerModel(gqlCustomer: customer)
                         }
                         
-                        
-                        if let regions = data.context.regions {
-                            regionResponseList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
-                        }
+                        let regionResponseList = data.context.regions.map({ $0.fragments.regionDetailsFragment })
                         
                         seal.fulfill(Context(customer: customerModel, regions: regionResponseList))
                     } else {
@@ -256,25 +252,16 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
-    public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[RegionResponse]> {
+    public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[PrimeGQL.RegionDetailsFragment]> {
         return self.getToken()
             .then { _ in
-                return PromiseKit.Promise<[RegionResponse]> { seal in
+                return PromiseKit.Promise<[PrimeGQL.RegionDetailsFragment]> { seal in
                     self.client.fetch(query: PrimeGQL.RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
                             return
                         }
-                        
-                        var resultList: [RegionResponse] = []
-                        
-                        if let data = result?.data {
-                            if let regions = data.context.regions {
-                                resultList = regions.compactMap({$0}).map({ RegionResponse(gqlData: $0.fragments.regionDetailsFragment) })
-                            }
-                        }
-                        
-                        seal.fulfill(resultList)
+                        seal.fulfill(result?.data?.context.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
                     }
                 }
         }
@@ -284,9 +271,9 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request
     /// - Returns: A promise which when fulfilled contains the requested region.
-    public func loadRegion(code: String) -> PromiseKit.Promise<RegionResponse> {
+    public func loadRegion(code: String) -> PromiseKit.Promise<PrimeGQL.RegionDetailsFragment> {
         return loadRegions(countryCode: code).then { regionResponse in
-            return PromiseKit.Promise<RegionResponse> { seal in
+            return PromiseKit.Promise<PrimeGQL.RegionDetailsFragment> { seal in
                 if let value = regionResponse.first {
                     seal.fulfill(value)
                 } else {
@@ -301,7 +288,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request SIM profiles for
     /// - Returns: A promise which when fullfilled contains the requested profiles
-    public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[SimProfile]> {
+    public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[PrimeGQL.SimProfileFields]> {
         return self.getToken()
         .then { _ in
             return PromiseKit.Promise { seal in
@@ -310,17 +297,7 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    
-                    var resultList: [SimProfile] = []
-                    
-                    if let data = result?.data {
-                        if let region = data.context.regions?.first, let simProfiles = region.simProfiles {
-                            // TODO: Why does $0 (simProfile) not have fragments?
-                            resultList = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
-                        }
-                    }
-                    
-                    seal.fulfill(resultList)
+                    seal.fulfill(result?.data?.context.regions.first?.simProfiles?.map({ $0.fragments.simProfileFields}) ?? [])
                 }
             }
         }
@@ -392,9 +369,9 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
-    public func getRegionFromRegions() -> PromiseKit.Promise<RegionResponse> {
+    public func getRegionFromRegions() -> PromiseKit.Promise<PrimeGQL.RegionDetailsFragment> {
         return self.loadRegions()
-            .map { regions -> RegionResponse in
+            .map { regions -> PrimeGQL.RegionDetailsFragment in
                 guard let region = RegionResponse.getRegionFromRegionResponseArray(regions) else {
                     throw Error.failedToGetRegion
                 }

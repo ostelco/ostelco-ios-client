@@ -11,7 +11,7 @@ import Crashlytics
 import ostelco_core
 
 protocol ESIMPendingDownloadDelegate: class {
-    func profileChanged(_ profile: SimProfile)
+    func profileChanged(_ profile: PrimeGQL.SimProfileFields)
     func countryCode() -> String
 }
 
@@ -19,7 +19,7 @@ class ESIMPendingDownloadViewController: UIViewController {
     
     weak var delegate: ESIMPendingDownloadDelegate?
     var spinnerView: UIView?
-    var simProfile: SimProfile?
+    var simProfile: PrimeGQL.SimProfileFields?
     
     @IBOutlet private weak var continueButton: UIButton!
     
@@ -86,7 +86,7 @@ class ESIMPendingDownloadViewController: UIViewController {
             }
     }
     
-    private func handleGotSimProfiles(_ profiles: [SimProfile]) {
+    private func handleGotSimProfiles(_ profiles: [PrimeGQL.SimProfileFields]) {
         guard let profile = profiles.first(where: {
             $0.iccId == self.simProfile?.iccId
         }) else {
@@ -95,29 +95,29 @@ class ESIMPendingDownloadViewController: UIViewController {
         }
         
         self.simProfile = profile
-        if profile.status == .INSTALLED {
+        if profile.status == .installed {
             self.delegate!.profileChanged(profile)
         }
     }
     
-    func getSimProfileForRegion(region: RegionResponse) {
+    func getSimProfileForRegion(region: PrimeGQL.RegionDetailsFragment) {
         guard let existingProfiles = region.simProfiles, existingProfiles.isNotEmpty else {
             self.createSimProfileForRegion(region)
             return
         }
         
-        if let enabledProfile = existingProfiles.first(where: { $0.status == .ENABLED }) {
-            self.simProfile = enabledProfile
-        } else if let almostReadyProfile = existingProfiles.first(where: { [.AVAILABLE_FOR_DOWNLOAD, .DOWNLOADED, .INSTALLED].contains($0.status) }) {
-            self.simProfile = almostReadyProfile
+        if let enabledProfile = existingProfiles.first(where: { $0.fragments.simProfileFields.status == .enabled }) {
+            self.simProfile = enabledProfile.fragments.simProfileFields
+        } else if let almostReadyProfile = existingProfiles.first(where: { [.availableForDownload, .downloaded, .installed].contains($0.fragments.simProfileFields.status) }) {
+            self.simProfile = almostReadyProfile.fragments.simProfileFields
         } else {
-            self.simProfile = existingProfiles.first
+            self.simProfile = existingProfiles.first?.fragments.simProfileFields
         }
         
-        self.handleGotSimProfiles(existingProfiles)
+        self.handleGotSimProfiles(existingProfiles.map({ $0.fragments.simProfileFields }))
     }
     
-    private func createSimProfileForRegion(_ region: RegionResponse) {
+    private func createSimProfileForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
         let countryCode = region.region.id
         self.spinnerView = self.showSpinner(onView: self.view)
         APIManager.shared.primeAPI
@@ -127,8 +127,8 @@ class ESIMPendingDownloadViewController: UIViewController {
                 self?.spinnerView = nil
             }
             .done { [weak self] profile in
-                self?.simProfile = profile
-                self?.handleGotSimProfiles([profile])
+                self?.simProfile = profile.getGraphQLModel().fragments.simProfileFields
+                self?.handleGotSimProfiles([profile.getGraphQLModel().fragments.simProfileFields])
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)

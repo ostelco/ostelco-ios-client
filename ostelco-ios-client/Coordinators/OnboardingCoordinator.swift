@@ -352,7 +352,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 }
 
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
-    func profileChanged(_ profile: SimProfile) {
+    func profileChanged(_ profile: PrimeGQL.SimProfileFields) {
         advance()
     }
 }
@@ -389,7 +389,7 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 }
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
-    func waitingCompletedSuccessfully(for region: RegionResponse) {
+    func waitingCompletedSuccessfully(for region: PrimeGQL.RegionDetailsFragment) {
         advance()
     }
     

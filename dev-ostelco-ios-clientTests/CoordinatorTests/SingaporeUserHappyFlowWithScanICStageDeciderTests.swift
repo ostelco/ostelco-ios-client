@@ -16,8 +16,8 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     func testUserHasSelectedScanIC() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC)
-        
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: [])
+        let regions: [PrimeGQL.RegionDetailsFragment] = []
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nric)
     }

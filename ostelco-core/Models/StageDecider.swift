@@ -108,9 +108,9 @@ public struct StageDecider {
         }
     }
 
-    private func eSIMStage(_ region: RegionResponse, _ localContext: LocalContext) -> StageDecider.Stage {
+    private func eSIMStage(_ region: PrimeGQL.RegionDetailsFragment, _ localContext: LocalContext) -> StageDecider.Stage {
         if let profile = region.getSimProfile() {
-            if profile.status == .INSTALLED {
+            if profile.status == .installed {
                 if localContext.hasSeenAwesome || !localContext.hasSeenESimOnboarding {
                     return .home
                 }
@@ -144,7 +144,7 @@ public struct StageDecider {
         }
         
         // 3. ESim flow.
-        if let region = context.getRegion(), region.status == .APPROVED {
+        if let region = context.getRegion(), region.status == .approved {
             return eSIMStage(region, localContext)
         }
         
@@ -162,10 +162,10 @@ public struct StageDecider {
         
         // Specific to Singapore, normal flow, not cold start
         if localContext.selectedVerificationOption == .scanIC {
-            if let region = context.getRegion(), region.kycStatusMap.NRIC_FIN == .APPROVED {
+            if let region = context.getRegion(), region.kycStatusMap.nricFin! == .approved {
                 if localContext.hasCompletedJumio {
-                    if region.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
-                        if region.kycStatusMap.JUMIO == .REJECTED {
+                    if region.kycStatusMap.addressAndPhoneNumber! == .approved {
+                        if region.kycStatusMap.jumio! == .rejected {
                             return .ohNo(.ekycRejected)
                         }
                         return .pendingVerification
@@ -183,7 +183,7 @@ public struct StageDecider {
             
             if options.count == 1 { // All other countries
                 if localContext.hasCompletedJumio {
-                    if context.getRegion()?.kycStatusMap.JUMIO == .REJECTED {
+                    if context.getRegion()?.kycStatusMap.jumio! == .rejected {
                         return .ohNo(.ekycRejected)
                     }
                     return .pendingVerification
@@ -195,8 +195,8 @@ public struct StageDecider {
         
         // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
         if localContext.hasCompletedJumio, localContext.selectedVerificationOption == nil {
-            if context.getRegion()?.kycStatusMap.NRIC_FIN == .APPROVED {
-                if context.getRegion()?.kycStatusMap.ADDRESS_AND_PHONE_NUMBER == .APPROVED {
+            if context.getRegion()?.kycStatusMap.nricFin! == .approved {
+                if context.getRegion()?.kycStatusMap.addressAndPhoneNumber! == .approved {
                     return .verifyIdentityOnboarding
                 }
             }

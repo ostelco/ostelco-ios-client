@@ -166,7 +166,7 @@ public enum PrimeGQL {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .list(.nonNull(.object(Region.selections)))),
+          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .nonNull(.list(.nonNull(.object(Region.selections))))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -175,8 +175,8 @@ public enum PrimeGQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(regions: [Region]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }])
+        public init(regions: [Region]) {
+          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -188,12 +188,12 @@ public enum PrimeGQL {
           }
         }
 
-        public var regions: [Region]? {
+        public var regions: [Region] {
           get {
-            return (resultMap["regions"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Region] in value.map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } }
+            return (resultMap["regions"] as! [ResultMap]).map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) }
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }, forKey: "regions")
+            resultMap.updateValue(newValue.map { (value: Region) -> ResultMap in value.resultMap }, forKey: "regions")
           }
         }
 
@@ -421,7 +421,7 @@ public enum PrimeGQL {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .list(.nonNull(.object(Region.selections)))),
+          GraphQLField("regions", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .nonNull(.list(.nonNull(.object(Region.selections))))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -430,8 +430,8 @@ public enum PrimeGQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(regions: [Region]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }])
+        public init(regions: [Region]) {
+          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -443,12 +443,12 @@ public enum PrimeGQL {
           }
         }
 
-        public var regions: [Region]? {
+        public var regions: [Region] {
           get {
-            return (resultMap["regions"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Region] in value.map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } }
+            return (resultMap["regions"] as! [ResultMap]).map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) }
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }, forKey: "regions")
+            resultMap.updateValue(newValue.map { (value: Region) -> ResultMap in value.resultMap }, forKey: "regions")
           }
         }
 
@@ -587,7 +587,7 @@ public enum PrimeGQL {
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("customer", type: .object(Customer.selections)),
-          GraphQLField("regions", type: .list(.nonNull(.object(Region.selections)))),
+          GraphQLField("regions", type: .nonNull(.list(.nonNull(.object(Region.selections))))),
         ]
 
         public private(set) var resultMap: ResultMap
@@ -596,8 +596,8 @@ public enum PrimeGQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(customer: Customer? = nil, regions: [Region]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }, "regions": regions.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }])
+        public init(customer: Customer? = nil, regions: [Region]) {
+          self.init(unsafeResultMap: ["__typename": "Context", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }, "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -618,12 +618,12 @@ public enum PrimeGQL {
           }
         }
 
-        public var regions: [Region]? {
+        public var regions: [Region] {
           get {
-            return (resultMap["regions"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Region] in value.map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) } }
+            return (resultMap["regions"] as! [ResultMap]).map { (value: ResultMap) -> Region in Region(unsafeResultMap: value) }
           }
           set {
-            resultMap.updateValue(newValue.flatMap { (value: [Region]) -> [ResultMap] in value.map { (value: Region) -> ResultMap in value.resultMap } }, forKey: "regions")
+            resultMap.updateValue(newValue.map { (value: Region) -> ResultMap in value.resultMap }, forKey: "regions")
           }
         }
 

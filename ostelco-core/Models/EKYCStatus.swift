@@ -12,4 +12,12 @@ public enum EKYCStatus: String, Codable, CaseIterable {
     case APPROVED
     case REJECTED
     case PENDING
+    
+    func getGraphQLModel() -> PrimeGQL.KycStatus {
+        return PrimeGQL.KycStatus(rawValue: self.rawValue.lowercased())!
+    }
+    
+    func toCustomerRegionStatus() -> PrimeGQL.CustomerRegionStatus {
+        return PrimeGQL.CustomerRegionStatus(rawValue: self.rawValue.lowercased())!
+    }
 }

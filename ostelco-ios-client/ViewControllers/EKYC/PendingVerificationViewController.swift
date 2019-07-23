@@ -11,7 +11,7 @@ import OstelcoStyles
 import UIKit
 
 protocol PendingVerificationDelegate: class {
-    func waitingCompletedSuccessfully(for region: RegionResponse)
+    func waitingCompletedSuccessfully(for region: PrimeGQL.RegionDetailsFragment)
     func countryCode() -> String
     func waitingCompletedWithRejection()
 }
@@ -73,7 +73,7 @@ class PendingVerificationViewController: UIViewController {
             }
             .done { [weak self] regionResponse in
                 switch regionResponse.status {
-                case .APPROVED:
+                case .approved:
                     self?.delegate?.waitingCompletedSuccessfully(for: regionResponse)
                 default:
                     self?.handleRegionPendingOrRejected(silentCheck: silentCheck, regionResponse: regionResponse)
@@ -91,17 +91,17 @@ class PendingVerificationViewController: UIViewController {
         }
     }
     
-    func handleRegionPendingOrRejected(silentCheck: Bool = false, regionResponse: RegionResponse) {
+    func handleRegionPendingOrRejected(silentCheck: Bool = false, regionResponse: PrimeGQL.RegionDetailsFragment) {
         if
-            let jumioStatus = regionResponse.kycStatusMap.JUMIO,
-            let nricStatus = regionResponse.kycStatusMap.NRIC_FIN,
-            let addressStatus = regionResponse.kycStatusMap.ADDRESS_AND_PHONE_NUMBER {
+            let jumioStatus = regionResponse.kycStatusMap.jumio,
+            let nricStatus = regionResponse.kycStatusMap.nricFin,
+            let addressStatus = regionResponse.kycStatusMap.addressAndPhoneNumber {
             switch (jumioStatus, nricStatus, addressStatus) {
-            case (.REJECTED, _, _), (_, .REJECTED, _), (_, _, .REJECTED):
+            case (.rejected, _, _), (_, .rejected, _), (_, _, .rejected):
                 self.delegate?.waitingCompletedWithRejection()
-            case (.APPROVED, .APPROVED, .APPROVED):
+            case (.approved, .approved, .approved):
                 self.delegate?.waitingCompletedSuccessfully(for: regionResponse)
-            case (.PENDING, _, _), (_, .PENDING, _), (_, _, .PENDING):
+            case (.pending, _, _), (_, .pending, _), (_, _, .pending):
                 self.handleRegionPending(silentCheck: silentCheck)
             default:
                 // This case means any of the above is pending, thus user has to wait

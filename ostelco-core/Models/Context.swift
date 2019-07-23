@@ -6,11 +6,35 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-public struct Context: Codable {
+public struct Context {
+    public let customer: CustomerModel?
+    public let regions: [PrimeGQL.RegionDetailsFragment]
+    
+    public init(customer: CustomerModel?, regions: [PrimeGQL.RegionDetailsFragment]) {
+        self.customer = customer
+        self.regions = regions
+    }
+    
+    public init(customer: CustomerModel?, regions: [RegionResponse]) {
+        self.customer = customer
+        self.regions = regions.map({ $0.getGraphQLModel() })
+    }
+    
+    public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
+        return RegionResponse.getRegionFromRegionResponseArray(regions)
+    }
+}
+
+public struct DecodableContext: Decodable {
     public let customer: CustomerModel?
     public let regions: [RegionResponse]
     
-    public func getRegion() -> RegionResponse? {
-        return RegionResponse.getRegionFromRegionResponseArray(regions)
+    public init(customer: CustomerModel?, regions: [RegionResponse]) {
+        self.customer = customer
+        self.regions = regions
+    }
+    
+    public func toContext() -> Context {
+        return Context(customer: customer, regions: regions)
     }
 }
