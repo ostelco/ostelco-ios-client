@@ -126,7 +126,7 @@ open class PrimeAPI: BasicNetwork {
         return self.getToken()
         .then { _ in
             return PromiseKit.Promise<Context> { seal in
-                self.client.fetch(query: PrimeGQL.ContextQuery()) { (result, error) in
+                self.client.fetch(query: PrimeGQL.ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     // TODO: Make sure we handle the case where we fetch context and there is no customer from server.
                     if let error = error {
                         seal.reject(error)
@@ -508,6 +508,8 @@ open class PrimeAPI: BasicNetwork {
             .region(code: "sg"),
             .kyc,
             .myInfo,
+            .v3,
+            .personData,
             .myInfoCode(code: code)
         ]
         
@@ -525,7 +527,9 @@ open class PrimeAPI: BasicNetwork {
         let myInfoEndpoints: [RegionEndpoint] = [
             .region(code: "sg"),
             .kyc,
-            .myInfoConfig
+            .myInfo,
+            .v3,
+            .config
         ]
 
         let path = RootEndpoint.regions.pathByAddingEndpoints(myInfoEndpoints)
