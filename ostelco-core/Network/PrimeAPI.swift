@@ -516,6 +516,8 @@ open class PrimeAPI: BasicNetwork {
             .region(code: "sg"),
             .kyc,
             .myInfo,
+            .v3,
+            .personData,
             .myInfoCode(code: code)
         ]
         
@@ -533,7 +535,9 @@ open class PrimeAPI: BasicNetwork {
         let myInfoEndpoints: [RegionEndpoint] = [
             .region(code: "sg"),
             .kyc,
-            .myInfoConfig
+            .myInfo,
+            .v3,
+            .config
         ]
 
         let path = RootEndpoint.regions.pathByAddingEndpoints(myInfoEndpoints)

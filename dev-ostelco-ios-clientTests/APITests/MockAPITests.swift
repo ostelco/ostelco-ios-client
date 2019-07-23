@@ -142,7 +142,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockFetchingMyInfoConfig() {
-        self.stubPath("regions/sg/kyc/myInfoConfig", toLoad: "my_info_config")
+        self.stubPath("regions/sg/kyc/myInfo/v3/config", toLoad: "my_info_config")
         
         guard let config = self.mockAPI.loadMyInfoConfig().awaitResult(in: self) else {
             // Failures handled in `awaitResult`
@@ -153,7 +153,7 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockFetchingMyInfo() {
-        self.stubPath("regions/sg/kyc/myInfo/some-singpass-code", toLoad: "my_info")
+        self.stubPath("regions/sg/kyc/myInfo/v3/personData/some-singpass-code", toLoad: "my_info")
         
         guard let info = self.mockAPI.loadSingpassInfo(code: "some-singpass-code").awaitResult(in: self) else {
             // Failures handled in `awaitResult`
@@ -161,7 +161,7 @@ class MockAPITests: XCTestCase {
         }
         
         XCTAssertEqual(info.name, "TAN XIAO HUI")
-        XCTAssertEqual(info.dob, "1970-05-17")
+        XCTAssertEqual(info.dob, "1998-06-06")
         XCTAssertEqual(info.email, "myinfotesting@gmail.com")
         XCTAssertEqual(info.nationality, "SG")
         XCTAssertEqual(info.residentialStatus, "C")

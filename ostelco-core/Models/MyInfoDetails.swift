@@ -9,14 +9,45 @@
 import Foundation
 
 public struct MyInfoAddress: Codable {
-    public let country: String?
-    public let unit: String?
-    public let street: String?
-    public let block: String?
-    public let postal: String?
-    public let floor: String?
-    public let building: String?
-    
+    private let _country: MyInfoOptionalCode?
+    public var country: String? {
+        return _country?.code
+    }
+    private let _unit: MyInfoOptionalValue?
+    public var unit: String? {
+        return _unit?.value
+    }
+    private let _street: MyInfoOptionalValue?
+    public var street: String? {
+        return _street?.value
+    }
+    private let _block: MyInfoOptionalValue?
+    public var block: String? {
+        return _block?.value
+    }
+    private let _postal: MyInfoOptionalValue?
+    public var postal: String? {
+        return _postal?.value
+    }
+    private let _floor: MyInfoOptionalValue?
+    public var floor: String? {
+        return _floor?.value
+    }
+    private let _building: MyInfoOptionalValue?
+    public var building: String? {
+        return _building?.value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case _country = "country"
+        case _unit = "unit"
+        case _street = "street"
+        case _block = "block"
+        case _postal = "postal"
+        case _floor = "floor"
+        case _building = "building"
+    }
+
     public init(country: String?,
                 unit: String?,
                 street: String?,
@@ -24,13 +55,13 @@ public struct MyInfoAddress: Codable {
                 postal: String?,
                 floor: String?,
                 building: String?) {
-        self.country = country
-        self.unit = unit
-        self.street = street
-        self.block = block
-        self.postal = postal
-        self.floor = floor
-        self.building = building
+        self._country = MyInfoOptionalCode(code: country, description: nil)
+        self._unit = MyInfoOptionalValue(value: unit)
+        self._street = MyInfoOptionalValue(value: street)
+        self._block = MyInfoOptionalValue(value: block)
+        self._postal = MyInfoOptionalValue(value: postal)
+        self._floor = MyInfoOptionalValue(value: floor)
+        self._building = MyInfoOptionalValue(value: building)
     }
     
     public var addressLine1: String {
@@ -70,19 +101,19 @@ public struct MyInfoDetails: Codable {
         return _email.value
     }
     
-    private let _sex: MyInfoOptionalValue?
+    private let _sex: MyInfoOptionalCode?
     public var sex: String? {
-        return _sex?.value
+        return _sex?.code
     }
     
-    private let _residentialStatus: MyInfoOptionalValue?
+    private let _residentialStatus: MyInfoOptionalCode?
     public var residentialStatus: String? {
-        return _residentialStatus?.value
+        return _residentialStatus?.code
     }
     
-    private let _nationality: MyInfoOptionalValue?
+    private let _nationality: MyInfoOptionalCode?
     public var nationality: String? {
-        return _nationality?.value
+        return _nationality?.code
     }
     
     public var address: MyInfoAddress
@@ -108,15 +139,33 @@ struct MyInfoOptionalValue: Codable {
     let value: String?
 }
 
-public struct MyInfoMobileNumber: Codable {
-    public let number: String?
-    public let code: String?
-    public let prefix: String?
-    
+struct MyInfoOptionalCode: Codable {
+    let code: String?
+    let description: String?
     enum CodingKeys: String, CodingKey {
-        case number = "nbr"
         case code
-        case prefix
+        case description = "desc"
+    }
+}
+
+public struct MyInfoMobileNumber: Codable {
+    private let _number: MyInfoOptionalValue?
+    public var number: String? {
+        return _number?.value
+    }
+    private let _code: MyInfoOptionalValue?
+    public var code: String? {
+        return _code?.value
+    }
+    private let _prefix: MyInfoOptionalValue?
+    public var prefix: String? {
+        return _prefix?.value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case _number = "nbr"
+        case _code = "areacode"
+        case _prefix = "prefix"
     }
     
     public var formattedNumber: String? {

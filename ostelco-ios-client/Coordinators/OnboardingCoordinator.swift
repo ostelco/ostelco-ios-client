@@ -314,6 +314,12 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
     func verifiedSingPassAddress() {
         advance()
     }
+
+    func failedToLoadMyInfo() {
+        localContext.selectedVerificationOption = nil
+        localContext.myInfoCode = nil
+        advance()
+    }
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {

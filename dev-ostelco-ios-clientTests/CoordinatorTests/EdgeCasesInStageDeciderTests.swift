@@ -101,7 +101,25 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
-    
+    func testMyInfoSummaryLoadFailedandSelectedVerificationOptionIsResetToNil() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
+                )
+            ]
+        )
+
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
+
     func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)

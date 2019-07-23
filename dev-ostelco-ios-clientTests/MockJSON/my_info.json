@@ -1,58 +1,83 @@
 {
-	"name": {
-		"lastupdated": "2018-03-20",
-		"source": "1",
-		"classification": "C",
-		"value": "TAN XIAO HUI"
-	},
-	"sex": {
-		"lastupdated": "2018-03-20",
-		"source": "1",
-		"classification": "C",
-		"value": "F"
-	},
-	"dob": {
-		"lastupdated": "2018-03-20",
-		"source": "1",
-		"classification": "C",
-		"value": "1970-05-17"
-	},
-	"residentialstatus": {
-		"lastupdated": "2018-03-23",
-		"source": "1",
-		"classification": "C",
-		"value": "C"
-	},
-	"nationality": {
-		"lastupdated": "2018-03-20",
-		"source": "1",
-		"classification": "C",
-		"value": "SG"
-	},
-	"mobileno": {
-		"lastupdated": "2018-08-23",
-		"code": "65",
-		"source": "4",
-		"classification": "C",
-		"prefix": "+",
-		"nbr": "97399245"
-	},
-	"email": {
-		"lastupdated": "2018-08-23",
-		"source": "4",
-		"classification": "C",
-		"value": "myinfotesting@gmail.com"
-	},
-	"mailadd": {
-		"country": "SG",
-		"unit": "128",
-		"street": "BEDOK NORTH AVENUE 4",
-		"lastupdated": "2018-03-20",
-		"block": "102",
-		"postal": "460102",
-		"source": "1",
-		"classification": "C",
-		"floor": "09",
-		"building": "PEARL GARDEN"
-	}
+    "name": {
+        "lastupdated": "2019-04-05",
+        "source": "1",
+        "classification": "C",
+        "value": "TAN XIAO HUI"
+    },
+    "sex": {
+        "lastupdated": "2019-04-05",
+        "code": "F",
+        "source": "1",
+        "classification": "C",
+        "desc": "FEMALE"
+    },
+    "dob": {
+        "lastupdated": "2019-04-05",
+        "source": "1",
+        "classification": "C",
+        "value": "1998-06-06"
+    },
+    "residentialstatus": {
+        "code": "C",
+        "desc": "CITIZEN",
+        "classification": "C",
+        "source": "1",
+        "lastupdated": "2019-03-26"
+    },
+    "nationality": {
+        "lastupdated": "2019-04-05",
+        "code": "SG",
+        "source": "1",
+        "classification": "C",
+        "desc": "SINGAPORE CITIZEN"
+    },
+    "email": {
+        "lastupdated": "2019-04-05",
+        "source": "2",
+        "classification": "C",
+        "value": "myinfotesting@gmail.com"
+    },
+    "mobileno": {
+        "lastupdated": "2019-04-05",
+        "source": "2",
+        "classification": "C",
+        "areacode": {
+            "value": "65"
+        },
+        "prefix": {
+            "value": "+"
+        },
+        "nbr": {
+            "value": "97399245"
+        }
+    },
+    "mailadd": {
+        "country": {
+            "code": "SG",
+            "desc": "SINGAPORE"
+        },
+        "unit": {
+            "value": "128"
+        },
+        "street": {
+            "value": "BEDOK NORTH AVENUE 4"
+        },
+        "lastupdated": "2019-04-05",
+        "block": {
+            "value": "102"
+        },
+        "source": "1",
+        "postal": {
+            "value": "460102"
+        },
+        "classification": "C",
+        "floor": {
+            "value": "09"
+        },
+        "type": "SG",
+        "building": {
+            "value": "PEARL GARDEN"
+        }
+    }
 }
