@@ -218,8 +218,22 @@ extension OnboardingCoordinator: TheLegalStuffDelegate {
 }
 
 extension OnboardingCoordinator: GetStartedDelegate {
-    func nameEnteredSuccessfully() {
-        advance()
+    func enteredNickname(_ nickname: String) {
+        guard let email = UserManager.shared.currentUserEmail else {
+            navigationController.showAlert(title: "Error", msg: "Email is empty or missing in Firebase")
+            return
+        }
+        
+        let user = UserSetup(nickname: nickname, email: email)
+        
+        APIManager.shared.primeAPI.createCustomer(with: user)
+        .done { [weak self] customer in
+            OstelcoAnalytics.logEvent(.EnteredNickname)
+            UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
+            self?.advance()
+        }
+        .cauterize()
+        // There is no catch. The only reason this could error is if the server is unreachable which we handle otherwise.
     }
 }
 

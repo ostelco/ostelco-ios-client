@@ -10,7 +10,7 @@ import UIKit
 import ostelco_core
 
 protocol GetStartedDelegate: class {
-    func nameEnteredSuccessfully()
+    func enteredNickname(_ nickname: String)
 }
 
 class GetStartedViewController: UIViewController {
@@ -34,33 +34,13 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let email = UserManager.shared.currentUserEmail else {
-            self.showAlert(title: "Error", msg: "Email is empty or missing in Firebase")
-            return
-        }
-        
-        guard let nickname = self.nameTextField.text else {
+        guard let nickname = nameTextField.text else {
             ApplicationErrors.assertAndLog("No nickname but passed validation?!")
             return
         }
-        
-        self.spinnerView = self.showSpinner(onView: self.view)
-        let user = UserSetup(nickname: nickname, email: email)
 
-        APIManager.shared.primeAPI.createCustomer(with: user)
-            .ensure { [weak self] in
-                self?.removeSpinner(self?.spinnerView)
-                self?.spinnerView = nil
-            }
-            .done { [weak self] customer in
-                OstelcoAnalytics.logEvent(.EnteredNickname)
-                UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
-                self?.delegate?.nameEnteredSuccessfully()
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-            }
+        spinnerView = showSpinner(onView: view)
+        delegate?.enteredNickname(nickname)
     }
 }
 
