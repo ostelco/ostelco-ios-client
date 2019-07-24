@@ -238,8 +238,28 @@ extension OnboardingCoordinator: GetStartedDelegate {
 }
 
 extension OnboardingCoordinator: EnableNotificationsDelegate {
+    func requestPermission() {
+        PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
+        .ensure { [weak self] in
+            self?.localContext.hasSeenNotificationPermissions = true
+        }
+        .done { [weak self] _ in
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            switch error {
+            case PushNotificationController.Error.notAuthorized:
+                // The user declined push notifications. Oh well. Let's move on.
+                self?.advance()
+            default:
+                ApplicationErrors.log(error)
+                self?.navigationController.showGenericError(error: error)
+            }
+        }
+    }
+    
     func pushAgreedOrDenied() {
-        localContext.hasSeenNotificationPermissions = true
+        
         advance()
     }
 }
