@@ -347,12 +347,41 @@ extension OnboardingCoordinator: ESIMOnBoardingDelegate {
 extension OnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions() {
         localContext.hasSeenESIMInstructions = true
-        advance()
+        
+        APIManager.shared.primeAPI.loadContext()
+        .then { (context) -> PromiseKit.Promise<SimProfile> in
+            let countryCode = context.getRegion()!.region.country.countryCode
+            return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
+        }
+        .done { [weak self] (_) -> Void in
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
 }
 
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
-    func profileChanged(_ profile: SimProfile) {
+    func resendEmail() {
+        APIManager.shared.primeAPI.loadContext()
+        .then { (context) -> PromiseKit.Promise<SimProfile> in
+            let region = context.getRegion()!
+            let profile = region.getSimProfile()!
+            
+            return APIManager.shared.primeAPI.resendEmailForSimProfileInRegion(code: region.region.country.countryCode, iccId: profile.iccId)
+        }
+        .done { [weak self] _ in
+            self?.navigationController.showAlert(title: "Message", msg: "We have resent the QR code to your email address.")
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
+    }
+    
+    func checkAgain() {
         advance()
     }
 }
