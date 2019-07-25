@@ -49,3 +49,15 @@ extension CustomerModel {
         self.referralId = gqlCustomer.referralId
     }
 }
+
+extension PrimeGQL.ContextQuery.Data.Context.Customer {
+    public init(legacyModel: CustomerModel) {
+        self.init(
+            id: legacyModel.id,
+            contactEmail: legacyModel.email,
+            nickname: legacyModel.name,
+            referralId: legacyModel.referralId,
+            analyticsId: legacyModel.analyticsId
+        )
+    }
+}

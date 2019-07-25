@@ -19,7 +19,7 @@ class ContextTests: XCTestCase {
         let url = bundle.url(forResource: "context_with_too_many_profiles", withExtension: "json", subdirectory: "MockJSON")!
         let data = try Data(contentsOf: url)
         
-        let context = try JSONDecoder().decode(Context.self, from: data)
+        let context = try JSONDecoder().decode(DecodableContext.self, from: data).toContext()
         
         let region = context.getRegion()
         XCTAssertNotNil(region)

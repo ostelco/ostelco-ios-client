@@ -11,27 +11,23 @@ import Foundation
 
 extension RegionResponse {
     
-    static var testApprovedRegionResponse: RegionResponse {
-        let region = Region(id: "1", name: "ApprovedRegion")
-        return RegionResponse(region: region,
-                              status: .APPROVED,
-                              simProfiles: nil,
-                              kycStatusMap: KYCStatusMap())
+    static var testApprovedRegionResponse: PrimeGQL.RegionDetailsFragment {
+        let region = PrimeGQL.RegionDetailsFragment.Region(id: "1", name: "ApprovedRegion")
+        return PrimeGQL.RegionDetailsFragment(
+            region: region,
+            status: .approved,
+            kycStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap(),
+            simProfiles: nil
+        )
     }
     
-    static var testPendingRegionResponse: RegionResponse {
-        let region = Region(id: "2", name: "PendingRegion")
-        return RegionResponse(region: region,
-                              status: .PENDING,
-                              simProfiles: nil,
-                              kycStatusMap: KYCStatusMap())
-    }
-    
-    static var testRejectedRegionRepsonse: RegionResponse {
-        let region = Region(id: "3", name: "RejectedRegion")
-        return RegionResponse(region: region,
-                              status: .REJECTED,
-                              simProfiles: nil,
-                              kycStatusMap: KYCStatusMap())
+    static var testPendingRegionResponse: PrimeGQL.RegionDetailsFragment {
+        let region = PrimeGQL.RegionDetailsFragment.Region(id: "2", name: "PendingRegion")
+        return PrimeGQL.RegionDetailsFragment(
+            region: region,
+            status: .pending,
+            kycStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap(),
+            simProfiles: nil
+        )
     }
 }

@@ -21,14 +21,14 @@ public class Product {
     let subTotal: Decimal
     let payeeLabel: String
 
-    init(from: ProductModel, countryCode: String) {
-        self.name = "\(from.presentation.label) of Data"
-        self.label = "Buy \(from.presentation.label) for \(from.presentation.price)"
+    init(from: PrimeGQL.ProductFragment, countryCode: String) {
+        self.name = "\(from.presentation.productLabel) of Data"
+        self.label = "Buy \(from.presentation.productLabel) for \(from.presentation.priceLabel)"
         self.amount = Decimal(from.price.amount)
         self.country = countryCode
         self.currency = from.price.currency
         self.sku = from.sku
-        self.type = from.type
+        self.type = from.properties.productClass?.lowercased() ?? "simple_data"
         self.taxLabel = from.presentation.taxLabel ?? ""
         self.tax = Decimal(string: from.presentation.tax ?? "" ) ?? 0
         self.subTotalLabel = from.presentation.subTotalLabel ?? ""

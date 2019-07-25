@@ -27,12 +27,12 @@ class PurchaseRecord {
         self.date = date
     }
 
-    init(from: PurchaseModel) {
+    init(from: PrimeGQL.PurchasesQuery.Data.Context.Purchase) {
         let strDate = PurchaseRecord.dateFormatter.string(
             from: Date(timeIntervalSince1970: (Double(from.timestamp) / 1000.0))
         )
-        name = from.product.presentation.label
-        amount = from.product.presentation.price
+        name = from.product.fragments.productFragment.presentation.productLabel
+        amount = from.product.fragments.productFragment.presentation.priceLabel
         date = strDate
     }
 }

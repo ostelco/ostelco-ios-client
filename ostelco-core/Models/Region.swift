@@ -86,34 +86,64 @@ public struct RegionResponse: Codable {
         self.kycStatusMap = kycStatusMap
     }
     
-    public static func getRegionFromRegionResponseArray(_ regionResponses: [RegionResponse]) -> RegionResponse? {
-        if let approvedRegion = regionResponses.first(where: { $0.status == .APPROVED }) {
+    public static func getRegionFromRegionResponseArray(_ regionResponses: [PrimeGQL.RegionDetailsFragment]) -> PrimeGQL.RegionDetailsFragment? {
+        if let approvedRegion = regionResponses.first(where: { $0.status == .approved }) {
             // Hooray, at least one region has been approved!
             return approvedRegion
-        } else if let rejectedRegion = regionResponses.last(where: { $0.status == .REJECTED }) {
-            // Boo, at least one region has been rejected.
-            return rejectedRegion
         }
         
         // If we've gotten here, return the last response, which is either nil or .PENDING
         return regionResponses.last
     }
     
-    public func getSimProfile() -> SimProfile? {
-        return self.simProfiles?.first
+    func getGraphQLModel() -> PrimeGQL.RegionDetailsFragment {
+        return PrimeGQL.RegionDetailsFragment(
+            region: PrimeGQL.RegionDetailsFragment.Region(id: region.id, name: region.name),
+            status: status.toCustomerRegionStatus(),
+            kycStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap(legacyModel: kycStatusMap),
+            simProfiles: simProfiles?.map({ $0.getGraphQLModel() }))
+    }
+}
+
+extension PrimeGQL.RegionDetailsFragment.KycStatusMap {
+    public init(legacyModel: KYCStatusMap) {
+        self.init()
+        if let JUMIO = legacyModel.JUMIO {
+            self.jumio = JUMIO.getGraphQLModel()
+        }
+        if let NRIC_FIN = legacyModel.NRIC_FIN {
+            self.nricFin = NRIC_FIN.getGraphQLModel()
+        }
+        if let ADDRESS_AND_PHONE_NUMBER = legacyModel.ADDRESS_AND_PHONE_NUMBER {
+            self.addressAndPhoneNumber = ADDRESS_AND_PHONE_NUMBER.getGraphQLModel()
+        }
+        if let MY_INFO = legacyModel.MY_INFO {
+            self.myInfo = MY_INFO.getGraphQLModel()
+        }
+    }
+}
+
+extension PrimeGQL.RegionDetailsFragment {
+    public func getSimProfile() -> PrimeGQL.SimProfileFields? {
+        return self.simProfiles?.first?.fragments.simProfileFields
     }
 }
 
 extension RegionResponse {
     public init(gqlData regionDetails: PrimeGQL.RegionDetailsFragment) {
         let region = regionDetails.region
-        let status = regionDetails.status!
-        let kycStatusMap = regionDetails.kycStatusMap!
-        let simProfiles = regionDetails.simProfiles!
+        let status = regionDetails.status
+        let kycStatusMap = regionDetails.kycStatusMap
+        let simProfiles = regionDetails.simProfiles
         
         self.region = Region(gqlRegion: region)
         self.status = EKYCStatus(rawValue: status.rawValue)!
         self.kycStatusMap = KYCStatusMap(gqlKYCStatusMap: kycStatusMap)
-        self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
+        
+        if let simProfiles = simProfiles {
+            self.simProfiles = simProfiles.map({ SimProfile(gqlSimProfile: $0.fragments.simProfileFields) })
+        } else {
+            self.simProfiles = nil
+        }
     }
 }

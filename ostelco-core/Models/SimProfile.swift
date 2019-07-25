@@ -14,6 +14,12 @@ public enum SimProfileStatus: String, Codable {
     case NOT_READY
 }
 
+extension SimProfileStatus {
+    func getGraphQLModel() -> PrimeGQL.SimProfileStatus {
+        return PrimeGQL.SimProfileStatus(rawValue: self.rawValue)!
+    }
+}
+
 public struct SimProfile: Codable, Equatable {
     public let eSimActivationCode: String
     public let alias: String
@@ -39,5 +45,9 @@ extension SimProfile {
                   iccId: gqlSimProfile.iccId,
                   status: status
         )
+    }
+    
+    public func getGraphQLModel() -> PrimeGQL.RegionDetailsFragment.SimProfile {
+        return PrimeGQL.RegionDetailsFragment.SimProfile(eSimActivationCode: eSimActivationCode, alias: alias, iccId: iccId, status: status.getGraphQLModel())
     }
 }

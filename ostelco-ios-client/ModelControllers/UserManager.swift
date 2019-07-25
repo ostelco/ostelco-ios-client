@@ -18,7 +18,7 @@ class UserManager: TokenProvider {
     
     static let shared = UserManager()
     
-    var customer: CustomerModel? {
+    var customer: PrimeGQL.ContextQuery.Data.Context.Customer? {
         didSet {
             guard let customer = self.customer else {
                 Freshchat.sharedInstance().resetUser(completion: { () in
@@ -30,13 +30,13 @@ class UserManager: TokenProvider {
             
             Freshchat.sharedInstance().identifyUser(withExternalID: customer.id, restoreID: nil)
             let fcUser = FreshchatUser.sharedInstance()
-            fcUser?.firstName = customer.name
-            fcUser?.email = customer.email
+            fcUser?.firstName = customer.nickname
+            fcUser?.email = customer.contactEmail
             Freshchat.sharedInstance().setUser(fcUser)
             
             Crashlytics.sharedInstance().setUserIdentifier(customer.id)
-            Crashlytics.sharedInstance().setUserName(customer.name)
-            Crashlytics.sharedInstance().setUserEmail(customer.email)
+            Crashlytics.sharedInstance().setUserName(customer.nickname)
+            Crashlytics.sharedInstance().setUserEmail(customer.contactEmail)
         }
     }
     
