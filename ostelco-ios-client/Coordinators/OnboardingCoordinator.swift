@@ -204,10 +204,22 @@ extension OnboardingCoordinator: LoginDelegate {
 }
 
 extension OnboardingCoordinator: EmailEntryDelegate {
-    func emailLinkSent(email: String) {
-        localContext.enteredEmailAddress = email
-        UserDefaultsWrapper.pendingEmail = email
-        advance()
+    func sendEmailLink(email: String) {
+        
+        let spinnerView = navigationController.showSpinner()
+        EmailLinkManager.linkEmail(email)
+        .ensure { [weak self] in
+            self?.navigationController.removeSpinner(spinnerView)
+        }
+        .done { [weak self] (_) in
+            self?.localContext.enteredEmailAddress = email
+            UserDefaultsWrapper.pendingEmail = email
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
 }
 
@@ -218,7 +230,7 @@ extension OnboardingCoordinator: CheckEmailDelegate {
             return
         }
         
-        let spinnerView = navigationController.showSpinner(onView: navigationController.view)
+        let spinnerView = navigationController.showSpinner()
         EmailLinkManager.linkEmail(email)
         .ensure { [weak self] in
             self?.navigationController.removeSpinner(spinnerView)

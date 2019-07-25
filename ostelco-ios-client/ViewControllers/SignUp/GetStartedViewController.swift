@@ -39,7 +39,7 @@ class GetStartedViewController: UIViewController {
             return
         }
 
-        spinnerView = showSpinner(onView: view)
+        spinnerView = showSpinner()
         delegate?.enteredNickname(nickname)
     }
 }

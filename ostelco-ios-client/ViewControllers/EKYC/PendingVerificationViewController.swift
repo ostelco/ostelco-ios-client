@@ -65,7 +65,7 @@ class PendingVerificationViewController: UIViewController {
             fatalError("Missing country code!")
         }
         
-        let spinnerView = showSpinner(onView: self.view)
+        let spinnerView = showSpinner()
         APIManager.shared.primeAPI
             .loadRegion(code: countryCode)
             .ensure { [weak self] in

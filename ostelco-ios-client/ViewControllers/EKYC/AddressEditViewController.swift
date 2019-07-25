@@ -150,7 +150,7 @@ class AddressEditViewController: UITableViewController {
         let countryCode = delegate?.countryCode()
         let address = self.buildAddress()
         
-        self.spinnerView = showSpinner(onView: self.view)
+        self.spinnerView = showSpinner()
 
         APIManager.shared.primeAPI
             .addAddress(address, forRegion: countryCode!)

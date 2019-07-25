@@ -64,7 +64,7 @@ class UserManager: TokenProvider {
     }
     
     func deleteAccount(showingIn viewController: UIViewController) {
-        let spinnerView = viewController.showSpinner(onView: viewController.view)
+        let spinnerView = viewController.showSpinner()
         APIManager.shared.primeAPI.deleteCustomer()
             .ensure { [weak viewController] in
                 viewController?.removeSpinner(spinnerView)

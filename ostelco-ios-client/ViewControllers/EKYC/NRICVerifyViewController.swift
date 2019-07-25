@@ -40,7 +40,7 @@ class NRICVerifyViewController: UIViewController {
         }
         
         self.nricErrorLabel.isHidden = true
-        self.spinnerView = self.showSpinner(onView: self.view)
+        self.spinnerView = self.showSpinner()
         APIManager.shared.primeAPI
             .validateNRIC(nric, forRegion: countryCode)
             .ensure { [weak self] in

@@ -44,7 +44,7 @@ class MyInfoSummaryViewController: UIViewController {
             return
         }
         
-        self.spinnerView = self.showSpinner(onView: self.view, loadingText: NSLocalizedString("Loading your data from SingPass...", comment: "Loading text after user approves SingPass"))
+        self.spinnerView = self.showSpinner(loadingText: NSLocalizedString("Loading your data from SingPass...", comment: "Loading text after user approves SingPass"))
         APIManager.shared.primeAPI
             .loadSingpassInfo(code: code)
             .ensure { [weak self] in
@@ -75,7 +75,7 @@ class MyInfoSummaryViewController: UIViewController {
                 return
         }
         
-        self.spinnerView = self.showSpinner(onView: self.view)
+        self.spinnerView = self.showSpinner()
         APIManager.shared.primeAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
             .ensure { [weak self] in
                 self?.removeSpinner(self?.spinnerView)

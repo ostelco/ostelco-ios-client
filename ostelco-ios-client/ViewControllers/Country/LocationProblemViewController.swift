@@ -30,28 +30,30 @@ class LocationProblemViewController: UIViewController {
     
     var locationProblem: LocationProblem? {
         didSet {
-            self.configureForCurrentProblem()
+            configureForCurrentProblem()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureForCurrentProblem()
-        self.listenForChanges()
+        configureForCurrentProblem()
+        listenForChanges()
         
-        NotificationCenter.default
-            .addObserver(self,
-                         selector: #selector(applicationEnteredForeground),
-                         name: UIApplication.willEnterForegroundNotification,
-                         object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationEnteredForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
     
     @objc private func applicationEnteredForeground() {
-        switch self.locationProblem {
+        switch locationProblem {
         case .disabledInSettings?:
-            if LocationController.shared.locationServicesEnabled {
-                LocationController.shared.requestAuthorization()
+            let controller = LocationController.shared
+            if controller.locationServicesEnabled {
+                controller.requestAuthorization()
             }
         default:
             // Other situations should be handled by the permission change callback.
@@ -60,41 +62,39 @@ class LocationProblemViewController: UIViewController {
     }
     
     private func configureForCurrentProblem() {
-        guard
-            let problem = self.locationProblem,
-            self.titleLabel != nil else {
-                // Things aren't set up yet, please try your call again after ViewDidLoad.
-                return
+        guard let problem = locationProblem, titleLabel != nil else {
+            // Things aren't set up yet, please try your call again after ViewDidLoad.
+            return
         }
         
-        self.titleLabel.text = problem.title
-        self.explanationLabel.tapDelegate = self
-        self.explanationLabel.setLinkableText(problem.linkableCopy)
+        titleLabel.text = problem.title
+        explanationLabel.tapDelegate = self
+        explanationLabel.setLinkableText(problem.linkableCopy)
         
         if let image = problem.image {
-            self.imageView.isHidden = false
-            self.gifView.isHidden = true
-            self.imageView.image = image
+            imageView.isHidden = false
+            gifView.isHidden = true
+            imageView.image = image
         } else if let url = problem.videoURL {
-            self.imageView.isHidden = true
-            self.gifView.isHidden = false
-            self.gifView.videoURL = url
-            self.gifView.play()
+            imageView.isHidden = true
+            gifView.isHidden = false
+            gifView.videoURL = url
+            gifView.play()
         } else {
-            self.imageView.isHidden = true
-            self.gifView.isHidden = true
+            imageView.isHidden = true
+            gifView.isHidden = true
         }
         
         if let buttonTitle = problem.primaryButtonTitle {
-            self.primaryButton.isHidden = false
-            self.primaryButton.setTitle(buttonTitle, for: .normal)
+            primaryButton.isHidden = false
+            primaryButton.setTitle(buttonTitle, for: .normal)
         } else {
-            self.primaryButton.isHidden = true
+            primaryButton.isHidden = true
         }
     }
     
     @IBAction private func primaryButtonTapped() {
-        guard let problem = self.locationProblem else {
+        guard let problem = locationProblem else {
             ApplicationErrors.assertAndLog("You should have a problem by this point!")
             return
         }
@@ -102,8 +102,7 @@ class LocationProblemViewController: UIViewController {
         switch problem {
         case .notDetermined:
             LocationController.shared.requestAuthorization()
-        case .disabledInSettings,
-             .deniedByUser:
+        case .disabledInSettings, .deniedByUser:
             guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
                 fatalError("Could not construct settings URL!")
             }
@@ -123,23 +122,22 @@ class LocationProblemViewController: UIViewController {
     }
     
     @IBAction private func needHelpTapped() {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     private func handleAuthorzationStatusChange(to status: CLAuthorizationStatus) {
         switch status {
         case .restricted:
-            self.locationProblem = .restrictedByParentalControls
-            self.listenForChanges()
+            locationProblem = .restrictedByParentalControls
+            listenForChanges()
         case .denied:
-            self.locationProblem = .deniedByUser
-            self.listenForChanges()
+            locationProblem = .deniedByUser
+            listenForChanges()
         case .notDetermined:
-            self.locationProblem = .notDetermined
-            self.listenForChanges()
-        case .authorizedAlways,
-             .authorizedWhenInUse:
-            self.delegate?.retry()
+            locationProblem = .notDetermined
+            listenForChanges()
+        case .authorizedAlways, .authorizedWhenInUse:
+            delegate?.retry()
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added a new status here! You should update this handling.")
         }
@@ -161,7 +159,7 @@ extension LocationProblemViewController: StoryboardLoadable {
 extension LocationProblemViewController: LabelTapDelegate {
     
     func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
-        guard self.locationProblem!.linkableCopy.isIndexLinked(characterIndex) else {
+        guard locationProblem!.linkableCopy.isIndexLinked(characterIndex) else {
             return
         }
         

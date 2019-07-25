@@ -23,12 +23,12 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.selectedStepIcon.tintColor = OstelcoColor.oyaBlue.toUIColor
+        selectedStepIcon.tintColor = OstelcoColor.oyaBlue.toUIColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setTitle()
+        setTitle()
     }
     
     @IBAction private func needHelpTapped(_ sender: UIButton) {
@@ -36,12 +36,12 @@ class VerifyCountryOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: UIButton) {
-        self.delegate?.finishedViewingCountryLandingScreen()
+        delegate?.finishedViewingCountryLandingScreen()
     }
     
     private func setTitle() {
         if let user = UserManager.shared.customer {
-            self.titleLabel.text = String(format: NSLocalizedString("Hi %@", comment: "User greeting during onboarding"), user.nickname)
+            titleLabel.text = String(format: NSLocalizedString("Hi %@", comment: "User greeting during onboarding"), user.name)
         }
     }
 }

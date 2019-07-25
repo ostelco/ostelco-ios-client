@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EmailEntryDelegate: class {
-    func emailLinkSent(email: String)
+    func sendEmailLink(email: String)
 }
 
 class EmailEntryViewController: UIViewController {
@@ -34,18 +34,7 @@ class EmailEntryViewController: UIViewController {
             return
         }
         
-        let spinnerView = self.showSpinner(onView: self.view)
-        EmailLinkManager.linkEmail(email)
-            .ensure { [weak self] in
-                self?.removeSpinner(spinnerView)
-            }
-            .done { [weak self] in
-                self?.delegate?.emailLinkSent(email: email)
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-            }
+        delegate?.sendEmailLink(email: email)
     }
     
     private func configureForValidationState() {
