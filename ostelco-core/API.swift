@@ -6,43 +6,43 @@ import Apollo
 public enum PrimeGQL {
   public enum SimProfileStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
-    case notReady
     case availableForDownload
     case downloaded
-    case installed
     case enabled
+    case installed
+    case notReady
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
     public init?(rawValue: RawValue) {
       switch rawValue {
-        case "NOT_READY": self = .notReady
         case "AVAILABLE_FOR_DOWNLOAD": self = .availableForDownload
         case "DOWNLOADED": self = .downloaded
-        case "INSTALLED": self = .installed
         case "ENABLED": self = .enabled
+        case "INSTALLED": self = .installed
+        case "NOT_READY": self = .notReady
         default: self = .__unknown(rawValue)
       }
     }
 
     public var rawValue: RawValue {
       switch self {
-        case .notReady: return "NOT_READY"
         case .availableForDownload: return "AVAILABLE_FOR_DOWNLOAD"
         case .downloaded: return "DOWNLOADED"
-        case .installed: return "INSTALLED"
         case .enabled: return "ENABLED"
+        case .installed: return "INSTALLED"
+        case .notReady: return "NOT_READY"
         case .__unknown(let value): return value
       }
     }
 
     public static func == (lhs: SimProfileStatus, rhs: SimProfileStatus) -> Bool {
       switch (lhs, rhs) {
-        case (.notReady, .notReady): return true
         case (.availableForDownload, .availableForDownload): return true
         case (.downloaded, .downloaded): return true
-        case (.installed, .installed): return true
         case (.enabled, .enabled): return true
+        case (.installed, .installed): return true
+        case (.notReady, .notReady): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -51,31 +51,31 @@ public enum PrimeGQL {
 
   public enum CustomerRegionStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
-    case pending
     case approved
+    case pending
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
     public init?(rawValue: RawValue) {
       switch rawValue {
-        case "PENDING": self = .pending
         case "APPROVED": self = .approved
+        case "PENDING": self = .pending
         default: self = .__unknown(rawValue)
       }
     }
 
     public var rawValue: RawValue {
       switch self {
-        case .pending: return "PENDING"
         case .approved: return "APPROVED"
+        case .pending: return "PENDING"
         case .__unknown(let value): return value
       }
     }
 
     public static func == (lhs: CustomerRegionStatus, rhs: CustomerRegionStatus) -> Bool {
       switch (lhs, rhs) {
-        case (.pending, .pending): return true
         case (.approved, .approved): return true
+        case (.pending, .pending): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -84,35 +84,35 @@ public enum PrimeGQL {
 
   public enum KycStatus: RawRepresentable, Equatable, Hashable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
+    case approved
     case pending
     case rejected
-    case approved
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
     public init?(rawValue: RawValue) {
       switch rawValue {
+        case "APPROVED": self = .approved
         case "PENDING": self = .pending
         case "REJECTED": self = .rejected
-        case "APPROVED": self = .approved
         default: self = .__unknown(rawValue)
       }
     }
 
     public var rawValue: RawValue {
       switch self {
+        case .approved: return "APPROVED"
         case .pending: return "PENDING"
         case .rejected: return "REJECTED"
-        case .approved: return "APPROVED"
         case .__unknown(let value): return value
       }
     }
 
     public static func == (lhs: KycStatus, rhs: KycStatus) -> Bool {
       switch (lhs, rhs) {
+        case (.approved, .approved): return true
         case (.pending, .pending): return true
         case (.rejected, .rejected): return true
-        case (.approved, .approved): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -548,9 +548,9 @@ public enum PrimeGQL {
 
   public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      id\n      contactEmail\n      nickname\n      referralId\n      analyticsId\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+      "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      ...customerFields\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
-    public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
+    public var queryDocument: String { return operationDefinition.appending(CustomerFields.fragmentDefinition).appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
 
     public init() {
     }
@@ -632,11 +632,7 @@ public enum PrimeGQL {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .nonNull(.scalar(String.self))),
-            GraphQLField("contactEmail", type: .nonNull(.scalar(String.self))),
-            GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
-            GraphQLField("referralId", type: .nonNull(.scalar(String.self))),
-            GraphQLField("analyticsId", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(CustomerFields.self),
           ]
 
           public private(set) var resultMap: ResultMap
@@ -658,48 +654,29 @@ public enum PrimeGQL {
             }
           }
 
-          public var id: String {
+          public var fragments: Fragments {
             get {
-              return resultMap["id"]! as! String
+              return Fragments(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue, forKey: "id")
+              resultMap += newValue.resultMap
             }
           }
 
-          public var contactEmail: String {
-            get {
-              return resultMap["contactEmail"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "contactEmail")
-            }
-          }
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
 
-          public var nickname: String {
-            get {
-              return resultMap["nickname"]! as! String
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
             }
-            set {
-              resultMap.updateValue(newValue, forKey: "nickname")
-            }
-          }
 
-          public var referralId: String {
-            get {
-              return resultMap["referralId"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "referralId")
-            }
-          }
-
-          public var analyticsId: String {
-            get {
-              return resultMap["analyticsId"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "analyticsId")
+            public var customerFields: CustomerFields {
+              get {
+                return CustomerFields(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
             }
           }
         }
@@ -931,6 +908,106 @@ public enum PrimeGQL {
                   resultMap += newValue.resultMap
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public final class CreateCustomerMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation CreateCustomer($email: String!, $name: String!) {\n  createCustomer(contactEmail: $email, nickname: $name) {\n    __typename\n    ...customerFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(CustomerFields.fragmentDefinition) }
+
+    public var email: String
+    public var name: String
+
+    public init(email: String, name: String) {
+      self.email = email
+      self.name = name
+    }
+
+    public var variables: GraphQLMap? {
+      return ["email": email, "name": name]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("createCustomer", arguments: ["contactEmail": GraphQLVariable("email"), "nickname": GraphQLVariable("name")], type: .nonNull(.object(CreateCustomer.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(createCustomer: CreateCustomer) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "createCustomer": createCustomer.resultMap])
+      }
+
+      public var createCustomer: CreateCustomer {
+        get {
+          return CreateCustomer(unsafeResultMap: resultMap["createCustomer"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "createCustomer")
+        }
+      }
+
+      public struct CreateCustomer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(CustomerFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: String, contactEmail: String, nickname: String, referralId: String, analyticsId: String) {
+          self.init(unsafeResultMap: ["__typename": "Customer", "id": id, "contactEmail": contactEmail, "nickname": nickname, "referralId": referralId, "analyticsId": analyticsId])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var customerFields: CustomerFields {
+            get {
+              return CustomerFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
             }
           }
         }
@@ -1612,6 +1689,86 @@ public enum PrimeGQL {
             resultMap += newValue.resultMap
           }
         }
+      }
+    }
+  }
+
+  public struct CustomerFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment customerFields on Customer {\n  __typename\n  id\n  contactEmail\n  nickname\n  referralId\n  analyticsId\n}"
+
+    public static let possibleTypes = ["Customer"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(String.self))),
+      GraphQLField("contactEmail", type: .nonNull(.scalar(String.self))),
+      GraphQLField("nickname", type: .nonNull(.scalar(String.self))),
+      GraphQLField("referralId", type: .nonNull(.scalar(String.self))),
+      GraphQLField("analyticsId", type: .nonNull(.scalar(String.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: String, contactEmail: String, nickname: String, referralId: String, analyticsId: String) {
+      self.init(unsafeResultMap: ["__typename": "Customer", "id": id, "contactEmail": contactEmail, "nickname": nickname, "referralId": referralId, "analyticsId": analyticsId])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var id: String {
+      get {
+        return resultMap["id"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var contactEmail: String {
+      get {
+        return resultMap["contactEmail"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "contactEmail")
+      }
+    }
+
+    public var nickname: String {
+      get {
+        return resultMap["nickname"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "nickname")
+      }
+    }
+
+    public var referralId: String {
+      get {
+        return resultMap["referralId"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "referralId")
+      }
+    }
+
+    public var analyticsId: String {
+      get {
+        return resultMap["analyticsId"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "analyticsId")
       }
     }
   }

@@ -41,7 +41,7 @@ public struct CustomerModel: Codable {
 }
 
 extension CustomerModel {
-    public init(gqlCustomer: PrimeGQL.ContextQuery.Data.Context.Customer) {
+    public init(gqlCustomer: PrimeGQL.CustomerFields) {
         self.id = gqlCustomer.id
         self.name = gqlCustomer.nickname
         self.email = gqlCustomer.contactEmail

@@ -1,11 +1,7 @@
 query Context {
     context {
         customer {
-            id
-            contactEmail
-            nickname
-            referralId
-            analyticsId
+            ...customerFields
         }
         regions {
             ...regionDetailsFragment
@@ -28,4 +24,12 @@ fragment regionDetailsFragment on RegionDetails {
     simProfiles {
         ...simProfileFields
     }
+}
+
+fragment customerFields on Customer {
+    id
+    contactEmail
+    nickname
+    referralId
+    analyticsId
 }

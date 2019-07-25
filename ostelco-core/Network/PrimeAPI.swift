@@ -198,12 +198,19 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
-    public func createCustomer(with userSetup: UserSetup) -> PromiseKit.Promise<CustomerModel> {
-        return self.sendQuery(to: RootEndpoint.customer.value, queryItems: userSetup.asQueryItems, method: .POST)
-            .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
+    public func createCustomer(with userSetup: UserSetup) -> PromiseKit.Promise<PrimeGQL.CustomerFields> {
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise { seal in
+                    self.client.perform(mutation: PrimeGQL.CreateCustomerMutation(email: userSetup.contactEmail, name: userSetup.nickname)) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        seal.fulfill((result?.data?.createCustomer.fragments.customerFields)!)
+                    }
+                }
             }
-            .map { try self.decoder.decode(CustomerModel.self, from: $0) }
     }
     
     /// Deletes the logged in customer.
@@ -564,6 +571,7 @@ open class PrimeAPI: BasicNetwork {
         return self.tokenProvider.getToken()
             .map { token -> String in
                 self.token = token
+                debugPrint(self.token)
                 return token
         }
     }

@@ -47,7 +47,7 @@ class OnboardingCoordinator {
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
                 
-                UserManager.shared.customer = context.customer
+                UserManager.shared.customer = context.customer?.fragments.customerFields
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)

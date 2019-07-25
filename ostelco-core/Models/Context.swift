@@ -40,7 +40,7 @@ extension PrimeGQL.ContextQuery.Data.Context {
     public func toLegacyModel() -> Context {
         var legacyCustomer: CustomerModel?
         if let customer = customer {
-            legacyCustomer = CustomerModel(gqlCustomer: customer)
+            legacyCustomer = CustomerModel(gqlCustomer: customer.fragments.customerFields)
         }
         return Context(customer: legacyCustomer, regions: self.regions.map({ $0.fragments.regionDetailsFragment }))
     }
