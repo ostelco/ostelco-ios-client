@@ -82,6 +82,7 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([emailEntry], animated: true)
         case .checkYourEmail:
             let checkYourEmail = CheckEmailViewController.fromStoryboard()
+            checkYourEmail.delegate = self
             navigationController.setViewControllers([checkYourEmail], animated: true)
         case .legalStuff:
             let legalStuff = TheLegalStuffViewController.fromStoryboard()
@@ -210,6 +211,32 @@ extension OnboardingCoordinator: EmailEntryDelegate {
     }
 }
 
+extension OnboardingCoordinator: CheckEmailDelegate {
+    func resendLoginEmail() {
+        guard let email = UserDefaultsWrapper.pendingEmail else {
+            ApplicationErrors.assertAndLog("No pending email?!")
+            return
+        }
+        
+        let spinnerView = navigationController.showSpinner(onView: navigationController.view)
+        EmailLinkManager.linkEmail(email)
+        .ensure { [weak self] in
+            self?.navigationController.removeSpinner(spinnerView)
+        }
+        .done { [weak self] in
+            let messageFormat = NSLocalizedString("We've resent your email to %@. If you're still having issues, please contact support.", comment: "Message for alert when login email is re-sent.")
+            self?.navigationController.showAlert(
+                title: NSLocalizedString("Resent!", comment: "Title for alert when login email is re-sent."),
+                msg: String(format: messageFormat, email)
+            )
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
+    }
+}
+
 extension OnboardingCoordinator: TheLegalStuffDelegate {
     func legaleseAgreed() {
         localContext.hasAgreedToTerms = true
@@ -220,7 +247,10 @@ extension OnboardingCoordinator: TheLegalStuffDelegate {
 extension OnboardingCoordinator: GetStartedDelegate {
     func enteredNickname(_ nickname: String) {
         guard let email = UserManager.shared.currentUserEmail else {
-            navigationController.showAlert(title: "Error", msg: "Email is empty or missing in Firebase")
+            navigationController.showAlert(
+                title: NSLocalizedString("Error", comment: "Error message title"),
+                msg: NSLocalizedString("Email is empty or missing in Firebase", comment: "Error message when we don't get info from Firebase")
+            )
             return
         }
         
