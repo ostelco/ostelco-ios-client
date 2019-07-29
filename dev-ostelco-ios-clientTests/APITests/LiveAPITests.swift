@@ -45,21 +45,21 @@ class LiveAPITests: XCTestCase {
     }
     
     func liveValidNRIC() {
-        guard let isValid = self.testAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
+        guard let nricInfo = self.testAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
             // Failure handled in `awaitResult`
             return
         }
         
-        XCTAssertTrue(isValid)
+        XCTAssertEqual("S9315107J", nricInfo.nric)
     }
     
     func liveInvalidNRIC() {
-        guard let isValid = self.testAPI.validateNRIC("UNIT_TESTS", forRegion: "sg").awaitResult(in: self) else {
+        guard let nricInfo = self.testAPI.validateNRIC("UNIT_TESTS", forRegion: "sg").awaitResult(in: self) else {
             // Failure handled in `awaitResult`
             return
         }
         
-        XCTAssertFalse(isValid)
+        XCTAssertNotEqual("UNIT_TEST", nricInfo.nric)
     }
     
     func liveBundles() {

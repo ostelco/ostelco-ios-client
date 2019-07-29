@@ -487,12 +487,8 @@ extension OnboardingCoordinator: NRICVerifyDelegate {
         .ensure {
             controller.removeSpinner(spinnerView)
         }
-        .done { [weak self] isValid in
-            if isValid {
-                self?.advance()
-            } else {
-                controller.showError()
-            }
+        .done { [weak self] _ in
+            self?.advance()
         }
         .catch { error in
             ApplicationErrors.log(error)

@@ -436,34 +436,19 @@ open class PrimeAPI: BasicNetwork {
     ///   - regionCode: The region code to use to create the call.
     /// - Returns: A promise, which, when fulfilled, will return true if the NRIC is valid and false if not.
     public func validateNRIC(_ nric: String,
-                             forRegion regionCode: String) -> PromiseKit.Promise<Bool> {
-        let nricEndpoints: [RegionEndpoint] = [
-            .region(code: regionCode),
-            .kyc,
-            .dave,
-            .nric(number: nric)
-        ]
-        // TODO: DO GRAPHQL
-        
-        let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
-        
-        return self.loadData(from: path)
-            .map { _ in
-                return true
-            }
-            .recover { error -> PromiseKit.Promise<Bool> in
-                switch error {
-                case APIHelper.Error.jsonError(let jsonError):
-                    if jsonError.errorCode == "INVALID_NRIC_FIN_ID" {
-                        return .value(false)
+                             forRegion regionCode: String) -> PromiseKit.Promise<PrimeGQL.NricInfoFields> {
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.ValidateNricMutation(nric: nric)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
-                default:
-                    break
+                    
+                    seal.fulfill((result?.data?.validateNric.fragments.nricInfoFields)!)
                 }
-                
-                // If we got here, re-throw the error.
-                throw error
             }
+        }
     }
     
     // TODO: Load from GraphQL

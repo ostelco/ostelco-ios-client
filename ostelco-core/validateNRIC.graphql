@@ -1,0 +1,9 @@
+mutation ValidateNRIC($nric: String!) {
+    validateNRIC(nric: $nric) {
+        ...nricInfoFields
+    }
+}
+
+fragment nricInfoFields on NricInfo {
+    nric
+}

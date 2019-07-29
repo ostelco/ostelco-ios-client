@@ -485,6 +485,104 @@ public enum PrimeGQL {
     }
   }
 
+  public final class ValidateNricMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation ValidateNRIC($nric: String!) {\n  validateNRIC(nric: $nric) {\n    __typename\n    ...nricInfoFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(NricInfoFields.fragmentDefinition) }
+
+    public var nric: String
+
+    public init(nric: String) {
+      self.nric = nric
+    }
+
+    public var variables: GraphQLMap? {
+      return ["nric": nric]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("validateNRIC", arguments: ["nric": GraphQLVariable("nric")], type: .nonNull(.object(ValidateNric.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(validateNric: ValidateNric) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "validateNRIC": validateNric.resultMap])
+      }
+
+      public var validateNric: ValidateNric {
+        get {
+          return ValidateNric(unsafeResultMap: resultMap["validateNRIC"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "validateNRIC")
+        }
+      }
+
+      public struct ValidateNric: GraphQLSelectionSet {
+        public static let possibleTypes = ["NricInfo"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(NricInfoFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(nric: String) {
+          self.init(unsafeResultMap: ["__typename": "NricInfo", "nric": nric])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var nricInfoFields: NricInfoFields {
+            get {
+              return NricInfoFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class ProductsQuery: GraphQLQuery {
     public let operationDefinition =
       "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      ...productFragment\n    }\n  }\n}"
@@ -1898,6 +1996,46 @@ public enum PrimeGQL {
       }
       set {
         resultMap.updateValue(newValue, forKey: "phoneNumber")
+      }
+    }
+  }
+
+  public struct NricInfoFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment nricInfoFields on NricInfo {\n  __typename\n  nric\n}"
+
+    public static let possibleTypes = ["NricInfo"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("nric", type: .nonNull(.scalar(String.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(nric: String) {
+      self.init(unsafeResultMap: ["__typename": "NricInfo", "nric": nric])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var nric: String {
+      get {
+        return resultMap["nric"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "nric")
       }
     }
   }

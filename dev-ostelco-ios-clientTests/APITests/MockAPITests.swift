@@ -105,23 +105,23 @@ class MockAPITests: XCTestCase {
     func testMockNRICCheckWithValidNRIC() {
         self.stubPath("regions/sg/kyc/dave/S9315107J", toLoad: "nric_check_valid")
         
-        guard let isValid = self.mockAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
+        guard let nricInfo = self.mockAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
             // Failures handled in `awaitResult`
             return
         }
         
-        XCTAssertTrue(isValid)
+        XCTAssertEqual("S9315107J", nricInfo.nric)
     }
     
     func testMockNRICCheckWithInvalidNRIC() {
         self.stubPath("regions/sg/kyc/dave/NOPE", toLoad: "nric_check_invalid", statusCode: 403)
         
-        guard let isValid = self.mockAPI.validateNRIC("NOPE", forRegion: "sg").awaitResult(in: self) else {
+        guard let nricInfo = self.mockAPI.validateNRIC("NOPE", forRegion: "sg").awaitResult(in: self) else {
             // Failure handled in `awaitResult`
             return
         }
         
-        XCTAssertFalse(isValid)
+        XCTAssertNotEqual("S9315107J", nricInfo.nric)
     }
     
     func testMockNRIC500Error() {
