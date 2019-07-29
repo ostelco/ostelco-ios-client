@@ -69,7 +69,7 @@ class UserManager: TokenProvider {
             .ensure { [weak viewController] in
                 viewController?.removeSpinner(spinnerView)
             }
-            .done {
+            .done {_ in 
                 self.logOut() // no `weak self` since this is a singleton.
             }
             .catch { [weak viewController] error in

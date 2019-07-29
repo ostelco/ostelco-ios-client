@@ -68,12 +68,12 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         
         // Create Stripe Source.
         STPAPIClient.shared().promiseCreateSource(with: payment)
-            .then { source -> Promise<Void> in
+            .then { source -> Promise<PrimeGQL.ProductFragment> in
                 // Call Prime API to buy the product.
                 let payment = PaymentInfo(sourceID: source.stripeID)
                 return APIManager.shared.primeAPI.purchaseProduct(with: product.sku, payment: payment)
             }
-            .done {
+            .done { _ in
                 debugPrint("Successfully bought product \(product.sku)")
                 completion(PKPaymentAuthorizationResult(status: .success, errors: []))
             }

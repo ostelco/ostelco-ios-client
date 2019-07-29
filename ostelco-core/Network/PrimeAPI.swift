@@ -224,20 +224,18 @@ open class PrimeAPI: BasicNetwork {
     /// Deletes the logged in customer.
     ///
     /// - Returns: A promise which when fulfilled, indicates successful deletion.
-    public func deleteCustomer() -> PromiseKit.Promise<Void> {
-        // TODO: DO GRAPHQL
-        return self.tokenProvider.getToken()
-            .then { token -> PromiseKit.Promise<Data> in
-                let request = Request(baseURL: self.baseURL,
-                                      path: RootEndpoint.customer.value,
-                                      method: .DELETE,
-                                      loggedIn: true,
-                                      token: token)
-                return self.performValidatedRequest(request, decoder: self.decoder, dataCanBeEmpty: true)
-            }
-            .done { data in
-                let dataString = String(bytes: data, encoding: .utf8)
-                debugPrint("Delete customer response: \(String(describing: dataString))")
+    public func deleteCustomer() -> PromiseKit.Promise<PrimeGQL.CustomerFields> {
+        return self.getToken()
+            .then{ _ in
+                return PromiseKit.Promise { seal in
+                    self.client.perform(mutation: PrimeGQL.DeleteCustomerMutation()) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        seal.fulfill((result?.data?.deleteCustomer.fragments.customerFields)!)
+                    }
+                }
         }
     }
 

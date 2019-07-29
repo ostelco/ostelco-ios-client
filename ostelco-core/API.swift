@@ -950,6 +950,97 @@ public enum PrimeGQL {
     }
   }
 
+  public final class DeleteCustomerMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation DeleteCustomer {\n  deleteCustomer {\n    __typename\n    ...customerFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(CustomerFields.fragmentDefinition) }
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("deleteCustomer", type: .nonNull(.object(DeleteCustomer.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(deleteCustomer: DeleteCustomer) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "deleteCustomer": deleteCustomer.resultMap])
+      }
+
+      public var deleteCustomer: DeleteCustomer {
+        get {
+          return DeleteCustomer(unsafeResultMap: resultMap["deleteCustomer"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "deleteCustomer")
+        }
+      }
+
+      public struct DeleteCustomer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(CustomerFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: String, contactEmail: String, nickname: String, referralId: String, analyticsId: String) {
+          self.init(unsafeResultMap: ["__typename": "Customer", "id": id, "contactEmail": contactEmail, "nickname": nickname, "referralId": referralId, "analyticsId": analyticsId])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var customerFields: CustomerFields {
+            get {
+              return CustomerFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class CreateCustomerMutation: GraphQLMutation {
     public let operationDefinition =
       "mutation CreateCustomer($email: String!, $name: String!) {\n  createCustomer(contactEmail: $email, nickname: $name) {\n    __typename\n    ...customerFields\n  }\n}"

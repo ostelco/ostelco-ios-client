@@ -466,6 +466,7 @@
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		049707C422EF073D00C69A63 /* createApplicationToken.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createApplicationToken.graphql; sourceTree = "<group>"; };
 		049707C622EFB38800C69A63 /* purchaseProduct.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchaseProduct.graphql; sourceTree = "<group>"; };
+		049707C822EFB56300C69A63 /* deleteCustomer.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = deleteCustomer.graphql; sourceTree = "<group>"; };
 		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
 		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
@@ -982,6 +983,7 @@
 				04561C9D22E978AD0097E86A /* createCustomer.graphql */,
 				049707C422EF073D00C69A63 /* createApplicationToken.graphql */,
 				049707C622EFB38800C69A63 /* purchaseProduct.graphql */,
+				049707C822EFB56300C69A63 /* deleteCustomer.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
