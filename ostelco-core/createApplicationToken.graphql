@@ -1,0 +1,11 @@
+mutation CreateApplicationToken($applicationToken: ApplicationTokenInput!) {
+    createApplicationToken(token: $applicationToken) {
+        ...applicationTokenFields
+    }
+}
+
+fragment applicationTokenFields on ApplicationToken {
+    token
+    tokenType
+    applicationID
+}

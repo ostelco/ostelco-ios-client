@@ -89,11 +89,20 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter pushToken: The push token to send
     /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
-    public func sendPushToken(_ pushToken: PushToken) -> PromiseKit.Promise<Void> {
-        return self.sendObject(pushToken, to: RootEndpoint.applicationToken.value, method: .POST)
-            .map { data, response in
-                try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
-            }
+    public func sendPushToken(_ pushToken: PrimeGQL.ApplicationTokenInput) -> PromiseKit.Promise<PrimeGQL.ApplicationTokenFields> {
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise { seal in
+                    self.client.perform(mutation: PrimeGQL.CreateApplicationTokenMutation(applicationToken: pushToken)) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        
+                        seal.fulfill((result?.data?.createApplicationToken.fragments.applicationTokenFields)!)
+                    }
+                }
+        }
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
@@ -176,6 +185,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - payment: The payment information to use to purchase it
     /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
     public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<Void> {
+        // TODO: DO GRAPHQL
         let productEndpoints: [ProductEndpoint] = [
             .sku(sku),
             .purchase
@@ -217,6 +227,7 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Returns: A promise which when fulfilled, indicates successful deletion.
     public func deleteCustomer() -> PromiseKit.Promise<Void> {
+        // TODO: DO GRAPHQL
         return self.tokenProvider.getToken()
             .then { token -> PromiseKit.Promise<Data> in
                 let request = Request(baseURL: self.baseURL,
@@ -252,7 +263,7 @@ open class PrimeAPI: BasicNetwork {
     public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[PrimeGQL.RegionDetailsFragment]> {
         return self.getToken()
             .then { _ in
-                return PromiseKit.Promise<[PrimeGQL.RegionDetailsFragment]> { seal in
+                return PromiseKit.Promise { seal in
                     self.client.fetch(query: PrimeGQL.RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                         if let error = error {
                             seal.reject(error)
@@ -270,7 +281,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Returns: A promise which when fulfilled contains the requested region.
     public func loadRegion(code: String) -> PromiseKit.Promise<PrimeGQL.RegionDetailsFragment> {
         return loadRegions(countryCode: code).then { regionResponse in
-            return PromiseKit.Promise<PrimeGQL.RegionDetailsFragment> { seal in
+            return PromiseKit.Promise { seal in
                 if let value = regionResponse.first {
                     seal.fulfill(value)
                 } else {
@@ -280,7 +291,6 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
-    // TODO: Load from GraphQL
     /// Loads the SIM profiles for the specified region
     ///
     /// - Parameter code: The region to request SIM profiles for
@@ -305,6 +315,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter code: The region code to use
     /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
     public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<SimProfile> {
+        // TODO: DO GRAPHQL
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .simProfiles
@@ -327,6 +338,7 @@ open class PrimeAPI: BasicNetwork {
     ///     - iccId: the iccId of the sim profile to resend QR code email
     /// - Returns: The sim profile with the given iccid
     public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<SimProfile> {
+        // TODO: DO GRAPHQL
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .simProfiles,
@@ -385,6 +397,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Returns: A promise which, when fulfilled, indicates successful completion of the operation.
     public func addAddress(_ address: EKYCAddress,
                            forRegion regionCode: String) -> PromiseKit.Promise<Void> {
+        // TODO: DO GRAPHQL
         let profileEndpoints: [RegionEndpoint] = [
             .region(code: regionCode),
             .kyc,
@@ -406,6 +419,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - code: The region to update the user profile in
     /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
     public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> PromiseKit.Promise<Void> {
+        // TODO: DO GRAPHQL
         let endpoints: [RegionEndpoint] = [
             .region(code: code),
             .kyc,
@@ -437,6 +451,7 @@ open class PrimeAPI: BasicNetwork {
             .dave,
             .nric(number: nric)
         ]
+        // TODO: DO GRAPHQL
         
         let path = RootEndpoint.regions.pathByAddingEndpoints(nricEndpoints)
         
