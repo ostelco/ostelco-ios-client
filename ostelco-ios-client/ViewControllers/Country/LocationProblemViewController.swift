@@ -158,11 +158,7 @@ extension LocationProblemViewController: StoryboardLoadable {
 
 extension LocationProblemViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
-        guard locationProblem!.linkableCopy.isIndexLinked(characterIndex) else {
-            return
-        }
-        
-        UIApplication.shared.open(ExternalLink.locationRequirement.url)
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

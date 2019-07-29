@@ -13,19 +13,21 @@ import XCTest
 
 class LinkableTextTests: XCTestCase {
     
+    let dummyURL = URL(string: "https://google.com")!
+    
     // MARK: - Generic linkable text
     
     private let testText = "She sells seashells by the seashore"
     
     func testNilPassedToInitializersWorks() {
-        XCTAssertNotNil(LinkableText(fullText: self.testText, linkedBits: nil))
-        XCTAssertNotNil(LinkableText(fullText: self.testText, linkedPortion: nil))
+        XCTAssertNotNil(LinkableText(fullText: testText, linkedBits: nil))
+        XCTAssertNotNil(LinkableText(fullText: testText, linkedPortion: nil))
     }
     
     func testSingleLinkInitializerWorksWithIncludedText() {
-        let linkedPortion = "seashells"
+        let linkedPortion = Link("seashells", url: dummyURL)
         
-        guard let linkableText = LinkableText(fullText: self.testText, linkedPortion: linkedPortion) else {
+        guard let linkableText = LinkableText(fullText: testText, linkedPortion: linkedPortion) else {
             XCTFail("This should have worked!")
             return
         }
@@ -44,14 +46,14 @@ class LinkableTextTests: XCTestCase {
     }
     
     func testSingleLinkInitializerFailsWithNotIncludedText() {
-        let linkedPortion = "sea monsters"
-        XCTAssertNil(LinkableText(fullText: self.testText, linkedPortion: linkedPortion))
+        let linkedPortion = Link("sea monsters", url: dummyURL)
+        XCTAssertNil(LinkableText(fullText: testText, linkedPortion: linkedPortion))
     }
     
     func testMultipleLinkInitializerWorksWithAllIncludedText() {
-        let bits = ["seashells", "seashore"]
+        let bits = [Link("seashells", url: dummyURL), Link("seashore", url: dummyURL)]
         
-        guard let linkableText = LinkableText(fullText: self.testText, linkedBits: bits) else {
+        guard let linkableText = LinkableText(fullText: testText, linkedBits: bits) else {
             XCTFail("Both of these are contained, this should have worked!")
             return
         }
@@ -75,7 +77,7 @@ class LinkableTextTests: XCTestCase {
         XCTAssertEqual(linkableText.linkedText(at: 27), bits[1])
         
         // Second link should end at the end of the word
-        let length = (self.testText as NSString).length
+        let length = (testText as NSString).length
         let lastIndex = length - 1
         XCTAssertTrue(linkableText.isIndexLinked(lastIndex))
         XCTAssertEqual(linkableText.linkedText(at: lastIndex), bits[1])
@@ -86,9 +88,9 @@ class LinkableTextTests: XCTestCase {
     }
     
     func testMultipleLinkInitializerFailsWithSingleNotIncludedText() {
-        let bits = ["seashells", "sea lion"]
+        let bits = [Link("seashells", url: dummyURL), Link("sea lion", url: dummyURL)]
 
-        XCTAssertNil(LinkableText(fullText: self.testText, linkedBits: bits))
+        XCTAssertNil(LinkableText(fullText: testText, linkedBits: bits))
     }
     
     // MARK: - Individual instances of linkable text

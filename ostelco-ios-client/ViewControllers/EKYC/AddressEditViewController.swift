@@ -16,8 +16,7 @@ protocol MyInfoAddressUpdateDelegate: class {
 }
 
 protocol AddressEditDelegate: class {
-    func enteredAddressSuccessfully()
-    func countryCode() -> String
+    func entered(address: EKYCAddress)
     func cancel()
 }
 
@@ -51,29 +50,27 @@ class AddressEditViewController: UITableViewController {
         }
     }
     
-    var mode: Mode = .nricEnter {
-        didSet {
-            self.configureForMode()
-        }
-    }
+    var mode: Mode = .nricEnter
     
-    weak var myInfoDelegate: MyInfoAddressUpdateDelegate?
+    weak var myInfoDelegate: MyInfoAddressUpdateDelegate!
     
-    private lazy var dataSource = AddressEditDataSource(tableView: self.tableView,
-                                                        sections: self.mode.sections,
-                                                        delegate: self)
+    private lazy var dataSource = AddressEditDataSource(
+        tableView: tableView,
+        sections: mode.sections,
+        delegate: self
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureForMode()
+        configureForMode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        switch self.mode {
+        switch mode {
         case .myInfoVerify:
-            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+            navigationController?.setNavigationBarHidden(false, animated: animated)
         case .nricEnter:
             break
         }
@@ -82,16 +79,16 @@ class AddressEditViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        switch self.mode {
+        switch mode {
         case .myInfoVerify:
-            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            navigationController?.setNavigationBarHidden(true, animated: animated)
         case .nricEnter:
             break
         }
     }
     
     @IBAction private func saveBarButtonTapped() {
-        self.saveInput()
+        saveInput()
     }
     
     @IBAction private func cancelBarButtonTapped() {
@@ -99,46 +96,46 @@ class AddressEditViewController: UITableViewController {
     }
     
     @IBAction private func continueTapped() {
-        self.saveInput()
+        saveInput()
     }
     
     @IBAction private func needHelpTapped() {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     private func configureForMode() {
-        guard self.footerView != nil else {
+        guard footerView != nil else {
             // View has not loaded yet, this will be re-called in viewDidLoad.
             return
         }
         
-        switch self.mode {
+        switch mode {
         case .nricEnter:
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.leftBarButtonItem = nil
-            self.tableView.tableFooterView = self.footerView
-            self.dataSource.reloadData()
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.leftBarButtonItem = nil
+            tableView.tableFooterView = footerView
+            dataSource.reloadData()
         case .myInfoVerify(let myInfo):
-            self.navigationItem.leftBarButtonItem = self.cancelBarButton
-            self.navigationItem.rightBarButtonItem = self.saveBarButtton
-            self.footerView.removeFromSuperview()
+            navigationItem.leftBarButtonItem = cancelBarButton
+            navigationItem.rightBarButtonItem = saveBarButtton
+            footerView.removeFromSuperview()
             guard let info = myInfo else {
                 return
             }
             
-            self.dataSource.setValue(info.street, forSection: .street)
-            self.dataSource.setValue(info.unit, forSection: .unit)
-            self.dataSource.setValue(info.postal, forSection: .postcode)
-            self.dataSource.setValue(info.country, forSection: .country)
+            dataSource.setValue(info.street, forSection: .street)
+            dataSource.setValue(info.unit, forSection: .unit)
+            dataSource.setValue(info.postal, forSection: .postcode)
+            dataSource.setValue(info.country, forSection: .country)
         }
     }
     
     private func saveInput() {
-        switch self.mode {
+        switch mode {
         case .nricEnter:
-            self.sendAddressToServer()
+            sendAddressToServer()
         case .myInfoVerify:
-            self.updateMyInfo()
+            updateMyInfo()
         }
     }
     
@@ -147,69 +144,55 @@ class AddressEditViewController: UITableViewController {
             ApplicationErrors.assertAndLog("You shouldn't be able to send the address to the server from myInfo verify mode")
         }
         
-        let countryCode = delegate?.countryCode()
-        let address = self.buildAddress()
+        let address = buildAddress()
         
-        self.spinnerView = showSpinner()
+        spinnerView = showSpinner()
 
-        APIManager.shared.primeAPI
-            .addAddress(address, forRegion: countryCode!)
-            .ensure { [weak self] in
-                self?.removeSpinner(self?.spinnerView)
-                self?.spinnerView = nil
-            }
-            .done { [weak self] in
-                self?.delegate?.enteredAddressSuccessfully()
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-            }
+        delegate?.entered(address: address)
     }
         
     private func buildAddress() -> EKYCAddress {
         guard
-            let street = self.dataSource.value(for: .street),
-            let unit = self.dataSource.value(for: .unit),
-            let city = self.dataSource.value(for: .city),
-            let postcode = self.dataSource.value(for: .postcode),
-            let country = self.dataSource.value(for: .country) else {
+            let street = dataSource.value(for: .street),
+            let unit = dataSource.value(for: .unit),
+            let city = dataSource.value(for: .city),
+            let postcode = dataSource.value(for: .postcode),
+            let country = dataSource.value(for: .country) else {
                 fatalError("Somehow validation passed but one of these was null")
         }
             
-        return EKYCAddress(street: street,
-                           unit: unit,
-                           city: city,
-                           postcode: postcode,
-                           country: country)
+        return EKYCAddress(
+            street: street,
+            unit: unit,
+            city: city,
+            postcode: postcode,
+            country: country
+        )
     }
     
     private func updateMyInfo() {
-        guard let delegate = self.myInfoDelegate else {
-            ApplicationErrors.assertAndLog("You're probably going to want to use a delegate here")
-            return
-        }
+        let updatedAddress = MyInfoAddress(
+            country: dataSource.value(for: .country),
+            unit: dataSource.value(for: .unit),
+            street: dataSource.value(for: .street),
+            block: nil,
+            postal: dataSource.value(for: .postcode),
+            floor: nil,
+            building: nil
+        )
         
-        let updatedAddress = MyInfoAddress(country: self.dataSource.value(for: .country),
-                                           unit: self.dataSource.value(for: .unit),
-                                           street: self.dataSource.value(for: .street),
-                                           block: nil,
-                                           postal: self.dataSource.value(for: .postcode),
-                                           floor: nil,
-                                           building: nil)
-        
-        delegate.addressUpdated(to: updatedAddress)
+        myInfoDelegate.addressUpdated(to: updatedAddress)
     }
 }
 
 extension AddressEditViewController: AddressEditDataSourceDelegate {
     
     func validityChanged(to valid: Bool) {
-        switch self.mode {
+        switch mode {
         case .nricEnter:
-            self.primaryButton.isEnabled = valid
+            primaryButton.isEnabled = valid
         case .myInfoVerify:
-            self.saveBarButtton.isEnabled = valid
+            saveBarButtton.isEnabled = valid
         }
     }
 }

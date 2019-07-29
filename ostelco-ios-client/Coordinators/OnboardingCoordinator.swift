@@ -43,7 +43,7 @@ class OnboardingCoordinator {
     }
     
     func advance() {
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
                 
@@ -268,7 +268,7 @@ extension OnboardingCoordinator: GetStartedDelegate {
         
         let user = UserSetup(nickname: nickname, email: email)
         
-        APIManager.shared.primeAPI.createCustomer(with: user)
+        primeAPI.createCustomer(with: user)
         .done { [weak self] customer in
             OstelcoAnalytics.logEvent(.EnteredNickname)
             UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
@@ -399,13 +399,21 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {
-    func countryCode() -> String {
-        return selectedCountry().countryCode
+    func entered(address: EKYCAddress) {
+        primeAPI
+        .addAddress(address, forRegion: countryCode())
+        .done { [weak self] in
+            self?.localContext.hasCompletedAddress = true
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
     
-    func enteredAddressSuccessfully() {
-        localContext.hasCompletedAddress = true
-        advance()
+    func countryCode() -> String {
+        return selectedCountry().countryCode
     }
     
     func cancel() {
@@ -424,7 +432,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions() {
         localContext.hasSeenESIMInstructions = true
         
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let countryCode = context.toLegacyModel().getRegion()!.region.id
             return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
@@ -441,14 +449,22 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
     func resendEmail() {
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let region = context.toLegacyModel().getRegion()!
             let profile = region.getSimProfile()!
+<<<<<<< HEAD
             return APIManager.shared.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
+=======
+            
+            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.country.countryCode, iccId: profile.iccId)
+>>>>>>> Fixes linkable text.
         }
         .done { [weak self] _ in
-            self?.navigationController.showAlert(title: "Message", msg: "We have resent the QR code to your email address.")
+            self?.navigationController.showAlert(
+                title: NSLocalizedString("Message", comment: "Title for alert when we resend esim email."),
+                msg: NSLocalizedString("We have resent the QR code to your email address.", comment: "Message for alert when we resend esim email.")
+            )
         }
         .catch { [weak self] error in
             ApplicationErrors.log(error)
@@ -469,6 +485,26 @@ extension OnboardingCoordinator: SignUpCompletedDelegate {
 }
 
 extension OnboardingCoordinator: NRICVerifyDelegate {
+    func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
+        let spinnerView = controller.showSpinner()
+        APIManager.shared.primeAPI
+        .validateNRIC(nric, forRegion: countryCode())
+        .ensure {
+            controller.removeSpinner(spinnerView)
+        }
+        .done { [weak self] isValid in
+            if isValid {
+                self?.advance()
+            } else {
+                controller.showError()
+            }
+        }
+        .catch { error in
+            ApplicationErrors.log(error)
+            controller.showGenericError(error: error)
+        }
+    }
+    
     func enteredNRICSuccessfully() {
         advance()
     }
@@ -493,11 +529,15 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 }
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
+<<<<<<< HEAD
     func waitingCompletedSuccessfully(for region: PrimeGQL.RegionDetailsFragment) {
         advance()
     }
     
     func waitingCompletedWithRejection() {
+=======
+    func checkStatus() {
+>>>>>>> Fixes linkable text.
         advance()
     }
 }

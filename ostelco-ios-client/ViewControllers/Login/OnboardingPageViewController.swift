@@ -42,7 +42,10 @@ enum OnboardingPage: Int, CaseIterable {
         case .fullyDigital:
             return LinkableText(
                 fullText: NSLocalizedString("OYA is fully digital\n\nNo need to wait for a SIM card in the mail\n\nTry it now! With 1GB free data", comment: "Login onboarding step 3 text"),
-                linkedPortion: NSLocalizedString("fully digital", comment: "Login onboarding step 3 linkable part")
+                linkedPortion: Link(
+                    NSLocalizedString("fully digital", comment: "Login onboarding step 3 linkable part"),
+                    url: ExternalLink.fullyDigital.url
+                )
             )
         }
     }
@@ -108,17 +111,7 @@ extension OnboardingPageViewController: StoryboardLoadable {
 
 extension OnboardingPageViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at index: Int) {
-        guard onboardingPage.linkableText!.isIndexLinked(index) else {
-            // Did not actually tap a link
-            return
-        }
-        
-        switch onboardingPage! {
-        case .fullyDigital:
-            UIApplication.shared.open(ExternalLink.fullyDigital.url)
-        default:
-            break
-        }
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol LabelTapDelegate: class {
-    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int)
+    func tappedLink(_ link: Link)
 }
 
 /// Base label subclass to facilitate easy IBDesignable subclasses.
@@ -18,8 +18,9 @@ open class OstelcoLabel: UILabel {
     
     public weak var tapDelegate: LabelTapDelegate?
     
-    private lazy var tapRecognizer = UITapGestureRecognizer(target: self,
-                                                            action: #selector(handleTap(_:)))
+    private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+    
+    var linkableText: LinkableText?
     
     public var appTextColor: OstelcoColor = .blackForText {
         didSet {
@@ -57,17 +58,11 @@ open class OstelcoLabel: UILabel {
         self.commonInit()
     }
     
-    public func setFullText(_ fullText: String,
-                            withAttributedPortion attributedPortion: String,
-                            attributes: [NSAttributedString.Key: Any]) {
-        self.setFullText(fullText,
-                         withAttributedPortions: [attributedPortion],
-                         attributes: attributes)
+    public func setFullText(_ fullText: String, withAttributedPortion attributedPortion: String, attributes: [NSAttributedString.Key: Any]) {
+        self.setFullText(fullText, withAttributedPortions: [attributedPortion], attributes: attributes)
     }
     
-    open func setFullText(_ fullText: String,
-                          withAttributedPortions attributedPortions: [String],
-                          attributes: [NSAttributedString.Key: Any]) {
+    open func setFullText(_ fullText: String, withAttributedPortions attributedPortions: [String], attributes: [NSAttributedString.Key: Any]) {
         let attributedRanges = attributedPortions.compactMap { fullText.range(of: $0) }
         let attributed = NSMutableAttributedString(string: fullText, attributes: [
             .font: self.appFont.toUIFont,
@@ -89,11 +84,12 @@ open class OstelcoLabel: UILabel {
         }
         
         self.addTapRecognizer()
-        self.setFullText(linkableText.fullText,
-                         withAttributedPortions: linkedBits,
-                         attributes: [
-                            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
-                         ])
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: OstelcoColor.oyaBlue.toUIColor
+        ]
+        self.linkableText = linkableText
+        self.setFullText(linkableText.fullText, withAttributedPortions: linkedBits.map({ $0.text }), attributes: attributes)
     }
     
     open func addTapRecognizer() {
@@ -108,12 +104,13 @@ open class OstelcoLabel: UILabel {
     
     @objc private func handleTap(_ recognizer: UITapGestureRecognizer) {
         let touchPoint = recognizer.location(in: self)
-        guard let index = self.characterIndex(at: touchPoint) else {
+        guard let index = characterIndex(at: touchPoint) else {
             // Nothing to handle here.
             return
         }
-        
-        self.tapDelegate?.tappedAttributedLabel(self, at: index)
+        if let link = linkableText?.linkedText(at: index) {
+            tapDelegate?.tappedLink(link)
+        }
     }
     
     private func characterIndex(at point: CGPoint) -> Int? {

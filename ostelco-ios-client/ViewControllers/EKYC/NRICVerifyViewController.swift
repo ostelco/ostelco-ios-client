@@ -12,8 +12,7 @@ import PromiseKit
 import UIKit
 
 protocol NRICVerifyDelegate: class {
-    func countryCode() -> String
-    func enteredNRICSuccessfully()
+    func enteredNRICS(_ controller: NRICVerifyViewController, nric: String)
 }
 
 class NRICVerifyViewController: UIViewController {
@@ -26,37 +25,25 @@ class NRICVerifyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let nric = self.nricTextField.text, nric.isNotEmpty, let countryCode = delegate?.countryCode() else {
-            self.showAlert(title: "Error", msg: "NRIC field can't be empty")
+        guard let nric = nricTextField.text, nric.isNotEmpty else {
+            showAlert(title: "Error", msg: "NRIC field can't be empty")
             return
         }
         
-        self.nricErrorLabel.isHidden = true
-        self.spinnerView = self.showSpinner()
-        APIManager.shared.primeAPI
-            .validateNRIC(nric, forRegion: countryCode)
-            .ensure { [weak self] in
-                self?.removeSpinner(self?.spinnerView)
-            }
-            .done { [weak self] isValid in
-                if isValid {
-                    self?.delegate?.enteredNRICSuccessfully()
-                } else {
-                    self?.nricErrorLabel.isHidden = false
-                }
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-            }
+        nricErrorLabel.isHidden = true
+        delegate?.enteredNRICS(self, nric: nric)
+    }
+    
+    func showError() {
+        nricErrorLabel.isHidden = false
     }
 }
 

@@ -53,39 +53,37 @@ extension LocationProblem {
     
     /// The explanatory copy the user should see about the problem.
     var linkableCopy: LinkableText {
+        let link = Link(NSLocalizedString("by law", comment: "Location errors: linkable part"), url: ExternalLink.locationRequirement.url)
+        
         switch self {
         case .authorizedButWrongCountry(let expected, let actual):
-            return LinkableText(fullText: """
-            It seems like you're in \(actual).
-            
-            To give you mobile data, by law, we have to verify that you're in \(expected)
-            """, linkedPortion: "by law")!
-        case .disabledInSettings,
-             .deniedByUser,
-             .notDetermined:
-            return LinkableText(fullText: """
-            To give you mobile data, by law, we have to verify which country you're in.
-            
-            Please enable "Location Services" in Settings.
-            """, linkedPortion: "by law")!
+            let format = "It seems like you're in %@.\n\nTo give you mobile data, by law, we have to verify that you're in %@"
+            return LinkableText(
+                fullText: String(format: NSLocalizedString(format, comment: "Error message when user is in the wrong country"), expected, actual),
+                linkedPortion: link
+            )!
+        case .disabledInSettings, .deniedByUser, .notDetermined:
+            return LinkableText(
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\nPlease enable \"Location Services\" in Settings.", comment: "Error when user has disabled location access."),
+                linkedPortion: link
+            )!
         case .restrictedByParentalControls:
-            return LinkableText(fullText: """
-            To give you mobile data, by law, we have to verify which country you're in.
-            
-            "Location Services" are disabled due to Parental Control Settings on this device.
-            """, linkedPortion: "by law")!
+            return LinkableText(
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\n\"Location Services\" are disabled due to Parental Control Settings on this device.", comment: "Error when user is restricted by parental controls"),
+                linkedPortion: link
+            )!
         }
     }
     
-    /// [optional] The primary button title. If no title is returned, the button should be hidden.
+    /// The primary button title. If no title is returned, the button should be hidden.
     var primaryButtonTitle: String? {
         switch self {
         case .disabledInSettings,
              .deniedByUser:
-            return "Settings"
+            return NSLocalizedString("Settings", comment: "Title for primary action button when user needs to fix location settings")
         case .notDetermined,
              .authorizedButWrongCountry:
-            return "Retry"
+            return NSLocalizedString("Retry", comment: "Title for primary action button when user needs to retry selecting a country")
         case .restrictedByParentalControls:
             return nil
         }

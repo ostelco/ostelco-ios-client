@@ -21,19 +21,18 @@ class BecomeAMemberViewController: ApplePayViewController {
     var membership: Product?
     
     lazy var linkableCopy: LinkableText = {
-        return LinkableText(fullText: """
-To buy data you need to become an OYA member.
-
-As an OYA member you keep your data forever.
-
-$1 = 1 year of membership.
-
-Read about our current prices
-""",
-                            linkedBits: [
-                                "As an OYA member",
-                                "Read about our current prices",
-                            ])!
+        return LinkableText(
+            fullText: NSLocalizedString("To buy data you need to become an OYA member.\n\nAs an OYA member you keep your data forever.\n\n$1 = 1 year of membership.\n\nRead about our current prices", comment: "Explanation for why a user needs to become a member"),
+            linkedBits: [
+                Link(
+                    NSLocalizedString("As an OYA member", comment: "Explanation for why a user needs to become a member: linkable part: oya member"),
+                    url: ExternalLink.aboutMembership.url
+                ),
+                Link(
+                    NSLocalizedString("Read about our current prices", comment: "Explanation for why a user needs to become a member: linkable part: current prices"),
+                    url: ExternalLink.currentPricing.url
+                ),
+            ])!
     }()
 
     override func viewDidLoad() {
@@ -174,25 +173,7 @@ extension BecomeAMemberViewController: StoryboardLoadable {
 
 extension BecomeAMemberViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
-        guard let tappedLink = self.linkableCopy.linkedText(at: characterIndex) else {
-            // No link was tapped
-            return
-        }
-        
-        guard let bits = self.linkableCopy.linkedBits, bits.count == 2, bits.contains(tappedLink) else {
-                ApplicationErrors.assertAndLog("Unexpected link copy \(tappedLink)")
-                return
-        }
-        
-        // TODO: Update these to switch on localized strings
-        switch tappedLink {
-        case "As an OYA member":
-            UIApplication.shared.open(ExternalLink.aboutMembership.url)
-        case "Read about our current prices":
-            UIApplication.shared.open(ExternalLink.currentPricing.url)
-        default:
-            fatalError("This should have been caught in the guard stement above!")
-        }
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

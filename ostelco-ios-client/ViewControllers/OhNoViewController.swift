@@ -166,12 +166,13 @@ extension OhNoIssueType {
     
     var linkableText: LinkableText? {
         if case .noInternet = self {
-            return LinkableText(fullText: """
-Try again in a while or contact support
-
-support@oya.world
-""",
-                                linkedBits: ["support@oya.world"])
+            return LinkableText(
+                fullText: NSLocalizedString("Try again in a while or contact support\n\nsupport@oya.world", comment: "Error message when user has no connection"),
+                linkedPortion: Link(
+                    NSLocalizedString("support@oya.world", comment: "Error message when user has no connection: linkable part"),
+                    url: URL(string: "mailto:support@oya.world")!
+                )
+            )
         }
         return nil
     }
