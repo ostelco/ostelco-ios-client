@@ -1148,6 +1148,100 @@ public enum PrimeGQL {
     }
   }
 
+  public final class PurchaseProductMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation PurchaseProduct($sku: String!) {\n  purchaseProduct(sku: $sku) {\n    __typename\n    ...productFragment\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
+
+    public var sku: String
+
+    public init(sku: String) {
+      self.sku = sku
+    }
+
+    public var variables: GraphQLMap? {
+      return ["sku": sku]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("purchaseProduct", arguments: ["sku": GraphQLVariable("sku")], type: .nonNull(.object(PurchaseProduct.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(purchaseProduct: PurchaseProduct) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "purchaseProduct": purchaseProduct.resultMap])
+      }
+
+      public var purchaseProduct: PurchaseProduct {
+        get {
+          return PurchaseProduct(unsafeResultMap: resultMap["purchaseProduct"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "purchaseProduct")
+        }
+      }
+
+      public struct PurchaseProduct: GraphQLSelectionSet {
+        public static let possibleTypes = ["Product"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(ProductFragment.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var productFragment: ProductFragment {
+            get {
+              return ProductFragment(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class BundlesQuery: GraphQLQuery {
     public let operationDefinition =
       "query Bundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
