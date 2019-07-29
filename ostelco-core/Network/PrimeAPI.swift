@@ -355,25 +355,19 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request a Jumio scan request for
     /// - Returns: A promise which when fulfilled contains the requested data
-    public func createJumioScanForRegion(code: String) -> PromiseKit.Promise<Scan> {
-        let endpoints: [RegionEndpoint] = [
-            .region(code: code),
-            .kyc,
-            .jumio,
-            .scans,
-        ]
-        
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        
-        return self.tokenProvider.getToken()
-            .map { Request(baseURL: self.baseURL,
-                           path: path,
-                           method: .POST,
-                           loggedIn: true,
-                           token: $0)
+    public func createJumioScanForRegion(code: String) -> PromiseKit.Promise<PrimeGQL.ScanInformationFields> {
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.CreateJumioScanForRegionMutation(countryCode: code)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
+                    }
+                    
+                    seal.fulfill((result?.data?.createScan.fragments.scanInformationFields)!)
+                }
             }
-            .then { self.performValidatedRequest($0, decoder: self.decoder) }
-            .map { try self.decoder.decode(Scan.self, from: $0) }
+        }
     }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.

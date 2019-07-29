@@ -781,6 +781,104 @@ public enum PrimeGQL {
     }
   }
 
+  public final class CreateJumioScanForRegionMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation CreateJumioScanForRegion($countryCode: String!) {\n  createScan(regionCode: $countryCode) {\n    __typename\n    ...ScanInformationFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(ScanInformationFields.fragmentDefinition) }
+
+    public var countryCode: String
+
+    public init(countryCode: String) {
+      self.countryCode = countryCode
+    }
+
+    public var variables: GraphQLMap? {
+      return ["countryCode": countryCode]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("createScan", arguments: ["regionCode": GraphQLVariable("countryCode")], type: .nonNull(.object(CreateScan.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(createScan: CreateScan) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "createScan": createScan.resultMap])
+      }
+
+      public var createScan: CreateScan {
+        get {
+          return CreateScan(unsafeResultMap: resultMap["createScan"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "createScan")
+        }
+      }
+
+      public struct CreateScan: GraphQLSelectionSet {
+        public static let possibleTypes = ["ScanInformation"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(ScanInformationFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: String, countryCode: String) {
+          self.init(unsafeResultMap: ["__typename": "ScanInformation", "id": id, "countryCode": countryCode])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var scanInformationFields: ScanInformationFields {
+            get {
+              return ScanInformationFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
       "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      ...customerFields\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
@@ -1971,6 +2069,56 @@ public enum PrimeGQL {
       }
       set {
         resultMap.updateValue(newValue, forKey: "status")
+      }
+    }
+  }
+
+  public struct ScanInformationFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment ScanInformationFields on ScanInformation {\n  __typename\n  id\n  countryCode\n}"
+
+    public static let possibleTypes = ["ScanInformation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(String.self))),
+      GraphQLField("countryCode", type: .nonNull(.scalar(String.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: String, countryCode: String) {
+      self.init(unsafeResultMap: ["__typename": "ScanInformation", "id": id, "countryCode": countryCode])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var id: String {
+      get {
+        return resultMap["id"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var countryCode: String {
+      get {
+        return resultMap["countryCode"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "countryCode")
       }
     }
   }

@@ -219,9 +219,8 @@ class MockAPITests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(scan.scanId, "326aceb6-3e54-4049-9f7b-0c922ad2c85a")
+        XCTAssertEqual(scan.id, "326aceb6-3e54-4049-9f7b-0c922ad2c85a")
         XCTAssertEqual(scan.countryCode, "sg")
-        XCTAssertEqual(scan.status, .PENDING)
     }
     
     func testMockRequestingSimProfile() {

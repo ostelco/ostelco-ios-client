@@ -1,0 +1,11 @@
+mutation CreateJumioScanForRegion($countryCode: String!) {
+    createScan(regionCode: $countryCode) {
+        ...ScanInformationFields
+    }
+}
+
+fragment ScanInformationFields on ScanInformation {
+    id
+    countryCode
+}
+

@@ -69,7 +69,7 @@ class JumioCoordinator: NSObject {
         return APIManager.shared.primeAPI
             .createJumioScanForRegion(code: countryCode)
             .map { scan in
-                return scan.scanId
+                return scan.id
             }
     }
         
