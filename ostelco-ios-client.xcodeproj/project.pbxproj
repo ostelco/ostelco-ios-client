@@ -431,6 +431,7 @@
 		04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createSimProfileForRegion.graphql; sourceTree = "<group>"; };
 		04456A6622EFB8E100131581 /* sendEmailWithActivationQrCodeForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = sendEmailWithActivationQrCodeForRegion.graphql; sourceTree = "<group>"; };
 		04456A6722EFB9EA00131581 /* createJumioScanForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createJumioScanForRegion.graphql; sourceTree = "<group>"; };
+		04456A6822EFBB0D00131581 /* createAddressAndPhoneNumber.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createAddressAndPhoneNumber.graphql; sourceTree = "<group>"; };
 		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -991,6 +992,7 @@
 				04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */,
 				04456A6622EFB8E100131581 /* sendEmailWithActivationQrCodeForRegion.graphql */,
 				04456A6722EFB9EA00131581 /* createJumioScanForRegion.graphql */,
+				04456A6822EFBB0D00131581 /* createAddressAndPhoneNumber.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";

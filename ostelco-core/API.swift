@@ -254,6 +254,106 @@ public enum PrimeGQL {
     }
   }
 
+  public final class CreateAddressAndPhoneNumberMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation CreateAddressAndPhoneNumber($address: String!, $phoneNumber: String!) {\n  createAddressAndPhoneNumber(address: $address, phoneNumber: $phoneNumber) {\n    __typename\n    ...AddressInfoFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(AddressInfoFields.fragmentDefinition) }
+
+    public var address: String
+    public var phoneNumber: String
+
+    public init(address: String, phoneNumber: String) {
+      self.address = address
+      self.phoneNumber = phoneNumber
+    }
+
+    public var variables: GraphQLMap? {
+      return ["address": address, "phoneNumber": phoneNumber]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("createAddressAndPhoneNumber", arguments: ["address": GraphQLVariable("address"), "phoneNumber": GraphQLVariable("phoneNumber")], type: .nonNull(.object(CreateAddressAndPhoneNumber.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(createAddressAndPhoneNumber: CreateAddressAndPhoneNumber) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "createAddressAndPhoneNumber": createAddressAndPhoneNumber.resultMap])
+      }
+
+      public var createAddressAndPhoneNumber: CreateAddressAndPhoneNumber {
+        get {
+          return CreateAddressAndPhoneNumber(unsafeResultMap: resultMap["createAddressAndPhoneNumber"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "createAddressAndPhoneNumber")
+        }
+      }
+
+      public struct CreateAddressAndPhoneNumber: GraphQLSelectionSet {
+        public static let possibleTypes = ["AddressInfo"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(AddressInfoFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(address: String, phoneNumber: String) {
+          self.init(unsafeResultMap: ["__typename": "AddressInfo", "address": address, "phoneNumber": phoneNumber])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var addressInfoFields: AddressInfoFields {
+            get {
+              return AddressInfoFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class RegionsQuery: GraphQLQuery {
     public let operationDefinition =
       "query Regions($countryCode: String = null) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
@@ -1748,6 +1848,56 @@ public enum PrimeGQL {
             }
           }
         }
+      }
+    }
+  }
+
+  public struct AddressInfoFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment AddressInfoFields on AddressInfo {\n  __typename\n  address\n  phoneNumber\n}"
+
+    public static let possibleTypes = ["AddressInfo"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("address", type: .nonNull(.scalar(String.self))),
+      GraphQLField("phoneNumber", type: .nonNull(.scalar(String.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(address: String, phoneNumber: String) {
+      self.init(unsafeResultMap: ["__typename": "AddressInfo", "address": address, "phoneNumber": phoneNumber])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var address: String {
+      get {
+        return resultMap["address"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "address")
+      }
+    }
+
+    public var phoneNumber: String {
+      get {
+        return resultMap["phoneNumber"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "phoneNumber")
       }
     }
   }

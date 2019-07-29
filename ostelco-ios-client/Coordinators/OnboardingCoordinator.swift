@@ -402,7 +402,7 @@ extension OnboardingCoordinator: AddressEditDelegate {
     func entered(address: EKYCAddress) {
         primeAPI
         .addAddress(address, forRegion: countryCode())
-        .done { [weak self] in
+        .done { [weak self] _ in
             self?.localContext.hasCompletedAddress = true
             self?.advance()
         }

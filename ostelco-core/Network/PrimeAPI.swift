@@ -389,20 +389,19 @@ open class PrimeAPI: BasicNetwork {
     ///   - regionCode: The region to add the address for.
     /// - Returns: A promise which, when fulfilled, indicates successful completion of the operation.
     public func addAddress(_ address: EKYCAddress,
-                           forRegion regionCode: String) -> PromiseKit.Promise<Void> {
-        // TODO: DO GRAPHQL
-        let profileEndpoints: [RegionEndpoint] = [
-            .region(code: regionCode),
-            .kyc,
-            .profile
-        ]
-
-        let path = RootEndpoint.regions.pathByAddingEndpoints(profileEndpoints)
-
-        return self.sendQuery(to: path, queryItems: address.asQueryItems, method: .PUT)
-            .done { data, response in
-                try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder, dataCanBeEmpty: true)
+                           forRegion regionCode: String) -> PromiseKit.Promise<PrimeGQL.AddressInfoFields> {
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.CreateAddressAndPhoneNumberMutation(address: address.address, phoneNumber: address.phoneNumber)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
+                    }
+                    
+                    seal.fulfill((result?.data?.createAddressAndPhoneNumber.fragments.addressInfoFields)!)
+                }
             }
+        }
     }
     
     /// Updates the user's EKYC profile with the given information in the given region.
