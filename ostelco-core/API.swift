@@ -119,6 +119,41 @@ public enum PrimeGQL {
     }
   }
 
+  public struct ApplicationTokenInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    public init(applicationId: String, token: String, tokenType: String) {
+      graphQLMap = ["applicationID": applicationId, "token": token, "tokenType": tokenType]
+    }
+
+    public var applicationId: String {
+      get {
+        return graphQLMap["applicationID"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "applicationID")
+      }
+    }
+
+    public var token: String {
+      get {
+        return graphQLMap["token"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "token")
+      }
+    }
+
+    public var tokenType: String {
+      get {
+        return graphQLMap["tokenType"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "tokenType")
+      }
+    }
+  }
+
   public final class RegionsQuery: GraphQLQuery {
     public let operationDefinition =
       "query Regions($countryCode: String = null) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
@@ -1015,6 +1050,104 @@ public enum PrimeGQL {
     }
   }
 
+  public final class CreateApplicationTokenMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation CreateApplicationToken($applicationToken: ApplicationTokenInput!) {\n  createApplicationToken(token: $applicationToken) {\n    __typename\n    ...applicationTokenFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(ApplicationTokenFields.fragmentDefinition) }
+
+    public var applicationToken: ApplicationTokenInput
+
+    public init(applicationToken: ApplicationTokenInput) {
+      self.applicationToken = applicationToken
+    }
+
+    public var variables: GraphQLMap? {
+      return ["applicationToken": applicationToken]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("createApplicationToken", arguments: ["token": GraphQLVariable("applicationToken")], type: .nonNull(.object(CreateApplicationToken.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(createApplicationToken: CreateApplicationToken) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "createApplicationToken": createApplicationToken.resultMap])
+      }
+
+      public var createApplicationToken: CreateApplicationToken {
+        get {
+          return CreateApplicationToken(unsafeResultMap: resultMap["createApplicationToken"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "createApplicationToken")
+        }
+      }
+
+      public struct CreateApplicationToken: GraphQLSelectionSet {
+        public static let possibleTypes = ["ApplicationToken"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(ApplicationTokenFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(token: String, tokenType: String, applicationId: String) {
+          self.init(unsafeResultMap: ["__typename": "ApplicationToken", "token": token, "tokenType": tokenType, "applicationID": applicationId])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var applicationTokenFields: ApplicationTokenFields {
+            get {
+              return ApplicationTokenFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class BundlesQuery: GraphQLQuery {
     public let operationDefinition =
       "query Bundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
@@ -1769,6 +1902,66 @@ public enum PrimeGQL {
       }
       set {
         resultMap.updateValue(newValue, forKey: "analyticsId")
+      }
+    }
+  }
+
+  public struct ApplicationTokenFields: GraphQLFragment {
+    public static let fragmentDefinition =
+      "fragment applicationTokenFields on ApplicationToken {\n  __typename\n  token\n  tokenType\n  applicationID\n}"
+
+    public static let possibleTypes = ["ApplicationToken"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("token", type: .nonNull(.scalar(String.self))),
+      GraphQLField("tokenType", type: .nonNull(.scalar(String.self))),
+      GraphQLField("applicationID", type: .nonNull(.scalar(String.self))),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(token: String, tokenType: String, applicationId: String) {
+      self.init(unsafeResultMap: ["__typename": "ApplicationToken", "token": token, "tokenType": tokenType, "applicationID": applicationId])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var token: String {
+      get {
+        return resultMap["token"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "token")
+      }
+    }
+
+    public var tokenType: String {
+      get {
+        return resultMap["tokenType"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "tokenType")
+      }
+    }
+
+    public var applicationId: String {
+      get {
+        return resultMap["applicationID"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "applicationID")
       }
     }
   }
