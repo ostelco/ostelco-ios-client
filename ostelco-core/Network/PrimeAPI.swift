@@ -336,19 +336,19 @@ open class PrimeAPI: BasicNetwork {
     ///     - code: The region code to use
     ///     - iccId: the iccId of the sim profile to resend QR code email
     /// - Returns: The sim profile with the given iccid
-    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<SimProfile> {
-        // TODO: DO GRAPHQL
-        let endpoints: [RegionEndpoint] = [
-            .region(code: code),
-            .simProfiles,
-            .iccId(code: iccId),
-            .resendEmail
-        ]
-        
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-        
-        return self.loadData(from: path)
-            .map { try self.decoder.decode(SimProfile.self, from: $0) }
+    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> {
+        return self.getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.SendEmailWithActivationQrCodeForRegionMutation(countryCode: code, iccId: iccId)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
+                    }
+                    
+                    seal.fulfill((result?.data?.sendEmailWithActivationQrCode.fragments.simProfileFields)!)
+                }
+            }
+        }
     }
     
     /// Creates a Jumio scan request for the given region

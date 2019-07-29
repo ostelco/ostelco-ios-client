@@ -450,7 +450,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
     func resendEmail() {
         primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<SimProfile> in
+        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
             let region = context.toLegacyModel().getRegion()!
             let profile = region.getSimProfile()!
             return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)

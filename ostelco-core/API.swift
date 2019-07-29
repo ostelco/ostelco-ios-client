@@ -681,6 +681,106 @@ public enum PrimeGQL {
     }
   }
 
+  public final class SendEmailWithActivationQrCodeForRegionMutation: GraphQLMutation {
+    public let operationDefinition =
+      "mutation SendEmailWithActivationQrCodeForRegion($countryCode: String!, $iccId: String!) {\n  sendEmailWithActivationQrCode(regionCode: $countryCode, iccId: $iccId) {\n    __typename\n    ...simProfileFields\n  }\n}"
+
+    public var queryDocument: String { return operationDefinition.appending(SimProfileFields.fragmentDefinition) }
+
+    public var countryCode: String
+    public var iccId: String
+
+    public init(countryCode: String, iccId: String) {
+      self.countryCode = countryCode
+      self.iccId = iccId
+    }
+
+    public var variables: GraphQLMap? {
+      return ["countryCode": countryCode, "iccId": iccId]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes = ["Mutation"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("sendEmailWithActivationQrCode", arguments: ["regionCode": GraphQLVariable("countryCode"), "iccId": GraphQLVariable("iccId")], type: .nonNull(.object(SendEmailWithActivationQrCode.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(sendEmailWithActivationQrCode: SendEmailWithActivationQrCode) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "sendEmailWithActivationQrCode": sendEmailWithActivationQrCode.resultMap])
+      }
+
+      public var sendEmailWithActivationQrCode: SendEmailWithActivationQrCode {
+        get {
+          return SendEmailWithActivationQrCode(unsafeResultMap: resultMap["sendEmailWithActivationQrCode"]! as! ResultMap)
+        }
+        set {
+          resultMap.updateValue(newValue.resultMap, forKey: "sendEmailWithActivationQrCode")
+        }
+      }
+
+      public struct SendEmailWithActivationQrCode: GraphQLSelectionSet {
+        public static let possibleTypes = ["SimProfile"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(SimProfileFields.self),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
+          self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var simProfileFields: SimProfileFields {
+            get {
+              return SimProfileFields(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
       "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      ...customerFields\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
