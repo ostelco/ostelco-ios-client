@@ -184,22 +184,20 @@ open class PrimeAPI: BasicNetwork {
     ///   - sku: The SKU to purchase
     ///   - payment: The payment information to use to purchase it
     /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
-    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<Void> {
+    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<PrimeGQL.ProductFragment> {
         // TODO: DO GRAPHQL
-        let productEndpoints: [ProductEndpoint] = [
-            .sku(sku),
-            .purchase
-        ]
-        
-        let path = RootEndpoint.products.pathByAddingEndpoints(productEndpoints)
-
-        return self.sendQuery(to: path, queryItems: payment.asQueryItems, method: .POST)
-            .done { data, response in
-                try APIHelper.validateAndLookForServerError(data: data,
-                                                            response: response,
-                                                            decoder: self.decoder,
-                                                            dataCanBeEmpty: true)
-            }
+        return self.getToken()
+            .then { _ in
+                return PromiseKit.Promise { seal in
+                    self.client.perform(mutation: PrimeGQL.PurchaseProductMutation(sku: sku, sourceId: payment.sourceId)) { (result, error) in
+                        if let error = error {
+                            seal.reject(error)
+                            return
+                        }
+                        seal.fulfill((result?.data?.purchaseProduct.fragments.productFragment)!)
+                    }
+                }
+        }
     }
     
     // MARK: - Customer

@@ -1,0 +1,5 @@
+mutation PurchaseProduct($sku: String!, $sourceId: String!) {
+    purchaseProduct(sku: $sku, sourceId: $sourceId) {
+        ...productFragment
+    }
+}

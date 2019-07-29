@@ -1150,25 +1150,27 @@ public enum PrimeGQL {
 
   public final class PurchaseProductMutation: GraphQLMutation {
     public let operationDefinition =
-      "mutation PurchaseProduct($sku: String!) {\n  purchaseProduct(sku: $sku) {\n    __typename\n    ...productFragment\n  }\n}"
+      "mutation PurchaseProduct($sku: String!, $sourceId: String!) {\n  purchaseProduct(sku: $sku, sourceId: $sourceId) {\n    __typename\n    ...productFragment\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
     public var sku: String
+    public var sourceId: String
 
-    public init(sku: String) {
+    public init(sku: String, sourceId: String) {
       self.sku = sku
+      self.sourceId = sourceId
     }
 
     public var variables: GraphQLMap? {
-      return ["sku": sku]
+      return ["sku": sku, "sourceId": sourceId]
     }
 
     public struct Data: GraphQLSelectionSet {
       public static let possibleTypes = ["Mutation"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("purchaseProduct", arguments: ["sku": GraphQLVariable("sku")], type: .nonNull(.object(PurchaseProduct.selections))),
+        GraphQLField("purchaseProduct", arguments: ["sku": GraphQLVariable("sku"), "sourceId": GraphQLVariable("sourceId")], type: .nonNull(.object(PurchaseProduct.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
