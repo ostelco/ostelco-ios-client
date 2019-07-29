@@ -453,12 +453,7 @@ extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let region = context.toLegacyModel().getRegion()!
             let profile = region.getSimProfile()!
-<<<<<<< HEAD
-            return APIManager.shared.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
-=======
-            
-            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.country.countryCode, iccId: profile.iccId)
->>>>>>> Fixes linkable text.
+            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
         }
         .done { [weak self] _ in
             self?.navigationController.showAlert(
@@ -529,15 +524,7 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 }
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
-<<<<<<< HEAD
-    func waitingCompletedSuccessfully(for region: PrimeGQL.RegionDetailsFragment) {
-        advance()
-    }
-    
-    func waitingCompletedWithRejection() {
-=======
     func checkStatus() {
->>>>>>> Fixes linkable text.
         advance()
     }
 }
