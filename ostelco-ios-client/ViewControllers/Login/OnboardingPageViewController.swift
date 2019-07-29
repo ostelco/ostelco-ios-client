@@ -30,29 +30,23 @@ enum OnboardingPage: Int, CaseIterable {
     var linkableText: LinkableText? {
         switch self {
         case .whatIsOya:
-            return LinkableText(fullText: """
-            OYA is a simple way to get extra mobile data
-            
-            No monthly fees
-            
-            Just extra data when you need it!
-            """, linkedPortion: nil)
+            return LinkableText(
+                fullText: NSLocalizedString("OYA is a simple way to get extra mobile data\n\nNo monthly fees\n\nJust extra data when you need it!", comment: "Login onboarding step 1 text"),
+                linkedPortion: nil
+            )
         case .noNeedToChange:
-            return LinkableText(fullText: """
-            No need to change telco!
-            
-            When you’re running low on data, get some extra from OYA
-            
-            OYA data never expires, so it’s there when you need it!
-            """, linkedPortion: nil)
+            return LinkableText(
+                fullText: NSLocalizedString("No need to change telco!\n\nWhen you’re running low on data, get some extra from OYA\n\nOYA data never expires, so it’s there when you need it!", comment: "Login onboarding step 2 text"),
+                linkedPortion: nil
+            )
         case .fullyDigital:
-            return LinkableText(fullText: """
-            OYA is fully digital
-            
-            No need to wait for a SIM card in the mail
-            
-            Try it now! With 1GB free data
-            """, linkedPortion: "fully digital")
+            return LinkableText(
+                fullText: NSLocalizedString("OYA is fully digital\n\nNo need to wait for a SIM card in the mail\n\nTry it now! With 1GB free data", comment: "Login onboarding step 3 text"),
+                linkedPortion: Link(
+                    NSLocalizedString("fully digital", comment: "Login onboarding step 3 linkable part"),
+                    url: ExternalLink.fullyDigital.url
+                )
+            )
         }
     }
     
@@ -74,7 +68,7 @@ class OnboardingPageViewController: UIViewController {
     ///
     /// - Parameter page: The page you wish to display.
     static func fromStoryboard(with page: OnboardingPage) -> OnboardingPageViewController {
-        let vc = self.fromStoryboard()
+        let vc = fromStoryboard()
         vc.onboardingPage = page
         
         return vc
@@ -83,24 +77,24 @@ class OnboardingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.gifView.videoURL = self.onboardingPage.gifVideo.url
-        guard let linkableText = self.onboardingPage.linkableText else {
-            ApplicationErrors.assertAndLog("Couldn't instantiate onboarding page linkable text for page \(self.onboardingPage!)")
+        gifView.videoURL = onboardingPage.gifVideo.url
+        guard let linkableText = onboardingPage.linkableText else {
+            ApplicationErrors.assertAndLog("Couldn't instantiate onboarding page linkable text for page \(onboardingPage!)")
             return
         }
         
-        self.copyLabel.tapDelegate = self
-        self.copyLabel.setLinkableText(linkableText)
+        copyLabel.tapDelegate = self
+        copyLabel.setLinkableText(linkableText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.gifView.play()
+        gifView.play()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.gifView.pause()
+        gifView.pause()
     }
 }
 
@@ -117,17 +111,7 @@ extension OnboardingPageViewController: StoryboardLoadable {
 
 extension OnboardingPageViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at index: Int) {
-        guard self.onboardingPage.linkableText!.isIndexLinked(index) else {
-            // Did not actually tap a link
-            return
-        }
-        
-        switch self.onboardingPage! {
-        case .fullyDigital:
-            UIApplication.shared.open(ExternalLink.fullyDigital.url)
-        default:
-            break
-        }
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

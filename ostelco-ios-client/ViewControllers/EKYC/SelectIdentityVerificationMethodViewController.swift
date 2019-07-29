@@ -54,7 +54,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
-        spinnerView = showSpinner(onView: self.view)
+        spinnerView = showSpinner()
         
         if self.singPassRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))

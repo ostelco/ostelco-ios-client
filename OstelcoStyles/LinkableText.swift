@@ -8,6 +8,16 @@
 
 import Foundation
 
+public struct Link: Equatable {
+    public let text: String
+    public let url: URL
+    
+    public init(_ text: String, url: URL) {
+        self.text = text
+        self.url = url
+    }
+}
+
 /// A text structure for dealing with a large amount of text that potentially
 /// contains multiple links.
 public struct LinkableText {
@@ -16,7 +26,7 @@ public struct LinkableText {
     public let fullText: String
     
     /// [optional] The bits of text to link, or nil to link nothing.
-    public let linkedBits: [String]?
+    public let linkedBits: [Link]?
     
     /// Failable Initializer for text with a single linked portion.
     /// Fails when the `linkedPortion` is non-nil and is not contained within the full text.
@@ -24,8 +34,7 @@ public struct LinkableText {
     /// - Parameters:
     ///   - fullText: The text you can potentially add links to
     ///   - linkedPortion: [optional] The text which should be linked, or nil to link nothing.
-    public init?(fullText: String,
-                 linkedPortion: String?) {
+    public init?(fullText: String, linkedPortion: Link?) {
         if let singleLink = linkedPortion {
             self.init(fullText: fullText, linkedBits: [singleLink])
         } else {
@@ -40,13 +49,12 @@ public struct LinkableText {
     /// - Parameters:
     ///   - fullText: The text containing 0 or more links
     ///   - linkedBits: [optional] The bits of text to link, or nil to link nothing.
-    public init?(fullText: String,
-                 linkedBits: [String]?) {
+    public init?(fullText: String, linkedBits: [Link]?) {
         self.fullText = fullText
         
         if let bits = linkedBits {
             for bit in bits {
-                guard fullText.contains(bit) else {
+                guard fullText.contains(bit.text) else {
                     // The full text doesn't contain one of the things we're trying to link.
                     return nil
                 }
@@ -59,8 +67,8 @@ public struct LinkableText {
         }
     }
     
-    private func range(of bit: String) -> NSRange? {
-        let nsRange = (self.fullText as NSString).range(of: bit)
+    private func range(of bit: Link) -> NSRange? {
+        let nsRange = (self.fullText as NSString).range(of: bit.text)
         guard nsRange.location != NSNotFound else {
             return nil
         }
@@ -68,7 +76,7 @@ public struct LinkableText {
         return nsRange
     }
     
-    private func bit(_ bit: String, contains index: Int) -> Bool {
+    private func bit(_ bit: Link, contains index: Int) -> Bool {
         guard let range = self.range(of: bit) else {
             return false
         }
@@ -93,12 +101,12 @@ public struct LinkableText {
         return bits.contains(where: { self.bit($0, contains: index) })
     }
     
-    /// Returns the linked text at the given index
+    /// Returns the link at the given index
     ///
     /// - Parameter index: The index to check for linked text
     /// - Returns: [Optional] The linked text at the given index, or nil if the index
     ///            did not contain a link.
-    public func linkedText(at index: Int) -> String? {
+    public func linkedText(at index: Int) -> Link? {
         guard
             index < (self.fullText as NSString).length,
             let bits = self.linkedBits,

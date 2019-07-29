@@ -27,19 +27,21 @@ class LoginViewController: UIViewController {
     
     private lazy var dataSource: PageControllerDataSource = {
         let pages = OnboardingPage.allCases.map { $0.viewController }
-        return PageControllerDataSource(pageController: self.pageController,
-                                        viewControllers: pages,
-                                        pageIndicatorTintColor: OstelcoColor.paleGrey.toUIColor,
-                                        currentPageIndicatorTintColor: OstelcoColor.oyaBlue.toUIColor,
-                                        delegate: self)
+        return PageControllerDataSource(
+            pageController: pageController,
+            viewControllers: pages,
+            pageIndicatorTintColor: OstelcoColor.paleGrey.toUIColor,
+            currentPageIndicatorTintColor: OstelcoColor.oyaBlue.toUIColor,
+            delegate: self
+        )
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let index = self.dataSource.currentIndex
-        self.configureButtonTitle(for: index)
-        self.logoImageView.tintColor = OstelcoColor.oyaBlue.toUIColor
+        let index = dataSource.currentIndex
+        configureButtonTitle(for: index)
+        logoImageView.tintColor = OstelcoColor.oyaBlue.toUIColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,22 +53,22 @@ class LoginViewController: UIViewController {
     private func configureButtonTitle(for index: Int) {
         if index == (OnboardingPage.allCases.count - 1) {
             // This is the last page.
-            self.primaryButton.setTitle("Sign In", for: .normal)
+            primaryButton.setTitle(NSLocalizedString("Sign In", comment: "Title for sign in button."), for: .normal)
         } else {
-            self.primaryButton.setTitle("Next", for: .normal)
+            primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in Carousel"), for: .normal)
         }
     }
     
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         Analytics.logEvent("button_tapped", parameters: [
             "newValue": sender.title(for: .normal)!
-            ])
+        ])
         
-        let index = self.dataSource.currentIndex
+        let index = dataSource.currentIndex
         if index == (OnboardingPage.allCases.count - 1) {
-            self.signInTapped()
+            signInTapped()
         } else {
-            self.dataSource.goToNextPage()
+            dataSource.goToNextPage()
         }
     }
     
@@ -78,7 +80,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: PageControllerDataSourceDelegate {
  
     func pageChanged(to index: Int) {
-        self.configureButtonTitle(for: index)
+        configureButtonTitle(for: index)
     }
 }
 

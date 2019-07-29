@@ -28,35 +28,39 @@ class AllowLocationAccessViewController: UIViewController {
     
     private var hasRequestedAuthorization = false
     
-    private var linkableText: LinkableText!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let country = delegate.selectedCountry()
-        self.linkableText = self.generateLinkableText(for: country)
-        self.descriptionLabel.tapDelegate = self
-        self.descriptionLabel.setLinkableText(self.linkableText)
+        let linkableText = generateLinkableText(for: country)
+        descriptionLabel.tapDelegate = self
+        descriptionLabel.setLinkableText(linkableText)
     }
     
-    func generateLinkableText(for country: Country) -> LinkableText? {
-        return LinkableText(fullText: "To give you mobile data, by law, we have to verify that you’re in \(country.nameOrPlaceholder)",
-                            linkedPortion: "by law")
+    func generateLinkableText(for country: Country) -> LinkableText {
+        let format = "To give you mobile data, by law, we have to verify that you’re in %@"
+        return LinkableText(
+            fullText: String(format: NSLocalizedString(format, comment: "Explanation why we need location access"), country.nameOrPlaceholder),
+            linkedPortion: Link(
+                NSLocalizedString("by law", comment: "Explanation why we need location access: linkable part"),
+                url: ExternalLink.locationRequirement.url
+            )
+        )!
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        self.requestAuthorization()
-        self.hasRequestedAuthorization = true
+        requestAuthorization()
+        hasRequestedAuthorization = true
     }
     
     private func requestAuthorization() {
         let locationController = LocationController.shared
         guard locationController.locationServicesEnabled else {
-            self.delegate.handleLocationProblem(.disabledInSettings)
+            delegate.handleLocationProblem(.disabledInSettings)
             return
         }
         
         let status = LocationController.shared.authorizationStatus
-        self.handleAuthorizationStatus(status)
+        handleAuthorizationStatus(status)
     }
     
     private func handleAuthorizationStatus(_ status: CLAuthorizationStatus) {
@@ -67,12 +71,12 @@ class AllowLocationAccessViewController: UIViewController {
                 self?.handleAuthorizationStatus(status)
             }
         case .restricted:
-            self.delegate.handleLocationProblem(.restrictedByParentalControls)
+            delegate.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
-            self.delegate.handleLocationProblem(.deniedByUser)
+            delegate.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
-            self.delegate.locationUsageAuthorized()
+            delegate.locationUsageAuthorized()
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }
@@ -92,11 +96,7 @@ extension AllowLocationAccessViewController: StoryboardLoadable {
 
 extension AllowLocationAccessViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
-        guard self.linkableText.isIndexLinked(characterIndex) else {
-            return
-        }
-        
-        UIApplication.shared.open(ExternalLink.locationRequirement.url)
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

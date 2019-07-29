@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Sg-FN-Gmq" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="191.33333333333334" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="142.33333333333334" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JS7-WM-fll"/>
                                 </constraints>
@@ -31,20 +31,20 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your email address?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-YK-ZEC" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="69.333333333333314"/>
+                                <rect key="frame" x="24" y="88" width="327" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwT-Hr-sTl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                                <rect key="frame" x="24" y="704" width="327" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped" destination="8Sr-ot-cFb" eventType="touchUpInside" id="M5Z-N3-VY4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some kind of error occurred" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoL-c1-WZi" customClass="ErrorTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="251.33333333333337" width="327" height="21"/>
+                                <rect key="frame" x="24" y="202.33333333333334" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -106,15 +106,8 @@
                                     <action selector="needHelpTapped" destination="ejA-LR-l53" eventType="touchUpInside" id="Ek9-Rt-wX3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BwW-Su-BCB" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="75.666666666666686" y="572.33333333333337" width="224" height="20.666666666666629"/>
-                                <state key="normal" title="Submit Simulator Pasteboard"/>
-                                <connections>
-                                    <action selector="submitPasteboardTapped" destination="ejA-LR-l53" eventType="touchUpInside" id="dDO-7w-ORq"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="We need to confirm your email address. Please click the link in the email you received." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cu-on-0rp" customClass="OnboardingLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="489.66666666666669" width="327" height="66.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="We need to confirm your email address. Please click the link in the email you received." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cu-on-0rp" customClass="OnboardingLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="526.33333333333337" width="327" height="66.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,18 +125,16 @@
                             <constraint firstItem="YU5-UY-nx5" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="1TM-96-cfB"/>
                             <constraint firstItem="0cu-on-0rp" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="3oq-7O-aPj"/>
                             <constraint firstItem="KUH-L2-xfe" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="3pH-jm-5aB"/>
-                            <constraint firstItem="BwW-Su-BCB" firstAttribute="top" secondItem="0cu-on-0rp" secondAttribute="bottom" constant="16" id="9jL-qU-wMR"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="YU5-UY-nx5" secondAttribute="trailing" constant="24" id="I0M-qB-7d4"/>
-                            <constraint firstItem="fn5-bY-n3l" firstAttribute="top" secondItem="BwW-Su-BCB" secondAttribute="bottom" constant="24" id="QdO-at-rJd"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="KUH-L2-xfe" secondAttribute="trailing" constant="24" id="QeG-eo-WbW"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="bottom" secondItem="cen-WM-H3N" secondAttribute="bottom" constant="44" id="Sez-Eo-l7S"/>
-                            <constraint firstItem="BwW-Su-BCB" firstAttribute="centerX" secondItem="vCx-56-Z2j" secondAttribute="centerX" id="UKg-Xf-6Sq"/>
                             <constraint firstItem="fn5-bY-n3l" firstAttribute="centerX" secondItem="vCx-56-Z2j" secondAttribute="centerX" id="UiD-Qv-sUK"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="cen-WM-H3N" secondAttribute="trailing" constant="24" id="UyX-h9-Apg"/>
                             <constraint firstItem="cen-WM-H3N" firstAttribute="leading" secondItem="CEv-8w-uyC" secondAttribute="leading" constant="24" id="cPz-uA-ck5"/>
                             <constraint firstItem="cen-WM-H3N" firstAttribute="top" secondItem="fn5-bY-n3l" secondAttribute="bottom" constant="34" id="hJX-je-wuB"/>
                             <constraint firstItem="KUH-L2-xfe" firstAttribute="top" secondItem="YU5-UY-nx5" secondAttribute="bottom" constant="20" id="kqV-jO-cXm"/>
                             <constraint firstItem="YU5-UY-nx5" firstAttribute="top" secondItem="CEv-8w-uyC" secondAttribute="top" constant="44" id="nVS-mn-Fov"/>
+                            <constraint firstItem="fn5-bY-n3l" firstAttribute="top" secondItem="0cu-on-0rp" secondAttribute="bottom" constant="24" id="oj3-ql-Lsc"/>
                             <constraint firstItem="CEv-8w-uyC" firstAttribute="trailing" secondItem="0cu-on-0rp" secondAttribute="trailing" constant="24" id="uuS-rP-IDo"/>
                             <constraint firstItem="0cu-on-0rp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KUH-L2-xfe" secondAttribute="bottom" constant="20" id="yHx-Zr-h0q"/>
                         </constraints>
@@ -151,7 +142,6 @@
                     </view>
                     <connections>
                         <outlet property="gifView" destination="KUH-L2-xfe" id="RGo-4g-f3X"/>
-                        <outlet property="submitPasteboardOnSimulatorButton" destination="BwW-Su-BCB" id="5bK-6s-39r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9L-Rx-c69" userLabel="First Responder" sceneMemberID="firstResponder"/>

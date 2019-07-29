@@ -43,7 +43,7 @@ class OnboardingCoordinator {
     }
     
     func advance() {
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
                 
@@ -82,6 +82,7 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([emailEntry], animated: true)
         case .checkYourEmail:
             let checkYourEmail = CheckEmailViewController.fromStoryboard()
+            checkYourEmail.delegate = self
             navigationController.setViewControllers([checkYourEmail], animated: true)
         case .legalStuff:
             let legalStuff = TheLegalStuffViewController.fromStoryboard()
@@ -203,10 +204,48 @@ extension OnboardingCoordinator: LoginDelegate {
 }
 
 extension OnboardingCoordinator: EmailEntryDelegate {
-    func emailLinkSent(email: String) {
-        localContext.enteredEmailAddress = email
-        UserDefaultsWrapper.pendingEmail = email
-        advance()
+    func sendEmailLink(email: String) {
+        
+        let spinnerView = navigationController.showSpinner()
+        EmailLinkManager.linkEmail(email)
+        .ensure { [weak self] in
+            self?.navigationController.removeSpinner(spinnerView)
+        }
+        .done { [weak self] (_) in
+            self?.localContext.enteredEmailAddress = email
+            UserDefaultsWrapper.pendingEmail = email
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
+    }
+}
+
+extension OnboardingCoordinator: CheckEmailDelegate {
+    func resendLoginEmail() {
+        guard let email = UserDefaultsWrapper.pendingEmail else {
+            ApplicationErrors.assertAndLog("No pending email?!")
+            return
+        }
+        
+        let spinnerView = navigationController.showSpinner()
+        EmailLinkManager.linkEmail(email)
+        .ensure { [weak self] in
+            self?.navigationController.removeSpinner(spinnerView)
+        }
+        .done { [weak self] in
+            let messageFormat = NSLocalizedString("We've resent your email to %@. If you're still having issues, please contact support.", comment: "Message for alert when login email is re-sent.")
+            self?.navigationController.showAlert(
+                title: NSLocalizedString("Resent!", comment: "Title for alert when login email is re-sent."),
+                msg: String(format: messageFormat, email)
+            )
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
 }
 
@@ -218,14 +257,51 @@ extension OnboardingCoordinator: TheLegalStuffDelegate {
 }
 
 extension OnboardingCoordinator: GetStartedDelegate {
-    func nameEnteredSuccessfully() {
-        advance()
+    func enteredNickname(_ nickname: String) {
+        guard let email = UserManager.shared.currentUserEmail else {
+            navigationController.showAlert(
+                title: NSLocalizedString("Error", comment: "Error message title"),
+                msg: NSLocalizedString("Email is empty or missing in Firebase", comment: "Error message when we don't get info from Firebase")
+            )
+            return
+        }
+        
+        let user = UserSetup(nickname: nickname, email: email)
+        
+        primeAPI.createCustomer(with: user)
+        .done { [weak self] customer in
+            OstelcoAnalytics.logEvent(.EnteredNickname)
+            UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
+            self?.advance()
+        }
+        .cauterize()
+        // There is no catch. The only reason this could error is if the server is unreachable which we handle otherwise.
     }
 }
 
 extension OnboardingCoordinator: EnableNotificationsDelegate {
+    func requestPermission() {
+        PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
+        .ensure { [weak self] in
+            self?.localContext.hasSeenNotificationPermissions = true
+        }
+        .done { [weak self] _ in
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            switch error {
+            case PushNotificationController.Error.notAuthorized:
+                // The user declined push notifications. Oh well. Let's move on.
+                self?.advance()
+            default:
+                ApplicationErrors.log(error)
+                self?.navigationController.showGenericError(error: error)
+            }
+        }
+    }
+    
     func pushAgreedOrDenied() {
-        localContext.hasSeenNotificationPermissions = true
+        
         advance()
     }
 }
@@ -323,13 +399,21 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
 }
 
 extension OnboardingCoordinator: AddressEditDelegate {
-    func countryCode() -> String {
-        return selectedCountry().countryCode
+    func entered(address: EKYCAddress) {
+        primeAPI
+        .addAddress(address, forRegion: countryCode())
+        .done { [weak self] in
+            self?.localContext.hasCompletedAddress = true
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
     
-    func enteredAddressSuccessfully() {
-        localContext.hasCompletedAddress = true
-        advance()
+    func countryCode() -> String {
+        return selectedCountry().countryCode
     }
     
     func cancel() {
@@ -348,7 +432,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions() {
         localContext.hasSeenESIMInstructions = true
         
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let countryCode = context.toLegacyModel().getRegion()!.region.id
             return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
@@ -365,14 +449,17 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
     func resendEmail() {
-        APIManager.shared.primeAPI.loadContext()
+        primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let region = context.toLegacyModel().getRegion()!
             let profile = region.getSimProfile()!
-            return APIManager.shared.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
+            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
         }
         .done { [weak self] _ in
-            self?.navigationController.showAlert(title: "Message", msg: "We have resent the QR code to your email address.")
+            self?.navigationController.showAlert(
+                title: NSLocalizedString("Message", comment: "Title for alert when we resend esim email."),
+                msg: NSLocalizedString("We have resent the QR code to your email address.", comment: "Message for alert when we resend esim email.")
+            )
         }
         .catch { [weak self] error in
             ApplicationErrors.log(error)
@@ -393,6 +480,26 @@ extension OnboardingCoordinator: SignUpCompletedDelegate {
 }
 
 extension OnboardingCoordinator: NRICVerifyDelegate {
+    func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
+        let spinnerView = controller.showSpinner()
+        APIManager.shared.primeAPI
+        .validateNRIC(nric, forRegion: countryCode())
+        .ensure {
+            controller.removeSpinner(spinnerView)
+        }
+        .done { [weak self] isValid in
+            if isValid {
+                self?.advance()
+            } else {
+                controller.showError()
+            }
+        }
+        .catch { error in
+            ApplicationErrors.log(error)
+            controller.showGenericError(error: error)
+        }
+    }
+    
     func enteredNRICSuccessfully() {
         advance()
     }
@@ -417,11 +524,7 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 }
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
-    func waitingCompletedSuccessfully(for region: PrimeGQL.RegionDetailsFragment) {
-        advance()
-    }
-    
-    func waitingCompletedWithRejection() {
+    func checkStatus() {
         advance()
     }
 }

@@ -23,7 +23,7 @@ class ESIMPendingDownloadViewController: UIViewController {
     @IBOutlet private weak var continueButton: UIButton!
 
     @IBAction private func sendAgainTapped(_ sender: Any) {
-        spinnerView = showSpinner(onView: self.view)
+        spinnerView = showSpinner()
         delegate?.resendEmail()
     }
     

@@ -11,18 +11,18 @@ import UIKit
 // ref: https://github.com/vincechan/SwiftLoadingIndicator/blob/master/SwiftLoadingIndicator/LoadingIndicatorView.swift
 
 extension UIViewController {
-    @discardableResult func showSpinner(onView: UIView, loadingText: String? = nil) -> UIView {
+    @discardableResult func showSpinner(loadingText: String? = nil) -> UIView {
         
         // Create the overlay
         let overlay = UIView()
         overlay.alpha = 0
         overlay.backgroundColor = UIColor.white
         overlay.translatesAutoresizingMaskIntoConstraints = false
-        onView.addSubview(overlay)
-        onView.bringSubviewToFront(overlay)
+        view.addSubview(overlay)
+        view.bringSubviewToFront(overlay)
         
-        overlay.widthAnchor.constraint(equalTo: onView.widthAnchor).isActive = true
-        overlay.heightAnchor.constraint(equalTo: onView.heightAnchor).isActive = true
+        overlay.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        overlay.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         // Create and animate the activity indicator
         let indicator = UIActivityIndicatorView(style: .whiteLarge)

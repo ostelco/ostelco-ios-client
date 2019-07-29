@@ -31,7 +31,7 @@ class SingPassCoordinator: NSObject {
     }
     
     func startLogin(from viewController: UIViewController) {
-        let spinnerView = viewController.showSpinner(onView: viewController.view)
+        let spinnerView = viewController.showSpinner()
         // Fetch the configuration from prime
         APIManager.shared.primeAPI
             .loadMyInfoConfig()

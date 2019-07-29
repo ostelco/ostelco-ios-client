@@ -39,7 +39,7 @@ extension PushNotificationHandling {
                 guard let pushObject = self.convertToNotificationContainer(userInfo: notification.userInfo) else {
                     let error = ApplicationErrors.General.couldntConvertUserInfoToNotificaitonData(userInfo: notification.userInfo)
                     ApplicationErrors.assertAndLog(error)
-                        return
+                    return
                 }
                 
                 self.handlePushNotification(pushObject)

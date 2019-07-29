@@ -17,25 +17,29 @@ enum LegalLink: CaseIterable {
     var linkableText: LinkableText {
         switch self {
         case .termsAndConditions:
-            return LinkableText(fullText: "I hereby agree to the Terms & Conditions",
-                                linkedPortion: "Terms & Conditions")!
+            return LinkableText(
+                fullText: NSLocalizedString("I hereby agree to the Terms & Conditions", comment: "Label for agreeing to the terms"),
+                linkedPortion: Link(
+                    NSLocalizedString("Terms & Conditions", comment: "Label for agreeing to the terms: linkable part"),
+                    url: ExternalLink.termsAndConditions.url
+                )
+            )!
         case .privacyPolicy:
-            return LinkableText(fullText: "I agree to the Privacy Policy",
-                                linkedPortion: "Privacy Policy")!
+            return LinkableText(
+                fullText: NSLocalizedString("I agree to the Privacy Policy", comment: "Label for agreeing to the privacy policy"),
+                linkedPortion: Link(
+                    NSLocalizedString("Privacy Policy", comment: "Label for agreeing to the privacy policy: linkable part"),
+                    url: ExternalLink.privacyPolicy.url
+                )
+            )!
         case .minimumAge:
-            return LinkableText(fullText: "I am at least 18 years of age",
-                                linkedPortion: "18 years")!
-        }
-    }
-    
-    var linkToOpen: ExternalLink {
-        switch self {
-        case .termsAndConditions:
-            return .termsAndConditions
-        case .privacyPolicy:
-            return .privacyPolicy
-        case .minimumAge:
-            return .minimumAgeDetails
+            return LinkableText(
+                fullText: NSLocalizedString("I am at least 18 years of age", comment: "Label for being at least 18"),
+                linkedPortion: Link(
+                    NSLocalizedString("18 years", comment: "Label for being at least 18: linkable part"),
+                    url: ExternalLink.minimumAgeDetails.url
+                )
+            )!
         }
     }
 }
@@ -60,47 +64,47 @@ class TheLegalStuffViewController: UIViewController {
  
     private var allChecks: [CheckButton] {
         return [
-            self.termsAndConditionsCheck,
-            self.privacyPolicyCheck,
-            self.ageCheck
+            termsAndConditionsCheck,
+            privacyPolicyCheck,
+            ageCheck
         ]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.termsAndConditionsLabel.tapDelegate = self
-        self.termsAndConditionsLabel.setLinkableText(LegalLink.termsAndConditions.linkableText)
-        self.privacyPolicyLabel.tapDelegate = self
-        self.privacyPolicyLabel.setLinkableText(LegalLink.privacyPolicy.linkableText)
-        self.ageLabel.tapDelegate = self
-        self.ageLabel.setLinkableText(LegalLink.minimumAge.linkableText)
+        termsAndConditionsLabel.tapDelegate = self
+        termsAndConditionsLabel.setLinkableText(LegalLink.termsAndConditions.linkableText)
+        privacyPolicyLabel.tapDelegate = self
+        privacyPolicyLabel.setLinkableText(LegalLink.privacyPolicy.linkableText)
+        ageLabel.tapDelegate = self
+        ageLabel.setLinkableText(LegalLink.minimumAge.linkableText)
         
-        self.updateContinueButtonState()
+        updateContinueButtonState()
     }
 
     @IBAction private func needHelpTapped() {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     @IBAction private func checkButtonTapped(_ check: CheckButton) {
         check.isChecked.toggle()
-        self.updateContinueButtonState()
+        updateContinueButtonState()
     }
     
     private func updateContinueButtonState() {
-        if self.allChecks.contains(where: { !$0.isChecked }) {
+        if allChecks.contains(where: { !$0.isChecked }) {
             // At least one item is not checked.
-            self.continueButton.isEnabled = false
+            continueButton.isEnabled = false
         } else {
             // Everything is checked!
-            self.continueButton.isEnabled = true
+            continueButton.isEnabled = true
         }
     }
     
     @IBAction private func continueTapped() {
         OstelcoAnalytics.logEvent(.LegalStuffAgreed)
-        self.delegate?.legaleseAgreed()
+        delegate?.legaleseAgreed()
     }
 }
 
@@ -117,25 +121,7 @@ extension TheLegalStuffViewController: StoryboardLoadable {
 
 extension TheLegalStuffViewController: LabelTapDelegate {
     
-    func tappedAttributedLabel(_ label: UILabel, at characterIndex: Int) {
-        
-        let legalLink: LegalLink
-        switch label {
-        case self.termsAndConditionsLabel:
-            legalLink = .termsAndConditions
-        case self.privacyPolicyLabel:
-            legalLink = .privacyPolicy
-        case self.ageLabel:
-            legalLink = .minimumAge
-        default:
-            fatalError("Tapped an unhandled label!")
-        }
-        
-        guard legalLink.linkableText.isIndexLinked(characterIndex) else {
-            // Did not actually tap the link
-            return
-        }
-        
-        UIApplication.shared.open(legalLink.linkToOpen.url)
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url)
     }
 }

@@ -50,7 +50,7 @@ class ESIMInstructionsViewController: UIViewController {
             primaryButton.setTitle(NSLocalizedString("Send me the QR code", comment: "Last action button in eSim Carousel"), for: .normal)
             lastPageLabel.isHidden = false
         } else {
-            primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in eSim Carousel"), for: .normal)
+            primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in Carousel"), for: .normal)
             lastPageLabel.isHidden = true
         }
     }

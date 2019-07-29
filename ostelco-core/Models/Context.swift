@@ -25,7 +25,7 @@ public struct Context {
     }
     
     public func toGraphQLModel() -> PrimeGQL.ContextQuery.Data.Context {
-        var gqlCustomer: PrimeGQL.ContextQuery.Data.Context.Customer? = nil
+        var gqlCustomer: PrimeGQL.ContextQuery.Data.Context.Customer?
         if let customer = customer {
             gqlCustomer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
         }
@@ -38,7 +38,7 @@ public struct Context {
 
 extension PrimeGQL.ContextQuery.Data.Context {
     public func toLegacyModel() -> Context {
-        var legacyCustomer: CustomerModel? = nil
+        var legacyCustomer: CustomerModel?
         if let customer = customer {
             legacyCustomer = CustomerModel(gqlCustomer: customer)
         }

@@ -20,18 +20,20 @@ class ChooseCountryViewController: UIViewController {
     @IBOutlet private var continueButton: UIButton!
     
     private lazy var dataSource: CountryDataSource = {
-        return CountryDataSource(tableView: self.tableView,
-                                 countries: Country.defaultCountries,
-                                 delegate: self)
+        return CountryDataSource(
+            tableView: tableView,
+            countries: Country.defaultCountries,
+            delegate: self
+        )
     }()
     
     weak var delegate: ChooseCountryDelegate?
     private var currentSelectedCountry: Country? {
         didSet {
-            if self.currentSelectedCountry == nil {
-                self.continueButton.isEnabled = false
+            if currentSelectedCountry == nil {
+                continueButton.isEnabled = false
             } else {
-                self.continueButton.isEnabled = true
+                continueButton.isEnabled = true
             }
         }
     }
@@ -39,21 +41,21 @@ class ChooseCountryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
-        self.tableView.addEmptyFooter()
-        self.dataSource.reloadData()
+        tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
+        tableView.addEmptyFooter()
+        dataSource.reloadData()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        guard let country = self.currentSelectedCountry else {
+        guard let country = currentSelectedCountry else {
             return
         }
         
-        showSpinner(onView: self.view)
+        showSpinner()
         delegate?.selectedCountry(country)
     }
 }
@@ -61,7 +63,7 @@ class ChooseCountryViewController: UIViewController {
 extension ChooseCountryViewController: CountrySelectionDelegate {
     
     func selected(country: Country) {
-        self.currentSelectedCountry = country
+        currentSelectedCountry = country
     }
 }
 
