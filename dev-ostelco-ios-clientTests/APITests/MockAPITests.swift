@@ -235,7 +235,7 @@ class MockAPITests: XCTestCase {
         
         XCTAssertEqual(simProfile.iccId, "8947000000000001598")
         XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
-        XCTAssertEqual(simProfile.status, .AVAILABLE_FOR_DOWNLOAD)
+        XCTAssertEqual(simProfile.status, .availableForDownload)
         XCTAssertEqual(simProfile.alias, "")
     }
 }

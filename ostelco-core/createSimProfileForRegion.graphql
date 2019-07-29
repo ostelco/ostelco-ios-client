@@ -1,0 +1,6 @@
+mutation CreateSimProfileForRegion($countryCode: String!, $profileType: String!) {
+    createSimProfile(regionCode: $countryCode, profileType: $profileType) {
+        ...simProfileFields
+    }
+}
+

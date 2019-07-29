@@ -44,6 +44,7 @@
 		0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
+		04456A6522EFB70D00131581 /* createSimProfileForRegion.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */; };
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
@@ -427,6 +428,7 @@
 		0437CF88224D3B380022A2B8 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createSimProfileForRegion.graphql; sourceTree = "<group>"; };
 		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -984,6 +986,7 @@
 				049707C422EF073D00C69A63 /* createApplicationToken.graphql */,
 				049707C622EFB38800C69A63 /* purchaseProduct.graphql */,
 				049707C822EFB56300C69A63 /* deleteCustomer.graphql */,
+				04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1535,6 +1538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04456A6522EFB70D00131581 /* createSimProfileForRegion.graphql in Resources */,
 				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
 			);

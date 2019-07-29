@@ -271,7 +271,7 @@ extension OnboardingCoordinator: GetStartedDelegate {
         primeAPI.createCustomer(with: user)
         .done { [weak self] customer in
             OstelcoAnalytics.logEvent(.EnteredNickname)
-            UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
+            UserManager.shared.customer = customer 
             self?.advance()
         }
         .cauterize()
@@ -433,7 +433,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         localContext.hasSeenESIMInstructions = true
         
         primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<SimProfile> in
+        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
             let countryCode = context.toLegacyModel().getRegion()!.region.id
             return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
         }

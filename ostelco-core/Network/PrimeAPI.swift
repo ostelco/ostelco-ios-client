@@ -310,20 +310,23 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region code to use
     /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
-    public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<SimProfile> {
-        // TODO: DO GRAPHQL
-        let endpoints: [RegionEndpoint] = [
-            .region(code: code),
-            .simProfiles
-        ]
-    
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-
-        return self.sendQuery(to: path, queryItems: SimProfileRequest().asQueryItems, method: .POST)
-            .map { data, response in
-                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
+    public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> {
+        return self.getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(
+                    mutation: PrimeGQL.CreateSimProfileForRegionMutation(
+                        countryCode: code,
+                        profileType: SimProfileRequest().profileType.rawValue
+                    )
+                ) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
+                    }
+                    seal.fulfill((result?.data?.createSimProfile.fragments.simProfileFields)!)
+                }
             }
-            .map { try self.decoder.decode(SimProfile.self, from: $0) }
+        }
     }
     
     // TODO: Load from GraphQL
