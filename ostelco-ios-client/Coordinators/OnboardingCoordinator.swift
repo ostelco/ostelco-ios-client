@@ -433,9 +433,14 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         localContext.hasSeenESIMInstructions = true
         
         primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<SimProfile> in
-            let countryCode = context.toLegacyModel().getRegion()!.region.id
-            return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
+        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
+            let simProfile = RegionResponse.getRegionFromRegionResponseArray(context.regions.map({ $0.fragments.regionDetailsFragment }))?.getSimProfile()
+            if let simProfile = simProfile {
+                return PromiseKit.Promise.value(simProfile)
+            } else {
+                let countryCode = context.toLegacyModel().getRegion()!.region.id
+                return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode).map { $0.getGraphQLModel().fragments.simProfileFields }
+            }
         }
         .done { [weak self] (_) -> Void in
             self?.advance()
