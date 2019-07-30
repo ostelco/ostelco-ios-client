@@ -90,41 +90,38 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter pushToken: The push token to send
     /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
     public func sendPushToken(_ pushToken: PrimeGQL.ApplicationTokenInput) -> PromiseKit.Promise<PrimeGQL.ApplicationTokenFields> {
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise { seal in
-                    self.client.perform(mutation: PrimeGQL.CreateApplicationTokenMutation(applicationToken: pushToken)) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        
-                        seal.fulfill((result?.data?.createApplicationToken.fragments.applicationTokenFields)!)
+        return self.getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.CreateApplicationTokenMutation(applicationToken: pushToken)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    
+                    seal.fulfill((result?.data?.createApplicationToken.fragments.applicationTokenFields)!)
                 }
+            }
         }
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
     public func loadBundles() -> PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Context.Bundle]> {
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Context.Bundle]> { seal in
-                    self.client.fetch(query: PrimeGQL.BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill(result?.data?.context.bundles ?? [])
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.fetch(query: PrimeGQL.BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill(result?.data?.context.bundles ?? [])
                 }
             }
+        }
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
     public func loadContext() -> PromiseKit.Promise<PrimeGQL.ContextQuery.Data.Context> {
-        return self.getToken()
-        .then { _ in
+        return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     // TODO: Make sure we handle the case where we fetch context and there is no customer from server.
@@ -139,42 +136,39 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
                     }
                 }
-                
             }
         }
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
     public func loadPurchases() -> PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Context.Purchase]> {
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Context.Purchase]> { seal in
-                    self.client.fetch(query: PrimeGQL.PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill(result?.data?.context.purchases ?? [])
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.fetch(query: PrimeGQL.PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill(result?.data?.context.purchases ?? [])
                 }
             }
+        }
     }
 
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
     public func loadProducts() -> PromiseKit.Promise<[PrimeGQL.ProductFragment]> {
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise<[PrimeGQL.ProductFragment]> { seal in
-                    self.client.fetch(query: PrimeGQL.ProductsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill(result?.data?.context.products.map({ $0.fragments.productFragment }) ?? [])
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.fetch(query: PrimeGQL.ProductsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill(result?.data?.context.products.map({ $0.fragments.productFragment }) ?? [])
                 }
+            }
         }
     }
     
@@ -185,18 +179,16 @@ open class PrimeAPI: BasicNetwork {
     ///   - payment: The payment information to use to purchase it
     /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
     public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<PrimeGQL.ProductFragment> {
-        // TODO: DO GRAPHQL
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise { seal in
-                    self.client.perform(mutation: PrimeGQL.PurchaseProductMutation(sku: sku, sourceId: payment.sourceId)) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill((result?.data?.purchaseProduct.fragments.productFragment)!)
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.PurchaseProductMutation(sku: sku, sourceId: payment.sourceId)) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill((result?.data?.purchaseProduct.fragments.productFragment)!)
                 }
+            }
         }
     }
     
@@ -207,7 +199,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter userSetup: The `UserSetup` to use.
     /// - Returns: A promise which when fullfilled will contain the created customer model.
     public func createCustomer(with userSetup: UserSetup) -> PromiseKit.Promise<PrimeGQL.CustomerFields> {
-        return self.getToken()
+        return getToken()
             .then { _ in
                 return PromiseKit.Promise { seal in
                     self.client.perform(mutation: PrimeGQL.CreateCustomerMutation(email: userSetup.contactEmail, name: userSetup.nickname)) { (result, error) in
@@ -225,49 +217,33 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Returns: A promise which when fulfilled, indicates successful deletion.
     public func deleteCustomer() -> PromiseKit.Promise<PrimeGQL.CustomerFields> {
-        return self.getToken()
-            .then{ _ in
-                return PromiseKit.Promise { seal in
-                    self.client.perform(mutation: PrimeGQL.DeleteCustomerMutation()) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill((result?.data?.deleteCustomer.fragments.customerFields)!)
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.perform(mutation: PrimeGQL.DeleteCustomerMutation()) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill((result?.data?.deleteCustomer.fragments.customerFields)!)
                 }
-        }
-    }
-
-    // TODO: Convert to GraphQL
-    /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
-    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> PromiseKit.Promise<[AnyHashable: Any]> {
-        let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
-        return self.loadData(from: path, queryItems: request.asQueryItems)
-            .map { data -> [AnyHashable: Any] in
-                let object = try JSONSerialization.jsonObject(with: data, options: [])
-                guard let dictionary = object as? [AnyHashable: Any] else {
-                    throw APIHelper.Error.unexpectedResponseFormat(data: data)
-                }
-                return dictionary
             }
+        }
     }
 
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
     public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[PrimeGQL.RegionDetailsFragment]> {
-        return self.getToken()
-            .then { _ in
-                return PromiseKit.Promise { seal in
-                    self.client.fetch(query: PrimeGQL.RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
-                        if let error = error {
-                            seal.reject(error)
-                            return
-                        }
-                        seal.fulfill(result?.data?.context.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
+        return getToken().then { _ in
+            return PromiseKit.Promise { seal in
+                self.client.fetch(query: PrimeGQL.RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
+                    if let error = error {
+                        seal.reject(error)
+                        return
                     }
+                    seal.fulfill(result?.data?.context.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
                 }
+            }
         }
     }
     
@@ -292,8 +268,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter code: The region to request SIM profiles for
     /// - Returns: A promise which when fullfilled contains the requested profiles
     public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[PrimeGQL.SimProfileFields]> {
-        return self.getToken()
-        .then { _ in
+        return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.SimProfilesForRegionQuery(countryCode: code), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
                     if let error = error {
@@ -311,7 +286,7 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameter code: The region code to use
     /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
     public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> {
-        return self.getToken().then { _ in
+        return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.perform(
                     mutation: PrimeGQL.CreateSimProfileForRegionMutation(
@@ -329,7 +304,6 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
-    // TODO: Load from GraphQL
     /// Resend QR code email for given sim profile
     ///
     /// - Parameters:
@@ -337,7 +311,7 @@ open class PrimeAPI: BasicNetwork {
     ///     - iccId: the iccId of the sim profile to resend QR code email
     /// - Returns: The sim profile with the given iccid
     public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> {
-        return self.getToken().then { _ in
+        return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.perform(mutation: PrimeGQL.SendEmailWithActivationQrCodeForRegionMutation(countryCode: code, iccId: iccId)) { (result, error) in
                     if let error = error {
@@ -404,31 +378,6 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
-    /// Updates the user's EKYC profile with the given information in the given region.
-    ///
-    /// - Parameters:
-    ///   - update: The info to be updated.
-    ///   - code: The region to update the user profile in
-    /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
-    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> PromiseKit.Promise<Void> {
-        // TODO: DO GRAPHQL
-        let endpoints: [RegionEndpoint] = [
-            .region(code: code),
-            .kyc,
-            .profile
-        ]
-
-        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
-
-        return self.sendQuery(to: path, queryItems: update.asQueryItems, method: .PUT)
-            .map { data, response in
-                try APIHelper.validateAndLookForServerError(data: data,
-                                                            response: response,
-                                                            decoder: self.decoder)
-            }
-    }
-    
-    // TODO: Load from GraphQL
     /// Validates the given NRIC.
     ///
     /// - Parameters:
@@ -451,7 +400,8 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
-    // TODO: Load from GraphQL
+    //  MARK: Legacy APIs to be converted to GraphQL after server schema has been updated.
+    
     /// Loads details based on a SingPass sign in (singapore only!)
     ///
     /// - Parameter code: The code associated with the user in SingPass
@@ -472,7 +422,6 @@ open class PrimeAPI: BasicNetwork {
             .map { try self.decoder.decode(MyInfoDetails.self, from: $0) }
     }
 
-    // TODO: Load from GraphQL
     /// Loads configuration details of MyInfo sign in (singapore only!)
     ///
     /// - Returns: A promise which, when fulfilled, will contain the user's `MyInfoConfig`.
@@ -490,6 +439,44 @@ open class PrimeAPI: BasicNetwork {
         return self.loadData(from: path)
             .map { try self.decoder.decode(MyInfoConfig.self, from: $0) }
     }
+    
+    /// Updates the user's EKYC profile with the given information in the given region.
+    ///
+    /// - Parameters:
+    ///   - update: The info to be updated.
+    ///   - code: The region to update the user profile in
+    /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
+    public func updateEKYCProfile(with update: EKYCProfileUpdate, forRegion code: String) -> PromiseKit.Promise<Void> {
+        // TODO: DO GRAPHQL
+        let endpoints: [RegionEndpoint] = [
+            .region(code: code),
+            .kyc,
+            .profile
+        ]
+        
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+        
+        return self.sendQuery(to: path, queryItems: update.asQueryItems, method: .PUT)
+            .map { data, response in
+                try APIHelper.validateAndLookForServerError(data: data,
+                                                            response: response,
+                                                            decoder: self.decoder)
+        }
+    }
+    
+    /// - Returns: A Promise which when fulfilled will contain the Stripe Ephemeral Key
+    public func stripeEphemeralKey(with request: StripeEphemeralKeyRequest) -> PromiseKit.Promise<[AnyHashable: Any]> {
+        let path = RootEndpoint.customer.pathByAddingEndpoints([CustomerEndpoint.stripeEphemeralKey])
+        return self.loadData(from: path, queryItems: request.asQueryItems)
+            .map { data -> [AnyHashable: Any] in
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let dictionary = object as? [AnyHashable: Any] else {
+                    throw APIHelper.Error.unexpectedResponseFormat(data: data)
+                }
+                return dictionary
+        }
+    }
+    
 
     // MARK: - General
     
