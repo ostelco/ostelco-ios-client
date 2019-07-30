@@ -26,30 +26,6 @@ class MockAPITests: XCTestCase {
     
     // MARK: - Customer
     
-    func testMockCreatingCustomer() {
-        self.stubPath("customer", toLoad: "customer_create")
-        
-        let setup = UserSetup(nickname: "HomerJay", email: "h.simpson@snpp.com")
-        
-        guard let customer = self.mockAPI.createCustomer(with: setup).awaitResult(in: self) else {
-            // Failure handled in `awaitResult`
-            return
-        }
-        
-        XCTAssertEqual(customer.nickname, "HomerJay")
-        XCTAssertEqual(customer.contactEmail, "h.simpson@snpp.com")
-        XCTAssertEqual(customer.id, "5112d0bf-4f58-49ea-b417-2af8d69895d2")
-        XCTAssertEqual(customer.analyticsId, "42b7d480-f434-4074-9f5c-2bf152f96cfe")
-        XCTAssertEqual(customer.referralId, "b18635c0-f504-47ab-9d09-a425f615d2ae")
-    }
-    
-    func testMockDeletingCustomer() {
-        self.stubEmptyDataAtPath("customer", statusCode: 204)
-       
-        // Failures handled in `awaitResult`
-        self.mockAPI.deleteCustomer().awaitResult(in: self)
-    }
-    
     func testMockCreatingEphemeralKey() {
         self.stubAbsolutePath("customer/stripe-ephemeral-key?api_version=2015-10-12", toLoad: "stripe_ephemeral_key")
         
@@ -102,45 +78,6 @@ class MockAPITests: XCTestCase {
     
     // MARK: - Regions
     
-    func testMockNRICCheckWithValidNRIC() {
-        self.stubPath("regions/sg/kyc/dave/S9315107J", toLoad: "nric_check_valid")
-        
-        guard let nricInfo = self.mockAPI.validateNRIC("S9315107J", forRegion: "sg").awaitResult(in: self) else {
-            // Failures handled in `awaitResult`
-            return
-        }
-        
-        XCTAssertEqual("S9315107J", nricInfo.nric)
-    }
-    
-    func testMockNRICCheckWithInvalidNRIC() {
-        self.stubPath("regions/sg/kyc/dave/NOPE", toLoad: "nric_check_invalid", statusCode: 403)
-        
-        guard let nricInfo = self.mockAPI.validateNRIC("NOPE", forRegion: "sg").awaitResult(in: self) else {
-            // Failure handled in `awaitResult`
-            return
-        }
-        
-        XCTAssertNotEqual("S9315107J", nricInfo.nric)
-    }
-    
-    func testMockNRIC500Error() {
-        self.stubEmptyDataAtPath("regions/sg/kyc/dave/NOPE", statusCode: 500)
-
-        guard let error = self.mockAPI.validateNRIC("NOPE", forRegion: "sg").awaitResultExpectingError(in: self) else {
-            // Unexpected success handled in `awaitResult`
-            return
-        }
-        
-        switch error {
-        case APIHelper.Error.invalidResponseCode(let code, let data):
-            XCTAssertEqual(code, 500)
-            XCTAssertTrue(data.isEmpty)
-        default:
-            XCTFail("Unexpected error: \(error)")
-        }
-    }
-    
     func testMockFetchingMyInfoConfig() {
         self.stubPath("regions/sg/kyc/myInfo/v3/config", toLoad: "my_info_config")
         
@@ -186,19 +123,6 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(mobileNumber.formattedNumber, "+6597399245")
     }
     
-    func testMockCreatingAddress() {
-        let address = EKYCAddress(street: "123 Fake Street",
-                                  unit: "3",
-                                  city: "Fake City",
-                                  postcode: "12345",
-                                  country: "Singapore")
-        
-        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678", statusCode: 204)
-        
-        // Failure handled in `awaitResult`
-        self.mockAPI.addAddress(address, forRegion: "sg").awaitResult(in: self)
-    }
-    
     func testMockUpdatingAddress() {
         guard
             let testInfo = MyInfoDetails.testInfo,
@@ -209,32 +133,5 @@ class MockAPITests: XCTestCase {
         self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=102%20BEDOK%20NORTH%20AVENUE%204%0A460102%20SG&phoneNumber=+6597399245", statusCode: 204)
         
         self.mockAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
-    }
-    
-    func testMockCreatingJumioScan() {
-        self.stubPath("regions/sg/kyc/jumio/scans", toLoad: "create_jumio_scan")
-        
-        guard let scan = self.mockAPI.createJumioScanForRegion(code: "sg").awaitResult(in: self) else {
-            // Failure handled in `awaitResult`
-            return
-        }
-        
-        XCTAssertEqual(scan.id, "326aceb6-3e54-4049-9f7b-0c922ad2c85a")
-        XCTAssertEqual(scan.countryCode, "sg")
-    }
-    
-    func testMockRequestingSimProfile() {
-       self.stubAbsolutePath("regions/sg/simProfiles?profileType=TEST",
-                                   toLoad: "create_sim_profile")
-        
-        guard let simProfile = self.mockAPI.createSimProfileForRegion(code: "sg").awaitResult(in: self) else {
-            // Failures handled by `awaitResult`
-            return
-        }
-        
-        XCTAssertEqual(simProfile.iccId, "8947000000000001598")
-        XCTAssertEqual(simProfile.eSimActivationCode, "FAKE_ACTIVATION_CODE")
-        XCTAssertEqual(simProfile.status, .availableForDownload)
-        XCTAssertEqual(simProfile.alias, "")
     }
 }

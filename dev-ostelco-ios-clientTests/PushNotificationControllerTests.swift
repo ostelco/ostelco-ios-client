@@ -55,31 +55,6 @@ class PushNotificationControllerTests: XCTestCase {
         XCTAssertNil(self.testController.sentFCMToken)
     }
     
-    func testRegisteringForPushNotificationsForcingAuthorizationAndAccepting() {
-        let fcmToken = "Forced auth and accepted"
-        self.testController.fakeFCMToken = fcmToken
-        self.setupTokenMock()
-
-        guard let authorized = self.testController
-            .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
-            .awaitResult(in: self) else {
-                // Failures handled in `awaitResult`.
-                return
-        }
-        
-        XCTAssertTrue(authorized)
-        
-        guard let promise = self.testController.activeSendTokenPromise else {
-            XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
-            return
-        }
-        
-        promise.awaitResult(in: self)
-        self.testController.activeSendTokenPromise = nil
-
-        XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
-    }
-    
     func testRegisteringForPushNotificationsForcingAuthorizationAndDeclining() {
         let fcmToken = "Forced auth and declined"
         self.testController.fakeFCMToken = fcmToken
@@ -100,32 +75,6 @@ class PushNotificationControllerTests: XCTestCase {
         default:
             XCTFail("Unexpected error type: \(error)")
         }
-    }
-    
-    func testRegisteringForPushNotificationsAlreadyAuthorized() {
-        let fcmToken = "Already authorized"
-        self.testController.fakeFCMToken = fcmToken
-        self.testController.authorizationStatus = .authorized
-        self.setupTokenMock()
-
-        guard let authorized = self.testController
-            .checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: false)
-            .awaitResult(in: self) else {
-                // Failures handled in `awaitResult`
-                return
-        }
-        
-        XCTAssertTrue(authorized)
-        
-        guard let promise = self.testController.activeSendTokenPromise else {
-            XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
-            return
-        }
-        
-        promise.awaitResult(in: self)
-        self.testController.activeSendTokenPromise = nil
-        
-        XCTAssertEqual(self.testController.sentFCMToken, fcmToken)
     }
     
     func testReceivingAPushNotificationSendsLocalNotification() {
