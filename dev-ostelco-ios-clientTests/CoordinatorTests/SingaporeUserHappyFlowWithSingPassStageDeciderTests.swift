@@ -12,6 +12,11 @@ import XCTest
 class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     // Testing the flow of a singapore user who uses singpass and has no trouble:
     
+    override func tearDown() {
+        super.tearDown()
+        UserDefaultsWrapper.pendingEmail = nil
+    }
+    
     func testColdStartForAUser() {
         let decider = StageDecider()
         let context: Context? = nil
@@ -29,7 +34,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasEnteredEmail() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com")
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasSeenLoginCarousel: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
     }
@@ -37,7 +43,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasEnteredEmailThenColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com")
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext()
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
     }
@@ -45,7 +52,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
@@ -53,7 +61,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
@@ -61,7 +70,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuffThenColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
@@ -69,7 +79,8 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasFirebasedThenColdStartedThenAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(enteredEmailAddress: "xxxx@xxxx.com", hasFirebaseToken: true, hasAgreedToTerms: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }

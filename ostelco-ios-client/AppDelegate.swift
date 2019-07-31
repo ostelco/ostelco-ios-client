@@ -99,17 +99,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func application(_ application: UIApplication,
-                     continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        guard let incomingURL = userActivity.webpageURL else {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard let incomingURL = userActivity.webpageURL, let email = UserDefaultsWrapper.pendingEmail else {
             return false
         }
         
         debugPrint("Incoming URL is \(incomingURL)")
         
         if EmailLinkManager.isSignInLink(incomingURL) {
-            EmailLinkManager.signInWithLink(incomingURL)
+            EmailLinkManager.signInWithLink(incomingURL, email: email)
                 .catch { error in
                     ApplicationErrors.log(error)
                     debugPrint("ERROR SIGNING IN: \(error)")

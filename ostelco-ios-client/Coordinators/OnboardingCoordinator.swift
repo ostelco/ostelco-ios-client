@@ -36,7 +36,6 @@ class OnboardingCoordinator {
         }
         
         Auth.auth().addStateDidChangeListener { (_, user) in
-            self.localContext.enteredEmailAddress = UserDefaultsWrapper.pendingEmail
             self.localContext.hasFirebaseToken = user != nil
             self.advance()
         }
@@ -213,7 +212,6 @@ extension OnboardingCoordinator: EmailEntryDelegate {
         }
         .done { [weak self] (_) in
             self?.localContext.enteredEmailAddress = email
-            UserDefaultsWrapper.pendingEmail = email
             self?.advance()
         }
         .catch { [weak self] error in
@@ -225,7 +223,7 @@ extension OnboardingCoordinator: EmailEntryDelegate {
 
 extension OnboardingCoordinator: CheckEmailDelegate {
     func resendLoginEmail() {
-        guard let email = UserDefaultsWrapper.pendingEmail else {
+        guard let email = localContext.enteredEmailAddress else {
             ApplicationErrors.assertAndLog("No pending email?!")
             return
         }

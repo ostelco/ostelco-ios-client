@@ -10,7 +10,14 @@ import Foundation
 
 public struct LocalContext {
     public var hasSeenLoginCarousel: Bool
-    public var enteredEmailAddress: String?
+    public var enteredEmailAddress: String? {
+        get {
+            return UserDefaultsWrapper.pendingEmail
+        }
+        set(value) {
+            UserDefaultsWrapper.pendingEmail = value
+        }
+    }
     public var hasFirebaseToken: Bool
     public var hasAgreedToTerms: Bool
     public var hasSeenNotificationPermissions: Bool
@@ -28,10 +35,9 @@ public struct LocalContext {
     public var hasCompletedAddress: Bool
     public var serverIsUnreachable: Bool
     
-    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, enteredEmailAddress: String? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasSeenLoginCarousel = hasSeenLoginCarousel
-        self.enteredEmailAddress = enteredEmailAddress
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
         self.hasSeenNotificationPermissions = hasSeenNotificationPermissions

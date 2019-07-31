@@ -10,12 +10,19 @@ import XCTest
 @testable import ostelco_core
 
 class EdgeCasesInStageDeciderTests: XCTestCase {
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        UserDefaultsWrapper.pendingEmail = nil
+    }
 
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.
     
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@gmail.com", hasFirebaseToken: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@gmail.com"
+        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -36,7 +43,8 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserSignsUpOnNewDeviceAndGivesNotificationPermissionsAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenLoginCarousel: true, enteredEmailAddress: "xxxx@gmail.com", hasFirebaseToken: true, hasSeenNotificationPermissions: true)
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true, hasSeenNotificationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
