@@ -408,11 +408,9 @@ open class PrimeAPI: BasicNetwork {
         let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
 
         return self.sendQuery(to: path, queryItems: update.asQueryItems, method: .PUT)
-            .map { data, response in
-                try APIHelper.validateAndLookForServerError(data: data,
-                                                            response: response,
-                                                            decoder: self.decoder)
-            }
+        .map { data, response in
+            try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
+        }
     }
     
     // TODO: Load from GraphQL

@@ -11,8 +11,10 @@ import UIKit
 
 protocol MyInfoSummaryDelegate: class {
     func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate)
-    func verifiedSingPassAddress()
-    func failedToLoadMyInfo()
+    
+    func updateProfile(_ controller: MyInfoSummaryViewController, profile: EKYCProfileUpdate)
+    
+    func fetchMyInfoDetails(_ controller: MyInfoSummaryViewController, code: String, completion: @escaping (MyInfoDetails) -> Void)
 }
 
 class MyInfoSummaryViewController: UIViewController {
@@ -35,8 +37,8 @@ class MyInfoSummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateUI(nil)
-        self.loadMyInfo()
+        updateUI(nil)
+        loadMyInfo()
     }
     
     private func loadMyInfo() {
@@ -44,68 +46,43 @@ class MyInfoSummaryViewController: UIViewController {
             return
         }
         
-        self.spinnerView = self.showSpinner(loadingText: NSLocalizedString("Loading your data from SingPass...", comment: "Loading text after user approves SingPass"))
-        APIManager.shared.primeAPI
-            .loadSingpassInfo(code: code)
-            .ensure { [weak self] in
-                self?.removeSpinner(self?.spinnerView)
-                self?.spinnerView = nil
-            }
-            .done { [weak self] myInfoDetails in
-                self?.myInfoDetails = myInfoDetails
-                self?.updateUI(myInfoDetails)
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error) { _ in
-                    self?.delegate?.failedToLoadMyInfo()
-                }
-            }
+        delegate?.fetchMyInfoDetails(self, code: code) { info in
+            self.myInfoDetails = info
+            self.updateUI(info)
+        }
     }
     
     @IBAction private func editTapped() {
-        self.delegate?.editSingPassAddress(self.myInfoDetails?.address, delegate: self)
+        delegate?.editSingPassAddress(myInfoDetails?.address, delegate: self)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
         guard
-            let details = self.myInfoDetails,
+            let details = myInfoDetails,
             let profileUpdate = EKYCProfileUpdate(myInfoDetails: details) else {
                 ApplicationErrors.assertAndLog("Validation passed but we can't create a profile update?")
-                return
+                fatalError("Validation passed but we can't create a profile update?")
         }
         
-        self.spinnerView = self.showSpinner()
-        APIManager.shared.primeAPI.updateEKYCProfile(with: profileUpdate, forRegion: "sg")
-            .ensure { [weak self] in
-                self?.removeSpinner(self?.spinnerView)
-                self?.spinnerView = nil
-            }
-            .done { [weak self] in
-                self?.delegate?.verifiedSingPassAddress()
-            }
-            .catch { [weak self] error in
-                ApplicationErrors.log(error)
-                self?.showGenericError(error: error)
-            }
+        delegate?.updateProfile(self, profile: profileUpdate)
     }
     
     func updateUI(_ myInfoDetails: MyInfoDetails?) {
         guard let myInfoDetails = myInfoDetails else {
-            self.name.text = nil
-            self.dob.text = nil
-            self.address.text = nil
-            self.nationality.text = nil
-            self.residentialStatus.text = nil
-            self.mobileNumber.text = nil
-            self.sex.text = nil
-            self.continueButton.isEnabled = false
-            self.editButton.isEnabled = false
+            name.text = nil
+            dob.text = nil
+            address.text = nil
+            nationality.text = nil
+            residentialStatus.text = nil
+            mobileNumber.text = nil
+            sex.text = nil
+            continueButton.isEnabled = false
+            editButton.isEnabled = false
             return
         }
-        self.name.text = myInfoDetails.name
-        self.dob.text = myInfoDetails.dob
-        self.address.text = myInfoDetails.address.formattedAddress
+        name.text = myInfoDetails.name
+        dob.text = myInfoDetails.dob
+        address.text = myInfoDetails.address.formattedAddress
         if let nationality = myInfoDetails.nationality {
             self.nationality.text = nationality
         }
@@ -119,8 +96,8 @@ class MyInfoSummaryViewController: UIViewController {
             self.sex.text = sex
         }
         
-        self.editButton.isEnabled = true
-        self.continueButton.isEnabled = self.address.text.hasTextOtherThanWhitespace
+        editButton.isEnabled = true
+        continueButton.isEnabled = address.text.hasTextOtherThanWhitespace
     }
 }
 
@@ -138,8 +115,8 @@ extension MyInfoSummaryViewController: StoryboardLoadable {
 extension MyInfoSummaryViewController: MyInfoAddressUpdateDelegate {
     
     func addressUpdated(to address: MyInfoAddress) {
-        self.navigationController?.popToViewController(self, animated: true)
-        self.myInfoDetails?.address = address
-        self.updateUI(self.myInfoDetails)
+        navigationController?.popToViewController(self, animated: true)
+        myInfoDetails?.address = address
+        updateUI(myInfoDetails)
     }
 }

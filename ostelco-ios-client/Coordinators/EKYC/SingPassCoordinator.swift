@@ -18,10 +18,13 @@ protocol SingPassCoordinatorDelegate: class {
 class SingPassCoordinator: NSObject {
  
     weak var delegate: SingPassCoordinatorDelegate?
+    private var primeAPI: PrimeAPI
     
-    init(delegate: SingPassCoordinatorDelegate?) {
-        super.init()
+    init(delegate: SingPassCoordinatorDelegate?, primeAPI: PrimeAPI) {
         self.delegate = delegate
+        self.primeAPI = primeAPI
+        
+        super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleCallback(notification:)), name: MyInfoNotification, object: nil)
     }
@@ -33,34 +36,34 @@ class SingPassCoordinator: NSObject {
     func startLogin(from viewController: UIViewController) {
         let spinnerView = viewController.showSpinner()
         // Fetch the configuration from prime
-        APIManager.shared.primeAPI
-            .loadMyInfoConfig()
-            .ensure { [weak viewController] in
-                viewController?.removeSpinner(spinnerView)
-            }
-            .done { [weak self] myInfoConfig in
-                debugPrint("MyInfoConfig.url: \(myInfoConfig.url)")
-                var components = URLComponents(string: myInfoConfig.url)!
-                // Add mandatory purpose and state parameters to the MyInfo authorization url.
-                // The "purpose" parameter contains the string which is shown to the user when
-                // requesting the consent.
-                // The "state" is an identifer used to reconcile query and response. This is
-                // currently ignored by prime.
-                // https://www.ndi-api.gov.sg/library/trusted-data/myinfo/tutorial2
-                var queryItems: [URLQueryItem] = components.queryItems ?? []
-                let extraQueryItems: [URLQueryItem] = [
-                    URLQueryItem(name: "purpose", value: "eKYC"),
-                    URLQueryItem(name: "state", value: "123")
-                ]
-                queryItems.append(contentsOf: extraQueryItems)
-                components.queryItems = queryItems
-                // Show the login screen.
-                self?.showMyInfoLogin(url: components.url, from: viewController)
-            }
-            .catch { [weak viewController] error in
-                ApplicationErrors.log(error)
-                viewController?.showGenericError(error: error)
-            }
+        primeAPI
+        .loadMyInfoConfig()
+        .ensure { [weak viewController] in
+            viewController?.removeSpinner(spinnerView)
+        }
+        .done { [weak self] myInfoConfig in
+            debugPrint("MyInfoConfig.url: \(myInfoConfig.url)")
+            var components = URLComponents(string: myInfoConfig.url)!
+            // Add mandatory purpose and state parameters to the MyInfo authorization url.
+            // The "purpose" parameter contains the string which is shown to the user when
+            // requesting the consent.
+            // The "state" is an identifer used to reconcile query and response. This is
+            // currently ignored by prime.
+            // https://www.ndi-api.gov.sg/library/trusted-data/myinfo/tutorial2
+            var queryItems: [URLQueryItem] = components.queryItems ?? []
+            let extraQueryItems: [URLQueryItem] = [
+                URLQueryItem(name: "purpose", value: "eKYC"),
+                URLQueryItem(name: "state", value: "123")
+            ]
+            queryItems.append(contentsOf: extraQueryItems)
+            components.queryItems = queryItems
+            // Show the login screen.
+            self?.showMyInfoLogin(url: components.url, from: viewController)
+        }
+        .catch { [weak viewController] error in
+            ApplicationErrors.log(error)
+            viewController?.showGenericError(error: error)
+        }
     }
     
     func showMyInfoLogin(url: URL?, from viewController: UIViewController) {

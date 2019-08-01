@@ -121,7 +121,7 @@ class OnboardingCoordinator {
             selectEKYCMethod.delegate = self
             navigationController.setViewControllers([selectEKYCMethod], animated: true)
         case .singpass:
-            singpassCoordinator = SingPassCoordinator(delegate: self)
+            singpassCoordinator = SingPassCoordinator(delegate: self, primeAPI: primeAPI)
             singpassCoordinator?.startLogin(from: navigationController)
         case .verifyMyInfo(let code):
             let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
@@ -151,7 +151,7 @@ class OnboardingCoordinator {
             nric.delegate = self
             navigationController.setViewControllers([nric], animated: true)
         case .jumio:
-            if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country) {
+            if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
                 jumio.delegate = self
                 jumio.startScan(from: navigationController)
                 self.jumioCoordinator = jumio
@@ -377,22 +377,50 @@ extension OnboardingCoordinator: SingPassCoordinatorDelegate {
 }
 
 extension OnboardingCoordinator: MyInfoSummaryDelegate {
+    func fetchMyInfoDetails(_ controller: MyInfoSummaryViewController, code: String, completion: @escaping (MyInfoDetails) -> Void) {
+        let spinnerView = controller.showSpinner(loadingText: NSLocalizedString("Loading your data from SingPass...", comment: "Loading text after user approves SingPass"))
+        primeAPI.loadSingpassInfo(code: code)
+        .ensure {
+            controller.removeSpinner(spinnerView)
+        }
+        .done { myInfoDetails in
+            completion(myInfoDetails)
+        }
+        .catch { error in
+            ApplicationErrors.log(error)
+            controller.showGenericError(error: error) { [weak self] (_) in
+                self?.advance()
+            }
+        }
+    }
+    
+    func updateProfile(_ controller: MyInfoSummaryViewController, profile: EKYCProfileUpdate) {
+        let spinnerView = controller.showSpinner()
+        let region = localContext.selectedRegion?.id
+        
+        primeAPI.updateEKYCProfile(with: profile, forRegion: region!)
+        .ensure {
+            controller.removeSpinner(spinnerView)
+        }
+        .done { [weak self] in
+            self?.advance()
+        }
+        .catch { error in
+            ApplicationErrors.log(error)
+            controller.showGenericError(error: error) { [weak self] (_) in
+                self?.localContext.selectedVerificationOption = nil
+                self?.localContext.myInfoCode = nil
+                self?.advance()
+            }
+        }
+    }
+    
     func editSingPassAddress(_ address: MyInfoAddress?, delegate: MyInfoAddressUpdateDelegate) {
         let addressController = AddressEditViewController.fromStoryboard()
         addressController.mode = .myInfoVerify(myInfo: address)
         addressController.myInfoDelegate = delegate
         addressController.delegate = self
         navigationController.pushViewController(addressController, animated: true)
-    }
-    
-    func verifiedSingPassAddress() {
-        advance()
-    }
-
-    func failedToLoadMyInfo() {
-        localContext.selectedVerificationOption = nil
-        localContext.myInfoCode = nil
-        advance()
     }
 }
 
@@ -437,7 +465,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
                 return PromiseKit.Promise.value(simProfile)
             } else {
                 let countryCode = context.toLegacyModel().getRegion()!.region.id
-                return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode).map { $0.getGraphQLModel().fragments.simProfileFields }
+                return self.primeAPI.createSimProfileForRegion(code: countryCode).map { $0.getGraphQLModel().fragments.simProfileFields }
             }
         }
         .done { [weak self] (_) -> Void in
@@ -485,7 +513,7 @@ extension OnboardingCoordinator: SignUpCompletedDelegate {
 extension OnboardingCoordinator: NRICVerifyDelegate {
     func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
         let spinnerView = controller.showSpinner()
-        APIManager.shared.primeAPI
+        primeAPI
         .validateNRIC(nric, forRegion: countryCode())
         .ensure {
             controller.removeSpinner(spinnerView)

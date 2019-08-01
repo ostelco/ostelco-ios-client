@@ -78,7 +78,7 @@ public enum RegionEndpoint: APIEndpoint {
         case .nric(let number):
             return number
         case .region(let code):
-            return code
+            return code.lowercased()
         case .profile:
             return "profile"
         case .simProfiles:
