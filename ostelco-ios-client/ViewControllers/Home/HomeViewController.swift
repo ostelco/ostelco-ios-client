@@ -171,7 +171,7 @@ class HomeViewController: ApplePayViewController {
         }
     }
 
-    private func updateBalance(from bundles: [PrimeGQL.BundlesQuery.Data.Customer.Bundle]) {
+    private func updateBalance(from bundles: [BundlesQuery.Data.Customer.Bundle]) {
         guard let bundle = bundles.first else {
             return
         }

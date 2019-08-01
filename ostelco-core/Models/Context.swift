@@ -7,16 +7,16 @@
 //
 
 public struct Context {
-    public let customer: PrimeGQL.CustomerFields?
-    public let regions: [PrimeGQL.RegionDetailsFragment]
+    public let customer: CustomerFields?
+    public let regions: [RegionDetailsFragment]
     
-    public init(customer: PrimeGQL.CustomerFields?, regions: [PrimeGQL.RegionDetailsFragment]) {
+    public init(customer: CustomerFields?, regions: [RegionDetailsFragment]) {
         self.customer = customer
         self.regions = regions
     }
     
-    public init(customer: CustomerModel, regions: [PrimeGQL.RegionDetailsFragment]) {
-        self.customer = PrimeGQL.CustomerFields.init(id: customer.id, contactEmail: customer.email, nickname: customer.analyticsId, referralId: customer.referralId, analyticsId: customer.analyticsId)
+    public init(customer: CustomerModel, regions: [RegionDetailsFragment]) {
+        self.customer = CustomerFields.init(id: customer.id, contactEmail: customer.email, nickname: customer.analyticsId, referralId: customer.referralId, analyticsId: customer.analyticsId)
         self.regions = regions
     }
     
@@ -25,13 +25,13 @@ public struct Context {
         self.regions = regions.map({ $0.getGraphQLModel() })
     }
     
-    public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
+    public func getRegion() -> RegionDetailsFragment? {
         return RegionResponse.getRegionFromRegionResponseArray(regions)
     }
 }
 
-extension PrimeGQL.ContextQuery.Data.Customer {
-    public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
+extension ContextQuery.Data.Customer {
+    public func getRegion() -> RegionDetailsFragment? {
         return RegionResponse.getRegionFromRegionResponseArray(regions.map{$0.fragments.regionDetailsFragment})
     }
     

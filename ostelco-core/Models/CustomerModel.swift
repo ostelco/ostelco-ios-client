@@ -41,7 +41,7 @@ public struct CustomerModel: Codable {
 }
 
 extension CustomerModel {
-    public init(gqlCustomer: PrimeGQL.CustomerFields) {
+    public init(gqlCustomer: CustomerFields) {
         self.id = gqlCustomer.id
         self.name = gqlCustomer.nickname
         self.email = gqlCustomer.contactEmail
@@ -49,7 +49,7 @@ extension CustomerModel {
         self.referralId = gqlCustomer.referralId
     }
     
-    func toGraphQLModel() -> PrimeGQL.CustomerFields {
-        return PrimeGQL.CustomerFields(id: id, contactEmail: email, nickname: name, referralId: referralId, analyticsId: analyticsId)
+    func toGraphQLModel() -> CustomerFields {
+        return CustomerFields(id: id, contactEmail: email, nickname: name, referralId: referralId, analyticsId: analyticsId)
     }
 }

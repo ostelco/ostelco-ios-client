@@ -433,7 +433,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         localContext.hasSeenESIMInstructions = true
         
         primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
+        .then { (context) -> PromiseKit.Promise<SimProfileFields> in
             let countryCode = context.getRegion()!.region.id
             return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
         }
@@ -450,7 +450,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
     func resendEmail() {
         primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
+        .then { (context) -> PromiseKit.Promise<SimProfileFields> in
             let region = context.getRegion()!
             let profile = region.getSimProfile()!
             return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)

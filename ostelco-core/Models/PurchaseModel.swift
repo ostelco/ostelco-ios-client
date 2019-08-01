@@ -15,7 +15,7 @@ public struct PurchaseModel: Codable {
 }
 
 extension PurchaseModel {
-    public init(gqlData data: PrimeGQL.PurchasesQuery.Data.Customer.Purchase) {
+    public init(gqlData data: PurchasesQuery.Data.Customer.Purchase) {
         self.id = data.id
         self.timestamp = data.timestamp
         self.product = ProductModel(gqlData: data.product.fragments.productFragment)

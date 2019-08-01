@@ -24,7 +24,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                        SimProfileLegacy(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
                 )
@@ -45,7 +45,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                        SimProfileLegacy(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
                 )
@@ -66,7 +66,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                        SimProfileLegacy(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
                 )
@@ -89,7 +89,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountryAndHasLocationProblem() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, locationProblem: .deniedByUser)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
+        let regions: [RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationProblem(.deniedByUser))
@@ -98,7 +98,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSelectedSingpassAndCancelledSingpass() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
+        let regions: [RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
@@ -164,7 +164,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSeenVerifyIdentifyOnboardingAndCancelledJumio() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
+        let regions: [RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)

@@ -108,7 +108,7 @@ public struct StageDecider {
         }
     }
 
-    private func eSIMStage(_ region: PrimeGQL.RegionDetailsFragment, _ localContext: LocalContext) -> StageDecider.Stage {
+    private func eSIMStage(_ region: RegionDetailsFragment, _ localContext: LocalContext) -> StageDecider.Stage {
         if let profile = region.getSimProfile() {
             if profile.status == .installed {
                 if localContext.hasSeenAwesome || !localContext.hasSeenESimOnboarding {
@@ -127,7 +127,7 @@ public struct StageDecider {
         return .eSimOnboarding
     }
     
-    public func compute(context: PrimeGQL.ContextQuery.Data.Customer?, localContext: LocalContext) -> Stage {
+    public func compute(context: ContextQuery.Data.Customer?, localContext: LocalContext) -> Stage {
         return self.compute(context: context?.toLegacyModel(), localContext: localContext)
     }
     

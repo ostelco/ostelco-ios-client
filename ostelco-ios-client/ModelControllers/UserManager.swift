@@ -18,7 +18,7 @@ class UserManager: TokenProvider {
     
     static let shared = UserManager()
     
-    var customer: PrimeGQL.CustomerFields? {
+    var customer: CustomerFields? {
         didSet {
             guard let customer = self.customer else {
                 Freshchat.sharedInstance().resetUser(completion: { () in

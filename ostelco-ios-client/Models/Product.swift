@@ -21,7 +21,7 @@ public class Product {
     let subTotal: Decimal
     let payeeLabel: String
 
-    init(from: PrimeGQL.ProductFragment, countryCode: String) {
+    init(from: ProductFragment, countryCode: String) {
         self.name = "\(from.presentation.productLabel) of Data"
         self.label = "Buy \(from.presentation.productLabel) for \(from.presentation.priceLabel)"
         self.amount = Decimal(from.price.amount)

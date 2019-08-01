@@ -11,22 +11,22 @@ import Foundation
 
 extension RegionResponse {
     
-    static var testApprovedRegionResponse: PrimeGQL.RegionDetailsFragment {
-        let region = PrimeGQL.RegionDetailsFragment.Region(id: "1", name: "ApprovedRegion")
-        return PrimeGQL.RegionDetailsFragment(
+    static var testApprovedRegionResponse: RegionDetailsFragment {
+        let region = RegionDetailsFragment.Region(id: "1", name: "ApprovedRegion")
+        return RegionDetailsFragment(
             region: region,
             status: .approved,
-            kycStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap(),
+            kycStatusMap: RegionDetailsFragment.KycStatusMap(),
             simProfiles: nil
         )
     }
     
-    static var testPendingRegionResponse: PrimeGQL.RegionDetailsFragment {
-        let region = PrimeGQL.RegionDetailsFragment.Region(id: "2", name: "PendingRegion")
-        return PrimeGQL.RegionDetailsFragment(
+    static var testPendingRegionResponse: RegionDetailsFragment {
+        let region = RegionDetailsFragment.Region(id: "2", name: "PendingRegion")
+        return RegionDetailsFragment(
             region: region,
             status: .pending,
-            kycStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap(),
+            kycStatusMap: RegionDetailsFragment.KycStatusMap(),
             simProfiles: nil
         )
     }
