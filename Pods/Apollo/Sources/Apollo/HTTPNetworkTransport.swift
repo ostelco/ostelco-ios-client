@@ -68,13 +68,14 @@ public protocol HTTPNetworkTransportRetryDelegate: HTTPNetworkTransportDelegate 
 // MARK: -
 
 /// A network transport that uses HTTP POST requests to send GraphQL operations to a server, and that uses `URLSession` as the networking implementation.
-public class HTTPNetworkTransport: NetworkTransport {
+public class HTTPNetworkTransport {
   let url: URL
   let session: URLSession
   let serializationFormat = JSONSerializationFormat.self
   let useGETForQueries: Bool
   let delegate: HTTPNetworkTransportDelegate?
-
+  private let sendOperationIdentifiers: Bool
+  
   /// Creates a network transport with the specified server URL and session configuration.
   ///
   /// - Parameters:
@@ -95,20 +96,23 @@ public class HTTPNetworkTransport: NetworkTransport {
     self.delegate = delegate
   }
   
-  /// Send a GraphQL operation to a server and return a response.
+  /// Uploads the given files with the given operation. 
   ///
   /// - Parameters:
-  ///   - operation: The operation to send.
-  ///   - completionHandler: A closure to call when a request completes.
-  ///   - response: The response received from the server, or `nil` if an error occurred.
-  ///   - error: An error that indicates why a request failed, or `nil` if the request was succesful.
+  ///   - operation: The operation to send
+  ///   - files: An array of `GraphQLFile` objects to send.
+  ///   - completionHandler: The completion handler to execute when the request completes or errors
   /// - Returns: An object that can be used to cancel an in progress request.
-  public func send<Operation>(operation: Operation, completionHandler: @escaping (_ response: GraphQLResponse<Operation>?, _ error: Error?) -> Void) -> Cancellable {
+  public func upload<Operation>(operation: Operation, files: [GraphQLFile], completionHandler: @escaping (_ result: Result<GraphQLResponse<Operation>, Error>) -> Void) -> Cancellable {
+    return send(operation: operation, files: files, completionHandler: completionHandler)
+  }
+  
+  private func send<Operation>(operation: Operation, files: [GraphQLFile]?, completionHandler: @escaping (_ results: Result<GraphQLResponse<Operation>, Error>) -> Void) -> Cancellable {
     let request: URLRequest
     do {
-      request = try self.createRequest(for: operation)
+      request = try self.createRequest(for: operation, files: files)
     } catch {
-      completionHandler(nil, error)
+      completionHandler(.failure(error))
       return EmptyCancellable()
     }
     
@@ -117,7 +121,7 @@ public class HTTPNetworkTransport: NetworkTransport {
                              data: data,
                              response: response,
                              error: error)
-
+      
       if let receivedError = error {
         self?.handleErrorOrRetry(operation: operation,
                                  error: receivedError,
@@ -126,11 +130,11 @@ public class HTTPNetworkTransport: NetworkTransport {
                                  completionHandler: completionHandler)
         return
       }
-
+      
       guard let httpResponse = response as? HTTPURLResponse else {
         fatalError("Response should be an HTTPURLResponse")
       }
-
+      
       guard httpResponse.isSuccessful else {
         let unsuccessfulError = GraphQLHTTPResponseError(body: data,
                                                          response: httpResponse,
@@ -142,7 +146,7 @@ public class HTTPNetworkTransport: NetworkTransport {
                                  completionHandler: completionHandler)
         return
       }
-
+      
       guard let data = data else {
         let error = GraphQLHTTPResponseError(body: nil,
                                              response: httpResponse,
@@ -154,13 +158,13 @@ public class HTTPNetworkTransport: NetworkTransport {
                                  completionHandler: completionHandler)
         return
       }
-
+      
       do {
         guard let body = try self?.serializationFormat.deserialize(data: data) as? JSONObject else {
           throw GraphQLHTTPResponseError(body: data, response: httpResponse, kind: .invalidResponse)
         }
         let response = GraphQLResponse(operation: operation, body: body)
-        completionHandler(response, nil)
+        completionHandler(.success(response))
       } catch let parsingError {
         self?.handleErrorOrRetry(operation: operation,
                                  error: parsingError,
@@ -174,19 +178,17 @@ public class HTTPNetworkTransport: NetworkTransport {
     
     return task
   }
-
-  private let sendOperationIdentifiers: Bool
   
   private func handleErrorOrRetry<Operation>(operation: Operation,
                                              error: Error,
                                              for request: URLRequest,
                                              response: URLResponse?,
-                                             completionHandler: @escaping (_ response: GraphQLResponse<Operation>?, _ error: Error?) -> Void) {
+                                             completionHandler: @escaping (_ result: Result<GraphQLResponse<Operation>, Error>) -> Void) {
     guard
       let delegate = self.delegate,
       let retrier = delegate as? HTTPNetworkTransportRetryDelegate else {
-      completionHandler(nil, error)
-      return
+        completionHandler(.failure(error))
+        return
     }
     
     retrier.networkTransport(
@@ -196,7 +198,7 @@ public class HTTPNetworkTransport: NetworkTransport {
       response: response,
       retryHandler: { [weak self] shouldRetry in
         guard shouldRetry else {
-          completionHandler(nil, error)
+          completionHandler(.failure(error))
           return
         }
         
@@ -211,7 +213,7 @@ public class HTTPNetworkTransport: NetworkTransport {
     guard
       let delegate = self.delegate,
       let taskDelegate = delegate as? HTTPNetworkTransportTaskCompletedDelegate else {
-      return
+        return
     }
     
     taskDelegate.networkTransport(self,
@@ -221,8 +223,8 @@ public class HTTPNetworkTransport: NetworkTransport {
                                   error: error)
   }
   
-  private func createRequest<Operation: GraphQLOperation>(for operation: Operation) throws -> URLRequest {
-    let body = requestBody(for: operation)
+  private func createRequest<Operation: GraphQLOperation>(for operation: Operation, files: [GraphQLFile]?) throws -> URLRequest {
+    let body = RequestCreator.requestBody(for: operation, sendOperationIdentifiers: self.sendOperationIdentifiers)
     var request = URLRequest(url: self.url)
     
     if self.useGETForQueries && operation.operationType == .query {
@@ -235,11 +237,29 @@ public class HTTPNetworkTransport: NetworkTransport {
       }
     } else {
       do {
-        request.httpBody = try serializationFormat.serialize(value: body)
+        if let files = files, !files.isEmpty {
+          let formData = try RequestCreator.requestMultipartFormData(
+            for: operation,
+            files: files,
+            sendOperationIdentifiers: self.sendOperationIdentifiers,
+            serializationFormat: self.serializationFormat)
+          
+          request.setValue("multipart/form-data; boundary=\(formData.boundary)", forHTTPHeaderField: "Content-Type")
+          request.httpBody = try formData.encode()
+        } else {
+          request.httpBody = try serializationFormat.serialize(value: body)
+        }
+        
         request.httpMethod = GraphQLHTTPMethod.POST.rawValue
       } catch {
         throw GraphQLHTTPRequestError.serializedBodyMessageError
       }
+    }
+    
+    request.setValue(operation.operationName, forHTTPHeaderField: "X-APOLLO-OPERATION-NAME")
+    
+    if let operationID = operation.operationIdentifier {
+      request.setValue(operationID, forHTTPHeaderField: "X-APOLLO-OPERATION-ID")
     }
     
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -248,25 +268,22 @@ public class HTTPNetworkTransport: NetworkTransport {
     if
       let delegate = self.delegate,
       let preflightDelegate = delegate as? HTTPNetworkTransportPreflightDelegate {
-        guard preflightDelegate.networkTransport(self, shouldSend: request) else {
-          throw GraphQLHTTPRequestError.cancelledByDelegate
-        }
+      guard preflightDelegate.networkTransport(self, shouldSend: request) else {
+        throw GraphQLHTTPRequestError.cancelledByDelegate
+      }
       
-        preflightDelegate.networkTransport(self, willSend: &request)
+      preflightDelegate.networkTransport(self, willSend: &request)
     }
     
     return request
   }
+}
 
-  private func requestBody<Operation: GraphQLOperation>(for operation: Operation) -> GraphQLMap {
-    if sendOperationIdentifiers {
-      guard let operationIdentifier = operation.operationIdentifier else {
-        preconditionFailure("To send operation identifiers, Apollo types must be generated with operationIdentifiers")
-      }
-      
-      return ["id": operationIdentifier, "variables": operation.variables]
-    }
-    
-    return ["query": operation.queryDocument, "variables": operation.variables]
+// MARK: - NetworkTransport conformance
+
+extension HTTPNetworkTransport: NetworkTransport {
+  
+  public func send<Operation>(operation: Operation, completionHandler: @escaping (_ result: Result<GraphQLResponse<Operation>, Error>) -> Void) -> Cancellable {
+    return send(operation: operation, files: nil, completionHandler: completionHandler)
   }
 }
