@@ -41,7 +41,7 @@ class LiveAPITests: XCTestCase {
             return
         }
         
-        XCTAssertNotNil(context.customer)
+        XCTAssertNotNil(context)
     }
     
     func liveValidNRIC() {

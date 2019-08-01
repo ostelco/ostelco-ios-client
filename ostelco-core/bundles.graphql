@@ -1,5 +1,5 @@
 query Bundles {
-    context {
+    customer {
         bundles {
             id
             balance

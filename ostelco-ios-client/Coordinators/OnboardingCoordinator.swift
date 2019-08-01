@@ -47,7 +47,7 @@ class OnboardingCoordinator {
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
                 
-                UserManager.shared.customer = context.customer?.fragments.customerFields
+                UserManager.shared.customer = context.fragments.customerFields
                 let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
@@ -434,7 +434,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
-            let countryCode = context.toLegacyModel().getRegion()!.region.id
+            let countryCode = context.getRegion()!.region.id
             return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
         }
         .done { [weak self] (_) -> Void in
@@ -451,7 +451,7 @@ extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
     func resendEmail() {
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
-            let region = context.toLegacyModel().getRegion()!
+            let region = context.getRegion()!
             let profile = region.getSimProfile()!
             return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
         }

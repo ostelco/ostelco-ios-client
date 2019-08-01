@@ -27,7 +27,7 @@ class PurchaseRecord {
         self.date = date
     }
 
-    init(from: PrimeGQL.PurchasesQuery.Data.Context.Purchase) {
+    init(from: PrimeGQL.PurchasesQuery.Data.Customer.Purchase) {
         let strDate = PurchaseRecord.dateFormatter.string(
             from: Date(timeIntervalSince1970: (Double(from.timestamp) / 1000.0))
         )

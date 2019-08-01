@@ -15,7 +15,7 @@ public struct BundleModel: Codable {
 }
 
 extension BundleModel {
-    public init(gqlData: PrimeGQL.BundlesQuery.Data.Context.Bundle) {
+    public init(gqlData: PrimeGQL.BundlesQuery.Data.Customer.Bundle) {
         self.id = gqlData.id
         self.balance = gqlData.balance
     }

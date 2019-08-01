@@ -7,42 +7,36 @@
 //
 
 public struct Context {
-    public let customer: CustomerModel?
+    public let customer: PrimeGQL.CustomerFields?
     public let regions: [PrimeGQL.RegionDetailsFragment]
     
-    public init(customer: CustomerModel?, regions: [PrimeGQL.RegionDetailsFragment]) {
+    public init(customer: PrimeGQL.CustomerFields?, regions: [PrimeGQL.RegionDetailsFragment]) {
         self.customer = customer
         self.regions = regions
     }
     
+    public init(customer: CustomerModel, regions: [PrimeGQL.RegionDetailsFragment]) {
+        self.customer = PrimeGQL.CustomerFields.init(id: customer.id, contactEmail: customer.email, nickname: customer.analyticsId, referralId: customer.referralId, analyticsId: customer.analyticsId)
+        self.regions = regions
+    }
+    
     public init(customer: CustomerModel?, regions: [RegionResponse]) {
-        self.customer = customer
+        self.customer = customer?.toGraphQLModel()
         self.regions = regions.map({ $0.getGraphQLModel() })
     }
     
     public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
         return RegionResponse.getRegionFromRegionResponseArray(regions)
     }
-    
-    public func toGraphQLModel() -> PrimeGQL.ContextQuery.Data.Context {
-        var gqlCustomer: PrimeGQL.ContextQuery.Data.Context.Customer?
-        if let customer = customer {
-            gqlCustomer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
-        }
-        return PrimeGQL.ContextQuery.Data.Context(
-            customer: gqlCustomer,
-            regions: regions.map({ PrimeGQL.ContextQuery.Data.Context.Region(unsafeResultMap: $0.resultMap) })
-        )
-    }
 }
 
-extension PrimeGQL.ContextQuery.Data.Context {
+extension PrimeGQL.ContextQuery.Data.Customer {
+    public func getRegion() -> PrimeGQL.RegionDetailsFragment? {
+        return RegionResponse.getRegionFromRegionResponseArray(regions.map{$0.fragments.regionDetailsFragment})
+    }
+    
     public func toLegacyModel() -> Context {
-        var legacyCustomer: CustomerModel?
-        if let customer = customer {
-            legacyCustomer = CustomerModel(gqlCustomer: customer.fragments.customerFields)
-        }
-        return Context(customer: legacyCustomer, regions: self.regions.map({ $0.fragments.regionDetailsFragment }))
+        return Context(customer: CustomerModel(gqlCustomer: self.fragments.customerFields), regions: regions.map{$0.fragments.regionDetailsFragment})
     }
 }
 

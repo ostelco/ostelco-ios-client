@@ -356,7 +356,7 @@ public enum PrimeGQL {
 
   public final class RegionsQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Regions($countryCode: String = null) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+      "query Regions($countryCode: String = null) {\n  customer {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
 
@@ -374,7 +374,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -383,21 +383,21 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -411,7 +411,7 @@ public enum PrimeGQL {
         }
 
         public init(regions: [Region]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
+          self.init(unsafeResultMap: ["__typename": "Customer", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -585,7 +585,7 @@ public enum PrimeGQL {
 
   public final class ProductsQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Products {\n  context {\n    __typename\n    products {\n      __typename\n      ...productFragment\n    }\n  }\n}"
+      "query Products {\n  customer {\n    __typename\n    products {\n      __typename\n      ...productFragment\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
@@ -596,7 +596,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -605,21 +605,21 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -633,7 +633,7 @@ public enum PrimeGQL {
         }
 
         public init(products: [Product]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "products": products.map { (value: Product) -> ResultMap in value.resultMap }])
+          self.init(unsafeResultMap: ["__typename": "Customer", "products": products.map { (value: Product) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -709,7 +709,7 @@ public enum PrimeGQL {
 
   public final class SimProfilesForRegionQuery: GraphQLQuery {
     public let operationDefinition =
-      "query SimProfilesForRegion($countryCode: String!) {\n  context {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      simProfiles {\n        __typename\n        ...simProfileFields\n      }\n    }\n  }\n}"
+      "query SimProfilesForRegion($countryCode: String!) {\n  customer {\n    __typename\n    regions(regionCode: $countryCode) {\n      __typename\n      simProfiles {\n        __typename\n        ...simProfileFields\n      }\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(SimProfileFields.fragmentDefinition) }
 
@@ -727,7 +727,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -736,21 +736,21 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -764,7 +764,7 @@ public enum PrimeGQL {
         }
 
         public init(regions: [Region]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
+          self.init(unsafeResultMap: ["__typename": "Customer", "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -1079,7 +1079,7 @@ public enum PrimeGQL {
 
   public final class ContextQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Context {\n  context {\n    __typename\n    customer {\n      __typename\n      ...customerFields\n    }\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
+      "query Context {\n  customer {\n    __typename\n    ...customerFields\n    regions {\n      __typename\n      ...regionDetailsFragment\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(CustomerFields.fragmentDefinition).appending(RegionDetailsFragment.fragmentDefinition).appending(SimProfileFields.fragmentDefinition) }
 
@@ -1090,7 +1090,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1099,25 +1099,25 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("customer", type: .object(Customer.selections)),
+          GraphQLFragmentSpread(CustomerFields.self),
           GraphQLField("regions", type: .nonNull(.list(.nonNull(.object(Region.selections))))),
         ]
 
@@ -1127,25 +1127,12 @@ public enum PrimeGQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(customer: Customer? = nil, regions: [Region]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "customer": customer.flatMap { (value: Customer) -> ResultMap in value.resultMap }, "regions": regions.map { (value: Region) -> ResultMap in value.resultMap }])
-        }
-
         public var __typename: String {
           get {
             return resultMap["__typename"]! as! String
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var customer: Customer? {
-          get {
-            return (resultMap["customer"] as? ResultMap).flatMap { Customer(unsafeResultMap: $0) }
-          }
-          set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "customer")
           }
         }
 
@@ -1158,56 +1145,28 @@ public enum PrimeGQL {
           }
         }
 
-        public struct Customer: GraphQLSelectionSet {
-          public static let possibleTypes = ["Customer"]
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLFragmentSpread(CustomerFields.self),
-          ]
-
+        public struct Fragments {
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: String, contactEmail: String, nickname: String, referralId: String, analyticsId: String) {
-            self.init(unsafeResultMap: ["__typename": "Customer", "id": id, "contactEmail": contactEmail, "nickname": nickname, "referralId": referralId, "analyticsId": analyticsId])
-          }
-
-          public var __typename: String {
+          public var customerFields: CustomerFields {
             get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var fragments: Fragments {
-            get {
-              return Fragments(unsafeResultMap: resultMap)
+              return CustomerFields(unsafeResultMap: resultMap)
             }
             set {
               resultMap += newValue.resultMap
-            }
-          }
-
-          public struct Fragments {
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public var customerFields: CustomerFields {
-              get {
-                return CustomerFields(unsafeResultMap: resultMap)
-              }
-              set {
-                resultMap += newValue.resultMap
-              }
             }
           }
         }
@@ -1267,7 +1226,7 @@ public enum PrimeGQL {
 
   public final class PurchasesQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Purchases {\n  context {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        ...productFragment\n      }\n      timestamp\n    }\n  }\n}"
+      "query Purchases {\n  customer {\n    __typename\n    purchases {\n      __typename\n      id\n      product {\n        __typename\n        ...productFragment\n      }\n      timestamp\n    }\n  }\n}"
 
     public var queryDocument: String { return operationDefinition.appending(ProductFragment.fragmentDefinition) }
 
@@ -1278,7 +1237,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1287,21 +1246,21 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1315,7 +1274,7 @@ public enum PrimeGQL {
         }
 
         public init(purchases: [Purchase]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "purchases": purchases.map { (value: Purchase) -> ResultMap in value.resultMap }])
+          self.init(unsafeResultMap: ["__typename": "Customer", "purchases": purchases.map { (value: Purchase) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -1833,7 +1792,7 @@ public enum PrimeGQL {
 
   public final class BundlesQuery: GraphQLQuery {
     public let operationDefinition =
-      "query Bundles {\n  context {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
+      "query Bundles {\n  customer {\n    __typename\n    bundles {\n      __typename\n      id\n      balance\n    }\n  }\n}"
 
     public init() {
     }
@@ -1842,7 +1801,7 @@ public enum PrimeGQL {
       public static let possibleTypes = ["QueryType"]
 
       public static let selections: [GraphQLSelection] = [
-        GraphQLField("context", type: .nonNull(.object(Context.selections))),
+        GraphQLField("customer", type: .nonNull(.object(Customer.selections))),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1851,21 +1810,21 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(context: Context) {
-        self.init(unsafeResultMap: ["__typename": "QueryType", "context": context.resultMap])
+      public init(customer: Customer) {
+        self.init(unsafeResultMap: ["__typename": "QueryType", "customer": customer.resultMap])
       }
 
-      public var context: Context {
+      public var customer: Customer {
         get {
-          return Context(unsafeResultMap: resultMap["context"]! as! ResultMap)
+          return Customer(unsafeResultMap: resultMap["customer"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue.resultMap, forKey: "context")
+          resultMap.updateValue(newValue.resultMap, forKey: "customer")
         }
       }
 
-      public struct Context: GraphQLSelectionSet {
-        public static let possibleTypes = ["Context"]
+      public struct Customer: GraphQLSelectionSet {
+        public static let possibleTypes = ["Customer"]
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -1879,7 +1838,7 @@ public enum PrimeGQL {
         }
 
         public init(bundles: [Bundle]) {
-          self.init(unsafeResultMap: ["__typename": "Context", "bundles": bundles.map { (value: Bundle) -> ResultMap in value.resultMap }])
+          self.init(unsafeResultMap: ["__typename": "Customer", "bundles": bundles.map { (value: Bundle) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {

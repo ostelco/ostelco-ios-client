@@ -105,7 +105,7 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
-    public func loadBundles() -> PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Context.Bundle]> {
+    public func loadBundles() -> PromiseKit.Promise<[PrimeGQL.BundlesQuery.Data.Customer.Bundle]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
@@ -113,14 +113,14 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    seal.fulfill(result?.data?.context.bundles ?? [])
+                    seal.fulfill(result?.data?.customer.bundles ?? [])
                 }
             }
         }
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext() -> PromiseKit.Promise<PrimeGQL.ContextQuery.Data.Context> {
+    public func loadContext() -> PromiseKit.Promise<PrimeGQL.ContextQuery.Data.Customer> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
@@ -130,7 +130,7 @@ open class PrimeAPI: BasicNetwork {
                         return
                     }
                     if let data = result?.data {
-                        seal.fulfill(data.context)
+                        seal.fulfill(data.customer)
                     } else {
                         // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
                         seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
@@ -141,7 +141,7 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
-    public func loadPurchases() -> PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Context.Purchase]> {
+    public func loadPurchases() -> PromiseKit.Promise<[PrimeGQL.PurchasesQuery.Data.Customer.Purchase]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: PrimeGQL.PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { (result, error) in
@@ -149,7 +149,7 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    seal.fulfill(result?.data?.context.purchases ?? [])
+                    seal.fulfill(result?.data?.customer.purchases ?? [])
                 }
             }
         }
@@ -166,7 +166,7 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    seal.fulfill(result?.data?.context.products.map({ $0.fragments.productFragment }) ?? [])
+                    seal.fulfill(result?.data?.customer.products.map({ $0.fragments.productFragment }) ?? [])
                 }
             }
         }
@@ -241,7 +241,7 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    seal.fulfill(result?.data?.context.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
+                    seal.fulfill(result?.data?.customer.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
                 }
             }
         }
@@ -275,7 +275,7 @@ open class PrimeAPI: BasicNetwork {
                         seal.reject(error)
                         return
                     }
-                    seal.fulfill(result?.data?.context.regions.first?.simProfiles?.map({ $0.fragments.simProfileFields}) ?? [])
+                    seal.fulfill(result?.data?.customer.regions.first?.simProfiles?.map({ $0.fragments.simProfileFields}) ?? [])
                 }
             }
         }

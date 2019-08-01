@@ -127,7 +127,7 @@ public struct StageDecider {
         return .eSimOnboarding
     }
     
-    public func compute(context: PrimeGQL.ContextQuery.Data.Context?, localContext: LocalContext) -> Stage {
+    public func compute(context: PrimeGQL.ContextQuery.Data.Customer?, localContext: LocalContext) -> Stage {
         return self.compute(context: context?.toLegacyModel(), localContext: localContext)
     }
     

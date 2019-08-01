@@ -1,5 +1,5 @@
 query SimProfilesForRegion($countryCode: String!) {
-    context {
+    customer {
         regions(regionCode: $countryCode) {
             simProfiles {
                 ...simProfileFields

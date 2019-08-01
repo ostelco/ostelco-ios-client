@@ -1,8 +1,6 @@
 query Context {
-    context {
-        customer {
-            ...customerFields
-        }
+    customer {
+        ...customerFields
         regions {
             ...regionDetailsFragment
         }

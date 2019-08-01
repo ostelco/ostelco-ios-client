@@ -1,5 +1,5 @@
 query Regions($countryCode: String = null) {
-    context {
+    customer {
     regions(regionCode: $countryCode) {
             ...regionDetailsFragment
         }
