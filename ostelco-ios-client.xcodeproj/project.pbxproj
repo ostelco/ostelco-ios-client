@@ -121,6 +121,7 @@
 		9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */; };
 		9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B305F99229694F700B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
+		9B3D906B22F18341007A362D /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA68E22896510001E4D60 /* UIAlertAction+Convenience.swift */; };
 		9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */; };
@@ -235,8 +236,6 @@
 		9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */; };
 		9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
-		9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
-		9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */; };
 		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
@@ -1008,6 +1007,7 @@
 		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 				9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */,
 				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
 				9BC465352270AD49001951BF /* LocationController.swift */,
@@ -1039,7 +1039,6 @@
 				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
-				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 			);
 			path = ModelControllers;
@@ -2013,7 +2012,6 @@
 				042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
-				9B920F62225B8C70001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
@@ -2085,6 +2083,7 @@
 				9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */,
 				9B6A92892284209A007F5EC9 /* PushToken.swift in Sources */,
 				9B821594227ADA1000DC6B64 /* Request.swift in Sources */,
+				9B3D906B22F18341007A362D /* UserDefaultsWrapper.swift in Sources */,
 				9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */,
 				9BBF7069226613C400E4B9B4 /* GenericDataSource.swift in Sources */,
 				9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */,
@@ -2222,7 +2221,6 @@
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
 				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
-				9B920F63225B8EAD001EF9CD /* UserDefaultsWrapper.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,

@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import PromiseKit
+import ostelco_core
 
 struct EmailLinkManager {
     
@@ -40,7 +41,6 @@ struct EmailLinkManager {
         settings.url = url
         settings.handleCodeInApp = true
         settings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        UserDefaultsWrapper.pendingEmail = emailAddress
         
         return Promise { seal in
             Auth.auth().sendSignInLink(
@@ -59,11 +59,7 @@ struct EmailLinkManager {
         return Auth.auth().isSignIn(withEmailLink: link.absoluteString)
     }
     
-    static func signInWithLink(_ link: URL) -> Promise<Void> {
-        guard let email = UserDefaultsWrapper.pendingEmail else {
-            return Promise(error: Error.noPendingEmailStored)
-        }
-        
+    static func signInWithLink(_ link: URL, email: String) -> Promise<Void> {
         return Promise { seal in
             // We are going to login with this email, clear it now, so if it fails you start over
             UserDefaultsWrapper.pendingEmail = nil

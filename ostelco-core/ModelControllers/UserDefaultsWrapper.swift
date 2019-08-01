@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserDefaultsWrapper {
+public struct UserDefaultsWrapper {
     
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
@@ -33,14 +33,14 @@ struct UserDefaultsWrapper {
     }
     
     /// Remove every default stored through this wrapper
-    static func clearAll() {
+    public static func clearAll() {
         for key in Key.allCases {
             self.removeValue(for: key)
         }
     }
     
     /// What is the email we are waiting to confirm?
-    static var pendingEmail: String? {
+    public static var pendingEmail: String? {
         get {
             return self.value(for: .pendingEmail)
         }
@@ -53,7 +53,7 @@ struct UserDefaultsWrapper {
         }
     }
     
-    static var pendingSingPass: [URLQueryItem]? {
+    public static var pendingSingPass: [URLQueryItem]? {
         get {
             guard let dict: [String: String?] = self.value(for: .pendingSingPassQueryItems) else {
                 return nil
