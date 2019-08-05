@@ -100,13 +100,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        guard let incomingURL = userActivity.webpageURL, let email = UserDefaultsWrapper.pendingEmail else {
+        guard let incomingURL = userActivity.webpageURL else {
             return false
         }
         
         debugPrint("Incoming URL is \(incomingURL)")
         
-        if EmailLinkManager.isSignInLink(incomingURL) {
+        if EmailLinkManager.isSignInLink(incomingURL), let email = UserDefaultsWrapper.pendingEmail {
             EmailLinkManager.signInWithLink(incomingURL, email: email)
                 .catch { error in
                     ApplicationErrors.log(error)
