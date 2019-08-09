@@ -25,7 +25,7 @@ extension UIViewController {
         overlay.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         // Create and animate the activity indicator
-        let indicator = UIActivityIndicatorView(style: .whiteLarge)
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         indicator.color = .black
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.startAnimating()
@@ -46,11 +46,10 @@ extension UIViewController {
         }
         
         // Animate the overlay to show
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(0.5)
-        overlay.alpha = overlay.alpha > 0 ? 0 : 0.88
-        UIView.commitAnimations()
-        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            overlay.alpha = overlay.alpha > 0 ? 0 : 0.88
+        }, completion: nil)
+
         return overlay
     }
     
