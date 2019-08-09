@@ -392,6 +392,7 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
         .catch { error in
             ApplicationErrors.log(error)
             controller.showGenericError(error: error) { [weak self] (_) in
+                self?.localContext.selectedVerificationOption = nil
                 self?.advance()
             }
         }
@@ -412,7 +413,6 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
             ApplicationErrors.log(error)
             controller.showGenericError(error: error) { [weak self] (_) in
                 self?.localContext.selectedVerificationOption = nil
-                self?.localContext.myInfoCode = nil
                 self?.advance()
             }
         }

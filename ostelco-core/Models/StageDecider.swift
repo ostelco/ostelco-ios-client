@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct LocalContext {
+public class LocalContext {
     public var hasSeenLoginCarousel: Bool
     public var enteredEmailAddress: String? {
         get {
@@ -27,7 +27,18 @@ public struct LocalContext {
     public var locationProblem: LocationProblem?
     public var hasSeenVerifyIdentifyOnboarding: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
-    public var myInfoCode: String? // Needs to be persisted
+    
+    private var _myInfoCode: String?
+    public var myInfoCode: String? {
+        get {
+            let code = _myInfoCode
+            _myInfoCode = nil
+            return code
+        }
+        set(value) {
+            _myInfoCode = value
+        }
+    }
     public var hasSeenESimOnboarding: Bool
     public var hasSeenESIMInstructions: Bool
     public var hasSeenAwesome: Bool
@@ -44,7 +55,6 @@ public struct LocalContext {
         self.regionVerified = regionVerified
         self.hasSeenVerifyIdentifyOnboarding = hasSeenVerifyIdentifyOnboarding
         self.selectedVerificationOption = selectedVerificationOption
-        self.myInfoCode = myInfoCode
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasSeenAwesome = hasSeenAwesome
@@ -53,6 +63,7 @@ public struct LocalContext {
         self.serverIsUnreachable = serverIsUnreachable
         self.locationProblem = locationProblem
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
+        self.myInfoCode = myInfoCode
     }
 }
 
