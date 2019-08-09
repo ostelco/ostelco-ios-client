@@ -76,9 +76,12 @@ class OnboardingCoordinator {
             loginViewController.delegate = self
             navigationController.setViewControllers([loginViewController], animated: true)
         case .emailEntry:
-            let emailEntry = EmailEntryViewController.fromStoryboard()
-            emailEntry.delegate = self
-            navigationController.setViewControllers([emailEntry], animated: true)
+            // TODO: fix later, use own enum
+            let signInWithApple = SignInWithAppleViewController.fromStoryboard()
+            navigationController.setViewControllers([signInWithApple], animated: true)
+//            let emailEntry = EmailEntryViewController.fromStoryboard()
+//            emailEntry.delegate = self
+//            navigationController.setViewControllers([emailEntry], animated: true)
         case .checkYourEmail:
             let checkYourEmail = CheckEmailViewController.fromStoryboard()
             checkYourEmail.delegate = self
