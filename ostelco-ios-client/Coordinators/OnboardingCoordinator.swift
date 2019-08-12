@@ -565,9 +565,8 @@ extension OnboardingCoordinator: SignInWithAppleDelegate {
             debugPrint("customToken ", customToken.token)
             return EmailLinkManager.signInWithCustomToken(customToken: customToken.token)
         }
-        .done { [weak self] (_) -> Void in
+        .done {
             debugPrint("done signedIn")
-            self?.advance()
         }
         .catch { [weak self] error in
             debugPrint("error :", error)
