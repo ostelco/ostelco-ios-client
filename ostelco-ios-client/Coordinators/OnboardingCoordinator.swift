@@ -557,7 +557,7 @@ extension OnboardingCoordinator: PendingVerificationDelegate {
 }
 
 extension OnboardingCoordinator: SignInWithAppleDelegate {
-    func signedIn(authCode: String, contactEmail: String) {
+    func signedIn(authCode: String, contactEmail: String?) {
         UserDefaultsWrapper.contactEmail = contactEmail
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
