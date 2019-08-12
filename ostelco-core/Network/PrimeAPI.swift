@@ -150,7 +150,7 @@ open class PrimeAPI: BasicNetwork {
                 self.client.fetch(query: AllPurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.purchases?.map{$0.fragments.purchaseFields} ?? [])
+                        seal.fulfill(result.data?.purchases?.edges?.map{$0.node!.fragments.purchaseFields} ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -404,7 +404,7 @@ open class PrimeAPI: BasicNetwork {
                 self.client.fetch(query: ValidateNricQuery(input: ValidateNricInput(nric: nric))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.validateNric!.nric.fragments.nricInfoFields)
+                        seal.fulfill(result.data!.validateNric!.nric.fragments.nricInfoFields) // TODO: Live test now failes because we don't handle the error cases here
                     case .failure(let error):
                         seal.reject(error)
                     }

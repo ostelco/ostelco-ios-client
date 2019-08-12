@@ -565,7 +565,7 @@ public final class ProductsQuery: GraphQLQuery {
 
 public final class AllPurchasesQuery: GraphQLQuery {
   public let operationDefinition =
-    "query AllPurchases {\n  purchases {\n    __typename\n    ...purchaseFields\n  }\n}"
+    "query AllPurchases {\n  purchases {\n    __typename\n    edges {\n      __typename\n      cursor\n      node {\n        __typename\n        ...purchaseFields\n      }\n    }\n  }\n}"
 
   public let operationName = "AllPurchases"
 
@@ -578,7 +578,7 @@ public final class AllPurchasesQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("purchases", type: .list(.nonNull(.object(Purchase.selections)))),
+      GraphQLField("purchases", type: .object(Purchase.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -587,32 +587,39 @@ public final class AllPurchasesQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(purchases: [Purchase]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "purchases": purchases.flatMap { (value: [Purchase]) -> [ResultMap] in value.map { (value: Purchase) -> ResultMap in value.resultMap } }])
+    public init(purchases: Purchase? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "purchases": purchases.flatMap { (value: Purchase) -> ResultMap in value.resultMap }])
     }
 
-    /// TODO: Add pagination to purchases
-    public var purchases: [Purchase]? {
+    /// Examples on pagination
+    /// https://www.graphql-java-kickstart.com/tools/relay/
+    /// https://facebook.github.io/relay/graphql/connections.htm
+    /// https://blog.apollographql.com/explaining-graphql-connections-c48b7c3d6976
+    public var purchases: Purchase? {
       get {
-        return (resultMap["purchases"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Purchase] in value.map { (value: ResultMap) -> Purchase in Purchase(unsafeResultMap: value) } }
+        return (resultMap["purchases"] as? ResultMap).flatMap { Purchase(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue.flatMap { (value: [Purchase]) -> [ResultMap] in value.map { (value: Purchase) -> ResultMap in value.resultMap } }, forKey: "purchases")
+        resultMap.updateValue(newValue?.resultMap, forKey: "purchases")
       }
     }
 
     public struct Purchase: GraphQLSelectionSet {
-      public static let possibleTypes = ["Purchase"]
+      public static let possibleTypes = ["UserPurchasesConnection"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLFragmentSpread(PurchaseFields.self),
+        GraphQLField("edges", type: .list(.nonNull(.object(Edge.selections)))),
       ]
 
       public private(set) var resultMap: ResultMap
 
       public init(unsafeResultMap: ResultMap) {
         self.resultMap = unsafeResultMap
+      }
+
+      public init(edges: [Edge]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserPurchasesConnection", "edges": edges.flatMap { (value: [Edge]) -> [ResultMap] in value.map { (value: Edge) -> ResultMap in value.resultMap } }])
       }
 
       public var __typename: String {
@@ -624,28 +631,108 @@ public final class AllPurchasesQuery: GraphQLQuery {
         }
       }
 
-      public var fragments: Fragments {
+      public var edges: [Edge]? {
         get {
-          return Fragments(unsafeResultMap: resultMap)
+          return (resultMap["edges"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Edge] in value.map { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } }
         }
         set {
-          resultMap += newValue.resultMap
+          resultMap.updateValue(newValue.flatMap { (value: [Edge]) -> [ResultMap] in value.map { (value: Edge) -> ResultMap in value.resultMap } }, forKey: "edges")
         }
       }
 
-      public struct Fragments {
+      public struct Edge: GraphQLSelectionSet {
+        public static let possibleTypes = ["UserPurchasesEdge"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("cursor", type: .nonNull(.scalar(String.self))),
+          GraphQLField("node", type: .object(Node.selections)),
+        ]
+
         public private(set) var resultMap: ResultMap
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
         }
 
-        public var purchaseFields: PurchaseFields {
+        public init(cursor: String, node: Node? = nil) {
+          self.init(unsafeResultMap: ["__typename": "UserPurchasesEdge", "cursor": cursor, "node": node.flatMap { (value: Node) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
           get {
-            return PurchaseFields(unsafeResultMap: resultMap)
+            return resultMap["__typename"]! as! String
           }
           set {
-            resultMap += newValue.resultMap
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var cursor: String {
+          get {
+            return resultMap["cursor"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "cursor")
+          }
+        }
+
+        public var node: Node? {
+          get {
+            return (resultMap["node"] as? ResultMap).flatMap { Node(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "node")
+          }
+        }
+
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes = ["Purchase"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(PurchaseFields.self),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var purchaseFields: PurchaseFields {
+              get {
+                return PurchaseFields(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
           }
         }
       }
@@ -2232,6 +2319,7 @@ public final class ValidateNricQuery: GraphQLQuery {
       self.init(unsafeResultMap: ["__typename": "Query", "validateNric": validateNric.flatMap { (value: ValidateNric) -> ResultMap in value.resultMap }])
     }
 
+    /// TODO: Does not look like queries should have a payload like mutations, rather the direct type
     public var validateNric: ValidateNric? {
       get {
         return (resultMap["validateNric"] as? ResultMap).flatMap { ValidateNric(unsafeResultMap: $0) }
@@ -2961,7 +3049,9 @@ public struct RegionDetailsFields: GraphQLFragment {
       }
     }
 
-    /// This is also RegionCode
+    /// To keep ID field consistent, it needs to have the same field name and same
+    /// field type and that conflicts if we want to use Enums like RegionCode. Better
+    /// make a separate field to handle this
     public var name: String {
       get {
         return resultMap["name"]! as! String

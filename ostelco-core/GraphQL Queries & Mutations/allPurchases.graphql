@@ -1,6 +1,11 @@
 query AllPurchases {
     purchases {
-        ...purchaseFields
+        edges {
+            cursor
+            node {
+                ...purchaseFields
+            }
+        }
     }
 }
 
