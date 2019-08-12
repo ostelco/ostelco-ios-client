@@ -28,7 +28,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let decider = StageDecider()
         let context: Context? = nil
         
-        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext(hasSeenLoginCarousel: true)), .emailEntry)
+        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext(hasSeenLoginCarousel: true)), .signInWithApple)
     }
     
     func testUserHasEnteredEmail() {
@@ -37,7 +37,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasSeenLoginCarousel: true)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .signInWithApple)
     }
     
     func testUserHasEnteredEmailThenColdStart() {
@@ -46,7 +46,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext()
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .checkYourEmail(email: "xxxx@xxxx.com"))
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .signInWithApple)
     }
     
     func testUserHasAFirebaseUserButNoContextYet() {

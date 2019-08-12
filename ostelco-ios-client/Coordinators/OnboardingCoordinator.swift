@@ -75,17 +75,10 @@ class OnboardingCoordinator {
             let loginViewController = LoginViewController.fromStoryboard()
             loginViewController.delegate = self
             navigationController.setViewControllers([loginViewController], animated: true)
-        case .emailEntry:
-            // TODO: fix later, use own enum
+        case .signInWithApple:
             let signInWithApple = SignInWithAppleViewController.fromStoryboard()
+            signInWithApple.delegate = self
             navigationController.setViewControllers([signInWithApple], animated: true)
-//            let emailEntry = EmailEntryViewController.fromStoryboard()
-//            emailEntry.delegate = self
-//            navigationController.setViewControllers([emailEntry], animated: true)
-        case .checkYourEmail:
-            let checkYourEmail = CheckEmailViewController.fromStoryboard()
-            checkYourEmail.delegate = self
-            navigationController.setViewControllers([checkYourEmail], animated: true)
         case .legalStuff:
             let legalStuff = TheLegalStuffViewController.fromStoryboard()
             legalStuff.delegate = self
@@ -560,5 +553,26 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 extension OnboardingCoordinator: PendingVerificationDelegate {
     func checkStatus() {
         advance()
+    }
+}
+
+extension OnboardingCoordinator: SignInWithAppleDelegate {
+    func signedIn(authCode: String, contactEmail: String) {
+        UserDefaultsWrapper.contactEmail = contactEmail
+        let appleIdToken = AppleIdToken(authCode: authCode)
+        primeAPI.authorizeAppleId(with: appleIdToken)
+        .then { (customToken) -> PromiseKit.Promise<Void> in
+            debugPrint("customToken ", customToken.token)
+            return EmailLinkManager.signInWithCustomToken(customToken: customToken.token)
+        }
+        .done { [weak self] (_) -> Void in
+            debugPrint("done signedIn")
+            self?.advance()
+        }
+        .catch { [weak self] error in
+            debugPrint("error :", error)
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
 }

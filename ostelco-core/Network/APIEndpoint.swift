@@ -117,3 +117,17 @@ public enum CustomerEndpoint: APIEndpoint {
         }
     }
 }
+
+public enum AppleIdEndpoint: APIEndpoint {
+    case appleId
+    case authorize
+
+    var value: String {
+        switch self {
+        case .appleId:
+            return "appleId"
+        case .authorize:
+            return "authorize"
+        }
+    }
+}

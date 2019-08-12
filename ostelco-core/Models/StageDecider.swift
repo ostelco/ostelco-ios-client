@@ -77,8 +77,7 @@ public struct StageDecider {
     public enum Stage: Equatable {
         case home
         case loginCarousel
-        case emailEntry
-        case checkYourEmail(email: String)
+        case signInWithApple
         case legalStuff
         case notificationPermissions
         case nicknameEntry
@@ -110,16 +109,8 @@ public struct StageDecider {
             }
             return .legalStuff
         } else {
-            // This is the cold-start shortcut.
-            if let email = localContext.enteredEmailAddress, !localContext.hasSeenLoginCarousel {
-                return .checkYourEmail(email: email)
-            }
-            
             if localContext.hasSeenLoginCarousel {
-                if let emailAddress = localContext.enteredEmailAddress {
-                    return .checkYourEmail(email: emailAddress)
-                }
-                return .emailEntry
+                return .signInWithApple
             }
             return .loginCarousel
         }

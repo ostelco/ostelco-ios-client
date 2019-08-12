@@ -10,12 +10,14 @@ import UIKit
 import AuthenticationServices
 
 protocol SignInWithAppleDelegate: class {
-    func sendEmailLink(email: String)
+    func signedIn(authCode: String, contactEmail: String)
 }
 
 class SignInWithAppleViewController: UIViewController {
 
-    @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak private var buttonStackView: UIStackView!
+    weak public var delegate: SignInWithAppleDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,24 +25,22 @@ class SignInWithAppleViewController: UIViewController {
         setupProviderLoginView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func setupProviderLoginView() {
-         let authorizationButton = ASAuthorizationAppleIDButton()
-         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-         self.buttonStackView.addArrangedSubview(authorizationButton)
-     }
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        self.buttonStackView.addArrangedSubview(authorizationButton)
+    }
 
     @objc
     func handleAuthorizationAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
 }
 
@@ -52,5 +52,41 @@ extension SignInWithAppleViewController: StoryboardLoadable {
 
     static var isInitialViewController: Bool {
         return true
+    }
+}
+
+extension SignInWithAppleViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            debugPrint(userIdentifier, fullName ?? "No name", email ?? "No Email")
+            if let data = appleIDCredential.identityToken {
+                debugPrint(String(data: data, encoding: .utf8) ?? "No Identity Token")
+            }
+            guard let contactEmail = appleIDCredential.email else {
+                print("Email not provided at Sign In, cannot procced.")
+                return;
+            }
+            guard let authCodeData = appleIDCredential.authorizationCode else {
+                print("No authorization code received at Sign In, cannot procced.")
+                return;
+            }
+            if let authCode = String(data: authCodeData, encoding: .utf8) {
+                delegate?.signedIn(authCode: authCode, contactEmail: contactEmail)
+            }
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
+
+extension SignInWithAppleViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
     }
 }
