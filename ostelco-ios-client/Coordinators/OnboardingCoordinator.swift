@@ -567,6 +567,7 @@ extension OnboardingCoordinator: SignInWithAppleDelegate {
         }
         .done {
             debugPrint("done signedIn")
+            // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         }
         .catch { [weak self] error in
             debugPrint("error :", error)
