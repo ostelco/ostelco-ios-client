@@ -1,0 +1,7 @@
+query AllRegions($regionCode: RegionCode) {
+    customer {
+        regions(regionCode: $regionCode) {
+            ...regionDetailsFields
+        }
+    }
+}

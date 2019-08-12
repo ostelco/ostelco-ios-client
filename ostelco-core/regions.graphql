@@ -1,7 +1,0 @@
-query Regions($countryCode: String = null) {
-    customer {
-    regions(regionCode: $countryCode) {
-            ...regionDetailsFragment
-        }
-    }
-}

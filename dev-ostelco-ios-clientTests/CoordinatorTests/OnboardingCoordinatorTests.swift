@@ -40,14 +40,14 @@ class OnboardingCoordinatorTests: XCTestCase {
     }
     
     class FakePrimeAPI: PrimeAPI {
-        var fakeContext: ContextQuery.Data.Customer?
+        var fakeContext: CustomerQuery.Data.Customer?
         
         convenience init() {
             
             self.init(baseURLString: "https://google.com", tokenProvider: FakeTokenProvider())
         }
         
-        override func loadContext() -> Promise<ContextQuery.Data.Customer> {
+        override func loadContext() -> Promise<CustomerQuery.Data.Customer> {
             if let context = fakeContext {
                 return Promise.value(context)
             }

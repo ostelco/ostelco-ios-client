@@ -1,0 +1,8 @@
+mutation CreateSimProfile($input: CreateSimProfileInput!) {
+    createSimProfile(input: $input) {
+        simProfile {
+            ...simProfileFields
+        }
+    }
+}
+

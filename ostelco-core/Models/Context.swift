@@ -8,14 +8,14 @@
 
 public struct Context {
     public let customer: CustomerFields?
-    public let regions: [RegionDetailsFragment]
+    public let regions: [RegionDetailsFields]
     
-    public init(customer: CustomerFields?, regions: [RegionDetailsFragment]) {
+    public init(customer: CustomerFields?, regions: [RegionDetailsFields]) {
         self.customer = customer
         self.regions = regions
     }
     
-    public init(customer: CustomerModel, regions: [RegionDetailsFragment]) {
+    public init(customer: CustomerModel, regions: [RegionDetailsFields]) {
         self.customer = CustomerFields.init(id: customer.id, contactEmail: customer.email, nickname: customer.analyticsId, referralId: customer.referralId, analyticsId: customer.analyticsId)
         self.regions = regions
     }
@@ -25,18 +25,18 @@ public struct Context {
         self.regions = regions.map({ $0.getGraphQLModel() })
     }
     
-    public func getRegion() -> RegionDetailsFragment? {
+    public func getRegion() -> RegionDetailsFields? {
         return RegionResponse.getRegionFromRegionResponseArray(regions)
     }
 }
 
-extension ContextQuery.Data.Customer {
-    public func getRegion() -> RegionDetailsFragment? {
-        return RegionResponse.getRegionFromRegionResponseArray(regions.map{$0.fragments.regionDetailsFragment})
+extension CustomerQuery.Data.Customer {
+    public func getRegion() -> RegionDetailsFields? {
+        return RegionResponse.getRegionFromRegionResponseArray(regions!.map{$0.fragments.regionDetailsFields})
     }
     
     public func toLegacyModel() -> Context {
-        return Context(customer: CustomerModel(gqlCustomer: self.fragments.customerFields), regions: regions.map{$0.fragments.regionDetailsFragment})
+        return Context(customer: CustomerModel(gqlCustomer: self.fragments.customerFields), regions: regions!.map{$0.fragments.regionDetailsFields})
     }
 }
 

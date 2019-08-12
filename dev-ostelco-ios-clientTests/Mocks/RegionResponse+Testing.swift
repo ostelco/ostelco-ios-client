@@ -11,22 +11,22 @@ import Foundation
 
 extension RegionResponse {
     
-    static var testApprovedRegionResponse: RegionDetailsFragment {
-        let region = RegionDetailsFragment.Region(id: "1", name: "ApprovedRegion")
-        return RegionDetailsFragment(
+    static var testApprovedRegionResponse: RegionDetailsFields {
+        let region = RegionDetailsFields.Region(id: "1", name: "ApprovedRegion")
+        return RegionDetailsFields(
             region: region,
             status: .approved,
-            kycStatusMap: RegionDetailsFragment.KycStatusMap(),
+            kycStatusMap: RegionDetailsFields.KycStatusMap(),
             simProfiles: nil
         )
     }
     
-    static var testPendingRegionResponse: RegionDetailsFragment {
-        let region = RegionDetailsFragment.Region(id: "2", name: "PendingRegion")
-        return RegionDetailsFragment(
+    static var testPendingRegionResponse: RegionDetailsFields {
+        let region = RegionDetailsFields.Region(id: "2", name: "PendingRegion")
+        return RegionDetailsFields(
             region: region,
             status: .pending,
-            kycStatusMap: RegionDetailsFragment.KycStatusMap(),
+            kycStatusMap: RegionDetailsFields.KycStatusMap(),
             simProfiles: nil
         )
     }

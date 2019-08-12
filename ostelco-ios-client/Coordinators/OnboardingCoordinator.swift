@@ -435,7 +435,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfileFields> in
             let countryCode = context.getRegion()!.region.id
-            return APIManager.shared.primeAPI.createSimProfileForRegion(code: countryCode)
+            return APIManager.shared.primeAPI.createSimProfileForRegion(code: RegionCode(rawValue: countryCode)!) // TODO: Verify that this conversion works, ideally, the server returns the regionCode with type RegionCode in a separate field instead of in the ID field
         }
         .done { [weak self] (_) -> Void in
             self?.advance()
@@ -453,7 +453,7 @@ extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
         .then { (context) -> PromiseKit.Promise<SimProfileFields> in
             let region = context.getRegion()!
             let profile = region.getSimProfile()!
-            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
+            return self.primeAPI.resendEmailForSimProfileInRegion(code: RegionCode(rawValue: region.region.id)!, iccId: profile.iccId) // TODO: Verify that this conversion works, ideally, the server returns the regionCode with type RegionCode in a separate field instead of in the ID field
         }
         .done { [weak self] _ in
             self?.navigationController.showAlert(

@@ -1,6 +1,6 @@
-query SimProfilesForRegion($countryCode: String!) {
+query SimProfilesForRegion($regionCode: RegionCode!) {
     customer {
-        regions(regionCode: $countryCode) {
+        regions(regionCode: $regionCode) {
             simProfiles {
                 ...simProfileFields
             }

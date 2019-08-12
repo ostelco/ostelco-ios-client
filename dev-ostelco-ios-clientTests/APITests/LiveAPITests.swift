@@ -28,7 +28,6 @@ class LiveAPITests: XCTestCase {
         self.liveProducts()
         self.liveRegions()
         self.liveRegionWithData()
-        self.liveUnsupportedRegion()
         self.liveAddressUpdate()
         self.liveSimProfilesForRegion()
         self.liveStripeEphemeralKey()
@@ -50,7 +49,7 @@ class LiveAPITests: XCTestCase {
             return
         }
         
-        XCTAssertEqual("S9315107J", nricInfo.nric)
+        XCTAssertEqual("S9315107J", nricInfo.value)
     }
     
     func liveInvalidNRIC() {
@@ -59,7 +58,7 @@ class LiveAPITests: XCTestCase {
             return
         }
         
-        XCTAssertNotEqual("UNIT_TEST", nricInfo.nric)
+        XCTAssertNotEqual("UNIT_TEST", nricInfo.value)
     }
     
     func liveBundles() {
@@ -87,28 +86,12 @@ class LiveAPITests: XCTestCase {
     }
     
     func liveRegionWithData() {
-        guard let region = self.testAPI.loadRegion(code: "sg").awaitResult(in: self) else {
+        guard let region = self.testAPI.loadRegion(code: RegionCode.sg).awaitResult(in: self) else {
             // Failures handled in `awaitResult`
             return
         }
         
         XCTAssertEqual(region.region.id, "sg")
-    }
-    
-    func liveUnsupportedRegion() {
-        // Note: This should be updated if we ever support Vanuatu.
-        guard let error = self.testAPI.loadRegion(code: "vu").awaitResultExpectingError(in: self) else {
-            // Failures handled in `awaitResult`
-            return
-        }
-        
-        switch error {
-        case APIHelper.Error.jsonError(let jsonError):
-            XCTAssertEqual(jsonError.httpStatusCode, 404)
-            XCTAssertEqual(jsonError.errorCode, "FAILED_TO_FETCH_REGIONS")
-        default:
-            XCTFail("Unexpected error fetching unsupportedRegion: \(error)")
-        }
     }
     
     func liveAddressUpdate() {
@@ -129,7 +112,7 @@ class LiveAPITests: XCTestCase {
     
     func liveSimProfilesForRegion() {
         // Failures handled in `awaitResult`
-        _ = self.testAPI.loadSimProfilesForRegion(code: "sg").awaitResult(in: self)
+        _ = self.testAPI.loadSimProfilesForRegion(code: RegionCode.sg).awaitResult(in: self)
     }
     
     func liveStripeEphemeralKey() {

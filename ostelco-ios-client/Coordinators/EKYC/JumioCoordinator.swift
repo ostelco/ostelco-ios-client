@@ -67,7 +67,7 @@ class JumioCoordinator: NSObject {
     private func createScanID() -> Promise<String> {
         let countryCode = self.country.countryCode.lowercased()
         return APIManager.shared.primeAPI
-            .createJumioScanForRegion(code: countryCode)
+            .createJumioScanForRegion(code: RegionCode(rawValue: countryCode)!) // TODO: Verify that this conversion works, ideally, the server returns the regionCode with type RegionCode in a separate field instead of in the ID field
             .map { scan in
                 return scan.id
             }

@@ -1,6 +1,0 @@
-mutation CreateCustomer($email: String!, $name: String!) {
-    createCustomer(contactEmail: $email, nickname: $name) {
-        ...customerFields
-    }
-}
-

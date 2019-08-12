@@ -34,7 +34,7 @@ public struct PriceModel: Codable {
 }
 
 extension PriceModel {
-    public init(gqlData data: ProductFragment.Price) {
+    public init(gqlData data: ProductFields.Price) {
         self.amount = data.amount
         self.currency = data.currency
     }
@@ -56,7 +56,7 @@ public struct ProductModel: Codable {
 }
 
 extension ProductModel {
-    public init(gqlData data: ProductFragment) {
+    public init(gqlData data: ProductFields) {
         self.sku = data.sku
         self.price = PriceModel(gqlData: data.price)
         self.presentation = PresentationModel(label: data.presentation.productLabel, price: data.presentation.priceLabel, taxLabel: data.presentation.taxLabel, tax: data.presentation.tax, subTotalLabel: data.presentation.subTotalLabel, subTotal: data.presentation.subTotal, payeeLabel: data.presentation.payeeLabel)

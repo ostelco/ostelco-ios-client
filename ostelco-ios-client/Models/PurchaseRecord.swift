@@ -27,12 +27,12 @@ class PurchaseRecord {
         self.date = date
     }
 
-    init(from: PurchasesQuery.Data.Customer.Purchase) {
+    init(from: PurchaseFields) {
         let strDate = PurchaseRecord.dateFormatter.string(
             from: Date(timeIntervalSince1970: (Double(from.timestamp) / 1000.0))
         )
-        name = from.product.fragments.productFragment.presentation.productLabel
-        amount = from.product.fragments.productFragment.presentation.priceLabel
+        name = from.product.fragments.productFields.presentation.productLabel
+        amount = from.product.fragments.productFields.presentation.priceLabel
         date = strDate
     }
 }

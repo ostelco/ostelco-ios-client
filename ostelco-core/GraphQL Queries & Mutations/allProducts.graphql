@@ -1,12 +1,10 @@
 query Products {
-    customer {
-        products {
-            ...productFragment
-        }
+    products {
+        ...productFields
     }
 }
 
-fragment productFragment on Product {
+fragment productFields on Product {
     sku
     price {
         amount

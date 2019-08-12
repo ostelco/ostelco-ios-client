@@ -128,14 +128,14 @@ class PushNotificationController: NSObject {
         // Use the application ID as <BundleId>.<Unique DeviceID or UUID>
         let appId = "\(Bundle.main.bundleIdentifier!).\(UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString)"
         
-        let pushToken = ApplicationTokenInput(
-            applicationId: appId,
+        let pushToken = CreateApplicationTokenInput(
             token: token,
-            tokenType: "FCM"
+            tokenType: "FCM",
+            applicationId: appId
         )
         
         return self.primeAPI.sendPushToken(pushToken)
-            .done {_ in 
+            .done { _ in
                 debugPrint("Set new FCM token: \(token)")
             }
             .recover { error in

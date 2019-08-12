@@ -13,7 +13,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
@@ -22,7 +22,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
@@ -31,7 +31,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSeenVerifyIdentifyOnboarding() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)

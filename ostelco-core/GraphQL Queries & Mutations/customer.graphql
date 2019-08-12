@@ -1,13 +1,13 @@
-query Context {
+query Customer {
     customer {
         ...customerFields
         regions {
-            ...regionDetailsFragment
+            ...regionDetailsFields
         }
     }
 }
 
-fragment regionDetailsFragment on RegionDetails {
+fragment regionDetailsFields on RegionDetails {
     region {
         id
         name

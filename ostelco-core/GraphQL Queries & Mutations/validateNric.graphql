@@ -1,0 +1,11 @@
+query ValidateNric($input: ValidateNricInput!) {
+    validateNric(input: $input) {
+        nric {
+            ...nricInfoFields
+        }
+    }
+}
+
+fragment nricInfoFields on NricInfo {
+    value
+}

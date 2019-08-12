@@ -1,0 +1,6 @@
+query AllBundles {
+    bundles {
+        id
+        balance
+    }
+}

@@ -23,7 +23,7 @@ public struct KYCStatusMap: Codable {
         self.ADDRESS_AND_PHONE_NUMBER = addressPhone
     }
     
-    public init(gqlKYCStatusMap: RegionDetailsFragment.KycStatusMap) {
+    public init(gqlKYCStatusMap: RegionDetailsFields.KycStatusMap) {
         if let jumio = gqlKYCStatusMap.jumio?.rawValue {
             self.JUMIO = EKYCStatus(rawValue: jumio)!
         } else {
@@ -63,7 +63,7 @@ public struct Region: Codable {
         return Country(self.id)
     }
     
-    public init(gqlRegion: RegionDetailsFragment.Region) {
+    public init(gqlRegion: RegionDetailsFields.Region) {
         self.id = gqlRegion.id
         self.name = gqlRegion.name
     }
@@ -86,7 +86,7 @@ public struct RegionResponse: Codable {
         self.kycStatusMap = kycStatusMap
     }
     
-    public static func getRegionFromRegionResponseArray(_ regionResponses: [RegionDetailsFragment]) -> RegionDetailsFragment? {
+    public static func getRegionFromRegionResponseArray(_ regionResponses: [RegionDetailsFields]) -> RegionDetailsFields? {
         if let approvedRegion = regionResponses.first(where: { $0.status == .approved }) {
             // Hooray, at least one region has been approved!
             return approvedRegion
@@ -96,16 +96,16 @@ public struct RegionResponse: Codable {
         return regionResponses.last
     }
     
-    func getGraphQLModel() -> RegionDetailsFragment {
-        return RegionDetailsFragment(
-            region: RegionDetailsFragment.Region(id: region.id, name: region.name),
+    func getGraphQLModel() -> RegionDetailsFields {
+        return RegionDetailsFields(
+            region: RegionDetailsFields.Region(id: region.id, name: region.name),
             status: status.toCustomerRegionStatus(),
-            kycStatusMap: RegionDetailsFragment.KycStatusMap(legacyModel: kycStatusMap),
+            kycStatusMap: RegionDetailsFields.KycStatusMap(legacyModel: kycStatusMap),
             simProfiles: simProfiles?.map({ $0.getGraphQLModel() }))
     }
 }
 
-extension RegionDetailsFragment.KycStatusMap {
+extension RegionDetailsFields.KycStatusMap {
     public init(legacyModel: KYCStatusMap) {
         self.init()
         if let JUMIO = legacyModel.JUMIO {
@@ -123,14 +123,14 @@ extension RegionDetailsFragment.KycStatusMap {
     }
 }
 
-extension RegionDetailsFragment {
+extension RegionDetailsFields {
     public func getSimProfile() -> SimProfileFields? {
         return self.simProfiles?.first?.fragments.simProfileFields
     }
 }
 
 extension RegionResponse {
-    public init(gqlData regionDetails: RegionDetailsFragment) {
+    public init(gqlData regionDetails: RegionDetailsFields) {
         let region = regionDetails.region
         let status = regionDetails.status
         let kycStatusMap = regionDetails.kycStatusMap

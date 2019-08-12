@@ -89,7 +89,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountryAndHasLocationProblem() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, locationProblem: .deniedByUser)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationProblem(.deniedByUser))
@@ -98,7 +98,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSelectedSingpassAndCancelledSingpass() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
@@ -164,7 +164,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserHasSeenVerifyIdentifyOnboardingAndCancelledJumio() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
-        let regions: [RegionDetailsFragment] = []
+        let regions: [RegionDetailsFields] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)

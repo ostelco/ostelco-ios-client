@@ -44,7 +44,7 @@
 		0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437197E22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift */; };
 		043E710E2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
 		043E710F2239F17200E01993 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E710D2239F17200E01993 /* main.swift */; };
-		04456A6522EFB70D00131581 /* createSimProfileForRegion.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */; };
+		04456A6522EFB70D00131581 /* createSimProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 04456A6422EFB70D00131581 /* createSimProfile.graphql */; };
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
@@ -428,11 +428,11 @@
 		0437CF88224D3B380022A2B8 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		043E710D2239F17200E01993 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		043E711D223AF61600E01993 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createSimProfileForRegion.graphql; sourceTree = "<group>"; };
-		04456A6622EFB8E100131581 /* sendEmailWithActivationQrCodeForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = sendEmailWithActivationQrCodeForRegion.graphql; sourceTree = "<group>"; };
-		04456A6722EFB9EA00131581 /* createJumioScanForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createJumioScanForRegion.graphql; sourceTree = "<group>"; };
-		04456A6822EFBB0D00131581 /* createAddressAndPhoneNumber.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createAddressAndPhoneNumber.graphql; sourceTree = "<group>"; };
-		04456A6922EFBD9200131581 /* validateNRIC.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = validateNRIC.graphql; sourceTree = "<group>"; };
+		04456A6422EFB70D00131581 /* createSimProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createSimProfile.graphql; sourceTree = "<group>"; };
+		04456A6622EFB8E100131581 /* resendEmail.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = resendEmail.graphql; sourceTree = "<group>"; };
+		04456A6722EFB9EA00131581 /* createJumioScan.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createJumioScan.graphql; sourceTree = "<group>"; };
+		04456A6822EFBB0D00131581 /* createAddress.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createAddress.graphql; sourceTree = "<group>"; };
+		04456A6922EFBD9200131581 /* validateNric.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = validateNric.graphql; sourceTree = "<group>"; };
 		044725AE2281B7E6006184E5 /* ExternalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalLink.swift; sourceTree = "<group>"; };
 		04488166217924B700F59758 /* Oya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04488169217924B700F59758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -444,10 +444,10 @@
 		04561C9D22E978AD0097E86A /* createCustomer.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createCustomer.graphql; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
 		046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorwayUserHappyFlowWithJumioStageDeciderTests.swift; sourceTree = "<group>"; };
-		046FE92622DEFC6000CF57E4 /* bundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = bundles.graphql; sourceTree = "<group>"; };
-		046FE92A22DF02BC00CF57E4 /* purchases.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchases.graphql; sourceTree = "<group>"; };
-		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
-		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
+		046FE92622DEFC6000CF57E4 /* allBundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allBundles.graphql; sourceTree = "<group>"; };
+		046FE92A22DF02BC00CF57E4 /* allPurchases.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allPurchases.graphql; sourceTree = "<group>"; };
+		046FE92C22DF075E00CF57E4 /* allProducts.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allProducts.graphql; sourceTree = "<group>"; };
+		046FE92E22DF0A5200CF57E4 /* allRegions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allRegions.graphql; sourceTree = "<group>"; };
 		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -471,7 +471,7 @@
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		049707C422EF073D00C69A63 /* createApplicationToken.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createApplicationToken.graphql; sourceTree = "<group>"; };
-		049707C622EFB38800C69A63 /* purchaseProduct.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = purchaseProduct.graphql; sourceTree = "<group>"; };
+		049707C622EFB38800C69A63 /* createPurchase.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createPurchase.graphql; sourceTree = "<group>"; };
 		049707C822EFB56300C69A63 /* deleteCustomer.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = deleteCustomer.graphql; sourceTree = "<group>"; };
 		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
@@ -651,7 +651,7 @@
 		C24EE404222838950053937E /* PendingVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingVerificationViewController.swift; sourceTree = "<group>"; };
 		C25A95952226FF7F005958EC /* MyInfoSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSummaryViewController.swift; sourceTree = "<group>"; };
 		C26274AE22C204CB00F0AA36 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		C26274B022C2050200F0AA36 /* context.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = context.graphql; sourceTree = "<group>"; };
+		C26274B022C2050200F0AA36 /* customer.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = customer.graphql; sourceTree = "<group>"; };
 		C26274B222C2092000F0AA36 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C274A67B229689BC00209C23 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -714,6 +714,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0431F18E23014CF400426492 /* GraphQL Queries & Mutations */ = {
+			isa = PBXGroup;
+			children = (
+				C26274B022C2050200F0AA36 /* customer.graphql */,
+				046FE92622DEFC6000CF57E4 /* allBundles.graphql */,
+				046FE92A22DF02BC00CF57E4 /* allPurchases.graphql */,
+				046FE92C22DF075E00CF57E4 /* allProducts.graphql */,
+				046FE92E22DF0A5200CF57E4 /* allRegions.graphql */,
+				046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */,
+				04561C9D22E978AD0097E86A /* createCustomer.graphql */,
+				049707C422EF073D00C69A63 /* createApplicationToken.graphql */,
+				049707C622EFB38800C69A63 /* createPurchase.graphql */,
+				049707C822EFB56300C69A63 /* deleteCustomer.graphql */,
+				04456A6422EFB70D00131581 /* createSimProfile.graphql */,
+				04456A6622EFB8E100131581 /* resendEmail.graphql */,
+				04456A6722EFB9EA00131581 /* createJumioScan.graphql */,
+				04456A6822EFBB0D00131581 /* createAddress.graphql */,
+				04456A6922EFBD9200131581 /* validateNric.graphql */,
+			);
+			path = "GraphQL Queries & Mutations";
+			sourceTree = "<group>";
+		};
 		0448815D217924B700F59758 = {
 			isa = PBXGroup;
 			children = (
@@ -970,9 +992,9 @@
 		9B851ABC225E29BE0076ABF3 /* ostelco-core */ = {
 			isa = PBXGroup;
 			children = (
+				0431F18E23014CF400426492 /* GraphQL Queries & Mutations */,
 				C26274B222C2092000F0AA36 /* API.swift */,
 				C26274AE22C204CB00F0AA36 /* schema.json */,
-				C26274B022C2050200F0AA36 /* context.graphql */,
 				9B851ABD225E29BE0076ABF3 /* ostelco_core.h */,
 				9B851AE2225E334C0076ABF3 /* Extensions */,
 				9B851ADF225E331D0076ABF3 /* ModelControllers */,
@@ -981,20 +1003,6 @@
 				9B3FA95622649DBE0001641A /* Protocols */,
 				9B851ADD225E32E90076ABF3 /* ViewControllers */,
 				9B851ABE225E29BE0076ABF3 /* Info.plist */,
-				046FE92622DEFC6000CF57E4 /* bundles.graphql */,
-				046FE92A22DF02BC00CF57E4 /* purchases.graphql */,
-				046FE92C22DF075E00CF57E4 /* products.graphql */,
-				046FE92E22DF0A5200CF57E4 /* regions.graphql */,
-				046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */,
-				04561C9D22E978AD0097E86A /* createCustomer.graphql */,
-				049707C422EF073D00C69A63 /* createApplicationToken.graphql */,
-				049707C622EFB38800C69A63 /* purchaseProduct.graphql */,
-				049707C822EFB56300C69A63 /* deleteCustomer.graphql */,
-				04456A6422EFB70D00131581 /* createSimProfileForRegion.graphql */,
-				04456A6622EFB8E100131581 /* sendEmailWithActivationQrCodeForRegion.graphql */,
-				04456A6722EFB9EA00131581 /* createJumioScanForRegion.graphql */,
-				04456A6822EFBB0D00131581 /* createAddressAndPhoneNumber.graphql */,
-				04456A6922EFBD9200131581 /* validateNRIC.graphql */,
 			);
 			path = "ostelco-core";
 			sourceTree = "<group>";
@@ -1546,7 +1554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04456A6522EFB70D00131581 /* createSimProfileForRegion.graphql in Resources */,
+				04456A6522EFB70D00131581 /* createSimProfile.graphql in Resources */,
 				C26274AF22C204CB00F0AA36 /* schema.json in Resources */,
 				9B851AE8225E36F90076ABF3 /* RemainingDataViewController.xib in Resources */,
 			);

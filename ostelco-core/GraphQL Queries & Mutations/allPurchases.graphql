@@ -1,0 +1,13 @@
+query AllPurchases {
+    purchases {
+        ...purchaseFields
+    }
+}
+
+fragment purchaseFields on Purchase {
+    id
+    product {
+        ...productFields
+    }
+    timestamp
+}

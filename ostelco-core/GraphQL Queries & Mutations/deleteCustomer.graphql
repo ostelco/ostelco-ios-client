@@ -1,0 +1,8 @@
+mutation DeleteCustomer {
+    deleteCustomer {
+        customer {
+            ...customerFields
+        }
+    }
+}
+

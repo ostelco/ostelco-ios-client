@@ -1,6 +1,0 @@
-mutation SendEmailWithActivationQrCodeForRegion($countryCode: String!, $iccId: String!) {
-    sendEmailWithActivationQrCode(regionCode: $countryCode, iccId: $iccId) {
-        ...simProfileFields
-    }
-}
-

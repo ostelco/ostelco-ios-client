@@ -47,7 +47,7 @@ extension SimProfileLegacy {
         )
     }
     
-    public func getGraphQLModel() -> RegionDetailsFragment.SimProfile {
-        return RegionDetailsFragment.SimProfile(eSimActivationCode: eSimActivationCode, alias: alias, iccId: iccId, status: status.getGraphQLModel())
+    public func getGraphQLModel() -> RegionDetailsFields.SimProfile {
+        return RegionDetailsFields.SimProfile(eSimActivationCode: eSimActivationCode, alias: alias, iccId: iccId, status: status.getGraphQLModel())
     }
 }

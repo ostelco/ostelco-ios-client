@@ -63,6 +63,7 @@ open class PrimeAPI: BasicNetwork {
     // Configure the network transport to use the singleton as the delegate.
     private lazy var networkTransport = HTTPNetworkTransport(
         url: self.baseURL.appendingPathComponent(RootEndpoint.graphql.value, isDirectory: false),
+        // useGETForQueries: true,
         delegate: self
     )
     
@@ -89,15 +90,16 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter pushToken: The push token to send
     /// - Returns: A promise which, when fulfilled, indicates the token was sent successfully.
-    public func sendPushToken(_ pushToken: ApplicationTokenInput) -> PromiseKit.Promise<ApplicationTokenFields> {
+    public func sendPushToken(_ pushToken: CreateApplicationTokenInput) -> PromiseKit.Promise<ApplicationTokenFields> {
         return self.getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: CreateApplicationTokenMutation(applicationToken: pushToken)) { result in
+                self.client.perform(mutation: CreateApplicationTokenMutation(input: pushToken)) { result in
                     switch result {
-                    case .success(let result):
-                        seal.fulfill(result.data!.createApplicationToken.fragments.applicationTokenFields)
-                    case .failure(let error):
-                        seal.reject(error)
+                    case .success(let graphQLResult):
+                        seal.fulfill(graphQLResult.data!.createApplicationToken!.applicationToken.fragments.applicationTokenFields)
+                    case .failure(let networkError):
+                        
+                        seal.reject(networkError)
                     }
                 }
             }
@@ -105,13 +107,13 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which which when fulfilled will contain the user's bundle models
-    public func loadBundles() -> PromiseKit.Promise<[BundlesQuery.Data.Customer.Bundle]> {
+    public func loadBundles() -> PromiseKit.Promise<[AllBundlesQuery.Data.Bundle]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: BundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+                self.client.fetch(query: AllBundlesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.customer.bundles ?? [])
+                        seal.fulfill(result.data?.bundles ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -121,14 +123,14 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the current context.
-    public func loadContext() -> PromiseKit.Promise<ContextQuery.Data.Customer> {
+    public func loadContext() -> PromiseKit.Promise<CustomerQuery.Data.Customer> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: ContextQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+                self.client.fetch(query: CustomerQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
-                    case .success(let result):
-                        if let data = result.data {
-                            seal.fulfill(data.customer)
+                    case .success(let graphQLResult):
+                        if let data = graphQLResult.data, let customer = data.customer {
+                            seal.fulfill(customer)
                         } else {
                             // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
                             seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
@@ -142,13 +144,13 @@ open class PrimeAPI: BasicNetwork {
     }
     
     /// - Returns: A Promise which when fulfilled will contain the user's purchase models
-    public func loadPurchases() -> PromiseKit.Promise<[PurchasesQuery.Data.Customer.Purchase]> {
+    public func loadPurchases() -> PromiseKit.Promise<[PurchaseFields]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: PurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+                self.client.fetch(query: AllPurchasesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.customer.purchases ?? [])
+                        seal.fulfill(result.data?.purchases?.map{$0.fragments.purchaseFields} ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -160,13 +162,13 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Products
     
     /// - Returns: A Promise which when fulfilled will contain the user's product models
-    public func loadProducts() -> PromiseKit.Promise<[ProductFragment]> {
+    public func loadProducts() -> PromiseKit.Promise<[ProductFields]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.fetch(query: ProductsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.customer.products.map({ $0.fragments.productFragment }) ?? [])
+                        seal.fulfill(result.data?.products?.map({ $0.fragments.productFields }) ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -181,13 +183,13 @@ open class PrimeAPI: BasicNetwork {
     ///   - sku: The SKU to purchase
     ///   - payment: The payment information to use to purchase it
     /// - Returns: A Promise which when fulfilled will inidicate the purchase was successful
-    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<ProductFragment> {
+    public func purchaseProduct(with sku: String, payment: PaymentInfo) -> PromiseKit.Promise<ProductFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: PurchaseProductMutation(sku: sku, sourceId: payment.sourceId)) { result in
+                self.client.perform(mutation: CreatePurchaseMutation(input: CreatePurchaseInput(sku: sku, sourceId: payment.sourceId))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.purchaseProduct.fragments.productFragment)
+                        seal.fulfill(result.data!.createPurchase!.purchase.fragments.purchaseFields.product.fragments.productFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -206,10 +208,10 @@ open class PrimeAPI: BasicNetwork {
         return getToken()
             .then { _ in
                 return PromiseKit.Promise { seal in
-                    self.client.perform(mutation: CreateCustomerMutation(email: userSetup.contactEmail, name: userSetup.nickname)) { result in
+                    self.client.perform(mutation: CreateCustomerMutation(input: CreateCustomerInput(contactEmail: userSetup.contactEmail, nickname: userSetup.nickname))) { result in
                         switch result {
                         case .success(let result):
-                            seal.fulfill(result.data!.createCustomer.fragments.customerFields)
+                            seal.fulfill(result.data!.createCustomer!.customer.fragments.customerFields)
                         case .failure(let error):
                             seal.reject(error)
                         }
@@ -227,7 +229,7 @@ open class PrimeAPI: BasicNetwork {
                 self.client.perform(mutation: DeleteCustomerMutation()) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.deleteCustomer.fragments.customerFields)
+                        seal.fulfill(result.data!.deleteCustomer!.customer.fragments.customerFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -239,13 +241,13 @@ open class PrimeAPI: BasicNetwork {
     // MARK: - Regions
 
     /// - Returns: A promise which when fulfilled will contain all region responses for this user
-    public func loadRegions(countryCode: String? = nil) -> PromiseKit.Promise<[RegionDetailsFragment]> {
+    public func loadRegions(regionCode: RegionCode? = nil) -> PromiseKit.Promise<[RegionDetailsFields]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: RegionsQuery(countryCode: countryCode), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+                self.client.fetch(query: AllRegionsQuery(regionCode: regionCode), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.customer.regions.map({ $0.fragments.regionDetailsFragment }) ?? [])
+                        seal.fulfill(result.data?.customer?.regions?.map({ $0.fragments.regionDetailsFields }) ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -258,8 +260,8 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request
     /// - Returns: A promise which when fulfilled contains the requested region.
-    public func loadRegion(code: String) -> PromiseKit.Promise<RegionDetailsFragment> {
-        return loadRegions(countryCode: code).then { regionResponse in
+    public func loadRegion(code: RegionCode) -> PromiseKit.Promise<RegionDetailsFields> {
+        return loadRegions(regionCode: code).then { regionResponse in
             return PromiseKit.Promise { seal in
                 if let value = regionResponse.first {
                     seal.fulfill(value)
@@ -274,13 +276,13 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request SIM profiles for
     /// - Returns: A promise which when fullfilled contains the requested profiles
-    public func loadSimProfilesForRegion(code: String) -> PromiseKit.Promise<[SimProfileFields]> {
+    public func loadSimProfilesForRegion(code: RegionCode) -> PromiseKit.Promise<[SimProfileFields]> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.fetch(query: SimProfilesForRegionQuery(countryCode: code), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+                self.client.fetch(query: SimProfilesForRegionQuery(regionCode: code), cachePolicy: .fetchIgnoringCacheCompletely) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data?.customer.regions.first?.simProfiles?.map({ $0.fragments.simProfileFields }) ?? [])
+                        seal.fulfill(result.data?.customer!.regions!.first?.simProfiles?.map({ $0.fragments.simProfileFields }) ?? [])
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -293,18 +295,20 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region code to use
     /// - Returns: A promise which, when fulfilled, will contain the created SIM profile.
-    public func createSimProfileForRegion(code: String) -> PromiseKit.Promise<SimProfileFields> {
+    public func createSimProfileForRegion(code: RegionCode) -> PromiseKit.Promise<SimProfileFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
                 self.client.perform(
-                    mutation: CreateSimProfileForRegionMutation(
-                        countryCode: code,
-                        profileType: SimProfileRequest().profileType.rawValue
+                    mutation: CreateSimProfileMutation(
+                        input: CreateSimProfileInput(
+                            regionCode: code,
+                            profileType: SimProfileType(rawValue: SimProfileRequest().profileType.rawValue)! // TODO: Verify that convertion works
+                        )
                     )
                 ) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.createSimProfile.fragments.simProfileFields)
+                        seal.fulfill(result.data!.createSimProfile!.simProfile.fragments.simProfileFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -319,13 +323,13 @@ open class PrimeAPI: BasicNetwork {
     ///     - code: The region code to use
     ///     - iccId: the iccId of the sim profile to resend QR code email
     /// - Returns: The sim profile with the given iccid
-    public func resendEmailForSimProfileInRegion(code: String, iccId: String) -> PromiseKit.Promise<SimProfileFields> {
+    public func resendEmailForSimProfileInRegion(code: RegionCode, iccId: String) -> PromiseKit.Promise<SimProfileFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: SendEmailWithActivationQrCodeForRegionMutation(countryCode: code, iccId: iccId)) { result in
+                self.client.fetch(query: ResendEmailQuery(input: ResendEmailInput(regionCode: code, iccId: iccId))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.sendEmailWithActivationQrCode.fragments.simProfileFields)
+                        seal.fulfill(result.data!.resendEmail!.simProfile.fragments.simProfileFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -338,13 +342,13 @@ open class PrimeAPI: BasicNetwork {
     ///
     /// - Parameter code: The region to request a Jumio scan request for
     /// - Returns: A promise which when fulfilled contains the requested data
-    public func createJumioScanForRegion(code: String) -> PromiseKit.Promise<ScanInformationFields> {
+    public func createJumioScanForRegion(code: RegionCode) -> PromiseKit.Promise<JumioScanFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: CreateJumioScanForRegionMutation(countryCode: code)) { result in
+                self.client.perform(mutation: CreateJumioScanMutation(input: CreateJumioScanInput(regionCode: code))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.createScan.fragments.scanInformationFields)
+                        seal.fulfill(result.data!.createJumioScan!.jumioScan.fragments.jumioScanFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -354,9 +358,9 @@ open class PrimeAPI: BasicNetwork {
     }
 
     /// - Returns: A promise which when fulfilled will contain the relevant region response for this user.
-    public func getRegionFromRegions() -> PromiseKit.Promise<RegionDetailsFragment> {
+    public func getRegionFromRegions() -> PromiseKit.Promise<RegionDetailsFields> {
         return self.loadRegions()
-            .map { regions -> RegionDetailsFragment in
+            .map { regions -> RegionDetailsFields in
                 guard let region = RegionResponse.getRegionFromRegionResponseArray(regions) else {
                     throw Error.failedToGetRegion
                 }
@@ -372,13 +376,13 @@ open class PrimeAPI: BasicNetwork {
     ///   - regionCode: The region to add the address for.
     /// - Returns: A promise which, when fulfilled, indicates successful completion of the operation.
     public func addAddress(_ address: EKYCAddress,
-                           forRegion regionCode: String) -> PromiseKit.Promise<AddressInfoFields> {
+                           forRegion regionCode: String) -> PromiseKit.Promise<AddressFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: CreateAddressAndPhoneNumberMutation(address: address.address, phoneNumber: address.phoneNumber)) { result in
+                self.client.perform(mutation: CreateAddressMutation(input: CreateAddressInput(address: address.address, phoneNumber: address.phoneNumber))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.createAddressAndPhoneNumber.fragments.addressInfoFields)
+                        seal.fulfill(result.data!.createAddress!.address.fragments.addressFields)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -397,10 +401,10 @@ open class PrimeAPI: BasicNetwork {
                              forRegion regionCode: String) -> PromiseKit.Promise<NricInfoFields> {
         return getToken().then { _ in
             return PromiseKit.Promise { seal in
-                self.client.perform(mutation: ValidateNricMutation(nric: nric)) { result in
+                self.client.fetch(query: ValidateNricQuery(input: ValidateNricInput(nric: nric))) { result in
                     switch result {
                     case .success(let result):
-                        seal.fulfill(result.data!.validateNric.fragments.nricInfoFields)
+                        seal.fulfill(result.data!.validateNric!.nric.fragments.nricInfoFields)
                     case .failure(let error):
                         seal.reject(error)
                     }

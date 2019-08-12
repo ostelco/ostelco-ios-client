@@ -1,6 +1,0 @@
-mutation DeleteCustomer {
-    deleteCustomer {
-        ...customerFields
-    }
-}
-

@@ -1,0 +1,13 @@
+mutation createJumioScan($input: CreateJumioScanInput!) {
+    createJumioScan(input: $input) {
+        jumioScan {
+            ...jumioScanFields
+        }
+    }
+}
+
+fragment jumioScanFields on JumioScan {
+    id
+    regionCode
+}
+
