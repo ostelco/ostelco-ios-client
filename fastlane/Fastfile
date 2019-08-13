@@ -135,7 +135,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    #xcode_select("/Applications/Xcode-beta.app")
+    xcode_select("/Applications/Xcode-11.0.app")
     scan(
       scheme: "dev-ostelco-ios-client",
       devices: ["iPhone Xs Max"]
