@@ -455,11 +455,16 @@ extension OnboardingCoordinator: ESIMOnBoardingDelegate {
 }
 
 extension OnboardingCoordinator: ESIMInstructionsDelegate {
-    func completedInstructions() {
+    func completedInstructions(_ controller: ESIMInstructionsViewController) {
         localContext.hasSeenESIMInstructions = true
+        
+        let spinner = controller.showSpinner()
         
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
+            assert(context.regions.count == 1)
+            // swiftlint:disable:next empty_count
+            assert(context.regions.first!.fragments.regionDetailsFragment.simProfiles?.count == 0)
             let simProfile = RegionResponse.getRegionFromRegionResponseArray(context.regions.map({ $0.fragments.regionDetailsFragment }))?.getSimProfile()
             if let simProfile = simProfile {
                 return PromiseKit.Promise.value(simProfile)
@@ -468,12 +473,15 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
                 return self.primeAPI.createSimProfileForRegion(code: countryCode).map { $0.getGraphQLModel().fragments.simProfileFields }
             }
         }
+        .ensure {
+            controller.removeSpinner(spinner)
+        }
         .done { [weak self] (_) -> Void in
             self?.advance()
         }
-        .catch { [weak self] error in
+        .catch { error in
             ApplicationErrors.log(error)
-            self?.navigationController.showGenericError(error: error)
+            controller.showGenericError(error: error)
         }
     }
 }

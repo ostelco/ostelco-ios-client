@@ -11,7 +11,7 @@ import OstelcoStyles
 import UIKit
 
 protocol ESIMInstructionsDelegate: class {
-    func completedInstructions()
+    func completedInstructions(_ controller: ESIMInstructionsViewController)
 }
 
 class ESIMInstructionsViewController: UIViewController {
@@ -58,7 +58,7 @@ class ESIMInstructionsViewController: UIViewController {
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         let index = dataSource.currentIndex
         if index == (ESIMPage.allCases.count - 1) {
-            self.delegate?.completedInstructions()
+            self.delegate?.completedInstructions(self)
         } else {
             self.dataSource.goToNextPage()
         }
