@@ -54,17 +54,8 @@ class OnboardingCoordinatorTests: XCTestCase {
             return Promise(error: Errors.noContextFound)
         }
     }
-    
-    func testCoordinatorHandlesUseSeeingLoginCarousel() {
-        let fake = FakeNavigation()
-        let fakePrime = FakePrimeAPI()
-        let testCoordinator = OnboardingCoordinator(navigationController: fake, primeAPI: fakePrime)
-        
-        testCoordinator.loginCarouselSeen()
-        
-        AssertAllAreClass(fake.trappedControllers, aClass: EmailEntryViewController.self)
-    }
-    
+
+
     func AssertAllAreClass(_ items: [NSObject], aClass: AnyClass, file: StaticString = #file, line: UInt = #line) {
         XCTAssert(items.allSatisfy({ $0.isKind(of: aClass) }), file: file, line: line)
     }

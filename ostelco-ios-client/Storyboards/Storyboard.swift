@@ -22,7 +22,6 @@ enum Storyboard: String, CaseIterable {
     case splash = "Splash"
     case support = "Support"
     case tabController = "TabController"
-    case signInWithApple = "SignInWithApple"
 
     var asUIStoryboard: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

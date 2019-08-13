@@ -10,9 +10,10 @@ import ostelco_core
 import OstelcoStyles
 import UIKit
 import Firebase
+import AuthenticationServices
 
 protocol LoginDelegate: class {
-    func loginCarouselSeen()
+    func signedIn(authCode: String, contactEmail: String?)
 }
 
 class LoginViewController: UIViewController {
@@ -20,7 +21,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet private var primaryButton: UIButton!
     @IBOutlet private var logoImageView: UIImageView!
-    
+    @IBOutlet private weak var buttonStackView: UIStackView!
+
     private var pageController: UIPageViewController!
     
     weak var delegate: LoginDelegate?
@@ -38,7 +40,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupProviderLoginView()
+
         let index = dataSource.currentIndex
         configureButtonTitle(for: index)
         logoImageView.tintColor = OstelcoColor.oyaBlue.toUIColor
@@ -53,28 +56,45 @@ class LoginViewController: UIViewController {
     private func configureButtonTitle(for index: Int) {
         if index == (OnboardingPage.allCases.count - 1) {
             // This is the last page.
-            primaryButton.setTitle(NSLocalizedString("Sign In", comment: "Title for sign in button."), for: .normal)
+            primaryButton.isHidden = true
+            buttonStackView.isHidden = false // Show "Sign In With Apple"
+            primaryButton.setTitle(NSLocalizedString("Sign In", comment: "Title for sign in button."), for: .normal) // Used for Analytics
         } else {
             primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in Carousel"), for: .normal)
+            primaryButton.isHidden = false
+            buttonStackView.isHidden = true
         }
     }
-    
+
+    func setupProviderLoginView() {
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        buttonStackView.addArrangedSubview(authorizationButton)
+    }
+
+    @objc
+    func handleAuthorizationAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         Analytics.logEvent("button_tapped", parameters: [
             "newValue": sender.title(for: .normal)!
         ])
         
         let index = dataSource.currentIndex
-        if index == (OnboardingPage.allCases.count - 1) {
-            signInTapped()
-        } else {
+        if index != (OnboardingPage.allCases.count - 1) {
             dataSource.goToNextPage()
         }
     }
     
-    private func signInTapped() {
-        delegate?.loginCarouselSeen()
-    }
 }
 
 extension LoginViewController: PageControllerDataSourceDelegate {
@@ -92,5 +112,40 @@ extension LoginViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return true
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let contactEmail = appleIDCredential.email
+            debugPrint(userIdentifier, fullName ?? "No name", contactEmail ?? "No Email")
+            if let data = appleIDCredential.identityToken {
+                debugPrint(String(data: data, encoding: .utf8) ?? "No Identity Token")
+            }
+            if contactEmail == nil {
+                debugPrint("Email not provided at Sign In, create user will fail.")
+            }
+            guard let authCodeData = appleIDCredential.authorizationCode else {
+                print("No authorization code received at Sign In, cannot procced.")
+                return
+            }
+            if let authCode = String(data: authCodeData, encoding: .utf8) {
+                delegate?.signedIn(authCode: authCode, contactEmail: contactEmail)
+            }
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
     }
 }

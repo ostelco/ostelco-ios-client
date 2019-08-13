@@ -24,36 +24,19 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         XCTAssertEqual(decider.compute(context: context, localContext: LocalContext()), .loginCarousel)
     }
     
-    func testUserHasSeenLoginCarousel() {
+    func testUserNotSignedInColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext(hasSeenLoginCarousel: true)), .signInWithApple)
-    }
-    
-    func testUserHasEnteredEmail() {
-        let decider = StageDecider()
-        let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
-        let localContext = LocalContext(hasSeenLoginCarousel: true)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .signInWithApple)
-    }
-    
-    func testUserHasEnteredEmailThenColdStart() {
-        let decider = StageDecider()
-        let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext()
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .signInWithApple)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .loginCarousel)
     }
     
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
         let context: Context? = nil
         UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
-        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true)
+        let localContext = LocalContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
@@ -62,7 +45,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let decider = StageDecider()
         let context: Context? = nil
         UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
-        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true, hasAgreedToTerms: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }

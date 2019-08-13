@@ -9,7 +9,6 @@
 import Foundation
 
 public class LocalContext {
-    public var hasSeenLoginCarousel: Bool
     public var enteredEmailAddress: String? {
         get {
             return UserDefaultsWrapper.pendingEmail
@@ -46,9 +45,8 @@ public class LocalContext {
     public var hasCompletedAddress: Bool
     public var serverIsUnreachable: Bool
     
-    public init(selectedRegion: Region? = nil, hasSeenLoginCarousel: Bool = false, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
         self.selectedRegion = selectedRegion
-        self.hasSeenLoginCarousel = hasSeenLoginCarousel
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
         self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
@@ -77,7 +75,6 @@ public struct StageDecider {
     public enum Stage: Equatable {
         case home
         case loginCarousel
-        case signInWithApple
         case legalStuff
         case notificationPermissions
         case nicknameEntry
@@ -109,9 +106,6 @@ public struct StageDecider {
             }
             return .legalStuff
         } else {
-            if localContext.hasSeenLoginCarousel {
-                return .signInWithApple
-            }
             return .loginCarousel
         }
     }

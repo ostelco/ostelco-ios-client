@@ -325,10 +325,6 @@
 		C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
 		C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
-		C2A4B2BB22FDFC1C0042460E /* SignInWithApple.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A4B2BA22FDFC1C0042460E /* SignInWithApple.storyboard */; };
-		C2A4B2BC22FDFC1C0042460E /* SignInWithApple.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2A4B2BA22FDFC1C0042460E /* SignInWithApple.storyboard */; };
-		C2A4B2BE22FDFCF40042460E /* SignInWithAppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2BD22FDFCF40042460E /* SignInWithAppleViewController.swift */; };
-		C2A4B2BF22FDFCF40042460E /* SignInWithAppleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2BD22FDFCF40042460E /* SignInWithAppleViewController.swift */; };
 		C2A4B2C122FEDD0D0042460E /* AppleIdToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */; };
 		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
@@ -651,8 +647,6 @@
 		C26274B222C2092000F0AA36 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C274A67B229689BC00209C23 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2A4B2BA22FDFC1C0042460E /* SignInWithApple.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInWithApple.storyboard; sourceTree = "<group>"; };
-		C2A4B2BD22FDFCF40042460E /* SignInWithAppleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleViewController.swift; sourceTree = "<group>"; };
 		C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIdToken.swift; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		C2B08448217E709900CAF9EA /* Siesta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siesta.framework; path = Carthage/Build/iOS/Siesta.framework; sourceTree = "<group>"; };
@@ -795,7 +789,6 @@
 				04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */,
 				0412168B2226BBBA00455278 /* GetStartedViewController.swift */,
 				0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */,
-				C2A4B2BD22FDFCF40042460E /* SignInWithAppleViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1186,7 +1179,6 @@
 				9B834B1E22E01E52004F04F0 /* Support.storyboard */,
 				9B834B2222E01E58004F04F0 /* TabController.storyboard */,
 				9BE2D456225B61CF00B51999 /* Storyboard.swift */,
-				C2A4B2BA22FDFC1C0042460E /* SignInWithApple.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1522,7 +1514,6 @@
 				9B834B1F22E01E58004F04F0 /* TabController.storyboard in Resources */,
 				9B834B0722E01E33004F04F0 /* Login.storyboard in Resources */,
 				9B834B1322E01E47004F04F0 /* SignUp.storyboard in Resources */,
-				C2A4B2BB22FDFC1C0042460E /* SignInWithApple.storyboard in Resources */,
 				9BF27782225D15FE006428D5 /* Environment.plist in Resources */,
 				9B1745772276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
@@ -1579,7 +1570,6 @@
 				9B834AF022E01E0E004F04F0 /* Address.storyboard in Resources */,
 				9B834B0822E01E33004F04F0 /* Login.storyboard in Resources */,
 				9B834B2022E01E58004F04F0 /* TabController.storyboard in Resources */,
-				C2A4B2BC22FDFC1C0042460E /* SignInWithApple.storyboard in Resources */,
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
 				9B1745782276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
@@ -2017,7 +2007,6 @@
 				9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */,
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
-				C2A4B2BE22FDFCF40042460E /* SignInWithAppleViewController.swift in Sources */,
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
@@ -2225,7 +2214,6 @@
 				9B305F99229694F700B89FCB /* GifVideo.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
-				C2A4B2BF22FDFCF40042460E /* SignInWithAppleViewController.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
