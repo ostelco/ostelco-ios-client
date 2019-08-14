@@ -67,10 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        if
-            let bundleIndentifier = Bundle.main.bundleIdentifier,
-            bundleIndentifier.contains("dev") {
-                OstelcoColor.useDevColor = true
+        if let bundleIndentifier = Bundle.main.bundleIdentifier, bundleIndentifier.contains("dev") {
+            OstelcoColor.useDevColor = true
         }
         
         let mainColor = OstelcoColor.oyaBlue.toUIColor

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q2B-DW-NZJ">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q2B-DW-NZJ">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,13 +20,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The legal stuff" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBH-PE-WSS" customClass="Heading2Label" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Before you can proceed you must read and accept the terms &amp; conditions. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-xy-nGB" customClass="BodyTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="16" y="138.66666666666666" width="343" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tio-Qz-bgJ">
@@ -50,7 +49,7 @@
                                         <rect key="frame" x="64" y="0.0" width="167" height="44"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -75,7 +74,7 @@
                                         <rect key="frame" x="64" y="0.0" width="167" height="44"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -115,19 +114,18 @@
                                         <rect key="frame" x="64" y="0.0" width="167" height="44"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="lio-dE-X4q" firstAttribute="trailing" secondItem="tio-Qz-bgJ" secondAttribute="trailing" constant="72" id="0Dr-Q9-j0N"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="top" secondItem="lio-dE-X4q" secondAttribute="top" constant="44" id="0cg-Fv-WhP"/>
                             <constraint firstItem="In2-Pj-tD4" firstAttribute="leading" secondItem="tio-Qz-bgJ" secondAttribute="leading" id="5TQ-e2-RsD"/>
                             <constraint firstItem="tio-Qz-bgJ" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="72" id="85w-aO-4Tk"/>
-                            <constraint firstItem="BD5-xy-nGB" firstAttribute="centerX" secondItem="zpm-C6-zzH" secondAttribute="centerX" id="8dJ-8r-QWn"/>
                             <constraint firstItem="NBH-PE-WSS" firstAttribute="leading" secondItem="lio-dE-X4q" secondAttribute="leading" constant="24" id="BeZ-UY-Gdf"/>
                             <constraint firstItem="Yg1-bc-UOR" firstAttribute="trailing" secondItem="tio-Qz-bgJ" secondAttribute="trailing" id="EG7-6n-yVC"/>
                             <constraint firstItem="IDd-hs-GvP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Yg1-bc-UOR" secondAttribute="bottom" constant="20" id="FYB-M0-DJM"/>
@@ -190,7 +188,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
-                                <rect key="frame" x="56" y="304" width="291" height="204"/>
+                                <rect key="frame" x="-89.666666666666686" y="202" width="582.33333333333337" height="408"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-Zm-rhZ" customClass="LinkTextButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="144" y="617" width="87" height="33"/>
@@ -200,10 +198,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
-                            <constraint firstItem="Dam-4t-AgC" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="2cD-YS-tuP"/>
-                            <constraint firstItem="n4R-BI-FHP" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="B2t-Cn-NFx"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="16" id="IUd-ky-HWL"/>
                             <constraint firstItem="n4R-BI-FHP" firstAttribute="top" secondItem="Dam-4t-AgC" secondAttribute="bottom" constant="16" id="KgO-Dk-vjR"/>
                             <constraint firstItem="8Uy-4i-IUw" firstAttribute="top" secondItem="DAB-Zm-rhZ" secondAttribute="bottom" constant="34" id="KlT-2F-F8W"/>
@@ -270,7 +266,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="white"/>
                         <constraints>
                             <constraint firstItem="58z-OV-xk5" firstAttribute="leading" secondItem="yIb-j2-pUN" secondAttribute="leading" constant="24" id="1Wu-Dg-Cmr"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="58z-OV-xk5" secondAttribute="trailing" constant="24" id="8uo-gA-6i3"/>
@@ -285,9 +281,9 @@
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="bottom" secondItem="ERf-ng-eZR" secondAttribute="bottom" constant="44" id="YFt-BY-fbe"/>
                             <constraint firstItem="Nv8-qY-Xwu" firstAttribute="top" secondItem="58z-OV-xk5" secondAttribute="bottom" constant="56" id="ZOF-aJ-a5B"/>
                             <constraint firstItem="58z-OV-xk5" firstAttribute="top" secondItem="yIb-j2-pUN" secondAttribute="top" constant="44" id="Zhj-7d-zln"/>
+                            <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nv8-qY-Xwu" secondAttribute="trailing" symbolic="YES" id="c4o-EB-6Mv"/>
                             <constraint firstItem="yIb-j2-pUN" firstAttribute="trailing" secondItem="j3T-mX-GWu" secondAttribute="trailing" id="qtX-g0-1QM"/>
                             <constraint firstItem="uVN-En-ghf" firstAttribute="centerX" secondItem="eID-ti-S3H" secondAttribute="centerX" id="syx-oh-LRn"/>
-                            <constraint firstItem="58z-OV-xk5" firstAttribute="centerX" secondItem="eID-ti-S3H" secondAttribute="centerX" id="wnc-3b-8gi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yIb-j2-pUN"/>
                     </view>
@@ -304,5 +300,11 @@
     <resources>
         <image name="check" width="14" height="12"/>
         <image name="fakeModalNotifications" width="291" height="204"/>
+        <namedColor name="black">
+            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
