@@ -24,7 +24,8 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var buttonStackView: UIStackView!
 
     private var pageController: UIPageViewController!
-    
+    private var authorizationButton: ASAuthorizationAppleIDButton?
+
     weak var delegate: LoginDelegate?
     
     private lazy var dataSource: PageControllerDataSource = {
@@ -56,6 +57,7 @@ class LoginViewController: UIViewController {
     private func configureButtonTitle(for index: Int) {
         if index == (OnboardingPage.allCases.count - 1) {
             // This is the last page.
+            authorizationButton!.cornerRadius = primaryButton.intrinsicContentSize.height / 2
             primaryButton.isHidden = true
             buttonStackView.isHidden = false // Show "Sign In With Apple"
             primaryButton.setTitle(NSLocalizedString("Sign In", comment: "Title for sign in button."), for: .normal) // Used for Analytics
@@ -67,9 +69,9 @@ class LoginViewController: UIViewController {
     }
 
     func setupProviderLoginView() {
-        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
-        authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        buttonStackView.addArrangedSubview(authorizationButton)
+        authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
+        authorizationButton!.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+        buttonStackView.addArrangedSubview(authorizationButton!)
     }
 
     @objc
