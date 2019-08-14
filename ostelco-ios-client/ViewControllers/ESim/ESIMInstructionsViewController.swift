@@ -58,6 +58,7 @@ class ESIMInstructionsViewController: UIViewController {
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
         let index = dataSource.currentIndex
         if index == (ESIMPage.allCases.count - 1) {
+            OstelcoAnalytics.logEvent(.ESimOnboardingIntroCompleted)
             self.delegate?.completedInstructions(self)
         } else {
             self.dataSource.goToNextPage()

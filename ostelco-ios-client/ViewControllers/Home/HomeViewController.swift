@@ -165,8 +165,10 @@ class HomeViewController: ApplePayViewController {
     @IBAction private func buyDataTapped(_ sender: Any) {
         if hasSubscription {
             // TODO: Should we show the plans here ?
+            OstelcoAnalytics.logEvent(.BuyDataClicked)
             showProductListActionSheet(products: self.availableProducts)
         } else {
+            OstelcoAnalytics.logEvent(.UnlockMoreData)
             performSegue(withIdentifier: "becomeMember", sender: self)
         }
     }

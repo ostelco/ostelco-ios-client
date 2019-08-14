@@ -28,6 +28,7 @@ class ESIMPendingDownloadViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
+        OstelcoAnalytics.logEvent(.ESimOnboardingPending)
         delegate?.checkAgain()
     }
     
