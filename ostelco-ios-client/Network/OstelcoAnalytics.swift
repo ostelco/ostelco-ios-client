@@ -34,6 +34,10 @@ class OstelcoAnalytics {
             Analytics.logEvent(event.name, parameters: event.metadata)
         }
     }
+    
+    static func setUserId(_ id: String) {
+        Analytics.setUserID(id)
+    }
 }
 
 enum AnalyticsEvent {
