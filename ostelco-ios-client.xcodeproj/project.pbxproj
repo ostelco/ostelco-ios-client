@@ -49,6 +49,12 @@
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
+		047A6FBD230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047A6FBC230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist */; };
+		047A6FBE230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047A6FBC230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist */; };
+		047A6FC023056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047A6FBF23056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist */; };
+		047A6FC123056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047A6FBF23056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist */; };
+		047A6FC623056B9C00A8E028 /* CountryHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A6FC523056B9C00A8E028 /* CountryHelperTests.swift */; };
+		047A6FC7230574F200A8E028 /* CountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A6FC223056AC900A8E028 /* CountryHelper.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
@@ -442,6 +448,10 @@
 		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
 		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
 		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
+		047A6FBC230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ISO-3166-2-to-ISO-3166-3.plist"; sourceTree = "<group>"; };
+		047A6FBF23056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ISO-3166-3-to-ISO-3166-2.plist"; sourceTree = "<group>"; };
+		047A6FC223056AC900A8E028 /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
+		047A6FC523056B9C00A8E028 /* CountryHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelperTests.swift; sourceTree = "<group>"; };
 		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		047F29272224558B00FC6A8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1007,6 +1017,7 @@
 		9B851ADF225E331D0076ABF3 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				047A6FC223056AC900A8E028 /* CountryHelper.swift */,
 				9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */,
 				9BBF7068226613C400E4B9B4 /* GenericDataSource.swift */,
 				9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */,
@@ -1196,6 +1207,8 @@
 				04EC5AE321887123000C2EC3 /* Production.xcconfig */,
 				04834D34222EAB4E00A01500 /* Norway.gpx */,
 				04834D31222EAA7D00A01500 /* Singapore.gpx */,
+				047A6FBC230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist */,
+				047A6FBF23056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1234,6 +1247,7 @@
 				9B8215862279F7FA00DC6B64 /* RegionResponseTests.swift */,
 				9B821597227AEE1400DC6B64 /* RequestGeneratorTests.swift */,
 				9B77166322D8AAC30068CB03 /* ContextTests.swift */,
+				047A6FC523056B9C00A8E028 /* CountryHelperTests.swift */,
 			);
 			path = "dev-ostelco-ios-clientTests";
 			sourceTree = "<group>";
@@ -1512,11 +1526,13 @@
 				9B834B0722E01E33004F04F0 /* Login.storyboard in Resources */,
 				9B834B1322E01E47004F04F0 /* SignUp.storyboard in Resources */,
 				9BF27782225D15FE006428D5 /* Environment.plist in Resources */,
+				047A6FC023056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist in Resources */,
 				9B1745772276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27780225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				9B834AEB22E01E06004F04F0 /* LaunchScreen.storyboard in Resources */,
 				9B834AF322E01E1B004F04F0 /* Country.storyboard in Resources */,
 				9B834B0B22E01E38004F04F0 /* OhNo.storyboard in Resources */,
+				047A6FBD230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist in Resources */,
 				9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
 				9B834B0F22E01E40004F04F0 /* Settings.storyboard in Resources */,
@@ -1568,11 +1584,13 @@
 				9B834B0822E01E33004F04F0 /* Login.storyboard in Resources */,
 				9B834B2022E01E58004F04F0 /* TabController.storyboard in Resources */,
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
+				047A6FC123056A9400A8E028 /* ISO-3166-3-to-ISO-3166-2.plist in Resources */,
 				9B1745782276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
 				9B834B1422E01E47004F04F0 /* SignUp.storyboard in Resources */,
 				9B834AEC22E01E06004F04F0 /* LaunchScreen.storyboard in Resources */,
 				9B834B0C22E01E38004F04F0 /* OhNo.storyboard in Resources */,
+				047A6FBE230569DE00A8E028 /* ISO-3166-2-to-ISO-3166-3.plist in Resources */,
 				9B9D957E2295770E00CAB0E7 /* gifMP4s in Resources */,
 				9B834AF422E01E1B004F04F0 /* Country.storyboard in Resources */,
 				04834D37222EAB5B00A01500 /* Norway.gpx in Resources */,
@@ -2116,6 +2134,7 @@
 				9B8215762279B0F800DC6B64 /* Headers.swift in Sources */,
 				04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */,
 				9B6E34CB22B199840029AF76 /* String+Empty.swift in Sources */,
+				047A6FC7230574F200A8E028 /* CountryHelper.swift in Sources */,
 				9B8215832279DF8700DC6B64 /* SimProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2144,6 +2163,7 @@
 			files = (
 				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
 				0437197B22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift in Sources */,
+				047A6FC623056B9C00A8E028 /* CountryHelperTests.swift in Sources */,
 				9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
