@@ -11,7 +11,6 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
     enum MenuItem: Int {
         case PurchaseHistory
-        case ChangeNickname
         case TermsAndConditions
         case PrivacyPolicy
         case CancelMembership
@@ -32,8 +31,6 @@ class SettingsTableViewController: UITableViewController {
         switch menuItem {
         case .PurchaseHistory:
             performSegue(withIdentifier: "purchaseHistory", sender: self)
-        case .ChangeNickname:
-            performSegue(withIdentifier: "nickname", sender: nil)
         case .TermsAndConditions:
             UIApplication.shared.open(ExternalLink.termsAndConditions.url)
         case .PrivacyPolicy:
