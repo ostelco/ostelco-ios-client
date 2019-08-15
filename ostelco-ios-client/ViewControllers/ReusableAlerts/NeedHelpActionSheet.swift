@@ -18,16 +18,19 @@ class NeedHelpAlertController: UIAlertController {
         }
         self.addAction(supportAction)
         
-        let startOverAction = UIAlertAction.destructiveAction(title: "Start Again") { _ in
-           UserManager.shared.deleteAccount(showingIn: viewController)
-        }
-        self.addAction(startOverAction)
-        
-        let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
-            UserManager.shared.logOut()
+        if UserManager.shared.customer != nil {
+            let startOverAction = UIAlertAction.destructiveAction(title: "Start Again") { _ in
+                UserManager.shared.deleteAccount(showingIn: viewController)
+            }
+            self.addAction(startOverAction)
         }
         
-        self.addAction(logOutAction)
+        if UserManager.shared.hasCurrentUser {
+            let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
+                UserManager.shared.logOut()
+            }
+            self.addAction(logOutAction)
+        }
         
         self.addAction(.cancelAction())
     }
