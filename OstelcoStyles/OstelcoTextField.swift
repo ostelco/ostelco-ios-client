@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 open class OstelcoTextField: UITextField {
     
-    public var appTextColor: OstelcoColor = .blackForText {
+    public var appTextColor: OstelcoColor = .text {
         didSet {
             self.textColor = self.appTextColor.toUIColor
         }
@@ -32,7 +32,7 @@ open class OstelcoTextField: UITextField {
         }
     }
     
-    public var appPlaceholderColor: OstelcoColor = .darkGrey
+    public var appPlaceholderColor: OstelcoColor = .inputPlaceholder
     
     public var appFont: OstelcoFont = .bodyText {
         didSet {
@@ -72,8 +72,8 @@ class BorderlessTextField: OstelcoTextField {
         
         self.borderStyle = .none
         self.appFont = .bodyText
-        self.appTextColor = .blackForText
-        self.appPlaceholderColor = .darkGrey
+        self.appTextColor = .text
+        self.appPlaceholderColor = .inputPlaceholder
     }
 }
 
@@ -87,7 +87,7 @@ class TopBottomBorderedTextField: OstelcoTextField {
     private lazy var topBorder: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = OstelcoColor.paleGrey.toUIColor
+        view.backgroundColor = OstelcoColor.inputBackground.toUIColor
     
         return view
     }()
@@ -95,7 +95,7 @@ class TopBottomBorderedTextField: OstelcoTextField {
     private lazy var bottomBorder: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = OstelcoColor.paleGrey.toUIColor
+        view.backgroundColor = OstelcoColor.inputBackground.toUIColor
         
         return view
     }()
@@ -105,8 +105,8 @@ class TopBottomBorderedTextField: OstelcoTextField {
         
         self.borderStyle = .none
         self.appFont = .bodyText
-        self.appTextColor = .blackForText
-        self.appPlaceholderColor = .darkGrey
+        self.appTextColor = .text
+        self.appPlaceholderColor = .inputPlaceholder
         
         if self.topBorder.superview == nil {
             self.addSubview(self.topBorder)
