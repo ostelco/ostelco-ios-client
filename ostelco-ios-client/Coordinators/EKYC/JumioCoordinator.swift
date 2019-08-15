@@ -93,7 +93,7 @@ class JumioCoordinator: NSObject {
         // General appearance
         let baseAppearance = NetverifyBaseView.jumioAppearance()
         baseAppearance.disableBlur = true
-        baseAppearance.backgroundColor = OstelcoColor.white.toUIColor
+        baseAppearance.backgroundColor = OstelcoColor.background.toUIColor
         NetverifyPositiveButton.jumioAppearance().setBackgroundColor(OstelcoColor.oyaBlue.toUIColor, for: .normal)
         
         let controller = NetverifyViewController(configuration: config)

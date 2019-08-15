@@ -17,7 +17,7 @@ extension UIViewController {
         // Create the overlay
         let overlay = UIView()
         overlay.alpha = 0
-        overlay.backgroundColor = OstelcoColor.white.toUIColor
+        overlay.backgroundColor = OstelcoColor.background.toUIColor
         overlay.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(overlay)
         view.bringSubviewToFront(overlay)
@@ -27,7 +27,7 @@ extension UIViewController {
         
         // Create and animate the activity indicator
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
-        indicator.color = OstelcoColor.black.toUIColor
+        indicator.color = OstelcoColor.background.toUIColor
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.startAnimating()
         overlay.addSubview(indicator)
@@ -39,7 +39,7 @@ extension UIViewController {
         if let textString = loadingText {
             let label = UILabel()
             label.text = textString
-            label.textColor = OstelcoColor.black.toUIColor
+            label.textColor = OstelcoColor.background.toUIColor
             overlay.addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.bottomAnchor.constraint(equalTo: indicator.topAnchor, constant: -32).isActive = true

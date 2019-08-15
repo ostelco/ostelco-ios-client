@@ -15,7 +15,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fie-8m-6Dm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <sections>
                             <tableViewSection id="FWH-Ma-tfN">
                                 <cells>
@@ -144,7 +144,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IpU-sh-K2V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PurchaseItem" rowHeight="85" id="FnA-58-zKa" customClass="PurchaseHistoryTableViewCell" customModule="Oya_Development_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="85"/>
@@ -209,7 +209,7 @@
                     <view key="view" contentMode="scaleToFill" id="h6f-hk-HF0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <viewLayoutGuide key="safeArea" id="9hg-hi-cov"/>
                     </view>
                     <navigationItem key="navigationItem" title="Nickname" id="eZ1-yA-wYu"/>
@@ -229,17 +229,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version 4.0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-qD-DLO" customClass="AppVersionTextLabel" customModule="OstelcoStyles">
                                 <rect key="frame" x="157" y="827" width="100" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="textSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-hU-chH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="719"/>
+                                <color key="backgroundColor" name="background"/>
                                 <connections>
                                     <segue destination="ijV-yo-hqd" kind="embed" identifier="settingsTable" id="H5A-nb-ItM"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" name="white"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="b0l-hU-chH" firstAttribute="top" secondItem="DTB-n0-yom" secondAttribute="top" id="Ad8-Kv-QQf"/>
                             <constraint firstItem="b0l-hU-chH" firstAttribute="leading" secondItem="DTB-n0-yom" secondAttribute="leading" id="D0o-22-XxQ"/>
@@ -280,8 +281,11 @@
     </scenes>
     <resources>
         <image name="settings" width="23" height="21"/>
-        <namedColor name="white">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="background">
+            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textSecondary">
+            <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
