@@ -12,13 +12,13 @@ import XCTest
 class CountryHelperTests: XCTestCase {
 
     func testLoadResourceFiles() {
-        XCTAssertNotNil(CountryHelper.loadCountryListISO2())
-        XCTAssertNotNil(CountryHelper.loadCountryListISO3())
+        XCTAssertNotNil(CountryHelper.countryListISO2())
+        XCTAssertNotNil(CountryHelper.countryListISO3())
     }
 
     func testISO31662Mapsto3And3MapsTo2() {
-        let countryList2 = CountryHelper.loadCountryListISO2()!
-        let countryList3 = CountryHelper.loadCountryListISO3()!
+        let countryList2 = CountryHelper.countryListISO2()!
+        let countryList3 = CountryHelper.countryListISO3()!
         
         for alpha3 in countryList2.values {
             XCTAssertNotNil(countryList3[alpha3])

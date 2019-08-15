@@ -12,11 +12,11 @@ import Foundation
 // with an extension to convert from alpha 3 to alpha 2.
 public struct CountryHelper {
     
-    public static func loadCountryListISO2() -> [String: String]? {
+    public static func countryListISO2() -> [String: String]? {
         return loadCountryListISO("ISO-3166-2-to-ISO-3166-3")
     }
     
-    public static func loadCountryListISO3() -> [String: String]? {
+    public static func countryListISO3() -> [String: String]? {
         return loadCountryListISO("ISO-3166-3-to-ISO-3166-2")
     }
     
@@ -44,9 +44,9 @@ public struct CountryHelper {
     /// Convertion ISO 3166-1-Alpha3 to Alpha2
     /// Country code of 3 letters to 2 letters code
     /// E.g: PRT to PT
-    public static func getCountryCodeAlpha3(countryCodeAlpha2: String) -> String? {
+    public static func countryCodeAlpha3FromAlpha2(countryCodeAlpha2: String) -> String? {
         
-        guard let countryList = CountryHelper.loadCountryListISO2() else {
+        guard let countryList = CountryHelper.countryListISO2() else {
             return nil
         }
         
@@ -59,9 +59,9 @@ public struct CountryHelper {
     /// Convertion ISO 3166-1-Alpha2 to Alpha3
     /// Country code of 2 letters to 3 letters code
     /// E.g: PT to PRT
-    public static func getCountryCodeAlpha2(countryCodeAlpha3: String) -> String? {
+    public static func countryCodeAlpha2FromAlpha3(countryCodeAlpha3: String) -> String? {
         
-        guard let countryList = CountryHelper.loadCountryListISO3() else {
+        guard let countryList = CountryHelper.countryListISO3() else {
             return nil
         }
         
@@ -71,7 +71,7 @@ public struct CountryHelper {
         return nil
     }
     
-    public static func getLocalCountryCode() -> String? {
+    public static func localCountryCode() -> String? {
         
         guard let countryCode = NSLocale.current.regionCode else { return nil }
         return countryCode
@@ -79,7 +79,7 @@ public struct CountryHelper {
     
     /// This function will get full country name based on the phone Locale
     /// E.g. Portugal
-    public static func getLocalCountry() -> String? {
+    public static func localCountry() -> String? {
         
         let countryLocale = NSLocale.current
         guard let countryCode = countryLocale.regionCode else { return nil }

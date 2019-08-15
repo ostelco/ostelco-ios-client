@@ -30,7 +30,7 @@ public class Country: Equatable {
     }
 
     public var threeLetterCountryCode: String? {
-        return CountryHelper.getCountryCodeAlpha3(countryCodeAlpha2: countryCode.uppercased())?.uppercased()
+        return CountryHelper.countryCodeAlpha3FromAlpha2(countryCodeAlpha2: countryCode.uppercased())?.uppercased()
     }
 
     // MARK: - Equatable
