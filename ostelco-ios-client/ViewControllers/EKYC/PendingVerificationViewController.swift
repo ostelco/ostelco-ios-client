@@ -32,7 +32,7 @@ class PendingVerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifView.videoURL = GifVideo.time.url
+        gifView.videoURL = GifVideo.time.url(for: traitCollection.userInterfaceStyle)
         gifView.play()
     }
     

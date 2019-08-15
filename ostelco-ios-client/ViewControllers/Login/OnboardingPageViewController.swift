@@ -77,7 +77,7 @@ class OnboardingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifView.videoURL = onboardingPage.gifVideo.url
+        gifView.videoURL = onboardingPage.gifVideo.url(for: traitCollection.userInterfaceStyle)
         guard let linkableText = onboardingPage.linkableText else {
             ApplicationErrors.assertAndLog("Couldn't instantiate onboarding page linkable text for page \(onboardingPage!)")
             return

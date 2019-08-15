@@ -25,7 +25,7 @@ class OhNoViewController: UIViewController {
     static func fromStoryboard(type: OhNoIssueType) -> OhNoViewController {
         let vc = self.fromStoryboard()
         vc.displayTitle = type.displayTitle
-        vc.videoURL = type.gifVideo.url
+        vc.videoURL = type.gifVideo.url(for: vc.traitCollection.userInterfaceStyle)
         vc.buttonTitle = type.buttonTitle
         vc.boldableText = type.boldableText
         vc.linkableText = type.linkableText

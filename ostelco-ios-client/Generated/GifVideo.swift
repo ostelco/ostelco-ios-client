@@ -6,23 +6,41 @@ import UIKit
 /// All videos should be placed in assets/gifMP4s.
 enum GifVideo: String, CaseIterable {
     case access
+    case access_dark
     case app
+    case app_dark
     case arrow_up
+    case arrow_up_dark
     case blank_canvas
+    case blank_canvas_dark
     case heart
+    case heart_dark
     case id
+    case id_dark
     case location
+    case location_dark
     case mail
+    case mail_dark
     case no_connection
+    case no_connection_dark
     case rocket
+    case rocket_dark
     case selfie
+    case selfie_dark
     case server_down
+    case server_down_dark
     case taken
+    case taken_dark
     case time
+    case time_dark
 
-    var url: URL {
-        guard let url = Bundle.main.url(forResource: self.rawValue, withExtension: "mp4", subdirectory: "gifMP4s") else {
-            fatalError("Couldn't get URL for video of gif \(self.rawValue)")
+    func url(for appearance: UIUserInterfaceStyle) -> URL {
+        var filename = self.rawValue
+        if appearance == .dark {
+            filename.append("_dark")
+        }
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp4", subdirectory: "gifMP4s") else {
+            fatalError("Couldn't get URL for video of gif \(filename)")
         }
 
         return url

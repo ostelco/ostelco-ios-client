@@ -25,8 +25,11 @@ class EnumHelperTests: XCTestCase {
     
     func testAllGifVideosHaveActualFiles() {
         for video in GifVideo.allCases {
-            XCTAssertTrue(FileManager.default.fileExists(atPath: video.url.path),
-                          "File does not exist for \(video.rawValue)")
+            XCTAssertTrue(FileManager.default.fileExists(atPath: video.url(for: .light).path), "File does not exist for \(video.rawValue)")
+        }
+        
+        for video in GifVideo.allCases {
+            XCTAssertTrue(FileManager.default.fileExists(atPath: video.url(for: .dark).path), "File does not exist for \(video.rawValue)")
         }
     }
     
