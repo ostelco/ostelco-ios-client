@@ -27,12 +27,10 @@ open class OstelcoTextField: UITextField {
             
             self.attributedPlaceholder = NSAttributedString(string: holder, attributes: [
                 .font: self.appFont.toUIFont,
-                .foregroundColor: self.appPlaceholderColor.toUIColor
+                .foregroundColor: OstelcoColor.inputPlaceholder.toUIColor
             ])
         }
     }
-    
-    public var appPlaceholderColor: OstelcoColor = .inputPlaceholder
     
     public var appFont: OstelcoFont = .bodyText {
         didSet {
@@ -73,7 +71,6 @@ class BorderlessTextField: OstelcoTextField {
         self.borderStyle = .none
         self.appFont = .bodyText
         self.appTextColor = .text
-        self.appPlaceholderColor = .inputPlaceholder
     }
 }
 
@@ -106,7 +103,6 @@ class TopBottomBorderedTextField: OstelcoTextField {
         self.borderStyle = .none
         self.appFont = .bodyText
         self.appTextColor = .text
-        self.appPlaceholderColor = .inputPlaceholder
         
         if self.topBorder.superview == nil {
             self.addSubview(self.topBorder)
