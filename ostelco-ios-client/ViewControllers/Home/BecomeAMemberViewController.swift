@@ -113,6 +113,7 @@ class BecomeAMemberViewController: ApplePayViewController {
     }
 
     @objc func buyButtonTapped() {
+        OstelcoAnalytics.logEvent(.BecomeMemberClicked)
         if let membership = membership {
             #if STRIPE_PAYMENT
                 showStripePaymentActionSheet(membership: membership)

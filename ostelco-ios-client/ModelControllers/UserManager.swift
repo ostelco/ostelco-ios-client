@@ -37,6 +37,8 @@ class UserManager: TokenProvider {
             Crashlytics.sharedInstance().setUserIdentifier(customer.id)
             Crashlytics.sharedInstance().setUserName(customer.nickname)
             Crashlytics.sharedInstance().setUserEmail(customer.contactEmail)
+            
+            OstelcoAnalytics.setUserId(customer.analyticsId)
         }
     }
     

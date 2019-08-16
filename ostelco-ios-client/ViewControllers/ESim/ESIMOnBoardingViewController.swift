@@ -32,7 +32,7 @@ class ESIMOnBoardingViewController: UIViewController {
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
-        OstelcoAnalytics.logEvent(.DownloadingESIM)
+        OstelcoAnalytics.logEvent(.ESimOnboardingIntro)
         self.delegate?.completedLanding()
     }
     
