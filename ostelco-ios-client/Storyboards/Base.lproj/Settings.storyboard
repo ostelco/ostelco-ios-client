@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxQ-fy-sKd">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxQ-fy-sKd">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,31 +20,14 @@
                             <tableViewSection id="FWH-Ma-tfN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bPQ-dD-zzb" style="IBUITableViewCellStyleDefault" id="Liw-4f-4dO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Liw-4f-4dO" id="aT4-JS-DhC">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Purchase History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bPQ-dD-zzb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="356" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Qx-eb-9CS" style="IBUITableViewCellStyleDefault" id="t2z-vk-wt8">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t2z-vk-wt8" id="2oh-Z4-uWm">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Change Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Qx-eb-9CS" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="356" height="44"/>
+                                                    <rect key="frame" x="20" y="0.0" width="354.66666666666669" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -56,7 +37,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="lBS-jF-6mc" style="IBUITableViewCellStyleDefault" id="Acz-ao-gnd">
-                                        <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acz-ao-gnd" id="gsv-x8-nvq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -73,7 +54,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="F1g-G0-YYE" style="IBUITableViewCellStyleDefault" id="mh9-jV-xvG">
-                                        <rect key="frame" x="0.0" y="132" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mh9-jV-xvG" id="wRe-ce-JFW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -90,7 +71,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="q7f-c5-odO" style="IBUITableViewCellStyleDefault" id="aSA-fP-FDT">
-                                        <rect key="frame" x="0.0" y="176" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aSA-fP-FDT" id="1Mn-3P-Ls6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -107,7 +88,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ceV-1s-FCi" style="IBUITableViewCellStyleDefault" id="dBq-72-ijr">
-                                        <rect key="frame" x="0.0" y="220" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="204" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dBq-72-ijr" id="SM9-aQ-K1f">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -132,7 +113,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="TgB-zP-hHJ" kind="show" identifier="nickname" id="zNL-FY-1OY"/>
                         <segue destination="4fe-ss-wJo" kind="show" identifier="purchaseHistory" id="zzM-OL-FRJ"/>
                     </connections>
                 </tableViewController>
@@ -145,7 +125,7 @@
             <objects>
                 <tableViewController title="Purchase History" id="4fe-ss-wJo" customClass="PucrhaseHistoryTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IpU-sh-K2V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -153,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FnA-58-zKa" id="2Dl-gj-qZW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 December 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-v8-dO8" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
@@ -178,6 +158,7 @@
                                     <constraints>
                                         <constraint firstItem="yAS-Zl-jlN" firstAttribute="top" secondItem="mbP-v8-dO8" secondAttribute="bottom" constant="8" symbolic="YES" id="5c1-GJ-ckM"/>
                                         <constraint firstItem="mbP-v8-dO8" firstAttribute="leading" secondItem="2Dl-gj-qZW" secondAttribute="leading" constant="20" symbolic="YES" id="9Fk-zB-YUH"/>
+                                        <constraint firstItem="gOZ-wT-qoc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yAS-Zl-jlN" secondAttribute="trailing" priority="8" constant="317.33333333333337" id="Iv9-vf-lXz"/>
                                         <constraint firstItem="gOZ-wT-qoc" firstAttribute="trailing" secondItem="mbP-v8-dO8" secondAttribute="trailing" id="KWz-vx-hao"/>
                                         <constraint firstItem="mbP-v8-dO8" firstAttribute="top" secondItem="2Dl-gj-qZW" secondAttribute="top" constant="20" symbolic="YES" id="eff-ro-osX"/>
                                         <constraint firstAttribute="trailing" secondItem="mbP-v8-dO8" secondAttribute="trailing" constant="20" symbolic="YES" id="mY7-y6-S7E"/>
@@ -203,22 +184,6 @@
             </objects>
             <point key="canvasLocation" x="2234.7826086956525" y="1259.5982142857142"/>
         </scene>
-        <!--Nickname-->
-        <scene sceneID="6RL-1g-M23">
-            <objects>
-                <viewController id="TgB-zP-hHJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h6f-hk-HF0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="9hg-hi-cov"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Nickname" id="eZ1-yA-wYu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CVv-LC-4np" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2237" y="1824"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="cSR-fR-N40">
             <objects>
@@ -228,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version 4.0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-qD-DLO" customClass="AppVersionTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="159.33333333333334" y="827" width="95.666666666666657" height="15"/>
+                                <rect key="frame" x="157" y="827" width="100" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
