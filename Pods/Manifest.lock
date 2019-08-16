@@ -112,7 +112,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.8.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
-  - JumioMobileSDK/Netverify (3.1.2)
+  - JumioMobileSDK/Netverify (3.3.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -154,7 +154,7 @@ DEPENDENCIES:
   - Firebase/Messaging (~> 5.20.1)
   - Firebase/Performance (~> 5.20.1)
   - FreshchatSDK (~> 2.5.1)
-  - JumioMobileSDK/Netverify (~> 3.1.2)
+  - JumioMobileSDK/Netverify (~> 3.3.0)
   - OHHTTPStubs/Swift (~> 8.0.0)
   - PromiseKit (~> 6.8.4)
   - Stripe (~> 15.0.0)
@@ -211,7 +211,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  JumioMobileSDK: e7235c9f7e38cb5aba2fb2329e87325f97b70caf
+  JumioMobileSDK: 5d14daa3a06e294525b09d9cdb588208601f29d3
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
@@ -219,6 +219,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 0017fd945abbfb97c786bb5dcbadd27cd30d20d3
+PODFILE CHECKSUM: c885f7f878707b91ca339c51800e927745616f58
 
 COCOAPODS: 1.6.1
