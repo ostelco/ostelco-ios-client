@@ -51,7 +51,7 @@ class UserManager: TokenProvider {
     }
     
     var currentUserEmail: String? {
-        return self.firebaseUser?.email
+        return UserDefaultsWrapper.contactEmail
     }
         
     func logOut() {

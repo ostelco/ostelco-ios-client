@@ -192,6 +192,22 @@ open class PrimeAPI: BasicNetwork {
             }
     }
     
+    // MARK: - AppleId
+
+    /// Authorizes an Apple Id authcode.
+    ///
+    /// - Parameter authCode: The onetime authcode recieved form `Sign In With Apple`.
+    /// - Returns: A promise which when fullfilled will contain the custom sign in token.
+    public func authorizeAppleId(with appleIdToken: AppleIdToken) -> PromiseKit.Promise<FirebaseCustomTokenModel> {
+        let appleIdEndpoints: [AppleIdEndpoint] = [.authorize]
+        let path = AppleIdEndpoint.appleId.pathByAddingEndpoints(appleIdEndpoints)
+        return self.sendObjectWithOutToken(appleIdToken, to: path, method: .POST)
+            .map { data, response in
+                try APIHelper.validateResponse(data: data, response: response, decoder: self.decoder)
+            }
+            .map { try self.decoder.decode(FirebaseCustomTokenModel.self, from: $0) }
+    }
+
     // MARK: - Customer
     
     /// Creates a customer with the given data.
@@ -531,6 +547,30 @@ open class PrimeAPI: BasicNetwork {
             .then {
                 self.performRequest($0)
             }
+    }
+
+    /// Sends `Codable` object to the given path based on the base URL.
+    /// NOTE: Does not validate directly, since we may need to parse error data which comes back.
+    ///
+    /// - Parameters:
+    ///   - object: The object to send
+    ///   - path: The path to send it to
+    ///   - method: The `HTTPMethod` to use to send it.
+    /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
+    public func sendObjectWithOutToken<T: Codable>(_ object: T, to path: String, method: HTTPMethod) -> PromiseKit.Promise<(data: Data, response: URLResponse)> {
+        do {
+            let data = try self.encoder.encode(object)
+            var request = Request(baseURL: self.baseURL,
+                                  path: path,
+                                  method: method,
+                                  loggedIn: false,
+                                  token: nil)
+
+            request.bodyData = data
+            return performRequest(request)
+        } catch {
+            return Promise(error: error)
+        }
     }
 
     /// Sends a request with query parameters to the given path based on the base URL.

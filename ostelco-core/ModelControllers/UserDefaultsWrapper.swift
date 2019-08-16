@@ -14,6 +14,7 @@ public struct UserDefaultsWrapper {
     private enum Key: String, CaseIterable {
         case pendingEmail = "PendingEmail"
         case pendingSingPassQueryItems = "PendingSingPassQueryItems"
+        case contactEmail = "ContactEmail"
     }
     
     private static var defaults: UserDefaults {
@@ -78,4 +79,19 @@ public struct UserDefaultsWrapper {
             }
         }
     }
+
+    /// The contact Email to be used while creating the user.
+    public static var contactEmail: String? {
+        get {
+            return self.value(for: .contactEmail)
+        }
+        set {
+            if let newEmail = newValue {
+                self.setValue(newEmail, for: .contactEmail)
+            } else {
+                self.removeValue(for: .contactEmail)
+            }
+        }
+    }
+
 }

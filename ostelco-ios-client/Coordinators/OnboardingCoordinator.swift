@@ -75,14 +75,6 @@ class OnboardingCoordinator {
             let loginViewController = LoginViewController.fromStoryboard()
             loginViewController.delegate = self
             navigationController.setViewControllers([loginViewController], animated: true)
-        case .emailEntry:
-            let emailEntry = EmailEntryViewController.fromStoryboard()
-            emailEntry.delegate = self
-            navigationController.setViewControllers([emailEntry], animated: true)
-        case .checkYourEmail:
-            let checkYourEmail = CheckEmailViewController.fromStoryboard()
-            checkYourEmail.delegate = self
-            navigationController.setViewControllers([checkYourEmail], animated: true)
         case .legalStuff:
             let legalStuff = TheLegalStuffViewController.fromStoryboard()
             legalStuff.delegate = self
@@ -196,9 +188,23 @@ class OnboardingCoordinator {
 }
 
 extension OnboardingCoordinator: LoginDelegate {
-    func loginCarouselSeen() {
-        localContext.hasSeenLoginCarousel = true
-        advance()
+    func signedIn(authCode: String, contactEmail: String?) {
+        UserDefaultsWrapper.contactEmail = contactEmail
+        let appleIdToken = AppleIdToken(authCode: authCode)
+        primeAPI.authorizeAppleId(with: appleIdToken)
+        .then { (customToken) -> PromiseKit.Promise<Void> in
+            debugPrint("customToken ", customToken.token)
+            return EmailLinkManager.signInWithCustomToken(customToken: customToken.token)
+        }
+        .done {
+            debugPrint("done signedIn")
+            // The callback for Auth.auth().addStateDidChangeListener() will call advance().
+        }
+        .catch { [weak self] error in
+            debugPrint("error :", error)
+            ApplicationErrors.log(error)
+            self?.navigationController.showGenericError(error: error)
+        }
     }
 }
 

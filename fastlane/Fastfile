@@ -137,7 +137,8 @@ platform :ios do
   lane :test do
     scan(
       scheme: "dev-ostelco-ios-client",
-      devices: ["iPhone X"]
+      devices: ["iPhone Xs Max"],
+      include_simulator_logs: false
     )
   end
 

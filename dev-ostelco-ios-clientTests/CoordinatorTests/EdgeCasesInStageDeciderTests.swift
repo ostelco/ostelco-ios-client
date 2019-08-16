@@ -22,7 +22,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
         UserDefaultsWrapper.pendingEmail = "xxxx@gmail.com"
-        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true)
+        let localContext = LocalContext(hasFirebaseToken: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -44,7 +44,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     func testUserSignsUpOnNewDeviceAndGivesNotificationPermissionsAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
         UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
-        let localContext = LocalContext(hasSeenLoginCarousel: true, hasFirebaseToken: true, hasSeenNotificationPermissions: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasSeenNotificationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),

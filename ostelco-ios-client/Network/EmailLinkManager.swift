@@ -78,4 +78,22 @@ struct EmailLinkManager {
             }
         }
     }
+
+    static func signInWithCustomToken(customToken: String) -> Promise<Void> {
+        return Promise { seal in
+            Auth.auth().signIn(withCustomToken: customToken) { authDataResult, error in
+                if let firebaseError = error {
+                    seal.reject(firebaseError)
+                    return
+                }
+                guard authDataResult?.user != nil else {
+                    seal.reject(Error.noErrorAndNoUser)
+                    return
+                }
+
+                seal.fulfill(())
+            }
+        }
+    }
+
 }

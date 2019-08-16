@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iNM-8Q-weE">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iNM-8Q-weE">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,14 +70,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-o4-Dgl" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="700" width="327" height="34"/>
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="iNM-8Q-weE" eventType="touchUpInside" id="4hJ-zs-9wr"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-Gj-qtX">
-                                <rect key="frame" x="24" y="181" width="327" height="483"/>
+                                <rect key="frame" x="24" y="181" width="327" height="467"/>
                                 <connections>
                                     <segue destination="fe6-qF-yAH" kind="embed" id="Vqy-I6-p5D"/>
                                 </connections>
@@ -88,15 +85,22 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oyaHorizontal" translatesAutoresizingMaskIntoConstraints="NO" id="X7G-Yi-Yav">
                                 <rect key="frame" x="90" y="104" width="195" height="57"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="60g-Pi-2Mz">
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rXU-Gj-qtX" firstAttribute="top" secondItem="X7G-Yi-Yav" secondAttribute="bottom" constant="20" id="2ZI-Pi-Ryd"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="rXU-Gj-qtX" secondAttribute="trailing" constant="24" id="9yk-5K-rbD"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="60g-Pi-2Mz" secondAttribute="leading" id="Hz0-fk-EkF"/>
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="centerX" secondItem="Lv7-dN-bZA" secondAttribute="centerX" id="Ibj-rF-wPS"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="trailing" secondItem="60g-Pi-2Mz" secondAttribute="trailing" id="KVT-C7-Vnu"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="bottom" secondItem="DW1-o4-Dgl" secondAttribute="bottom" constant="44" id="L5N-ce-Ckt"/>
                             <constraint firstItem="bOq-mn-xOP" firstAttribute="trailing" secondItem="DW1-o4-Dgl" secondAttribute="trailing" constant="24" id="MHv-Gk-Rg8"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="bottom" secondItem="60g-Pi-2Mz" secondAttribute="bottom" id="Mby-eC-xO7"/>
                             <constraint firstItem="rXU-Gj-qtX" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="OBh-M6-3mZ"/>
+                            <constraint firstItem="DW1-o4-Dgl" firstAttribute="top" secondItem="60g-Pi-2Mz" secondAttribute="top" id="Qf9-V0-cTD"/>
                             <constraint firstItem="X7G-Yi-Yav" firstAttribute="top" secondItem="bOq-mn-xOP" secondAttribute="top" constant="60" id="YNK-jN-mAx"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="leading" secondItem="bOq-mn-xOP" secondAttribute="leading" constant="24" id="gXH-0I-pmh"/>
                             <constraint firstItem="DW1-o4-Dgl" firstAttribute="top" secondItem="rXU-Gj-qtX" secondAttribute="bottom" constant="36" id="jyp-zk-gMS"/>
@@ -104,6 +108,7 @@
                         <viewLayoutGuide key="safeArea" id="bOq-mn-xOP"/>
                     </view>
                     <connections>
+                        <outlet property="buttonStackView" destination="60g-Pi-2Mz" id="bDO-VR-G0p"/>
                         <outlet property="logoImageView" destination="X7G-Yi-Yav" id="Uxc-bF-KeI"/>
                         <outlet property="primaryButton" destination="DW1-o4-Dgl" id="cY2-xt-orS"/>
                     </connections>
