@@ -25,6 +25,8 @@ class SignUpCompletedViewController: UIViewController {
         
         gifView.videoURL = GifVideo.rocket.url
         gifView.play()
+        
+        OstelcoAnalytics.logEvent(.SignUpCompleted)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {

@@ -27,12 +27,16 @@ class OstelcoAnalytics {
     static func logEvent(_ event: AnalyticsEvent) {
         if event.name.isEmpty {
             var meta = event.metadata
-            meta["name"] = event.name
-            meta["className"] = String(describing: event)
+            meta["name"] = event.name as NSObject
+            meta["className"] = String(describing: event) as NSObject
             ApplicationErrors.log(AnalyticsError.eventNameIsEmpty, withAdditionalUserInfo: meta)
         } else {
             Analytics.logEvent(event.name, parameters: event.metadata)
         }
+    }
+    
+    static func setUserId(_ id: String) {
+        Analytics.setUserID(id)
     }
 }
 
@@ -41,7 +45,13 @@ enum AnalyticsEvent {
     case EnteredNickname
     case ChosenCountry(country: Country)
     case ChosenIDMethod(idMethod: String)
-    case DownloadingESIM
+    case ESimOnboardingIntro
+    case ESimOnboardingIntroCompleted
+    case ESimOnboardingPending
+    case SignUpCompleted
+    case UnlockMoreData
+    case BecomeMemberClicked
+    case BuyDataClicked
     case PushNotificationsAccepted
     case PushNotificationsDeclined
 
@@ -56,12 +66,12 @@ enum AnalyticsEvent {
         }
     }
     
-    var metadata: [String: String] {
+    var metadata: [String: NSObject] {
         switch self {
         case .ChosenCountry(let country):
-            return ["country": country.countryCode]
+            return ["country": country.countryCode as NSObject]
         case .ChosenIDMethod(let idMethod):
-            return ["id_method": idMethod]
+            return ["id_method": idMethod as NSObject]
         default:
             return [:]
         }

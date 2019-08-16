@@ -56,6 +56,7 @@ class ChooseCountryViewController: UIViewController {
         }
         
         showSpinner()
+        OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
         delegate?.selectedCountry(country)
     }
 }
