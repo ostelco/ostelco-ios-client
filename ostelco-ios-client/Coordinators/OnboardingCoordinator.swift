@@ -319,20 +319,14 @@ extension OnboardingCoordinator: ChooseCountryDelegate {
 }
 
 extension OnboardingCoordinator: AllowLocationAccessDelegate {
-    func selectedCountry() -> Country {
-        guard let country = localContext.selectedRegion?.country else {
-            fatalError("There is no selected region in the local context!")
-        }
-        return country
-    }
-    
     func handleLocationProblem(_ problem: LocationProblem) {
         localContext.locationProblem = problem
         advance()
     }
     
     func locationUsageAuthorized() {
-        checkLocation()
+        localContext.hasSeenLocationPermissions = true
+        advance()
     }
     
 }

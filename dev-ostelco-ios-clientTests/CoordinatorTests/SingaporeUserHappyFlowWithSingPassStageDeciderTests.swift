@@ -14,10 +14,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     let noRegions: [PrimeGQL.RegionDetailsFragment] = []
     
-    override func tearDown() {
-        super.tearDown()
-    }
-    
     func testColdStartForAUser() {
         let decider = StageDecider()
         let context: Context? = nil
@@ -52,7 +48,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAcceptedLocationPermissions() {
         let decider = StageDecider()
         let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenLocationPermissions: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)

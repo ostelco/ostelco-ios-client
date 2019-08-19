@@ -164,27 +164,32 @@ public struct StageDecider {
             return preLoggedInStage(localContext)
         }
         
+        // After you've logged in, always show notifications if they haven't seen it.
+        if !localContext.hasSeenNotificationPermissions {
+            return .notificationPermissions
+        }
+        
         // Late Stages
         if let region = context.getRegion(), region.status == .approved {
             return eSIMStage(region, localContext)
         }
         
         // Mid Stages
-        var midStages: [Stage] = [.notificationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
+        var midStages: [Stage] = [.regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
         func remove(_ stage: StageDecider.Stage) {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
             }
         }
         
-        if localContext.hasSeenNotificationPermissions {
-            remove(.notificationPermissions)
-        }
-        
         if localContext.hasSeenRegionOnboarding || localContext.regionVerified {
             remove(.regionOnboarding)
         }
         if localContext.selectedRegion != nil {
+            remove(.selectRegion)
+        }
+        if context.getRegion() != nil {
+            remove(.regionOnboarding)
             remove(.selectRegion)
         }
         if localContext.hasSeenVerifyIdentifyOnboarding {
@@ -210,19 +215,28 @@ public struct StageDecider {
         }
         
         if let code = localContext.myInfoCode {
+            remove(.singpass)
             midStages.append(.verifyMyInfo(code: code))
-        }
-        
-        if context.getRegion()?.kycStatusMap.nricFin! == .approved {
-            remove(.nric)
         }
         
         if localContext.hasCompletedJumio {
             remove(.jumio)
         }
         
-        if context.getRegion()?.kycStatusMap.jumio! == .rejected {
-            midStages.append(.ohNo(.ekycRejected))
+        if let kycStatusMap = context.getRegion()?.kycStatusMap {
+            if kycStatusMap.nricFin == .approved {
+                remove(.nric)
+            }
+            if kycStatusMap.jumio == .approved {
+                remove(.jumio)
+            }
+            if kycStatusMap.addressAndPhoneNumber == .approved {
+                remove(.address)
+            }
+            if kycStatusMap.jumio == .rejected {
+                remove(.pendingVerification)
+                midStages.append(.ohNo(.ekycRejected))
+            }
         }
         
         return midStages[0]
