@@ -14,14 +14,12 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        UserDefaultsWrapper.pendingEmail = nil
     }
 
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.
     
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
-        UserDefaultsWrapper.pendingEmail = "xxxx@gmail.com"
         let localContext = LocalContext(hasFirebaseToken: true)
         
         let context = Context(
@@ -43,7 +41,6 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserSignsUpOnNewDeviceAndGivesNotificationPermissionsAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true, hasSeenNotificationPermissions: true)
         
         let context = Context(

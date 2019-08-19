@@ -9,14 +9,6 @@
 import Foundation
 
 public class LocalContext {
-    public var enteredEmailAddress: String? {
-        get {
-            return UserDefaultsWrapper.pendingEmail
-        }
-        set(value) {
-            UserDefaultsWrapper.pendingEmail = value
-        }
-    }
     public var hasFirebaseToken: Bool
     public var hasAgreedToTerms: Bool
     public var hasSeenNotificationPermissions: Bool

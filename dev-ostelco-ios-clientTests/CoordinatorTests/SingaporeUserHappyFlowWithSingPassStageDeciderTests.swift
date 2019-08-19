@@ -14,7 +14,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        UserDefaultsWrapper.pendingEmail = nil
     }
     
     func testColdStartForAUser() {
@@ -35,7 +34,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
         let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
@@ -44,7 +42,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
@@ -53,7 +50,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuffThenColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
@@ -62,7 +58,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasFirebasedThenColdStartedThenAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
         let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)

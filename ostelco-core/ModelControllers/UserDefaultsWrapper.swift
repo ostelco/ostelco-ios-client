@@ -12,7 +12,6 @@ public struct UserDefaultsWrapper {
     
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
-        case pendingEmail = "PendingEmail"
         case pendingSingPassQueryItems = "PendingSingPassQueryItems"
         case contactEmail = "ContactEmail"
     }
@@ -37,20 +36,6 @@ public struct UserDefaultsWrapper {
     public static func clearAll() {
         for key in Key.allCases {
             self.removeValue(for: key)
-        }
-    }
-    
-    /// What is the email we are waiting to confirm?
-    public static var pendingEmail: String? {
-        get {
-            return self.value(for: .pendingEmail)
-        }
-        set {
-            if let newEmail = newValue {
-                self.setValue(newEmail, for: .pendingEmail)
-            } else {
-                self.removeValue(for: .pendingEmail)
-            }
         }
     }
     
