@@ -208,51 +208,6 @@ extension OnboardingCoordinator: LoginDelegate {
     }
 }
 
-extension OnboardingCoordinator: EmailEntryDelegate {
-    func sendEmailLink(email: String) {
-        
-        let spinnerView = navigationController.showSpinner()
-        EmailLinkManager.linkEmail(email)
-        .ensure { [weak self] in
-            self?.navigationController.removeSpinner(spinnerView)
-        }
-        .done { [weak self] (_) in
-            self?.localContext.enteredEmailAddress = email
-            self?.advance()
-        }
-        .catch { [weak self] error in
-            ApplicationErrors.log(error)
-            self?.navigationController.showGenericError(error: error)
-        }
-    }
-}
-
-extension OnboardingCoordinator: CheckEmailDelegate {
-    func resendLoginEmail() {
-        guard let email = localContext.enteredEmailAddress else {
-            ApplicationErrors.assertAndLog("No pending email?!")
-            return
-        }
-        
-        let spinnerView = navigationController.showSpinner()
-        EmailLinkManager.linkEmail(email)
-        .ensure { [weak self] in
-            self?.navigationController.removeSpinner(spinnerView)
-        }
-        .done { [weak self] in
-            let messageFormat = NSLocalizedString("We've resent your email to %@. If you're still having issues, please contact support.", comment: "Message for alert when login email is re-sent.")
-            self?.navigationController.showAlert(
-                title: NSLocalizedString("Resent!", comment: "Title for alert when login email is re-sent."),
-                msg: String(format: messageFormat, email)
-            )
-        }
-        .catch { [weak self] error in
-            ApplicationErrors.log(error)
-            self?.navigationController.showGenericError(error: error)
-        }
-    }
-}
-
 extension OnboardingCoordinator: TheLegalStuffDelegate {
     func legaleseAgreed() {
         localContext.hasAgreedToTerms = true

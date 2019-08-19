@@ -117,7 +117,6 @@
 		9B174580227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B174581227722C200CF321B /* ValidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17457F227722C200CF321B /* ValidationState.swift */; };
 		9B1745832277428A00CF321B /* OstelcoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745822277428A00CF321B /* OstelcoTextField.swift */; };
-		9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */; };
 		9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
 		9B305F99229694F700B89FCB /* GifVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B305F97229693EA00B89FCB /* GifVideo.swift */; };
@@ -132,13 +131,10 @@
 		9B4DAD90228198F4003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
 		9B4DAD922281A2CE003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
-		9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */; };
 		9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
 		9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */; };
 		9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
-		9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
 		9B4DADA12281B9CE003810BE /* EmailLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */; };
-		9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */; };
 		9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
@@ -198,8 +194,6 @@
 		9B834AF422E01E1B004F04F0 /* Country.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AF622E01E1B004F04F0 /* Country.storyboard */; };
 		9B834AF722E01E20004F04F0 /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AFA22E01E20004F04F0 /* EKYC.storyboard */; };
 		9B834AF822E01E20004F04F0 /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AFA22E01E20004F04F0 /* EKYC.storyboard */; };
-		9B834AFB22E01E26004F04F0 /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AFE22E01E26004F04F0 /* Email.storyboard */; };
-		9B834AFC22E01E26004F04F0 /* Email.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AFE22E01E26004F04F0 /* Email.storyboard */; };
 		9B834AFF22E01E2A004F04F0 /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0222E01E2A004F04F0 /* ESim.storyboard */; };
 		9B834B0022E01E2A004F04F0 /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0222E01E2A004F04F0 /* ESim.storyboard */; };
 		9B834B0322E01E2F004F04F0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0622E01E2F004F04F0 /* Home.storyboard */; };
@@ -517,10 +511,8 @@
 		9B49D95522930B690059C98F /* PushParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushParsingTests.swift; sourceTree = "<group>"; };
 		9B4DAD8F228198F4003810BE /* EmailLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLinkManager.swift; sourceTree = "<group>"; };
 		9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
-		9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEntryViewController.swift; sourceTree = "<group>"; };
 		9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorTests.swift; sourceTree = "<group>"; };
-		9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4822A7CB9500FCC8CC /* OnboardingCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinatorTests.swift; sourceTree = "<group>"; };
@@ -561,7 +553,6 @@
 		9B834AF122E01E0E004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Address.storyboard; sourceTree = "<group>"; };
 		9B834AF522E01E1B004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Country.storyboard; sourceTree = "<group>"; };
 		9B834AF922E01E20004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EKYC.storyboard; sourceTree = "<group>"; };
-		9B834AFD22E01E26004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Email.storyboard; sourceTree = "<group>"; };
 		9B834B0122E01E2A004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ESim.storyboard; sourceTree = "<group>"; };
 		9B834B0522E01E2F004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9B834B0922E01E33004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -888,15 +879,6 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		9B4DAD972281A7D3003810BE /* Email */ = {
-			isa = PBXGroup;
-			children = (
-				9B4DAD982281A7E9003810BE /* EmailEntryViewController.swift */,
-				9B4DAD9F2281B693003810BE /* CheckEmailViewController.swift */,
-			);
-			path = Email;
-			sourceTree = "<group>";
-		};
 		9B4F1A4422A6B89300FCC8CC /* EKYC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,7 +1130,6 @@
 				9BE2D449225B5E9600B51999 /* TabBarController.swift */,
 				047F2911222451D000FC6A8F /* Country */,
 				047F29182224535300FC6A8F /* EKYC */,
-				9B4DAD972281A7D3003810BE /* Email */,
 				047F29192224536100FC6A8F /* ESim */,
 				047F291A2224538000FC6A8F /* Home */,
 				047F28FD2224415E00FC6A8F /* Login */,
@@ -1168,7 +1149,6 @@
 				9B834AF222E01E0E004F04F0 /* Address.storyboard */,
 				9B834AF622E01E1B004F04F0 /* Country.storyboard */,
 				9B834AFA22E01E20004F04F0 /* EKYC.storyboard */,
-				9B834AFE22E01E26004F04F0 /* Email.storyboard */,
 				9B834B0222E01E2A004F04F0 /* ESim.storyboard */,
 				9B834B0622E01E2F004F04F0 /* Home.storyboard */,
 				9B834B0A22E01E33004F04F0 /* Login.storyboard */,
@@ -1506,7 +1486,6 @@
 				9B834B1B22E01E52004F04F0 /* Support.storyboard in Resources */,
 				9B834B0322E01E2F004F04F0 /* Home.storyboard in Resources */,
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
-				9B834AFB22E01E26004F04F0 /* Email.storyboard in Resources */,
 				9B834AF722E01E20004F04F0 /* EKYC.storyboard in Resources */,
 				9B834AFF22E01E2A004F04F0 /* ESim.storyboard in Resources */,
 				9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */,
@@ -1562,7 +1541,6 @@
 				9B834B1022E01E40004F04F0 /* Settings.storyboard in Resources */,
 				9B834B0422E01E2F004F04F0 /* Home.storyboard in Resources */,
 				9B834B1C22E01E52004F04F0 /* Support.storyboard in Resources */,
-				9B834AFC22E01E26004F04F0 /* Email.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				9B834AF822E01E20004F04F0 /* EKYC.storyboard in Resources */,
 				9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */,
@@ -2024,7 +2002,6 @@
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
-				9B4DAD992281A7E9003810BE /* EmailEntryViewController.swift in Sources */,
 				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */,
 				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
@@ -2061,7 +2038,6 @@
 				042CA83122C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE405222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				0437197622C249D900609355 /* InternetConnectionParentViewController.swift in Sources */,
-				9B4DADA02281B693003810BE /* CheckEmailViewController.swift in Sources */,
 				04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2224,7 +2200,6 @@
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
-				9B1E07472282F5E500EBFCDC /* EmailEntryViewController.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
@@ -2244,7 +2219,6 @@
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
-				9B4DADA22281BDA4003810BE /* CheckEmailViewController.swift in Sources */,
 				9B4DAD932281A538003810BE /* OnboardingCoordinator.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
@@ -2334,14 +2308,6 @@
 				9B834AF922E01E20004F04F0 /* Base */,
 			);
 			name = EKYC.storyboard;
-			sourceTree = "<group>";
-		};
-		9B834AFE22E01E26004F04F0 /* Email.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B834AFD22E01E26004F04F0 /* Base */,
-			);
-			name = Email.storyboard;
 			sourceTree = "<group>";
 		};
 		9B834B0222E01E2A004F04F0 /* ESim.storyboard */ = {
@@ -2755,7 +2721,7 @@
 					"\"${PODS_ROOT}/Fabric/iOS\"",
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
-					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2\"",
+					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
@@ -2808,7 +2774,7 @@
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
-					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.1.2\"",
+					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
 					"\"${PODS_ROOT}/TwitterCore/iOS\"",
 					"\"${PODS_ROOT}/TwitterKit/iOS\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
