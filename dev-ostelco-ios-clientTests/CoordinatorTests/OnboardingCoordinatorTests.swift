@@ -55,7 +55,6 @@ class OnboardingCoordinatorTests: XCTestCase {
         }
     }
 
-
     func AssertAllAreClass(_ items: [NSObject], aClass: AnyClass, file: StaticString = #file, line: UInt = #line) {
         XCTAssert(items.allSatisfy({ $0.isKind(of: aClass) }), file: file, line: line)
     }
