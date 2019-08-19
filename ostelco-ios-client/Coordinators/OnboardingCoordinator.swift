@@ -188,7 +188,8 @@ class OnboardingCoordinator {
 }
 
 extension OnboardingCoordinator: LoginDelegate {
-    func signedIn(authCode: String, contactEmail: String?) {
+    func signedIn(controller: UIViewController, authCode: String, contactEmail: String?) {
+        controller.showSpinner()
         UserDefaultsWrapper.contactEmail = contactEmail
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
