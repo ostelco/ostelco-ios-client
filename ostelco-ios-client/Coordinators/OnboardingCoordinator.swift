@@ -193,11 +193,11 @@ extension OnboardingCoordinator: LoginDelegate {
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
         .then { (customToken) -> PromiseKit.Promise<Void> in
-            debugPrint("customToken ", customToken.token)
-            return EmailLinkManager.signInWithCustomToken(customToken: customToken.token)
+            //debugPrint("customToken ", customToken.token)
+            return FirebaseSignInManager.signInWithCustomToken(customToken: customToken.token)
         }
         .done {
-            debugPrint("done signedIn")
+            debugPrint("Finished Signed In using custom Firebase Token")
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         }
         .catch { [weak self] error in

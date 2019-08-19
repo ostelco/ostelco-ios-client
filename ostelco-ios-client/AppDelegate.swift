@@ -105,18 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         debugPrint("Incoming URL is \(incomingURL)")
-        
-        if EmailLinkManager.isSignInLink(incomingURL), let email = UserDefaultsWrapper.pendingEmail {
-            EmailLinkManager.signInWithLink(incomingURL, email: email)
-                .catch { error in
-                    ApplicationErrors.log(error)
-                    debugPrint("ERROR SIGNING IN: \(error)")
-                }
-            
-            // Even though this other stuff is async, we can definitely say we've hadnled it.
-            return true
-        }
-        
         if UsernameAndPasswordLinkManager.isUsernameAndPasswordLink(incomingURL) {
             UsernameAndPasswordLinkManager.signInWithUsernameAndPassword(incomingURL)
                 .catch { error in
