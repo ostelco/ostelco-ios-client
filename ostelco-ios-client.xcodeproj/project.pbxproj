@@ -2724,6 +2724,7 @@
 					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2779,6 +2780,7 @@
 					"\"${PODS_ROOT}/TwitterKit/iOS\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
