@@ -12,7 +12,6 @@ import OstelcoStyles
 import UIKit
 
 protocol AllowLocationAccessDelegate: class {
-    func selectedCountry() -> Country
     func handleLocationProblem(_ problem: LocationProblem)
     func locationUsageAuthorized()
 }
@@ -22,8 +21,7 @@ class AllowLocationAccessViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
     weak var delegate: AllowLocationAccessDelegate!
-
-    /// For the `LocationChecking` protocol
+    
     var spinnerView: UIView?
     
     private var hasRequestedAuthorization = false

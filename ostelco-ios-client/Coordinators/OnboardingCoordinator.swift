@@ -206,16 +206,10 @@ extension OnboardingCoordinator: LoginDelegate {
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
         .then { (customToken) -> PromiseKit.Promise<Void> in
-            //debugPrint("customToken ", customToken.token)
-            return FirebaseSignInManager.signInWithCustomToken(customToken: customToken.token)
-
             debugPrint("customToken ", customToken.token)
             return self.signInWithCustomToken(customToken: customToken.token)
         }
-        .done {
-            debugPrint("Finished Sign-In using custom Firebase Token")
-            // The callback for Auth.auth().addStateDidChangeListener() will call advance().
-        }
+        // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         .catch { error in
             ApplicationErrors.log(error)
             controller.removeSpinner(spinnerView)
@@ -427,7 +421,7 @@ extension OnboardingCoordinator: AddressEditDelegate {
     }
     
     func countryCode() -> String {
-        return selectedCountry().countryCode
+        return localContext.selectedRegion!.country.countryCode
     }
     
     func cancel() {

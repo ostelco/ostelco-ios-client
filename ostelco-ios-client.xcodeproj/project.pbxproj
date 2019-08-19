@@ -126,13 +126,8 @@
 		9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */; };
 		9B49D9542292F39C0059C98F /* PushNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49D9532292F39C0059C98F /* PushNotificationModel.swift */; };
 		9B49D95622930B690059C98F /* PushParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49D95522930B690059C98F /* PushParsingTests.swift */; };
-		9B4DAD90228198F4003810BE /* FirebaseSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */; };
 		9B4DAD922281A2CE003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
-		9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
-		9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */; };
-		9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
-		9B4DADA12281B9CE003810BE /* FirebaseSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */; };
 		9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
@@ -506,10 +501,6 @@
 		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B49D9532292F39C0059C98F /* PushNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationModel.swift; sourceTree = "<group>"; };
 		9B49D95522930B690059C98F /* PushParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushParsingTests.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSignInManager.swift; sourceTree = "<group>"; };
-=======
->>>>>>> Remove more unused bits.
 		9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
@@ -837,10 +828,6 @@
 			children = (
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
-<<<<<<< HEAD
-				9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */,
-=======
->>>>>>> Remove more unused bits.
 				9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
 				04978D6A22ABA012002B09E0 /* LinkHelper.swift */,
@@ -2009,10 +1996,6 @@
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
-<<<<<<< HEAD
-				9B4DAD90228198F4003810BE /* FirebaseSignInManager.swift in Sources */,
-=======
->>>>>>> Remove more unused bits.
 				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
@@ -2191,10 +2174,6 @@
 				9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
-<<<<<<< HEAD
-				9B4DADA12281B9CE003810BE /* FirebaseSignInManager.swift in Sources */,
-=======
->>>>>>> Remove more unused bits.
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
