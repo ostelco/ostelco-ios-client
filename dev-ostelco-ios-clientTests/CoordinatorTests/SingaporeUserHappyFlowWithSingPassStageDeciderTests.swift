@@ -12,6 +12,8 @@ import XCTest
 class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     // Testing the flow of a singapore user who uses singpass and has no trouble:
     
+    let noRegions: [PrimeGQL.RegionDetailsFragment] = []
+    
     override func tearDown() {
         super.tearDown()
     }
@@ -44,6 +46,15 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let context: Context? = nil
         let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
+    }
+    
+    func testUserHasAcceptedLocationPermissions() {
+        let decider = StageDecider()
+        let context: Context? = nil
+        UserDefaultsWrapper.pendingEmail = "xxxx@xxxx.com"
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenLocationPermissions: true)
+        
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
     
@@ -58,7 +69,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasFirebasedThenColdStartedThenAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenLocationPermissions: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
@@ -66,8 +77,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasEnteredNickname() {
         let decider = StageDecider()
         let localContext = LocalContext()
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .notificationPermissions)
     }
@@ -75,8 +85,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasSeenNotificationPermissions() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
     }
@@ -84,26 +93,15 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasSeenRegionOnboarding() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenRegionOnboarding: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
-    }
-    
-    func testUserHasSelectedACountry() {
-        let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
     }
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
     }
@@ -111,8 +109,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasSeenVerifyIdentifyOnboarding() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
@@ -120,8 +117,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .singpass)
     }
@@ -129,8 +125,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
         let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, myInfoCode: "xxx")
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyMyInfo(code: "xxx"))
     }
@@ -138,8 +133,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasCompletedSingpassThenColdStart() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, myInfoCode: "xxx")
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
     }

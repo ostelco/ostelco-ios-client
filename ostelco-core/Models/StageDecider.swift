@@ -18,6 +18,7 @@ public class LocalContext {
     public var locationProblem: LocationProblem?
     public var hasSeenVerifyIdentifyOnboarding: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
+    public var hasSeenLocationPermissions: Bool
     
     private var _myInfoCode: String?
     public var myInfoCode: String? {
@@ -37,7 +38,7 @@ public class LocalContext {
     public var hasCompletedAddress: Bool
     public var serverIsUnreachable: Bool
     
-    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
@@ -53,6 +54,7 @@ public class LocalContext {
         self.serverIsUnreachable = serverIsUnreachable
         self.locationProblem = locationProblem
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
+        self.hasSeenLocationPermissions = hasSeenLocationPermissions
         self.myInfoCode = myInfoCode
     }
 }
@@ -91,131 +93,139 @@ public struct StageDecider {
     
     public init() {}
     
-    private func preLoggedInStage(_ localContext: LocalContext) -> StageDecider.Stage {
-        if localContext.hasFirebaseToken {
-            if localContext.hasAgreedToTerms {
-                return .nicknameEntry
+    private func preLoggedInStage(_ localContext: LocalContext) -> Stage {
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .locationPermissions, .nicknameEntry]
+        
+        func remove(_ stage: Stage) {
+            if let index = stages.firstIndex(of: stage) {
+                stages.remove(at: index)
             }
-            return .legalStuff
-        } else {
-            return .loginCarousel
         }
+        
+        if localContext.hasFirebaseToken {
+            remove(.loginCarousel)
+        }
+        if localContext.hasAgreedToTerms {
+            remove(.legalStuff)
+        }
+        if localContext.hasSeenLocationPermissions {
+            remove(.locationPermissions)
+        }
+        return stages[0]
     }
 
-    private func eSIMStage(_ region: PrimeGQL.RegionDetailsFragment, _ localContext: LocalContext) -> StageDecider.Stage {
-        if let profile = region.getSimProfile() {
-            if profile.status == .installed {
-                if localContext.hasSeenAwesome || !localContext.hasSeenESimOnboarding {
-                    return .home
-                }
-                return .awesome
+    private func eSIMStage(_ region: PrimeGQL.RegionDetailsFragment, _ localContext: LocalContext) -> Stage {
+        var stages: [Stage] = [.eSimOnboarding, .eSimInstructions, .pendingESIMInstall, .awesome, .home]
+        
+        func remove(_ stage: Stage) {
+            if let index = stages.firstIndex(of: stage) {
+                stages.remove(at: index)
             }
         }
         
         if localContext.hasSeenESimOnboarding {
-            if localContext.hasSeenESIMInstructions {
-                return .pendingESIMInstall
-            }
-            return .eSimInstructions
+            remove(.eSimOnboarding)
         }
-        return .eSimOnboarding
-    }
-    
-    public func compute(context: PrimeGQL.ContextQuery.Data.Context?, localContext: LocalContext) -> Stage {
-        return self.compute(context: context?.toLegacyModel(), localContext: localContext)
+        
+        if localContext.hasSeenESIMInstructions {
+            remove(.eSimInstructions)
+        }
+        
+        if let profile = region.getSimProfile(), profile.status == .installed {
+            remove(.eSimOnboarding)
+            remove(.eSimInstructions)
+            remove(.pendingESIMInstall)
+            
+            if !localContext.hasSeenESimOnboarding {
+                remove(.awesome)
+            }
+        }
+        
+        if localContext.hasSeenAwesome {
+            remove(.awesome)
+        }
+        return stages[0]
     }
     
     // swiftlint:disable:next cyclomatic_complexity
     public func compute(context: Context?, localContext: LocalContext) -> Stage {
         
+        // Error Stages
         if localContext.serverIsUnreachable {
             return .ohNo(.serverUnreachable)
         }
         
-        guard let context = context else {
-            return preLoggedInStage(localContext)
-        }
-        
-        // Always show notification permissions if you are logged in, have a user, but haven't accepted or rejected notification permissions. This case handles both cold cases, happy flow and edge cases.
-        if !localContext.hasSeenNotificationPermissions {
-            return .notificationPermissions
-        }
-        
-        // 3. ESim flow.
-        if let region = context.getRegion(), region.status == .approved {
-            return eSIMStage(region, localContext)
-        }
-        
-        // Possible structure for context api and kYCSteps suggestion
-        // ["singpass": [.singpass, .address], "scanIC": [.nric, .jumio, .address], ["jumio": [.jumio]]]
-        
-        // 2. EKYC flow.
-        // Specific to Singapore Singpass, normal flow, not cold start
-        if localContext.selectedVerificationOption == .singpass {
-            if let code = localContext.myInfoCode {
-                return .verifyMyInfo(code: code)
-            }
-            return .singpass
-        }
-        
-        // Specific to Singapore, normal flow, not cold start
-        if localContext.selectedVerificationOption == .scanIC {
-            if let region = context.getRegion(), region.kycStatusMap.nricFin! == .approved {
-                if localContext.hasCompletedJumio {
-                    if region.kycStatusMap.addressAndPhoneNumber! == .approved {
-                        if region.kycStatusMap.jumio! == .rejected {
-                            return .ohNo(.ekycRejected)
-                        }
-                        return .pendingVerification
-                    }
-                    return .address
-                }
-                return .jumio
-            }
-            return .nric
-        }
-        
-        // All other countries ekyc flow, where you only have jumio as an option, also handles showing of selectIdentityVerificationMethod for Singapore flow
-        if localContext.hasSeenVerifyIdentifyOnboarding, let selectedRegion = localContext.selectedRegion {
-            let options = identityOptionsForRegion(selectedRegion)
-            
-            if options.count == 1 { // All other countries
-                if localContext.hasCompletedJumio {
-                    if context.getRegion()?.kycStatusMap.jumio! == .rejected {
-                        return .ohNo(.ekycRejected)
-                    }
-                    return .pendingVerification
-                }
-                return .jumio
-            }
-            return .selectIdentityVerificationMethod(options) // Singapore flow specific
-        }
-        
-        // Cold start for jumio in progress to show pending verification screen since we don't have in progress state in the context.
-        if localContext.hasCompletedJumio, localContext.selectedVerificationOption == nil {
-            if context.getRegion()?.kycStatusMap.nricFin! == .approved {
-                if context.getRegion()?.kycStatusMap.addressAndPhoneNumber! == .approved {
-                    return .verifyIdentityOnboarding
-                }
-            }
-        }
-        
-        // 1. Select country.
-        if localContext.selectedRegion == nil {
-            if localContext.hasSeenRegionOnboarding {
-                return .selectRegion
-            }
-            return .regionOnboarding
-        }
-        
-        if localContext.regionVerified || context.getRegion() != nil {
-            return .verifyIdentityOnboarding
-        }
         if let problem = localContext.locationProblem {
             return .locationProblem(problem)
         }
         
-        return .locationPermissions
+        // Initial Stages
+        guard let context = context else {
+            return preLoggedInStage(localContext)
+        }
+        
+        // Late Stages
+        if let region = context.getRegion(), region.status == .approved {
+            return eSIMStage(region, localContext)
+        }
+        
+        // Mid Stages
+        var midStages: [Stage] = [.notificationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
+        func remove(_ stage: StageDecider.Stage) {
+            if let index = midStages.firstIndex(of: stage) {
+                midStages.remove(at: index)
+            }
+        }
+        
+        if localContext.hasSeenNotificationPermissions {
+            remove(.notificationPermissions)
+        }
+        
+        if localContext.hasSeenRegionOnboarding || localContext.regionVerified {
+            remove(.regionOnboarding)
+        }
+        if localContext.selectedRegion != nil {
+            remove(.selectRegion)
+        }
+        if localContext.hasSeenVerifyIdentifyOnboarding {
+            remove(.verifyIdentityOnboarding)
+        }
+        
+        switch localContext.selectedVerificationOption {
+        case .jumio:
+            midStages.append(.jumio)
+        case .none:
+            if let region = localContext.selectedRegion {
+                let options = identityOptionsForRegion(region)
+                if options.count > 1 {
+                    midStages.append(.selectIdentityVerificationMethod(options))
+                } else {
+                    midStages.append(contentsOf: [.jumio, .pendingVerification])
+                }
+            }
+        case .singpass:
+            midStages.append(.singpass)
+        case .scanIC:
+            midStages.append(contentsOf: [.nric, .jumio, .address, .pendingVerification])
+        }
+        
+        if let code = localContext.myInfoCode {
+            midStages.append(.verifyMyInfo(code: code))
+        }
+        
+        if context.getRegion()?.kycStatusMap.nricFin! == .approved {
+            remove(.nric)
+        }
+        
+        if localContext.hasCompletedJumio {
+            remove(.jumio)
+        }
+        
+        if context.getRegion()?.kycStatusMap.jumio! == .rejected {
+            midStages.append(.ohNo(.ekycRejected))
+        }
+        
+        return midStages[0]
     }
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
