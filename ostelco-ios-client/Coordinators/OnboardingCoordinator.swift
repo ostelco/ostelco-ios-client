@@ -189,7 +189,7 @@ class OnboardingCoordinator {
 
 extension OnboardingCoordinator: LoginDelegate {
     func signedIn(controller: UIViewController, authCode: String, contactEmail: String?) {
-        controller.showSpinner()
+        let spinnerView = controller.showSpinner()
         UserDefaultsWrapper.contactEmail = contactEmail
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
@@ -198,13 +198,14 @@ extension OnboardingCoordinator: LoginDelegate {
             return FirebaseSignInManager.signInWithCustomToken(customToken: customToken.token)
         }
         .done {
-            debugPrint("Finished Signed In using custom Firebase Token")
+            debugPrint("Finished Sign-In using custom Firebase Token")
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         }
-        .catch { [weak self] error in
+        .catch { error in
             debugPrint("error :", error)
             ApplicationErrors.log(error)
-            self?.navigationController.showGenericError(error: error)
+            controller.removeSpinner(spinnerView)
+            controller.showGenericError(error: error)
         }
     }
 }
