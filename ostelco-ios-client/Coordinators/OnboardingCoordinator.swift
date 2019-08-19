@@ -47,7 +47,7 @@ class OnboardingCoordinator {
                 self.localContext.serverIsUnreachable = false
                 
                 UserManager.shared.customer = context.customer
-                let stage = self.stageDecider.compute(context: context, localContext: self.localContext)
+                let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
                 self.afterDismissing {
                     self.navigateTo(stage)
                 }
@@ -188,24 +188,55 @@ class OnboardingCoordinator {
 }
 
 extension OnboardingCoordinator: LoginDelegate {
+    enum FirebaseError: Swift.Error, LocalizedError {
+        case noErrorAndNoUser
+        
+        var localizedDescription: String {
+            switch self {
+            case .noErrorAndNoUser:
+                return NSLocalizedString("Signed into Firebase and received neither a user nor an error!", comment: "Error case during firebase auth when we could not get a user.")
+            }
+        }
+    }
+    
     func signedIn(controller: UIViewController, authCode: String, contactEmail: String?) {
         let spinnerView = controller.showSpinner()
+
         UserDefaultsWrapper.contactEmail = contactEmail
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
         .then { (customToken) -> PromiseKit.Promise<Void> in
             //debugPrint("customToken ", customToken.token)
             return FirebaseSignInManager.signInWithCustomToken(customToken: customToken.token)
+
+            debugPrint("customToken ", customToken.token)
+            return self.signInWithCustomToken(customToken: customToken.token)
         }
         .done {
             debugPrint("Finished Sign-In using custom Firebase Token")
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         }
         .catch { error in
-            debugPrint("error :", error)
             ApplicationErrors.log(error)
             controller.removeSpinner(spinnerView)
             controller.showGenericError(error: error)
+        }
+    }
+    
+    func signInWithCustomToken(customToken: String) -> Promise<Void> {
+        return Promise { seal in
+            Auth.auth().signIn(withCustomToken: customToken) { authDataResult, error in
+                if let firebaseError = error {
+                    seal.reject(firebaseError)
+                    return
+                }
+                guard authDataResult?.user != nil else {
+                    seal.reject(FirebaseError.noErrorAndNoUser)
+                    return
+                }
+                
+                seal.fulfill(())
+            }
         }
     }
 }
