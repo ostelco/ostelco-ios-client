@@ -13,7 +13,7 @@ import Firebase
 import AuthenticationServices
 
 protocol LoginDelegate: class {
-    func signedIn(authCode: String, contactEmail: String?)
+    func signedIn(controller: UIViewController, authCode: String, contactEmail: String?)
 }
 
 class LoginViewController: UIViewController {
@@ -136,7 +136,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 return
             }
             if let authCode = String(data: authCodeData, encoding: .utf8) {
-                delegate?.signedIn(authCode: authCode, contactEmail: contactEmail)
+                delegate?.signedIn(controller: self, authCode: authCode, contactEmail: contactEmail)
             }
         }
     }
