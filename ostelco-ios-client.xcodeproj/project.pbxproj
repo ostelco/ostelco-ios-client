@@ -82,8 +82,6 @@
 		048C78822191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
 		0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
 		0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
-		04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
-		04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */; };
@@ -128,13 +126,8 @@
 		9B468655228C42BF00983DEF /* PageControllerDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B468654228C42BF00983DEF /* PageControllerDataSourceTests.swift */; };
 		9B49D9542292F39C0059C98F /* PushNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49D9532292F39C0059C98F /* PushNotificationModel.swift */; };
 		9B49D95622930B690059C98F /* PushParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B49D95522930B690059C98F /* PushParsingTests.swift */; };
-		9B4DAD90228198F4003810BE /* FirebaseSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */; };
 		9B4DAD922281A2CE003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
 		9B4DAD932281A538003810BE /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */; };
-		9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
-		9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */; };
-		9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */; };
-		9B4DADA12281B9CE003810BE /* FirebaseSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */; };
 		9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */; };
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
@@ -458,7 +451,6 @@
 		0493B80B2252BE0900989F40 /* JSONRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequestError.swift; sourceTree = "<group>"; };
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
-		04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
 		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -509,10 +501,7 @@
 		9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Pixel.swift"; sourceTree = "<group>"; };
 		9B49D9532292F39C0059C98F /* PushNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationModel.swift; sourceTree = "<group>"; };
 		9B49D95522930B690059C98F /* PushParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushParsingTests.swift; sourceTree = "<group>"; };
-		9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSignInManager.swift; sourceTree = "<group>"; };
 		9B4DAD912281A2CE003810BE /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
-		9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
-		9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorTests.swift; sourceTree = "<group>"; };
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4822A7CB9500FCC8CC /* OnboardingCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinatorTests.swift; sourceTree = "<group>"; };
@@ -839,10 +828,8 @@
 			children = (
 				04834D6E2237ACFF00A01500 /* APIManager.swift */,
 				C2D2EAE822785C0C00010586 /* AppErrors.swift */,
-				9B4DAD8F228198F4003810BE /* FirebaseSignInManager.swift */,
 				9B8AFF5222A1479E00CC84B1 /* InternetConnectionMonitor.swift */,
 				04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */,
-				04978D6722AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift */,
 				04978D6A22ABA012002B09E0 /* LinkHelper.swift */,
 			);
 			path = Network;
@@ -1020,7 +1007,6 @@
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
 				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
-				9B4DAD9A2281ADEA003810BE /* EmailValidator.swift */,
 				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
@@ -1206,7 +1192,6 @@
 				9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */,
 				9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */,
 				9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */,
-				9B4DAD9C2281B0C7003810BE /* EmailValidatorTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
@@ -1961,7 +1946,6 @@
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
-				04978D6822AB9A37002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
 				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
@@ -2012,11 +1996,9 @@
 				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
-				9B4DAD90228198F4003810BE /* FirebaseSignInManager.swift in Sources */,
 				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
-				9B4DAD9B2281ADEA003810BE /* EmailValidator.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
@@ -2133,7 +2115,6 @@
 				9B3FA6922289B485001E4D60 /* BasicNetworkTests.swift in Sources */,
 				9B6A928B22844F8A007F5EC9 /* MockAPITests.swift in Sources */,
 				9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */,
-				9B4DAD9D2281B0C7003810BE /* EmailValidatorTests.swift in Sources */,
 				046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */,
 				046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */,
 				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
@@ -2168,7 +2149,6 @@
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
-				04978D6922AB9B78002B09E0 /* UsernameAndPasswordLinkManager.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
@@ -2194,7 +2174,6 @@
 				9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
-				9B4DADA12281B9CE003810BE /* FirebaseSignInManager.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
@@ -2226,7 +2205,6 @@
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
-				9B4DAD9E2281B1A0003810BE /* EmailValidator.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				9BBEEE1A228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */,
 				9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
@@ -2724,6 +2702,7 @@
 					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2779,6 +2758,7 @@
 					"\"${PODS_ROOT}/TwitterKit/iOS\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

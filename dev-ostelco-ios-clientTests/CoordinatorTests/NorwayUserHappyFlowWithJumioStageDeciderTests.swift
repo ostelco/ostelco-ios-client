@@ -12,11 +12,11 @@ import XCTest
 class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, regionVerified: true)
         let regions: [PrimeGQL.RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
     }
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
