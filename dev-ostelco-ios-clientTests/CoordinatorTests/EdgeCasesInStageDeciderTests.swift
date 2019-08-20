@@ -10,12 +10,6 @@ import XCTest
 @testable import ostelco_core
 
 class EdgeCasesInStageDeciderTests: XCTestCase {
-    
-    override func tearDown() {
-        super.tearDown()
-        
-    }
-
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.
     
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {

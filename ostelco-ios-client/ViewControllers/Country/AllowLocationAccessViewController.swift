@@ -12,7 +12,6 @@ import OstelcoStyles
 import UIKit
 
 protocol AllowLocationAccessDelegate: class {
-    func selectedCountry() -> Country
     func handleLocationProblem(_ problem: LocationProblem)
     func locationUsageAuthorized()
 }
@@ -22,29 +21,15 @@ class AllowLocationAccessViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: BodyTextLabel!
     
     weak var delegate: AllowLocationAccessDelegate!
-
-    /// For the `LocationChecking` protocol
+    
     var spinnerView: UIView?
     
     private var hasRequestedAuthorization = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let country = delegate.selectedCountry()
-        let linkableText = generateLinkableText(for: country)
-        descriptionLabel.tapDelegate = self
-        descriptionLabel.setLinkableText(linkableText)
-    }
-    
-    func generateLinkableText(for country: Country) -> LinkableText {
-        let format = "To give you mobile data, by law, we have to verify that you’re in %@"
-        return LinkableText(
-            fullText: String(format: NSLocalizedString(format, comment: "Explanation why we need location access"), country.nameOrPlaceholder),
-            linkedPortion: Link(
-                NSLocalizedString("by law", comment: "Explanation why we need location access: linkable part"),
-                url: ExternalLink.locationRequirement.url
-            )
-        )!
+        
+        descriptionLabel.text = "xxx"
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -91,12 +76,5 @@ extension AllowLocationAccessViewController: StoryboardLoadable {
     
     static var isInitialViewController: Bool {
         return false
-    }
-}
-
-extension AllowLocationAccessViewController: LabelTapDelegate {
-    
-    func tappedLink(_ link: Link) {
-        UIApplication.shared.open(link.url)
     }
 }
