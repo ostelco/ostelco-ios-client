@@ -30,11 +30,7 @@ class ChooseCountryViewController: UIViewController {
     weak var delegate: ChooseCountryDelegate?
     private var currentSelectedCountry: Country? {
         didSet {
-            if currentSelectedCountry == nil {
-                continueButton.isEnabled = false
-            } else {
-                continueButton.isEnabled = true
-            }
+            updateButton()
         }
     }
     
@@ -44,6 +40,16 @@ class ChooseCountryViewController: UIViewController {
         tableView.tintColor = OstelcoColor.oyaBlue.toUIColor
         tableView.addEmptyFooter()
         dataSource.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let country = currentSelectedCountry {
+            dataSource.selectedCountry = country
+        }
+        
+        updateButton()
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
@@ -58,6 +64,14 @@ class ChooseCountryViewController: UIViewController {
         showSpinner()
         OstelcoAnalytics.logEvent(.ChosenCountry(country: country))
         delegate?.selectedCountry(country)
+    }
+    
+    func updateButton() {
+        if currentSelectedCountry == nil {
+            continueButton?.isEnabled = false
+        } else {
+            continueButton?.isEnabled = true
+        }
     }
 }
 

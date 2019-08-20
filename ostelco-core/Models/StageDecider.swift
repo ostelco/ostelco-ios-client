@@ -94,7 +94,7 @@ public struct StageDecider {
     public init() {}
     
     private func preLoggedInStage(_ localContext: LocalContext) -> Stage {
-        var stages: [Stage] = [.loginCarousel, .legalStuff, .locationPermissions, .nicknameEntry]
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -107,9 +107,6 @@ public struct StageDecider {
         }
         if localContext.hasAgreedToTerms {
             remove(.legalStuff)
-        }
-        if localContext.hasSeenLocationPermissions {
-            remove(.locationPermissions)
         }
         return stages[0]
     }
@@ -175,18 +172,23 @@ public struct StageDecider {
         }
         
         // Mid Stages
-        var midStages: [Stage] = [.regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
+        var midStages: [Stage] = [.locationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
         func remove(_ stage: StageDecider.Stage) {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
             }
         }
         
+        if localContext.hasSeenLocationPermissions {
+            remove(.locationPermissions)
+        }
+
         if localContext.hasSeenRegionOnboarding || localContext.regionVerified {
             remove(.regionOnboarding)
         }
         if localContext.selectedRegion != nil {
             remove(.selectRegion)
+            remove(.regionOnboarding)
         }
         if context.getRegion() != nil {
             remove(.regionOnboarding)
@@ -235,6 +237,7 @@ public struct StageDecider {
             }
             if kycStatusMap.jumio == .rejected {
                 remove(.pendingVerification)
+                remove(.jumio)
                 midStages.append(.ohNo(.ekycRejected))
             }
         }
