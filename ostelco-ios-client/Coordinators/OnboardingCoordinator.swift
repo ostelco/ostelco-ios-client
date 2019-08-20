@@ -202,10 +202,13 @@ extension OnboardingCoordinator: LoginDelegate {
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
         }
         .catch { error in
-            debugPrint("error :", error)
+            debugPrint("Sign In Error :", error)
             ApplicationErrors.log(error)
             controller.removeSpinner(spinnerView)
-            controller.showGenericError(error: error)
+            controller.showAlert(
+                title: NSLocalizedString("Sign In Error", comment: "Title for alert when authorize Apple Id fails."),
+                msg: NSLocalizedString("Failed to authorize user, please try again or contact customer support.", comment: "Message for alert when authorize Apple Id fails.")
+            )
         }
     }
 }
