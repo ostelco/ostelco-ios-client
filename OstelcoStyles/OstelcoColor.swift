@@ -38,7 +38,7 @@ public enum OstelcoColor: String, CaseIterable {
     
     public var toUIColor: UIColor {
         let bundle = Bundle(for: OstelcoButton.classForCoder())
-        if let bundleIndentifier = Bundle.main.bundleIdentifier, bundleIndentifier.contains("dev") {
+        if let bundleIndentifier = Bundle.main.bundleIdentifier, bundleIndentifier.contains("dev"), case .oyaBlue = self {
             return UIColor(named: "oyaBlue-dev", in: bundle, compatibleWith: nil)!
         }
         return UIColor(named: self.rawValue, in: bundle, compatibleWith: nil)!

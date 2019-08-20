@@ -26,7 +26,7 @@ extension UIViewController {
         overlay.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         // Create and animate the activity indicator
-        let indicator = UIActivityIndicatorView(style: .whiteLarge)
+        let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = OstelcoColor.background.toUIColor
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.startAnimating()

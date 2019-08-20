@@ -70,15 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainColor = OstelcoColor.oyaBlue.toUIColor
         let tabAppearance = UITabBar.appearance()
         tabAppearance.tintColor = mainColor
-        tabAppearance.barStyle = .blackOpaque
+        tabAppearance.barStyle = .black
         
         let toolbarAppearance = UIToolbar.appearance()
         toolbarAppearance.tintColor = mainColor
-        toolbarAppearance.barStyle = .blackOpaque
+        toolbarAppearance.barStyle = .black
         
         let navigationAppearance = UINavigationBar.appearance()
         navigationAppearance.tintColor = mainColor
-        navigationAppearance.barStyle = .blackOpaque
+        navigationAppearance.barStyle = .black
         navigationAppearance.shadowImage = UIImage()
     }
     
