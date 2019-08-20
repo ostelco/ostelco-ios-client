@@ -12,25 +12,25 @@ do {
                                        shortName: "-pre",
                                        kind: Bool.self,
                                        usage: "Runs pre-build tasks if present",
-                                       completion: .none)
+                                       completion: nil)
     
     let postBuildOption = argParser.add(option: "--postbuild",
                                         shortName: "-post",
                                         kind: Bool.self,
                                         usage: "Runs post-build tasks if present",
-                                        completion: .none)
+                                        completion: nil)
     
     let forProdOption = argParser.add(option: "--production",
                                       shortName: "-prod",
                                       kind: Bool.self,
                                       usage: "Runs setup for production if present, non-production if absent.",
-                                      completion: .none)
+                                      completion: nil)
     
     let srcRootPathOption = argParser.add(option: "--sourceroot",
                                           shortName: "-src",
                                           kind: String.self,
                                           usage: "Provides the git source root of the current project",
-                                          completion: .none)
+                                          completion: nil)
     
     let args = Array(CommandLine.arguments.dropFirst())
     let result = try argParser.parse(args)
