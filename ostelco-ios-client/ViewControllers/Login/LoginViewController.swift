@@ -14,6 +14,7 @@ import AuthenticationServices
 
 protocol LoginDelegate: class {
     func signedIn(controller: UIViewController, authCode: String, contactEmail: String?)
+    func signInError(controller: UIViewController, error: Error)
 }
 
 class LoginViewController: UIViewController {
@@ -142,7 +143,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
+        let authError = error as? ASAuthorizationError
+        // If user has not canceled "Sign In With Apple", show error
+        if authError == nil || authError?.code != .canceled {
+            delegate?.signInError(controller: self, error: error)
+        }
     }
 }
 
