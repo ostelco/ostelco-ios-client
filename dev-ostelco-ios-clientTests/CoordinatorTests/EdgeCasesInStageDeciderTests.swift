@@ -96,7 +96,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedSingpassAndCancelledSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
         let regions: [PrimeGQL.RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
@@ -104,7 +104,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     }
     func testMyInfoSummaryLoadFailedandSelectedVerificationOptionIsResetToNil() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
 
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -123,7 +123,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -142,7 +142,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejected() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasCompletedAddress: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasSeenLocationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -162,7 +162,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     // Edge cases for Norway flow
     func testUserHasSeenVerifyIdentifyOnboardingAndCancelledJumio() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let regions: [PrimeGQL.RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
@@ -171,7 +171,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejectedInNorway() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true)
+        let localContext = LocalContext(selectedRegion: Region(id: "no", name: "NO"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),

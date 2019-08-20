@@ -219,7 +219,6 @@
 		9B8AFF5622A14E4500CC84B1 /* BoldableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */; };
 		9B8AFF5822A1698500CC84B1 /* EKYCStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5722A1698500CC84B1 /* EKYCStatus.swift */; };
 		9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */; };
-		9B8E926122A838F800A1E35E /* MockLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926022A838F800A1E35E /* MockLocationController.swift */; };
 		9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */; };
 		9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */; };
 		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
@@ -564,7 +563,6 @@
 		9B8AFF5522A14E4500CC84B1 /* BoldableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldableText.swift; sourceTree = "<group>"; };
 		9B8AFF5722A1698500CC84B1 /* EKYCStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKYCStatus.swift; sourceTree = "<group>"; };
 		9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioScanInfo.swift; sourceTree = "<group>"; };
-		9B8E926022A838F800A1E35E /* MockLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationController.swift; sourceTree = "<group>"; };
 		9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlacemarks.swift; sourceTree = "<group>"; };
 		9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDeterminablePlacemark.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
@@ -919,7 +917,6 @@
 			isa = PBXGroup;
 			children = (
 				9B8215842279F5E000DC6B64 /* RegionResponse+Testing.swift */,
-				9B8E926022A838F800A1E35E /* MockLocationController.swift */,
 				9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */,
 				9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */,
 				9BBEEE22228EDF0200EED7F5 /* MockUserManager.swift */,
@@ -2132,7 +2129,6 @@
 				9B6A928D22844F95007F5EC9 /* LiveAPITests.swift in Sources */,
 				9BBF704B2265DAC300E4B9B4 /* MyInfoTests.swift in Sources */,
 				9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */,
-				9B8E926122A838F800A1E35E /* MockLocationController.swift in Sources */,
 				9BBA3DC22296FB9D0014FADE /* LinkableTextTests.swift in Sources */,
 				9B6A929222847124007F5EC9 /* PromiseKit+Testing.swift in Sources */,
 			);

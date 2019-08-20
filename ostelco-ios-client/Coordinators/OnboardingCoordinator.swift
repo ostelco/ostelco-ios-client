@@ -39,6 +39,8 @@ class OnboardingCoordinator {
             self.localContext.hasFirebaseToken = user != nil
             self.advance()
         }
+        
+        LocationController.shared.startUpdatingLocation()
     }
     
     func advance() {
@@ -94,6 +96,12 @@ class OnboardingCoordinator {
         case .selectRegion:
             let chooseCountry = ChooseCountryViewController.fromStoryboard()
             chooseCountry.delegate = self
+            DispatchQueue.main.async {
+                if let country = LocationController.shared.currentCountry {
+                    chooseCountry.selected(country: country)
+                }
+            }
+            
             navigationController.setViewControllers([chooseCountry], animated: true)
         case .locationPermissions:
             let locationPermissions = AllowLocationAccessViewController.fromStoryboard()
@@ -173,17 +181,15 @@ class OnboardingCoordinator {
         guard let country = localContext.selectedRegion?.country else {
             fatalError("Shouldn't be possible to be here without a country!")
         }
-        LocationController.shared.checkInCorrectCountry(country)
-            .done {
-                self.localContext.regionVerified = true
-                self.localContext.locationProblem = nil
-                self.advance()
-            }.catch { (error) in
-                if case LocationController.Error.locationProblem(let problem) = error {
-                    self.localContext.locationProblem = problem
-                }
-                self.advance()
+        
+        let controller = LocationController.shared
+        if controller.checkInCorrectCountry(country) {
+            localContext.regionVerified = true
+            localContext.locationProblem = nil
+        } else {
+            localContext.locationProblem = controller.locationProblem
         }
+        advance()
     }
 }
 
