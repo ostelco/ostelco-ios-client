@@ -211,6 +211,13 @@ extension OnboardingCoordinator: LoginDelegate {
             )
         }
     }
+    func signInError(controller: UIViewController, error: Error) {
+        ApplicationErrors.log(error)
+        controller.showAlert(
+            title: NSLocalizedString("Apple Sign In Error", comment: "Title for alert when Sign In with Apple fails."),
+            msg: NSLocalizedString("Sign In with Apple Failed, please try again or contact customer support.", comment: "Message for alert when Sign In with Apple fails.")
+        )
+    }
 }
 
 extension OnboardingCoordinator: TheLegalStuffDelegate {
