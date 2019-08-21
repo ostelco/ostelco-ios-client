@@ -78,7 +78,45 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .address)
     }
-    
+
+    func testUserHasCompletedJumioFailedCallback() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
+
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
+                )
+            ]
+        )
+
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
+    }
+
+    func testUserHasCompletedJumioFailedAndClearedLocally() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: nil, hasCompletedJumio: false, hasSeenLocationPermissions: true)
+
+        let context = Context(
+            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+            regions: [
+                RegionResponse(
+                    region: Region(id: "sg", name: "Singapore"),
+                    status: .PENDING,
+                    simProfiles: nil,
+                    kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
+                )
+            ]
+        )
+
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
+
     func testUserHasCompletedNRICAndJumioThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
