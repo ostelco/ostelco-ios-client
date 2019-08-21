@@ -28,6 +28,7 @@ struct GifVideoGen {
         
         let videos = mp4Folder.files
             .filter { $0.name.hasSuffix(self.videoPostfix) }
+            .filter { !$0.name.contains("_dark") }
             .map { $0.name.replacingOccurrences(of: self.videoPostfix, with: "") }
         
         let cases = videos

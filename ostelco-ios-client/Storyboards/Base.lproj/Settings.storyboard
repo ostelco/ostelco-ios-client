@@ -202,22 +202,6 @@
             </objects>
             <point key="canvasLocation" x="2234.7826086956525" y="1259.5982142857142"/>
         </scene>
-        <!--Nickname-->
-        <scene sceneID="6RL-1g-M23">
-            <objects>
-                <viewController id="TgB-zP-hHJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h6f-hk-HF0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="background"/>
-                        <viewLayoutGuide key="safeArea" id="9hg-hi-cov"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Nickname" id="eZ1-yA-wYu"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CVv-LC-4np" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2237" y="1824"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="cSR-fR-N40">
             <objects>
@@ -282,7 +266,7 @@
     <resources>
         <image name="settings" width="23" height="21"/>
         <namedColor name="background">
-            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textSecondary">
             <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
