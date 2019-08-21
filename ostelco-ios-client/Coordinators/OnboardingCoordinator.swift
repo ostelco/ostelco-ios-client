@@ -168,6 +168,12 @@ class OnboardingCoordinator {
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
             ohNo.primaryButtonAction = { [weak self] in
+                if issue == .ekycRejected {
+                    // After showing the eKYC error, user should be able to
+                    // select verification method again.
+                    self?.localContext.selectedVerificationOption = nil
+                    self?.localContext.hasCompletedJumio = false
+                }
                 self?.advance()
             }
             navigationController.present(ohNo, animated: true, completion: nil)
