@@ -242,7 +242,7 @@ public struct StageDecider {
             }
         }
         
-        return midStages[0]
+        return midStages.first ?? .home
     }
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.

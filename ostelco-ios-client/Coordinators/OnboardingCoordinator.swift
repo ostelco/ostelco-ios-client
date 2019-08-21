@@ -353,6 +353,12 @@ extension OnboardingCoordinator: AllowLocationAccessDelegate {
 extension OnboardingCoordinator: LocationProblemDelegate {
     func retry() {
         localContext.selectedRegion = nil
+        // We'll be informed about other location problems being fixed,
+        // but for this one, we just need to let the user pick their country
+        // again.
+        if case .authorizedButWrongCountry = localContext.locationProblem {
+            localContext.locationProblem = nil
+        }
         advance()
     }
 }
