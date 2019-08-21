@@ -10,16 +10,14 @@ import UIKit
 import ostelco_core
 
 protocol GetStartedDelegate: class {
-    func enteredNickname(_ nickname: String)
+    func enteredNickname(controller: UIViewController, nickname: String)
 }
 
 class GetStartedViewController: UIViewController {
     
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var nameTextField: UITextField!
-    
-    var spinnerView: UIView?
-    
+
     weak var delegate: GetStartedDelegate?
     
     override func viewDidLoad() {
@@ -39,8 +37,7 @@ class GetStartedViewController: UIViewController {
             return
         }
 
-        spinnerView = showSpinner()
-        delegate?.enteredNickname(nickname)
+        delegate?.enteredNickname(controller: self, nickname: nickname)
     }
 }
 

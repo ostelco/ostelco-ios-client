@@ -262,9 +262,11 @@ extension OnboardingCoordinator: TheLegalStuffDelegate {
 }
 
 extension OnboardingCoordinator: GetStartedDelegate {
-    func enteredNickname(_ nickname: String) {
+    func enteredNickname(controller: UIViewController, nickname: String) {
+        let spinnerView = controller.showSpinner()
         guard let email = UserManager.shared.currentUserEmail else {
-            navigationController.showAlert(
+            controller.removeSpinner(spinnerView)
+            controller.showAlert(
                 title: NSLocalizedString("Error", comment: "Error message title"),
                 msg: NSLocalizedString("Email is empty or missing in Firebase", comment: "Error message when we don't get info from Firebase")
             )
@@ -279,8 +281,12 @@ extension OnboardingCoordinator: GetStartedDelegate {
             UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
             self?.advance()
         }
-        .cauterize()
-        // There is no catch. The only reason this could error is if the server is unreachable which we handle otherwise.
+        .catch { error in
+            debugPrint("createCustomer Error :", error)
+            ApplicationErrors.log(error)
+            controller.removeSpinner(spinnerView)
+            controller.showGenericError(error: error)
+        }
     }
 }
 
