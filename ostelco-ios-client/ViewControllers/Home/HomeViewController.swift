@@ -20,6 +20,8 @@ class HomeViewController: ApplePayViewController {
     @IBOutlet private weak var balanceLabel: DataAmountOnHomeLabel!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var buyButton: UIButton!
+    
+    @IBOutlet private weak var countryButton: UIButton!
 
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var welcomeLabel: UILabel!
@@ -85,19 +87,28 @@ class HomeViewController: ApplePayViewController {
         // If we have offers, user is already a member
         return hasOffers
     }
-
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.registerForPushNotificationsIfNeeded()
-        self.balanceLabel.dataAmountString = nil
+        registerForPushNotificationsIfNeeded()
+        balanceLabel.dataAmountString = nil
 
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         refreshControl.attributedTitle = NSMutableAttributedString(string: refreshBalanceText)
-        self.scrollView.addSubview(refreshControl)
+        scrollView.addSubview(refreshControl)
         refreshBalance()
+        
+        LocationController.shared.startUpdatingLocation()
+        NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
+        updateButtonFor(country: LocationController.shared.currentCountry)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -105,35 +116,46 @@ class HomeViewController: ApplePayViewController {
         fetchProducts()
     }
     
+    @objc func countryChanged(_ notification: NSNotification) {
+        guard let controller = notification.object as? LocationController else {
+            fatalError("Something other than the location controller is posting this notification!")
+        }
+        updateButtonFor(country: controller.currentCountry)
+    }
+    
+    private func updateButtonFor(country: Country?) {
+        countryButton.setTitle(country?.nameOrPlaceholder, for: .normal)
+    }
+    
     private func registerForPushNotificationsIfNeeded() {
         PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
-            .catch { error in
-                switch error {
-                case PushNotificationController.Error.notAuthorized:
-                    // This is an expected error type, we don't need to do anything.
-                    break
-                default:
-                    ApplicationErrors.log(error)
-                }
+        .catch { error in
+            switch error {
+            case PushNotificationController.Error.notAuthorized:
+                // This is an expected error type, we don't need to do anything.
+                break
+            default:
+                ApplicationErrors.log(error)
             }
+        }
     }
 
     private func fetchProducts() {
         getProducts()
-            .done { [weak self] products in
-                products.forEach { debugPrint($0) }
-                guard let self = self else {
-                    return
-                }
-                
-                self.availableProducts = products
-                // Check if the customer is a member already.
-                self.hasSubscription = self.checkForSubscription(products)
-                debugPrint("User has subscription ? \(self.hasSubscription)")
+        .done { [weak self] products in
+            products.forEach { debugPrint($0) }
+            guard let self = self else {
+                return
             }
-            .catch { error in
-                ApplicationErrors.log(error)
-            }
+            
+            self.availableProducts = products
+            // Check if the customer is a member already.
+            self.hasSubscription = self.checkForSubscription(products)
+            debugPrint("User has subscription ? \(self.hasSubscription)")
+        }
+        .catch { error in
+            ApplicationErrors.log(error)
+        }
     }
 
     override func paymentSuccessful(_ product: Product?) {

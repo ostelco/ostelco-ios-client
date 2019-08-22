@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nTN-zT-UGw">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nTN-zT-UGw">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +19,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="536"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="LIe-WC-Ytc">
-                                        <rect key="frame" x="57.5" y="226" width="260" height="195.5"/>
+                                        <rect key="frame" x="57.5" y="238.5" width="260" height="190"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Me-PfP">
-                                                <rect key="frame" x="29" y="0.0" width="202.5" height="124.5"/>
+                                                <rect key="frame" x="29" y="0.0" width="202.5" height="119"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Z-5F-Y8h" customClass="DataAmountOnHomeLabel" customModule="OstelcoStyles">
                                                         <rect key="frame" x="0.0" y="0.0" width="202.5" height="104"/>
@@ -37,7 +34,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw9-S7-EM7" customClass="DataRemainingLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="86" y="104" width="30" height="20.5"/>
+                                                        <rect key="frame" x="90.5" y="104" width="21.5" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -45,7 +42,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp6-nC-kNd" customClass="BuyButton" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="140.5" width="260" height="55"/>
+                                                <rect key="frame" x="0.0" y="135" width="260" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="260" id="ck0-VV-WKm"/>
                                                     <constraint firstAttribute="height" constant="55" id="r5t-mf-ph7"/>
@@ -87,13 +84,21 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhk-vM-dWz">
+                                <rect key="frame" x="313" y="0.0" width="62" height="34"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NWm-c7-dac" firstAttribute="top" secondItem="bJl-FW-G7j" secondAttribute="top" id="0Wh-1Q-zXA"/>
+                            <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="Vhk-vM-dWz" secondAttribute="trailing" id="35N-ST-vio"/>
                             <constraint firstItem="bJl-FW-G7j" firstAttribute="bottom" secondItem="NWm-c7-dac" secondAttribute="bottom" id="7Kz-Lq-6d6"/>
                             <constraint firstItem="NWm-c7-dac" firstAttribute="leading" secondItem="bJl-FW-G7j" secondAttribute="leading" id="bjQ-80-kDR"/>
+                            <constraint firstItem="Vhk-vM-dWz" firstAttribute="top" secondItem="bJl-FW-G7j" secondAttribute="top" id="fG2-Bb-Jj4"/>
                             <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="NWm-c7-dac" secondAttribute="trailing" id="mgQ-iB-iGy"/>
+                            <constraint firstItem="Vhk-vM-dWz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bJl-FW-G7j" secondAttribute="leading" id="yBf-wA-rw0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bJl-FW-G7j"/>
                     </view>
@@ -101,6 +106,7 @@
                     <connections>
                         <outlet property="balanceLabel" destination="T7Z-5F-Y8h" id="Blu-YQ-ilY"/>
                         <outlet property="buyButton" destination="Pp6-nC-kNd" id="Q3S-X3-8lD"/>
+                        <outlet property="countryButton" destination="Vhk-vM-dWz" id="eae-xW-rir"/>
                         <outlet property="messageLabel" destination="Qse-5o-vGa" id="q9g-PE-vYF"/>
                         <outlet property="scrollView" destination="NWm-c7-dac" id="axl-vo-8Qh"/>
                         <outlet property="welcomeLabel" destination="qkc-rS-fv8" id="E3f-Fd-HHE"/>
@@ -116,30 +122,30 @@
             <objects>
                 <viewController storyboardIdentifier="BecomeAMemberViewController" id="HJs-Qd-Tb4" customClass="BecomeAMemberViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZFr-gb-dCZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY" customClass="Heading1Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="153" width="325" height="123.5"/>
+                                <rect key="frame" x="25" y="133" width="325" height="119.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member.  As an OYA member you keep your data forever.  $1 = 1 year of membership." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="301.5" width="325" height="147"/>
+                                <rect key="frame" x="25" y="277.5" width="325" height="142.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXv-ae-gcm">
-                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                                <rect key="frame" x="16" y="0.0" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="HJs-Qd-Tb4" eventType="touchUpInside" id="yG6-fq-hMZ"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-4q-9ed">
-                                <rect key="frame" x="25" y="562" width="325" height="55"/>
+                                <rect key="frame" x="25" y="542" width="325" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
