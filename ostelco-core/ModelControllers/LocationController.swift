@@ -63,10 +63,15 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     }
     
     public func checkInCorrectCountry(_ country: Country) -> Bool {
-        if currentCountry == country {
-            return true
-        } else {
+        guard let currentCountry = currentCountry else {
             return false
+        }
+        
+        if currentCountry != country && country == Country.singapore() {
+            locationProblem = LocationProblem.authorizedButWrongCountry(expected: country.nameOrPlaceholder, actual: currentCountry.nameOrPlaceholder)
+            return false
+        } else {
+            return true
         }
     }
     

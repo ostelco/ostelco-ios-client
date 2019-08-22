@@ -43,6 +43,10 @@ public class Country: Equatable {
             return nil
         }
     }
+    
+    static func singapore() -> Country {
+        return Country("sg")
+    }
 
     // MARK: - Equatable
     
