@@ -47,6 +47,9 @@ class OnboardingCoordinator {
         primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
+                if let region = context.toLegacyModel().getRegion()?.region {
+                    self.localContext.selectedRegion = Region(gqlRegion: region)
+                }
                 
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
@@ -166,6 +169,10 @@ class OnboardingCoordinator {
             pending.delegate = self
             navigationController.setViewControllers([pending], animated: true)
         case .ohNo(let issue):
+            if case .ekycRejected = issue {
+                localContext.hasCompletedJumio = false
+            }
+            
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
             ohNo.primaryButtonAction = { [weak self] in
                 self?.advance()
@@ -410,9 +417,9 @@ extension OnboardingCoordinator: MyInfoSummaryDelegate {
     
     func updateProfile(_ controller: MyInfoSummaryViewController, profile: EKYCProfileUpdate) {
         let spinnerView = controller.showSpinner()
-        let region = localContext.selectedRegion?.id
+        let regionCode = localContext.selectedRegion?.id
         
-        primeAPI.updateEKYCProfile(with: profile, forRegion: region!)
+        primeAPI.updateEKYCProfile(with: profile, forRegion: regionCode!)
         .ensure {
             controller.removeSpinner(spinnerView)
         }
@@ -478,6 +485,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
             assert(context.regions.count == 1)
             // swiftlint:disable:next empty_count
             assert(context.regions.first!.fragments.regionDetailsFragment.simProfiles?.count == 0)
+            
             let simProfile = RegionResponse.getRegionFromRegionResponseArray(context.regions.map({ $0.fragments.regionDetailsFragment }))?.getSimProfile()
             if let simProfile = simProfile {
                 return PromiseKit.Promise.value(simProfile)
