@@ -12,6 +12,7 @@ import UIKit
 import FirebaseAuth
 import UserNotifications
 import CoreLocation
+import AuthenticationServices
 
 protocol OnboardingCoordinatorDelegate: class {
     func onboardingComplete()
@@ -37,12 +38,48 @@ class OnboardingCoordinator {
         
         Auth.auth().addStateDidChangeListener { (_, user) in
             self.localContext.hasFirebaseToken = user != nil
+            if let user = user {
+                self.validateAppleID(userID: user.uid)
+            }
             self.advance()
         }
         
         LocationController.shared.startUpdatingLocation()
     }
-    
+
+    // Error enum for capturing Apple ID related errors
+    enum AppleIdError: Error {
+        case wrongState(userID: String, state: ASAuthorizationAppleIDProvider.CredentialState)
+        var errorDescription: String? {
+            switch self {
+            case let .wrongState(userID, state):
+                return "Wrong state, Apple ID: \(userID) in state \(state.rawValue)"
+            }
+        }
+    }
+
+    // Check if AppleID is allowing to use this account.
+    func validateAppleID(userID: String) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: userID) { (state, error) in
+            print("getCredentialState = ", state.rawValue, error ?? "Nil")
+            DispatchQueue.main.async {
+                switch state {
+                case .revoked, .notFound:
+                    // Ask user to sign In again
+                    let stateError = AppleIdError.wrongState(userID: userID, state: state)
+                    print(stateError.localizedDescription)
+                    ApplicationErrors.log(stateError)
+                    UserManager.shared.logOut()
+                default:
+                    // Do nothing
+                    break
+                }
+            }
+        }
+    }
+
+
     func advance() {
         primeAPI.loadContext()
             .done { (context) in
@@ -252,6 +289,7 @@ extension OnboardingCoordinator: LoginDelegate {
             }
         }
     }
+
 }
 
 extension OnboardingCoordinator: TheLegalStuffDelegate {
