@@ -13,7 +13,7 @@ import UIKit
 
 class HomeViewController: ApplePayViewController {
 
-    static var newSubscriber = false
+    var newSubscriber = false
 
     var availableProducts: [Product] = []
 
@@ -66,8 +66,8 @@ class HomeViewController: ApplePayViewController {
     }
 
     private func showWelcomeMessage() {
-        if HomeViewController.newSubscriber {
-            HomeViewController.newSubscriber = false
+        if newSubscriber {
+            newSubscriber = false
             showMessage()
         }
     }
@@ -118,7 +118,7 @@ class HomeViewController: ApplePayViewController {
             }
     }
 
-    private func fetchProducts() {
+    internal func fetchProducts() {
         getProducts()
             .done { [weak self] products in
                 products.forEach { debugPrint($0) }
@@ -170,6 +170,12 @@ class HomeViewController: ApplePayViewController {
         } else {
             OstelcoAnalytics.logEvent(.UnlockMoreData)
             performSegue(withIdentifier: "becomeMember", sender: self)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "becomeMember", let toVC = segue.destination as? BecomeAMemberViewController {
+            toVC.homeViewController = self
         }
     }
 

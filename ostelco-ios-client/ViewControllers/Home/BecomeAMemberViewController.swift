@@ -19,7 +19,8 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     var paymentButton: PKPaymentButton?
     var membership: Product?
-    
+    var homeViewController: HomeViewController?
+
     lazy var linkableCopy: LinkableText = {
         return LinkableText(
             fullText: NSLocalizedString("To buy data you need to become an OYA member.\n\nAs an OYA member you keep your data forever.\n\n$1 = 1 year of membership.\n\nRead about our current prices", comment: "Explanation for why a user needs to become a member"),
@@ -154,7 +155,8 @@ class BecomeAMemberViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
-        HomeViewController.newSubscriber = true
+        homeViewController?.newSubscriber = true
+        homeViewController?.fetchProducts()
         cancelButtonTapped(self)
     }
 }
