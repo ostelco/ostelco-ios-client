@@ -23,7 +23,7 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     var paymentButton: PKPaymentButton?
     var membership: Product?
-    var delegate: BecomeAMemberDelegate?
+    weak var delegate: BecomeAMemberDelegate?
 
     lazy var linkableCopy: LinkableText = {
         return LinkableText(
