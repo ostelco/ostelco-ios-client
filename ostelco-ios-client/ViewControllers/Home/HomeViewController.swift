@@ -175,7 +175,7 @@ class HomeViewController: ApplePayViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "becomeMember", let toVC = segue.destination as? BecomeAMemberViewController {
-            toVC.homeViewController = self
+            toVC.delegate = self
         }
     }
 
@@ -209,5 +209,14 @@ class HomeViewController: ApplePayViewController {
         
         alertCtrl.addAction(.cancelAction())
         self.presentActionSheet(alertCtrl)
+    }
+}
+
+// MARK: - BecomeAMemberDelegate
+
+extension HomeViewController: BecomeAMemberDelegate {
+    func purchasedMembership() {
+        newSubscriber = true
+        fetchProducts()
     }
 }

@@ -12,6 +12,10 @@ import PromiseKit
 import Stripe
 import UIKit
 
+protocol BecomeAMemberDelegate: class {
+    func purchasedMembership()
+}
+
 class BecomeAMemberViewController: ApplePayViewController {
 
     @IBOutlet private var buttonContainer: UIView!
@@ -19,7 +23,7 @@ class BecomeAMemberViewController: ApplePayViewController {
 
     var paymentButton: PKPaymentButton?
     var membership: Product?
-    var homeViewController: HomeViewController?
+    var delegate: BecomeAMemberDelegate?
 
     lazy var linkableCopy: LinkableText = {
         return LinkableText(
@@ -155,8 +159,7 @@ class BecomeAMemberViewController: ApplePayViewController {
     }
 
     override func paymentSuccessful(_ product: Product?) {
-        homeViewController?.newSubscriber = true
-        homeViewController?.fetchProducts()
+        delegate?.purchasedMembership()
         cancelButtonTapped(self)
     }
 }
