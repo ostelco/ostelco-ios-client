@@ -13,7 +13,7 @@ import UIKit
 
 class HomeViewController: ApplePayViewController {
 
-    var newSubscriber = false
+    private var newSubscriber = false
 
     var availableProducts: [Product] = []
 
