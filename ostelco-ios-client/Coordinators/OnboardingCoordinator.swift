@@ -476,8 +476,6 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
             assert(context.regions.count == 1)
-            // swiftlint:disable:next empty_count
-            assert(context.regions.first!.fragments.regionDetailsFragment.simProfiles?.count == 0)
             let simProfile = RegionResponse.getRegionFromRegionResponseArray(context.regions.map({ $0.fragments.regionDetailsFragment }))?.getSimProfile()
             if let simProfile = simProfile {
                 return PromiseKit.Promise.value(simProfile)
@@ -500,7 +498,8 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
 }
 
 extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
-    func resendEmail() {
+    func resendEmail(controller: UIViewController) {
+        let spinnerView = controller.showSpinner()
         primeAPI.loadContext()
         .then { (context) -> PromiseKit.Promise<SimProfile> in
             let region = context.toLegacyModel().getRegion()!
@@ -516,6 +515,9 @@ extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
         .catch { [weak self] error in
             ApplicationErrors.log(error)
             self?.navigationController.showGenericError(error: error)
+        }
+        .finally {
+            controller.removeSpinner(spinnerView)
         }
     }
     

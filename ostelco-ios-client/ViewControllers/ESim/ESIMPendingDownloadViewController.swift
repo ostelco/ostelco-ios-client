@@ -12,19 +12,17 @@ import ostelco_core
 
 protocol ESIMPendingDownloadDelegate: class {
     func checkAgain()
-    func resendEmail()
+    func resendEmail(controller: UIViewController)
 }
 
 class ESIMPendingDownloadViewController: UIViewController {
     
     weak var delegate: ESIMPendingDownloadDelegate?
-    var spinnerView: UIView?
-    
+
     @IBOutlet private weak var continueButton: UIButton!
 
     @IBAction private func sendAgainTapped(_ sender: Any) {
-        spinnerView = showSpinner()
-        delegate?.resendEmail()
+        delegate?.resendEmail(controller: self)
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
