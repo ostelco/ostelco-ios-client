@@ -187,5 +187,41 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .ohNo(.ekycRejected))
     }
-
+    
+    // Edge cases where user has started on boarding, thus global context contains a region, but status is PENDING
+    func testUserHasSeenVerifyIdentityOnboardingWithNoSelectedCountryAndJumioPendingInNorway() {
+            let decider = StageDecider()
+            let localContext = LocalContext(hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+            
+            let context = Context(
+                customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+                regions: [
+                    RegionResponse(
+                        region: Region(id: "no", name: "Norway"),
+                        status: .PENDING,
+                        simProfiles: nil,
+                        kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+                    )
+                ])
+            
+            XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
+    }
+    
+    func testUserHasSeenVerifyIdentityOnboardingWithNoSelectedCountryAndJumioPendingInSingapore() {
+            let decider = StageDecider()
+            let localContext = LocalContext(hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+            
+            let context = Context(
+                customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
+                regions: [
+                    RegionResponse(
+                        region: Region(id: "sg", name: "Singapore"),
+                        status: .PENDING,
+                        simProfiles: nil,
+                        kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+                    )
+                ])
+            
+            XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
 }

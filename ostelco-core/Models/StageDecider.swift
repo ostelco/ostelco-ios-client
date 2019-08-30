@@ -210,6 +210,14 @@ public struct StageDecider {
                     midStages.append(contentsOf: [.jumio, .pendingVerification])
                 }
             }
+            if let gqlRegion = context.getRegion()?.region {
+                let options = identityOptionsForRegion(Region(gqlRegion: gqlRegion))
+                if options.count > 1 {
+                    midStages.append(.selectIdentityVerificationMethod(options))
+                } else {
+                    midStages.append(contentsOf: [.jumio, .pendingVerification])
+                }
+            }
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
