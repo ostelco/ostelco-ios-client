@@ -144,6 +144,8 @@
 		9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */; };
 		9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */; };
 		9B5CBF5622818A0F00D83D7B /* MockTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */; };
+		9B609A332303ED2900169599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B609A322303ED2900169599 /* Colors.xcassets */; };
+		9B609A342303F08E00169599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B609A322303ED2900169599 /* Colors.xcassets */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
 		9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */; };
 		9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
@@ -511,6 +513,7 @@
 		9B5CBF502281808B00D83D7B /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAuthUser+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenProvider.swift; sourceTree = "<group>"; };
+		9B609A322303ED2900169599 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPAPIClient+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfileRequest.swift; sourceTree = "<group>"; };
@@ -1061,6 +1064,7 @@
 				9B2576DE2296C53F00676D97 /* BackgroundRoundedImageView.swift */,
 				9B46D652226F1ADA0030A8EB /* UIColor+Pixel.swift */,
 				9BB6A796226F6514000D5E13 /* Info.plist */,
+				9B609A322303ED2900169599 /* Colors.xcassets */,
 			);
 			path = OstelcoStyles;
 			sourceTree = "<group>";
@@ -1503,6 +1507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B8AFF4722A12E3C00CC84B1 /* Telenor-Medium.otf in Resources */,
+				9B609A332303ED2900169599 /* Colors.xcassets in Resources */,
 				9B8AFF4822A12E3C00CC84B1 /* Telenor.otf in Resources */,
 				9B8AFF4622A12E3C00CC84B1 /* Telenor-Bold.otf in Resources */,
 			);
@@ -1533,6 +1538,7 @@
 				9BF27783225D15FE006428D5 /* Environment.plist in Resources */,
 				9B1745782276F66400CF321B /* TextEditCell.xib in Resources */,
 				9BF27781225D15FE006428D5 /* GoogleService-Info.plist in Resources */,
+				9B609A342303F08E00169599 /* Colors.xcassets in Resources */,
 				9B834B1422E01E47004F04F0 /* SignUp.storyboard in Resources */,
 				9B834AEC22E01E06004F04F0 /* LaunchScreen.storyboard in Resources */,
 				9B834B0C22E01E38004F04F0 /* OhNo.storyboard in Resources */,

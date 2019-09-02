@@ -75,7 +75,7 @@ class LocationProblemViewController: UIViewController {
             imageView.isHidden = false
             gifView.isHidden = true
             imageView.image = image
-        } else if let url = problem.videoURL {
+        } else if let url = problem.videoURL(for: traitCollection.userInterfaceStyle) {
             imageView.isHidden = true
             gifView.isHidden = false
             gifView.videoURL = url
