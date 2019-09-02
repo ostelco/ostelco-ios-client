@@ -23,7 +23,7 @@ class SignUpCompletedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifView.videoURL = GifVideo.rocket.url
+        gifView.videoURL = GifVideo.rocket.url(for: traitCollection.userInterfaceStyle)
         gifView.play()
         
         OstelcoAnalytics.logEvent(.SignUpCompleted)

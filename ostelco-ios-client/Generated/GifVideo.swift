@@ -20,9 +20,13 @@ enum GifVideo: String, CaseIterable {
     case taken
     case time
 
-    var url: URL {
-        guard let url = Bundle.main.url(forResource: self.rawValue, withExtension: "mp4", subdirectory: "gifMP4s") else {
-            fatalError("Couldn't get URL for video of gif \(self.rawValue)")
+    func url(for appearance: UIUserInterfaceStyle) -> URL {
+        var filename = self.rawValue
+        if appearance == .dark {
+            filename.append("_dark")
+        }
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp4", subdirectory: "gifMP4s") else {
+            fatalError("Couldn't get URL for video of gif \(filename)")
         }
 
         return url

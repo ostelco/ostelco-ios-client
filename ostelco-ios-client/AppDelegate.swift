@@ -67,16 +67,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        if
-            let bundleIndentifier = Bundle.main.bundleIdentifier,
-            bundleIndentifier.contains("dev") {
-                OstelcoColor.useDevColor = true
-        }
-        
         let mainColor = OstelcoColor.oyaBlue.toUIColor
-        UITabBar.appearance().tintColor = mainColor
-        UIToolbar.appearance().tintColor = mainColor
-        UINavigationBar.appearance().tintColor = mainColor
+        let tabAppearance = UITabBar.appearance()
+        tabAppearance.tintColor = mainColor
+        tabAppearance.barStyle = .black
+        
+        let toolbarAppearance = UIToolbar.appearance()
+        toolbarAppearance.tintColor = mainColor
+        toolbarAppearance.barStyle = .black
+        
+        let navigationAppearance = UINavigationBar.appearance()
+        navigationAppearance.tintColor = mainColor
+        navigationAppearance.barStyle = .black
+        navigationAppearance.shadowImage = UIImage()
     }
     
     // MARK: - Deeplink Handling

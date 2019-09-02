@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,34 +30,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="CYM-RT-YcS">
-                                <rect key="frame" x="24" y="207.66666666666666" width="25" height="25"/>
+                                <rect key="frame" x="24" y="207.66666666666666" width="50" height="49.999999999999972"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB6-Fg-o8Z" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="29.333333333333332" y="264.66666666666669" width="14.333333333333332" height="21"/>
+                                <rect key="frame" x="42" y="289.66666666666669" width="14.333333333333336" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="stepItemBulletLocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-gL-FXn" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="29.666666666666671" y="317.66666666666669" width="14" height="21"/>
+                                <rect key="frame" x="42" y="342.66666666666669" width="14" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="stepItemBulletLocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-ty-u2Y" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="209.66666666666666" width="120.33333333333331" height="21"/>
+                                <rect key="frame" x="90" y="222.33333333333334" width="120.33333333333331" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-NL-scm" customClass="UpdateTextGreyLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="64.999999999999986" y="264.66666666666669" width="146.66666666666663" height="21"/>
+                                <rect key="frame" x="89.999999999999986" y="289.66666666666669" width="146.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-pr-B2P" customClass="UpdateTextGreyLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="64.999999999999986" y="317.66666666666669" width="141.66666666666663" height="21"/>
+                                <rect key="frame" x="89.999999999999986" y="342.66666666666669" width="141.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -72,14 +71,17 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUr-Rx-edr" customClass="LinkTextButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="144" y="597" width="87" height="33"/>
-                                <state key="normal" title="Need help?"/>
+                                <state key="normal" title="Need help?">
+                                    <color key="titleColor" name="textLink"/>
+                                </state>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="LdJ-hc-ks3" eventType="touchUpInside" id="cP5-a0-uQj"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y2B-ty-u2Y" secondAttribute="trailing" symbolic="YES" id="3i6-GP-ZvH"/>
                             <constraint firstItem="9vV-Or-ngz" firstAttribute="top" secondItem="aUr-Rx-edr" secondAttribute="bottom" constant="34" id="5GQ-1j-J0R"/>
                             <constraint firstItem="wFK-Q1-eJN" firstAttribute="top" secondItem="sCM-Rj-d9a" secondAttribute="bottom" constant="32" id="6Fk-44-SKb"/>
                             <constraint firstItem="9vV-Or-ngz" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="24" id="6lc-4G-h89"/>
@@ -88,11 +90,11 @@
                             <constraint firstItem="CYM-RT-YcS" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="24" id="DBp-AC-avA"/>
                             <constraint firstItem="sCM-Rj-d9a" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="24" id="DI5-Rq-iHd"/>
                             <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" secondItem="wFK-Q1-eJN" secondAttribute="trailing" constant="24" id="Dnr-1w-dA1"/>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PW7-NL-scm" secondAttribute="trailing" symbolic="YES" id="HZi-xe-jH9"/>
                             <constraint firstItem="CYM-RT-YcS" firstAttribute="top" secondItem="wFK-Q1-eJN" secondAttribute="bottom" constant="32" id="JHe-fL-no5"/>
                             <constraint firstItem="PW7-NL-scm" firstAttribute="centerY" secondItem="fB6-Fg-o8Z" secondAttribute="centerY" id="N3g-jx-sFS"/>
                             <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" secondItem="sCM-Rj-d9a" secondAttribute="trailing" constant="24" id="NIP-gE-Lq4"/>
                             <constraint firstItem="hM8-XF-g1b" firstAttribute="bottom" secondItem="9vV-Or-ngz" secondAttribute="bottom" constant="64" id="PxJ-MZ-bJS"/>
-                            <constraint firstItem="9vV-Or-ngz" firstAttribute="centerX" secondItem="GkR-0X-0d9" secondAttribute="centerX" id="QSE-Iz-TWT"/>
                             <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" secondItem="9vV-Or-ngz" secondAttribute="trailing" constant="24" id="R7f-NZ-xCE"/>
                             <constraint firstItem="9ZK-gL-FXn" firstAttribute="centerX" secondItem="fB6-Fg-o8Z" secondAttribute="centerX" id="Tk9-Q4-Net"/>
                             <constraint firstItem="rxJ-pr-B2P" firstAttribute="leading" secondItem="PW7-NL-scm" secondAttribute="leading" id="b5n-Pf-9Ds"/>
@@ -102,6 +104,7 @@
                             <constraint firstItem="wFK-Q1-eJN" firstAttribute="leading" secondItem="hM8-XF-g1b" secondAttribute="leading" constant="24" id="i8n-yW-kCw"/>
                             <constraint firstItem="rxJ-pr-B2P" firstAttribute="centerY" secondItem="9ZK-gL-FXn" secondAttribute="centerY" id="qcr-8l-cgj"/>
                             <constraint firstItem="PW7-NL-scm" firstAttribute="leading" secondItem="Y2B-ty-u2Y" secondAttribute="leading" id="qvy-Wf-NTs"/>
+                            <constraint firstItem="hM8-XF-g1b" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rxJ-pr-B2P" secondAttribute="trailing" symbolic="YES" id="wMx-I3-CCX"/>
                             <constraint firstItem="Y2B-ty-u2Y" firstAttribute="centerY" secondItem="CYM-RT-YcS" secondAttribute="centerY" id="ybV-vL-bbH"/>
                             <constraint firstItem="aUr-Rx-edr" firstAttribute="centerX" secondItem="GkR-0X-0d9" secondAttribute="centerX" id="zPe-B5-6jf"/>
                         </constraints>
@@ -129,7 +132,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-mv-q3A" customClass="Heading2Label" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-S8-29C" customClass="PrimaryButton" customModule="OstelcoStyles">
@@ -141,7 +144,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crC-Wa-ajC" customClass="LinkTextButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="144" y="617" width="87" height="33"/>
-                                <state key="normal" title="Need help?"/>
+                                <state key="normal" title="Need help?">
+                                    <color key="titleColor" name="textLink"/>
+                                </state>
                                 <connections>
                                     <action selector="needHelpTapped:" destination="qUz-io-xXw" eventType="touchUpInside" id="RHk-kZ-MGj"/>
                                 </connections>
@@ -154,12 +159,17 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-xp-H1D">
                                 <rect key="frame" x="0.0" y="176" width="375" height="421"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="background"/>
+                                <color key="separatorColor" name="background"/>
+                                <color key="sectionIndexColor" name="text"/>
+                                <color key="sectionIndexBackgroundColor" name="background"/>
+                                <color key="sectionIndexTrackingBackgroundColor" name="background"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="crC-Wa-ajC" firstAttribute="centerX" secondItem="XbB-Nd-iwA" secondAttribute="centerX" id="2DR-cE-ERm"/>
+                            <constraint firstItem="5Kh-UI-MQa" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xqT-SW-me3" secondAttribute="trailing" symbolic="YES" id="33X-Rb-h99"/>
                             <constraint firstItem="xqT-SW-me3" firstAttribute="top" secondItem="Ndf-mv-q3A" secondAttribute="bottom" constant="27" id="9dZ-MF-4sI"/>
                             <constraint firstItem="Ndf-mv-q3A" firstAttribute="top" secondItem="5Kh-UI-MQa" secondAttribute="top" constant="44" id="Byr-b6-noD"/>
                             <constraint firstItem="5Kh-UI-MQa" firstAttribute="bottom" secondItem="ihi-S8-29C" secondAttribute="bottom" constant="44" id="Cm0-ZC-uFM"/>
@@ -198,7 +208,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-Ch-8LS" customClass="Heading2Label" customModule="OstelcoStyles">
                                 <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify that you are in Singapore in order to continue" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZq-29-s8v" customClass="BodyTextLabel" customModule="OstelcoStyles">
@@ -215,10 +225,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="fakeModalLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-Yo-QL8">
-                                <rect key="frame" x="32.666666666666657" y="204.66666666666663" width="310" height="268"/>
+                                <rect key="frame" x="-122.66666666666669" y="204.66666666666666" width="620.33333333333337" height="445.33333333333337"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iZq-29-s8v" secondAttribute="trailing" constant="24" id="0Cq-B4-voF"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="u9V-Ch-8LS" secondAttribute="trailing" constant="24" id="2iY-Do-M8J"/>
@@ -227,7 +237,6 @@
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="top" secondItem="9nq-pm-G8D" secondAttribute="top" constant="44" id="JBb-lV-fcV"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="44" id="Maw-Xq-FcE"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="1eB-vY-7gZ" secondAttribute="trailing" constant="24" id="Tom-r8-zng"/>
-                            <constraint firstItem="u9V-Ch-8LS" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="XDb-0K-VUH"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="24" id="aa4-Jm-7BO"/>
                             <constraint firstItem="1eB-vY-7gZ" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="24" id="nob-xI-rR6"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="tzd-69-KCB"/>
@@ -254,30 +263,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow location access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xri-W8-wUh" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="36"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTN-jC-vf4" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="704" width="327" height="30"/>
+                                <rect key="frame" x="24" y="684" width="327" height="50"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="primaryButtonTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="m8O-3N-uqn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-HB-ICT" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="148.66666666666666" y="642" width="78" height="30"/>
-                                <state key="normal" title="Need help?"/>
+                                <rect key="frame" x="144" y="619" width="87" height="33"/>
+                                <state key="normal" title="Need help?">
+                                    <color key="titleColor" name="textLink"/>
+                                </state>
                                 <connections>
                                     <action selector="needHelpTapped" destination="CPG-f2-Vgd" eventType="touchUpInside" id="Sjw-Zx-XAX"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="instructionsLocation" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-Rb-UgE">
-                                <rect key="frame" x="9" y="144" width="357" height="265"/>
+                                <rect key="frame" x="-169.66666666666666" y="142.66666666666666" width="714.33333333333337" height="331.33333333333337"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-b2-7aj" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="520.33333333333337" width="327" height="101.66666666666663"/>
+                                <rect key="frame" x="24" y="494" width="327" height="105"/>
                                 <string key="text">To give you mobile data, by law, we have to verify which country you’re in
 
 Please enable “Location Access” in Settings.</string>
@@ -286,11 +297,11 @@ Please enable “Location Access” in Settings.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-ru-tsI" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="9" y="144" width="357" height="265"/>
+                                <rect key="frame" x="-169.66666666666666" y="142.66666666666666" width="714.33333333333337" height="331.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="eCD-Rb-UgE" firstAttribute="top" secondItem="Xri-W8-wUh" secondAttribute="bottom" constant="20" id="0jL-BR-r04"/>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="24" id="1fp-eg-JvS"/>
@@ -299,7 +310,6 @@ Please enable “Location Access” in Settings.</string>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="IAI-Vb-4BI"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="top" secondItem="Dsi-HB-ICT" secondAttribute="bottom" constant="32" id="KJl-rM-P8A"/>
                             <constraint firstItem="Dsi-HB-ICT" firstAttribute="centerX" secondItem="Nly-Oz-x9M" secondAttribute="centerX" id="LPm-Gz-pOj"/>
-                            <constraint firstItem="qTN-jC-vf4" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Vrl-rx-8Jt"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="trailing" secondItem="qTN-jC-vf4" secondAttribute="trailing" constant="24" id="ZAX-7H-Rj2"/>
                             <constraint firstItem="Nly-Oz-x9M" firstAttribute="bottom" secondItem="qTN-jC-vf4" secondAttribute="bottom" constant="44" id="ZCu-4i-oGE"/>
                             <constraint firstItem="eCD-Rb-UgE" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="Zyh-3p-BHY"/>
@@ -360,8 +370,23 @@ Please enable “Location Access” in Settings.</string>
         <image name="fakeModalLocation" width="310" height="268"/>
         <image name="instructionsLocation" width="357" height="265"/>
         <image name="stepArrowIcon" width="25" height="25"/>
+        <namedColor name="background">
+            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="stepItemBulletLocked">
+            <color red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text">
+            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textHeading">
+            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textLink">
+            <color red="0.6705882352941176" green="0.62352941176470589" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7AW-gF-J98"/>
+        <segue reference="bMg-lB-hOd"/>
     </inferredMetricsTieBreakers>
 </document>

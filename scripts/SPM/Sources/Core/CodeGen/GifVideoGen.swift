@@ -28,6 +28,7 @@ struct GifVideoGen {
         
         let videos = mp4Folder.files
             .filter { $0.name.hasSuffix(self.videoPostfix) }
+            .filter { !$0.name.contains("_dark") }
             .map { $0.name.replacingOccurrences(of: self.videoPostfix, with: "") }
         
         let cases = videos
@@ -44,11 +45,15 @@ struct GifVideoGen {
         enum GifVideo: String, CaseIterable {
         \(cases)
         
-            var url: URL {
-                guard let url = Bundle.main.url(forResource: self.rawValue, withExtension: "mp4", subdirectory: "gifMP4s") else {
-                    fatalError("Couldn't get URL for video of gif \\(self.rawValue)")
+            func url(for appearance: UIUserInterfaceStyle) -> URL {
+                var filename = self.rawValue
+                if appearance == .dark {
+                    filename.append("_dark")
                 }
-        
+                guard let url = Bundle.main.url(forResource: filename, withExtension: "mp4", subdirectory: "gifMP4s") else {
+                    fatalError("Couldn't get URL for video of gif \\(filename)")
+                }
+
                 return url
             }
         }

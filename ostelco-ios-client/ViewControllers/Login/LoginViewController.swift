@@ -34,8 +34,8 @@ class LoginViewController: UIViewController {
         return PageControllerDataSource(
             pageController: pageController,
             viewControllers: pages,
-            pageIndicatorTintColor: OstelcoColor.paleGrey.toUIColor,
-            currentPageIndicatorTintColor: OstelcoColor.oyaBlue.toUIColor,
+            pageIndicatorTintColor: OstelcoColor.paginationInactive.toUIColor,
+            currentPageIndicatorTintColor: OstelcoColor.paginationActive.toUIColor,
             delegate: self
         )
     }()
