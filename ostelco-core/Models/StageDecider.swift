@@ -37,8 +37,9 @@ public class LocalContext {
     public var hasCompletedJumio: Bool // Needs to be persisted
     public var hasCompletedAddress: Bool
     public var serverIsUnreachable: Bool
+    public var hasCameraProblem: Bool
     
-    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
@@ -55,6 +56,7 @@ public class LocalContext {
         self.locationProblem = locationProblem
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
         self.hasSeenLocationPermissions = hasSeenLocationPermissions
+        self.hasCameraProblem = hasCameraProblem
         self.myInfoCode = myInfoCode
     }
 }
@@ -89,6 +91,7 @@ public struct StageDecider {
         case awesome
         case ohNo(OhNoIssueType)
         case locationProblem(LocationProblem)
+        case cameraProblem
     }
     
     public init() {}
@@ -172,7 +175,7 @@ public struct StageDecider {
         }
         
         // Mid Stages
-        var midStages: [Stage] = [.locationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
+        var midStages: [Stage] = [.cameraProblem, .locationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
         func remove(_ stage: StageDecider.Stage) {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
@@ -197,6 +200,10 @@ public struct StageDecider {
         
         if localContext.hasSeenVerifyIdentifyOnboarding {
             remove(.verifyIdentityOnboarding)
+        }
+        
+        if localContext.hasCameraProblem == false {
+            remove(.cameraProblem)
         }
         
         switch localContext.selectedVerificationOption {

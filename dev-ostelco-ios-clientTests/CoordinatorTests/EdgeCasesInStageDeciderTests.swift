@@ -12,6 +12,8 @@ import XCTest
 class EdgeCasesInStageDeciderTests: XCTestCase {
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.
     
+    let noRegions: [PrimeGQL.RegionDetailsFragment] = []
+    
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
         let localContext = LocalContext(hasFirebaseToken: true)
@@ -224,6 +226,14 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         )
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+    }
+    
+    func testShowCameraProblemBeforeJumioIfThereIsACameraProblem() {
+        let decider = StageDecider()
+        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true, hasCameraProblem: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .cameraProblem)
     }
 
 }

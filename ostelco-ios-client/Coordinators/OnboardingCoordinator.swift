@@ -48,6 +48,7 @@ class OnboardingCoordinator {
         primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
+                self.localContext.hasCameraProblem = AVCaptureDevice.authorizationStatus(for: .video) == .authorized
                 if let region = context.toLegacyModel().getRegion()?.region {
                     self.localContext.selectedRegion = Region(gqlRegion: region)
                 }
@@ -156,15 +157,9 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([nric], animated: true)
         case .jumio:
             if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
-                if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
-                    jumio.delegate = self
-                    jumio.startScan(from: navigationController)
-                    self.jumioCoordinator = jumio
-                } else {
-                    let cameraPermissions = AllowLocationAccessViewController.fromStoryboard()
-                    cameraPermissions.delegate = self
-                    navigationController.setViewControllers([cameraPermissions], animated: true)
-                }
+                jumio.delegate = self
+                jumio.startScan(from: navigationController)
+                self.jumioCoordinator = jumio
             }
         case .address:
             let addressController = AddressEditViewController.fromStoryboard()
@@ -185,6 +180,10 @@ class OnboardingCoordinator {
                 self?.advance()
             }
             navigationController.present(ohNo, animated: true, completion: nil)
+        case .cameraProblem:
+            let cameraPermissions = AllowLocationAccessViewController.fromStoryboard()
+            cameraPermissions.delegate = self
+            navigationController.setViewControllers([cameraPermissions], animated: true)
         }
     }
     
