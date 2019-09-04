@@ -85,6 +85,14 @@ public struct Headers {
             
             self.addValue(.token(token), for: .authorization)
         } // else adding auth is not necessary.
+        if let xMode = ProcessInfo.processInfo.environment["HTTP_HEADER_X_MODE"] {
+            if xMode == "prime-direct" {
+                self.addValue(.primeDirect, for: .mode)
+            }
+            if xMode == "canary" {
+                self.addValue(.primeCanary, for: .mode)
+            }
+        }
     }
     
     /// Adds the given value for the given key.

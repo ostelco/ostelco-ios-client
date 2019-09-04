@@ -27,7 +27,6 @@ class UserManager: TokenProvider {
                 Crashlytics.sharedInstance().setUserIdentifier(nil)
                 return
             }
-            
             Freshchat.sharedInstance().identifyUser(withExternalID: customer.id, restoreID: nil)
             let fcUser = FreshchatUser.sharedInstance()
             fcUser?.firstName = customer.nickname
