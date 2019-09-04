@@ -19,7 +19,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
         let regions: [PrimeGQL.RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nric)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
     }
 
     func testUserHasCompletedNRIC() {
@@ -33,7 +33,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .PENDING,
                     simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
                 )
             ]
         )
@@ -52,7 +52,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .PENDING,
                     simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
                 )
             ]
         )
