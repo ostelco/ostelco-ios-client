@@ -10,11 +10,18 @@ import CoreLocation
 import Foundation
 import PromiseKit
 
+public let CurrentCountryChanged: Notification.Name = Notification.Name(rawValue: "CurrentCountryChanged")
+
 open class LocationController: NSObject, CLLocationManagerDelegate {
     /// Singleton instance. Set up as a var for testing.
     public static var shared = LocationController()
     
-    public var currentCountry: Country?
+    public var currentCountry: Country? {
+        didSet {
+            assert(Thread.isMainThread)
+            NotificationCenter.default.post(name: CurrentCountryChanged, object: self)
+        }
+    }
     public var locationProblem: LocationProblem?
     
     /// Are location services currently enabled?

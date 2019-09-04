@@ -121,21 +121,14 @@ extension LoginViewController: StoryboardLoadable {
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
             let contactEmail = appleIDCredential.email
-            debugPrint(userIdentifier, fullName ?? "No name", contactEmail ?? "No Email")
-            if let data = appleIDCredential.identityToken {
-                debugPrint(String(data: data, encoding: .utf8) ?? "No Identity Token")
-            }
             if contactEmail == nil {
                 debugPrint("Email not provided at Sign In, create user will fail.")
             }
             guard let authCodeData = appleIDCredential.authorizationCode else {
                 print("No authorization code received at Sign In, cannot procced.")
                 return
-            }
+            }            
             if let authCode = String(data: authCodeData, encoding: .utf8) {
                 delegate?.signedIn(controller: self, authCode: authCode, contactEmail: contactEmail)
             }

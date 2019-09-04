@@ -9,7 +9,6 @@
 public enum OhNoIssueType: Equatable {
     case generic(code: String?)
     case ekycRejected
-    case myInfoFailed
     case noInternet
     case paymentFailedGeneric
     case paymentFailedCardDeclined
