@@ -33,7 +33,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .PENDING,
                     simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
                 )
             ]
         )
@@ -52,7 +52,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .PENDING,
                     simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
                 )
             ]
         )

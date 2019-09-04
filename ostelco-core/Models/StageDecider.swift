@@ -227,17 +227,23 @@ public struct StageDecider {
         }
         
         if localContext.hasSeenVerifyIdentifyOnboarding {
-            if let kycStatusMap = context.getRegion()?.kycStatusMap {
+            if let kycStatusMap = context.getRegion()?.kycStatusMap {                
                 if kycStatusMap.nricFin == .approved {
                     remove(.nric)
                 }
                 
-                if kycStatusMap.jumio == .approved {
-                    remove(.jumio)
-                }
                 if kycStatusMap.addressAndPhoneNumber == .approved {
                     remove(.address)
                 }
+                
+                if kycStatusMap.jumio == .approved {
+                    remove(.pendingVerification)
+                    remove(.jumio)
+                }
+                if kycStatusMap.jumio == .pending {
+                    remove(.jumio)
+                }
+                
                 if kycStatusMap.jumio == .rejected && localContext.hasCompletedJumio {
                     remove(.pendingVerification)
                     remove(.jumio)
