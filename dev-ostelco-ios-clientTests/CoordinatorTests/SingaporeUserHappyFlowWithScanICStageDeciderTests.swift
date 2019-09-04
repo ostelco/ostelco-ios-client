@@ -19,7 +19,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
         let regions: [PrimeGQL.RegionDetailsFragment] = []
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nric)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
     }
 
     func testUserHasCompletedNRIC() {

@@ -128,7 +128,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             guard let authCodeData = appleIDCredential.authorizationCode else {
                 print("No authorization code received at Sign In, cannot procced.")
                 return
-            }            
+            }
             if let authCode = String(data: authCodeData, encoding: .utf8) {
                 delegate?.signedIn(controller: self, authCode: authCode, contactEmail: contactEmail)
             }
