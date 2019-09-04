@@ -84,6 +84,8 @@
 		0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
+		04A63DED231E91BF00A12CAD /* AllowCameraAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */; };
+		04A63DEE231E91C400A12CAD /* AllowCameraAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */; };
 		04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -451,6 +453,7 @@
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
+		04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowCameraAccessViewController.swift; sourceTree = "<group>"; };
 		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -792,6 +795,7 @@
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
 				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
 				04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */,
+				04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */,
 			);
 			path = EKYC;
 			sourceTree = "<group>";
@@ -1978,6 +1982,7 @@
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
+				04A63DED231E91BF00A12CAD /* AllowCameraAccessViewController.swift in Sources */,
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
@@ -2178,6 +2183,7 @@
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
+				04A63DEE231E91C400A12CAD /* AllowCameraAccessViewController.swift in Sources */,
 				9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,

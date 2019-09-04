@@ -12,6 +12,7 @@ import UIKit
 import FirebaseAuth
 import UserNotifications
 import CoreLocation
+import AVFoundation
 
 protocol OnboardingCoordinatorDelegate: class {
     func onboardingComplete()
@@ -152,9 +153,15 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([nric], animated: true)
         case .jumio:
             if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
-                jumio.delegate = self
-                jumio.startScan(from: navigationController)
-                self.jumioCoordinator = jumio
+                if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+                    jumio.delegate = self
+                    jumio.startScan(from: navigationController)
+                    self.jumioCoordinator = jumio
+                } else {
+                    let cameraPermissions = AllowLocationAccessViewController.fromStoryboard()
+                    cameraPermissions.delegate = self
+                    navigationController.setViewControllers([cameraPermissions], animated: true)
+                }
             }
         case .address:
             let addressController = AddressEditViewController.fromStoryboard()
@@ -577,6 +584,12 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
     func checkStatus() {
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: AllowCameraAccessDelegate {
+    func cameraUsageAuthorized() {
         advance()
     }
 }
