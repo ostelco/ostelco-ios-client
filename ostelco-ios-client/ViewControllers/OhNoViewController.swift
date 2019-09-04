@@ -25,7 +25,7 @@ class OhNoViewController: UIViewController {
     static func fromStoryboard(type: OhNoIssueType) -> OhNoViewController {
         let vc = self.fromStoryboard()
         vc.displayTitle = type.displayTitle
-        vc.videoURL = type.gifVideo.url
+        vc.videoURL = type.gifVideo.url(for: vc.traitCollection.userInterfaceStyle)
         vc.buttonTitle = type.buttonTitle
         vc.boldableText = type.boldableText
         vc.linkableText = type.linkableText
@@ -139,7 +139,7 @@ extension OhNoIssueType {
         switch self {
         case .ekycRejected:
             return NSLocalizedString("EKYC Rejected", comment: "Error title when eKYC is rejected")
-        case .generic, .myInfoFailed:
+        case .generic:
             return NSLocalizedString("Oh no", comment: "Generic error title")
         case .noInternet:
             return NSLocalizedString("No internet connection", comment: "Error title for no internet.")
@@ -154,8 +154,7 @@ extension OhNoIssueType {
     
     var gifVideo: GifVideo {
         switch self {
-        case .generic,
-             .myInfoFailed:
+        case .generic:
             return .taken
         case .ekycRejected:
             return .blank_canvas
@@ -191,9 +190,6 @@ extension OhNoIssueType {
         case .ekycRejected:
             return BoldableText(fullText: NSLocalizedString("Something went wrong.\n\nTry again in a while, or contact support", comment: "Error explanation when eKYC is rejected."),
                                 boldedPortion: nil)
-        case .myInfoFailed:
-            return BoldableText(fullText: NSLocalizedString("We're unable to retrieve your info from MyInfo.\n\n. Try later.", comment: "Error explanation when MyInfo fails."),
-                                boldedPortion: nil)
         case .paymentFailedGeneric:
             return BoldableText(fullText: NSLocalizedString("Something went wrong in our system. We have not taken any money from your account. Try again in a while or contact customer support.", comment: "Generic error explanation when payment fails."),
                                 boldedPortion: nil)
@@ -208,8 +204,7 @@ extension OhNoIssueType {
     
     var buttonTitle: String {
         switch self {
-        case .generic,
-             .myInfoFailed:
+        case .generic:
             return NSLocalizedString("Try again", comment: "Retry button title when MyInfo fails.")
         case .ekycRejected:
             return NSLocalizedString("Retry", comment: "Retry button title when eKYC is rejected.")

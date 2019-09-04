@@ -15,7 +15,7 @@ open class OstelcoButton: UIButton {
     
     public let defaultCornerRadius: CGFloat = 8
     
-    public var appTitleColor: OstelcoColor = .blackForText {
+    public var appTitleColor: OstelcoColor = .text {
         didSet {
             self.setTitleColor(self.appTitleColor.toUIColor, for: .normal)
         }
@@ -132,7 +132,7 @@ public class LinkTextButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         
-        self.appTitleColor = .oyaBlue
+        self.appTitleColor = .textLink
         self.tintColor = self.appTitleColor.toUIColor
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .body)
@@ -143,7 +143,7 @@ public class PrimaryButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
-        self.appTitleColor = .white
+        self.appTitleColor = .primaryButtonLabel
         self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .body)
         
@@ -165,7 +165,7 @@ public class SmallButton: OstelcoButton {
                                               bottom: 7,
                                               right: 14)
         
-        self.appTitleColor = .white
+        self.appTitleColor = .primaryButtonLabel
         self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .body)
         self.addRoundingAndShadow(background: .oyaBlue)
@@ -176,7 +176,7 @@ public class BuyButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
-        self.appTitleColor = .white
+        self.appTitleColor = .primaryButtonLabel
         self.appFont = OstelcoFont(fontType: .bold, fontSize: .body)
         self.addRoundingAndShadow(background: .oyaBlue)
     }
@@ -210,7 +210,7 @@ public class CheckButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         
-        self.appTitleColor = .white
+        self.appTitleColor = .primaryButtonLabel
         self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .onboarding)
         self.tintColor = .white
@@ -272,7 +272,7 @@ public class RadioButton: OstelcoButton {
     
     public override func commonInit() {
         super.commonInit()
-        self.setupLayers(background: .oyaBlue)
+        self.setupLayers(background: .controlTint)
         self.configureForSelected()
     }
     
@@ -319,10 +319,10 @@ public class DropShadowButton: OstelcoButton {
         layer.path = UIBezierPath(roundedRect: self.bounds,
                                   cornerRadius: self.defaultCornerRadius).cgPath
         
-        layer.shadowColor = OstelcoColor.black.toUIColor.cgColor
+        layer.shadowColor = OstelcoColor.background.toUIColor.cgColor
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.1
-        layer.fillColor = OstelcoColor.white.toUIColor.cgColor
+        layer.fillColor = OstelcoColor.primaryButtonLabel.toUIColor.cgColor
         
         return layer
     }()
@@ -330,7 +330,7 @@ public class DropShadowButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         
-        self.appTitleColor = .blackForText
+        self.appTitleColor = .text
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .body)
         self.layer.insertSublayer(self.dropShadowLayer, at: 0)

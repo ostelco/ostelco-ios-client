@@ -58,7 +58,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LRu-69-U6d">
                                         <rect key="frame" x="97.5" y="20" width="180.5" height="42"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, OYA member! 🎉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkc-rS-fv8">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, OYA member! 🎉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkc-rS-fv8">
                                                 <rect key="frame" x="0.0" y="0.0" width="180.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -84,13 +84,21 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhk-vM-dWz">
+                                <rect key="frame" x="313" y="0.0" width="62" height="34"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NWm-c7-dac" firstAttribute="top" secondItem="bJl-FW-G7j" secondAttribute="top" id="0Wh-1Q-zXA"/>
+                            <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="Vhk-vM-dWz" secondAttribute="trailing" id="35N-ST-vio"/>
                             <constraint firstItem="bJl-FW-G7j" firstAttribute="bottom" secondItem="NWm-c7-dac" secondAttribute="bottom" id="7Kz-Lq-6d6"/>
                             <constraint firstItem="NWm-c7-dac" firstAttribute="leading" secondItem="bJl-FW-G7j" secondAttribute="leading" id="bjQ-80-kDR"/>
+                            <constraint firstItem="Vhk-vM-dWz" firstAttribute="top" secondItem="bJl-FW-G7j" secondAttribute="top" id="fG2-Bb-Jj4"/>
                             <constraint firstItem="bJl-FW-G7j" firstAttribute="trailing" secondItem="NWm-c7-dac" secondAttribute="trailing" id="mgQ-iB-iGy"/>
+                            <constraint firstItem="Vhk-vM-dWz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bJl-FW-G7j" secondAttribute="leading" id="yBf-wA-rw0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bJl-FW-G7j"/>
                     </view>
@@ -98,6 +106,7 @@
                     <connections>
                         <outlet property="balanceLabel" destination="T7Z-5F-Y8h" id="Blu-YQ-ilY"/>
                         <outlet property="buyButton" destination="Pp6-nC-kNd" id="Q3S-X3-8lD"/>
+                        <outlet property="countryButton" destination="Vhk-vM-dWz" id="eae-xW-rir"/>
                         <outlet property="messageLabel" destination="Qse-5o-vGa" id="q9g-PE-vYF"/>
                         <outlet property="scrollView" destination="NWm-c7-dac" id="axl-vo-8Qh"/>
                         <outlet property="welcomeLabel" destination="qkc-rS-fv8" id="E3f-Fd-HHE"/>
@@ -117,13 +126,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY" customClass="Heading1Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="133" width="325" height="123.5"/>
+                                <rect key="frame" x="25" y="133" width="325" height="119.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member.  As an OYA member you keep your data forever.  $1 = 1 year of membership." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="281.5" width="325" height="147"/>
+                                <rect key="frame" x="25" y="277.5" width="325" height="142.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

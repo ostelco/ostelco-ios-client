@@ -191,9 +191,10 @@ public struct StageDecider {
             remove(.regionOnboarding)
         }
         if context.getRegion() != nil {
-            remove(.regionOnboarding)
             remove(.selectRegion)
+            remove(.regionOnboarding)
         }
+        
         if localContext.hasSeenVerifyIdentifyOnboarding {
             remove(.verifyIdentityOnboarding)
         }
@@ -203,7 +204,7 @@ public struct StageDecider {
             midStages.append(.jumio)
         case .none:
             if let region = localContext.selectedRegion {
-                let options = identityOptionsForRegion(region)
+                let options = identityOptionsForRegionID(region.id)
                 if options.count > 1 {
                     midStages.append(.selectIdentityVerificationMethod(options))
                 } else {
@@ -225,29 +226,43 @@ public struct StageDecider {
             remove(.jumio)
         }
         
-        if let kycStatusMap = context.getRegion()?.kycStatusMap {
-            if kycStatusMap.nricFin == .approved {
-                remove(.nric)
-            }
-            if kycStatusMap.jumio == .approved {
-                remove(.jumio)
-            }
-            if kycStatusMap.addressAndPhoneNumber == .approved {
-                remove(.address)
-            }
-            if kycStatusMap.jumio == .rejected {
-                remove(.pendingVerification)
-                remove(.jumio)
-                midStages.append(.ohNo(.ekycRejected))
+        if localContext.hasSeenVerifyIdentifyOnboarding {
+            if let kycStatusMap = context.getRegion()?.kycStatusMap {
+                if kycStatusMap.nricFin == .approved {
+                    remove(.nric)
+                }
+                
+                if kycStatusMap.jumio == .approved {
+                    remove(.jumio)
+                }
+                if kycStatusMap.addressAndPhoneNumber == .approved {
+                    remove(.address)
+                }
+                if kycStatusMap.jumio == .rejected && localContext.hasCompletedJumio {
+                    remove(.pendingVerification)
+                    remove(.jumio)
+                    midStages.append(.ohNo(.ekycRejected))
+                }
             }
         }
         
-        return midStages.first ?? .home
+        if midStages.isEmpty {
+            if let region = context.getRegion()?.region {
+                let options = identityOptionsForRegionID(region.id)
+                if options.count > 1 {
+                    midStages.append(.selectIdentityVerificationMethod(options))
+                } else {
+                    midStages.append(contentsOf: [.jumio, .pendingVerification])
+                }
+            }
+        }
+        
+        return midStages[0]
     }
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
-    private func identityOptionsForRegion(_ region: Region) -> [IdentityVerificationOption] {
-        if region.id.lowercased() == "sg" {
+    private func identityOptionsForRegionID(_ id: String) -> [IdentityVerificationOption] {
+        if id.lowercased() == "sg" {
             return [.scanIC, .singpass]
         }
         return [.jumio]

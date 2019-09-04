@@ -12,7 +12,7 @@ import UIKit
 public class BackgroundRoundedImageView: UIImageView {
     
     var appBackgroundColor: OstelcoColor = .oyaBlue
-    var appTintColor: OstelcoColor = .white
+    var appTintColor: OstelcoColor = .primaryButtonLabel
     
     private func commonInit() {
         self.clipsToBounds = true

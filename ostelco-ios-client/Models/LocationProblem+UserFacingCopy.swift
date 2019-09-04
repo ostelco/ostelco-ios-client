@@ -26,7 +26,7 @@ extension LocationProblem {
     }
     
     /// The URL of the gif video to show. If nil, there is no gif video.
-    var videoURL: URL? {
+    func videoURL(for appearance: UIUserInterfaceStyle) -> URL? {
         switch self {
         case .disabledInSettings,
              .notDetermined:
@@ -34,7 +34,7 @@ extension LocationProblem {
         case .deniedByUser,
              .restrictedByParentalControls,
              .authorizedButWrongCountry:
-            return GifVideo.location.url
+            return GifVideo.location.url(for: appearance)
         }
     }
     
