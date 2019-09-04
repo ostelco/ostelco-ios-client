@@ -214,7 +214,7 @@ public struct StageDecider {
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.nric, .jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: [.jumio, .address, .pendingVerification])
         }
         
         if let code = localContext.myInfoCode {
