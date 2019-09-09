@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-ostelco-ios-ostelco-ios-client/Pods-ostelco-ios-ostelco-ios-client-resources.sh
+${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCResources.bundle
+${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FreshchatModels.bundle
+${PODS_ROOT}/FreshchatSDK/FreshchatSDK/FCLocalization.bundle
