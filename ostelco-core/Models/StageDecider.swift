@@ -227,7 +227,7 @@ public struct StageDecider {
         }
         
         if localContext.hasSeenVerifyIdentifyOnboarding {
-            if let kycStatusMap = context.getRegion()?.kycStatusMap {                
+            if let kycStatusMap = context.getRegion()?.kycStatusMap {
                 if kycStatusMap.nricFin == .approved {
                     remove(.nric)
                 }
