@@ -2506,6 +2506,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.4;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D PROD";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = Oya;
@@ -2538,6 +2539,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.4;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D PROD";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = Oya;
@@ -2803,7 +2805,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.4;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DENABLE_SKIP_USER_LOCATION_CHECK";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "Oya-Development";
@@ -2836,11 +2838,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.4;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
 				PRODUCT_NAME = "Oya-Development";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore sg.redotter.dev.selfcare";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ostelco-ios-client/SupportingFiles/ostelco-ios-client-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
