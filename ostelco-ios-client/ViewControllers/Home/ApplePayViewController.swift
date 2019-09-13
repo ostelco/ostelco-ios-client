@@ -15,7 +15,7 @@ import ostelco_core
 // This is the base class for both HomeViewController and SetupApplePayViewController
 // 1) Adds properties defined by the ApplePayDelegate protocol
 // 2) Adds @objc methods for PKPaymentAuthorizationViewControllerDelegate
-// This class coudn't be avoided due to the issue described in the following link.
+// This class couldn't be avoided due to the issue described in the following link.
 // TL;DR: @objc functions may not currently be in protocol extensions.
 // You could create a base class instead, though that's not an ideal solution.
 // https://stackoverflow.com/questions/39487168/non-objc-method-does-not-satisfy-optional-requirement-of-objc-protocol
