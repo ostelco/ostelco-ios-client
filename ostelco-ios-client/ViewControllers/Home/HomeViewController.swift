@@ -198,6 +198,8 @@ class HomeViewController: ApplePayViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "becomeMember", let toVC = segue.destination as? BecomeAMemberViewController {
             toVC.delegate = self
+        } else if segue.identifier == "setupApplePay", let toVC = segue.destination as? SetupApplePayViewController {
+            toVC.delegate = self
         }
     }
 
@@ -209,7 +211,30 @@ class HomeViewController: ApplePayViewController {
         let formattedBalance = self.byteCountFormatter.string(fromByteCount: bundle.balance)
         self.balanceLabel.dataAmountString = formattedBalance
     }
-    
+
+    private func showSetupApplePay() -> Bool {
+        var showSetup = false
+        let applePayError: ApplePayError? = canMakePayments()
+        switch applePayError {
+        case .unsupportedDevice?:
+            debugPrint("Apple Pay is not supported on this device")
+            showSetup = true
+        case .noSupportedCards?:
+            debugPrint("No supported cards setup in Apple Pay")
+            showSetup = true
+        case .otherRestrictions?:
+            debugPrint("Some restriction with Apple Pay")
+            showSetup = true
+        default:
+            debugPrint("Apple Pay is already setup")
+            showSetup = false
+        }
+        if showSetup {
+            performSegue(withIdentifier: "setupApplePay", sender: self)
+        }
+        return showSetup
+    }
+
     private func showProductListActionSheet(products: [Product]) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
@@ -217,7 +242,10 @@ class HomeViewController: ApplePayViewController {
                 #if STRIPE_PAYMENT
                     self.startStripePay(product: product)
                 #else
+                // Before we start payment, check if Apple pay is setup correctly.
+                if !self.showSetupApplePay() {
                     self.startApplePay(product: product)
+                }
                 #endif
             }
             alertCtrl.addAction(buyAction)
@@ -240,5 +268,17 @@ extension HomeViewController: BecomeAMemberDelegate {
     func purchasedMembership() {
         newSubscriber = true
         fetchProducts()
+    }
+}
+
+// MARK: - SetupApplePayViewControllerDelegate
+
+extension HomeViewController: SetupApplePayViewControllerDelegate {
+    func didFinish(sender: SetupApplePayViewController) {
+        dismiss(animated: true)
+    }
+
+    func didCancel(sender: SetupApplePayViewController) {
+        dismiss(animated: true)
     }
 }

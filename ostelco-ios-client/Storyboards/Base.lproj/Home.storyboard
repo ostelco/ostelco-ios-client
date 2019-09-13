@@ -111,6 +111,7 @@
                         <outlet property="scrollView" destination="NWm-c7-dac" id="axl-vo-8Qh"/>
                         <outlet property="welcomeLabel" destination="qkc-rS-fv8" id="E3f-Fd-HHE"/>
                         <segue destination="HJs-Qd-Tb4" kind="show" identifier="becomeMember" id="J5k-QY-FBi"/>
+                        <segue destination="w7e-1K-bt8" kind="presentation" identifier="setupApplePay" id="Wwq-bE-yFs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vn4-ct-ShT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,13 +127,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a member" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-nD-qoY" customClass="Heading1Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="133" width="325" height="119.5"/>
+                                <rect key="frame" x="25" y="133" width="325" height="123.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To buy data you need to become an OYA member.  As an OYA member you keep your data forever.  $1 = 1 year of membership." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4T-iY-aet" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="25" y="277.5" width="325" height="142.5"/>
+                                <rect key="frame" x="25" y="281.5" width="325" height="147"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -178,6 +179,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPG-MG-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.8" y="-541.07946026986508"/>
+        </scene>
+        <!--Setup Apple Pay View Controller-->
+        <scene sceneID="bky-NW-zQY">
+            <objects>
+                <viewController storyboardIdentifier="SetupApplePayViewController" id="w7e-1K-bt8" customClass="SetupApplePayViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wuk-Pj-opM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OYA uses Apple Pay" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuW-Eo-O6c" customClass="Heading1Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="25" y="133" width="325" height="123.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd6-DT-Y5K" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="25" y="281.5" width="325" height="147"/>
+                                <string key="text">For now, we only accept payment through Apple Pay.  Please click on the buton below to set it up.  Read about our current prices.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72U-0M-vhZ">
+                                <rect key="frame" x="25" y="12" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="w7e-1K-bt8" eventType="touchUpInside" id="atq-3t-PE7"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJr-SR-24A">
+                                <rect key="frame" x="25" y="542" width="325" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="knY-73-nMC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nJr-SR-24A" firstAttribute="leading" secondItem="8S4-6u-i9x" secondAttribute="leading" constant="25" id="916-WX-a9r"/>
+                            <constraint firstItem="JuW-Eo-O6c" firstAttribute="leading" secondItem="8S4-6u-i9x" secondAttribute="leading" constant="25" id="AAR-cj-ZHN"/>
+                            <constraint firstItem="8S4-6u-i9x" firstAttribute="trailing" secondItem="nJr-SR-24A" secondAttribute="trailing" constant="25" id="Bja-hN-8Qp"/>
+                            <constraint firstItem="Kd6-DT-Y5K" firstAttribute="trailing" secondItem="JuW-Eo-O6c" secondAttribute="trailing" id="Fld-1N-ZKA"/>
+                            <constraint firstItem="Kd6-DT-Y5K" firstAttribute="leading" secondItem="JuW-Eo-O6c" secondAttribute="leading" id="MFN-H2-LFF"/>
+                            <constraint firstItem="Kd6-DT-Y5K" firstAttribute="top" secondItem="JuW-Eo-O6c" secondAttribute="bottom" constant="25" id="PrC-HA-SbI"/>
+                            <constraint firstItem="8S4-6u-i9x" firstAttribute="bottom" secondItem="nJr-SR-24A" secondAttribute="bottom" constant="50" id="WIG-U3-rqt"/>
+                            <constraint firstItem="8S4-6u-i9x" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="72U-0M-vhZ" secondAttribute="trailing" constant="10" id="Ybx-Vg-P46"/>
+                            <constraint firstItem="72U-0M-vhZ" firstAttribute="leading" secondItem="8S4-6u-i9x" secondAttribute="leading" constant="25" id="ZFa-IA-6Vw"/>
+                            <constraint firstItem="72U-0M-vhZ" firstAttribute="top" secondItem="8S4-6u-i9x" secondAttribute="top" constant="12" id="npQ-Or-uO0"/>
+                            <constraint firstItem="8S4-6u-i9x" firstAttribute="trailing" secondItem="JuW-Eo-O6c" secondAttribute="trailing" constant="25" id="rQO-0k-FtP"/>
+                            <constraint firstItem="JuW-Eo-O6c" firstAttribute="top" secondItem="8S4-6u-i9x" secondAttribute="top" constant="133" id="xAE-i0-xL6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8S4-6u-i9x"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonContainer" destination="nJr-SR-24A" id="e9p-6t-RE3"/>
+                        <outlet property="explanatoryCopyLabel" destination="Kd6-DT-Y5K" id="egk-kx-Igw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VW7-2d-x24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2732" y="-511"/>
         </scene>
     </scenes>
     <resources>

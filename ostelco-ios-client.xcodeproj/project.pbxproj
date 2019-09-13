@@ -323,6 +323,8 @@
 		C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2EAE822785C0C00010586 /* AppErrors.swift */; };
 		C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2EAE822785C0C00010586 /* AppErrors.swift */; };
+		C2D500EC2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */; };
+		C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -638,6 +640,7 @@
 		C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRecord.swift; sourceTree = "<group>"; };
 		C2D2EAE822785C0C00010586 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
+		C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApplePayViewController.swift; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -820,6 +823,7 @@
 				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
+				C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1949,6 +1953,7 @@
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				C2D500EC2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
 				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
@@ -2149,6 +2154,7 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
+				C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
