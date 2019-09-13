@@ -48,7 +48,7 @@
                                                     <constraint firstAttribute="height" constant="55" id="r5t-mf-ph7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <state key="normal" title="Unlock More Data"/>
+                                                <state key="normal" title="Buy Data"/>
                                                 <connections>
                                                     <action selector="buyDataTapped:" destination="nTN-zT-UGw" eventType="touchUpInside" id="f6O-hN-iIq"/>
                                                 </connections>

@@ -12,7 +12,7 @@ import PromiseKit
 import Stripe
 import ostelco_core
 
-// This is the base class for both HomeViewController and BecomeAMemberViewController
+// This is the base class for both HomeViewController and SetupApplePayViewController
 // 1) Adds properties defined by the ApplePayDelegate protocol
 // 2) Adds @objc methods for PKPaymentAuthorizationViewControllerDelegate
 // This class coudn't be avoided due to the issue described in the following link.
