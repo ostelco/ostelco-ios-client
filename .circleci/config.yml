@@ -65,7 +65,7 @@ jobs:
           command: bundle exec pod install --verbose
       - run:
           name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.0) [" || true
+          command: xcrun instruments -w "iPhone Xs Max (13.0) [" || true
       - run:
           name: Fastlane
           command: bundle exec fastlane test
