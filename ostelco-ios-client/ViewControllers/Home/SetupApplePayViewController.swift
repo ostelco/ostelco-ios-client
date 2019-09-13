@@ -20,23 +20,20 @@ class SetupApplePayViewController: ApplePayViewController {
     var paymentButton: PKPaymentButton?
     var membership: Product?
 
-    lazy var linkableCopy: LinkableText = {
-        return LinkableText(
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.explanatoryCopyLabel.tapDelegate = self
+        if let linkableCopy = LinkableText(
             fullText: NSLocalizedString("For now, we only accept payment through  Visa, Mastercard and American Express through Apple Pay.\n\nPlease click on the button below to set it up.\n\nRead about our current prices", comment: "Explanation for why a user need to setup Apple Pay"),
             linkedBits: [
                 Link(
                     NSLocalizedString("Read about our current prices", comment: "Explanation for why a user need to setup Apple Pay: linkable part: current prices"),
                     url: ExternalLink.currentPricing.url
                 ),
-            ])!
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.explanatoryCopyLabel.tapDelegate = self
-        self.explanatoryCopyLabel.setLinkableText(self.linkableCopy)
-
+        ]) {
+            self.explanatoryCopyLabel.setLinkableText(linkableCopy)
+        }
         setupPaymentButton()
     }
 
