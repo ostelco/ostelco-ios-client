@@ -12,6 +12,11 @@ import PromiseKit
 import Stripe
 import UIKit
 
+protocol SetupApplePayViewControllerDelegate: class {
+    func didFinish(sender: SetupApplePayViewController)
+    func didCancel(sender: SetupApplePayViewController)
+}
+
 class SetupApplePayViewController: ApplePayViewController {
 
     @IBOutlet private var buttonContainer: UIView!
@@ -19,6 +24,8 @@ class SetupApplePayViewController: ApplePayViewController {
 
     var paymentButton: PKPaymentButton?
     var membership: Product?
+
+    weak var delegate:SetupApplePayViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +77,11 @@ class SetupApplePayViewController: ApplePayViewController {
     @objc func setUpButtonTapped() {
         PKPassLibrary().openPaymentSetup()
         // Go back to home screen.
-        dismiss(animated: true)
+        delegate?.didFinish(sender: self)
     }
 
     @IBAction private func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        delegate?.didCancel(sender: self)
     }
 }
 
