@@ -25,7 +25,7 @@ class SetupApplePayViewController: ApplePayViewController {
     var paymentButton: PKPaymentButton?
     var membership: Product?
 
-    weak var delegate:SetupApplePayViewControllerDelegate?
+    weak var delegate: SetupApplePayViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

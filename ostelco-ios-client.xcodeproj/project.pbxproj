@@ -74,8 +74,6 @@
 		04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
 		04834D7E2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
 		04834D7F2237D53700A01500 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D7D2237D53700A01500 /* UserManager.swift */; };
-		0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
-		0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */; };
 		048533A0223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048533A1223C1882007C89F4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485339F223C1882007C89F4 /* Product.swift */; };
 		048C78812191ED430041F135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04488172217924B800F59758 /* Assets.xcassets */; };
@@ -447,7 +445,6 @@
 		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		04834D7D2237D53700A01500 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeAMemberViewController.swift; sourceTree = "<group>"; };
 		0485339F223C1882007C89F4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0485E5CE2197BCC400758738 /* Bugsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugsee.framework; path = Carthage/Build/iOS/Bugsee.framework; sourceTree = "<group>"; };
 		0485E5D52197C9B200758738 /* ostelco-ios-client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ostelco-ios-client-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -818,7 +815,6 @@
 			isa = PBXGroup;
 			children = (
 				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
-				0485339C223C1307007C89F4 /* BecomeAMemberViewController.swift */,
 				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
 				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
@@ -1980,7 +1976,6 @@
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
-				0485339D223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
@@ -2160,7 +2155,6 @@
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
-				0485339E223C1307007C89F4 /* BecomeAMemberViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
