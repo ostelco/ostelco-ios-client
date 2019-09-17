@@ -160,7 +160,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     // Findout if we can make payments on this device.
     func canMakePayments() -> ApplePayError? {
         let deviceAllowed = PKPaymentAuthorizationViewController.canMakePayments()
-        let cardNetworks: [PKPaymentNetwork] = [.amex, .visa, .masterCard, .discover]
+        let cardNetworks: [PKPaymentNetwork] = [.amex, .visa, .masterCard]
         let cardsAllowed = PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: cardNetworks)
         let stripeAllowed = Stripe.deviceSupportsApplePay()
         switch (deviceAllowed, cardsAllowed, stripeAllowed) {

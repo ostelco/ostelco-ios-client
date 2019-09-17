@@ -18,6 +18,7 @@ class NeedHelpAlertController: UIAlertController {
         }
         self.addAction(supportAction)
         
+        #if DEV
         if UserManager.shared.customer != nil {
             let startOverAction = UIAlertAction.destructiveAction(title: "Start Again") { _ in
                 UserManager.shared.deleteAccount(showingIn: viewController)
@@ -31,6 +32,8 @@ class NeedHelpAlertController: UIAlertController {
             }
             self.addAction(logOutAction)
         }
+        
+        #endif
         
         self.addAction(.cancelAction())
     }

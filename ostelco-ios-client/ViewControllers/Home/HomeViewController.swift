@@ -26,30 +26,20 @@ class HomeViewController: ApplePayViewController {
     @IBOutlet private weak var messageLabel: UILabel!
     @IBOutlet private weak var welcomeLabel: UILabel!
 
-    let unlockText = NSLocalizedString("Unlock More Data", comment: "Primary action button before user is a member")
     let buyText = NSLocalizedString("Buy Data", comment: "Primary action button on Home")
     let refreshBalanceText = NSLocalizedString("Updating data balance...", comment: "Loading text while determining data balance.")
 
     private lazy var refreshControl = UIRefreshControl()
-    var hasSubscription = false {
-        didSet {
-            buyButton.setTitle(
-                (hasSubscription == false) ? unlockText : buyText,
-                for: .normal
-            )
-            if hasSubscription {
-                showWelcomeMessage()
-            }
-        }
-    }
-    
+
     private lazy var byteCountFormatter: ByteCountFormatter = {
         let formatter = ByteCountFormatter()
         formatter.countStyle = .binary
         return formatter
     }()
 
-    private func showMessage() {
+    private func showToppedUpMessage() {
+        welcomeLabel.text = NSLocalizedString("You have been topped up! 🎉", comment: "Success message when user buys more data.")
+        messageLabel.text = NSLocalizedString("Thanks for using OYA", comment: "Thank you message when user buys more data")
         welcomeLabel.alpha = 1.0
         messageLabel.alpha = 1.0
         UIView.animate(
@@ -57,37 +47,16 @@ class HomeViewController: ApplePayViewController {
             delay: 2.0,
             options: .curveEaseIn,
             animations: {  [weak self] in
-                self?.hideMessages()
+                self?.hideMessage()
             },
             completion: nil)
     }
 
-    private func hideMessages() {
+    private func hideMessage() {
         welcomeLabel.alpha = 0.0
         messageLabel.alpha = 0.0
     }
 
-    private func showWelcomeMessage() {
-        if newSubscriber {
-            newSubscriber = false
-            showMessage()
-        }
-    }
-
-    private func showToppedUpMessage() {
-        welcomeLabel.text = NSLocalizedString("You have been topped up! 🎉", comment: "Success message when user buys more data.")
-        messageLabel.text = NSLocalizedString("Thanks for using OYA", comment: "Thank you message when user buys more data")
-        showMessage()
-    }
-
-    private func checkForSubscription(_ products: [Product]) -> Bool {
-        // See if the list contains offers.
-        // TODO: Changes needed to support global app.
-        let hasOffers = products.contains { $0.type != "membership" }
-        // If we have offers, user is already a member
-        return hasOffers
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -95,6 +64,7 @@ class HomeViewController: ApplePayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        buyButton.setTitle(buyText, for: .normal)
         registerForPushNotificationsIfNeeded()
         balanceLabel.dataAmountString = nil
 
@@ -147,11 +117,7 @@ class HomeViewController: ApplePayViewController {
             guard let self = self else {
                 return
             }
-            
             self.availableProducts = products
-            // Check if the customer is a member already.
-            self.hasSubscription = self.checkForSubscription(products)
-            debugPrint("User has subscription ? \(self.hasSubscription)")
         }
         .catch { error in
             ApplicationErrors.log(error)
@@ -180,23 +146,17 @@ class HomeViewController: ApplePayViewController {
     }
 
     @objc func didPullToRefresh() {
-        hideMessages()
+        hideMessage()
         refreshBalance()
     }
 
     @IBAction private func buyDataTapped(_ sender: Any) {
-        if hasSubscription {
-            // TODO: Should we show the plans here ?
-            OstelcoAnalytics.logEvent(.BuyDataClicked)
-            showProductListActionSheet(products: self.availableProducts)
-        } else {
-            OstelcoAnalytics.logEvent(.UnlockMoreData)
-            performSegue(withIdentifier: "becomeMember", sender: self)
-        }
+        OstelcoAnalytics.logEvent(.BuyDataClicked)
+        showProductListActionSheet(products: self.availableProducts)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "becomeMember", let toVC = segue.destination as? BecomeAMemberViewController {
+        if segue.identifier == "setupApplePay", let toVC = segue.destination as? SetupApplePayViewController {
             toVC.delegate = self
         }
     }
@@ -209,7 +169,30 @@ class HomeViewController: ApplePayViewController {
         let formattedBalance = self.byteCountFormatter.string(fromByteCount: bundle.balance)
         self.balanceLabel.dataAmountString = formattedBalance
     }
-    
+
+    private func showSetupApplePay() -> Bool {
+        var showSetup = false
+        let applePayError: ApplePayError? = canMakePayments()
+        switch applePayError {
+        case .unsupportedDevice?:
+            debugPrint("Apple Pay is not supported on this device")
+            showSetup = true
+        case .noSupportedCards?:
+            debugPrint("No supported cards setup in Apple Pay")
+            showSetup = true
+        case .otherRestrictions?:
+            debugPrint("Some restriction with Apple Pay")
+            showSetup = true
+        default:
+            debugPrint("Apple Pay is already setup")
+            showSetup = false
+        }
+        if showSetup {
+            performSegue(withIdentifier: "setupApplePay", sender: self)
+        }
+        return showSetup
+    }
+
     private func showProductListActionSheet(products: [Product]) {
         let alertCtrl = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for product in products {
@@ -217,7 +200,10 @@ class HomeViewController: ApplePayViewController {
                 #if STRIPE_PAYMENT
                     self.startStripePay(product: product)
                 #else
+                // Before we start payment, check if Apple pay is setup correctly.
+                if !self.showSetupApplePay() {
                     self.startApplePay(product: product)
+                }
                 #endif
             }
             alertCtrl.addAction(buyAction)
@@ -234,11 +220,14 @@ class HomeViewController: ApplePayViewController {
     }
 }
 
-// MARK: - BecomeAMemberDelegate
+// MARK: - SetupApplePayViewControllerDelegate
 
-extension HomeViewController: BecomeAMemberDelegate {
-    func purchasedMembership() {
-        newSubscriber = true
-        fetchProducts()
+extension HomeViewController: SetupApplePayViewControllerDelegate {
+    func didFinish(sender: SetupApplePayViewController) {
+        dismiss(animated: true)
+    }
+
+    func didCancel(sender: SetupApplePayViewController) {
+        dismiss(animated: true)
     }
 }

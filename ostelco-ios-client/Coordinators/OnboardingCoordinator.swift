@@ -157,9 +157,10 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([nric], animated: true)
         case .jumio:
             if let country = localContext.selectedRegion?.country, let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
+                self.jumioCoordinator = jumio
+                
                 jumio.delegate = self
                 jumio.startScan(from: navigationController)
-                self.jumioCoordinator = jumio
             }
         case .address:
             let addressController = AddressEditViewController.fromStoryboard()
