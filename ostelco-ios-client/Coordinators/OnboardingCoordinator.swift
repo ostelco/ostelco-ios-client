@@ -48,7 +48,7 @@ class OnboardingCoordinator {
         primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
-                self.localContext.hasCameraProblem = AVCaptureDevice.authorizationStatus(for: .video) == .authorized
+                self.localContext.hasCameraProblem = AVCaptureDevice.authorizationStatus(for: .video) != .authorized
                 if let region = context.toLegacyModel().getRegion()?.region {
                     self.localContext.selectedRegion = Region(gqlRegion: region)
                 }

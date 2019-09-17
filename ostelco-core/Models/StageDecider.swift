@@ -202,12 +202,9 @@ public struct StageDecider {
             remove(.verifyIdentityOnboarding)
         }
         
-        if localContext.hasCameraProblem == false {
-            remove(.cameraProblem)
-        }
-        
         switch localContext.selectedVerificationOption {
         case .jumio:
+            midStages.append(.cameraProblem)
             midStages.append(.jumio)
         case .none:
             if let region = localContext.selectedRegion {
@@ -215,13 +212,17 @@ public struct StageDecider {
                 if options.count > 1 {
                     midStages.append(.selectIdentityVerificationMethod(options))
                 } else {
-                    midStages.append(contentsOf: [.jumio, .pendingVerification])
+                    midStages.append(contentsOf: [.cameraProblem, .jumio, .pendingVerification])
                 }
             }
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: [.cameraProblem, .jumio, .address, .pendingVerification])
+        }
+        
+        if localContext.hasCameraProblem == false {
+            remove(.cameraProblem)
         }
         
         if let code = localContext.myInfoCode {
