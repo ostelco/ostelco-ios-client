@@ -211,6 +211,13 @@ class OnboardingCoordinator {
             completionHandler()
         }
     }
+    
+    private func hasMultipleIdentityOptions() -> Bool {
+        if let region = localContext.selectedRegion {
+            return stageDecider.identityOptionsForRegionID(region.id).count > 1
+        }
+        return false
+    }
 }
 
 extension OnboardingCoordinator: LoginDelegate {
@@ -386,8 +393,13 @@ extension OnboardingCoordinator: LocationProblemDelegate {
 extension OnboardingCoordinator: VerifyIdentityOnboardingDelegate {
     func showFirstStepAfterLanding() {
         localContext.hasSeenVerifyIdentifyOnboarding = true
-        checkCameraAccess {
-            self.advance()
+        if hasMultipleIdentityOptions() {
+            advance()
+        } else {
+            // If it's only one option, it's default jumio which requires camera access.
+            checkCameraAccess {
+                self.advance()
+            }
         }
     }
 }
@@ -618,6 +630,12 @@ extension OnboardingCoordinator: PendingVerificationDelegate {
 
 extension OnboardingCoordinator: AllowCameraAccessDelegate {
     func cameraUsageAuthorized() {
+        advance()
+    }
+    
+    func chooseAnotherMethod() {
+        localContext.hasSeenVerifyIdentifyOnboarding = false
+        localContext.selectedVerificationOption = nil
         advance()
     }
 }

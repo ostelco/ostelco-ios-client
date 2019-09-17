@@ -275,7 +275,7 @@ public struct StageDecider {
     }
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
-    private func identityOptionsForRegionID(_ id: String) -> [IdentityVerificationOption] {
+    public func identityOptionsForRegionID(_ id: String) -> [IdentityVerificationOption] {
         if id.lowercased() == "sg" {
             return [.scanIC, .singpass]
         }
