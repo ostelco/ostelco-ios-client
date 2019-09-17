@@ -48,7 +48,6 @@ class OnboardingCoordinator {
         primeAPI.loadContext()
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
-                self.localContext.hasCameraProblem = AVCaptureDevice.authorizationStatus(for: .video) != .authorized
                 if let region = context.toLegacyModel().getRegion()?.region {
                     self.localContext.selectedRegion = Region(gqlRegion: region)
                 }
@@ -182,7 +181,7 @@ class OnboardingCoordinator {
             }
             navigationController.present(ohNo, animated: true, completion: nil)
         case .cameraProblem:
-            let cameraPermissions = AllowLocationAccessViewController.fromStoryboard()
+            let cameraPermissions = AllowCameraAccessViewController.fromStoryboard()
             cameraPermissions.delegate = self
             navigationController.setViewControllers([cameraPermissions], animated: true)
         }
@@ -204,6 +203,13 @@ class OnboardingCoordinator {
             localContext.locationProblem = controller.locationProblem
         }
         advance()
+    }
+    
+    private func checkCameraAccess(completionHandler: @escaping () -> Void) {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { hasCameraAccess in
+            self.localContext.hasCameraProblem = !hasCameraAccess
+            completionHandler()
+        }
     }
 }
 
@@ -380,14 +386,24 @@ extension OnboardingCoordinator: LocationProblemDelegate {
 extension OnboardingCoordinator: VerifyIdentityOnboardingDelegate {
     func showFirstStepAfterLanding() {
         localContext.hasSeenVerifyIdentifyOnboarding = true
-        advance()
+        checkCameraAccess {
+            self.advance()
+        }
     }
 }
 
 extension OnboardingCoordinator: SelectIdentityVerificationMethodDelegate {
     func selected(option: IdentityVerificationOption) {
         localContext.selectedVerificationOption = option
-        advance()
+        switch option {
+        case .scanIC, .jumio:
+            checkCameraAccess {
+                self.advance()
+            }
+        default:
+            advance()
+        }
+        
     }
 }
 

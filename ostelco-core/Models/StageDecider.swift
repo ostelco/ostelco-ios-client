@@ -175,7 +175,7 @@ public struct StageDecider {
         }
         
         // Mid Stages
-        var midStages: [Stage] = [.cameraProblem, .locationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
+        var midStages: [Stage] = [.locationPermissions, .regionOnboarding, .selectRegion, .verifyIdentityOnboarding]
         func remove(_ stage: StageDecider.Stage) {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
