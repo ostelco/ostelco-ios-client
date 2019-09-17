@@ -29,7 +29,16 @@ class AllowLocationAccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descriptionLabel.text = "xxx"
+        descriptionLabel.tapDelegate = self
+        descriptionLabel.setLinkableText(
+            LinkableText(
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify that you’re in Singapore", comment: "Explanation for location permissions before user is prompted."),
+                linkedPortion: Link(
+                    NSLocalizedString("by law", comment: "Explanation for location permissions before user is prompted: linkable part"),
+                    url: URL(string: "https://oya.sg")!
+                )
+            )!
+        )
     }
     
     @IBAction private func continueTapped(_ sender: Any) {
@@ -65,6 +74,12 @@ class AllowLocationAccessViewController: UIViewController {
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")
         }
+    }
+}
+
+extension AllowLocationAccessViewController: LabelTapDelegate {
+    func tappedLink(_ link: Link) {
+        UIApplication.shared.open(link.url, options: [:], completionHandler: nil)
     }
 }
 

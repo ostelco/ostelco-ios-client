@@ -9,16 +9,17 @@ jobs:
       FASTLANE_LANE: beta
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      CPATH: "$(xcrun --show-sdk-path)/usr/include"
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
       - restore_cache:
-          key: "v2-gems"
+          key: "v3-gems"
       - run:
           name: Install with bundler
           command: bundle check || bundle install --path .bundle
       - save_cache:
-          key: "v2-gems"
+          key: "v3-gems"
           paths: ["./.bundle"]
       # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
       - run:
@@ -44,16 +45,17 @@ jobs:
       FL_OUTPUT_DIR: output
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      CPATH: "$(xcrun --show-sdk-path)/usr/include"
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
       - restore_cache:
-          key: "v2-gems"
+          key: "v3-gems"
       - run:
           name: Install with bundler
           command: bundle check || bundle install --path .bundle
       - save_cache:
-          key: "v2-gems"
+          key: "v3-gems"
           paths: ["./.bundle"]
       # Download CocoaPods specs via HTTPS (faster than Git or `pod outdated`)
       - run:
@@ -65,7 +67,7 @@ jobs:
           command: bundle exec pod install --verbose
       - run:
           name: pre-start simulator
-          command: xcrun instruments -w "iPhone X (12.0) [" || true
+          command: xcrun instruments -w "iPhone 11 Pro Max (13.0) [" || true
       - run:
           name: Fastlane
           command: bundle exec fastlane test

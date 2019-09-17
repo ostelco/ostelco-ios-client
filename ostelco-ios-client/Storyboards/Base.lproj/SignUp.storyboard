@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q2B-DW-NZJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q2B-DW-NZJ">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,19 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The legal stuff" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBH-PE-WSS" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Before you can proceed you must read and accept the terms &amp; conditions. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-xy-nGB" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="138.66666666666666" width="343" height="42"/>
+                                <rect key="frame" x="16" y="137.66666666666666" width="343" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tio-Qz-bgJ">
-                                <rect key="frame" x="72" y="280.66666666666669" width="231" height="44"/>
+                                <rect key="frame" x="72" y="278.33333333333331" width="231" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XH-1y-ENz" customClass="CheckButton" customModule="OstelcoStyles">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -55,7 +54,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="In2-Pj-tD4">
-                                <rect key="frame" x="72" y="342.66666666666669" width="231" height="44"/>
+                                <rect key="frame" x="72" y="340.33333333333331" width="231" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKo-ag-iar" customClass="CheckButton" customModule="OstelcoStyles">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -94,7 +93,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Yg1-bc-UOR">
-                                <rect key="frame" x="72" y="404.66666666666669" width="231" height="44"/>
+                                <rect key="frame" x="72" y="402.33333333333331" width="231" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7I-ar-SNO" customClass="CheckButton" customModule="OstelcoStyles">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -169,13 +168,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow push notifications" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dam-4t-AgC" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you let us, we'll let you know when your 1GB is ready to use" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4R-BI-FHP" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="138.66666666666666" width="343" height="42"/>
+                                <rect key="frame" x="16" y="137.66666666666666" width="343" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -230,19 +229,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Started" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58z-OV-xk5" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT SHOULD WE CALL YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-qY-Xwu" customClass="InputFieldHeadlineLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="178.66666666666666" width="172.33333333333334" height="16.333333333333343"/>
+                                <rect key="frame" x="16" y="177.66666666666666" width="192.66666666666666" height="15.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g Jolly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-mX-GWu" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="201.33333333333334" width="375" height="44"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <accessibility key="accessibilityConfiguration" hint="test"/>
                                 <color key="textColor" name="inputBackground"/>
@@ -302,7 +301,7 @@
         <image name="check" width="14" height="12"/>
         <image name="fakeModalNotifications" width="291" height="204"/>
         <namedColor name="background">
-            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="black">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
