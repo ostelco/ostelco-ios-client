@@ -167,7 +167,6 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(info.residentialStatus, "C")
         XCTAssertEqual(info.sex, "F")
         
-        XCTAssertEqual(info.address.country, "SG")
         XCTAssertEqual(info.address.unit, "128")
         XCTAssertEqual(info.address.street, "BEDOK NORTH AVENUE 4")
         XCTAssertEqual(info.address.block, "102")
@@ -187,13 +186,14 @@ class MockAPITests: XCTestCase {
     }
     
     func testMockCreatingAddress() {
-        let address = EKYCAddress(street: "123 Fake Street",
+        let address = EKYCAddress(floor: "123",
                                   unit: "3",
-                                  city: "Fake City",
-                                  postcode: "12345",
-                                  country: "Singapore")
+                                  block: "123",
+                                  building: "32",
+                                  street: "123 Fake Street",
+                                  postcode: "12345")
         
-        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=123%20Fake%20Street;;;3;;;Fake%20City;;;12345;;;Singapore&phoneNumber=12345678", statusCode: 204)
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=123;;;3;;;123;;;32;;;123%20Fake%20Street;;;12345&phoneNumber=12345678", statusCode: 204)
         
         // Failure handled in `awaitResult`
         self.mockAPI.addAddress(address, forRegion: "sg").awaitResult(in: self)
@@ -206,7 +206,7 @@ class MockAPITests: XCTestCase {
                 XCTFail("Couldn't load test info details or create update!")
                 return
         }
-        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=102%20BEDOK%20NORTH%20AVENUE%204%0A460102%20SG&phoneNumber=+6597399245", statusCode: 204)
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=%2309-128,%20102%20PEARL%20GARDEN%0ABEDOK%20NORTH%20AVENUE%204,%20460102&phoneNumber=+6597399245", statusCode: 204)
         
         self.mockAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
     }

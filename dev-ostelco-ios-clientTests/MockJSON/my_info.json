@@ -79,5 +79,45 @@
         "building": {
             "value": "PEARL GARDEN"
         }
+    },
+    "regadd": {
+        "country": {
+            "code": "SG",
+            "desc": "SINGAPORE"
+        },
+        "unit": {
+            "value": "128"
+        },
+        "street": {
+            "value": "BEDOK NORTH AVENUE 4"
+        },
+        "lastupdated": "2019-09-17",
+        "block": {
+            "value": "102"
+        },
+        "source": "1",
+        "postal": {
+            "value": "460102"
+        },
+        "classification": "C",
+        "floor": {
+            "value": "09"
+        },
+        "type": "SG",
+        "building": {
+            "value": "PEARL GARDEN"
+        }
+    },
+    "passexpirydate": {
+        "lastupdated": "2019-09-17",
+        "source": "3",
+        "classification": "C",
+        "value": ""
+    },
+    "uinfin": {
+        "lastupdated": "2019-09-17",
+        "source": "1",
+        "classification": "C",
+        "value": "S9812381D"
     }
 }

@@ -9,10 +9,6 @@
 import Foundation
 
 public struct MyInfoAddress: Codable {
-    private let _country: MyInfoOptionalCode?
-    public var country: String? {
-        return _country?.code
-    }
     private let _unit: MyInfoOptionalValue?
     public var unit: String? {
         return _unit?.value
@@ -39,7 +35,6 @@ public struct MyInfoAddress: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case _country = "country"
         case _unit = "unit"
         case _street = "street"
         case _block = "block"
@@ -48,34 +43,50 @@ public struct MyInfoAddress: Codable {
         case _building = "building"
     }
 
-    public init(country: String?,
+    public init(floor: String?,
                 unit: String?,
-                street: String?,
                 block: String?,
-                postal: String?,
-                floor: String?,
-                building: String?) {
-        self._country = MyInfoOptionalCode(code: country, description: nil)
-        self._unit = MyInfoOptionalValue(value: unit)
-        self._street = MyInfoOptionalValue(value: street)
-        self._block = MyInfoOptionalValue(value: block)
-        self._postal = MyInfoOptionalValue(value: postal)
+                building: String?,
+                street: String?,
+                postal: String?
+    ) {
         self._floor = MyInfoOptionalValue(value: floor)
+        self._unit = MyInfoOptionalValue(value: unit)
+        self._block = MyInfoOptionalValue(value: block)
         self._building = MyInfoOptionalValue(value: building)
+        self._street = MyInfoOptionalValue(value: street)
+        self._postal = MyInfoOptionalValue(value: postal)
+    }
+    
+    public var floorAndUnit: String {
+        var addressBits = [String]()
+        if let floor = self.floor {
+            addressBits.append("#\(floor)")
+        }
+        addressBits.appendIfNotNil(self.unit, string: { $0 })
+        return addressBits.joined(separator: "-")
+    }
+    
+    public var blockAndBuilding: String {
+        var addressBits = [String]()
+        addressBits.appendIfNotNil(self.block, string: { $0 })
+        addressBits.appendIfNotNil(self.building, string: { $0 })
+        return addressBits.joined(separator: " ")
     }
     
     public var addressLine1: String {
         var addressBits = [String]()
-        addressBits.appendIfNotNil(self.block, string: { $0 })
-        addressBits.appendIfNotNil(self.street, string: { $0 })
-        return addressBits.joined(separator: " ")
+        addressBits.appendIfNotEmpty(self.floorAndUnit)
+        addressBits.appendIfNotEmpty(self.blockAndBuilding)
+        return addressBits.joined(separator: ", ")
     }
     
     public var addressLine2: String {
         var addressBits = [String]()
+        
+        addressBits.appendIfNotNil(self.street, string: { $0 })
         addressBits.appendIfNotNil(self.postal, string: { $0 })
-        addressBits.appendIfNotNil(self.country, string: { $0 })
-        return addressBits.joined(separator: " ")
+        return addressBits.joined(separator: ", ")
     }
     
     public var formattedAddress: String {
@@ -83,6 +94,10 @@ public struct MyInfoAddress: Codable {
         addressBits.appendIfNotEmpty(self.addressLine1)
         addressBits.appendIfNotEmpty(self.addressLine2)
         return addressBits.joined(separator: "\n")
+    }
+    
+    public var isEmpty: Bool {
+        return formattedAddress.isEmpty
     }
 }
 
@@ -116,14 +131,42 @@ public struct MyInfoDetails: Codable {
         return _nationality?.code
     }
     
-    public var address: MyInfoAddress
+    public var _mailadd: MyInfoAddress
+    public var _regadd: MyInfoAddress
+    
+    private let _passexpirydate: MyInfoRequiredValue
+    public var passExpiryDate: String {
+        return _passexpirydate.value
+    }
+    
+    private let _uinfin: MyInfoRequiredValue
+    public var uinfin: String {
+        return _uinfin.value
+    }
+    
+    public var address: MyInfoAddress {
+        get {
+            if !_regadd.isEmpty {
+                return _regadd
+            } else {
+                return _mailadd
+            }
+        }
+        set {
+            _regadd = newValue
+        }
+    }
+    
     public let mobileNumber: MyInfoMobileNumber?
     
     enum CodingKeys: String, CodingKey {
         case _name = "name"
         case _dob = "dob"
         case _email = "email"
-        case address = "mailadd"
+        case _mailadd = "mailadd"
+        case _regadd = "regadd"
+        case _passexpirydate = "passexpirydate"
+        case _uinfin = "uinfin"
         case _sex = "sex"
         case _residentialStatus = "residentialstatus"
         case _nationality = "nationality"

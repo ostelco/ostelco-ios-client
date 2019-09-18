@@ -12,14 +12,15 @@ public struct EKYCAddress: Codable {
     public let address: String
     public let phoneNumber: String
     
-    public init(street: String,
+    public init(floor: String,
                 unit: String,
-                city: String,
+                block: String,
+                building: String,
+                street: String,
                 postcode: String,
-                country: String,
                 phone: String = "12345678") {
         self.phoneNumber = phone
-        self.address = "\(street);;;\(unit);;;\(city);;;\(postcode);;;\(country)"
+        self.address = "\(floor);;;\(unit);;;\(block);;;\(building);;;\(street);;;\(postcode)"
     }
     
     public enum CodingKeys: String, CodingKey {
