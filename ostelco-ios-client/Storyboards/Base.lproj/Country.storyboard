@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,46 +17,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Mikayla!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCM-Rj-d9a" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 1GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFK-Q1-eJN" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="153.66666666666666" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="154.66666666666666" width="327" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="CYM-RT-YcS">
-                                <rect key="frame" x="24" y="206" width="50" height="50"/>
+                                <rect key="frame" x="24" y="207" width="50" height="50"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB6-Fg-o8Z" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="42" y="288" width="14.333333333333336" height="21"/>
+                                <rect key="frame" x="42" y="289" width="14.333333333333336" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="stepItemBulletLocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZK-gL-FXn" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="42" y="341" width="14" height="21"/>
+                                <rect key="frame" x="42" y="342" width="14" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="stepItemBulletLocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-ty-u2Y" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="90" y="220.66666666666666" width="121.66666666666669" height="21"/>
+                                <rect key="frame" x="90" y="221.66666666666666" width="121.66666666666669" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-NL-scm" customClass="UpdateTextGreyLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="89.999999999999986" y="288" width="143.66666666666663" height="21"/>
+                                <rect key="frame" x="89.999999999999986" y="289" width="143.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxJ-pr-B2P" customClass="UpdateTextGreyLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="89.999999999999986" y="341.33333333333331" width="145.66666666666663" height="20.333333333333314"/>
+                                <rect key="frame" x="89.999999999999986" y="342.33333333333331" width="145.66666666666663" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-mv-q3A" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
@@ -151,13 +151,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHICH COUNTRY ARE YOU IN?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqT-SW-me3" customClass="InputFieldHeadlineLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="148.66666666666666" width="193.66666666666666" height="15.666666666666657"/>
+                                <rect key="frame" x="16" y="149.66666666666666" width="193.66666666666666" height="15.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-xp-H1D">
-                                <rect key="frame" x="0.0" y="174.33333333333334" width="375" height="422.66666666666663"/>
+                                <rect key="frame" x="0.0" y="175.33333333333334" width="375" height="421.66666666666663"/>
                                 <color key="backgroundColor" name="background"/>
                                 <color key="separatorColor" name="background"/>
                                 <color key="sectionIndexColor" name="text"/>
@@ -304,6 +304,7 @@ Please enable “Location Access” in Settings.</string>
                         <constraints>
                             <constraint firstItem="eCD-Rb-UgE" firstAttribute="top" secondItem="Xri-W8-wUh" secondAttribute="bottom" constant="20" id="0jL-BR-r04"/>
                             <constraint firstAttribute="trailing" secondItem="gj0-b2-7aj" secondAttribute="trailing" constant="24" id="1fp-eg-JvS"/>
+                            <constraint firstItem="08o-ru-tsI" firstAttribute="top" secondItem="Xri-W8-wUh" secondAttribute="bottom" constant="20" id="2ec-MP-U5c"/>
                             <constraint firstItem="qTN-jC-vf4" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="Bkm-Aa-qIB"/>
                             <constraint firstItem="08o-ru-tsI" firstAttribute="trailing" secondItem="eCD-Rb-UgE" secondAttribute="trailing" id="I8b-rh-Gmn"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="IAI-Vb-4BI"/>
@@ -316,9 +317,11 @@ Please enable “Location Access” in Settings.</string>
                             <constraint firstItem="08o-ru-tsI" firstAttribute="leading" secondItem="eCD-Rb-UgE" secondAttribute="leading" id="dHw-ga-bz9"/>
                             <constraint firstItem="Xri-W8-wUh" firstAttribute="leading" secondItem="Nly-Oz-x9M" secondAttribute="leading" constant="24" id="ob1-pW-cff"/>
                             <constraint firstItem="gj0-b2-7aj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eCD-Rb-UgE" secondAttribute="bottom" constant="20" id="oiP-OG-C2M"/>
+                            <constraint firstItem="Dsi-HB-ICT" firstAttribute="centerX" secondItem="s2r-4F-yqD" secondAttribute="centerX" id="pig-kk-3vF"/>
                             <constraint firstAttribute="trailing" secondItem="Xri-W8-wUh" secondAttribute="trailing" constant="24" id="rRn-eF-c7Y"/>
                             <constraint firstItem="Dsi-HB-ICT" firstAttribute="top" secondItem="gj0-b2-7aj" secondAttribute="bottom" constant="20" id="rRu-Li-Hg7"/>
                             <constraint firstItem="08o-ru-tsI" firstAttribute="bottom" secondItem="eCD-Rb-UgE" secondAttribute="bottom" id="wex-cV-HRo"/>
+                            <constraint firstItem="qTN-jC-vf4" firstAttribute="top" secondItem="Dsi-HB-ICT" secondAttribute="bottom" constant="32" id="xV3-wz-iJk"/>
                             <constraint firstItem="08o-ru-tsI" firstAttribute="top" secondItem="eCD-Rb-UgE" secondAttribute="top" id="xZt-1E-ZQ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nly-Oz-x9M"/>
@@ -386,6 +389,6 @@ Please enable “Location Access” in Settings.</string>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7AW-gF-J98"/>
+        <segue reference="bMg-lB-hOd"/>
     </inferredMetricsTieBreakers>
 </document>

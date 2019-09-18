@@ -46,7 +46,9 @@ extension UIViewController {
                                       message: msg,
                                       preferredStyle: .alert)
         alert.addAction(.okAction(completion: completion))
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
     
     /// Method to compensate for action sheet crashes on the iPad

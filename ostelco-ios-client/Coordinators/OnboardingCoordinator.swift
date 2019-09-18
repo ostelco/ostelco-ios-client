@@ -12,6 +12,7 @@ import UIKit
 import FirebaseAuth
 import UserNotifications
 import CoreLocation
+import AVFoundation
 
 protocol OnboardingCoordinatorDelegate: class {
     func onboardingComplete()
@@ -179,6 +180,10 @@ class OnboardingCoordinator {
                 self?.advance()
             }
             navigationController.present(ohNo, animated: true, completion: nil)
+        case .cameraProblem:
+            let cameraPermissions = AllowCameraAccessViewController.fromStoryboard()
+            cameraPermissions.delegate = self
+            navigationController.setViewControllers([cameraPermissions], animated: true)
         }
     }
     
@@ -198,6 +203,20 @@ class OnboardingCoordinator {
             localContext.locationProblem = controller.locationProblem
         }
         advance()
+    }
+    
+    private func checkCameraAccess(completionHandler: @escaping () -> Void) {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { hasCameraAccess in
+            self.localContext.hasCameraProblem = !hasCameraAccess
+            completionHandler()
+        }
+    }
+    
+    private func hasMultipleIdentityOptions() -> Bool {
+        if let region = localContext.selectedRegion {
+            return stageDecider.identityOptionsForRegionID(region.id).count > 1
+        }
+        return false
     }
 }
 
@@ -374,14 +393,29 @@ extension OnboardingCoordinator: LocationProblemDelegate {
 extension OnboardingCoordinator: VerifyIdentityOnboardingDelegate {
     func showFirstStepAfterLanding() {
         localContext.hasSeenVerifyIdentifyOnboarding = true
-        advance()
+        if hasMultipleIdentityOptions() {
+            advance()
+        } else {
+            // If it's only one option, it's default jumio which requires camera access.
+            checkCameraAccess {
+                self.advance()
+            }
+        }
     }
 }
 
 extension OnboardingCoordinator: SelectIdentityVerificationMethodDelegate {
     func selected(option: IdentityVerificationOption) {
         localContext.selectedVerificationOption = option
-        advance()
+        switch option {
+        case .scanIC, .jumio:
+            checkCameraAccess {
+                self.advance()
+            }
+        default:
+            advance()
+        }
+        
     }
 }
 
@@ -590,6 +624,18 @@ extension OnboardingCoordinator: JumioCoordinatorDelegate {
 
 extension OnboardingCoordinator: PendingVerificationDelegate {
     func checkStatus() {
+        advance()
+    }
+}
+
+extension OnboardingCoordinator: AllowCameraAccessDelegate {
+    func cameraUsageAuthorized() {
+        advance()
+    }
+    
+    func chooseAnotherMethod() {
+        localContext.hasSeenVerifyIdentifyOnboarding = false
+        localContext.selectedVerificationOption = nil
         advance()
     }
 }

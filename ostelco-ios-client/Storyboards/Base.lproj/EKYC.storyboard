@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GWU-ht-SLC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GWU-ht-SLC">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,25 +23,25 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-WU-PTF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="723"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="735.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is the info  we fetched:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-pg-vOP" customClass="Heading2Label" customModule="OstelcoStyles">
-                                                <rect key="frame" x="20" y="20" width="335" height="67"/>
+                                                <rect key="frame" x="20" y="20" width="335" height="69.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                 <color key="textColor" name="textHeading"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2a9-PM-8In">
-                                                <rect key="frame" x="20" y="107.00000000000001" width="335" height="45.666666666666671"/>
+                                                <rect key="frame" x="20" y="109.33333333333334" width="335" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D94-lP-OFd" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mikayla Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb4-Ah-ciY" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="25.333333333333343" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -50,16 +49,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iBw-zz-bkJ">
-                                                <rect key="frame" x="20" y="172.66666666666666" width="335" height="45.666666666666657"/>
+                                                <rect key="frame" x="20" y="176.33333333333334" width="335" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUA-Fs-z7i" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpD-51-Wtt" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="25.333333333333343" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -67,16 +66,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="M1r-TT-wbZ">
-                                                <rect key="frame" x="20" y="238.33333333333329" width="335" height="44.666666666666657"/>
+                                                <rect key="frame" x="20" y="243.33333333333331" width="335" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-fQ-byD" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000-01-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRB-FC-L17" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="24.333333333333371" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="25" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -84,16 +83,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="a2a-3Z-cK8">
-                                                <rect key="frame" x="20" y="303" width="335" height="45.666666666666686"/>
+                                                <rect key="frame" x="20" y="309.33333333333331" width="335" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nationality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq2-GQ-kKJ" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singaporean" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-dh-cCO" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="25.333333333333314" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -101,16 +100,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-X0-4iT">
-                                                <rect key="frame" x="20" y="368.66666666666669" width="335" height="45.666666666666686"/>
+                                                <rect key="frame" x="20" y="376.33333333333331" width="335" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residential status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfN-cA-Hcq" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citizen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlL-EN-MCH" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="25.333333333333314" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -118,25 +117,25 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cyq-mY-d2n">
-                                                <rect key="frame" x="20" y="434.33333333333331" width="335" height="66"/>
+                                                <rect key="frame" x="20" y="443.33333333333331" width="335" height="68"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-m5-yI3" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jL8-pj-gT3">
-                                                        <rect key="frame" x="0.0" y="25.333333333333368" width="335" height="40.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="26.000000000000057" width="335" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Coronation Rd 078881 Singapore" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ky-Ux-hgl" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                                <rect key="frame" x="0.0" y="0.0" width="269" height="40.666666666666664"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="268" height="42"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw2-9i-yMz" customClass="SmallButton" customModule="OstelcoStyles">
-                                                                <rect key="frame" x="277" y="3" width="58" height="35"/>
+                                                                <rect key="frame" x="276" y="3.6666666666666288" width="59" height="35"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <state key="normal" title="Edit"/>
                                                                 <connections>
@@ -148,16 +147,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oTe-re-bmc">
-                                                <rect key="frame" x="20" y="520.33333333333337" width="335" height="45.666666666666629"/>
+                                                <rect key="frame" x="20" y="531.33333333333337" width="335" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P3-xq-jRq" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+65 123 321 23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-Tl-4XW" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                        <rect key="frame" x="0.0" y="25.333333333333258" width="335" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="26" width="335" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -165,7 +164,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVy-7i-Lrq" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                                <rect key="frame" x="20" y="653" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="665.33333333333337" width="335" height="50"/>
                                                 <state key="normal" title="Continue"/>
                                                 <connections>
                                                     <action selector="continueTapped:" destination="gvs-yG-kvc" eventType="touchUpInside" id="Czz-kF-cWd"/>
@@ -254,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're checking your docs right now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-wX-vOS" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="73" width="329" height="67"/>
+                                <rect key="frame" x="24" y="73" width="329" height="69.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -276,7 +275,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7C-ps-86K" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="507" width="327" height="90"/>
+                                <rect key="frame" x="24" y="509.33333333333331" width="327" height="87.666666666666686"/>
                                 <string key="text">It should take no longer than 5 mins.
 
 If you've enabled push notifications we'll let you know when it's done!</string>
@@ -285,7 +284,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzq-FD-Yu6" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="160" width="327" height="327"/>
+                                <rect key="frame" x="24" y="162.33333333333337" width="327" height="327"/>
                                 <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jzq-FD-Yu6" secondAttribute="height" multiplier="1:1" id="Qrh-bI-oDC"/>
@@ -344,7 +343,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xGh-vN-iQu">
-                                <rect key="frame" x="24" y="340" width="210" height="132"/>
+                                <rect key="frame" x="82.666666666666686" y="340" width="210" height="132"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gCK-9w-EEr">
                                         <rect key="frame" x="0.0" y="0.0" width="210" height="56"/>
@@ -402,7 +401,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL3-Nv-mN3" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -451,35 +450,35 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 1GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-4L-NZF" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="154.66666666666666" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="154.66666666666666" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-3R-kYh" customClass="BackgroundRoundedImageView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="207" width="25" height="25"/>
+                                <rect key="frame" x="24" y="207.66666666666666" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="GPY-ur-8bq"/>
                                     <constraint firstAttribute="height" constant="25" id="cJs-HD-0m8"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wHp-SC-2Gv">
-                                <rect key="frame" x="24" y="264" width="50" height="50"/>
+                                <rect key="frame" x="24" y="264.66666666666669" width="25" height="25"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="3." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0K-H9-c0e" customClass="StepNumberLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="42" y="346" width="14" height="21"/>
+                                <rect key="frame" x="29.666666666666671" y="321.66666666666669" width="14" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-Uu-blB" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="209" width="121.66666666666669" height="21"/>
+                                <rect key="frame" x="65" y="209.66666666666666" width="120.33333333333331" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Cn-N6y" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="64.999999999999986" y="346" width="145.66666666666663" height="21"/>
+                                <rect key="frame" x="64.999999999999986" y="321.66666666666669" width="141.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -501,7 +500,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQM-f2-0Z1" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="64.999999999999986" y="278.66666666666669" width="143.66666666666663" height="21"/>
+                                <rect key="frame" x="64.999999999999986" y="266.66666666666669" width="146.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -559,13 +558,13 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan IC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBv-vb-fbU" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To give you mobile data, by law, we have to verify your identity." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0h-YE-5zr" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="145.66666666666666" width="327" height="40.666666666666657"/>
+                                <rect key="frame" x="24" y="146.66666666666666" width="327" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -587,19 +586,19 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HNL-Qz-6Vj">
-                                <rect key="frame" x="60" y="270.33333333333331" width="255" height="182"/>
+                                <rect key="frame" x="60" y="272.66666666666669" width="255" height="207"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="27A-Pe-HQh">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZU-3N-JQX" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="12" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="12.333333333333334" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your NRIC/FIN number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-ug-6QS" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="28" y="0.0" width="227" height="20.333333333333332"/>
+                                                <rect key="frame" x="28.333333333333329" y="0.0" width="226.66666666666669" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -607,16 +606,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-x0-Ulq">
-                                        <rect key="frame" x="0.0" y="40.333333333333371" width="255" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="62" width="255" height="21"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="2." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kft-bY-Qe9" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.333333333333334" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="15" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your IC card" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2IE-pd-quO" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.333333333333329" y="0.0" width="224.66666666666669" height="20.333333333333332"/>
+                                                <rect key="frame" x="31" y="0.0" width="224" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -624,16 +623,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jci-De-sMQ">
-                                        <rect key="frame" x="0.0" y="80.666666666666686" width="255" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="103" width="255" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="3." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-oO-6wu" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify that you look like the photo on your IC card" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb2-uC-Py9" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.666666666666671" y="0.0" width="224.33333333333331" height="40.666666666666664"/>
+                                                <rect key="frame" x="30.666666666666671" y="0.0" width="224.33333333333331" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -641,16 +640,16 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-vN-84h">
-                                        <rect key="frame" x="0.0" y="141.33333333333337" width="255" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="165" width="255" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="4." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBz-xS-yJa" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="0.0" y="0.0" width="14.666666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="15.666666666666666" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will ask you for your address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd8-hl-wR3" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                                <rect key="frame" x="30.666666666666671" y="0.0" width="224.33333333333331" height="40.666666666666664"/>
+                                                <rect key="frame" x="31.666666666666671" y="0.0" width="223.33333333333331" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -696,13 +695,13 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your NRIC/FIN?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEw-Za-1UP" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="327" height="33.666666666666657"/>
+                                <rect key="frame" x="24" y="88" width="327" height="34.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g S XXX XXX XXD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MrK-sD-vRV" userLabel="NRIC Text Field" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="153.66666666666666" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="154.66666666666666" width="375" height="44"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <color key="textColor" name="inputLabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -712,7 +711,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
                                 </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This seems to be an invalid NRIC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-bU-7nA" customClass="ErrorTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="221.66666666666666" width="327" height="20.333333333333343"/>
+                                <rect key="frame" x="24" y="222.66666666666666" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="statusError"/>
                                 <nil key="highlightedColor"/>
@@ -761,6 +760,90 @@ If you've enabled push notifications we'll let you know when it's done!</string>
             </objects>
             <point key="canvasLocation" x="2108" y="-1810"/>
         </scene>
+        <!--Allow Camera Access View Controller-->
+        <scene sceneID="ynl-I1-vce">
+            <objects>
+                <viewController storyboardIdentifier="AllowCameraAccessViewController" id="6t2-Ye-1rY" customClass="AllowCameraAccessViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8q4-8I-V3X"/>
+                        <viewControllerLayoutGuide type="bottom" id="cBr-TG-98v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zq9-dE-Ogf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow camera access" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoB-IV-ngE" customClass="Heading2Label" customModule="OstelcoStyles">
+                                <rect key="frame" x="40" y="88" width="295" height="34.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Da-So-Ano" customClass="BodyTextLabel" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="438" width="327" height="84"/>
+                                <string key="text">In order to scan your identity card we need  camera access.
+
+Please enable “Camera Access“ in Settings</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS6-TA-N0N" customClass="PrimaryButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="40" y="684" width="295" height="50"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="settingsTapped:" destination="6t2-Ye-1rY" eventType="touchUpInside" id="uy0-af-V40"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxM-1I-nZL" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="148" y="619" width="79" height="33"/>
+                                <state key="normal" title="Need help"/>
+                                <connections>
+                                    <action selector="needHelpTapped:" destination="6t2-Ye-1rY" eventType="touchUpInside" id="MYa-mL-vQz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrZ-AS-fQU" customClass="LinkTextButton" customModule="OstelcoStyles">
+                                <rect key="frame" x="95.666666666666686" y="554" width="184" height="33"/>
+                                <state key="normal" title="Choose another method"/>
+                                <connections>
+                                    <action selector="chooseAnotherMethodTapped:" destination="6t2-Ye-1rY" eventType="touchUpInside" id="OLc-MA-AoA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4S-bd-ccx" customClass="LoopingVideoView" customModule="OstelcoStyles">
+                                <rect key="frame" x="24" y="142.66666666666666" width="327" height="275.33333333333337"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pxM-1I-nZL" firstAttribute="top" secondItem="BrZ-AS-fQU" secondAttribute="bottom" constant="32" id="05P-MZ-9j9"/>
+                            <constraint firstItem="P4S-bd-ccx" firstAttribute="top" secondItem="WoB-IV-ngE" secondAttribute="bottom" constant="20" id="06L-7o-zar"/>
+                            <constraint firstItem="P4S-bd-ccx" firstAttribute="leading" secondItem="Zq9-dE-Ogf" secondAttribute="leadingMargin" constant="8" id="1Wy-qK-TKF"/>
+                            <constraint firstItem="WoB-IV-ngE" firstAttribute="top" secondItem="8q4-8I-V3X" secondAttribute="bottom" constant="44" id="3k5-1L-TIA"/>
+                            <constraint firstItem="2Da-So-Ano" firstAttribute="top" secondItem="P4S-bd-ccx" secondAttribute="bottom" constant="20" id="6xj-ol-0im"/>
+                            <constraint firstItem="2Da-So-Ano" firstAttribute="leading" secondItem="Zq9-dE-Ogf" secondAttribute="leading" constant="24" id="6yV-qw-8G1"/>
+                            <constraint firstItem="cBr-TG-98v" firstAttribute="top" secondItem="iS6-TA-N0N" secondAttribute="bottom" constant="44" id="E4a-6B-KQ5"/>
+                            <constraint firstItem="BrZ-AS-fQU" firstAttribute="top" secondItem="2Da-So-Ano" secondAttribute="bottom" constant="32" id="Loj-YL-9X1"/>
+                            <constraint firstItem="BrZ-AS-fQU" firstAttribute="centerX" secondItem="Zq9-dE-Ogf" secondAttribute="centerX" id="Lre-gb-ny4"/>
+                            <constraint firstItem="WoB-IV-ngE" firstAttribute="leading" secondItem="Zq9-dE-Ogf" secondAttribute="leadingMargin" constant="24" id="NYV-Xb-MTx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P4S-bd-ccx" secondAttribute="trailing" constant="8" id="Zzb-Ye-EhH"/>
+                            <constraint firstAttribute="trailing" secondItem="2Da-So-Ano" secondAttribute="trailing" constant="24" id="cm0-1F-tac"/>
+                            <constraint firstItem="iS6-TA-N0N" firstAttribute="top" secondItem="pxM-1I-nZL" secondAttribute="bottom" constant="32" id="klA-aw-m47"/>
+                            <constraint firstItem="iS6-TA-N0N" firstAttribute="leading" secondItem="Zq9-dE-Ogf" secondAttribute="leadingMargin" constant="24" id="mXf-RW-FN9"/>
+                            <constraint firstItem="2Da-So-Ano" firstAttribute="centerX" secondItem="Zq9-dE-Ogf" secondAttribute="centerX" id="oWw-rc-vrA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iS6-TA-N0N" secondAttribute="trailing" constant="24" id="pZv-ox-8JR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WoB-IV-ngE" secondAttribute="trailing" constant="24" id="vJK-Mp-qLw"/>
+                            <constraint firstItem="pxM-1I-nZL" firstAttribute="centerX" secondItem="Zq9-dE-Ogf" secondAttribute="centerX" id="wy5-et-abt"/>
+                            <constraint firstItem="WoB-IV-ngE" firstAttribute="centerX" secondItem="Zq9-dE-Ogf" secondAttribute="centerX" id="zFA-hT-1U4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gifView" destination="P4S-bd-ccx" id="dqY-HD-bY5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dY0-d1-NY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3272.8000000000002" y="-1841.3793103448277"/>
+        </scene>
     </scenes>
     <resources>
         <image name="check" width="14" height="12"/>
@@ -768,7 +851,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
         <image name="singpass" width="76" height="36"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="background">
-            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="inputBackground">
             <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -780,7 +863,7 @@ If you've enabled push notifications we'll let you know when it's done!</string>
             <color red="1" green="0.2196078431372549" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textHeading">
-            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textLink">
             <color red="0.6705882352941176" green="0.62352941176470589" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

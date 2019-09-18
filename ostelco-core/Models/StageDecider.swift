@@ -37,8 +37,9 @@ public class LocalContext {
     public var hasCompletedJumio: Bool // Needs to be persisted
     public var hasCompletedAddress: Bool
     public var serverIsUnreachable: Bool
+    public var hasCameraProblem: Bool
     
-    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false) {
+    public init(selectedRegion: Region? = nil, hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, regionVerified: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false) {
         self.selectedRegion = selectedRegion
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
@@ -55,6 +56,7 @@ public class LocalContext {
         self.locationProblem = locationProblem
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
         self.hasSeenLocationPermissions = hasSeenLocationPermissions
+        self.hasCameraProblem = hasCameraProblem
         self.myInfoCode = myInfoCode
     }
 }
@@ -89,6 +91,7 @@ public struct StageDecider {
         case awesome
         case ohNo(OhNoIssueType)
         case locationProblem(LocationProblem)
+        case cameraProblem
     }
     
     public init() {}
@@ -201,6 +204,7 @@ public struct StageDecider {
         
         switch localContext.selectedVerificationOption {
         case .jumio:
+            midStages.append(.cameraProblem)
             midStages.append(.jumio)
         case .none:
             if let region = localContext.selectedRegion {
@@ -208,13 +212,17 @@ public struct StageDecider {
                 if options.count > 1 {
                     midStages.append(.selectIdentityVerificationMethod(options))
                 } else {
-                    midStages.append(contentsOf: [.jumio, .pendingVerification])
+                    midStages.append(contentsOf: [.cameraProblem, .jumio, .pendingVerification])
                 }
             }
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: [.cameraProblem, .jumio, .address, .pendingVerification])
+        }
+        
+        if localContext.hasCameraProblem == false {
+            remove(.cameraProblem)
         }
         
         if let code = localContext.myInfoCode {
@@ -267,7 +275,7 @@ public struct StageDecider {
     }
     
     // This is the kind of information that would be good to get from GraphQL and avoid hard-coding.
-    private func identityOptionsForRegionID(_ id: String) -> [IdentityVerificationOption] {
+    public func identityOptionsForRegionID(_ id: String) -> [IdentityVerificationOption] {
         if id.lowercased() == "sg" {
             return [.scanIC, .singpass]
         }
