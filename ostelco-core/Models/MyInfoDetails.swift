@@ -9,10 +9,6 @@
 import Foundation
 
 public struct MyInfoAddress: Codable {
-    private let _country: MyInfoOptionalCode?
-    public var country: String? {
-        return _country?.code
-    }
     private let _unit: MyInfoOptionalValue?
     public var unit: String? {
         return _unit?.value
@@ -39,7 +35,6 @@ public struct MyInfoAddress: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case _country = "country"
         case _unit = "unit"
         case _street = "street"
         case _block = "block"
@@ -48,20 +43,19 @@ public struct MyInfoAddress: Codable {
         case _building = "building"
     }
 
-    public init(country: String?,
+    public init(floor: String?,
                 unit: String?,
-                street: String?,
                 block: String?,
-                postal: String?,
-                floor: String?,
-                building: String?) {
-        self._country = MyInfoOptionalCode(code: country, description: nil)
-        self._unit = MyInfoOptionalValue(value: unit)
-        self._street = MyInfoOptionalValue(value: street)
-        self._block = MyInfoOptionalValue(value: block)
-        self._postal = MyInfoOptionalValue(value: postal)
+                building: String?,
+                street: String?,
+                postal: String?
+    ) {
         self._floor = MyInfoOptionalValue(value: floor)
+        self._unit = MyInfoOptionalValue(value: unit)
+        self._block = MyInfoOptionalValue(value: block)
         self._building = MyInfoOptionalValue(value: building)
+        self._street = MyInfoOptionalValue(value: street)
+        self._postal = MyInfoOptionalValue(value: postal)
     }
     
     public var floorAndUnit: String {

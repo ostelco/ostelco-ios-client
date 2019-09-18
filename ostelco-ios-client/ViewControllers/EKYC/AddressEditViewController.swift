@@ -41,10 +41,12 @@ class AddressEditViewController: UITableViewController {
             case .myInfoVerify:
                 // Does not need City since anything in Singapore is in...Singapore.
                 return [
-                    .street,
                     .unit,
-                    .postcode,
-                    .country
+                    .floor,
+                    .block,
+                    .building,
+                    .street,
+                    .postcode
                 ]
             }
         }
@@ -123,10 +125,12 @@ class AddressEditViewController: UITableViewController {
                 return
             }
             
-            dataSource.setValue(info.street, forSection: .street)
+            dataSource.setValue(info.street, forSection: .floor)
             dataSource.setValue(info.unit, forSection: .unit)
+            dataSource.setValue(info.block, forSection: .block)
+            dataSource.setValue(info.building, forSection: .building)
+            dataSource.setValue(info.street, forSection: .street)
             dataSource.setValue(info.postal, forSection: .postcode)
-            dataSource.setValue(info.country, forSection: .country)
         }
     }
     
@@ -153,32 +157,33 @@ class AddressEditViewController: UITableViewController {
         
     private func buildAddress() -> EKYCAddress {
         guard
-            let street = dataSource.value(for: .street),
+            let floor = dataSource.value(for: .floor),
             let unit = dataSource.value(for: .unit),
-            let city = dataSource.value(for: .city),
-            let postcode = dataSource.value(for: .postcode),
-            let country = dataSource.value(for: .country) else {
+            let block = dataSource.value(for: .block),
+            let building = dataSource.value(for: .building),
+            let street = dataSource.value(for: .street),
+            let postcode = dataSource.value(for: .postcode) else {
                 fatalError("Somehow validation passed but one of these was null")
         }
             
         return EKYCAddress(
-            street: street,
+            floor: floor,
             unit: unit,
-            city: city,
-            postcode: postcode,
-            country: country
+            block: block,
+            building: building,
+            street: street,
+            postcode: postcode
         )
     }
     
     private func updateMyInfo() {
         let updatedAddress = MyInfoAddress(
-            country: dataSource.value(for: .country),
+            floor: dataSource.value(for: .floor),
             unit: dataSource.value(for: .unit),
+            block: dataSource.value(for: .block),
+            building: dataSource.value(for: .building),
             street: dataSource.value(for: .street),
-            block: nil,
-            postal: dataSource.value(for: .postcode),
-            floor: nil,
-            building: nil
+            postal: dataSource.value(for: .postcode)
         )
         
         myInfoDelegate.addressUpdated(to: updatedAddress)

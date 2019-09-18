@@ -22,6 +22,17 @@ public struct EKYCAddress: Codable {
         self.address = "\(street);;;\(unit);;;\(city);;;\(postcode);;;\(country)"
     }
     
+    public init(floor: String,
+                unit: String,
+                block: String,
+                building: String,
+                street: String,
+                postcode: String,
+                phone: String = "12345678") {
+        self.phoneNumber = phone
+        self.address = "\(floor);;;\(unit);;;\(block);;;\(building);;;\(street);;;\(postcode)"
+    }
+    
     public enum CodingKeys: String, CodingKey {
         case address
         case phoneNumber

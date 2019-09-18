@@ -167,7 +167,6 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(info.residentialStatus, "C")
         XCTAssertEqual(info.sex, "F")
         
-        XCTAssertEqual(info.address.country, "SG")
         XCTAssertEqual(info.address.unit, "128")
         XCTAssertEqual(info.address.street, "BEDOK NORTH AVENUE 4")
         XCTAssertEqual(info.address.block, "102")

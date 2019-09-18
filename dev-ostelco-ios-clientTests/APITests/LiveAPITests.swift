@@ -112,13 +112,12 @@ class LiveAPITests: XCTestCase {
     }
     
     func liveAddressUpdate() {
-        let address = MyInfoAddress(country: "SG",
+        let address = MyInfoAddress(floor: "SG",
                                     unit: "128",
-                                    street: "BEDOK NORTH AVENUE 4",
                                     block: "102",
-                                    postal: "460102",
-                                    floor: "09",
-                                    building: "PEARL GARDEN").formattedAddress
+                                    building: "PEARL GARDEN",
+                                    street: "BEDOK NORTH AVENUE 4",
+                                    postal: "460102").formattedAddress
         let phone = "+6597399245"
         
         let update = EKYCProfileUpdate(address: address, phoneNumber: phone)

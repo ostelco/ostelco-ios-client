@@ -24,12 +24,10 @@ class MyInfoSummaryViewController: UIViewController {
     var myInfoCode: String?
     
     @IBOutlet private weak var name: UILabel!
-    @IBOutlet private weak var sex: UILabel!
+    @IBOutlet private weak var uinfin: UILabel!
     @IBOutlet private weak var dob: UILabel!
-    @IBOutlet private weak var nationality: UILabel!
-    @IBOutlet private weak var residentialStatus: UILabel!
     @IBOutlet private weak var address: UILabel!
-    @IBOutlet private weak var mobileNumber: UILabel!
+    @IBOutlet private weak var passExpiryDate: UILabel!
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var editButton: UIButton!
     
@@ -70,31 +68,19 @@ class MyInfoSummaryViewController: UIViewController {
     func updateUI(_ myInfoDetails: MyInfoDetails?) {
         guard let myInfoDetails = myInfoDetails else {
             name.text = nil
+            uinfin.text = nil
             dob.text = nil
             address.text = nil
-            nationality.text = nil
-            residentialStatus.text = nil
-            mobileNumber.text = nil
-            sex.text = nil
+            passExpiryDate.text = nil
             continueButton.isEnabled = false
             editButton.isEnabled = false
             return
         }
         name.text = myInfoDetails.name
+        uinfin.text = myInfoDetails.uinfin
         dob.text = myInfoDetails.dob
         address.text = myInfoDetails.address.formattedAddress
-        if let nationality = myInfoDetails.nationality {
-            self.nationality.text = nationality
-        }
-        if let residentialStatus = myInfoDetails.residentialStatus {
-            self.residentialStatus.text = residentialStatus
-        }
-        if let mobileNumber = myInfoDetails.mobileNumber?.formattedNumber {
-            self.mobileNumber.text = mobileNumber
-        }
-        if let sex = myInfoDetails.sex {
-            self.sex.text = sex
-        }
+        passExpiryDate.text = myInfoDetails.passExpiryDate
         
         editButton.isEnabled = true
         continueButton.isEnabled = address.text.hasTextOtherThanWhitespace
