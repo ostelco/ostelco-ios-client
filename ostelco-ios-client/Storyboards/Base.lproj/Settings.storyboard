@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxQ-fy-sKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxQ-fy-sKd">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="background"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="lBS-jF-6mc" style="IBUITableViewCellStyleDefault" id="Acz-ao-gnd">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
@@ -51,7 +53,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="background"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="F1g-G0-YYE" style="IBUITableViewCellStyleDefault" id="mh9-jV-xvG">
                                         <rect key="frame" x="0.0" y="116" width="414" height="44"/>
@@ -68,7 +72,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="background"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="q7f-c5-odO" style="IBUITableViewCellStyleDefault" id="aSA-fP-FDT">
                                         <rect key="frame" x="0.0" y="160" width="414" height="44"/>
@@ -85,7 +91,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="background"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ceV-1s-FCi" style="IBUITableViewCellStyleDefault" id="dBq-72-ijr">
                                         <rect key="frame" x="0.0" y="204" width="414" height="44"/>
@@ -102,7 +110,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" name="background"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="background"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -143,7 +153,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAS-Zl-jlN" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                            <rect key="frame" x="20.000000000000004" y="49" width="35.333333333333343" height="21"/>
+                                            <rect key="frame" x="19.999999999999996" y="49" width="32.666666666666657" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -155,6 +165,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" name="background"/>
                                     <constraints>
                                         <constraint firstItem="yAS-Zl-jlN" firstAttribute="top" secondItem="mbP-v8-dO8" secondAttribute="bottom" constant="8" symbolic="YES" id="5c1-GJ-ckM"/>
                                         <constraint firstItem="mbP-v8-dO8" firstAttribute="leading" secondItem="2Dl-gj-qZW" secondAttribute="leading" constant="20" symbolic="YES" id="9Fk-zB-YUH"/>
@@ -190,17 +201,17 @@
             <objects>
                 <viewController id="BhN-Cy-zMa" customClass="SettingsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rE8-uD-Hbd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version 4.0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-qD-DLO" customClass="AppVersionTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="157" y="827" width="100" height="15"/>
+                                <rect key="frame" x="159.33333333333334" y="739" width="95.666666666666657" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="textSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-hU-chH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="719"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
                                 <color key="backgroundColor" name="background"/>
                                 <connections>
                                     <segue destination="ijV-yo-hqd" kind="embed" identifier="settingsTable" id="H5A-nb-ItM"/>
@@ -233,9 +244,10 @@
             <objects>
                 <navigationController id="mxQ-fy-sKd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="v1p-h2-YCr"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="out-Wh-qdO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="out-Wh-qdO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="background"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BhN-Cy-zMa" kind="relationship" relationship="rootViewController" id="cSt-ma-tct"/>
