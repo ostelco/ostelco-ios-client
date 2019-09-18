@@ -33,9 +33,9 @@ class MyInfoTests: XCTestCase {
         XCTAssertEqual(address.floor, "09")
         XCTAssertEqual(address.building, "PEARL GARDEN")
         
-        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
-        XCTAssertEqual(address.addressLine2, "460102 SG")
-        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4\n460102 SG")
+        XCTAssertEqual(address.addressLine1, "#09-128, 102 PEARL GARDEN")
+        XCTAssertEqual(address.addressLine2, "BEDOK NORTH AVENUE 4, 460102")
+        XCTAssertEqual(address.formattedAddress, "#09-128, 102 PEARL GARDEN\nBEDOK NORTH AVENUE 4, 460102")
         
         guard let mobileNumber = testInfo.mobileNumber else {
             XCTFail("Could not access mobile number!")
@@ -55,9 +55,9 @@ class MyInfoTests: XCTestCase {
                                     street: "BEDOK NORTH AVENUE 4",
                                     postal: "460102")
         
-        XCTAssertEqual(address.addressLine1, "BEDOK NORTH AVENUE 4")
-        XCTAssertEqual(address.addressLine2, "460102 SG")
-        XCTAssertEqual(address.formattedAddress, "BEDOK NORTH AVENUE 4\n460102 SG")
+        XCTAssertEqual(address.addressLine1, "#SG-128, PEARL GARDEN")
+        XCTAssertEqual(address.addressLine2, "BEDOK NORTH AVENUE 4, 460102")
+        XCTAssertEqual(address.formattedAddress, "#SG-128, PEARL GARDEN\nBEDOK NORTH AVENUE 4, 460102")
     }
     
     func testAddressFormattingWithMissingStreet() {
@@ -68,9 +68,9 @@ class MyInfoTests: XCTestCase {
                                     street: nil,
                                     postal: "460102")
         
-        XCTAssertEqual(address.addressLine1, "102")
-        XCTAssertEqual(address.addressLine2, "460102 SG")
-        XCTAssertEqual(address.formattedAddress, "102\n460102 SG")
+        XCTAssertEqual(address.addressLine1, "#SG-128, 102 PEARL GARDEN")
+        XCTAssertEqual(address.addressLine2, "460102")
+        XCTAssertEqual(address.formattedAddress, "#SG-128, 102 PEARL GARDEN\n460102")
     }
     
     func testAddressFormattingWithMissingPostcode() {
@@ -81,9 +81,9 @@ class MyInfoTests: XCTestCase {
                                     street: "BEDOK NORTH AVENUE 4",
                                     postal: nil)
     
-        XCTAssertEqual(address.addressLine1, "102 BEDOK NORTH AVENUE 4")
-        XCTAssertEqual(address.addressLine2, "SG")
-        XCTAssertEqual(address.formattedAddress, "102 BEDOK NORTH AVENUE 4\nSG")
+        XCTAssertEqual(address.addressLine1, "#SG-128, 102 PEARL GARDEN")
+        XCTAssertEqual(address.addressLine2, "BEDOK NORTH AVENUE 4")
+        XCTAssertEqual(address.formattedAddress, "#SG-128, 102 PEARL GARDEN\nBEDOK NORTH AVENUE 4")
     }
     
     func testAddressFormattingWithMissingBlockAndStreet() {
@@ -94,8 +94,8 @@ class MyInfoTests: XCTestCase {
                                     street: nil,
                                     postal: "460102")
         
-        XCTAssertEqual(address.addressLine1, "")
-        XCTAssertEqual(address.addressLine2, "460102 SG")
-        XCTAssertEqual(address.formattedAddress, "460102 SG")
+        XCTAssertEqual(address.addressLine1, "#SG-128, PEARL GARDEN")
+        XCTAssertEqual(address.addressLine2, "460102")
+        XCTAssertEqual(address.formattedAddress, "#SG-128, PEARL GARDEN\n460102")
     }
 }
