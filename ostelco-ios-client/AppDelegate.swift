@@ -74,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabAppearance.tintColor = highlightColor
         tabAppearance.barTintColor = backgroundColor
         tabAppearance.isTranslucent = false
+        tabAppearance.shadowImage = UIImage()
         
         let toolbarAppearance = UIToolbar.appearance()
         toolbarAppearance.tintColor = mainColor

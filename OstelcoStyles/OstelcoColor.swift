@@ -24,6 +24,7 @@ public enum OstelcoColor: String, CaseIterable {
     case primaryButtonBackgroundDisabled
     case primaryButtonLabel
     case primaryButtonLabelDisabled
+    case secondaryButtonLabel
     case statusError
     case statusGood
     case statusOkay
