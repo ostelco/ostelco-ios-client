@@ -143,6 +143,9 @@ class ESIMPageViewController: UIViewController {
         } else {
             self.playerView.isHidden = true
         }
+        
+        self.playerController.view.backgroundColor = OstelcoColor.background.toUIColor
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

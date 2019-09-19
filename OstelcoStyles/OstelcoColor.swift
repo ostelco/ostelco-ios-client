@@ -13,6 +13,7 @@ public enum OstelcoColor: String, CaseIterable {
     case background
     case controlTint
     case disabled
+    case highlighted
     case inputBackground
     case inputLabel
     case inputPlaceholder
@@ -23,13 +24,12 @@ public enum OstelcoColor: String, CaseIterable {
     case primaryButtonBackgroundDisabled
     case primaryButtonLabel
     case primaryButtonLabelDisabled
+    case secondaryButtonLabel
     case statusError
     case statusGood
     case statusOkay
     case stepItemBulletLocked
     case stepItemBulletUnlocked
-    case stepItemLabel
-    case stepItemLabelActive
     case text
     case textBalance
     case textHeading

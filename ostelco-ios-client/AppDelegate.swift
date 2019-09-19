@@ -67,18 +67,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        let mainColor = OstelcoColor.oyaBlue.toUIColor
+        let mainColor = OstelcoColor.controlTint.toUIColor
+        let highlightColor = OstelcoColor.highlighted.toUIColor
+        let backgroundColor = OstelcoColor.background.toUIColor
         let tabAppearance = UITabBar.appearance()
-        tabAppearance.tintColor = mainColor
-        tabAppearance.barStyle = .black
+        tabAppearance.tintColor = highlightColor
+        tabAppearance.barTintColor = backgroundColor
+        tabAppearance.isTranslucent = false
+        tabAppearance.shadowImage = UIImage()
         
         let toolbarAppearance = UIToolbar.appearance()
         toolbarAppearance.tintColor = mainColor
-        toolbarAppearance.barStyle = .black
+        toolbarAppearance.barTintColor = backgroundColor
+        toolbarAppearance.isTranslucent = false
         
         let navigationAppearance = UINavigationBar.appearance()
         navigationAppearance.tintColor = mainColor
-        navigationAppearance.barStyle = .black
+        navigationAppearance.barTintColor = backgroundColor
+        navigationAppearance.isTranslucent = false
         navigationAppearance.shadowImage = UIImage()
     }
     

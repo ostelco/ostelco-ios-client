@@ -187,7 +187,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fakeModalNotifications" translatesAutoresizingMaskIntoConstraints="NO" id="upM-ES-Rrr">
-                                <rect key="frame" x="-89.666666666666686" y="202" width="582.33333333333337" height="408"/>
+                                <rect key="frame" x="-132.66666666666666" y="200" width="640.33333333333337" height="412"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-Zm-rhZ" customClass="LinkTextButton" customModule="OstelcoStyles">
                                 <rect key="frame" x="144" y="617" width="87" height="33"/>
@@ -206,7 +206,7 @@
                             <constraint firstItem="Dam-4t-AgC" firstAttribute="top" secondItem="YkK-Vz-Pfa" secondAttribute="top" constant="44" id="QnR-zX-cVK"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="Dam-4t-AgC" secondAttribute="trailing" constant="24" id="Z0l-G2-Btl"/>
                             <constraint firstItem="8Uy-4i-IUw" firstAttribute="leading" secondItem="YkK-Vz-Pfa" secondAttribute="leading" constant="24" id="n3d-vo-OcI"/>
-                            <constraint firstItem="upM-ES-Rrr" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" constant="14" id="oNg-Ea-ZMf"/>
+                            <constraint firstItem="upM-ES-Rrr" firstAttribute="centerX" secondItem="KB7-u2-KQt" secondAttribute="centerX" id="oNg-Ea-ZMf"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="n4R-BI-FHP" secondAttribute="trailing" constant="16" id="oWx-Yd-zdi"/>
                             <constraint firstItem="YkK-Vz-Pfa" firstAttribute="trailing" secondItem="8Uy-4i-IUw" secondAttribute="trailing" constant="24" id="oZG-Rd-vkN"/>
                             <constraint firstItem="upM-ES-Rrr" firstAttribute="centerY" secondItem="KB7-u2-KQt" secondAttribute="centerY" id="rxi-J1-ZxQ"/>
@@ -235,13 +235,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT SHOULD WE CALL YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-qY-Xwu" customClass="InputFieldHeadlineLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="16" y="177.66666666666666" width="192.66666666666666" height="15.666666666666657"/>
+                                <rect key="frame" x="16" y="177.66666666666666" width="192.66666666666666" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g Jolly" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-mX-GWu" customClass="TopBottomBorderedTextField" customModule="OstelcoStyles">
-                                <rect key="frame" x="0.0" y="201.33333333333334" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="202" width="375" height="44"/>
                                 <color key="backgroundColor" name="inputBackground"/>
                                 <accessibility key="accessibilityConfiguration" hint="test"/>
                                 <color key="textColor" name="inputBackground"/>
@@ -299,7 +299,7 @@
     </scenes>
     <resources>
         <image name="check" width="14" height="12"/>
-        <image name="fakeModalNotifications" width="291" height="204"/>
+        <image name="fakeModalNotifications" width="320" height="206"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

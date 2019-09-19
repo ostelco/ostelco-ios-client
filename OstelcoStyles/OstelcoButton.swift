@@ -330,7 +330,7 @@ public class DropShadowButton: OstelcoButton {
     public override func commonInit() {
         super.commonInit()
         
-        self.appTitleColor = .text
+        self.appTitleColor = .secondaryButtonLabel
         self.appFont = OstelcoFont(fontType: .medium,
                                    fontSize: .body)
         self.layer.insertSublayer(self.dropShadowLayer, at: 0)

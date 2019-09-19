@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "phone.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "phone-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
