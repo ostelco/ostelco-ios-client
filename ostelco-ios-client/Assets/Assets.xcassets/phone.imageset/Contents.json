@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Phone.pdf"
+      "filename" : "phone.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "phone-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
