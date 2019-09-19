@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "stepArrowIcon.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "stepArrowIcon_Dark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

@@ -31,6 +31,7 @@
                     <constraint firstItem="nt0-4q-xbh" firstAttribute="leading" secondItem="ZKV-BB-0P7" secondAttribute="leading" constant="16" id="lnM-Aj-4Yd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="background"/>
             <connections>
                 <outlet property="countryLabel" destination="nt0-4q-xbh" id="oej-PP-inc"/>
             </connections>
