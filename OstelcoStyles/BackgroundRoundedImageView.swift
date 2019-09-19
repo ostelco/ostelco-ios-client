@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 public class BackgroundRoundedImageView: UIImageView {
     
-    var appBackgroundColor: OstelcoColor = .oyaBlue
+    var appBackgroundColor: OstelcoColor = .highlighted
     var appTintColor: OstelcoColor = .primaryButtonLabel
     
     private func commonInit() {
