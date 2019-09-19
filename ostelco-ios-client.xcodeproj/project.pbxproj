@@ -255,8 +255,6 @@
 		9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE12228D954600EED7F5 /* NeedHelpActionSheet.swift */; };
 		9BBEEE16228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */; };
 		9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */; };
-		9BBEEE19228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */; };
-		9BBEEE1A228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */; };
 		9BBEEE1F228DA82600EED7F5 /* PushNotificationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE1E228DA82600EED7F5 /* PushNotificationControllerTests.swift */; };
 		9BBEEE21228DA83800EED7F5 /* MockPushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */; };
 		9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBEEE22228EDF0200EED7F5 /* MockUserManager.swift */; };
@@ -588,7 +586,6 @@
 		9BBEEE0E228D917600EED7F5 /* DidBecomeActiveHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidBecomeActiveHandling.swift; sourceTree = "<group>"; };
 		9BBEEE12228D954600EED7F5 /* NeedHelpActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpActionSheet.swift; sourceTree = "<group>"; };
 		9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutActionSheet.swift; sourceTree = "<group>"; };
-		9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountActionSheet.swift; sourceTree = "<group>"; };
 		9BBEEE1E228DA82600EED7F5 /* PushNotificationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationControllerTests.swift; sourceTree = "<group>"; };
 		9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPushNotificationController.swift; sourceTree = "<group>"; };
 		9BBEEE22228EDF0200EED7F5 /* MockUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserManager.swift; sourceTree = "<group>"; };
@@ -1076,7 +1073,6 @@
 		9BBEEE11228D952C00EED7F5 /* ReusableAlerts */ = {
 			isa = PBXGroup;
 			children = (
-				9BBEEE18228D99B900EED7F5 /* DeleteAccountActionSheet.swift */,
 				9BBEEE15228D97D000EED7F5 /* LogOutActionSheet.swift */,
 				9BBEEE12228D954600EED7F5 /* NeedHelpActionSheet.swift */,
 			);
@@ -2014,7 +2010,6 @@
 				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BE2D44A225B5E9600B51999 /* TabBarController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
-				9BBEEE19228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */,
 				9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE13228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
@@ -2214,7 +2209,6 @@
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
-				9BBEEE1A228D99B900EED7F5 /* DeleteAccountActionSheet.swift in Sources */,
 				9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
