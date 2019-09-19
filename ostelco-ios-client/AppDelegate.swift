@@ -72,19 +72,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabAppearance = UITabBar.appearance()
         tabAppearance.tintColor = mainColor
         tabAppearance.barTintColor = backgroundColor
-        tabAppearance.barStyle = .black
         tabAppearance.isTranslucent = false
         
         let toolbarAppearance = UIToolbar.appearance()
         toolbarAppearance.tintColor = mainColor
         toolbarAppearance.barTintColor = backgroundColor
-        toolbarAppearance.barStyle = .black
         toolbarAppearance.isTranslucent = false
         
         let navigationAppearance = UINavigationBar.appearance()
         navigationAppearance.tintColor = mainColor
         navigationAppearance.barTintColor = backgroundColor
-        navigationAppearance.barStyle = .black
         navigationAppearance.isTranslucent = false
         navigationAppearance.shadowImage = UIImage()
     }
