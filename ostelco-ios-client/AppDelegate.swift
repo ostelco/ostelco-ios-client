@@ -68,9 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureAppearance() {
         let mainColor = OstelcoColor.controlTint.toUIColor
+        let highlightColor = OstelcoColor.highlighted.toUIColor
         let backgroundColor = OstelcoColor.background.toUIColor
         let tabAppearance = UITabBar.appearance()
-        tabAppearance.tintColor = mainColor
+        tabAppearance.tintColor = highlightColor
         tabAppearance.barTintColor = backgroundColor
         tabAppearance.isTranslucent = false
         

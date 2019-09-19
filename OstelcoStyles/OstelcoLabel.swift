@@ -159,7 +159,7 @@ public class DataAmountOnHomeLabel: OstelcoLabel {
 
     public override func commonInit() {
         super.commonInit()
-        self.appTextColor = .oyaBlue
+        self.appTextColor = .highlighted
         self.appFont = OstelcoFont(fontType: .bold,
                                    fontSize: .data)
         self.smallFont = OstelcoFont(fontType: .bold,
@@ -210,7 +210,7 @@ public class DataRemainingLabel: OstelcoLabel {
     
     public override func commonInit() {
         super.commonInit()
-        self.appTextColor = .oyaBlue
+        self.appTextColor = .highlighted
         self.appFont = OstelcoFont(fontType: .regular,
                                    fontSize: .finePrint)
     }
@@ -290,7 +290,7 @@ public class StepsTextLabel: OstelcoLabel {
             if self.isEnabled {
                 self.appTextColor = .text
             } else {
-                self.appTextColor = .stepItemLabel
+                self.appTextColor = .disabled
             }
         }
     }

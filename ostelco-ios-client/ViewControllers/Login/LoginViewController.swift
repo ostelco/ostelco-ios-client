@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
 
         let index = dataSource.currentIndex
         configureButtonTitle(for: index)
-        logoImageView.tintColor = OstelcoColor.oyaBlue.toUIColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
