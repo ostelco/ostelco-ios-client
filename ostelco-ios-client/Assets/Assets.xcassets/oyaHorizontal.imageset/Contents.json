@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "oyaHorizontal.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Oya - Horizontal - Dark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
