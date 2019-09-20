@@ -25,6 +25,7 @@ class NeedHelpAlertController: UIAlertController {
             }
             self.addAction(startOverAction)
         }
+        #endif
         
         if UserManager.shared.hasCurrentUser {
             let logOutAction = UIAlertAction(title: "Log Out", style: .default) {_ in
@@ -32,8 +33,6 @@ class NeedHelpAlertController: UIAlertController {
             }
             self.addAction(logOutAction)
         }
-        
-        #endif
         
         self.addAction(.cancelAction())
     }
