@@ -11,9 +11,11 @@ import Foundation
 // Found it on the internet: https://gist.github.com/dmsl1805/ad9a14b127d0409cf9621dc13d237457
 extension String {
     
-    /**
-                Convert a camel cased string to a snake cased string.   "camelCased".snakeCased() -> "snake_cased"
-     */
+    ///
+    ///  Convert a camel cased string to a snake cased string.
+    ///  Usage:
+    ///      "camelCased".snakeCased() -> "snake_cased"
+    ///
     func snakeCased() -> String? {
         let pattern = "([a-z0-9])([A-Z])"
         
