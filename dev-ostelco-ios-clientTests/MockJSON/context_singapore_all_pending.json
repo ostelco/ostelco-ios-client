@@ -15,7 +15,7 @@
 		"kycStatusMap": {
 			"JUMIO": "REJECTED",
 			"MY_INFO": "PENDING",
-			"ADDRESS_AND_PHONE_NUMBER": "PENDING",
+			"ADDRESS": "PENDING",
 			"NRIC_FIN": "APPROVED"
 		},
 		"simProfiles": []

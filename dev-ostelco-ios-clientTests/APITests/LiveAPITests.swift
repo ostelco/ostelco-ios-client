@@ -118,9 +118,8 @@ class LiveAPITests: XCTestCase {
                                     building: "PEARL GARDEN",
                                     street: "BEDOK NORTH AVENUE 4",
                                     postal: "460102").formattedAddress
-        let phone = "+6597399245"
         
-        let update = EKYCProfileUpdate(address: address, phoneNumber: phone)
+        let update = EKYCProfileUpdate(address: address)
         
         // Failures handled in `awaitResult`
         self.testAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)

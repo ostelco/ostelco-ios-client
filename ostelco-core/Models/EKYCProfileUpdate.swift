@@ -10,32 +10,22 @@ import Foundation
 
 public struct EKYCProfileUpdate: Codable {
     public let address: String
-    public let phoneNumber: String
     
     public init?(myInfoDetails: MyInfoDetails) {
-        guard let phoneNumber = myInfoDetails.mobileNumber?.formattedNumber else {
-            return nil
-        }
-        
         self.address = myInfoDetails.address.formattedAddress
-        self.phoneNumber = phoneNumber
     }
     
-    public init(address: String,
-                phoneNumber: String) {
+    public init(address: String) {
         self.address = address
-        self.phoneNumber = phoneNumber
     }
     
     public enum CodingKeys: String, CodingKey {
         case address
-        case phoneNumber
     }
     
     public var asQueryItems: [URLQueryItem] {
         return [
             URLQueryItem(codingKey: CodingKeys.address, value: self.address),
-            URLQueryItem(codingKey: CodingKeys.phoneNumber, value: self.phoneNumber)
         ]
     }
 }
