@@ -19,11 +19,7 @@ class MyInfoTests: XCTestCase {
         }
         
         XCTAssertEqual(testInfo.name, "TAN XIAO HUI")
-        XCTAssertEqual(testInfo.sex, "F")
         XCTAssertEqual(testInfo.dob, "1998-06-06")
-        XCTAssertEqual(testInfo.residentialStatus, "C")
-        XCTAssertEqual(testInfo.nationality, "SG")
-        XCTAssertEqual(testInfo.email, "myinfotesting@gmail.com")
         
         let address = testInfo.address
         XCTAssertEqual(address.unit, "128")
@@ -36,15 +32,6 @@ class MyInfoTests: XCTestCase {
         XCTAssertEqual(address.addressLine1, "#09-128, 102 PEARL GARDEN")
         XCTAssertEqual(address.addressLine2, "BEDOK NORTH AVENUE 4, 460102")
         XCTAssertEqual(address.formattedAddress, "#09-128, 102 PEARL GARDEN\nBEDOK NORTH AVENUE 4, 460102")
-        
-        guard let mobileNumber = testInfo.mobileNumber else {
-            XCTFail("Could not access mobile number!")
-            return
-        }
-        XCTAssertEqual(mobileNumber.code, "65")
-        XCTAssertEqual(mobileNumber.prefix, "+")
-        XCTAssertEqual(mobileNumber.number, "97399245")
-        XCTAssertEqual(mobileNumber.formattedNumber, "+6597399245")
     }
     
     func testAddressFormattingWithMissingBlock() {
