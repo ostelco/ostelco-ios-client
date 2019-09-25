@@ -12,82 +12,55 @@ import UIKit
 import AVKit
 
 enum ESIMPage: Int, CaseIterable {
-    case instructions
-    case scanQRCode
-    case tapToContinue
-    case forMobileDataOnly
-    case watchVideo
+    case instructions1
+    case instructions2
+    case instructions3
+    case instructions4
+    case instructions5
     
     var image: UIImage? {
         switch self {
-        case .instructions:
-            return .ostelco_instructionsESimLaptop
-        case .scanQRCode:
-            return .ostelco_instructionsESimPhone
-        case .tapToContinue:
-            return .ostelco_instructionsESimContinue
-        case .forMobileDataOnly:
-            return .ostelco_instructionsESimUseSecondary
-        case .watchVideo:
-            return nil
+        case .instructions1:
+            return .ostelco_app
+        case .instructions2:
+            return .ostelco_screenshot1
+        case .instructions3:
+            return .ostelco_screenshot2
+        case .instructions4:
+            return .ostelco_screenshot3
+        case .instructions5:
+            return .ostelco_screenshot4
         }
     }
     
-    var topText: BoldableText {
+    var topText: BoldableText? {
         switch self {
-        case .instructions:
-            return BoldableText(
-                fullText: NSLocalizedString("We are about to send you an email with a QR\ncode. Before we do that, please read these\ninstructions.", comment: "eSim download instructions. step 1"),
-                boldedPortion: nil
-            )
-        case .scanQRCode:
-            return BoldableText(
-                fullText: NSLocalizedString("On your phone, go to:\nSettings - Mobile Data - Add Data Plan", comment: "eSim download instructions. step 2"),
-                boldedPortion: NSLocalizedString("Settings - Mobile Data - Add Data Plan", comment: "eSim download instructions. step 2 (downloaded part)")
-            )
-        case .tapToContinue:
-            return BoldableText(
-                fullText: NSLocalizedString("Then tap continue...", comment: "eSim download instructions. step 3"),
-                boldedPortion: nil
-            )
-        case .forMobileDataOnly:
-            return BoldableText(
-                fullText: NSLocalizedString("Choose \"...for mobile data only\"", comment: "eSim download instructions. step 4"),
-                boldedPortion: nil
-            )
-        case .watchVideo:
-            return BoldableText(
-                fullText: NSLocalizedString("Still unsure? Watch this video!", comment: "eSim download instructions. step 5"),
-                boldedPortion: nil
-            )
+        case .instructions1:
+            return nil
+        case .instructions2:
+            return BoldableText(fullText: NSLocalizedString("When this screen appears: Tap 'Continue'\nand then 'Add Data Plan'", comment: "eSIM download instructions step 2."), boldedPortion: nil)
+        case .instructions3:
+            return BoldableText(fullText: NSLocalizedString("Tap 'Secondary'", comment: "eSIM download instructions step 3."), boldedPortion: nil)
+        case .instructions4:
+            return BoldableText(fullText: NSLocalizedString("Choose 'Custom Label' and name your\neSIM: OYA Malaysia", comment: "eSIM download instructions step 4."), boldedPortion: nil)
+        case .instructions5:
+            return BoldableText(fullText: NSLocalizedString("Choose \"...for mobile data only\"", comment: "eSIM download instructions step 5."), boldedPortion: nil)
         }
     }
     
     var bottomText: BoldableText? {
         switch self {
-        case .instructions:
+        case .instructions1:
             return BoldableText(
-                fullText: NSLocalizedString("Open the email on\nanother device", comment: "eSim instructions bottom text step 1"),
-                boldedPortion: NSLocalizedString("another device", comment: "eSim instructions bottom text step 1 (boldable part)")
-            )
-        case .scanQRCode:
-            return BoldableText(
-                fullText: NSLocalizedString("Scan the QR code", comment: "eSim instructions bottom text step 2"),
-                boldedPortion: nil
-            )
-        case .tapToContinue:
-            return nil
-        case .forMobileDataOnly:
-            return nil
-        case .watchVideo:
+                fullText: NSLocalizedString("Before we set up your eSIM, please read\nthese instructions. We have also sent them\nto your email", comment: "eSim instructions bottom text step 1"),
+                boldedPortion: nil)
+        default:
             return nil
         }
     }
     
     var videoURL: URL? {
         switch self {
-        case .watchVideo:
-            return ExternalLink.esimInstructionsVideo.url
         default:
             return nil
         }
@@ -124,8 +97,12 @@ class ESIMPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.topTextLabel.setBoldableText(self.esimPage.topText)
-        
+        if let topText = self.esimPage.topText {
+            self.topTextLabel.setBoldableText(topText)
+        } else {
+            self.topTextLabel.isHidden = true
+        }
+
         if let bottomText = self.esimPage.bottomText {
             self.bottomTextLabel.setBoldableText(bottomText)
         } else {

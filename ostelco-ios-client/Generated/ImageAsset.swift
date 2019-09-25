@@ -5,6 +5,7 @@ private class ImageBundleHelper {}
 
 /// Images contained within the asset catalog
 public enum ImageAsset: String, CaseIterable {
+    case app
     case backChevron
     case check
     case fakeModalLocation
@@ -21,6 +22,10 @@ public enum ImageAsset: String, CaseIterable {
     case oyaHorizontal
     case oyaVertical
     case phone
+    case screenshot1
+    case screenshot2
+    case screenshot3
+    case screenshot4
     case settings
     case singpass
     case stepArrowIcon
@@ -33,6 +38,8 @@ public extension UIImage {
                   in: Bundle(for: ImageBundleHelper.self),
                   compatibleWith: nil)!
     }
+
+    static let ostelco_app = UIImage(from: .app)
 
     static let ostelco_backChevron = UIImage(from: .backChevron)
 
@@ -65,6 +72,14 @@ public extension UIImage {
     static let ostelco_oyaVertical = UIImage(from: .oyaVertical)
 
     static let ostelco_phone = UIImage(from: .phone)
+
+    static let ostelco_screenshot1 = UIImage(from: .screenshot1)
+
+    static let ostelco_screenshot2 = UIImage(from: .screenshot2)
+
+    static let ostelco_screenshot3 = UIImage(from: .screenshot3)
+
+    static let ostelco_screenshot4 = UIImage(from: .screenshot4)
 
     static let ostelco_settings = UIImage(from: .settings)
 
