@@ -504,7 +504,7 @@
             "deprecationReason": null
           },
           {
-            "name": "ADDRESS_AND_PHONE_NUMBER",
+            "name": "ADDRESS",
             "description": null,
             "args": [],
             "type": {

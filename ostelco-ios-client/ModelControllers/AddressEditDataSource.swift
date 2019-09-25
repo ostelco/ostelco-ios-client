@@ -21,17 +21,17 @@ enum AddressEditSection: CaseIterable {
     var localizedTitle: String {
         switch self {
         case .floor:
-            return NSLocalizedString("UNIT NUMBER", comment: "Address input for floor title.")
+            return NSLocalizedString("Floor", comment: "Address input for floor title.")
         case .unit:
-            return NSLocalizedString("UNIT NUMBER", comment: "Address input for unit title.")
+            return NSLocalizedString("Unit", comment: "Address input for unit title.")
         case .block:
-            return NSLocalizedString("UNIT NUMBER", comment: "Address input for block title.")
+            return NSLocalizedString("Block", comment: "Address input for block title.")
         case .building:
-            return NSLocalizedString("UNIT NUMBER", comment: "Address input for building title.")
+            return NSLocalizedString("Building", comment: "Address input for building title.")
         case .street:
-            return NSLocalizedString("STREET", comment: "Address input for street name title.")
+            return NSLocalizedString("Street", comment: "Address input for street name title.")
         case .postcode:
-            return NSLocalizedString("POSTCODE", comment: "Address input for postcode.")
+            return NSLocalizedString("Post Code", comment: "Address input for postcode.")
         }
     }
 }

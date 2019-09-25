@@ -1380,7 +1380,7 @@ public enum PrimeGQL {
 
   public struct RegionDetailsFragment: GraphQLFragment {
     public static let fragmentDefinition =
-      "fragment regionDetailsFragment on RegionDetails {\n  __typename\n  region {\n    __typename\n    id\n    name\n  }\n  status\n  kycStatusMap {\n    __typename\n    JUMIO\n    MY_INFO\n    NRIC_FIN\n    ADDRESS_AND_PHONE_NUMBER\n  }\n  simProfiles {\n    __typename\n    ...simProfileFields\n  }\n}"
+      "fragment regionDetailsFragment on RegionDetails {\n  __typename\n  region {\n    __typename\n    id\n    name\n  }\n  status\n  kycStatusMap {\n    __typename\n    JUMIO\n    MY_INFO\n    NRIC_FIN\n    ADDRESS\n  }\n  simProfiles {\n    __typename\n    ...simProfileFields\n  }\n}"
 
     public static let possibleTypes = ["RegionDetails"]
 
@@ -1502,7 +1502,7 @@ public enum PrimeGQL {
         GraphQLField("JUMIO", type: .scalar(KycStatus.self)),
         GraphQLField("MY_INFO", type: .scalar(KycStatus.self)),
         GraphQLField("NRIC_FIN", type: .scalar(KycStatus.self)),
-        GraphQLField("ADDRESS_AND_PHONE_NUMBER", type: .scalar(KycStatus.self)),
+        GraphQLField("ADDRESS", type: .scalar(KycStatus.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1511,8 +1511,8 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(jumio: KycStatus? = nil, myInfo: KycStatus? = nil, nricFin: KycStatus? = nil, addressAndPhoneNumber: KycStatus? = nil) {
-        self.init(unsafeResultMap: ["__typename": "KycStatusMap", "JUMIO": jumio, "MY_INFO": myInfo, "NRIC_FIN": nricFin, "ADDRESS_AND_PHONE_NUMBER": addressAndPhoneNumber])
+      public init(jumio: KycStatus? = nil, myInfo: KycStatus? = nil, nricFin: KycStatus? = nil, address: KycStatus? = nil) {
+        self.init(unsafeResultMap: ["__typename": "KycStatusMap", "JUMIO": jumio, "MY_INFO": myInfo, "NRIC_FIN": nricFin, "ADDRESS": address])
       }
 
       public var __typename: String {
@@ -1551,12 +1551,12 @@ public enum PrimeGQL {
         }
       }
 
-      public var addressAndPhoneNumber: KycStatus? {
+      public var address: KycStatus? {
         get {
-          return resultMap["ADDRESS_AND_PHONE_NUMBER"] as? KycStatus
+          return resultMap["ADDRESS"] as? KycStatus
         }
         set {
-          resultMap.updateValue(newValue, forKey: "ADDRESS_AND_PHONE_NUMBER")
+          resultMap.updateValue(newValue, forKey: "ADDRESS")
         }
       }
     }

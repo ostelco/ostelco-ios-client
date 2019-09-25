@@ -149,7 +149,6 @@ public struct StageDecider {
     
     // swiftlint:disable:next cyclomatic_complexity
     public func compute(context: Context?, localContext: LocalContext) -> Stage {
-        
         // Error Stages
         if localContext.serverIsUnreachable {
             return .ohNo(.serverUnreachable)
@@ -240,7 +239,7 @@ public struct StageDecider {
                     remove(.nric)
                 }
                 
-                if kycStatusMap.addressAndPhoneNumber == .approved {
+                if kycStatusMap.address == .approved {
                     remove(.address)
                 }
                 

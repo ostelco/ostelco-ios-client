@@ -111,28 +111,9 @@ public struct MyInfoDetails: Codable {
     public var dob: String {
         return _dob.value
     }
-    private let _email: MyInfoRequiredValue
-    public var email: String {
-        return _email.value
-    }
     
-    private let _sex: MyInfoOptionalCode?
-    public var sex: String? {
-        return _sex?.code
-    }
-    
-    private let _residentialStatus: MyInfoOptionalCode?
-    public var residentialStatus: String? {
-        return _residentialStatus?.code
-    }
-    
-    private let _nationality: MyInfoOptionalCode?
-    public var nationality: String? {
-        return _nationality?.code
-    }
-    
-    public var _mailadd: MyInfoAddress
-    public var _regadd: MyInfoAddress
+    private var _mailadd: MyInfoAddress
+    private var _regadd: MyInfoAddress
     
     private let _passexpirydate: MyInfoRequiredValue
     public var passExpiryDate: String {
@@ -162,14 +143,10 @@ public struct MyInfoDetails: Codable {
     enum CodingKeys: String, CodingKey {
         case _name = "name"
         case _dob = "dob"
-        case _email = "email"
         case _mailadd = "mailadd"
         case _regadd = "regadd"
         case _passexpirydate = "passexpirydate"
         case _uinfin = "uinfin"
-        case _sex = "sex"
-        case _residentialStatus = "residentialstatus"
-        case _nationality = "nationality"
         case mobileNumber = "mobileno"
     }
 }
