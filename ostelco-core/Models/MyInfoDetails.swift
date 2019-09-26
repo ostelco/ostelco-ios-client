@@ -138,6 +138,8 @@ public struct MyInfoDetails: Codable {
         }
     }
         
+    public let mobileNumber: MyInfoMobileNumber?
+    
     enum CodingKeys: String, CodingKey {
         case _name = "name"
         case _dob = "dob"
