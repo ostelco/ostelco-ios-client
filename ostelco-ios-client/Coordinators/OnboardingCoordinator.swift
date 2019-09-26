@@ -13,6 +13,7 @@ import FirebaseAuth
 import UserNotifications
 import CoreLocation
 import AVFoundation
+import CoreTelephony
 
 protocol OnboardingCoordinatorDelegate: class {
     func onboardingComplete()
@@ -217,6 +218,52 @@ class OnboardingCoordinator {
             return stageDecider.identityOptionsForRegionID(region.id).count > 1
         }
         return false
+    }
+    
+    /**
+     Tries to download and install an eSIM on the device using apples eSIM APIs.
+     */
+    func addPlanForSimProfile(_ simProfile: SimProfile) -> PromiseKit.Promise<Void> {
+        let planObj = CTCellularPlanProvisioning()
+        
+        let request = CTCellularPlanProvisioningRequest()
+        request.address = simProfile.eSimServerAddress
+        request.matchingID = simProfile.activationCode
+        request.iccid = simProfile.iccId
+
+        return PromiseKit.Promise<Void> { seal in
+            planObj.addPlan(with: request) { (result: CTCellularPlanProvisioningAddPlanResult) in
+                switch result {
+                case .unknown:
+                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown"))
+                case .fail:
+                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Failed"))
+                case .success:
+                    seal.fulfill(())
+                @unknown default:
+                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown default"))
+                }
+            }
+        }
+    }
+    
+    /**
+     Returns a simProfile from server and caches it in memory for future calls.
+     */
+    func getSimProfile() -> PromiseKit.Promise<SimProfile> {
+        guard let countryCode = localContext.selectedRegion?.country.countryCode else {
+            fatalError("we need a country at this point.")
+        }
+        
+        if let simProfile = localContext.simProfile, simProfile.status == .AVAILABLE_FOR_DOWNLOAD {
+            return PromiseKit.Promise.value(simProfile)
+        }
+        
+        localContext.simProfile = nil
+        return self.primeAPI.createSimProfileForRegion(code: countryCode).map { simProfile in
+            self.localContext.simProfile = simProfile
+            return simProfile
+        }
     }
 }
 
@@ -511,33 +558,32 @@ extension OnboardingCoordinator: ESIMOnBoardingDelegate {
 
 extension OnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
-        localContext.hasSeenESIMInstructions = true
-        
         let spinner = controller.showSpinner()
-        
-        primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<PrimeGQL.SimProfileFields> in
-            assert(context.regions.count == 1)
-            // swiftlint:disable:next empty_count
-            assert(context.regions.first!.fragments.regionDetailsFragment.simProfiles?.count == 0)
-            
-            let simProfile = RegionResponse.getRegionFromRegionResponseArray(context.regions.map({ $0.fragments.regionDetailsFragment }))?.getSimProfile()
-            if let simProfile = simProfile {
-                return PromiseKit.Promise.value(simProfile)
-            } else {
-                let countryCode = context.toLegacyModel().getRegion()!.region.id
-                return self.primeAPI.createSimProfileForRegion(code: countryCode).map { $0.getGraphQLModel().fragments.simProfileFields }
+        getSimProfile()
+        .then { simProfile -> PromiseKit.Promise<Void> in
+            switch simProfile.status {
+            case .INSTALLED:
+                return PromiseKit.Promise.value(())
+            case .AVAILABLE_FOR_DOWNLOAD:
+                guard simProfile.hasValidESimActivationCode() else {
+                    fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
+                }
+                return self.addPlanForSimProfile(simProfile)
+            default:
+                fatalError("Invalid simProfile status, expected \(SimProfileStatus.AVAILABLE_FOR_DOWNLOAD) on \(SimProfileStatus.INSTALLED) got: \(simProfile.status)")
             }
+            return PromiseKit.Promise.value(())
         }
         .ensure {
             controller.removeSpinner(spinner)
         }
-        .done { [weak self] (_) -> Void in
+        .done { [weak self] _ in
+            self?.localContext.hasSeenESIMInstructions = true
             self?.advance()
         }
         .catch { error in
             ApplicationErrors.log(error)
-            controller.showGenericError(error: error)
+            controller.showAlert(title: "Error", msg: error.localizedDescription)
         }
     }
 }
