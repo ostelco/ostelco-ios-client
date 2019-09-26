@@ -50,6 +50,10 @@ public struct SimProfile: Codable, Equatable {
     public var activationCode: String {
         return String(eSimActivationCode.split(separator: "$")[2])
     }
+    
+    public var isDummyProfile: Bool {
+        return eSimActivationCode.lowercased() == "dummy esim" || iccId.lowercased().starts(with: "test")
+    }
 }
 
 extension SimProfile {

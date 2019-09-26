@@ -561,6 +561,14 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
             case .INSTALLED:
                 return PromiseKit.Promise.value(())
             case .AVAILABLE_FOR_DOWNLOAD:
+                if simProfile.isDummyProfile {
+                    return PromiseKit.Promise<Void> { seal in
+                        controller.showAlert(title: "YOU DID NOT GET AN ESIM", msg: "Triggered fake eSIM path, which means you don't install an eSIM on your phone but we let you pass through the onboarding pretending you have one. This message should only be visible to testers.") { _ in
+                            seal.fulfill(())
+                        }
+                    }
+                    
+                }
                 guard simProfile.hasValidESimActivationCode() else {
                     fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
                 }
