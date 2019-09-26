@@ -112,8 +112,8 @@ public struct MyInfoDetails: Codable {
         return _dob.value
     }
     
-    public var _mailadd: MyInfoAddress
-    public var _regadd: MyInfoAddress
+    private var _mailadd: MyInfoAddress
+    private var _regadd: MyInfoAddress
     
     private let _passexpirydate: MyInfoRequiredValue
     public var passExpiryDate: String {
@@ -145,6 +145,7 @@ public struct MyInfoDetails: Codable {
         case _regadd = "regadd"
         case _passexpirydate = "passexpirydate"
         case _uinfin = "uinfin"
+        case mobileNumber = "mobileno"
     }
 }
 

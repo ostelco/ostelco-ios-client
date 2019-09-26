@@ -10,7 +10,7 @@ public struct KYCStatusMap: Codable {
     public let JUMIO: EKYCStatus?
     public let MY_INFO: EKYCStatus?
     public let NRIC_FIN: EKYCStatus?
-    public let ADDRESS_AND_PHONE_NUMBER: EKYCStatus?
+    public let ADDRESS: EKYCStatus?
     
     /// Testing initializer
     public init(jumio: EKYCStatus? = nil,
@@ -20,7 +20,7 @@ public struct KYCStatusMap: Codable {
         self.JUMIO = jumio
         self.MY_INFO = myInfo
         self.NRIC_FIN = nricFin
-        self.ADDRESS_AND_PHONE_NUMBER = addressPhone
+        self.ADDRESS = addressPhone
     }
     
     public init(gqlKYCStatusMap: PrimeGQL.RegionDetailsFragment.KycStatusMap) {
@@ -34,10 +34,10 @@ public struct KYCStatusMap: Codable {
         } else {
             self.MY_INFO = nil
         }
-        if let addressAndPhone = gqlKYCStatusMap.addressAndPhoneNumber?.rawValue {
-            self.ADDRESS_AND_PHONE_NUMBER = EKYCStatus(rawValue: addressAndPhone)!
+        if let addressAndPhone = gqlKYCStatusMap.address?.rawValue {
+            self.ADDRESS = EKYCStatus(rawValue: addressAndPhone)!
         } else {
-            self.ADDRESS_AND_PHONE_NUMBER = nil
+            self.ADDRESS = nil
         }
         if let nricFin = gqlKYCStatusMap.nricFin?.rawValue {
             self.NRIC_FIN = EKYCStatus(rawValue: nricFin)!
@@ -114,8 +114,8 @@ extension PrimeGQL.RegionDetailsFragment.KycStatusMap {
         if let NRIC_FIN = legacyModel.NRIC_FIN {
             self.nricFin = NRIC_FIN.getGraphQLModel()
         }
-        if let ADDRESS_AND_PHONE_NUMBER = legacyModel.ADDRESS_AND_PHONE_NUMBER {
-            self.addressAndPhoneNumber = ADDRESS_AND_PHONE_NUMBER.getGraphQLModel()
+        if let ADDRESS = legacyModel.ADDRESS {
+            self.address = ADDRESS.getGraphQLModel()
         }
         if let MY_INFO = legacyModel.MY_INFO {
             self.myInfo = MY_INFO.getGraphQLModel()

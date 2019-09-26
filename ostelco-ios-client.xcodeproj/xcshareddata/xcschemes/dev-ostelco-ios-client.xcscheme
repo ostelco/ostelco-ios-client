@@ -160,7 +160,7 @@
          <EnvironmentVariable
             key = "HTTP_HEADER_X_MODE"
             value = "prime-direct"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
