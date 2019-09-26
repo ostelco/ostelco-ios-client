@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-11-IYb" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="32" y="44" width="350" height="33.5"/>
+                                <rect key="frame" x="32" y="44" width="350" height="0.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
@@ -30,10 +30,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="do3-8p-zAP">
-                                <rect key="frame" x="24" y="109.5" width="366" height="568.5"/>
+                                <rect key="frame" x="24" y="76.5" width="366" height="601.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-m4-Wv4">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="568.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="601.5"/>
                                         <color key="backgroundColor" name="background"/>
                                         <connections>
                                             <segue destination="1cU-eB-9Qs" kind="embed" id="D3w-bP-v4t"/>
@@ -59,7 +59,6 @@
                     </view>
                     <connections>
                         <outlet property="primaryButton" destination="jBu-JG-9LU" id="2HM-cC-aj7"/>
-                        <segue destination="pps-vh-Zol" kind="show" identifier="showESIMInstructions" id="6tX-Sn-okP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnf-TA-ZcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,20 +82,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="top" axis="vertical" distribution="equalSpacing" alignment="center" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="aOc-in-O3Q">
-                                <rect key="frame" x="0.0" y="44" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="763"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiN-vE-YMt" userLabel="Top Text" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                        <rect key="frame" x="174.5" y="0.0" width="65" height="20.5"/>
+                                        <rect key="frame" x="175.5" y="0.0" width="63.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-YD-4zA">
-                                        <rect key="frame" x="19.5" y="84.5" width="375" height="273"/>
+                                        <rect key="frame" x="19.5" y="85" width="375" height="273"/>
                                         <color key="backgroundColor" name="background"/>
                                     </imageView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOe-De-RyU">
-                                        <rect key="frame" x="0.0" y="421.5" width="414" height="256"/>
+                                        <rect key="frame" x="0.0" y="422" width="414" height="256"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="256" id="mBg-DI-EqP"/>
@@ -106,7 +105,7 @@
                                         </connections>
                                     </containerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcn-jK-CyN" userLabel="Bottom Text" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                        <rect key="frame" x="161" y="741.5" width="92.5" height="20.5"/>
+                                        <rect key="frame" x="161" y="742" width="92.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -155,48 +154,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-aQ-DYw" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="366" height="33.5"/>
+                                <rect key="frame" x="24" y="88" width="366" height="35"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 1GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-xd-unb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="155.5" width="366" height="20.5"/>
+                                <rect key="frame" x="24" y="157" width="366" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="lHf-a4-RCd" customClass="BackgroundRoundedImageView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="208" width="25" height="25"/>
+                                <rect key="frame" x="24" y="210" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="8tn-c1-Le8"/>
                                     <constraint firstAttribute="height" constant="25" id="PU3-Bi-iAD"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-wI-seC" customClass="BackgroundRoundedImageView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="265" width="25" height="25"/>
+                                <rect key="frame" x="24" y="267" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="SyW-uI-YZG"/>
                                     <constraint firstAttribute="height" constant="25" id="UdC-Kp-khd"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-xm-Fnb">
-                                <rect key="frame" x="24" y="322" width="50" height="50"/>
+                                <rect key="frame" x="24" y="324" width="50" height="50"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-UT-kpb" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="210" width="122" height="21"/>
+                                <rect key="frame" x="65" y="212" width="120.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="stepItemUnlocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-f2-C0l" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="267" width="144" height="21"/>
+                                <rect key="frame" x="65" y="269" width="146.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="stepItemUnlocked"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-iQ-nVD" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="336.5" width="146" height="21"/>
+                                <rect key="frame" x="65" y="338.5" width="141.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="stepItemUnlocked"/>
                                 <nil key="highlightedColor"/>
@@ -261,148 +260,16 @@
             </objects>
             <point key="canvasLocation" x="135" y="58"/>
         </scene>
-        <!--Pending Download View Controller-->
-        <scene sceneID="oPj-wY-cH4">
-            <objects>
-                <viewController storyboardIdentifier="ESIMPendingDownloadViewController" id="pps-vh-Zol" customClass="ESIMPendingDownloadViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PgR-Xv-prz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-P3-rBL" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="32" y="44" width="350" height="33.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" name="textHeading"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We just sent an email with a QR code to you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFQ-XE-Rr2" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="97.5" width="366" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please follow these steps:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-bW-vSe" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="167" width="366" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuT-Vm-dCb" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="714" width="366" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Check again"/>
-                                <connections>
-                                    <action selector="continueTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="c1S-Dv-Jls"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-bE-GzB" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="163.5" y="647" width="87" height="33"/>
-                                <state key="normal" title="Need help?">
-                                    <color key="titleColor" name="textLink"/>
-                                </state>
-                                <connections>
-                                    <action selector="needHelpTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="3Fu-gf-xr0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-1A-jtX" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="157" y="118" width="100" height="33"/>
-                                <state key="normal" title="Send it again">
-                                    <color key="titleColor" name="textLink"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendAgainTapped:" destination="pps-vh-Zol" eventType="touchUpInside" id="hC0-td-dwc"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laptop" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-Mq-ang">
-                                <rect key="frame" x="32" y="208" width="79" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="79" id="BjY-Sa-gLh"/>
-                                    <constraint firstAttribute="height" constant="63" id="Qdq-IA-wHq"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="XYI-u4-iDU">
-                                <rect key="frame" x="35" y="291" width="65" height="82"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="cOk-cZ-b5h"/>
-                                    <constraint firstAttribute="height" constant="82" id="zkG-9l-6Bk"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-Vf-ZGV" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="131" y="291" width="251" height="122"/>
-                                <string key="text">On your phone, go to: 
-Settings - Mobile Data - Add Data Plan
-
-Scan the QR code with this phone</string>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Open the email on your laptop/tablet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-eO-Xdc" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="131" y="208" width="251" height="41"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" name="background"/>
-                        <constraints>
-                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="top" secondItem="HlS-bW-vSe" secondAttribute="bottom" constant="20" id="0YF-jx-nm5"/>
-                            <constraint firstItem="XYI-u4-iDU" firstAttribute="top" secondItem="tRS-Mq-ang" secondAttribute="bottom" constant="20" id="2E6-Pg-CmN"/>
-                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="leading" secondItem="tRS-Mq-ang" secondAttribute="trailing" constant="20" id="4mQ-bn-VyQ"/>
-                            <constraint firstItem="HlS-bW-vSe" firstAttribute="top" secondItem="b1j-1A-jtX" secondAttribute="bottom" constant="16" id="7Tu-QJ-Xxg"/>
-                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="top" secondItem="XYI-u4-iDU" secondAttribute="top" id="7zU-q9-srV"/>
-                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="Biu-P3-rBL" secondAttribute="trailing" constant="32" id="BlV-YQ-Ula"/>
-                            <constraint firstAttribute="trailing" secondItem="HlS-bW-vSe" secondAttribute="trailing" constant="24" id="Ood-B8-Gke"/>
-                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="HuT-Vm-dCb" secondAttribute="trailing" constant="24" id="SS2-6y-CTK"/>
-                            <constraint firstItem="b1j-1A-jtX" firstAttribute="centerX" secondItem="PgR-Xv-prz" secondAttribute="centerX" id="UL7-IO-VKA"/>
-                            <constraint firstItem="Biu-P3-rBL" firstAttribute="top" secondItem="MFX-5Q-Pxo" secondAttribute="top" constant="44" id="WOp-bX-94S"/>
-                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="trailing" secondItem="Mgc-eO-Xdc" secondAttribute="trailing" constant="32" id="X5y-NW-8QD"/>
-                            <constraint firstItem="Mgc-eO-Xdc" firstAttribute="top" secondItem="tRS-Mq-ang" secondAttribute="top" id="cxY-Po-SKf"/>
-                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="top" secondItem="Biu-P3-rBL" secondAttribute="bottom" constant="20" id="eAn-91-rHO"/>
-                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="trailing" secondItem="Mgc-eO-Xdc" secondAttribute="trailing" id="eM3-SS-nrH"/>
-                            <constraint firstItem="tRS-Mq-ang" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="32" id="fx3-pd-zHz"/>
-                            <constraint firstAttribute="trailing" secondItem="RFQ-XE-Rr2" secondAttribute="trailing" constant="24" id="jyS-Uh-Nef"/>
-                            <constraint firstItem="XYI-u4-iDU" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="35" id="k0T-CL-sJu"/>
-                            <constraint firstItem="HuT-Vm-dCb" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="24" id="k2b-JQ-3Up"/>
-                            <constraint firstItem="HlS-bW-vSe" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="24" id="kT8-DX-JSp"/>
-                            <constraint firstItem="MFX-5Q-Pxo" firstAttribute="bottom" secondItem="HuT-Vm-dCb" secondAttribute="bottom" constant="44" id="kam-dT-UBT"/>
-                            <constraint firstItem="Biu-P3-rBL" firstAttribute="leading" secondItem="MFX-5Q-Pxo" secondAttribute="leading" constant="32" id="ncF-ll-Hqy"/>
-                            <constraint firstItem="HuT-Vm-dCb" firstAttribute="top" secondItem="qmZ-bE-GzB" secondAttribute="bottom" constant="34" id="pTM-ex-jWB"/>
-                            <constraint firstItem="RFQ-XE-Rr2" firstAttribute="leading" secondItem="PgR-Xv-prz" secondAttribute="leading" constant="24" id="sOQ-M2-YeB"/>
-                            <constraint firstItem="b1j-1A-jtX" firstAttribute="top" secondItem="RFQ-XE-Rr2" secondAttribute="bottom" id="sqx-ds-5SL"/>
-                            <constraint firstItem="cM8-Vf-ZGV" firstAttribute="leading" secondItem="Mgc-eO-Xdc" secondAttribute="leading" id="wTt-U9-jO0"/>
-                            <constraint firstItem="qmZ-bE-GzB" firstAttribute="centerX" secondItem="MFX-5Q-Pxo" secondAttribute="centerX" id="xER-QQ-RYZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="MFX-5Q-Pxo"/>
-                    </view>
-                    <connections>
-                        <outlet property="continueButton" destination="HuT-Vm-dCb" id="UEH-nt-qFV"/>
-                        <segue destination="y8z-sI-v85" kind="show" identifier="showGenericOhNo" id="g7o-Sq-6Cf"/>
-                        <segue destination="Pmf-Pt-KCB" kind="show" identifier="showHome" id="zTo-ZC-MwT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wE5-Lr-JxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1997" y="58"/>
-        </scene>
-        <!--OhNo-->
-        <scene sceneID="fYj-Ko-N6l">
-            <objects>
-                <viewControllerPlaceholder storyboardName="OhNo" id="y8z-sI-v85" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eoR-KN-9Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2606" y="-214"/>
-        </scene>
         <!--Sign Up Completed View Controller-->
         <scene sceneID="bMQ-md-hBk">
             <objects>
                 <viewController storyboardIdentifier="SignUpCompletedViewController" id="Pmf-Pt-KCB" customClass="SignUpCompletedViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UFf-7M-WzA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zu4-gp-JLF" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="714" width="366" height="50"/>
+                                <rect key="frame" x="24" y="768" width="366" height="50"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueTapped:" destination="Pmf-Pt-KCB" eventType="touchUpInside" id="It5-su-1Qf"/>
@@ -410,19 +277,19 @@ Scan the QR code with this phone</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start using your 1GB of free data!  🎉" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-4d-Nbm" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="510" width="366" height="20.5"/>
+                                <rect key="frame" x="24" y="556" width="366" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-02-cHf" customClass="Heading1Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="44" width="366" height="60"/>
+                                <rect key="frame" x="24" y="88" width="366" height="62"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVL-Vw-Riu" customClass="LoopingVideoView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="124" width="366" height="366"/>
+                                <rect key="frame" x="24" y="170" width="366" height="366"/>
                                 <color key="backgroundColor" name="background"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wVL-Vw-Riu" secondAttribute="height" multiplier="1:1" id="FRE-FS-taJ"/>
@@ -466,8 +333,6 @@ Scan the QR code with this phone</string>
     </scenes>
     <resources>
         <image name="check" width="14" height="12"/>
-        <image name="laptop" width="79" height="63"/>
-        <image name="phone" width="70" height="76"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

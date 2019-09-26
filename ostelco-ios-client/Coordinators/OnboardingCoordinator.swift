@@ -141,10 +141,6 @@ class OnboardingCoordinator {
             let instructions = ESIMInstructionsViewController.fromStoryboard()
             instructions.delegate = self
             navigationController.setViewControllers([instructions], animated: true)
-        case .pendingESIMInstall:
-            let pending = ESIMPendingDownloadViewController.fromStoryboard()
-            pending.delegate = self
-            navigationController.setViewControllers([pending], animated: true)
         case .awesome:
             let awesome = SignUpCompletedViewController.fromStoryboard()
             awesome.delegate = self
@@ -585,35 +581,6 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
             ApplicationErrors.log(error)
             controller.showAlert(title: "Error", msg: error.localizedDescription)
         }
-    }
-}
-
-extension OnboardingCoordinator: ESIMPendingDownloadDelegate {
-    func resendEmail(controller: UIViewController) {
-        let spinnerView = controller.showSpinner()
-        primeAPI.loadContext()
-        .then { (context) -> PromiseKit.Promise<SimProfile> in
-            let region = context.toLegacyModel().getRegion()!
-            let profile = region.getSimProfile()!
-            return self.primeAPI.resendEmailForSimProfileInRegion(code: region.region.id, iccId: profile.iccId)
-        }
-        .done { [weak self] _ in
-            self?.navigationController.showAlert(
-                title: NSLocalizedString("Message", comment: "Title for alert when we resend esim email."),
-                msg: NSLocalizedString("We have resent the QR code to your email address.", comment: "Message for alert when we resend esim email.")
-            )
-        }
-        .catch { [weak self] error in
-            ApplicationErrors.log(error)
-            self?.navigationController.showGenericError(error: error)
-        }
-        .finally {
-            controller.removeSpinner(spinnerView)
-        }
-    }
-    
-    func checkAgain() {
-        advance()
     }
 }
 
