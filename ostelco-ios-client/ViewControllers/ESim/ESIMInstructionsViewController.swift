@@ -19,7 +19,6 @@ class ESIMInstructionsViewController: UIViewController {
     private var pageController: UIPageViewController!
     
     @IBOutlet private var primaryButton: PrimaryButton!
-    @IBOutlet private var lastPageLabel: BodyTextLabel!
     
     weak var delegate: ESIMInstructionsDelegate?
     
@@ -47,11 +46,9 @@ class ESIMInstructionsViewController: UIViewController {
     
     private func updateUI(for index: Int) {
         if index == (ESIMPage.allCases.count - 1) {
-            primaryButton.setTitle(NSLocalizedString("Send me the QR code", comment: "Last action button in eSim Carousel"), for: .normal)
-            lastPageLabel.isHidden = false
+            primaryButton.setTitle(NSLocalizedString("I'm ready to set up my eSIM", comment: "Last action button in eSim Carousel"), for: .normal)
         } else {
             primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in Carousel"), for: .normal)
-            lastPageLabel.isHidden = true
         }
     }
     

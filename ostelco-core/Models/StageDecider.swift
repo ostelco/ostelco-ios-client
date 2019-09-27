@@ -19,6 +19,7 @@ public class LocalContext {
     public var hasSeenVerifyIdentifyOnboarding: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasSeenLocationPermissions: Bool
+    public var simProfile: SimProfile?
     
     private var _myInfoCode: String?
     public var myInfoCode: String? {
@@ -87,7 +88,6 @@ public struct StageDecider {
         case verifyMyInfo(code: String)
         case eSimOnboarding
         case eSimInstructions
-        case pendingESIMInstall
         case awesome
         case ohNo(OhNoIssueType)
         case locationProblem(LocationProblem)
@@ -115,7 +115,7 @@ public struct StageDecider {
     }
 
     private func eSIMStage(_ region: PrimeGQL.RegionDetailsFragment, _ localContext: LocalContext) -> Stage {
-        var stages: [Stage] = [.eSimOnboarding, .eSimInstructions, .pendingESIMInstall, .awesome, .home]
+        var stages: [Stage] = [.eSimOnboarding, .eSimInstructions, .awesome, .home]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -134,7 +134,6 @@ public struct StageDecider {
         if let profile = region.getSimProfile(), profile.status == .installed {
             remove(.eSimOnboarding)
             remove(.eSimInstructions)
-            remove(.pendingESIMInstall)
             
             if !localContext.hasSeenESimOnboarding {
                 remove(.awesome)

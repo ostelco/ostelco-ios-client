@@ -35,6 +35,25 @@ public struct SimProfile: Codable, Equatable {
         self.iccId = iccId
         self.status = status
     }
+    
+    // Assumes that an eSimActivationCode contains three parts separated by "$" where
+    // we only care about the second (esim server address) and third part (matching ID)
+    // Example: LPA:1$rsp-0018.oberthur.net$LFVZH-HBCDJ-KWFBR-MGGCD
+    public func hasValidESimActivationCode() -> Bool {
+        return eSimActivationCode.split(separator: "$").count > 2
+    }
+
+    public var eSimServerAddress: String {
+        return String(eSimActivationCode.split(separator: "$")[1])
+    }
+    
+    public var matchingID: String {
+        return String(eSimActivationCode.split(separator: "$")[2])
+    }
+    
+    public var isDummyProfile: Bool {
+        return eSimActivationCode.lowercased() == "dummy esim" || iccId.lowercased().starts(with: "test")
+    }
 }
 
 extension SimProfile {

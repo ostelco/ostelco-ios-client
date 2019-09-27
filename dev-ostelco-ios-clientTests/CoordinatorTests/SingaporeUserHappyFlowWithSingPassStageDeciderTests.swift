@@ -187,27 +187,6 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             ]
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .pendingESIMInstall)
-    }
-    
-    func testUserHasInstalledESIM() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
-                    ],
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
-        )
-        
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .awesome)
     }
     
