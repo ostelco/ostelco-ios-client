@@ -47,6 +47,8 @@
 		044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044725AE2281B7E6006184E5 /* ExternalLink.swift */; };
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
+		04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
+		04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
@@ -423,6 +425,7 @@
 		0448819D217B4E4E00F59758 /* BundleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleModel.swift; sourceTree = "<group>"; };
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		04650A64233DFA1E003F2F08 /* ESimManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimManager.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
 		046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorwayUserHappyFlowWithJumioStageDeciderTests.swift; sourceTree = "<group>"; };
 		046FE92622DEFC6000CF57E4 /* bundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = bundles.graphql; sourceTree = "<group>"; };
@@ -1008,6 +1011,7 @@
 				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
+				04650A64233DFA1E003F2F08 /* ESimManager.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -1894,6 +1898,7 @@
 				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
+				04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
@@ -2093,6 +2098,7 @@
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
+				04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,

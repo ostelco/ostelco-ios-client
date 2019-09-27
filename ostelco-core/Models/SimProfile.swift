@@ -47,7 +47,7 @@ public struct SimProfile: Codable, Equatable {
         return String(eSimActivationCode.split(separator: "$")[1])
     }
     
-    public var activationCode: String {
+    public var matchingID: String {
         return String(eSimActivationCode.split(separator: "$")[2])
     }
     

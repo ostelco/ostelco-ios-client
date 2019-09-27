@@ -217,33 +217,6 @@ class OnboardingCoordinator {
     }
     
     /**
-     Tries to download and install an eSIM on the device using apples eSIM APIs.
-     */
-    func addPlanForSimProfile(_ simProfile: SimProfile) -> PromiseKit.Promise<Void> {
-        let planObj = CTCellularPlanProvisioning()
-        
-        let request = CTCellularPlanProvisioningRequest()
-        request.address = simProfile.eSimServerAddress
-        request.matchingID = simProfile.activationCode
-        request.iccid = simProfile.iccId
-
-        return PromiseKit.Promise<Void> { seal in
-            planObj.addPlan(with: request) { (result: CTCellularPlanProvisioningAddPlanResult) in
-                switch result {
-                case .unknown:
-                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown"))
-                case .fail:
-                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Failed"))
-                case .success:
-                    seal.fulfill(())
-                @unknown default:
-                    seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown default"))
-                }
-            }
-        }
-    }
-    
-    /**
      Returns a simProfile from server and caches it in memory for future calls.
      */
     func getSimProfile() -> PromiseKit.Promise<SimProfile> {
@@ -572,7 +545,7 @@ extension OnboardingCoordinator: ESIMInstructionsDelegate {
                 guard simProfile.hasValidESimActivationCode() else {
                     fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
                 }
-                return self.addPlanForSimProfile(simProfile)
+                return ESimManager.shared.addPlan(address: simProfile.eSimServerAddress, matchingID: simProfile.matchingID, iccid: simProfile.iccId)
             default:
                 fatalError("Invalid simProfile status, expected \(SimProfileStatus.AVAILABLE_FOR_DOWNLOAD) on \(SimProfileStatus.INSTALLED) got: \(simProfile.status)")
             }
