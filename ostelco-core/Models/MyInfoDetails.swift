@@ -137,9 +137,7 @@ public struct MyInfoDetails: Codable {
             _regadd = newValue
         }
     }
-        
-    public let mobileNumber: MyInfoMobileNumber?
-    
+            
     enum CodingKeys: String, CodingKey {
         case _name = "name"
         case _dob = "dob"
@@ -147,7 +145,6 @@ public struct MyInfoDetails: Codable {
         case _regadd = "regadd"
         case _passexpirydate = "passexpirydate"
         case _uinfin = "uinfin"
-        case mobileNumber = "mobileno"
     }
 }
 
