@@ -21,7 +21,7 @@ end
 abstract_target 'ostelco-ios' do
   pod 'Crashlytics', '~>3.13.1'
   pod 'Fabric', '~>1.10.0'
-  pod 'FreshchatSDK', '~>2.5.1' # Customer Support live chat
+  pod 'FreshchatSDK', '~>2.8.0' # Customer Support live chat
   pod 'Firebase/Auth', firebase_version
   pod 'Firebase/DynamicLinks', firebase_version
   pod 'Firebase/Messaging', firebase_version
