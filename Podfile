@@ -1,4 +1,4 @@
-# The minimum supported iOS version for your project
+	# The minimum supported iOS version for your project
 platform :ios, '12.1'
 
 # Enable everything to be compiled into frameworks
@@ -27,7 +27,7 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/Messaging', firebase_version
   pod 'Firebase/Analytics', firebase_version
   pod 'Firebase/Performance', firebase_version
-  pod 'JumioMobileSDK/Netverify', '~>3.3.0' # eKYC
+  pod 'JumioMobileSDK/Netverify', '~>3.3.1' # eKYC
   pod 'Stripe', '~>15.0.0' # Payments
   pod 'SwiftLint', '~>0.32.0'
 
