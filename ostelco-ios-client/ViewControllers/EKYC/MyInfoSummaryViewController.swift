@@ -22,6 +22,7 @@ class MyInfoSummaryViewController: UIViewController {
     var myInfoDetails: MyInfoDetails?
     
     var myInfoCode: String?
+    var regionCode: String?
     
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var uinfin: UILabel!

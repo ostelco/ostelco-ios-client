@@ -15,163 +15,119 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedScanIC() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenLocationPermissions: true)
-        let regions: [PrimeGQL.RegionDetailsFragment] = []
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: regions)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap()
+        )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
     }
 
     func testUserHasCompletedNRIC() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
-                )
-            ]
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
     }
     
     func testUserHasCompletedNRICThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
     }
 
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
-                )
-            ]
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .address)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
     }
     
     func testUserHasCompletedNRICAndJumioThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .address)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
     }
 
     func testUserHasCompletedAddress() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasCompletedAddress: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
-                )
-            ]
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: IdentityVerificationOption.scanIC, hasCompletedJumio: true, hasCompletedAddress: true, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .pendingVerification)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .pendingVerification)
     }
     
     func testUserHasCompletedEverythingExceptJumioWhichIsPendingThenColdStart() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasCompletedEverythingExceptJumioWhichIsRejectedThenColdStart() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .PENDING,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
 
     func testUserHasCompletedScanIC() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasCompletedAddress: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
-                )
-            ]
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasCompletedAddress: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .APPROVED,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
     }
     
     // Everything after this point is the exact same as in SingaporeUserHappyFlowWithSingPassStageDeciderTests
