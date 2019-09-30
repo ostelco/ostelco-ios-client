@@ -66,128 +66,85 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let localContext = LocalContext()
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .notificationPermissions)
-    }
-    
-    func testUserHasSeenNotificationPermissions() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
-    }
-    
-    func testUserHasAcceptedLocationPermissions() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
-    }
-    
-    func testUserHasSeenRegionOnboarding() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenRegionOnboarding: true, hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectRegion)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap()
+        )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyIdentityOnboarding)
-    }
-    
-    func testUserHasSeenVerifyIdentifyOnboarding() {
-        let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap()
+        )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .singpass)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .singpass)
     }
     
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(selectedRegion: Region(id: "sg", name: "SG"), hasSeenNotificationPermissions: true, regionVerified: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, myInfoCode: "xxx", hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, myInfoCode: "xxx", hasSeenLocationPermissions: true)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: nil, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: nil)
+        )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .verifyMyInfo(code: "xxx"))
-    }
-    
-    func testUserHasCompletedSingpassThenColdStart() {
-        let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, myInfoCode: "xxx", hasSeenLocationPermissions: true)
-        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .regionOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .verifyMyInfo(code: "xxx"))
     }
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .APPROVED,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
     }
     
     func testUserHasSeenTheESimOnboarding() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .APPROVED,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .eSimInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
     
     func testUserHasSeenTheESimInstructions() {
         let decider = StageDecider()
         let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: nil,
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .APPROVED,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .awesome)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .done)
     }
     
     func testUserHasInstalledESIMThenColdStart() {

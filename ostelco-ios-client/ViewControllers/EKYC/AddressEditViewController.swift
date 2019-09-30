@@ -16,7 +16,7 @@ protocol MyInfoAddressUpdateDelegate: class {
 }
 
 protocol AddressEditDelegate: class {
-    func entered(address: EKYCAddress)
+    func entered(address: EKYCAddress, regionCode: String)
     func cancel()
 }
 
@@ -28,6 +28,8 @@ class AddressEditViewController: UITableViewController {
     @IBOutlet private var cancelBarButton: UIBarButtonItem!
     
     weak var delegate: AddressEditDelegate?
+    var regionCode: String!
+    
     var spinnerView: UIView?
     
     enum Mode {
@@ -152,7 +154,7 @@ class AddressEditViewController: UITableViewController {
         
         spinnerView = showSpinner()
 
-        delegate?.entered(address: address)
+        delegate?.entered(address: address, regionCode: regionCode)
     }
         
     private func buildAddress() -> EKYCAddress {
