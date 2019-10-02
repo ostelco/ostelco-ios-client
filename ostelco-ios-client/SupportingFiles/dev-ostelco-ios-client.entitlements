@@ -20,5 +20,9 @@
 	<array>
 		<string>Default</string>
 	</array>
+    <key>com.apple.CommCenter.fine-grained</key>
+    <array>
+        <string>public-cellular-plan</string>
+    </array>
 </dict>
 </plist>

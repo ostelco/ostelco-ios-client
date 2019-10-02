@@ -17,9 +17,12 @@ struct ApplicationErrors {
         case couldntConvertUserInfoToNotificaitonData(userInfo: [AnyHashable: Any]?)
         case noValidMemebershipsFound
         case noMyInfoConfigFound
+        case addPlanFailed(message: String)
 
         var localizedDescription: String {
             switch self {
+            case .addPlanFailed(let message):
+                return "Failed to add plan: \(message)"
             case .assertionFailed(let message, let file, let line):
                 return "Assertion failed in \(file) line \(line):\n\(message)"
             case .couldntConvertUserInfoToNotificaitonData(let userInfo):

@@ -17,10 +17,6 @@
 		041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */; };
 		041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */; };
 		041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */; };
-		041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */; };
-		041216AA222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */; };
-		041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
-		041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AB2228195600455278 /* ChooseCountryViewController.swift */; };
 		041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
 		041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
 		041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
@@ -67,11 +63,8 @@
 		04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */; };
 		04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
 		04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */; };
-		04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
 		04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */; };
-		04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
-		04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */; };
 		04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D702237ACFF00A01500 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D6E2237ACFF00A01500 /* APIManager.swift */; };
 		04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */; };
@@ -228,7 +221,6 @@
 		9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */; };
 		9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */; };
 		9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */; };
-		9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */; };
 		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
@@ -401,8 +393,6 @@
 		0412168B2226BBBA00455278 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
 		041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAuthorizationStatusExtensions.swift; sourceTree = "<group>"; };
-		041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCountryOnBoardingViewController.swift; sourceTree = "<group>"; };
-		041216AB2228195600455278 /* ChooseCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountryViewController.swift; sourceTree = "<group>"; };
 		041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationAccessViewController.swift; sourceTree = "<group>"; };
 		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
@@ -445,9 +435,7 @@
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		04834D3E222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIActivityIndicator.swift"; sourceTree = "<group>"; };
-		04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyIdentityOnBoardingViewController.swift; sourceTree = "<group>"; };
 		04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMOnBoardingViewController.swift; sourceTree = "<group>"; };
-		04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPendingDownloadViewController.swift; sourceTree = "<group>"; };
 		04834D6E2237ACFF00A01500 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		04834D712237B11800A01500 /* CustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerModel.swift; sourceTree = "<group>"; };
 		04834D772237BF0C00A01500 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
@@ -785,9 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */,
-				041216AB2228195600455278 /* ChooseCountryViewController.swift */,
 				9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */,
-				041216A8222817EC00455278 /* VerifyCountryOnBoardingViewController.swift */,
 			);
 			path = Country;
 			sourceTree = "<group>";
@@ -801,7 +787,6 @@
 				C24EE404222838950053937E /* PendingVerificationViewController.swift */,
 				042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */,
 				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
-				04834D47222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift */,
 				04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */,
 			);
 			path = EKYC;
@@ -811,7 +796,6 @@
 			isa = PBXGroup;
 			children = (
 				04834D4C222FB9EE00A01500 /* ESIMOnBoardingViewController.swift */,
-				04834D4F222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift */,
 				040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */,
 				040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
@@ -1020,7 +1004,8 @@
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 				04650A64233DFA1E003F2F08 /* ESimManager.swift */,
 				0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */,
-			);
+
+);
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
@@ -1903,9 +1888,9 @@
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
 				042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
-				041216AC2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
+				04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */,
 				9BE2D45C225B634100B51999 /* TestAppDelegate.swift in Sources */,
 				9BBF70662265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
@@ -1915,18 +1900,15 @@
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
-				041216A9222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */,
 				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
-				04834D50222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
 				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
-				9B920F5F225B8AF0001EF9CD /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
@@ -2073,7 +2055,6 @@
 				040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
-				04834D49222EE97A00A01500 /* VerifyIdentityOnBoardingViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
@@ -2107,6 +2088,7 @@
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
 				042928F3223D0BE700806438 /* NRICVerifyViewController.swift in Sources */,
+				04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */,
 				9B1745752276F64B00CF321B /* TextEditCell.swift in Sources */,
 				9BE2D460225B651A00B51999 /* TestAppDelegate.swift in Sources */,
 				9B6E3A26227093DA0063EBAA /* LocationProblemViewController.swift in Sources */,
@@ -2120,7 +2102,6 @@
 				C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
-				041216AD2228195600455278 /* ChooseCountryViewController.swift in Sources */,
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */,
@@ -2142,10 +2123,8 @@
 				9BE2D44B225B5E9600B51999 /* TabBarController.swift in Sources */,
 				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
-				041216AA222817EC00455278 /* VerifyCountryOnBoardingViewController.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,
-				04834D51222FC2AF00A01500 /* ESIMPendingDownloadViewController.swift in Sources */,
 				042CA83222C21D30000F0622 /* AuthParentViewController.swift in Sources */,
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */,

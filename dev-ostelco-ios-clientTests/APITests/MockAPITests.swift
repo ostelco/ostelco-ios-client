@@ -168,16 +168,6 @@ class MockAPITests: XCTestCase {
         XCTAssertEqual(info.address.postal, "460102")
         XCTAssertEqual(info.address.floor, "09")
         XCTAssertEqual(info.address.building, "PEARL GARDEN")
-        
-        guard let mobileNumber = info.mobileNumber else {
-            XCTFail("Could not access mobile number!")
-            return
-        }
-        
-        XCTAssertEqual(mobileNumber.prefix, "+")
-        XCTAssertEqual(mobileNumber.code, "65")
-        XCTAssertEqual(mobileNumber.number, "97399245")
-        XCTAssertEqual(mobileNumber.formattedNumber, "+6597399245")
     }
     
     func testMockCreatingAddress() {
