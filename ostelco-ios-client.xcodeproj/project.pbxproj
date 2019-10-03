@@ -45,6 +45,8 @@
 		0448816A217924B700F59758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
+		0465B4D723436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */; };
+		0465B4D823436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
 		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
@@ -418,6 +420,7 @@
 		044881A7217BA32B00F59758 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		04650A64233DFA1E003F2F08 /* ESimManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimManager.swift; sourceTree = "<group>"; };
+		0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
 		046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorwayUserHappyFlowWithJumioStageDeciderTests.swift; sourceTree = "<group>"; };
 		046FE92622DEFC6000CF57E4 /* bundles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = bundles.graphql; sourceTree = "<group>"; };
@@ -1001,7 +1004,9 @@
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 				04650A64233DFA1E003F2F08 /* ESimManager.swift */,
-			);
+				0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */,
+
+);
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};
@@ -1915,6 +1920,7 @@
 				9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE13228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				04834D3C222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
+				0465B4D723436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */,
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
@@ -2113,6 +2119,7 @@
 				C25A95972226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
+				0465B4D823436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
@@ -2389,6 +2396,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/ostelco-ios-client.entitlements";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2398,7 +2406,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D PROD";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
@@ -2422,6 +2430,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2431,7 +2440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D PROD";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
@@ -2453,12 +2462,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
@@ -2491,11 +2500,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
@@ -2522,12 +2531,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
@@ -2554,11 +2563,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 2;
+				DYLIB_CURRENT_VERSION = 6;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
@@ -2687,7 +2696,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2697,7 +2706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";
@@ -2720,7 +2729,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2730,7 +2739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.redotter.dev.selfcare;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)_app";

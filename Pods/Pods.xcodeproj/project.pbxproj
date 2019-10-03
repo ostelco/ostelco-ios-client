@@ -1936,6 +1936,7 @@
 		00551DF794A5F08C357A55E824B0A981 /* GraphQLResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphQLResponse.swift; path = Sources/Apollo/GraphQLResponse.swift; sourceTree = "<group>"; };
 		007293F1E647731427C8DFDC8327512F /* Pods-dev-ostelco-ios-clientTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dev-ostelco-ios-clientTests-Info.plist"; sourceTree = "<group>"; };
 		010B439D7E8EC2A9D3D29969F2275F2F /* STPSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSource.m; path = Stripe/STPSource.m; sourceTree = "<group>"; };
+		016A2753D3CB1DF01079C2D77F14CD3F /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicroBlink.framework; path = "JumioMobileSDK-3.3.1/MicroBlink.framework"; sourceTree = "<group>"; };
 		0194F3CDB9AC8DAE94E668FBC4091033 /* FIRUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRUser.h; path = Firebase/Auth/Source/Public/FIRUser.h; sourceTree = "<group>"; };
 		0208827321263245D13A01A4D2B1D9B2 /* nanopb-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-prefix.pch"; sourceTree = "<group>"; };
 		021A39F8B5DB7A0EED856745FAD429AD /* STPPaymentMethodIdealParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentMethodIdealParams.m; path = Stripe/STPPaymentMethodIdealParams.m; sourceTree = "<group>"; };
@@ -2038,7 +2039,6 @@
 		1843AC323B05989853CCFDB47025DC50 /* GTMSessionFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = Source/GTMSessionFetcher.m; sourceTree = "<group>"; };
 		1847644D2D1CC535DBEAC4A68CD4292F /* FIRInstanceIDUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDUtilities.m; path = Firebase/InstanceID/FIRInstanceIDUtilities.m; sourceTree = "<group>"; };
 		185C1EDE036184FD06F944B13DF1462F /* FIRAuthWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthWebViewController.h; path = Firebase/Auth/Source/FIRAuthWebViewController.h; sourceTree = "<group>"; };
-		187BCC5FDB67F836C27BBE4433A0CF56 /* NetverifyBarcode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetverifyBarcode.framework; path = "JumioMobileSDK-3.3.0/NetverifyBarcode.framework"; sourceTree = "<group>"; };
 		187C94675893904ADBECAF43D9D5BF92 /* Protobuf.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Protobuf.xcconfig; sourceTree = "<group>"; };
 		18C0F6B43358AA37D99C828A6B6BDE77 /* Pods-dev-ostelco-ios-clientTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dev-ostelco-ios-clientTests-dummy.m"; sourceTree = "<group>"; };
 		18E27E3DE987AC986ADECB77827D25ED /* STPPaymentMethodCardParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentMethodCardParams.m; path = Stripe/STPPaymentMethodCardParams.m; sourceTree = "<group>"; };
@@ -2076,6 +2076,7 @@
 		2009C8CF18448C94DE5BD5DAC3E49B71 /* FIRInstanceIDTokenManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDTokenManager.h; path = Firebase/InstanceID/FIRInstanceIDTokenManager.h; sourceTree = "<group>"; };
 		20324885C65A6BFE85A7D787FD631CD9 /* GPBWireFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBWireFormat.h; path = objectivec/GPBWireFormat.h; sourceTree = "<group>"; };
 		203916508266F61826543E43417F726B /* FIRDynamicLink+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FIRDynamicLink+Private.h"; path = "Firebase/DynamicLinks/FIRDynamicLink+Private.h"; sourceTree = "<group>"; };
+		2073A7204C1A0F9929EB9BEA092E5298 /* ZoomAuthenticationHybrid.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomAuthenticationHybrid.framework; path = "JumioMobileSDK-3.3.1/ZoomAuthenticationHybrid.framework"; sourceTree = "<group>"; };
 		2078CA303598727A2F4DAD059A33B886 /* STPCardIOProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCardIOProxy.h; path = Stripe/STPCardIOProxy.h; sourceTree = "<group>"; };
 		20CC78EFA7541367DD299A64F1317863 /* FirebaseAuthVersion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FirebaseAuthVersion.m; path = Firebase/Auth/Source/FirebaseAuthVersion.m; sourceTree = "<group>"; };
 		20DC57F022B8E5C168B415DDEC3EFE70 /* FIRGoogleAuthProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRGoogleAuthProvider.h; path = Firebase/Auth/Source/Public/FIRGoogleAuthProvider.h; sourceTree = "<group>"; };
@@ -2163,7 +2164,6 @@
 		2FBE952CFC71E0AB9B34AF8346E5B666 /* FIRAuthNotificationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthNotificationManager.h; path = Firebase/Auth/Source/FIRAuthNotificationManager.h; sourceTree = "<group>"; };
 		301FF969772C23AFBA773C028D49C0E3 /* FIRGoogleAuthProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRGoogleAuthProvider.m; path = Firebase/Auth/Source/AuthProviders/Google/FIRGoogleAuthProvider.m; sourceTree = "<group>"; };
 		3073E30B774EE9BF55DD2CD2ABA5238E /* AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPromise.swift; path = Sources/AnyPromise.swift; sourceTree = "<group>"; };
-		30B78E9C48E24FE2F96A481FF297A3EA /* MicroBlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MicroBlink.framework; path = "JumioMobileSDK-3.3.0/MicroBlink.framework"; sourceTree = "<group>"; };
 		30DD72823A3C1AEBF7E1C445A0C26B96 /* STPAnalyticsClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAnalyticsClient.h; path = Stripe/STPAnalyticsClient.h; sourceTree = "<group>"; };
 		31105B998A773F9541B651A42518B173 /* stp_card_unionpay_zh@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_unionpay_zh@2x.png"; path = "Stripe/Resources/Images/stp_card_unionpay_zh@2x.png"; sourceTree = "<group>"; };
 		31256D089789D36640C26E13072B7B93 /* pb_decode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_decode.h; sourceTree = "<group>"; };
@@ -2261,6 +2261,7 @@
 		43F1A48678A397B81962DF82BDDCA9CB /* FIRDependency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDependency.h; path = Firebase/Core/Private/FIRDependency.h; sourceTree = "<group>"; };
 		45089E59B4E3C40C67F96215BA92C77C /* FIRDynamicLinks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDynamicLinks.h; path = Firebase/DynamicLinks/Public/FIRDynamicLinks.h; sourceTree = "<group>"; };
 		450AA7F0E8E413B2BECF966607483E54 /* GPBDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBDictionary.h; path = objectivec/GPBDictionary.h; sourceTree = "<group>"; };
+		452D63C183DB18ED9898CFEB4AC236E5 /* Netverify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Netverify.framework; path = "JumioMobileSDK-3.3.1/Netverify.framework"; sourceTree = "<group>"; };
 		4572BBBDD6242CD913269BFDE3E5CCD7 /* UINavigationController+Stripe_Completion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Stripe_Completion.h"; path = "Stripe/UINavigationController+Stripe_Completion.h"; sourceTree = "<group>"; };
 		45C8D3346A40EC0E456D719582DD5585 /* NSError+FIRMessaging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+FIRMessaging.m"; path = "Firebase/Messaging/NSError+FIRMessaging.m"; sourceTree = "<group>"; };
 		46A3C34F171DB66579AE2C468D0CD240 /* STPLocalizationUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPLocalizationUtils.m; path = Stripe/STPLocalizationUtils.m; sourceTree = "<group>"; };
@@ -2283,7 +2284,6 @@
 		4A04CE2078A476602D18289F055E05F6 /* PromiseKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
 		4A45324C365DBDDB53F18E712725E353 /* FIRVerifyCustomTokenResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRVerifyCustomTokenResponse.h; path = Firebase/Auth/Source/RPCs/FIRVerifyCustomTokenResponse.h; sourceTree = "<group>"; };
 		4A9D619DC09277160D017A8176BD1489 /* STPCoreViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCoreViewController.h; path = Stripe/PublicHeaders/STPCoreViewController.h; sourceTree = "<group>"; };
-		4AFAF68CBEA5F5E5FE7C13AAFC3C9D79 /* JumioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JumioCore.framework; path = "JumioMobileSDK-3.3.0/JumioCore.framework"; sourceTree = "<group>"; };
 		4B0058CAD7BD4ADCACFEFA408166D78A /* FIRConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRConfiguration.m; path = Firebase/Core/FIRConfiguration.m; sourceTree = "<group>"; };
 		4B18C5C7B51093F7A0036F98F5BB01F7 /* OHHTTPStubsMethodSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OHHTTPStubsMethodSwizzling.h; path = OHHTTPStubs/Sources/NSURLSession/OHHTTPStubsMethodSwizzling.h; sourceTree = "<group>"; };
 		4B2D3CFA122C44C17E8E31ECE9585472 /* FauxPasAnnotations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FauxPasAnnotations.h; path = Stripe/PublicHeaders/FauxPasAnnotations.h; sourceTree = "<group>"; };
@@ -2419,7 +2419,6 @@
 		6614A21418E2A3765912C36991AA1845 /* Pods-ostelco-core-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ostelco-core-acknowledgements.plist"; sourceTree = "<group>"; };
 		66498AB154D605B75C9BC926829816ED /* FIRGetAccountInfoResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRGetAccountInfoResponse.h; path = Firebase/Auth/Source/RPCs/FIRGetAccountInfoResponse.h; sourceTree = "<group>"; };
 		665DA73324741C30D2F9748BF028DF57 /* NSError+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+Stripe.m"; path = "Stripe/NSError+Stripe.m"; sourceTree = "<group>"; };
-		66A9247073020A9BC031BD55381D1FDC /* ZoomAuthenticationHybrid.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomAuthenticationHybrid.framework; path = "JumioMobileSDK-3.3.0/ZoomAuthenticationHybrid.framework"; sourceTree = "<group>"; };
 		66CED871BB16A6685308DF0EFF4A5F84 /* GPBUnknownFieldSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBUnknownFieldSet.m; path = objectivec/GPBUnknownFieldSet.m; sourceTree = "<group>"; };
 		6731DBDDB9DD54338EADD6F3FC4B8FCE /* NSArray+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Stripe.h"; path = "Stripe/NSArray+Stripe.h"; sourceTree = "<group>"; };
 		675AF5EFE3395C82E2E4F9783623972A /* FIRMessagingPubSub.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessagingPubSub.m; path = Firebase/Messaging/FIRMessagingPubSub.m; sourceTree = "<group>"; };
@@ -2624,7 +2623,6 @@
 		934F3F16406B33AEC0761393E961369E /* NormalizedCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NormalizedCache.swift; path = Sources/Apollo/NormalizedCache.swift; sourceTree = "<group>"; };
 		93A9154356BADCAE1EDD3719BA1C959A /* FIRBundleUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRBundleUtil.h; path = Firebase/Core/Private/FIRBundleUtil.h; sourceTree = "<group>"; };
 		93B318565D87961567158E50FFC3B9BB /* OHHTTPStubsResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OHHTTPStubsResponse.h; path = OHHTTPStubs/Sources/OHHTTPStubsResponse.h; sourceTree = "<group>"; };
-		93E7CD775B63620CCC5F91F72D0DAEA6 /* NetverifyFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetverifyFace.framework; path = "JumioMobileSDK-3.3.0/NetverifyFace.framework"; sourceTree = "<group>"; };
 		93FA0D1E310CE20733833A9A64E5771E /* Wrappers.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Wrappers.pbobjc.m; path = objectivec/google/protobuf/Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		94291949F62B901543953A18A6BA1C72 /* FIREmailLinkSignInResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIREmailLinkSignInResponse.h; path = Firebase/Auth/Source/RPCs/FIREmailLinkSignInResponse.h; sourceTree = "<group>"; };
 		9432858A1F82F7BA319D60F111B471EB /* stp_card_mastercard@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_mastercard@3x.png"; path = "Stripe/Resources/Images/stp_card_mastercard@3x.png"; sourceTree = "<group>"; };
@@ -2652,6 +2650,7 @@
 		9976F405C2BF4E072693178600DED9FB /* GPBCodedOutputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedOutputStream.h; path = objectivec/GPBCodedOutputStream.h; sourceTree = "<group>"; };
 		99E1B85F7AA43E74326A9AA93CFC0A6C /* stp_card_form_amex_cvc.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_form_amex_cvc.png; path = Stripe/Resources/Images/stp_card_form_amex_cvc.png; sourceTree = "<group>"; };
 		9A51730D36A6A14EAFC3C8163E8E29A3 /* FIRMessagingReceiver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessagingReceiver.m; path = Firebase/Messaging/FIRMessagingReceiver.m; sourceTree = "<group>"; };
+		9A6534E8FC4779FA3A454B718BF2D2A0 /* NetverifyFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetverifyFace.framework; path = "JumioMobileSDK-3.3.1/NetverifyFace.framework"; sourceTree = "<group>"; };
 		9A789E42FFCFD2F896CC9605FB945D28 /* FirebaseMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseMessaging.h; path = Firebase/Messaging/Public/FirebaseMessaging.h; sourceTree = "<group>"; };
 		9AB68BC45C09D30E2D41DE3F2CD38F08 /* stp_card_error@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_error@3x.png"; path = "Stripe/Resources/Images/stp_card_error@3x.png"; sourceTree = "<group>"; };
 		9B0D9D99AE255100321908479D343CAE /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = Firebase/Core/Private/FIRErrors.h; sourceTree = "<group>"; };
@@ -2684,6 +2683,7 @@
 		9F6355F1E8B7FA956FB6B0478A1D92E1 /* FIRAuthKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthKeychain.h; path = Firebase/Auth/Source/FIRAuthKeychain.h; sourceTree = "<group>"; };
 		9F96F52CC0EE5812637272A5D1BFAA05 /* FIRDLScionLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDLScionLogging.h; path = Firebase/DynamicLinks/FIRDLScionLogging.h; sourceTree = "<group>"; };
 		9FA66EB3BB1E394C5F2684471DBDF46C /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		9FB0DD173A36982FE3D7B5B9A09887D5 /* NetverifyBarcode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetverifyBarcode.framework; path = "JumioMobileSDK-3.3.1/NetverifyBarcode.framework"; sourceTree = "<group>"; };
 		A0048A1C9DC5ED21E5D1219188D5608C /* GraphQLHTTPResponseError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphQLHTTPResponseError.swift; path = Sources/Apollo/GraphQLHTTPResponseError.swift; sourceTree = "<group>"; };
 		A066EF18B8E70DFA429B46A429563E99 /* FIRAppAssociationRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAppAssociationRegistration.m; path = Firebase/Core/FIRAppAssociationRegistration.m; sourceTree = "<group>"; };
 		A08598853489EA96EC54E19E662F79F0 /* STPEphemeralKeyManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPEphemeralKeyManager.h; path = Stripe/STPEphemeralKeyManager.h; sourceTree = "<group>"; };
@@ -2953,7 +2953,6 @@
 		DC7DD0CC75EC1AE519B84A5AE1C30F59 /* FIRVerifyCustomTokenRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRVerifyCustomTokenRequest.m; path = Firebase/Auth/Source/RPCs/FIRVerifyCustomTokenRequest.m; sourceTree = "<group>"; };
 		DCBCFE4A013EE05368FF48CD6FFF2A3E /* FIRFederatedAuthProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRFederatedAuthProvider.h; path = Firebase/Auth/Source/Public/FIRFederatedAuthProvider.h; sourceTree = "<group>"; };
 		DCBDFDBFFE9F2E746DF4B168FD70EAE7 /* FIRMessagingTopicOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessagingTopicOperation.m; path = Firebase/Messaging/FIRMessagingTopicOperation.m; sourceTree = "<group>"; };
-		DCD9400581E5354D51162B3AC700D990 /* Netverify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Netverify.framework; path = "JumioMobileSDK-3.3.0/Netverify.framework"; sourceTree = "<group>"; };
 		DD1931B78F55C0583FF8F08031F0A8B1 /* UIView+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.m"; sourceTree = "<group>"; };
 		DD1EC702092D4A72B5EBBAE953353A11 /* STPPaymentCardTextFieldCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentCardTextFieldCell.m; path = Stripe/STPPaymentCardTextFieldCell.m; sourceTree = "<group>"; };
 		DDA8418E1BEA37244BAC697EAB2A25FB /* FIRGitHubAuthCredential.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRGitHubAuthCredential.m; path = Firebase/Auth/Source/AuthProviders/GitHub/FIRGitHubAuthCredential.m; sourceTree = "<group>"; };
@@ -2983,6 +2982,7 @@
 		E196B81F830F853F939BADD999A5AE9E /* FIRMessagingLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessagingLogger.m; path = Firebase/Messaging/FIRMessagingLogger.m; sourceTree = "<group>"; };
 		E1BD634D5B8015A6637C547BCEEC06F5 /* STPAPIClient+ApplePay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "STPAPIClient+ApplePay.m"; path = "Stripe/STPAPIClient+ApplePay.m"; sourceTree = "<group>"; };
 		E1BDC207C8D221437F3B96937927F411 /* STPSectionHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSectionHeaderView.m; path = Stripe/STPSectionHeaderView.m; sourceTree = "<group>"; };
+		E29A8B45C6299FE10D5E76244F68A211 /* JumioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JumioCore.framework; path = "JumioMobileSDK-3.3.1/JumioCore.framework"; sourceTree = "<group>"; };
 		E2B5467F11AADB66399B5736C3A53693 /* Pods-ostelco-core-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ostelco-core-Info.plist"; sourceTree = "<group>"; };
 		E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BF7C9B9ED3EA55B5D9F748C19C58F8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
@@ -4074,6 +4074,19 @@
 			path = Protobuf;
 			sourceTree = "<group>";
 		};
+		2D5B4D549BDDDA7A44EB5FE984ACF96C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E29A8B45C6299FE10D5E76244F68A211 /* JumioCore.framework */,
+				016A2753D3CB1DF01079C2D77F14CD3F /* MicroBlink.framework */,
+				452D63C183DB18ED9898CFEB4AC236E5 /* Netverify.framework */,
+				9FB0DD173A36982FE3D7B5B9A09887D5 /* NetverifyBarcode.framework */,
+				9A6534E8FC4779FA3A454B718BF2D2A0 /* NetverifyFace.framework */,
+				2073A7204C1A0F9929EB9BEA092E5298 /* ZoomAuthenticationHybrid.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2F8FF0E6429B2A8B260F847F4473F6AD /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -4767,7 +4780,7 @@
 		BB6B76EE5BC4B8E92FF2909B5EE61891 /* Netverify */ = {
 			isa = PBXGroup;
 			children = (
-				D0CE9C9E766410C5ABAE2123706929E6 /* Frameworks */,
+				2D5B4D549BDDDA7A44EB5FE984ACF96C /* Frameworks */,
 			);
 			name = Netverify;
 			sourceTree = "<group>";
@@ -5096,19 +5109,6 @@
 				9015F9DFF0A57A170EC7ECD342DB3F22 /* Products */,
 				883E6B9897DD918A7AF63E97E0C62D57 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D0CE9C9E766410C5ABAE2123706929E6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4AFAF68CBEA5F5E5FE7C13AAFC3C9D79 /* JumioCore.framework */,
-				30B78E9C48E24FE2F96A481FF297A3EA /* MicroBlink.framework */,
-				DCD9400581E5354D51162B3AC700D990 /* Netverify.framework */,
-				187BCC5FDB67F836C27BBE4433A0CF56 /* NetverifyBarcode.framework */,
-				93E7CD775B63620CCC5F91F72D0DAEA6 /* NetverifyFace.framework */,
-				66A9247073020A9BC031BD55381D1FDC /* ZoomAuthenticationHybrid.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D4C3483683636E0BF2B08D4BBDE651EC /* Crashlytics */ = {
