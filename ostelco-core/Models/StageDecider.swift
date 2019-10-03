@@ -14,7 +14,6 @@ public class LocalContext {
     public var hasSeenNotificationPermissions: Bool
     public var hasSeenRegionOnboarding: Bool
     public var locationProblem: LocationProblem?
-    public var hasSeenVerifyIdentifyOnboarding: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasSeenLocationPermissions: Bool
     public var simProfile: SimProfile?
@@ -38,11 +37,10 @@ public class LocalContext {
     public var serverIsUnreachable: Bool
     public var hasCameraProblem: Bool
     
-    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, hasSeenVerifyIdentifyOnboarding: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false) {
+    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false) {
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
         self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
-        self.hasSeenVerifyIdentifyOnboarding = hasSeenVerifyIdentifyOnboarding
         self.selectedVerificationOption = selectedVerificationOption
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
@@ -204,39 +202,28 @@ public struct StageDecider {
             remove(.jumio)
         }
         
-        if localContext.hasSeenVerifyIdentifyOnboarding {
-            let kycStatusMap = region.kycStatusMap
-            
-            if kycStatusMap.NRIC_FIN == .APPROVED {
-                remove(.nric)
-            }
-            
-            if kycStatusMap.ADDRESS == .APPROVED {
-                remove(.address)
-            }
-            
-            if kycStatusMap.JUMIO == .APPROVED {
-                remove(.pendingVerification)
-                remove(.jumio)
-            }
-            if kycStatusMap.JUMIO == .PENDING {
-                remove(.jumio)
-            }
-            
-            if kycStatusMap.JUMIO == .REJECTED && localContext.hasCompletedJumio {
-                remove(.pendingVerification)
-                remove(.jumio)
-                midStages.append(.ohNo(.ekycRejected))
-            }
+        let kycStatusMap = region.kycStatusMap
+        
+        if kycStatusMap.NRIC_FIN == .APPROVED {
+            remove(.nric)
         }
         
-        if midStages.isEmpty {
-            let options = identityOptionsForRegionID(region.region.id)
-            if options.count > 1 {
-                midStages.append(.selectIdentityVerificationMethod(options))
-            } else {
-                midStages.append(contentsOf: [.jumio, .pendingVerification])
-            }
+        if kycStatusMap.ADDRESS == .APPROVED {
+            remove(.address)
+        }
+        
+        if kycStatusMap.JUMIO == .APPROVED {
+            remove(.pendingVerification)
+            remove(.jumio)
+        }
+        if kycStatusMap.JUMIO == .PENDING {
+            remove(.jumio)
+        }
+        
+        if kycStatusMap.JUMIO == .REJECTED && localContext.hasCompletedJumio {
+            remove(.pendingVerification)
+            remove(.jumio)
+            midStages.append(.ohNo(.ekycRejected))
         }
         
         return midStages[0]

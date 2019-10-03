@@ -76,6 +76,10 @@ class JumioCoordinator: NSObject {
     }
         
     private func createNetverifyController(with scanID: String) -> NetverifyViewController {
+        // Make sure the old one is gone before starting a new one.
+        netverifyController?.destroy()
+        netverifyController = nil
+        
         // Setup the Configuration for Netverify - use tokens from JUMIO console
         let config: NetverifyConfiguration = NetverifyConfiguration()
         let environment = Environment()

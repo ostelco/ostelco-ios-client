@@ -71,7 +71,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -84,7 +84,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .singpass, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -97,7 +97,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .singpass, myInfoCode: "xxx", hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .singpass, myInfoCode: "xxx", hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,

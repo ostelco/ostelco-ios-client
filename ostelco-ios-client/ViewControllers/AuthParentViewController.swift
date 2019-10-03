@@ -27,8 +27,8 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
     func onboardingComplete() {
         onboarding = nil
         
-        let tabs = TabBarController.fromStoryboard()
-        embedFullViewChild(tabs)
+        let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
+        embedFullViewChild(tabs!)
     }
     
     func setupOnboarding() {

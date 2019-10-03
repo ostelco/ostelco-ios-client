@@ -90,7 +90,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testMyInfoSummaryLoadFailedandSelectedVerificationOptionIsResetToNil() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -103,7 +103,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -116,7 +116,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejected() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenNotificationPermissions: true, selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -130,7 +130,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     // Edge cases for Norway flow
     func testUserHasCompletedJumioButGotRejectedInNorway() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -143,7 +143,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserIsRejectedInNorwayForJumioButWantsToTryAgain() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -156,7 +156,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserIsRejectedInSingaporeForJumioButWantsToTryAgain() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, hasSeenLocationPermissions: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -169,7 +169,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemBeforeJumioWhenSelectingScanICInSingaporeIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .scanIC, hasSeenLocationPermissions: true, hasCameraProblem: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .scanIC, hasSeenLocationPermissions: true, hasCameraProblem: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -182,7 +182,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemAfterVerifyIdentityOnboardingInNorwayIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenVerifyIdentifyOnboarding: true, selectedVerificationOption: .jumio, hasSeenLocationPermissions: true, hasCameraProblem: true)
+        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .jumio, hasSeenLocationPermissions: true, hasCameraProblem: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "NO"),
             status: .PENDING,

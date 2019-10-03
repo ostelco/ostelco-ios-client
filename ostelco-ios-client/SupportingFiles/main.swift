@@ -15,7 +15,4 @@ if UIApplication.isNonUITesting {
     appDelegateClassName = NSStringFromClass(AppDelegate.self)
 }
 
-_ = UIApplicationMain(CommandLine.argc,
-                      CommandLine.unsafeArgv,
-                      nil,
-                      appDelegateClassName)
+_ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, appDelegateClassName)

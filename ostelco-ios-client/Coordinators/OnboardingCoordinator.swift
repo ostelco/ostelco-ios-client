@@ -32,11 +32,6 @@ class OnboardingCoordinator {
         self.navigationController = navigationController
         self.primeAPI = primeAPI
         
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            let status = settings.authorizationStatus
-            self.localContext.hasSeenNotificationPermissions = status != .notDetermined
-        }
-        
         Auth.auth().addStateDidChangeListener { (_, user) in
             self.localContext.hasFirebaseToken = user != nil
             self.advance()
@@ -413,7 +408,7 @@ extension RegionOnboardingCoordinator: NRICVerifyDelegate {
     func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
         let spinnerView = controller.showSpinner()
         primeAPI
-            .validateNRIC(nric, forRegion: region.id)
+            .validateNRIC(nric, forRegion: country.countryCode)
             .ensure {
                 controller.removeSpinner(spinnerView)
         }
@@ -442,9 +437,7 @@ extension RegionOnboardingCoordinator: JumioCoordinatorDelegate {
     }
     
     func scanCancelled() {
-        localContext.hasSeenVerifyIdentifyOnboarding = false
-        localContext.selectedVerificationOption = nil
-        advance()
+        delegate?.onboardingCancelled()
     }
     
     func scanFailed(errorMessage: String) {
@@ -465,36 +458,60 @@ extension RegionOnboardingCoordinator: AllowCameraAccessDelegate {
     }
     
     func chooseAnotherMethod() {
-        localContext.hasSeenVerifyIdentifyOnboarding = false
         localContext.selectedVerificationOption = nil
         advance()
     }
 }
 
 protocol RegionOnboardingDelegate: class {
-    func onboardingCompleteForRegion(_ region: Region)
+    func onboardingCompleteForCountry(_ country: Country)
+    func onboardingCancelled()
 }
 
 class RegionOnboardingCoordinator {
-    let region: Region
+    let country: Country
     var localContext: LocalContext
     let navigationController: UINavigationController
     let primeAPI: PrimeAPI
     let stageDecider = StageDecider()
     
-    weak var delegate: RegionOnboardingDelegate?
+    public weak var delegate: RegionOnboardingDelegate?
     
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
     
-    init(region: Region, localContext: LocalContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
-        self.region = region
+    init(country: Country, localContext: LocalContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
+        self.country = country
         self.localContext = localContext
         self.navigationController = navigationController
         self.primeAPI = primeAPI
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            let status = settings.authorizationStatus
+            self.localContext.hasSeenNotificationPermissions = status != .notDetermined
+        }
+        
+        advance()
     }
     
     func advance() {
+        primeAPI.loadContext()
+        .done { (context) in
+            self.localContext.serverIsUnreachable = false
+            
+            UserManager.shared.customer = context.customer
+            let region = context.toLegacyModel().regions
+            .map { (aRegion) -> RegionResponse in
+                return RegionResponse(gqlData: aRegion)
+            }
+            .first { (aRegion) -> Bool in
+                return aRegion.region.country == self.country
+            }
+            let defaultRegion = RegionResponse(region: Region(id: self.country.countryCode, name: self.country.nameOrPlaceholder), status: .PENDING, simProfiles: nil, kycStatusMap: KYCStatusMap())
+            
+            let stage = self.stageDecider.stageForRegion(region: region ?? defaultRegion, localContext: self.localContext)
+            self.navigateTo(stage)
+        }.cauterize()
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
@@ -537,7 +554,7 @@ class RegionOnboardingCoordinator {
             nric.delegate = self
             navigationController.setViewControllers([nric], animated: true)
         case .jumio:
-            if let jumio = try? JumioCoordinator(country: region.country, primeAPI: primeAPI) {
+            if let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
                 self.jumioCoordinator = jumio
                 
                 jumio.delegate = self
@@ -563,12 +580,12 @@ class RegionOnboardingCoordinator {
             }
             navigationController.present(ohNo, animated: true, completion: nil)
         case .done:
-            delegate?.onboardingCompleteForRegion(region)
+            delegate?.onboardingCompleteForCountry(country)
         }
     }
     
     private func hasMultipleIdentityOptions() -> Bool {
-        return stageDecider.identityOptionsForRegionID(region.id).count > 1
+        return stageDecider.identityOptionsForRegionID(country.countryCode).count > 1
     }
     
     /**
