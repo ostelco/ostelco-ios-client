@@ -1005,8 +1005,7 @@
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 				04650A64233DFA1E003F2F08 /* ESimManager.swift */,
 				0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */,
-
-);
+			);
 			path = ModelControllers;
 			sourceTree = "<group>";
 		};

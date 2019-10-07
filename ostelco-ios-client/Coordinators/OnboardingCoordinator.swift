@@ -22,7 +22,7 @@ protocol OnboardingCoordinatorDelegate: class {
 class OnboardingCoordinator {
     weak var delegate: OnboardingCoordinatorDelegate?
     
-    var localContext = LocalContext()
+    var localContext = OnboardingContext()
     let stageDecider = StageDecider()
     let primeAPI: PrimeAPI
     
@@ -90,6 +90,15 @@ class OnboardingCoordinator {
                 self?.advance()
             }
             navigationController.present(ohNo, animated: true, completion: nil)
+        case .locationPermissions:
+            let locationPermissions = AllowLocationAccessViewController.fromStoryboard()
+            locationPermissions.delegate = self
+            navigationController.setViewControllers([locationPermissions], animated: true)
+        case .locationProblem(let problem):
+            let locationProblem = LocationProblemViewController.fromStoryboard()
+            locationProblem.delegate = self
+            locationProblem.locationProblem = problem
+            navigationController.present(locationProblem, animated: true, completion: nil)
         case .awesome:
             let awesome = SignUpCompletedViewController.fromStoryboard()
             awesome.delegate = self
@@ -231,6 +240,31 @@ extension RegionOnboardingCoordinator: EnableNotificationsDelegate {
     }
 }
 
+extension OnboardingCoordinator: AllowLocationAccessDelegate {
+    func handleLocationProblem(_ problem: LocationProblem) {
+        localContext.locationProblem = problem
+        advance()
+    }
+    
+    func locationUsageAuthorized() {
+        localContext.hasSeenLocationPermissions = true
+        advance()
+    }
+    
+}
+
+extension OnboardingCoordinator: LocationProblemDelegate {
+    func retry() {
+        // We'll be informed about other location problems being fixed,
+        // but for this one, we just need to let the user pick their country
+        // again.
+        if case .authorizedButWrongCountry = localContext.locationProblem {
+            localContext.locationProblem = nil
+        }
+        advance()
+    }
+}
+
 extension RegionOnboardingCoordinator: AllowLocationAccessDelegate {
     func handleLocationProblem(_ problem: LocationProblem) {
         localContext.locationProblem = problem
@@ -334,10 +368,9 @@ extension RegionOnboardingCoordinator: MyInfoSummaryDelegate {
 extension RegionOnboardingCoordinator: AddressEditDelegate {
     func entered(address: EKYCAddress, regionCode: String) {
         primeAPI
-            .addAddress(address, forRegion: regionCode)
-            .done { [weak self] in
-                self?.localContext.hasCompletedAddress = true
-                self?.advance()
+        .addAddress(address, forRegion: regionCode)
+        .done { [weak self] in
+            self?.advance()
         }
         .catch { [weak self] error in
             ApplicationErrors.log(error)
@@ -470,7 +503,7 @@ protocol RegionOnboardingDelegate: class {
 
 class RegionOnboardingCoordinator {
     let country: Country
-    var localContext: LocalContext
+    var localContext: RegionOnboardingContext
     let navigationController: UINavigationController
     let primeAPI: PrimeAPI
     let stageDecider = StageDecider()
@@ -480,7 +513,7 @@ class RegionOnboardingCoordinator {
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
     
-    init(country: Country, localContext: LocalContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
+    init(country: Country, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
         self.country = country
         self.localContext = localContext
         self.navigationController = navigationController

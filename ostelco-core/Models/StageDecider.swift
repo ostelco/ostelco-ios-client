@@ -8,14 +8,36 @@
 
 import Foundation
 
-public class LocalContext {
+public class OnboardingContext {
     public var hasFirebaseToken: Bool
     public var hasAgreedToTerms: Bool
-    public var hasSeenNotificationPermissions: Bool
     public var hasSeenRegionOnboarding: Bool
     public var locationProblem: LocationProblem?
-    public var selectedVerificationOption: IdentityVerificationOption?
     public var hasSeenLocationPermissions: Bool
+    public var hasSeenAwesome: Bool
+    public var serverIsUnreachable: Bool
+    
+    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false) {
+        self.hasFirebaseToken = hasFirebaseToken
+        self.hasAgreedToTerms = hasAgreedToTerms
+        self.hasSeenAwesome = hasSeenAwesome
+        self.serverIsUnreachable = serverIsUnreachable
+        self.locationProblem = locationProblem
+        self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
+        self.hasSeenLocationPermissions = hasSeenLocationPermissions
+    }
+}
+
+public class RegionOnboardingContext {
+    public var hasSeenESimOnboarding: Bool
+    public var hasSeenESIMInstructions: Bool
+    public var hasSeenNotificationPermissions: Bool
+    public var locationProblem: LocationProblem?
+    public var hasSeenLocationPermissions: Bool
+    public var selectedVerificationOption: IdentityVerificationOption?
+    public var hasCameraProblem: Bool
+    public var hasCompletedJumio: Bool
+    public var serverIsUnreachable: Bool
     public var simProfile: SimProfile?
     
     private var _myInfoCode: String?
@@ -29,30 +51,18 @@ public class LocalContext {
             _myInfoCode = value
         }
     }
-    public var hasSeenESimOnboarding: Bool
-    public var hasSeenESIMInstructions: Bool
-    public var hasSeenAwesome: Bool
-    public var hasCompletedJumio: Bool // Needs to be persisted
-    public var hasCompletedAddress: Bool
-    public var serverIsUnreachable: Bool
-    public var hasCameraProblem: Bool
     
-    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, hasSeenNotificationPermissions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, myInfoCode: String? = nil, hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, hasSeenAwesome: Bool = false, hasCompletedJumio: Bool = false, hasCompletedAddress: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false) {
-        self.hasFirebaseToken = hasFirebaseToken
-        self.hasAgreedToTerms = hasAgreedToTerms
-        self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
-        self.selectedVerificationOption = selectedVerificationOption
+    public init(hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, locationProblem: LocationProblem? = nil, selectedVerificationOption: IdentityVerificationOption? = nil, hasSeenNotificationPermissions: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
-        self.hasSeenAwesome = hasSeenAwesome
-        self.hasCompletedJumio = hasCompletedJumio
-        self.hasCompletedAddress = hasCompletedAddress
-        self.serverIsUnreachable = serverIsUnreachable
-        self.locationProblem = locationProblem
-        self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
+        self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
         self.hasSeenLocationPermissions = hasSeenLocationPermissions
         self.hasCameraProblem = hasCameraProblem
+        self.selectedVerificationOption = selectedVerificationOption
+        self.hasCompletedJumio = hasCompletedJumio
+        self.serverIsUnreachable = serverIsUnreachable
         self.myInfoCode = myInfoCode
+        self.locationProblem = locationProblem
     }
 }
 
@@ -68,6 +78,8 @@ public struct StageDecider {
         case loginCarousel
         case legalStuff
         case nicknameEntry
+        case locationPermissions
+        case locationProblem(LocationProblem)
         case awesome
         case ohNo(OhNoIssueType)
     }
@@ -92,7 +104,7 @@ public struct StageDecider {
     
     public init() {}
 
-    private func eSIMStage(_ region: RegionResponse, _ localContext: LocalContext) -> RegionStage {
+    private func eSIMStage(_ region: RegionResponse, _ localContext: RegionOnboardingContext) -> RegionStage {
         var stages: [RegionStage] = [.eSimOnboarding, .eSimInstructions, .done]
         
         func remove(_ stage: RegionStage) {
@@ -116,7 +128,7 @@ public struct StageDecider {
         return stages[0]
     }
     
-    public func compute(context: Context?, localContext: LocalContext) -> Stage {
+    public func compute(context: Context?, localContext: OnboardingContext) -> Stage {
         // Error Stages
         if localContext.serverIsUnreachable {
             return .ohNo(.serverUnreachable)
@@ -127,7 +139,7 @@ public struct StageDecider {
             return .home
         }
         
-        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .home]
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .home]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -141,11 +153,18 @@ public struct StageDecider {
         if localContext.hasAgreedToTerms {
             remove(.legalStuff)
         }
+        if localContext.hasSeenLocationPermissions {
+            remove(.locationPermissions)
+        }
+        if let problem = localContext.locationProblem {
+            return .locationProblem(problem)
+        }
+        
         return stages[0]
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    public func stageForRegion(region: RegionResponse, localContext: LocalContext) -> RegionStage {
+    public func stageForRegion(region: RegionResponse, localContext: RegionOnboardingContext) -> RegionStage {
         // After you've logged in, always show notifications if they haven't seen it.
         if !localContext.hasSeenNotificationPermissions {
             return .notificationPermissions
