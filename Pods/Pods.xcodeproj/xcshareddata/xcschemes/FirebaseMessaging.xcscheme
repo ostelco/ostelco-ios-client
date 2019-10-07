@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "30EE3CABB612307A688C40B61BFA74CC"
-               BuildableName = "Apollo.framework"
-               BlueprintName = "Apollo"
+               BlueprintIdentifier = "5895B432FE4D2F6826C8FF25A09DB6D2"
+               BuildableName = "FirebaseMessaging.framework"
+               BlueprintName = "FirebaseMessaging"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,15 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "30EE3CABB612307A688C40B61BFA74CC"
-            BuildableName = "Apollo.framework"
-            BlueprintName = "Apollo"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -59,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "30EE3CABB612307A688C40B61BFA74CC"
-            BuildableName = "Apollo.framework"
-            BlueprintName = "Apollo"
+            BlueprintIdentifier = "5895B432FE4D2F6826C8FF25A09DB6D2"
+            BuildableName = "FirebaseMessaging.framework"
+            BlueprintName = "FirebaseMessaging"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
