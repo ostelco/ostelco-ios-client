@@ -62,7 +62,7 @@ platform :ios do
 
     # Bump version number here when it is changed in project files.
     latest_build_number = latest_testflight_build_number(
-      version: "1.5"
+      version: "1.6"
     )
 
     build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
@@ -146,7 +146,7 @@ platform :ios do
   lane :refresh_dsyms_beta do
     # Download latest recompiled dSYM files from iTC
     latest_build_number = latest_testflight_build_number(
-      version: "1.5"
+      version: "1.6"
     )
     build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
     download_dsyms(version: "1.2", build_number: build_number)
@@ -200,7 +200,7 @@ platform :ios do
 
     # Bump version number here when it is changed in project files.
     latest_build_number = latest_testflight_build_number(
-      version: "1.5"
+      version: "1.6"
     )
 
     build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
@@ -223,10 +223,10 @@ platform :ios do
   lane :refresh_dsyms_prod do
     # Download latest recompiled dSYM files from iTC
     latest_build_number = latest_testflight_build_number(
-      version: "1.5"
+      version: "1.6"
     )
     build_number = ((latest_build_number.is_a? String) ? latest_build_number : latest_build_number.to_s)
-    download_dsyms(version: "1.5", build_number: build_number)
+    download_dsyms(version: "1.6", build_number: build_number)
 
     # Update the `GoogleService-Info.plist` with secrets
     run_spm_pre_script(prod: true)
