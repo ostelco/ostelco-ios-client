@@ -14,10 +14,11 @@ public class OnboardingContext {
     public var hasSeenRegionOnboarding: Bool
     public var locationProblem: LocationProblem?
     public var hasSeenLocationPermissions: Bool
+    public var hasSeenNotificationPermissions: Bool
     public var hasSeenAwesome: Bool
     public var serverIsUnreachable: Bool
     
-    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false) {
+    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasSeenNotificationPermissions: Bool = false) {
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
         self.hasSeenAwesome = hasSeenAwesome
@@ -25,15 +26,13 @@ public class OnboardingContext {
         self.locationProblem = locationProblem
         self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
         self.hasSeenLocationPermissions = hasSeenLocationPermissions
+        self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
     }
 }
 
 public class RegionOnboardingContext {
     public var hasSeenESimOnboarding: Bool
     public var hasSeenESIMInstructions: Bool
-    public var hasSeenNotificationPermissions: Bool
-    public var locationProblem: LocationProblem?
-    public var hasSeenLocationPermissions: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasCameraProblem: Bool
     public var hasCompletedJumio: Bool
@@ -52,17 +51,14 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, locationProblem: LocationProblem? = nil, selectedVerificationOption: IdentityVerificationOption? = nil, hasSeenNotificationPermissions: Bool = false, hasSeenLocationPermissions: Bool = false, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
+    public init(hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
         self.hasSeenESimOnboarding = hasSeenESimOnboarding
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
-        self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
-        self.hasSeenLocationPermissions = hasSeenLocationPermissions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
         self.hasCompletedJumio = hasCompletedJumio
         self.serverIsUnreachable = serverIsUnreachable
         self.myInfoCode = myInfoCode
-        self.locationProblem = locationProblem
     }
 }
 
@@ -79,15 +75,13 @@ public struct StageDecider {
         case legalStuff
         case nicknameEntry
         case locationPermissions
+        case notificationPermissions
         case locationProblem(LocationProblem)
         case awesome
         case ohNo(OhNoIssueType)
     }
     
     public enum RegionStage: Equatable {
-        case locationPermissions
-        case locationProblem(LocationProblem)
-        case notificationPermissions
         case selectIdentityVerificationMethod([IdentityVerificationOption])
         case singpass
         case nric
@@ -139,7 +133,7 @@ public struct StageDecider {
             return .home
         }
         
-        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .home]
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .notificationPermissions, .home]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -160,35 +154,26 @@ public struct StageDecider {
             return .locationProblem(problem)
         }
         
-        return stages[0]
-    }
-    
-    // swiftlint:disable:next cyclomatic_complexity
-    public func stageForRegion(region: RegionResponse, localContext: RegionOnboardingContext) -> RegionStage {
         // After you've logged in, always show notifications if they haven't seen it.
         if !localContext.hasSeenNotificationPermissions {
             return .notificationPermissions
         }
         
-        if let problem = localContext.locationProblem {
-            return .locationProblem(problem)
-        }
-        
+        return stages[0]
+    }
+    
+    public func stageForRegion(region: RegionResponse, localContext: RegionOnboardingContext) -> RegionStage {
         // Late Stages
         if region.status == .APPROVED {
             return eSIMStage(region, localContext)
         }
         
         // Mid Stages
-        var midStages: [RegionStage] = [.locationPermissions]
+        var midStages: [RegionStage] = []
         func remove(_ stage: RegionStage) {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
             }
-        }
-        
-        if localContext.hasSeenLocationPermissions {
-            remove(.locationPermissions)
         }
 
         switch localContext.selectedVerificationOption {
