@@ -37,6 +37,11 @@ class OnboardingCoordinator {
             self.advance()
         }
         
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            let status = settings.authorizationStatus
+            self.localContext.hasSeenNotificationPermissions = status != .notDetermined
+        }
+        
         LocationController.shared.startUpdatingLocation()
     }
     
@@ -99,6 +104,10 @@ class OnboardingCoordinator {
             locationProblem.delegate = self
             locationProblem.locationProblem = problem
             navigationController.present(locationProblem, animated: true, completion: nil)
+        case .notificationPermissions:
+            let notificationPermissions = EnableNotificationsViewController.fromStoryboard()
+            notificationPermissions.delegate = self
+            navigationController.setViewControllers([notificationPermissions], animated: true)
         case .awesome:
             let awesome = SignUpCompletedViewController.fromStoryboard()
             awesome.delegate = self
@@ -135,7 +144,7 @@ extension OnboardingCoordinator: LoginDelegate {
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
             .then { (customToken) -> PromiseKit.Promise<Void> in
-                debugPrint("customToken ", customToken.token)
+                debugPrint("customToken ", customToken.token, contactEmail ?? "")
                 return self.signInWithCustomToken(customToken: customToken.token)
         }
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
@@ -213,7 +222,7 @@ extension OnboardingCoordinator: GetStartedDelegate {
     }
 }
 
-extension RegionOnboardingCoordinator: EnableNotificationsDelegate {
+extension OnboardingCoordinator: EnableNotificationsDelegate {
     func requestPermission() {
         PushNotificationController.shared.checkSettingsThenRegisterForNotifications(authorizeIfNotDetermined: true)
             .ensure { [weak self] in
@@ -254,31 +263,6 @@ extension OnboardingCoordinator: AllowLocationAccessDelegate {
 }
 
 extension OnboardingCoordinator: LocationProblemDelegate {
-    func retry() {
-        // We'll be informed about other location problems being fixed,
-        // but for this one, we just need to let the user pick their country
-        // again.
-        if case .authorizedButWrongCountry = localContext.locationProblem {
-            localContext.locationProblem = nil
-        }
-        advance()
-    }
-}
-
-extension RegionOnboardingCoordinator: AllowLocationAccessDelegate {
-    func handleLocationProblem(_ problem: LocationProblem) {
-        localContext.locationProblem = problem
-        advance()
-    }
-    
-    func locationUsageAuthorized() {
-        localContext.hasSeenLocationPermissions = true
-        advance()
-    }
-    
-}
-
-extension RegionOnboardingCoordinator: LocationProblemDelegate {
     func retry() {
         // We'll be informed about other location problems being fixed,
         // but for this one, we just need to let the user pick their country
@@ -519,11 +503,6 @@ class RegionOnboardingCoordinator {
         self.navigationController = navigationController
         self.primeAPI = primeAPI
         
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            let status = settings.authorizationStatus
-            self.localContext.hasSeenNotificationPermissions = status != .notDetermined
-        }
-        
         advance()
     }
     
@@ -543,25 +522,23 @@ class RegionOnboardingCoordinator {
             let defaultRegion = RegionResponse(region: Region(id: self.country.countryCode, name: self.country.nameOrPlaceholder), status: .PENDING, simProfiles: nil, kycStatusMap: KYCStatusMap())
             
             let stage = self.stageDecider.stageForRegion(region: region ?? defaultRegion, localContext: self.localContext)
-            self.navigateTo(stage)
+            
+            self.afterDismissing {
+                self.navigateTo(stage)
+            }
         }.cauterize()
+    }
+    
+    private func afterDismissing(completion: @escaping () -> Void) {
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: true, completion: completion)
+        } else {
+            completion()
+        }
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
         switch stage {
-        case .notificationPermissions:
-            let notificationPermissions = EnableNotificationsViewController.fromStoryboard()
-            notificationPermissions.delegate = self
-            navigationController.setViewControllers([notificationPermissions], animated: true)
-        case .locationPermissions:
-            let locationPermissions = AllowLocationAccessViewController.fromStoryboard()
-            locationPermissions.delegate = self
-            navigationController.setViewControllers([locationPermissions], animated: true)
-        case .locationProblem(let problem):
-            let locationProblem = LocationProblemViewController.fromStoryboard()
-            locationProblem.delegate = self
-            locationProblem.locationProblem = problem
-            navigationController.present(locationProblem, animated: true, completion: nil)
         case .selectIdentityVerificationMethod:
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
             selectEKYCMethod.delegate = self
@@ -571,6 +548,7 @@ class RegionOnboardingCoordinator {
             singpassCoordinator?.startLogin(from: navigationController)
         case .verifyMyInfo(let code):
             let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
+            verifyMyInfo.regionCode = country.countryCode
             verifyMyInfo.myInfoCode = code
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)

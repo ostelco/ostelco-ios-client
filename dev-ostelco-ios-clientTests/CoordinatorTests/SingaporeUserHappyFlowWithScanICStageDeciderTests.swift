@@ -15,7 +15,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedScanIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -28,7 +28,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedNRIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -41,7 +41,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedNRICThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -54,7 +54,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -67,7 +67,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedNRICAndJumioThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -80,7 +80,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedAddress() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -93,7 +93,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedEverythingExceptJumioWhichIsPendingThenColdStart() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -106,7 +106,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedEverythingExceptJumioWhichIsRejectedThenColdStart() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -119,7 +119,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedScanIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,

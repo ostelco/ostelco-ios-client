@@ -71,7 +71,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -84,7 +84,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -97,7 +97,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, myInfoCode: "xxx")
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass, myInfoCode: "xxx")
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -110,7 +110,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -123,7 +123,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimOnboarding() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenNotificationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -136,7 +136,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimInstructions() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true, hasSeenNotificationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,

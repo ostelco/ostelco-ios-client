@@ -16,7 +16,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserSignsUpOnNewDeviceAfterCompletingOnboardingOnOtherDevice() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext()
+        let localContext = OnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -25,27 +25,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             ],
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
-        
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .notificationPermissions)
-    }
-    
-    func testUserSignsUpOnNewDeviceAndGivesNotificationPermissionsAfterCompletingOnboardingOnOtherDevice() {
-        let decider = StageDecider()
-        let localContext = OnboardingContext(hasFirebaseToken: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
-                    ],
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
-        )
+        let context = Context(customer: CustomerModel(id: "xx", name: "xxx", email: "xxx", analyticsId: "xxx", referralId: "xxx"), regions: [region])
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
@@ -81,22 +61,9 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     // Edge cases for Singapore flow
     
-    func testUserHasSelectedACountryAndHasLocationProblem() {
-        let decider = StageDecider()
-        let localContext = RegionOnboardingContext(locationProblem: .deniedByUser, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
-        let region = RegionResponse(
-            region: Region(id: "sg", name: "SG"),
-            status: .PENDING,
-            simProfiles: nil,
-            kycStatusMap: .init()
-        )
-        
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .locationProblem(.deniedByUser))
-    }
-    
     func testMyInfoSummaryLoadFailedandSelectedVerificationOptionIsResetToNil() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -109,7 +76,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -122,7 +89,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejected() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -136,7 +103,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     // Edge cases for Norway flow
     func testUserHasCompletedJumioButGotRejectedInNorway() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -149,7 +116,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserIsRejectedInNorwayForJumioButWantsToTryAgain() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -162,7 +129,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserIsRejectedInSingaporeForJumioButWantsToTryAgain() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext()
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -175,7 +142,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemBeforeJumioWhenSelectingScanICInSingaporeIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, hasCameraProblem: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCameraProblem: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -188,7 +155,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemAfterVerifyIdentityOnboardingInNorwayIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, hasCameraProblem: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCameraProblem: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "NO"),
             status: .PENDING,
@@ -201,7 +168,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testExistingUserLogsIn() {
         let decider = StageDecider()
-        let localContext = OnboardingContext(hasFirebaseToken: true, hasSeenLocationPermissions: true)
+        let localContext = OnboardingContext(hasFirebaseToken: true)
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
             regions: [

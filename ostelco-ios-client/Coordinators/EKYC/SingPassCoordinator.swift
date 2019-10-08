@@ -80,7 +80,6 @@ class SingPassCoordinator: NSObject {
     
     @objc func handleCallback(notification: NSNotification) {
         if let queryItems = notification.object as? [URLQueryItem] {
-            UserDefaultsWrapper.pendingSingPass = queryItems
             self.delegate?.signInSucceeded(myInfoQueryItems: queryItems)
         }
     }
