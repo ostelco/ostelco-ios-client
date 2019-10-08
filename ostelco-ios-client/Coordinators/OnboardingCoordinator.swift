@@ -144,7 +144,7 @@ extension OnboardingCoordinator: LoginDelegate {
         let appleIdToken = AppleIdToken(authCode: authCode)
         primeAPI.authorizeAppleId(with: appleIdToken)
             .then { (customToken) -> PromiseKit.Promise<Void> in
-                debugPrint("customToken ", customToken.token)
+                debugPrint("customToken ", customToken.token, contactEmail ?? "")
                 return self.signInWithCustomToken(customToken: customToken.token)
         }
             // The callback for Auth.auth().addStateDidChangeListener() will call advance().
@@ -522,8 +522,19 @@ class RegionOnboardingCoordinator {
             let defaultRegion = RegionResponse(region: Region(id: self.country.countryCode, name: self.country.nameOrPlaceholder), status: .PENDING, simProfiles: nil, kycStatusMap: KYCStatusMap())
             
             let stage = self.stageDecider.stageForRegion(region: region ?? defaultRegion, localContext: self.localContext)
-            self.navigateTo(stage)
+            
+            self.afterDismissing {
+                self.navigateTo(stage)
+            }
         }.cauterize()
+    }
+    
+    private func afterDismissing(completion: @escaping () -> Void) {
+        if navigationController.presentedViewController != nil {
+            navigationController.dismiss(animated: true, completion: completion)
+        } else {
+            completion()
+        }
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
@@ -537,6 +548,7 @@ class RegionOnboardingCoordinator {
             singpassCoordinator?.startLogin(from: navigationController)
         case .verifyMyInfo(let code):
             let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
+            verifyMyInfo.regionCode = country.countryCode
             verifyMyInfo.myInfoCode = code
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)
