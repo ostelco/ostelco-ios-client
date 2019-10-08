@@ -11,6 +11,7 @@ import SwiftUI
 
 /// Colors from https://app.zeplin.io/project/5c8b989f46989524fb0258ac/styleguide
 public enum OstelcoColor: String, CaseIterable {
+    case azul
     case background
     case containerBorder
     case controlTint
@@ -18,6 +19,7 @@ public enum OstelcoColor: String, CaseIterable {
     case countryTextSecondary
     case disabled
     case highlighted
+    case lipstick
     case inputBackground
     case inputLabel
     case inputPlaceholder
@@ -28,6 +30,7 @@ public enum OstelcoColor: String, CaseIterable {
     case primaryButtonBackgroundDisabled
     case primaryButtonLabel
     case primaryButtonLabelDisabled
+    case regionShadow
     case secondaryButtonLabel
     case shadow
     case statusError
