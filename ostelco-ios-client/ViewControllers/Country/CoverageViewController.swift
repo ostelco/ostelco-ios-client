@@ -26,7 +26,8 @@ class CoverageViewController: UIViewController {
         self.norwayButton.setTitle("Norway - Ready", for: .normal)
         self.norwayButton.setTitle("Norway - Approved", for: .disabled)
         
-        updateButtons()
+        embedSwiftUI(CoverageView(controller: self))
+        // updateButtons()
     }
     
     func updateButtons() {
@@ -38,6 +39,14 @@ class CoverageViewController: UIViewController {
             let norway = context.toLegacyModel().regions.first(where: { $0.region.id == "no" })
             self.norwayButton.isEnabled = norway?.status != .approved
         }.cauterize()
+    }
+    
+    func startOnboardingForCountry(_ country: Country) {
+        let navigationController = UINavigationController()
+        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        coordinator.delegate = self
+        currentCoordinator = coordinator
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction private func startOnboardingForSingapore() {

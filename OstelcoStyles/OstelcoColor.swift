@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftUI
 
 /// Colors from https://app.zeplin.io/project/5c8b989f46989524fb0258ac/styleguide
 public enum OstelcoColor: String, CaseIterable {
     case background
+    case containerBorder
     case controlTint
+    case countryText
+    case countryTextSecondary
     case disabled
     case highlighted
     case inputBackground
@@ -25,6 +29,7 @@ public enum OstelcoColor: String, CaseIterable {
     case primaryButtonLabel
     case primaryButtonLabelDisabled
     case secondaryButtonLabel
+    case shadow
     case statusError
     case statusGood
     case statusOkay
@@ -42,6 +47,10 @@ public enum OstelcoColor: String, CaseIterable {
             return UIColor(named: "oyaBlue-dev", in: bundle, compatibleWith: nil)!
         }
         return UIColor(named: self.rawValue, in: bundle, compatibleWith: nil)!
+    }
+    
+    public var toColor: Color {
+        return Color(self.toUIColor)
     }
     
     var toPixelImage: UIImage {
