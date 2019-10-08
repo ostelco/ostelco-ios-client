@@ -12,7 +12,7 @@ import XCTest
 class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -25,7 +25,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -38,7 +38,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioAndIsApproved() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .APPROVED,

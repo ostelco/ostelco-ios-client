@@ -18,13 +18,13 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let decider = StageDecider()
         let context: Context? = nil
         
-        XCTAssertEqual(decider.compute(context: context, localContext: LocalContext()), .loginCarousel)
+        XCTAssertEqual(decider.compute(context: context, localContext: OnboardingContext()), .loginCarousel)
     }
     
     func testUserNotSignedInColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext()
+        let localContext = OnboardingContext()
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .loginCarousel)
     }
@@ -32,7 +32,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAFirebaseUserButNoContextYet() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasFirebaseToken: true)
+        let localContext = OnboardingContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
@@ -40,7 +40,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true)
+        let localContext = OnboardingContext(hasFirebaseToken: true, hasAgreedToTerms: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
@@ -48,7 +48,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasAgreedToLegalStuffThenColdStart() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasFirebaseToken: true)
+        let localContext = OnboardingContext(hasFirebaseToken: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .legalStuff)
     }
@@ -56,14 +56,14 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     func testUserHasFirebasedThenColdStartedThenAgreedToLegalStuff() {
         let decider = StageDecider()
         let context: Context? = nil
-        let localContext = LocalContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenLocationPermissions: true)
+        let localContext = OnboardingContext(hasFirebaseToken: true, hasAgreedToTerms: true, hasSeenLocationPermissions: true)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .nicknameEntry)
     }
     
     func testUserHasEnteredNickname() {
         let decider = StageDecider()
-        let localContext = LocalContext()
+        let localContext = OnboardingContext()
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
@@ -71,7 +71,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -84,7 +84,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSelectedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .singpass, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -97,7 +97,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpass() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, selectedVerificationOption: .singpass, myInfoCode: "xxx", hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .singpass, hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true, myInfoCode: "xxx")
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -110,7 +110,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
+        let localContext = RegionOnboardingContext(hasSeenNotificationPermissions: true, hasSeenLocationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -123,7 +123,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimOnboarding() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true)
+        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenNotificationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -136,7 +136,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasSeenTheESimInstructions() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
+        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true, hasSeenNotificationPermissions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
@@ -149,7 +149,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIMThenColdStart() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true)
+        let localContext = OnboardingContext(hasSeenLocationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
@@ -170,7 +170,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIMAndSeenAwesome() {
         let decider = StageDecider()
-        let localContext = LocalContext(hasSeenNotificationPermissions: true, hasSeenESimOnboarding: true, hasSeenESIMInstructions: true, hasSeenAwesome: true)
+        let localContext = OnboardingContext()
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),

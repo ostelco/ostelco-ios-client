@@ -52,7 +52,7 @@ class CoverageViewController: UIViewController {
     @IBAction private func startOnboardingForSingapore() {
         let country = Country("sg")
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, localContext: LocalContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
@@ -61,7 +61,7 @@ class CoverageViewController: UIViewController {
     @IBAction private func startOnboardingForNorway() {
         let country = Country("no")
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, localContext: LocalContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
