@@ -86,6 +86,11 @@
 		04A80CCA234B5A7300ECEE84 /* CoverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CC9234B5A7300ECEE84 /* CoverageView.swift */; };
 		04A80CCB234B5A7300ECEE84 /* CoverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CC9234B5A7300ECEE84 /* CoverageView.swift */; };
 		04A80CCD234B5B0400ECEE84 /* OstelcoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */; };
+		04A80CD0234C82AE00ECEE84 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* AppStore.swift */; };
+		04A80CD1234C82AE00ECEE84 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* AppStore.swift */; };
+		04A80CD3234C82E100ECEE84 /* OstelcoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */; };
+		04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
+		04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
 		04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -456,6 +461,9 @@
 		04A80CC6234B58BD00ECEE84 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
 		04A80CC9234B5A7300ECEE84 /* CoverageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageView.swift; sourceTree = "<group>"; };
 		04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTitle.swift; sourceTree = "<group>"; };
+		04A80CCF234C82AE00ECEE84 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoContainer.swift; sourceTree = "<group>"; };
+		04A80CD4234C969400ECEE84 /* ESimCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCountryView.swift; sourceTree = "<group>"; };
 		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -720,6 +728,7 @@
 		04488168217924B700F59758 /* ostelco-ios-client */ = {
 			isa = PBXGroup;
 			children = (
+				04A80CCE234C829800ECEE84 /* Stores */,
 				04488169217924B700F59758 /* AppDelegate.swift */,
 				9BE2D45B225B634100B51999 /* TestAppDelegate.swift */,
 				9BE2D440225B5CB700B51999 /* Assets */,
@@ -847,6 +856,14 @@
 				9B17457F227722C200CF321B /* ValidationState.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04A80CCE234C829800ECEE84 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				04A80CCF234C82AE00ECEE84 /* AppStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		9B3FA95622649DBE0001641A /* Protocols */ = {
@@ -1069,6 +1086,7 @@
 				9BB6A796226F6514000D5E13 /* Info.plist */,
 				9B609A322303ED2900169599 /* Colors.xcassets */,
 				04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */,
+				04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */,
 			);
 			path = OstelcoStyles;
 			sourceTree = "<group>";
@@ -1098,6 +1116,7 @@
 			children = (
 				9BBF705B2265F03600E4B9B4 /* Cells */,
 				04A80CC9234B5A7300ECEE84 /* CoverageView.swift */,
+				04A80CD4234C969400ECEE84 /* ESimCountryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1870,6 +1889,7 @@
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				C2D500EC2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
+				04A80CD0234C82AE00ECEE84 /* AppStore.swift in Sources */,
 				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
@@ -1912,6 +1932,7 @@
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */,
+				04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */,
 				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
@@ -2021,6 +2042,7 @@
 				9BB6A7A3226F6529000D5E13 /* UIColor+Pixel.swift in Sources */,
 				9BB6A7A0226F6523000D5E13 /* OstelcoColor.swift in Sources */,
 				9B8AFF5622A14E4500CC84B1 /* BoldableText.swift in Sources */,
+				04A80CD3234C82E100ECEE84 /* OstelcoContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2071,6 +2093,7 @@
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
+				04A80CD1234C82AE00ECEE84 /* AppStore.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
@@ -2113,6 +2136,7 @@
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */,
+				04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */,
 				C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
@@ -2487,6 +2511,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2524,6 +2549,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

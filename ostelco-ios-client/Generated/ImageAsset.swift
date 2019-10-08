@@ -10,6 +10,15 @@ public enum ImageAsset: String, CaseIterable {
     case check
     case fakeModalLocation
     case fakeModalNotifications
+    case flagsHk
+    case flagsIn
+    case flagsMy
+    case flagsNo
+    case flagsPh
+    case flagsSe
+    case flagsSg
+    case flagsTh
+    case flagsUs
     case home
     case icIcon
     case instructionsESimContinue
@@ -48,6 +57,24 @@ public extension UIImage {
     static let ostelco_fakeModalLocation = UIImage(from: .fakeModalLocation)
 
     static let ostelco_fakeModalNotifications = UIImage(from: .fakeModalNotifications)
+
+    static let ostelco_flagsHk = UIImage(from: .flagsHk)
+
+    static let ostelco_flagsIn = UIImage(from: .flagsIn)
+
+    static let ostelco_flagsMy = UIImage(from: .flagsMy)
+
+    static let ostelco_flagsNo = UIImage(from: .flagsNo)
+
+    static let ostelco_flagsPh = UIImage(from: .flagsPh)
+
+    static let ostelco_flagsSe = UIImage(from: .flagsSe)
+
+    static let ostelco_flagsSg = UIImage(from: .flagsSg)
+
+    static let ostelco_flagsTh = UIImage(from: .flagsTh)
+
+    static let ostelco_flagsUs = UIImage(from: .flagsUs)
 
     static let ostelco_home = UIImage(from: .home)
 
