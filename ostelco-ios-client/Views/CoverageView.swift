@@ -7,12 +7,18 @@
 //
 
 import SwiftUI
+import UIKit
 import OstelcoStyles
 
 struct CoverageView: View {
+    
+    init() {
+        UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
+    }
+    
     var body: some View {
         NavigationView {
-            VStack() {
+            ScrollView() {
                 OstelcoTitle(label: "Location", image: "location.fill")
             }
         }
