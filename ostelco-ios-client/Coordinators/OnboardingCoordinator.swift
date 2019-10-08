@@ -377,7 +377,7 @@ extension RegionOnboardingCoordinator: ESIMOnBoardingDelegate {
 extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
         let spinner = controller.showSpinner()
-        makeSimProfileForRegion("SG")
+        makeSimProfileForRegion(country.countryCode)
             .then { simProfile -> PromiseKit.Promise<Void> in
                 switch simProfile.status {
                 case .INSTALLED:
