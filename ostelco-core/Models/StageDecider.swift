@@ -133,7 +133,7 @@ public struct StageDecider {
             return .home
         }
         
-        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .notificationPermissions, .home]
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .notificationPermissions, .notificationPermissions, .home]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -155,8 +155,8 @@ public struct StageDecider {
         }
         
         // After you've logged in, always show notifications if they haven't seen it.
-        if !localContext.hasSeenNotificationPermissions {
-            return .notificationPermissions
+        if localContext.hasSeenNotificationPermissions {
+            remove(.notificationPermissions)
         }
         
         return stages[0]

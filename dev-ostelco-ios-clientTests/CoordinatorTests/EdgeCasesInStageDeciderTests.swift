@@ -27,27 +27,6 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         )
         let context = Context(customer: CustomerModel(id: "xx", name: "xxx", email: "xxx", analyticsId: "xxx", referralId: "xxx"), regions: [region])
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .notificationPermissions)
-    }
-    
-    func testUserSignsUpOnNewDeviceAndGivesNotificationPermissionsAfterCompletingOnboardingOnOtherDevice() {
-        let decider = StageDecider()
-        let localContext = OnboardingContext(hasFirebaseToken: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
-                    ],
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
-        )
-        
         XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
     }
     
