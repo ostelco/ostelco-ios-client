@@ -128,12 +128,7 @@ public struct StageDecider {
             return .ohNo(.serverUnreachable)
         }
         
-        if context?.customer != nil {
-            // This is a clue the user is an existing user, don't need to show legal stuff
-            return .home
-        }
-        
-        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .notificationPermissions, .notificationPermissions, .home]
+        var stages: [Stage] = [.loginCarousel, .legalStuff, .nicknameEntry, .locationPermissions, .notificationPermissions, .home]
         
         func remove(_ stage: Stage) {
             if let index = stages.firstIndex(of: stage) {
@@ -147,6 +142,13 @@ public struct StageDecider {
         if localContext.hasAgreedToTerms {
             remove(.legalStuff)
         }
+        if context?.customer != nil {
+            // This is a clue the user is an existing user, don't need to show legal stuff
+            remove(.loginCarousel)
+            remove(.legalStuff)
+            remove(.nicknameEntry)
+        }
+        
         if localContext.hasSeenLocationPermissions {
             remove(.locationPermissions)
         }
