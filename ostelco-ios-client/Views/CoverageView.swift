@@ -11,17 +11,11 @@ import UIKit
 import OstelcoStyles
 import ostelco_core
 
-struct RegionView: View {
-    var body: some View {
-        Text("Test")
-    }
-}
-
 struct CoverageView: View {
     
     @ObservedObject var store = AppStore()
     let controller: CoverageViewController
-    let countries = ["SE", "HK", "IN", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
+    let countries = ["SE", "HK", "ID", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
     @State private var showModal: Bool = false
     
     init(controller: CoverageViewController) {
@@ -63,6 +57,9 @@ struct CoverageView: View {
                     .clipped()
                     .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
                     RegionCardView(label: "The Americas", description: "Latin & north america", centerText: "Coming Soon", backgroundColor: OstelcoColor.azul.toColor)
+                    .cornerRadius(28)
+                    .clipped()
+                    .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
                     
                     ForEach(countries, id: \.countryCode ) { country in
                         OstelcoContainer {
@@ -75,7 +72,13 @@ struct CoverageView: View {
                 }.padding()
             }
         }.sheet(isPresented: $showModal) {
-            RegionView()
+            RegionView(countrySelected: { country in
+                // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
+                self.showModal = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                    self.controller.startOnboardingForCountry(country)
+                })
+            })
         }
     }
 }
