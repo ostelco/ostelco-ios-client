@@ -161,7 +161,7 @@ DEPENDENCIES:
   - SwiftLint (~> 0.32.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Apollo
     - Crashlytics
     - Fabric
@@ -221,4 +221,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ed07befec6685debb20dd1397ef6d41899a53112
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

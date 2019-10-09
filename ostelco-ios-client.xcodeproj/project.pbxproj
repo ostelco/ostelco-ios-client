@@ -2666,7 +2666,7 @@
 					"\"${PODS_ROOT}/Fabric/iOS\"",
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
-					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
+					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2720,7 +2720,7 @@
 					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
-					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.0\"",
+					"\"${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1\"",
 					"\"${PODS_ROOT}/TwitterCore/iOS\"",
 					"\"${PODS_ROOT}/TwitterKit/iOS\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit\"",
