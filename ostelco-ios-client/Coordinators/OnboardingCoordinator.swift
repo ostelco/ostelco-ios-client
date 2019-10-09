@@ -50,6 +50,10 @@ class OnboardingCoordinator {
             .done { (context) in
                 self.localContext.serverIsUnreachable = false
                 
+                let location = LocationController.shared
+                self.localContext.hasSeenLocationPermissions = location.authorizationStatus != .notDetermined
+                self.localContext.locationProblem = location.locationProblem
+                
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
                 self.afterDismissing {

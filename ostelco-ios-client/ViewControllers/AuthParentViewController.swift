@@ -40,3 +40,4 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         self.onboarding = onboarding
     }
 }
+

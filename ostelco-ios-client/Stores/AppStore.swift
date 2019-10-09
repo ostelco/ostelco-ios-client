@@ -9,7 +9,7 @@
 import ostelco_core
 
 final class AppStore: ObservableObject {
-    @Published var country: Country? = nil
+    @Published var country: Country?
     
     init() {
         // TODO: Feels like we can refactor this into something simpler
