@@ -9,7 +9,7 @@
 import SwiftUI
 import OstelcoStyles
 
-struct RegionCardView: View {
+struct RegionGroupCardView: View {
     let label: String
     let description: String
     let centerText: String?
@@ -69,6 +69,6 @@ struct RegionCardView: View {
 
 struct RegionCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RegionCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
+        RegionGroupCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
     }
 }

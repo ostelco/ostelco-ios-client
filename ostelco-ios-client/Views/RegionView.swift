@@ -10,13 +10,15 @@ import SwiftUI
 import ostelco_core
 import OstelcoStyles
 
-struct RegionView: View {
+struct RegionGroupView: View {
+    // TODO: Should be a list of regions
     let countries = ["SE", "HK", "ID", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
+    // TODO: Should be region selected (when above list is turned into a list of regions)
     let countrySelected: (Country) -> Void
     
     var body: some View {
         VStack {
-            RegionCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
+            RegionGroupCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
             List(countries, id: \.countryCode) { country in
                 Group {
                     ESimCountryView(image: country.image, country: country, action: {
@@ -32,7 +34,7 @@ struct RegionView: View {
 }
 struct RegionView_Previews: PreviewProvider {
     static var previews: some View {
-        RegionView(countrySelected: { _ in
+        RegionGroupView(countrySelected: { _ in
         
         })
     }

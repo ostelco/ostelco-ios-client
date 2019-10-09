@@ -15,6 +15,7 @@ struct CoverageView: View {
     
     @ObservedObject var store = AppStore()
     let controller: CoverageViewController
+    // TODO: Should be a list of regions
     let countries = ["SE", "HK", "ID", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
     @State private var showModal: Bool = false
     
@@ -52,11 +53,11 @@ struct CoverageView: View {
                         debugPrint(self.showModal)
                         self.showModal = true
                     }) {
-                        RegionCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
+                        RegionGroupCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
                     }.cornerRadius(28)
                     .clipped()
                     .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
-                    RegionCardView(label: "The Americas", description: "Latin & north america", centerText: "Coming Soon", backgroundColor: OstelcoColor.azul.toColor)
+                    RegionGroupCardView(label: "The Americas", description: "Latin & north america", centerText: "Coming Soon", backgroundColor: OstelcoColor.azul.toColor)
                     .cornerRadius(28)
                     .clipped()
                     .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
@@ -72,7 +73,7 @@ struct CoverageView: View {
                 }.padding()
             }
         }.sheet(isPresented: $showModal) {
-            RegionView(countrySelected: { country in
+            RegionGroupView(countrySelected: { country in
                 // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
                 self.showModal = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
