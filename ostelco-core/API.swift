@@ -53,6 +53,7 @@ public enum PrimeGQL {
     public typealias RawValue = String
     case pending
     case approved
+    case available
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -60,6 +61,7 @@ public enum PrimeGQL {
       switch rawValue {
         case "PENDING": self = .pending
         case "APPROVED": self = .approved
+        case "AVAILABLE": self = .available
         default: self = .__unknown(rawValue)
       }
     }
@@ -68,6 +70,7 @@ public enum PrimeGQL {
       switch self {
         case .pending: return "PENDING"
         case .approved: return "APPROVED"
+        case .available: return "AVAILABLE"
         case .__unknown(let value): return value
       }
     }
@@ -76,6 +79,7 @@ public enum PrimeGQL {
       switch (lhs, rhs) {
         case (.pending, .pending): return true
         case (.approved, .approved): return true
+        case (.available, .available): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
