@@ -14,7 +14,7 @@ final class AppStore: ObservableObject {
     @Published var countryCodeToRegionCodeMap: [String:[String]] = [
         "SG": ["sg"],
         "NO": ["no"],
-        "US": ["us"],
+        "US": ["us", "no"],
         "MY": ["my"]
     ]
     
