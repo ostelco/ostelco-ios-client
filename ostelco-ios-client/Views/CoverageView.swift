@@ -11,18 +11,66 @@ import UIKit
 import OstelcoStyles
 import ostelco_core
 
+struct RegionGroupViewModel: Identifiable {
+    let id = UUID()
+    let name: String
+    let description: String
+    let backgroundColor: RegiounGroupBackgroundColor
+    let isPreview: Bool
+    
+    enum RegiounGroupBackgroundColor {
+        case lipstick
+        case azul
+        
+        var toColor: Color {
+            switch self {
+            case .lipstick:
+                return OstelcoColor.lipstick.toColor
+            case .azul:
+                return OstelcoColor.azul.toColor
+            }
+        }
+    }
+}
+
 struct CoverageView: View {
     
     @EnvironmentObject var store: AppStore
     
     let controller: CoverageViewController
-    // TODO: Should be a list of regions
-    let countries = ["SE", "HK", "ID", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
+    
+    let regionGroups = [
+        RegionGroupViewModel(name: "Asia", description: "Southeast asia & pacific", backgroundColor: .lipstick, isPreview: false),
+        RegionGroupViewModel(name: "The Americas", description: "Latin & north america", backgroundColor: .azul, isPreview: true)
+    ]
+    
     @State private var showModal: Bool = false
     
     init(controller: CoverageViewController) {
         self.controller = controller
         UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
+    }
+    
+    private func renderRegionGroup(_ regionGroup: RegionGroupViewModel) -> AnyView {
+        if regionGroup.isPreview {
+           return AnyView(
+               RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, centerText: regionGroup.isPreview ? "Coming Soon" : nil, backgroundColor: regionGroup.backgroundColor.toColor)
+               .cornerRadius(28)
+               .clipped()
+               .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
+           )
+        } else {
+            return AnyView(
+               Button(action: {
+                   debugPrint(self.showModal)
+                   self.showModal = true
+               }) {
+                   RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
+               }.cornerRadius(28)
+               .clipped()
+               .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
+           )
+        }
     }
     
     var body: some View {
@@ -36,18 +84,8 @@ struct CoverageView: View {
                     
                     OstelcoTitle(label: "All Destinations")
                     
-                    Button(action: {
-                        debugPrint(self.showModal)
-                        self.showModal = true
-                    }) {
-                        RegionGroupCardView(label: "Asia", description: "Southeast asia & pacific", backgroundColor: OstelcoColor.lipstick.toColor)
-                    }.cornerRadius(28)
-                    .clipped()
-                    .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
-                    RegionGroupCardView(label: "The Americas", description: "Latin & north america", centerText: "Coming Soon", backgroundColor: OstelcoColor.azul.toColor)
-                    .cornerRadius(28)
-                    .clipped()
-                    .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
+                    ForEach(regionGroups, id: \.id) { self.renderRegionGroup($0) }
+                    
                 }.padding()
             }
         }.sheet(isPresented: $showModal) {
