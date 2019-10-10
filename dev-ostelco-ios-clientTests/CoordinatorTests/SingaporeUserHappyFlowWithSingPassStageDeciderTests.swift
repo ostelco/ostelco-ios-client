@@ -66,7 +66,15 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
         let localContext = OnboardingContext()
         let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
+    }
+    
+    func testUserHasAcceptedLocationPermissions() {
+        let decider = StageDecider()
+        let localContext = OnboardingContext(hasSeenLocationPermissions: true)
+        let context = Context(customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"), regions: noRegions)
+        
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .notificationPermissions)
     }
     
     func testUserHasSelectedACountryAndIsInThatCountry() {
@@ -149,28 +157,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     
     func testUserHasInstalledESIMThenColdStart() {
         let decider = StageDecider()
-        let localContext = OnboardingContext(hasSeenLocationPermissions: true)
-        
-        let context = Context(
-            customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),
-            regions: [
-                RegionResponse(
-                    region: Region(id: "sg", name: "Singapore"),
-                    status: .APPROVED,
-                    simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
-                    ],
-                    kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-                )
-            ]
-        )
-        
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
-    }
-    
-    func testUserHasInstalledESIMAndSeenAwesome() {
-        let decider = StageDecider()
-        let localContext = OnboardingContext()
+        let localContext = OnboardingContext(hasSeenLocationPermissions: true, hasSeenNotificationPermissions: true)
         
         let context = Context(
             customer: CustomerModel(id: "xxx", name: "xxx", email: "xxxx@gmail.com", analyticsId: "xxxx", referralId: "xxxx"),

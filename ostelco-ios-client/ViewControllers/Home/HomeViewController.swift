@@ -75,10 +75,8 @@ class HomeViewController: ApplePayViewController {
         scrollView.addSubview(refreshControl)
         refreshBalance()
         
-        LocationController.shared.startUpdatingLocation()
         NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
         updateButtonFor(country: LocationController.shared.currentCountry)
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {

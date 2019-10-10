@@ -310,7 +310,7 @@
       {
         "kind": "SCALAR",
         "name": "Long",
-        "description": null,
+        "description": "Long type",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -455,6 +455,12 @@
           },
           {
             "name": "APPROVED",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "AVAILABLE",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -820,7 +826,7 @@
       {
         "kind": "OBJECT",
         "name": "Presentation",
-        "description": "TODO Vihang: How do we make this generic?",
+        "description": " TODO Vihang: How do we make this generic?",
         "fields": [
           {
             "name": "subTotal",
@@ -910,6 +916,18 @@
                 "name": "String",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "label",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null

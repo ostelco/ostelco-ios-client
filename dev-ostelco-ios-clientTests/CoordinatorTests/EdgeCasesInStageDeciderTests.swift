@@ -27,7 +27,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
         )
         let context = Context(customer: CustomerModel(id: "xx", name: "xxx", email: "xxx", analyticsId: "xxx", referralId: "xxx"), regions: [region])
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
     }
     
     func testUserKillsAppAfterCompletingOnboardingSuccessfullyButBeforeAwesomeScreen() {
@@ -48,7 +48,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             ]
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
     }
     
     func testServerIsUnavailableOnStartUp() {
@@ -183,7 +183,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             ]
         )
         
-        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .home)
+        XCTAssertEqual(decider.compute(context: context, localContext: localContext), .locationPermissions)
     }
 
 }
