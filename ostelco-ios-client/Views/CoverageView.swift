@@ -48,15 +48,6 @@ struct CoverageView: View {
                     .cornerRadius(28)
                     .clipped()
                     .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
-                    
-                    ForEach(countries, id: \.countryCode ) { country in
-                        OstelcoContainer {
-                            ESimCountryView(image: country.image, country: country, action: {
-                                // TODO: Refactor this so isnt dependent on CoverageViewController
-                                self.controller.startOnboardingForCountry(country)
-                            })
-                        }
-                    }
                 }.padding()
             }
         }.sheet(isPresented: $showModal) {
