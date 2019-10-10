@@ -10,11 +10,15 @@ import ostelco_core
 
 final class AppStore: ObservableObject {
     @Published var country: Country?
+    @Published var regions: [PrimeGQL.RegionDetailsFragment]?
     
     init() {
         // TODO: Feels like we can refactor this into something simpler
         country = LocationController.shared.currentCountry
         NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
+        
+        APIManager.shared.primeAPI.loadRegions()
+            .done { self.regions = $0 }.cauterize()
     }
     
     @objc func countryChanged(_ notification: NSNotification) {

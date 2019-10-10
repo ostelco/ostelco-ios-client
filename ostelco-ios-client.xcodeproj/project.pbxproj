@@ -104,6 +104,8 @@
 		04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */; };
 		04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */; };
 		04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */; };
+		04D91987234F0B0500E7D171 /* RegionListByLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91986234F0B0500E7D171 /* RegionListByLocation.swift */; };
+		04D91988234F0B0500E7D171 /* RegionListByLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D91986234F0B0500E7D171 /* RegionListByLocation.swift */; };
 		04EC5AE8218873BF000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC5AE7218872BA000C2EC3 /* Environment.swift */; };
 		13590E50313513F4967C8381 /* Pods_ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DCE29F29767B2734BF3223 /* Pods_ostelco_core.framework */; };
@@ -476,6 +478,7 @@
 		04D1D1362197D2FD00551B0E /* FreshchatCarthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreshchatCarthage.framework; path = Carthage/Build/iOS/FreshchatCarthage.framework; sourceTree = "<group>"; };
 		04D6C9842276E32700AE13DD /* OstelcoAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoAnalytics.swift; sourceTree = "<group>"; };
 		04D6C9872276F7CB00AE13DD /* String+SnakeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SnakeCase.swift"; sourceTree = "<group>"; };
+		04D91986234F0B0500E7D171 /* RegionListByLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListByLocation.swift; sourceTree = "<group>"; };
 		04EC5ADD21884ABD000C2EC3 /* dev-ostelco-ios-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dev-ostelco-ios-client.entitlements"; sourceTree = "<group>"; };
 		04EC5AE321887123000C2EC3 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		04EC5AE521887137000C2EC3 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
@@ -1125,6 +1128,7 @@
 				04A80CD4234C969400ECEE84 /* ESimCountryView.swift */,
 				04491632234D9E0F0022731A /* RegionGroupCardView.swift */,
 				04491635234DACFF0022731A /* RegionGroupView.swift */,
+				04D91986234F0B0500E7D171 /* RegionListByLocation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1967,6 +1971,7 @@
 				C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BBEEE06228D6E6A00EED7F5 /* PushNotificationController.swift in Sources */,
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
+				04D91987234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
@@ -2173,6 +2178,7 @@
 				0465B4D823436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */,
 				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
+				04D91988234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,

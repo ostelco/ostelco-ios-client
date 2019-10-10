@@ -13,7 +13,8 @@ import ostelco_core
 
 struct CoverageView: View {
     
-    @ObservedObject var store = AppStore()
+    @EnvironmentObject var store: AppStore
+    
     let controller: CoverageViewController
     // TODO: Should be a list of regions
     let countries = ["SE", "HK", "ID", "MY", "NO", "PH", "SG", "TH", "US"].map { Country($0) }
@@ -31,21 +32,7 @@ struct CoverageView: View {
                     
                     OstelcoTitle(label: "Location", image: "location.fill")
                     
-                    store.country.map { country in
-                        
-                        Group {
-                            OstelcoContainer {
-                                ESimCountryView(image: country.image, country: country, heading: "BASED ON LOCATION", action: {
-                                    // TODO: Refactor this to not be dependent on CoverageViewController
-                                    self.controller.startOnboardingForCountry(country)
-                                })
-                            }
-                            
-                            OstelcoContainer(state: .inactive) {
-                                ESimCountryView(image: country.image, country: country, heading: "BASED ON LOCATION")
-                            }
-                        }
-                    }
+                    RegionListByLocation(controller: controller)
                     
                     OstelcoTitle(label: "All Destinations")
                     

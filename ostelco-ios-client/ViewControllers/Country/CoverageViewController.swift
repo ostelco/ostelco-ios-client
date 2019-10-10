@@ -26,7 +26,7 @@ class CoverageViewController: UIViewController {
         self.norwayButton.setTitle("Norway - Ready", for: .normal)
         self.norwayButton.setTitle("Norway - Approved", for: .disabled)
         
-        embedSwiftUI(CoverageView(controller: self))
+        embedSwiftUI(CoverageView(controller: self).environmentObject(AppStore()))
         // updateButtons()
     }
     
