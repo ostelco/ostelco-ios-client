@@ -17,6 +17,7 @@ struct RegionGroupViewModel: Identifiable {
     let description: String
     let backgroundColor: RegiounGroupBackgroundColor
     let isPreview: Bool
+    let countries: [Country]
     
     enum RegiounGroupBackgroundColor {
         case lipstick
@@ -38,12 +39,7 @@ struct CoverageView: View {
     @EnvironmentObject var store: AppStore
     
     let controller: CoverageViewController
-    
-    let regionGroups = [
-        RegionGroupViewModel(name: "Asia", description: "Southeast asia & pacific", backgroundColor: .lipstick, isPreview: false),
-        RegionGroupViewModel(name: "The Americas", description: "Latin & north america", backgroundColor: .azul, isPreview: true)
-    ]
-    
+    @State private var selectedRegionGroup: RegionGroupViewModel? = nil
     @State private var showModal: Bool = false
     
     init(controller: CoverageViewController) {
@@ -54,7 +50,7 @@ struct CoverageView: View {
     private func renderRegionGroup(_ regionGroup: RegionGroupViewModel) -> AnyView {
         if regionGroup.isPreview {
            return AnyView(
-               RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, centerText: regionGroup.isPreview ? "Coming Soon" : nil, backgroundColor: regionGroup.backgroundColor.toColor)
+            RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, centerText: regionGroup.isPreview ? "Coming Soon" : nil, backgroundColor: regionGroup.backgroundColor.toColor)
                .cornerRadius(28)
                .clipped()
                .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
@@ -62,10 +58,10 @@ struct CoverageView: View {
         } else {
             return AnyView(
                Button(action: {
-                   debugPrint(self.showModal)
-                   self.showModal = true
+                    self.store.selectedRegionGroup = regionGroup
+                    self.showModal = true
                }) {
-                   RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
+                RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)
                .clipped()
                .shadow(color: OstelcoColor.regionShadow.toColor, radius: 16, x: 0, y: 6)
@@ -84,7 +80,7 @@ struct CoverageView: View {
                     
                     OstelcoTitle(label: "All Destinations")
                     
-                    ForEach(regionGroups, id: \.id) { self.renderRegionGroup($0) }
+                    ForEach(store.regionGroups.filter({ $0.isPreview || $0.countries.isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
             }
@@ -95,7 +91,7 @@ struct CoverageView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
                     self.controller.startOnboardingForCountry(country)
                 })
-            })
+            }).environmentObject(self.store)
         }
     }
 }

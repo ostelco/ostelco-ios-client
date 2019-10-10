@@ -61,11 +61,11 @@ struct ESimCountryViewModel: Identifiable {
 
 struct ESimCountryView: View {
     let image: UIImage
-    let country: Country
+    let country: String
     let heading: String?
     let action: (() -> Void)?
     
-    init(image: UIImage, country: Country, heading: String? = nil, action: (() -> Void)? = nil) {
+    init(image: UIImage, country: String, heading: String? = nil, action: (() -> Void)? = nil) {
         self.image = image
         self.country = country
         self.heading = heading
@@ -82,7 +82,7 @@ struct ESimCountryView: View {
                         .frame(height: 27)
                         .foregroundColor(OstelcoColor.countryTextSecondary.toColor)
                 }
-                Text(country.nameOrPlaceholder)
+                Text(country)
                     .font(.system(size: 18))
                     .frame(height: 27)
                     .foregroundColor(OstelcoColor.countryText.toColor)
@@ -99,7 +99,7 @@ let country = Country("NO")
 struct ESimCountryView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ESimCountryView(image: country.image, country: country)
+        ESimCountryView(image: country.image, country: country.nameOrPlaceholder)
     }
 }
 #endif

@@ -19,20 +19,18 @@ struct RegionListByLocation: View {
         renderListOrUnavailable()
     }
     
-    private func renderSimProfile(_ regionDetails: PrimeGQL.RegionDetailsFragment) -> AnyView {
-        
-        let country = Country(regionDetails.region.id.uppercased())
+    private func renderSimProfile(_ regionDetails: PrimeGQL.RegionDetailsFragment, country: Country) -> AnyView {
         
         if (regionDetails.simProfiles ?? []).contains(where: { $0.fragments.simProfileFields.status == .installed }) {
             return AnyView(
                 OstelcoContainer(state: .inactive) {
-                    ESimCountryView(image: country.image, country: country, heading: "BASED ON LOCATION")
+                    ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION")
                 }
             )
         }
         return AnyView(
             OstelcoContainer {
-                ESimCountryView(image: country.image, country: country, heading: "BASED ON LOCATION", action: {
+                ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", action: {
                     // TODO: Refactor this to not be dependent on CoverageViewController
                     self.controller.startOnboardingForCountry(country)
                 })
@@ -44,12 +42,12 @@ struct RegionListByLocation: View {
         
         if let country = store.country {
             // regions can be nil if its not loaded or we failed to fetch them from server, we present these errors as if there are no available regions.
-            if let regionDetailsList = store.regions?.filter({ $0.region.id.lowercased() == country.countryCode.lowercased() }), regionDetailsList.isNotEmpty {
+            if let regionCodes = store.countryCodeToRegionCodeMap[country.countryCode], let regionDetailsList = store.regions?.filter({ regionCodes.contains($0.region.id.lowercased()) }), regionDetailsList.isNotEmpty {
                 
                 return AnyView(
                     Group {
                         ForEach(regionDetailsList, id: \.region.id) { regionDetails in
-                            self.renderSimProfile(regionDetails)
+                            self.renderSimProfile(regionDetails, country: country)
                         }
                     }
                 )
