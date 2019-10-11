@@ -17,10 +17,8 @@ struct RegionGroupView: View {
     let countrySelected: (Country) -> Void
     
     private func renderSimProfile(_ regionGroup: RegionGroupViewModel, country: Country) -> AnyView {
-        // TODO: Make this code a little more readable...
-        let regionCodes = store.countryCodeToRegionCodeMap[country.countryCode]!
-        // For the region codes mapped to country code in countryCodeToRegionCodeMap, if any of the regions with given region code contains any installed sim profile, mark the country as installed 
-        if store.regions!.filter({ regionCodes.contains($0.region.id) }).filter({ $0.simProfiles != nil }).map({ $0.simProfiles! }).reduce([], +).filter({ $0.fragments.simProfileFields.status == .installed }).isNotEmpty {
+        
+        if store.simProfilesForCountry(country: country).filter({ $0.status == .installed }).isNotEmpty {
             return AnyView(
                 ESimCountryView(image: country.image, country: country.nameOrPlaceholder)
             )
@@ -33,12 +31,13 @@ struct RegionGroupView: View {
             })
         )
     }
+    
     private func renderBody() -> AnyView {
         if let regionGroup = store.selectedRegionGroup {
             return AnyView(
                 VStack {
                     RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
-                    List(regionGroup.countries, id: \.countryCode) { country in
+                    List(store.allowedCountries(countries: regionGroup.countries).map({ Country($0) }), id: \.countryCode) { country in
                         Group {
                             self.renderSimProfile(regionGroup, country: country)
                         }.frame(maxWidth: .infinity, minHeight: 94.0)

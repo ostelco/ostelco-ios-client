@@ -11,10 +11,10 @@ import ostelco_core
 final class AppStore: ObservableObject {
     @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
-    @Published var countryCodeToRegionCodeMap: [String:[String]] = [
+    @Published var countryCodeToRegionCodeMap = [
         "SG": ["sg"],
         "NO": ["no"],
-        "US": ["us", "no"],
+        "US": ["us"],
         "MY": ["my"]
     ]
     
@@ -32,13 +32,6 @@ final class AppStore: ObservableObject {
             backgroundColor: .azul,
             isPreview: true,
             countries: [] as [Country]
-        ),
-        RegionGroupViewModel(
-            name: "Narnia",
-            description: "Latin & north america",
-            backgroundColor: .azul,
-            isPreview: false,
-            countries: ["SG", "NO", "US", "MY"].map({ Country($0) })
         )
     ]
     
@@ -58,5 +51,38 @@ final class AppStore: ObservableObject {
             fatalError("Something other than the location controller is posting this notification!")
         }
         country = controller.currentCountry
+    }
+    
+    func allowedCountries() -> [String] {
+        if let regionDetailslist = regions {
+            let regionCodes = Set(
+                regionDetailslist.map({ $0.region.id })
+            )
+            
+            let allowedCountryCodes = Array(
+                countryCodeToRegionCodeMap
+                    .filter({ (key, value) in Set(value).intersection(regionCodes).isNotEmpty })
+                    .keys
+                )
+            
+            return allowedCountryCodes
+        }
+        
+        return []
+    }
+    
+    func simProfilesForCountry(country: Country) -> [PrimeGQL.SimProfileFields] {
+        if let regionDetailsList = regions, let regionCodes = countryCodeToRegionCodeMap[country.countryCode] {
+            return regionDetailsList
+                .filter({ regionCodes.contains($0.region.id) })
+                .filter({ $0.simProfiles != nil })
+                .map({ $0.simProfiles!.map({ $0.fragments.simProfileFields }) })
+                .reduce([], +)
+        }
+        return []
+    }
+    
+    func allowedCountries(countries: [Country]) -> [String] {
+        return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode })))
     }
 }

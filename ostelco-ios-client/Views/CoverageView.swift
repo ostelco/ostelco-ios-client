@@ -79,8 +79,9 @@ struct CoverageView: View {
                     RegionListByLocation(controller: controller)
                     
                     OstelcoTitle(label: "All Destinations")
-                    
-                    ForEach(store.regionGroups.filter({ $0.isPreview || $0.countries.isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
+                
+                    // TODO: Cleanup
+                    ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
             }
