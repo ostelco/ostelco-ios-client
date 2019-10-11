@@ -22,6 +22,8 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
                 self.setupOnboarding()
             }
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setupOnboarding), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     func onboardingComplete() {
@@ -31,7 +33,7 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         embedFullViewChild(tabs!)
     }
     
-    func setupOnboarding() {
+    @objc func setupOnboarding() {
         let navigationController = UINavigationController()
         embedFullViewChild(navigationController)
         
@@ -40,4 +42,3 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         self.onboarding = onboarding
     }
 }
-
