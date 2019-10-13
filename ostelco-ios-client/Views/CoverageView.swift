@@ -22,6 +22,7 @@ struct RegionGroupViewModel: Identifiable {
     enum RegiounGroupBackgroundColor {
         case lipstick
         case azul
+        case yellow
         
         var toColor: Color {
             switch self {
@@ -29,6 +30,8 @@ struct RegionGroupViewModel: Identifiable {
                 return OstelcoColor.lipstick.toColor
             case .azul:
                 return OstelcoColor.azul.toColor
+            case .yellow:
+                return Color.yellow
             }
         }
     }

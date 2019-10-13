@@ -32,7 +32,7 @@ struct RegionListByLocation: View {
             OstelcoContainer {
                 ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", action: {
                     // TODO: Refactor this to not be dependent on CoverageViewController
-                    self.controller.startOnboardingForCountry(country)
+                    self.controller.startOnboardingForRegionInCountry(country, region: regionDetails)
                 })
             }
         )

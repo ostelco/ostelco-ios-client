@@ -17,6 +17,7 @@ class CoverageViewController: UIViewController {
     var currentCoordinator: RegionOnboardingCoordinator?
     
     let primeAPI = APIManager.shared.primeAPI
+    let store = AppStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class CoverageViewController: UIViewController {
         self.norwayButton.setTitle("Norway - Ready", for: .normal)
         self.norwayButton.setTitle("Norway - Approved", for: .disabled)
         
-        embedSwiftUI(CoverageView(controller: self).environmentObject(AppStore()))
+        embedSwiftUI(CoverageView(controller: self).environmentObject(store))
         // updateButtons()
     }
     
@@ -43,7 +44,16 @@ class CoverageViewController: UIViewController {
     
     func startOnboardingForCountry(_ country: Country) {
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let region = store.getRegionFromCountry(country)
+        let coordinator = RegionOnboardingCoordinator(country: country, region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        coordinator.delegate = self
+        currentCoordinator = coordinator
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func startOnboardingForRegionInCountry(_ country: Country, region: PrimeGQL.RegionDetailsFragment) {
+        let navigationController = UINavigationController()
+        let coordinator = RegionOnboardingCoordinator(country: country, region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
@@ -52,7 +62,8 @@ class CoverageViewController: UIViewController {
     @IBAction private func startOnboardingForSingapore() {
         let country = Country("sg")
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let region = store.getRegionFromCountry(country)
+        let coordinator = RegionOnboardingCoordinator(country: country, region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
@@ -61,7 +72,8 @@ class CoverageViewController: UIViewController {
     @IBAction private func startOnboardingForNorway() {
         let country = Country("no")
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let region = store.getRegionFromCountry(country)
+        let coordinator = RegionOnboardingCoordinator(country: country, region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)

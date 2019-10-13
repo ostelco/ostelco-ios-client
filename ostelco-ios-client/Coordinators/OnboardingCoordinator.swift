@@ -491,6 +491,7 @@ protocol RegionOnboardingDelegate: class {
 
 class RegionOnboardingCoordinator {
     let country: Country
+    let region: PrimeGQL.RegionDetailsFragment
     var localContext: RegionOnboardingContext
     let navigationController: UINavigationController
     let primeAPI: PrimeAPI
@@ -501,8 +502,9 @@ class RegionOnboardingCoordinator {
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
     
-    init(country: Country, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
+    init(country: Country, region: PrimeGQL.RegionDetailsFragment, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
         self.country = country
+        self.region = region
         self.localContext = localContext
         self.navigationController = navigationController
         self.primeAPI = primeAPI
@@ -516,16 +518,8 @@ class RegionOnboardingCoordinator {
             self.localContext.serverIsUnreachable = false
             
             UserManager.shared.customer = context.customer
-            let region = context.toLegacyModel().regions
-            .map { (aRegion) -> RegionResponse in
-                return RegionResponse(gqlData: aRegion)
-            }
-            .first { (aRegion) -> Bool in
-                return aRegion.region.country == self.country
-            }
-            let defaultRegion = RegionResponse(region: Region(id: self.country.countryCode, name: self.country.nameOrPlaceholder), status: .PENDING, simProfiles: nil, kycStatusMap: KYCStatusMap())
             
-            let stage = self.stageDecider.stageForRegion(region: region ?? defaultRegion, localContext: self.localContext)
+            let stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: self.region), localContext: self.localContext)
             
             self.afterDismissing {
                 self.navigateTo(stage)

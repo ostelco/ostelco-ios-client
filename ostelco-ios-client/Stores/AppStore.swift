@@ -32,6 +32,13 @@ final class AppStore: ObservableObject {
             backgroundColor: .azul,
             isPreview: true,
             countries: [] as [Country]
+        ),
+        RegionGroupViewModel(
+            name: "Loltel",
+            description: "Only certain people should see this",
+            backgroundColor: .yellow,
+            isPreview: false,
+            countries: ["NO"].map({ Country($0) })
         )
     ]
     
@@ -80,6 +87,19 @@ final class AppStore: ObservableObject {
                 .reduce([], +)
         }
         return []
+    }
+    
+    func getRegionFromCountry(_ country: Country) -> PrimeGQL.RegionDetailsFragment {
+        guard let regionCodes = countryCodeToRegionCodeMap[country.countryCode] else {
+            fatalError("If there are no region codes for the given country code, our configuration is wrong.")
+        }
+        
+        // TODO: We could make this logic smarter. This selects the region to use in cases for a country has multiple regions to select from.
+        guard let region = regions?.filter({ $0.region.id == regionCodes.first }).first else {
+            fatalError("If there are no regions for the given region code, our configuration is wrong.")
+        }
+        
+        return region
     }
     
     func allowedCountries(countries: [Country]) -> [String] {
