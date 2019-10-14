@@ -11,30 +11,31 @@ import UIKit
 import OstelcoStyles
 import ostelco_core
 
+enum RegionGroupBackgroundColor: String, Codable {
+    
+    case lipstick
+    case azul
+    case yellow
+    
+    var toColor: Color {
+        switch self {
+        case .lipstick:
+            return OstelcoColor.lipstick.toColor
+        case .azul:
+            return OstelcoColor.azul.toColor
+        case .yellow:
+            return Color.yellow
+        }
+    }
+}
+
 struct RegionGroupViewModel: Identifiable {
     let id = UUID()
     let name: String
     let description: String
-    let backgroundColor: RegiounGroupBackgroundColor
+    let backgroundColor: RegionGroupBackgroundColor
     let isPreview: Bool
     let countries: [Country]
-    
-    enum RegiounGroupBackgroundColor {
-        case lipstick
-        case azul
-        case yellow
-        
-        var toColor: Color {
-            switch self {
-            case .lipstick:
-                return OstelcoColor.lipstick.toColor
-            case .azul:
-                return OstelcoColor.azul.toColor
-            case .yellow:
-                return Color.yellow
-            }
-        }
-    }
 }
 
 struct CoverageView: View {

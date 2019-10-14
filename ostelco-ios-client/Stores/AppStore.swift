@@ -11,36 +11,8 @@ import ostelco_core
 final class AppStore: ObservableObject {
     @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
-    @Published var countryCodeToRegionCodeMap = [
-        "SG": ["sg"],
-        "NO": ["no"],
-        "US": ["us"],
-        "MY": ["my"]
-    ]
-    
-    @Published var regionGroups = [
-        RegionGroupViewModel(
-            name: "Asia",
-            description: "Southeast asia & pacific",
-            backgroundColor: .lipstick,
-            isPreview: false,
-            countries: ["SG", "MY"].map({ Country($0) })
-        ),
-        RegionGroupViewModel(
-            name: "The Americas",
-            description: "Latin & north america",
-            backgroundColor: .azul,
-            isPreview: true,
-            countries: [] as [Country]
-        ),
-        RegionGroupViewModel(
-            name: "Loltel",
-            description: "Only certain people should see this",
-            backgroundColor: .yellow,
-            isPreview: false,
-            countries: ["NO"].map({ Country($0) })
-        )
-    ]
+    @Published var countryCodeToRegionCodeMap = [:] as [String:[String]]
+    @Published var regionGroups: [RegionGroupViewModel] = []
     
     @Published var selectedRegionGroup: RegionGroupViewModel?
     
@@ -51,6 +23,19 @@ final class AppStore: ObservableObject {
         
         APIManager.shared.primeAPI.loadRegions()
             .done { self.regions = $0 }.cauterize()
+        
+        countryCodeToRegionCodeMap = RemoteConfigManager.shared.countryCodeAndRegionCodes.reduce(into: [:], { (result, value) in
+            result[value.countryCode] = value.regionCodes
+        })
+        regionGroups = RemoteConfigManager.shared.regionGroups.map {
+            RegionGroupViewModel(
+                name: $0.name,
+                description: $0.description,
+                backgroundColor: $0.backgroundColor,
+                isPreview: $0.isPreview,
+                countries: $0.countryCodes.map({ Country($0) })
+            )
+        }
     }
     
     @objc func countryChanged(_ notification: NSNotification) {

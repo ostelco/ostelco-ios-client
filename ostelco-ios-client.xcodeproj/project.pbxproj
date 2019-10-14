@@ -47,6 +47,8 @@
 		04491634234D9E0F0022731A /* RegionGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04491632234D9E0F0022731A /* RegionGroupCardView.swift */; };
 		04491636234DACFF0022731A /* RegionGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04491635234DACFF0022731A /* RegionGroupView.swift */; };
 		04491637234DACFF0022731A /* RegionGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04491635234DACFF0022731A /* RegionGroupView.swift */; };
+		045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC42354790000873410 /* RemoteConfigManager.swift */; };
+		045A4BC62354790000873410 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC42354790000873410 /* RemoteConfigManager.swift */; };
 		04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		0465B4D723436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */; };
@@ -83,6 +85,8 @@
 		0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */; };
 		04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
 		04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04978D6A22ABA012002B09E0 /* LinkHelper.swift */; };
+		04A4C7C6235470CB005DE62B /* RemoteConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4C7C5235470CB005DE62B /* RemoteConfigViewController.swift */; };
+		04A4C7C7235470CB005DE62B /* RemoteConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4C7C5235470CB005DE62B /* RemoteConfigViewController.swift */; };
 		04A63DED231E91BF00A12CAD /* AllowCameraAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */; };
 		04A63DEE231E91C400A12CAD /* AllowCameraAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */; };
 		04A80CC7234B58BD00ECEE84 /* UIViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CC6234B58BD00ECEE84 /* UIViewController+SwiftUI.swift */; };
@@ -437,6 +441,7 @@
 		044881A9217BA35C00F59758 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		04491632234D9E0F0022731A /* RegionGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGroupCardView.swift; sourceTree = "<group>"; };
 		04491635234DACFF0022731A /* RegionGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGroupView.swift; sourceTree = "<group>"; };
+		045A4BC42354790000873410 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		04650A64233DFA1E003F2F08 /* ESimManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimManager.swift; sourceTree = "<group>"; };
 		0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
@@ -465,6 +470,7 @@
 		0493B80E2253943900989F40 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshchatManager.swift; sourceTree = "<group>"; };
 		04978D6A22ABA012002B09E0 /* LinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHelper.swift; sourceTree = "<group>"; };
+		04A4C7C5235470CB005DE62B /* RemoteConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigViewController.swift; sourceTree = "<group>"; };
 		04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowCameraAccessViewController.swift; sourceTree = "<group>"; };
 		04A80CC6234B58BD00ECEE84 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
 		04A80CC9234B5A7300ECEE84 /* CoverageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageView.swift; sourceTree = "<group>"; };
@@ -1039,6 +1045,7 @@
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
 				04650A64233DFA1E003F2F08 /* ESimManager.swift */,
 				0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */,
+				045A4BC42354790000873410 /* RemoteConfigManager.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -1159,6 +1166,7 @@
 				042CA82D22C21A1D000F0622 /* ShakeToHelpViewController.swift */,
 				042CA83022C21D30000F0622 /* AuthParentViewController.swift */,
 				0437197522C249D900609355 /* InternetConnectionParentViewController.swift */,
+				04A4C7C5235470CB005DE62B /* RemoteConfigViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1906,6 +1914,7 @@
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
+				045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */,
 				9B998BD5234382E70008A0C5 /* CoverageViewController.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
@@ -1927,6 +1936,7 @@
 				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
+				04A4C7C6235470CB005DE62B /* RemoteConfigViewController.swift in Sources */,
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
@@ -2113,6 +2123,7 @@
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
+				045A4BC62354790000873410 /* RemoteConfigManager.swift in Sources */,
 				9B998BD6234382EC0008A0C5 /* CoverageViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
@@ -2134,6 +2145,7 @@
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
 				9BBEEE0D228D89C300EED7F5 /* PushNotificationHandling.swift in Sources */,
 				04834D40222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
+				04A4C7C7235470CB005DE62B /* RemoteConfigViewController.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
