@@ -65,6 +65,35 @@
             </objects>
             <point key="canvasLocation" x="-2732" y="-1200"/>
         </scene>
+        <!--Remote Config View Controller-->
+        <scene sceneID="Teu-OP-ZOJ">
+            <objects>
+                <viewController id="MQr-4X-WfA" customClass="RemoteConfigViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CsL-gX-NL7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-o4-M25">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <connections>
+                                    <segue destination="AVk-L3-974" kind="embed" id="o9R-wf-2z5"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jcg-o4-M25" secondAttribute="bottom" id="GrN-zO-MGD"/>
+                            <constraint firstItem="Jcg-o4-M25" firstAttribute="leading" secondItem="CsL-gX-NL7" secondAttribute="leading" id="Pgz-wX-70S"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcg-o4-M25" secondAttribute="trailing" id="XJR-nS-ixT"/>
+                            <constraint firstItem="Jcg-o4-M25" firstAttribute="top" secondItem="CsL-gX-NL7" secondAttribute="top" id="bxb-kY-xJr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r2Y-OV-hhr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkZ-EY-aZt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-788" y="-1201"/>
+        </scene>
         <!--Shake To Help View Controller-->
         <scene sceneID="4M5-Hf-aR9">
             <objects>
@@ -76,7 +105,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-hN-J46">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <connections>
-                                    <segue destination="AVk-L3-974" kind="embed" id="8Om-r4-zE4"/>
+                                    <segue destination="MQr-4X-WfA" kind="embed" id="L8F-Dt-U9I"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -107,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kU-nu-mg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="-1197"/>
+            <point key="canvasLocation" x="174" y="-1199"/>
         </scene>
         <!--Address-->
         <scene sceneID="Jvt-4A-kf4">
