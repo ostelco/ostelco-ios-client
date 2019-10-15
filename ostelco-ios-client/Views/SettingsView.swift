@@ -9,9 +9,29 @@
 import SwiftUI
 import OstelcoStyles
 
+final class SettingsStore: ObservableObject {
+    @Published var purchaseRecords: [PurchaseRecord] = []
+    
+    init() {
+        APIManager.shared.primeAPI
+        .loadPurchases()
+        .map { purchaseModels -> [PurchaseRecord] in
+            let sortedPurchases = purchaseModels.sorted { $0.timestamp > $1.timestamp }
+            return sortedPurchases.map { PurchaseRecord(from: $0) }
+        }
+        .done { self.purchaseRecords = $0 }
+        .catch { error in
+            ApplicationErrors.log(error)
+            // TODO: Notify user about this error.
+        }
+    }
+}
+
+
 struct SettingsView: View {
     
     let controller: SettingsViewController
+    @EnvironmentObject var store: SettingsStore
     @State private var showLogoutSheet = false
     @State private var showPurchaseHistory = false
     
@@ -105,7 +125,7 @@ struct SettingsView: View {
                 )
             }
             .sheet(isPresented: $showPurchaseHistory) {
-                PurchaseHistoryView()
+                PurchaseHistoryView().environmentObject(self.store)
             }
         }
     }

@@ -7,16 +7,34 @@
 //
 
 import SwiftUI
+import OstelcoStyles
 
 struct PurchaseHistoryView: View {
+    
+    @EnvironmentObject var store: SettingsStore
+    
+    init() {
+        
+    }
     var body: some View {
-        NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
-        }.padding().navigationBarTitle("Purchase History")
+        VStack {
+            OstelcoTitle(label: "Purchase History")
+            List(store.purchaseRecords, id: \.name) { record in
+                VStack(alignment: .leading) {
+                    Text(record.date)
+                    HStack {
+                        Text(record.name)
+                        Spacer()
+                        Text(record.amount)
+                    }
+                }.padding()
+            }.listStyle(GroupedListStyle())
+        }
     }
 }
 
 struct PurchaseHistoryView_Previews: PreviewProvider {
+
     static var previews: some View {
         PurchaseHistoryView()
     }
