@@ -9,7 +9,7 @@ inhibit_all_warnings!
 
 def firebase_version
   # All Firebase libs should have the same version
-  '~>5.20.1'
+  '~>6.10.0'
 end
 
 # Framework target
@@ -27,6 +27,7 @@ abstract_target 'ostelco-ios' do
   pod 'Firebase/Messaging', firebase_version
   pod 'Firebase/Analytics', firebase_version
   pod 'Firebase/Performance', firebase_version
+  pod 'Firebase/RemoteConfig', firebase_version
   pod 'JumioMobileSDK/Netverify', '~>3.3.1' # eKYC
   pod 'Stripe', '~>15.0.0' # Payments
   pod 'SwiftLint', '~>0.32.0'

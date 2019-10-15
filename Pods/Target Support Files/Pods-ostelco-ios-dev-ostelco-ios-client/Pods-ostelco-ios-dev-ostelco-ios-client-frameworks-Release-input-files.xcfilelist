@@ -8,7 +8,7 @@ ${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1/NetverifyBarcode.framework
 ${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1/MicroBlink.framework
 ${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1/NetverifyFace.framework
 ${PODS_ROOT}/JumioMobileSDK/JumioMobileSDK-3.3.1/ZoomAuthenticationHybrid.framework
-${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework
+${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework
 ${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework

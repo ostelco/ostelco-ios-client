@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51471EE35F2E9E19E51A74944E5ABB7F"
-               BuildableName = "FirebaseRemoteConfig"
+               BuildableName = "FirebaseRemoteConfig.framework"
                BlueprintName = "FirebaseRemoteConfig"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51471EE35F2E9E19E51A74944E5ABB7F"
-            BuildableName = "FirebaseRemoteConfig"
+            BuildableName = "FirebaseRemoteConfig.framework"
             BlueprintName = "FirebaseRemoteConfig"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
