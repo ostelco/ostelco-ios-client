@@ -11,8 +11,11 @@ import OstelcoStyles
 
 final class SettingsStore: ObservableObject {
     @Published var purchaseRecords: [PurchaseRecord] = []
+    @Published var unreadMessages: Int = 0
     
     init() {
+        updateUnreadMessagesCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(unreadMessagesCountChanged(_:)), name: Notification.Name(FRESHCHAT_UNREAD_MESSAGE_COUNT_CHANGED), object: nil)
         APIManager.shared.primeAPI
         .loadPurchases()
         .map { purchaseModels -> [PurchaseRecord] in
@@ -23,6 +26,16 @@ final class SettingsStore: ObservableObject {
         .catch { error in
             ApplicationErrors.log(error)
             // TODO: Notify user about this error.
+        }
+    }
+    
+    @objc private func unreadMessagesCountChanged(_ notification: NSNotification) {
+        updateUnreadMessagesCount()
+    }
+    
+    private func updateUnreadMessagesCount() {
+        Freshchat.sharedInstance()?.unreadCount {
+            self.unreadMessages = $0
         }
     }
 }
@@ -42,6 +55,15 @@ struct SettingsView: View {
         UINavigationBar.appearance().barTintColor = .white
     }
     
+    private func renderUnreadMessagesBadge() -> AnyView {
+        if store.unreadMessages > 0 {
+            return AnyView(
+                Image(systemName: "\(store.unreadMessages).circle.fill")
+            )
+        } else {
+            return AnyView(EmptyView())
+        }
+    }
     var body: some View {
         NavigationView {
             VStack {
@@ -63,6 +85,7 @@ struct SettingsView: View {
                         HStack {
                             OstelcoText(label: "Chat to Support")
                             Spacer()
+                            renderUnreadMessagesBadge()
                             Image(systemName: "chevron.right")
                         }
                     }
