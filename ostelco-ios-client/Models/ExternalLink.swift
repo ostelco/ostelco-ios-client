@@ -15,6 +15,7 @@ enum ExternalLink: String, CaseIterable {
     case aboutMembership = "https://pi-redirector.firebaseapp.com/about-membership"
     case currentPricing = "https://pi-redirector.firebaseapp.com/current-pricing"
     case fullyDigital = "https://pi-redirector.firebaseapp.com/fully-digital"
+    case oyaWebpage = "https://oya.sg"
     
     var url: URL {
         guard let url = URL(string: self.rawValue) else {

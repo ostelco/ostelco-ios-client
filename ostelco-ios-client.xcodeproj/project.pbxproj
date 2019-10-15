@@ -49,14 +49,17 @@
 		04491637234DACFF0022731A /* RegionGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04491635234DACFF0022731A /* RegionGroupView.swift */; };
 		045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC42354790000873410 /* RemoteConfigManager.swift */; };
 		045A4BC62354790000873410 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC42354790000873410 /* RemoteConfigManager.swift */; };
+		045A4BC823549FB000873410 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC723549FB000873410 /* SettingsView.swift */; };
+		045A4BC923549FB000873410 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BC723549FB000873410 /* SettingsView.swift */; };
+		045A4BCB2355B2A600873410 /* PurchaseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BCA2355B2A600873410 /* PurchaseHistoryView.swift */; };
+		045A4BCC2355B2A600873410 /* PurchaseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BCA2355B2A600873410 /* PurchaseHistoryView.swift */; };
+		045A4BCE2355B57200873410 /* OstelcoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045A4BCD2355B57200873410 /* OstelcoText.swift */; };
 		04650A65233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		04650A66233DFA1E003F2F08 /* ESimManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04650A64233DFA1E003F2F08 /* ESimManager.swift */; };
 		0465B4D723436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */; };
 		0465B4D823436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */; };
 		046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */; };
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
-		047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
-		047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B2794223BB8D900EE134B /* SettingsTableViewController.swift */; };
 		047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
 		047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
 		047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController.swift */; };
@@ -331,8 +334,6 @@
 		C2A4B2C122FEDD0D0042460E /* AppleIdToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */; };
 		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
-		C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
-		C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */; };
 		C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
@@ -442,6 +443,9 @@
 		04491632234D9E0F0022731A /* RegionGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGroupCardView.swift; sourceTree = "<group>"; };
 		04491635234DACFF0022731A /* RegionGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionGroupView.swift; sourceTree = "<group>"; };
 		045A4BC42354790000873410 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
+		045A4BC723549FB000873410 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		045A4BCA2355B2A600873410 /* PurchaseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryView.swift; sourceTree = "<group>"; };
+		045A4BCD2355B57200873410 /* OstelcoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoText.swift; sourceTree = "<group>"; };
 		04650A64233DFA1E003F2F08 /* ESimManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimManager.swift; sourceTree = "<group>"; };
 		0465B4D623436776009833DB /* UsernameAndPasswordLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAndPasswordLinkManager.swift; sourceTree = "<group>"; };
 		046E05F422CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingaporeUserHappyFlowWithScanICStageDeciderTests.swift; sourceTree = "<group>"; };
@@ -451,7 +455,6 @@
 		046FE92C22DF075E00CF57E4 /* products.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = products.graphql; sourceTree = "<group>"; };
 		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
 		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
-		047B2794223BB8D900EE134B /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		047F29272224558B00FC6A8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04834D31222EAA7D00A01500 /* Singapore.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Singapore.gpx; sourceTree = "<group>"; };
@@ -660,7 +663,6 @@
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C2BC662022733C75008BBC4E /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
-		C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRecord.swift; sourceTree = "<group>"; };
 		C2D2EAE822785C0C00010586 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApplePayViewController.swift; sourceTree = "<group>"; };
@@ -841,8 +843,6 @@
 			children = (
 				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
 				047F29272224558B00FC6A8F /* HomeViewController.swift */,
-				047B2794223BB8D900EE134B /* SettingsTableViewController.swift */,
-				C2C3EACF22705D9F00585FA4 /* PurchaseHistoryTableViewController.swift */,
 				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
 				C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */,
 			);
@@ -1103,6 +1103,7 @@
 				9B609A322303ED2900169599 /* Colors.xcassets */,
 				04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */,
 				04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */,
+				045A4BCD2355B57200873410 /* OstelcoText.swift */,
 			);
 			path = OstelcoStyles;
 			sourceTree = "<group>";
@@ -1136,6 +1137,8 @@
 				04491632234D9E0F0022731A /* RegionGroupCardView.swift */,
 				04491635234DACFF0022731A /* RegionGroupView.swift */,
 				04D91986234F0B0500E7D171 /* RegionListByLocation.swift */,
+				045A4BC723549FB000873410 /* SettingsView.swift */,
+				045A4BCA2355B2A600873410 /* PurchaseHistoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1919,13 +1922,13 @@
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
+				045A4BCB2355B2A600873410 /* PurchaseHistoryView.swift in Sources */,
 				042CA82E22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				C25A95962226FF7F005958EC /* MyInfoSummaryViewController.swift in Sources */,
 				04D6C9852276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				9B17457D2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B8AFF5322A1479E00CC84B1 /* InternetConnectionMonitor.swift in Sources */,
 				9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */,
-				047B2795223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 				047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				9B4DAD922281A2CE003810BE /* OnboardingCoordinator.swift in Sources */,
 				9BBEEE16228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
@@ -1933,7 +1936,6 @@
 				041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */,
 				9B305F98229693EA00B89FCB /* GifVideo.swift in Sources */,
-				C2C3EAD022705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9B3FA68F22896510001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				9BBEEE0C228D88F600EED7F5 /* PushNotificationHandling.swift in Sources */,
 				04A4C7C6235470CB005DE62B /* RemoteConfigViewController.swift in Sources */,
@@ -1968,6 +1970,7 @@
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
 				9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
+				045A4BC823549FB000873410 /* SettingsView.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
@@ -2055,6 +2058,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045A4BCE2355B57200873410 /* OstelcoText.swift in Sources */,
 				9BB6A7A1226F6523000D5E13 /* OstelcoFont.swift in Sources */,
 				9B2576E02296C54600676D97 /* BackgroundRoundedImageView.swift in Sources */,
 				9B6E3A19226F70300063EBAA /* OstelcoFontSize.swift in Sources */,
@@ -2128,6 +2132,7 @@
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
+				045A4BCC2355B2A600873410 /* PurchaseHistoryView.swift in Sources */,
 				9B17457E2277033300CF321B /* AddressEditViewController.swift in Sources */,
 				9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */,
 				9B8AFF5422A147A600CC84B1 /* InternetConnectionMonitor.swift in Sources */,
@@ -2135,7 +2140,6 @@
 				9BE2D45F225B651600B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				041216902226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
-				C2C3EAD122705D9F00585FA4 /* PurchaseHistoryTableViewController.swift in Sources */,
 				9BBEEE17228D97D000EED7F5 /* LogOutActionSheet.swift in Sources */,
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
@@ -2177,6 +2181,7 @@
 				9B4DAD932281A538003810BE /* OnboardingCoordinator.swift in Sources */,
 				044725B02281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
+				045A4BC923549FB000873410 /* SettingsView.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
@@ -2198,7 +2203,6 @@
 				C24EE406222838950053937E /* PendingVerificationViewController.swift in Sources */,
 				0437197722C249D900609355 /* InternetConnectionParentViewController.swift in Sources */,
 				048533A1223C1882007C89F4 /* Product.swift in Sources */,
-				047B2796223BB8D900EE134B /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

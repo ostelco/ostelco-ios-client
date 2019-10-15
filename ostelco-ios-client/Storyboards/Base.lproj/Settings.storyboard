@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mxQ-fy-sKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BhN-Cy-zMa">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -8,244 +8,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings Table View Controller-->
-        <scene sceneID="EJ1-Gs-hh2">
-            <objects>
-                <tableViewController id="ijV-yo-hqd" customClass="SettingsTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fie-8m-6Dm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="background"/>
-                        <sections>
-                            <tableViewSection id="FWH-Ma-tfN">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bPQ-dD-zzb" style="IBUITableViewCellStyleDefault" id="Liw-4f-4dO">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Liw-4f-4dO" id="aT4-JS-DhC">
-                                            <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Purchase History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bPQ-dD-zzb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="354.66666666666669" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" name="background"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="background"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="lBS-jF-6mc" style="IBUITableViewCellStyleDefault" id="Acz-ao-gnd">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Acz-ao-gnd" id="gsv-x8-nvq">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lBS-jF-6mc" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" name="background"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="background"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="F1g-G0-YYE" style="IBUITableViewCellStyleDefault" id="mh9-jV-xvG">
-                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mh9-jV-xvG" id="wRe-ce-JFW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F1g-G0-YYE" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" name="background"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="background"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="ceV-1s-FCi" style="IBUITableViewCellStyleDefault" id="dBq-72-ijr">
-                                        <rect key="frame" x="0.0" y="160" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dBq-72-ijr" id="SM9-aQ-K1f">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Log Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ceV-1s-FCi" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" name="background"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="background"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="ijV-yo-hqd" id="ozO-Yr-skg"/>
-                            <outlet property="delegate" destination="ijV-yo-hqd" id="jst-Jq-Pu3"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <segue destination="4fe-ss-wJo" kind="show" identifier="purchaseHistory" id="zzM-OL-FRJ"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dvp-wf-TAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1132" y="1481"/>
-        </scene>
-        <!--Purchase History-->
-        <scene sceneID="t04-Tg-EDU">
-            <objects>
-                <tableViewController title="Purchase History" id="4fe-ss-wJo" customClass="PucrhaseHistoryTableViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IpU-sh-K2V">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="background"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PurchaseItem" rowHeight="85" id="FnA-58-zKa" customClass="PurchaseHistoryTableViewCell" customModule="Oya_Development_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="85"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FnA-58-zKa" id="2Dl-gj-qZW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 December 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-v8-dO8" customClass="BodyTextBoldLabel" customModule="OstelcoStyles">
-                                            <rect key="frame" x="20" y="20" width="374" height="21"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAS-Zl-jlN" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                            <rect key="frame" x="19.999999999999996" y="49" width="32.666666666666657" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOZ-wT-qoc" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                            <rect key="frame" x="372.66666666666669" y="49" width="21.333333333333314" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" name="background"/>
-                                    <constraints>
-                                        <constraint firstItem="yAS-Zl-jlN" firstAttribute="top" secondItem="mbP-v8-dO8" secondAttribute="bottom" constant="8" symbolic="YES" id="5c1-GJ-ckM"/>
-                                        <constraint firstItem="mbP-v8-dO8" firstAttribute="leading" secondItem="2Dl-gj-qZW" secondAttribute="leading" constant="20" symbolic="YES" id="9Fk-zB-YUH"/>
-                                        <constraint firstItem="gOZ-wT-qoc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yAS-Zl-jlN" secondAttribute="trailing" priority="8" constant="317.33333333333337" id="Iv9-vf-lXz"/>
-                                        <constraint firstItem="gOZ-wT-qoc" firstAttribute="trailing" secondItem="mbP-v8-dO8" secondAttribute="trailing" id="KWz-vx-hao"/>
-                                        <constraint firstItem="mbP-v8-dO8" firstAttribute="top" secondItem="2Dl-gj-qZW" secondAttribute="top" constant="20" symbolic="YES" id="eff-ro-osX"/>
-                                        <constraint firstAttribute="trailing" secondItem="mbP-v8-dO8" secondAttribute="trailing" constant="20" symbolic="YES" id="mY7-y6-S7E"/>
-                                        <constraint firstItem="gOZ-wT-qoc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yAS-Zl-jlN" secondAttribute="trailing" constant="8" id="pKf-vt-ken"/>
-                                        <constraint firstItem="yAS-Zl-jlN" firstAttribute="leading" secondItem="mbP-v8-dO8" secondAttribute="leading" id="qO6-KV-x6p"/>
-                                        <constraint firstItem="gOZ-wT-qoc" firstAttribute="top" secondItem="mbP-v8-dO8" secondAttribute="bottom" constant="8" symbolic="YES" id="tXO-yb-3rh"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <connections>
-                                    <outlet property="date" destination="mbP-v8-dO8" id="MRw-MB-Mja"/>
-                                    <outlet property="name" destination="yAS-Zl-jlN" id="tBU-OU-wg2"/>
-                                    <outlet property="price" destination="gOZ-wT-qoc" id="hye-vz-XqC"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="4fe-ss-wJo" id="cLF-xS-hO6"/>
-                            <outlet property="delegate" destination="4fe-ss-wJo" id="9Na-m0-79g"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jUn-uG-WQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2234.7826086956525" y="1259.5982142857142"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="cSR-fR-N40">
             <objects>
                 <viewController id="BhN-Cy-zMa" customClass="SettingsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rE8-uD-Hbd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version 4.0.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-qD-DLO" customClass="AppVersionTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="159.33333333333334" y="739" width="95.666666666666657" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="textSecondary"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0l-hU-chH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
-                                <color key="backgroundColor" name="background"/>
-                                <connections>
-                                    <segue destination="ijV-yo-hqd" kind="embed" identifier="settingsTable" id="H5A-nb-ItM"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" name="background"/>
-                        <constraints>
-                            <constraint firstItem="b0l-hU-chH" firstAttribute="top" secondItem="DTB-n0-yom" secondAttribute="top" id="Ad8-Kv-QQf"/>
-                            <constraint firstItem="b0l-hU-chH" firstAttribute="leading" secondItem="DTB-n0-yom" secondAttribute="leading" id="D0o-22-XxQ"/>
-                            <constraint firstItem="CdE-qD-DLO" firstAttribute="top" secondItem="b0l-hU-chH" secondAttribute="bottom" constant="20" id="VCC-df-l4q"/>
-                            <constraint firstItem="DTB-n0-yom" firstAttribute="trailing" secondItem="b0l-hU-chH" secondAttribute="trailing" id="i3e-Zt-dgZ"/>
-                            <constraint firstItem="DTB-n0-yom" firstAttribute="bottom" secondItem="CdE-qD-DLO" secondAttribute="bottom" constant="20" id="kJr-3K-mao"/>
-                            <constraint firstItem="CdE-qD-DLO" firstAttribute="centerX" secondItem="rE8-uD-Hbd" secondAttribute="centerX" id="tFa-bc-joO"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DTB-n0-yom"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="1z6-P0-jqK"/>
                     <navigationItem key="navigationItem" title="Settings" id="S4t-v9-mK9"/>
-                    <connections>
-                        <outlet property="versionLabel" destination="CdE-qD-DLO" id="idH-l9-zAc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iab-nS-Gf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="820.83958020989508"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="0fY-GA-vBQ">
-            <objects>
-                <navigationController id="mxQ-fy-sKd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="v1p-h2-YCr"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="out-Wh-qdO">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="background"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BhN-Cy-zMa" kind="relationship" relationship="rootViewController" id="cSt-ma-tct"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hM0-En-aQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="174" y="820"/>
         </scene>
     </scenes>
     <resources>
         <image name="settings" width="23" height="21"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="textSecondary">
-            <color red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
