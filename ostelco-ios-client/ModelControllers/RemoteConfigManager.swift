@@ -26,12 +26,7 @@ class RemoteConfigManager {
     
     init() {
         remoteConfig = RemoteConfig.remoteConfig()
-        #if DEBUG
-        let settings = RemoteConfigSettings(developerModeEnabled: true)
-        #else
         let settings = RemoteConfigSettings()
-        #endif
-        
         remoteConfig.configSettings = settings
     }
     
@@ -39,7 +34,7 @@ class RemoteConfigManager {
         remoteConfig.fetch(withExpirationDuration: TimeInterval(expirationDuration)) { (status, error) -> Void in
             if status == .success {
                 // TODO: This is the place to do validation on fetched values before activating, if that's needed
-                self.remoteConfig.activateFetched()
+                self.remoteConfig.activate(completionHandler: nil)
             } else {
                 ApplicationErrors.assertAndLog("Failed to fetch remote config: \(error.debugDescription)")
             }

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F68D031908A0059566798048C48F776"
-               BuildableName = "FirebaseABTesting"
+               BuildableName = "FirebaseABTesting.framework"
                BlueprintName = "FirebaseABTesting"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F68D031908A0059566798048C48F776"
-            BuildableName = "FirebaseABTesting"
+            BuildableName = "FirebaseABTesting.framework"
             BlueprintName = "FirebaseABTesting"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
