@@ -10,6 +10,7 @@ import ostelco_core
 import OstelcoStyles
 import PromiseKit
 import UIKit
+import FacebookCore
 
 class HomeViewController: ApplePayViewController {
 
@@ -63,7 +64,6 @@ class HomeViewController: ApplePayViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         buyButton.setTitle(buyText, for: .normal)
         registerForPushNotificationsIfNeeded()
         balanceLabel.dataAmountString = nil
@@ -125,6 +125,7 @@ class HomeViewController: ApplePayViewController {
     override func paymentSuccessful(_ product: Product?) {
         refreshBalance()
         showToppedUpMessage()
+        AppEvents.logEvent(.purchased)
     }
 
     func refreshBalance() {
