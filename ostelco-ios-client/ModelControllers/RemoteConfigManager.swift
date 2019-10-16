@@ -13,6 +13,10 @@ class RemoteConfigManager {
     static let shared = RemoteConfigManager()
     private var remoteConfig: RemoteConfig!
     private let expirationDuration = 3600
+    private let appDefaults = [
+        "country_code_to_region_codes": "[]",
+        "region_groups": "[]"
+    ]
     
     var regionGroups: [RegionGroup] {
         // swiftlint:disable:next force_cast
@@ -28,6 +32,7 @@ class RemoteConfigManager {
         remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         remoteConfig.configSettings = settings
+        remoteConfig.setDefaults(appDefaults as [String: NSObject])
     }
     
     func fetch() {
