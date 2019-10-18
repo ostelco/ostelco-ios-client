@@ -9,6 +9,7 @@
 import CoreTelephony
 import PromiseKit
 import ostelco_core
+import FacebookCore
 
 class ESimManager {
     static let shared = ESimManager()
@@ -32,6 +33,7 @@ class ESimManager {
                 case .fail:
                     seal.reject(ApplicationErrors.General.addPlanFailed(message: "Failed"))
                 case .success:
+                    AppEvents.logEvent(.completedRegistration)
                     seal.fulfill(())
                 @unknown default:
                     seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown default"))

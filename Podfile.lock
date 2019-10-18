@@ -5,6 +5,14 @@ PODS:
   - Crashlytics (3.13.1):
     - Fabric (~> 1.10.1)
   - Fabric (1.10.1)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKCoreKit (5.8.0):
+    - FBSDKCoreKit/Basics (= 5.8.0)
+    - FBSDKCoreKit/Core (= 5.8.0)
+  - FBSDKCoreKit/Basics (5.8.0)
+  - FBSDKCoreKit/Core (5.8.0):
+    - FBSDKCoreKit/Basics
   - Firebase/Analytics (6.10.0):
     - Firebase/Core
   - Firebase/Auth (6.10.0):
@@ -167,6 +175,7 @@ DEPENDENCIES:
   - Apollo
   - Crashlytics (~> 3.13.1)
   - Fabric (~> 1.10.0)
+  - FacebookCore
   - Firebase/Analytics (~> 6.10.0)
   - Firebase/Auth (~> 6.10.0)
   - Firebase/DynamicLinks (~> 6.10.0)
@@ -192,6 +201,8 @@ SPEC REPOS:
     - Stripe
     - SwiftLint
   trunk:
+    - FacebookCore
+    - FBSDKCoreKit
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -219,6 +230,8 @@ SPEC CHECKSUMS:
   Apollo: 73985134be57195be9fdeed1d8d1d74037bacd98
   Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
   Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
   Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
   FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
@@ -248,6 +261,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 80341afa0f8eb33cfdd6c0a069e676cdeba3c5ea
+PODFILE CHECKSUM: 0dc14ff05705eea5e39dbe975f85712e372bd4de
 
 COCOAPODS: 1.8.3
