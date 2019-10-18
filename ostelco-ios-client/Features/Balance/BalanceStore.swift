@@ -8,7 +8,7 @@
 
 import ostelco_core
 
-final class HomeStore: ObservableObject {
+final class BalanceStore: ObservableObject {
     
     @Published var products: [Product] = []
     @Published var selectedProduct: Product? = nil
