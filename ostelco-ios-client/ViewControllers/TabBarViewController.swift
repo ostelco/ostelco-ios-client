@@ -8,8 +8,9 @@
 
 import UIKit
 import ostelco_core
+import Stripe
 
-class TabBarViewController: UITabBarController {
+class TabBarViewController: ApplePayViewController {
     
     var currentCoordinator: RegionOnboardingCoordinator?
     let primeAPI = APIManager.shared.primeAPI

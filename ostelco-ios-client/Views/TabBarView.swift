@@ -23,7 +23,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView {
-            BalanceView().environmentObject(BalanceStore())
+            BalanceView().environmentObject(BalanceStore(controller: controller))
                 .tabItem {
                     Image(systemName: "house.fill")
                         .font(.system(size: 24))

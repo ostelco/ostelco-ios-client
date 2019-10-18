@@ -14,13 +14,17 @@ final class BalanceStore: ObservableObject {
     @Published var selectedProduct: Product? = nil
     @Published var balance: String?
     
+    let controller: TabBarViewController
+    
     private lazy var byteCountFormatter: ByteCountFormatter = {
         let formatter = ByteCountFormatter()
         formatter.countStyle = .binary
         return formatter
     }()
         
-    init() {
+    init(controller: TabBarViewController) {
+        self.controller = controller
+        
         loadProducts()
         fetchBalance()
     }
