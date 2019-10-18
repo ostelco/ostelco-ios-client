@@ -72,8 +72,6 @@
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
 		047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
 		047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
-		047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController.swift */; };
-		047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29272224558B00FC6A8F /* HomeViewController.swift */; };
 		04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
 		04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
 		04834D35222EAB5900A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
@@ -228,8 +226,6 @@
 		9B834AF822E01E20004F04F0 /* EKYC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834AFA22E01E20004F04F0 /* EKYC.storyboard */; };
 		9B834AFF22E01E2A004F04F0 /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0222E01E2A004F04F0 /* ESim.storyboard */; };
 		9B834B0022E01E2A004F04F0 /* ESim.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0222E01E2A004F04F0 /* ESim.storyboard */; };
-		9B834B0322E01E2F004F04F0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0622E01E2F004F04F0 /* Home.storyboard */; };
-		9B834B0422E01E2F004F04F0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0622E01E2F004F04F0 /* Home.storyboard */; };
 		9B834B0722E01E33004F04F0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0A22E01E33004F04F0 /* Login.storyboard */; };
 		9B834B0822E01E33004F04F0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0A22E01E33004F04F0 /* Login.storyboard */; };
 		9B834B0B22E01E38004F04F0 /* OhNo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0E22E01E38004F04F0 /* OhNo.storyboard */; };
@@ -467,7 +463,6 @@
 		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
 		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		047F29272224558B00FC6A8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04834D31222EAA7D00A01500 /* Singapore.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Singapore.gpx; sourceTree = "<group>"; };
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
@@ -588,7 +583,6 @@
 		9B834AF522E01E1B004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Country.storyboard; sourceTree = "<group>"; };
 		9B834AF922E01E20004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EKYC.storyboard; sourceTree = "<group>"; };
 		9B834B0122E01E2A004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ESim.storyboard; sourceTree = "<group>"; };
-		9B834B0522E01E2F004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9B834B0922E01E33004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		9B834B0D22E01E38004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OhNo.storyboard; sourceTree = "<group>"; };
 		9B834B1522E01E47004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
@@ -845,14 +839,6 @@
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 			);
 			path = ESim;
-			sourceTree = "<group>";
-		};
-		047F291A2224538000FC6A8F /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				047F29272224558B00FC6A8F /* HomeViewController.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		047F292F2224589300FC6A8F /* Network */ = {
@@ -1206,7 +1192,6 @@
 				047F2911222451D000FC6A8F /* Country */,
 				047F29182224535300FC6A8F /* EKYC */,
 				047F29192224536100FC6A8F /* ESim */,
-				047F291A2224538000FC6A8F /* Home */,
 				047F28FD2224415E00FC6A8F /* Login */,
 				9BBEEE11228D952C00EED7F5 /* ReusableAlerts */,
 				047F2901222441A900FC6A8F /* SignUp */,
@@ -1227,7 +1212,6 @@
 				9B834AF622E01E1B004F04F0 /* Country.storyboard */,
 				9B834AFA22E01E20004F04F0 /* EKYC.storyboard */,
 				9B834B0222E01E2A004F04F0 /* ESim.storyboard */,
-				9B834B0622E01E2F004F04F0 /* Home.storyboard */,
 				9B834B0A22E01E33004F04F0 /* Login.storyboard */,
 				9B834B0E22E01E38004F04F0 /* OhNo.storyboard */,
 				9B834B1622E01E47004F04F0 /* SignUp.storyboard */,
@@ -1560,7 +1544,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B834B1B22E01E52004F04F0 /* Support.storyboard in Resources */,
-				9B834B0322E01E2F004F04F0 /* Home.storyboard in Resources */,
 				04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				9B834AF722E01E20004F04F0 /* EKYC.storyboard in Resources */,
 				9B834AFF22E01E2A004F04F0 /* ESim.storyboard in Resources */,
@@ -1615,7 +1598,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B834B0422E01E2F004F04F0 /* Home.storyboard in Resources */,
 				9B834B1C22E01E52004F04F0 /* Support.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
 				9B834AF822E01E20004F04F0 /* EKYC.storyboard in Resources */,
@@ -1951,7 +1933,6 @@
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				04AB2CA7235A412E00C9A71B /* TabBarView.swift in Sources */,
-				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				0412BF862355EEA0003D485B /* BalanceView.swift in Sources */,
@@ -2221,7 +2202,6 @@
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				04A80CCB234B5A7300ECEE84 /* CoverageView.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
-				047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				0412BF8D235701A3003D485B /* BalanceLabel.swift in Sources */,
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
@@ -2325,14 +2305,6 @@
 				9B834B0122E01E2A004F04F0 /* Base */,
 			);
 			name = ESim.storyboard;
-			sourceTree = "<group>";
-		};
-		9B834B0622E01E2F004F04F0 /* Home.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B834B0522E01E2F004F04F0 /* Base */,
-			);
-			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		9B834B0A22E01E33004F04F0 /* Login.storyboard */ = {

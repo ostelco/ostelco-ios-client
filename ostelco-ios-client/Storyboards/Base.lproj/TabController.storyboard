@@ -17,27 +17,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="background"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="dwc-Z7-ym0" kind="relationship" relationship="viewControllers" id="7cu-kU-erv"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQs-Xz-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="174" y="-209"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="0mN-SB-lHc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="dwc-Z7-ym0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="Q03-bJ-0bi"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JGb-Yn-xc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-78" y="210"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="home" width="24" height="23"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
