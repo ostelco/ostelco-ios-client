@@ -232,8 +232,6 @@
 		9B834B0822E01E33004F04F0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0A22E01E33004F04F0 /* Login.storyboard */; };
 		9B834B0B22E01E38004F04F0 /* OhNo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0E22E01E38004F04F0 /* OhNo.storyboard */; };
 		9B834B0C22E01E38004F04F0 /* OhNo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B0E22E01E38004F04F0 /* OhNo.storyboard */; };
-		9B834B0F22E01E40004F04F0 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B1222E01E40004F04F0 /* Settings.storyboard */; };
-		9B834B1022E01E40004F04F0 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B1222E01E40004F04F0 /* Settings.storyboard */; };
 		9B834B1322E01E47004F04F0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B1622E01E47004F04F0 /* SignUp.storyboard */; };
 		9B834B1422E01E47004F04F0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B1622E01E47004F04F0 /* SignUp.storyboard */; };
 		9B834B1722E01E4D004F04F0 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B834B1A22E01E4D004F04F0 /* Splash.storyboard */; };
@@ -342,8 +340,6 @@
 		C26274B322C2092000F0AA36 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26274B222C2092000F0AA36 /* API.swift */; };
 		C26BC19E2266446D00BF4F13 /* ostelco_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; };
 		C26BC19F2266446D00BF4F13 /* ostelco_core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B851ABB225E29BE0076ABF3 /* ostelco_core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
-		C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		C2A4B2C122FEDD0D0042460E /* AppleIdToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */; };
 		C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
@@ -594,7 +590,6 @@
 		9B834B0522E01E2F004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		9B834B0922E01E33004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		9B834B0D22E01E38004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OhNo.storyboard; sourceTree = "<group>"; };
-		9B834B1122E01E40004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		9B834B1522E01E47004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
 		9B834B1922E01E4D004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Splash.storyboard; sourceTree = "<group>"; };
 		9B834B1D22E01E52004F04F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Support.storyboard; sourceTree = "<group>"; };
@@ -671,7 +666,6 @@
 		C26274AE22C204CB00F0AA36 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		C26274B022C2050200F0AA36 /* context.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = context.graphql; sourceTree = "<group>"; };
 		C26274B222C2092000F0AA36 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		C274A67B229689BC00209C23 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C29802CC2181EDA800FBC5C3 /* Oya-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oya-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleIdToken.swift; sourceTree = "<group>"; };
 		C2B08447217E709900CAF9EA /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
@@ -857,7 +851,6 @@
 			isa = PBXGroup;
 			children = (
 				047F29272224558B00FC6A8F /* HomeViewController.swift */,
-				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1205,7 +1198,6 @@
 				9B834B0622E01E2F004F04F0 /* Home.storyboard */,
 				9B834B0A22E01E33004F04F0 /* Login.storyboard */,
 				9B834B0E22E01E38004F04F0 /* OhNo.storyboard */,
-				9B834B1222E01E40004F04F0 /* Settings.storyboard */,
 				9B834B1622E01E47004F04F0 /* SignUp.storyboard */,
 				9B834B1A22E01E4D004F04F0 /* Splash.storyboard */,
 				9B834B1E22E01E52004F04F0 /* Support.storyboard */,
@@ -1554,7 +1546,6 @@
 				9B834B0B22E01E38004F04F0 /* OhNo.storyboard in Resources */,
 				9B9D957D2295770E00CAB0E7 /* gifMP4s in Resources */,
 				04834D35222EAB5900A01500 /* Norway.gpx in Resources */,
-				9B834B0F22E01E40004F04F0 /* Settings.storyboard in Resources */,
 				048C78812191ED430041F135 /* Assets.xcassets in Resources */,
 				9B834B1722E01E4D004F04F0 /* Splash.storyboard in Resources */,
 			);
@@ -1592,7 +1583,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B834B1022E01E40004F04F0 /* Settings.storyboard in Resources */,
 				9B834B0422E01E2F004F04F0 /* Home.storyboard in Resources */,
 				9B834B1C22E01E52004F04F0 /* Support.storyboard in Resources */,
 				04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */,
@@ -1980,7 +1970,6 @@
 				9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				0494336E22BB9E2400E5BB24 /* FreshchatManager.swift in Sources */,
 				04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */,
-				C274A67C229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
@@ -2196,7 +2185,6 @@
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */,
 				04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */,
-				C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
@@ -2329,14 +2317,6 @@
 				9B834B0D22E01E38004F04F0 /* Base */,
 			);
 			name = OhNo.storyboard;
-			sourceTree = "<group>";
-		};
-		9B834B1222E01E40004F04F0 /* Settings.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B834B1122E01E40004F04F0 /* Base */,
-			);
-			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 		9B834B1622E01E47004F04F0 /* SignUp.storyboard */ = {

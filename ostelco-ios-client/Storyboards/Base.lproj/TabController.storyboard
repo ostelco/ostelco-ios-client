@@ -21,7 +21,6 @@
                     <connections>
                         <segue destination="dwc-Z7-ym0" kind="relationship" relationship="viewControllers" id="7cu-kU-erv"/>
                         <segue destination="M7n-oI-tSa" kind="relationship" relationship="viewControllers" id="2mt-EF-ctB"/>
-                        <segue destination="b9c-GW-SH9" kind="relationship" relationship="viewControllers" id="pRc-SK-pMl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQs-Xz-fKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -37,16 +36,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGb-Yn-xc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-78" y="210"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="xNG-v8-jz9">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="b9c-GW-SH9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="eEv-rN-rsC"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dtH-Yp-ICt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="415" y="210"/>
         </scene>
         <!--Coverage-->
         <scene sceneID="hGe-wk-Aqc">
@@ -97,7 +86,6 @@
     <resources>
         <image name="globe" catalog="system" width="64" height="62"/>
         <image name="home" width="24" height="23"/>
-        <image name="settings" width="23" height="21"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
