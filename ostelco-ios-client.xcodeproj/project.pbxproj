@@ -19,6 +19,16 @@
 		041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */; };
 		041216AF22281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
 		041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */; };
+		0412BF862355EEA0003D485B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF852355EEA0003D485B /* HomeView.swift */; };
+		0412BF882355EED9003D485B /* HomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF872355EED9003D485B /* HomeStore.swift */; };
+		0412BF892355EED9003D485B /* HomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF872355EED9003D485B /* HomeStore.swift */; };
+		0412BF8A2355EEE8003D485B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF852355EEA0003D485B /* HomeView.swift */; };
+		0412BF8C235701A3003D485B /* BalanceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF8B235701A3003D485B /* BalanceLabel.swift */; };
+		0412BF8D235701A3003D485B /* BalanceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF8B235701A3003D485B /* BalanceLabel.swift */; };
+		0412BF8F235701E1003D485B /* ApplePaySetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF8E235701E1003D485B /* ApplePaySetupView.swift */; };
+		0412BF90235701E1003D485B /* ApplePaySetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF8E235701E1003D485B /* ApplePaySetupView.swift */; };
+		0412BF922357020D003D485B /* ApplePaySetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF912357020D003D485B /* ApplePaySetupButton.swift */; };
+		0412BF932357020D003D485B /* ApplePaySetupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412BF912357020D003D485B /* ApplePaySetupButton.swift */; };
 		041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
 		041FAB1C225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */; };
 		042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */; };
@@ -332,15 +342,11 @@
 		C274A67D229689BC00209C23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274A67B229689BC00209C23 /* SettingsViewController.swift */; };
 		C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04488169217924B700F59758 /* AppDelegate.swift */; };
 		C2A4B2C122FEDD0D0042460E /* AppleIdToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A4B2C022FEDD0D0042460E /* AppleIdToken.swift */; };
-		C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
-		C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC662022733C75008BBC4E /* ApplePayViewController.swift */; };
 		C2C3EAD42270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2C3EAD62270B43200585FA4 /* PurchaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */; };
 		C2D2EAE922785C0C00010586 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2EAE822785C0C00010586 /* AppErrors.swift */; };
 		C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2EAE822785C0C00010586 /* AppErrors.swift */; };
-		C2D500EC2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */; };
-		C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +421,11 @@
 		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
 		041216912226D18100455278 /* UNAuthorizationStatusExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNAuthorizationStatusExtensions.swift; sourceTree = "<group>"; };
 		041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationAccessViewController.swift; sourceTree = "<group>"; };
+		0412BF852355EEA0003D485B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0412BF872355EED9003D485B /* HomeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStore.swift; sourceTree = "<group>"; };
+		0412BF8B235701A3003D485B /* BalanceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceLabel.swift; sourceTree = "<group>"; };
+		0412BF8E235701E1003D485B /* ApplePaySetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaySetupView.swift; sourceTree = "<group>"; };
+		0412BF912357020D003D485B /* ApplePaySetupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePaySetupButton.swift; sourceTree = "<group>"; };
 		041FAB1A225F19AC00877E72 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
 		042928EE223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIdentityVerificationMethodViewController.swift; sourceTree = "<group>"; };
 		042928F1223D0BE700806438 /* NRICVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRICVerifyViewController.swift; sourceTree = "<group>"; };
@@ -662,10 +673,8 @@
 		C2B0844C217E709900CAF9EA /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
 		C2B0844D217E709900CAF9EA /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		C2B0844F217E709900CAF9EA /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		C2BC662022733C75008BBC4E /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		C2C3EAD32270B43200585FA4 /* PurchaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRecord.swift; sourceTree = "<group>"; };
 		C2D2EAE822785C0C00010586 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
-		C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApplePayViewController.swift; sourceTree = "<group>"; };
 		DA17F5D32CE1789AF6375937 /* Pods-dev-ostelco-ios-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dev-ostelco-ios-client.debug.xcconfig"; path = "Target Support Files/Pods-dev-ostelco-ios-client/Pods-dev-ostelco-ios-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -841,10 +850,8 @@
 		047F291A2224538000FC6A8F /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C2BC662022733C75008BBC4E /* ApplePayViewController.swift */,
 				047F29272224558B00FC6A8F /* HomeViewController.swift */,
 				C274A67B229689BC00209C23 /* SettingsViewController.swift */,
-				C2D500EB2321034C00A023E4 /* SetupApplePayViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -877,6 +884,7 @@
 			isa = PBXGroup;
 			children = (
 				04A80CCF234C82AE00ECEE84 /* AppStore.swift */,
+				0412BF872355EED9003D485B /* HomeStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -1139,6 +1147,10 @@
 				04D91986234F0B0500E7D171 /* RegionListByLocation.swift */,
 				045A4BC723549FB000873410 /* SettingsView.swift */,
 				045A4BCA2355B2A600873410 /* PurchaseHistoryView.swift */,
+				0412BF852355EEA0003D485B /* HomeView.swift */,
+				0412BF8B235701A3003D485B /* BalanceLabel.swift */,
+				0412BF8E235701E1003D485B /* ApplePaySetupView.swift */,
+				0412BF912357020D003D485B /* ApplePaySetupButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1911,7 +1923,7 @@
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
-				C2D500EC2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
+				0412BF862355EEA0003D485B /* HomeView.swift in Sources */,
 				04A80CD0234C82AE00ECEE84 /* AppStore.swift in Sources */,
 				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
@@ -1942,6 +1954,7 @@
 				041FAB1B225F19AC00877E72 /* UIViewController+Presentation.swift in Sources */,
 				042928F8223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				0448816A217924B700F59758 /* AppDelegate.swift in Sources */,
+				0412BF922357020D003D485B /* ApplePaySetupButton.swift in Sources */,
 				042CA83422C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9B1745742276F64B00CF321B /* TextEditCell.swift in Sources */,
@@ -1951,6 +1964,7 @@
 				041216922226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04A63DED231E91BF00A12CAD /* AllowCameraAccessViewController.swift in Sources */,
 				04834D6F2237ACFF00A01500 /* APIManager.swift in Sources */,
+				0412BF882355EED9003D485B /* HomeStore.swift in Sources */,
 				9BE2D45E225B642500B51999 /* UIApplicaiton+Testing.swift in Sources */,
 				9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */,
 				04BA34A02226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
@@ -1965,6 +1979,7 @@
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
 				C23CFC8B227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
 				04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */,
+				0412BF8C235701A3003D485B /* BalanceLabel.swift in Sources */,
 				044725AF2281B7E6006184E5 /* ExternalLink.swift in Sources */,
 				9B174580227722C200CF321B /* ValidationState.swift in Sources */,
 				9BE2D463225B696400B51999 /* StoryboardLoadable.swift in Sources */,
@@ -1972,7 +1987,6 @@
 				9B6E3A20227080CE0063EBAA /* LocationProblemViewController.swift in Sources */,
 				045A4BC823549FB000873410 /* SettingsView.swift in Sources */,
 				04834D4D222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
-				C2BC662122733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				048533A0223C1882007C89F4 /* Product.swift in Sources */,
 				04491636234DACFF0022731A /* RegionGroupView.swift in Sources */,
 				9B4F1A4222A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
@@ -1986,6 +2000,7 @@
 				04834D7E2237D53700A01500 /* UserManager.swift in Sources */,
 				04D91987234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
+				0412BF8F235701E1003D485B /* ApplePaySetupView.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
@@ -2120,7 +2135,6 @@
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
-				C2D500ED2321034C00A023E4 /* SetupApplePayViewController.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
 				04A80CD1234C82AE00ECEE84 /* AppStore.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
@@ -2144,6 +2158,7 @@
 				9B3FA69022896640001E4D60 /* UIAlertAction+Convenience.swift in Sources */,
 				C2D2EAEA22785C0C00010586 /* AppErrors.swift in Sources */,
 				9B305F99229694F700B89FCB /* GifVideo.swift in Sources */,
+				0412BF8A2355EEE8003D485B /* HomeView.swift in Sources */,
 				043E710F2239F17200E01993 /* main.swift in Sources */,
 				9BE2D458225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF542281888A00D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
@@ -2152,6 +2167,7 @@
 				04A4C7C7235470CB005DE62B /* RemoteConfigViewController.swift in Sources */,
 				04834D4E222FB9EE00A01500 /* ESIMOnBoardingViewController.swift in Sources */,
 				04834D792237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
+				0412BF932357020D003D485B /* ApplePaySetupButton.swift in Sources */,
 				042CA83522C21F10000F0622 /* UIViewController+EmbedFullViewChild.swift in Sources */,
 				040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */,
 				9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */,
@@ -2164,6 +2180,7 @@
 				9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */,
 				047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */,
 				04834D3D222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift in Sources */,
+				0412BF892355EED9003D485B /* HomeStore.swift in Sources */,
 				9BE2D464225B698E00B51999 /* StoryboardLoadable.swift in Sources */,
 				C29802B12181EDA800FBC5C3 /* AppDelegate.swift in Sources */,
 				0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */,
@@ -2175,6 +2192,7 @@
 				04A80CCB234B5A7300ECEE84 /* CoverageView.swift in Sources */,
 				9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */,
 				047F29292224558B00FC6A8F /* HomeViewController.swift in Sources */,
+				0412BF8D235701A3003D485B /* BalanceLabel.swift in Sources */,
 				9BBF7076226751E500E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				041216932226D18100455278 /* UNAuthorizationStatusExtensions.swift in Sources */,
 				04834D702237ACFF00A01500 /* APIManager.swift in Sources */,
@@ -2193,9 +2211,9 @@
 				9B4F1A4322A6AD8800FCC8CC /* JumioCoordinator.swift in Sources */,
 				9BBEEE14228D954600EED7F5 /* NeedHelpActionSheet.swift in Sources */,
 				0465B4D823436776009833DB /* UsernameAndPasswordLinkManager.swift in Sources */,
-				C2BC662222733C75008BBC4E /* ApplePayViewController.swift in Sources */,
 				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
 				04D91988234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
+				0412BF90235701E1003D485B /* ApplePaySetupView.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,

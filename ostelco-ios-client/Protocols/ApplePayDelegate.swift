@@ -20,6 +20,7 @@ enum ApplePayError: Error {
     case userCancelled
     case paymentDeclined
     case primeAPIError(Error)
+    case invalidConfiguration
 }
 
 extension ApplePayError: LocalizedError {
@@ -38,6 +39,8 @@ extension ApplePayError: LocalizedError {
             return "Payment was declined"
         case .primeAPIError:
             return "Prime API Error"
+        case .invalidConfiguration:
+            return "There is a problem with your Apple Pay configuration even though Apple pay is supposed to work. Don't know why it failed."
         }
     }
 }
@@ -60,6 +63,7 @@ protocol ApplePayDelegate: class {
 extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDelegate & UIViewController {
     // MARK: - Default implementaion of PKPaymentAuthorizationViewControllerDelegate.
 
+    // TODO
     func handlePaymentAuthorized(_ controller: PKPaymentAuthorizationViewController,
                                  didAuthorizePayment payment: PKPayment,
                                  handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
@@ -86,6 +90,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             }
     }
 
+    // TODO
     func handlePaymentFinished(_ controller: PKPaymentAuthorizationViewController) {
         // Dismiss payment authorization view controller
         dismiss(animated: true, completion: {
