@@ -37,7 +37,7 @@ struct TabBarView: View {
                     Text("Coverage")
                         .font(.system(size: 10))
                 }
-            SettingsView().environmentObject(SettingsStore(controller: controller))
+            AccountView().environmentObject(AccountStore(controller: controller))
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                         .font(.system(size: 24))
