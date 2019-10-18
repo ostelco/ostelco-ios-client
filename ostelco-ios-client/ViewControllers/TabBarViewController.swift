@@ -10,6 +10,10 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
-        embedSwiftUI(TabBarView())
+        embedSwiftUI(TabBarView(controller: self))
+    }
+    
+    func showFreshchat() {
+        FreshchatManager.shared.show(self)
     }
 }

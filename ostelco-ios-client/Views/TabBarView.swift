@@ -11,7 +11,10 @@ import OstelcoStyles
 
 struct TabBarView: View {
     
-    init() {
+    private let controller: TabBarViewController
+    
+    init(controller: TabBarViewController) {
+        self.controller = controller
         UITabBar.appearance().barTintColor = OstelcoColor.backgroundAny.toUIColor
         // Remove top border
         UITabBar.appearance().shadowImage = nil
@@ -34,7 +37,7 @@ struct TabBarView: View {
                     Text("Coverage")
                         .font(.system(size: 10))
                 }
-            SettingsView(controller: SettingsViewController())
+            SettingsView().environmentObject(SettingsStore(controller: controller))
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                         .font(.system(size: 24))
@@ -48,6 +51,6 @@ struct TabBarView: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(controller: TabBarViewController())
     }
 }

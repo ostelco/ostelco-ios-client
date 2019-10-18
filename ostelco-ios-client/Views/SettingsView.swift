@@ -13,7 +13,11 @@ final class SettingsStore: ObservableObject {
     @Published var purchaseRecords: [PurchaseRecord] = []
     @Published var unreadMessages: Int = 0
     
-    init() {
+    private let controller: TabBarViewController
+    
+    init(controller: TabBarViewController) {
+        self.controller = controller
+        
         updateUnreadMessagesCount()
         NotificationCenter.default.addObserver(self, selector: #selector(unreadMessagesCountChanged(_:)), name: Notification.Name(FRESHCHAT_UNREAD_MESSAGE_COUNT_CHANGED), object: nil)
         APIManager.shared.primeAPI
@@ -38,18 +42,19 @@ final class SettingsStore: ObservableObject {
             self.unreadMessages = $0
         }
     }
+    
+    func showFreshchat() {
+        FreshchatManager.shared.show(controller)
+    }
 }
-
 
 struct SettingsView: View {
     
-    let controller: SettingsViewController
     @EnvironmentObject var store: SettingsStore
     @State private var showLogoutSheet = false
     @State private var showPurchaseHistory = false
     
-    init(controller: SettingsViewController){
-        self.controller = controller
+    init(){
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().barTintColor = .white
@@ -65,7 +70,7 @@ struct SettingsView: View {
         }
     }
     var body: some View {
-        NavigationView {
+        
             VStack {
                 VStack {
                     OstelcoTitle(label: "Account")
@@ -80,7 +85,7 @@ struct SettingsView: View {
                     }
                     Divider()
                     Button(action: {
-                        FreshchatManager.shared.show(self.controller)
+                        self.store.showFreshchat()
                     }) {
                         HStack {
                             OstelcoText(label: "Chat to Support")
@@ -151,11 +156,11 @@ struct SettingsView: View {
                 PurchaseHistoryView().environmentObject(self.store)
             }
         }
-    }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(controller: SettingsViewController())
+        SettingsView()
     }
 }

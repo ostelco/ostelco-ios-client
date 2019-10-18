@@ -13,6 +13,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet private weak var versionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        embedSwiftUI(SettingsView(controller: self).environmentObject(SettingsStore()))
+        embedSwiftUI(SettingsView().environmentObject(SettingsStore(controller: TabBarViewController())))
     }
 }
