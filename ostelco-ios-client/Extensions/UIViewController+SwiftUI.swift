@@ -6,14 +6,15 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
 extension UIViewController {
     func embedSwiftUI<T: View>(_ swiftUIView: T) {
         let childView = UIHostingController(rootView: swiftUIView)
         addChild(childView)
-        childView.view.frame = self.view.frame
+        let window = UIApplication.shared.windows[0]
+        let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+        childView.view.frame = safeFrame
         view.addSubview(childView.view)
         childView.didMove(toParent: self)
     }
