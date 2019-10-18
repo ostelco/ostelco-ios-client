@@ -258,8 +258,6 @@
 		9B8AFF5A22A16F8400CC84B1 /* JumioScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AFF5922A16F8400CC84B1 /* JumioScanInfo.swift */; };
 		9B8E926522A9368F00A1E35E /* MockPlacemarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */; };
 		9B8E926722A93F5E00A1E35E /* CountryDeterminablePlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */; };
-		9B998BD5234382E70008A0C5 /* CoverageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B998BD4234382E70008A0C5 /* CoverageViewController.swift */; };
-		9B998BD6234382EC0008A0C5 /* CoverageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B998BD4234382E70008A0C5 /* CoverageViewController.swift */; };
 		9B9B3243225E3B7B00227EA3 /* PrimeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */; };
 		9B9B3248225E3D3900227EA3 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044881A7217BA32B00F59758 /* PurchaseModel.swift */; };
 		9B9B3249225E3D3900227EA3 /* BundleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448819D217B4E4E00F59758 /* BundleModel.swift */; };
@@ -613,7 +611,6 @@
 		9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPlacemarks.swift; sourceTree = "<group>"; };
 		9B8E926622A93F5E00A1E35E /* CountryDeterminablePlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDeterminablePlacemark.swift; sourceTree = "<group>"; };
 		9B920F61225B8C70001EF9CD /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
-		9B998BD4234382E70008A0C5 /* CoverageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageViewController.swift; sourceTree = "<group>"; };
 		9B9B3242225E3B7B00227EA3 /* PrimeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeAPI.swift; sourceTree = "<group>"; };
 		9B9B324D225E411700227EA3 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9B9B324F225E423A00227EA3 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
@@ -821,7 +818,6 @@
 			children = (
 				041216AE22281CE000455278 /* AllowLocationAccessViewController.swift */,
 				9B6E3A1F227080CE0063EBAA /* LocationProblemViewController.swift */,
-				9B998BD4234382E70008A0C5 /* CoverageViewController.swift */,
 			);
 			path = Country;
 			sourceTree = "<group>";
@@ -1957,7 +1953,6 @@
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */,
-				9B998BD5234382E70008A0C5 /* CoverageViewController.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
@@ -2171,7 +2166,6 @@
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				045A4BC62354790000873410 /* RemoteConfigManager.swift in Sources */,
-				9B998BD6234382EC0008A0C5 /* CoverageViewController.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
 				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
