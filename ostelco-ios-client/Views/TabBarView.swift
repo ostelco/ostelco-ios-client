@@ -30,7 +30,7 @@ struct TabBarView: View {
                     Text("Balance")
                         .font(.system(size: 10))
                 }
-            CoverageView(controller: CoverageViewController())
+            CoverageView().environmentObject(AppStore(controller: controller))
                 .tabItem {
                     Image(systemName: "globe")
                         .font(.system(size: 24))

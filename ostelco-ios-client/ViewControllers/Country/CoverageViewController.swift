@@ -17,7 +17,7 @@ class CoverageViewController: UIViewController {
     var currentCoordinator: RegionOnboardingCoordinator?
     
     let primeAPI = APIManager.shared.primeAPI
-    let store = AppStore()
+    // let store = AppStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class CoverageViewController: UIViewController {
         self.norwayButton.setTitle("Norway - Ready", for: .normal)
         self.norwayButton.setTitle("Norway - Approved", for: .disabled)
         
-        embedSwiftUI(CoverageView(controller: self).environmentObject(store))
+        // embedSwiftUI(CoverageView(controller: self).environmentObject(store))
         // updateButtons()
     }
     
@@ -42,6 +42,7 @@ class CoverageViewController: UIViewController {
         }.cauterize()
     }
     
+    /*
     func startOnboardingForCountry(_ country: Country) {
         let navigationController = UINavigationController()
         let region = store.getRegionFromCountry(country)
@@ -77,7 +78,7 @@ class CoverageViewController: UIViewController {
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
-    }
+    }*/
 }
 
 extension CoverageViewController: RegionOnboardingDelegate {
