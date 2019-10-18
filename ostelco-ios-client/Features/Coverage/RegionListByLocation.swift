@@ -12,8 +12,7 @@ import ostelco_core
 
 struct RegionListByLocation: View {
     
-    @EnvironmentObject var store: AppStore
-    let controller: CoverageViewController
+    @EnvironmentObject var store: CoverageStore
     
     var body: some View {
         renderListOrUnavailable()
@@ -32,7 +31,7 @@ struct RegionListByLocation: View {
             OstelcoContainer {
                 ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", action: {
                     // TODO: Refactor this to not be dependent on CoverageViewController
-                    self.controller.startOnboardingForRegionInCountry(country, region: regionDetails)
+                    self.store.startOnboardingForRegionInCountry(country, region: regionDetails)
                 })
             }
         )
@@ -68,6 +67,6 @@ struct RegionListByLocation: View {
 
 struct RegionListByLocation_Previews: PreviewProvider {
     static var previews: some View {
-        RegionListByLocation(controller: CoverageViewController())
+        RegionListByLocation()
     }
 }

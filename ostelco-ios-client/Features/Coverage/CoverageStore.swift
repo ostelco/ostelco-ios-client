@@ -8,7 +8,7 @@
 
 import ostelco_core
 
-final class AppStore: ObservableObject {
+final class CoverageStore: ObservableObject {
     @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
     @Published var countryCodeToRegionCodeMap = [:] as [String:[String]]
@@ -16,7 +16,10 @@ final class AppStore: ObservableObject {
     
     @Published var selectedRegionGroup: RegionGroupViewModel?
     
-    init() {
+    let controller: TabBarViewController
+    
+    init(controller: TabBarViewController) {
+        self.controller = controller
         country = LocationController.shared.currentCountry
         NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
         
@@ -89,4 +92,14 @@ final class AppStore: ObservableObject {
     func allowedCountries(countries: [Country]) -> [String] {
         return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode })))
     }
+    
+    func startOnboardingForCountry(_ country: Country) {
+        let region = getRegionFromCountry(country)
+        controller.startOnboardingForRegionInCountry(country, region: region)
+    }
+    
+    func startOnboardingForRegionInCountry(_ country: Country, region: PrimeGQL.RegionDetailsFragment) {
+        controller.startOnboardingForRegionInCountry(country, region: region)
+    }
+
 }

@@ -40,14 +40,11 @@ struct RegionGroupViewModel: Identifiable {
 
 struct CoverageView: View {
     
-    @EnvironmentObject var store: AppStore
-    
-    let controller: CoverageViewController
+    @EnvironmentObject var store: CoverageStore
     @State private var selectedRegionGroup: RegionGroupViewModel? = nil
     @State private var showModal: Bool = false
     
-    init(controller: CoverageViewController) {
-        self.controller = controller
+    init() {
         UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
     }
     
@@ -80,7 +77,7 @@ struct CoverageView: View {
                     
                     OstelcoTitle(label: "Location", image: "location.fill")
                     
-                    RegionListByLocation(controller: controller)
+                    RegionListByLocation()
                     
                     OstelcoTitle(label: "All Destinations")
                 
@@ -94,7 +91,7 @@ struct CoverageView: View {
                 // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
                 self.showModal = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-                    self.controller.startOnboardingForCountry(country)
+                    self.store.startOnboardingForCountry(country)
                 })
             }).environmentObject(self.store)
         }
@@ -103,6 +100,6 @@ struct CoverageView: View {
 
 struct CoverageView_Previews: PreviewProvider {
     static var previews: some View {
-        CoverageView(controller: CoverageViewController())
+        CoverageView()
     }
 }

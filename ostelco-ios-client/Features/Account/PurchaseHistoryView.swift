@@ -11,7 +11,7 @@ import OstelcoStyles
 
 struct PurchaseHistoryView: View {
     
-    @EnvironmentObject var store: SettingsStore
+    @EnvironmentObject var store: AccountStore
     
     init() {
         

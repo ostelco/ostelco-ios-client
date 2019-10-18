@@ -9,47 +9,13 @@
 import SwiftUI
 import OstelcoStyles
 
-final class SettingsStore: ObservableObject {
-    @Published var purchaseRecords: [PurchaseRecord] = []
-    @Published var unreadMessages: Int = 0
+struct AccountView: View {
     
-    init() {
-        updateUnreadMessagesCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(unreadMessagesCountChanged(_:)), name: Notification.Name(FRESHCHAT_UNREAD_MESSAGE_COUNT_CHANGED), object: nil)
-        APIManager.shared.primeAPI
-        .loadPurchases()
-        .map { purchaseModels -> [PurchaseRecord] in
-            let sortedPurchases = purchaseModels.sorted { $0.timestamp > $1.timestamp }
-            return sortedPurchases.map { PurchaseRecord(from: $0) }
-        }
-        .done { self.purchaseRecords = $0 }
-        .catch { error in
-            ApplicationErrors.log(error)
-            // TODO: Notify user about this error.
-        }
-    }
-    
-    @objc private func unreadMessagesCountChanged(_ notification: NSNotification) {
-        updateUnreadMessagesCount()
-    }
-    
-    private func updateUnreadMessagesCount() {
-        Freshchat.sharedInstance()?.unreadCount {
-            self.unreadMessages = $0
-        }
-    }
-}
-
-
-struct SettingsView: View {
-    
-    let controller: SettingsViewController
-    @EnvironmentObject var store: SettingsStore
+    @EnvironmentObject var store: AccountStore
     @State private var showLogoutSheet = false
     @State private var showPurchaseHistory = false
     
-    init(controller: SettingsViewController){
-        self.controller = controller
+    init(){
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().barTintColor = .white
@@ -65,7 +31,7 @@ struct SettingsView: View {
         }
     }
     var body: some View {
-        NavigationView {
+        
             VStack {
                 VStack {
                     OstelcoTitle(label: "Account")
@@ -80,7 +46,7 @@ struct SettingsView: View {
                     }
                     Divider()
                     Button(action: {
-                        FreshchatManager.shared.show(self.controller)
+                        self.store.showFreshchat()
                     }) {
                         HStack {
                             OstelcoText(label: "Chat to Support")
@@ -151,11 +117,11 @@ struct SettingsView: View {
                 PurchaseHistoryView().environmentObject(self.store)
             }
         }
-    }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(controller: SettingsViewController())
+        AccountView()
     }
 }

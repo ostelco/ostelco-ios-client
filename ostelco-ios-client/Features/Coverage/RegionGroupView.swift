@@ -12,7 +12,7 @@ import OstelcoStyles
 
 struct RegionGroupView: View {
     
-    @EnvironmentObject var store: AppStore
+    @EnvironmentObject var store: CoverageStore
     
     let countrySelected: (Country) -> Void
     

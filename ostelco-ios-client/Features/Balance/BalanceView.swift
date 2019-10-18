@@ -17,21 +17,12 @@ import UIKit
 // TODO: Missing pull to refresh balance
 // TODO: Only loading products once, not on view did appear as original VC did (does this matter?)
 // TODO: Original VC registered for PN for some reason, not sure why
-struct HomeView: View {
+struct BalanceView: View {
     
-    // TODO: Try to make view not depend on HomeViewController
-    // let controller: HomeViewController
-    let controller: HomeViewController
-    
-    @EnvironmentObject var store: HomeStore
+    @EnvironmentObject var store: BalanceStore
     @State private var showProductsSheet = false
     @State private var presentApplePaySetup = false
     @State private var showSuccessText = false
-    
-    init(controller: HomeViewController) {
-        self.controller = controller
-        //controller.handlePaymentSuccess = { self.handlePaymentSuccess($0) }
-    }
     
     private func handlePaymentSuccess(_ product: Product?) {
         self.showSuccessText.toggle()
@@ -144,13 +135,13 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(controller: HomeViewController())
+        BalanceView()
     }
 }
 
 struct ApplePayView: View {
     
-    @EnvironmentObject var store: HomeStore
+    @EnvironmentObject var store: BalanceStore
     
     let handleError: (_ error: Error) -> Void
     
