@@ -40,7 +40,7 @@ struct RegionGroupViewModel: Identifiable {
 
 struct CoverageView: View {
     
-    @EnvironmentObject var store: AppStore
+    @EnvironmentObject var store: CoverageStore
     @State private var selectedRegionGroup: RegionGroupViewModel? = nil
     @State private var showModal: Bool = false
     

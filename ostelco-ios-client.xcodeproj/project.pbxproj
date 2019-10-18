@@ -107,8 +107,8 @@
 		04A80CCA234B5A7300ECEE84 /* CoverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CC9234B5A7300ECEE84 /* CoverageView.swift */; };
 		04A80CCB234B5A7300ECEE84 /* CoverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CC9234B5A7300ECEE84 /* CoverageView.swift */; };
 		04A80CCD234B5B0400ECEE84 /* OstelcoTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */; };
-		04A80CD0234C82AE00ECEE84 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* AppStore.swift */; };
-		04A80CD1234C82AE00ECEE84 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* AppStore.swift */; };
+		04A80CD0234C82AE00ECEE84 /* CoverageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* CoverageStore.swift */; };
+		04A80CD1234C82AE00ECEE84 /* CoverageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CCF234C82AE00ECEE84 /* CoverageStore.swift */; };
 		04A80CD3234C82E100ECEE84 /* OstelcoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */; };
 		04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
 		04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
@@ -491,7 +491,7 @@
 		04A80CC6234B58BD00ECEE84 /* UIViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SwiftUI.swift"; sourceTree = "<group>"; };
 		04A80CC9234B5A7300ECEE84 /* CoverageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageView.swift; sourceTree = "<group>"; };
 		04A80CCC234B5B0400ECEE84 /* OstelcoTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoTitle.swift; sourceTree = "<group>"; };
-		04A80CCF234C82AE00ECEE84 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		04A80CCF234C82AE00ECEE84 /* CoverageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageStore.swift; sourceTree = "<group>"; };
 		04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoContainer.swift; sourceTree = "<group>"; };
 		04A80CD4234C969400ECEE84 /* ESimCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCountryView.swift; sourceTree = "<group>"; };
 		04AB2CA6235A412E00C9A71B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -883,10 +883,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0482E46D235A56D200DAC4D7 /* Coverage */ = {
+			isa = PBXGroup;
+			children = (
+				04A80CCF234C82AE00ECEE84 /* CoverageStore.swift */,
+				04D91986234F0B0500E7D171 /* RegionListByLocation.swift */,
+				04491635234DACFF0022731A /* RegionGroupView.swift */,
+				04491632234D9E0F0022731A /* RegionGroupCardView.swift */,
+				04A80CD4234C969400ECEE84 /* ESimCountryView.swift */,
+				04A80CC9234B5A7300ECEE84 /* CoverageView.swift */,
+			);
+			path = Coverage;
+			sourceTree = "<group>";
+		};
 		04A80CCE234C829800ECEE84 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				04A80CCF234C82AE00ECEE84 /* AppStore.swift */,
 				0412BF872355EED9003D485B /* HomeStore.swift */,
 			);
 			path = Stores;
@@ -895,6 +907,7 @@
 		04AB2CAF235A522D00C9A71B /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0482E46D235A56D200DAC4D7 /* Coverage */,
 				04AB2CB0235A523400C9A71B /* Account */,
 			);
 			path = Features;
@@ -1161,11 +1174,6 @@
 			isa = PBXGroup;
 			children = (
 				9BBF705B2265F03600E4B9B4 /* Cells */,
-				04A80CC9234B5A7300ECEE84 /* CoverageView.swift */,
-				04A80CD4234C969400ECEE84 /* ESimCountryView.swift */,
-				04491632234D9E0F0022731A /* RegionGroupCardView.swift */,
-				04491635234DACFF0022731A /* RegionGroupView.swift */,
-				04D91986234F0B0500E7D171 /* RegionListByLocation.swift */,
 				0412BF852355EEA0003D485B /* HomeView.swift */,
 				0412BF8B235701A3003D485B /* BalanceLabel.swift */,
 				0412BF8E235701E1003D485B /* ApplePaySetupView.swift */,
@@ -1943,7 +1951,7 @@
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
 				0412BF862355EEA0003D485B /* HomeView.swift in Sources */,
-				04A80CD0234C82AE00ECEE84 /* AppStore.swift in Sources */,
+				04A80CD0234C82AE00ECEE84 /* CoverageStore.swift in Sources */,
 				9B6E34C322B041500029AF76 /* ImageAsset.swift in Sources */,
 				9BBEEE0F228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
@@ -2157,7 +2165,7 @@
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
-				04A80CD1234C82AE00ECEE84 /* AppStore.swift in Sources */,
+				04A80CD1234C82AE00ECEE84 /* CoverageStore.swift in Sources */,
 				9BBF70672265FA3100E4B9B4 /* UITableView+Footer.swift in Sources */,
 				9BBEEE10228D917600EED7F5 /* DidBecomeActiveHandling.swift in Sources */,
 				04978D6C22ABA012002B09E0 /* LinkHelper.swift in Sources */,

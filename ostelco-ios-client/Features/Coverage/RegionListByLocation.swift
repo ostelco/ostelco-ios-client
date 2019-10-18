@@ -12,7 +12,7 @@ import ostelco_core
 
 struct RegionListByLocation: View {
     
-    @EnvironmentObject var store: AppStore
+    @EnvironmentObject var store: CoverageStore
     
     var body: some View {
         renderListOrUnavailable()

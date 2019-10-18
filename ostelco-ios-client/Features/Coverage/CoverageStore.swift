@@ -8,7 +8,7 @@
 
 import ostelco_core
 
-final class AppStore: ObservableObject {
+final class CoverageStore: ObservableObject {
     @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
     @Published var countryCodeToRegionCodeMap = [:] as [String:[String]]
