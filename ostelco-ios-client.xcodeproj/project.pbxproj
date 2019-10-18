@@ -112,6 +112,10 @@
 		04A80CD3234C82E100ECEE84 /* OstelcoContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */; };
 		04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
 		04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A80CD4234C969400ECEE84 /* ESimCountryView.swift */; };
+		04AB2CA7235A412E00C9A71B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB2CA6235A412E00C9A71B /* TabBarView.swift */; };
+		04AB2CA8235A412E00C9A71B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB2CA6235A412E00C9A71B /* TabBarView.swift */; };
+		04AB2CAA235A418700C9A71B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB2CA9235A418700C9A71B /* TabBarViewController.swift */; };
+		04AB2CAB235A418700C9A71B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB2CA9235A418700C9A71B /* TabBarViewController.swift */; };
 		04B9AB5122CB9062009234B6 /* OhNoIssueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */; };
 		04BA349C222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
 		04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA349B222587F6000359C4 /* SplashViewController.swift */; };
@@ -492,6 +496,8 @@
 		04A80CCF234C82AE00ECEE84 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		04A80CD2234C82E100ECEE84 /* OstelcoContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OstelcoContainer.swift; sourceTree = "<group>"; };
 		04A80CD4234C969400ECEE84 /* ESimCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESimCountryView.swift; sourceTree = "<group>"; };
+		04AB2CA6235A412E00C9A71B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		04AB2CA9235A418700C9A71B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04B9AB5022CB9062009234B6 /* OhNoIssueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhNoIssueType.swift; sourceTree = "<group>"; };
 		04BA349B222587F6000359C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		04BA349F2226B8D9000359C4 /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -1151,6 +1157,7 @@
 				0412BF8B235701A3003D485B /* BalanceLabel.swift */,
 				0412BF8E235701E1003D485B /* ApplePaySetupView.swift */,
 				0412BF912357020D003D485B /* ApplePaySetupButton.swift */,
+				04AB2CA6235A412E00C9A71B /* TabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1182,6 +1189,7 @@
 				042CA83022C21D30000F0622 /* AuthParentViewController.swift */,
 				0437197522C249D900609355 /* InternetConnectionParentViewController.swift */,
 				04A4C7C5235470CB005DE62B /* RemoteConfigViewController.swift */,
+				04AB2CA9235A418700C9A71B /* TabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1920,6 +1928,7 @@
 			files = (
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */,
+				04AB2CA7235A412E00C9A71B /* TabBarView.swift in Sources */,
 				047F29282224558B00FC6A8F /* HomeViewController.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -2001,6 +2010,7 @@
 				04D91987234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
 				042928EF223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				0412BF8F235701E1003D485B /* ApplePaySetupView.swift in Sources */,
+				04AB2CAA235A418700C9A71B /* TabBarViewController.swift in Sources */,
 				9BC465452271DC98001951BF /* OhNoViewController.swift in Sources */,
 				9BE2D457225B61CF00B51999 /* Storyboard.swift in Sources */,
 				9B5CBF53228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift in Sources */,
@@ -2133,6 +2143,7 @@
 			files = (
 				040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
+				04AB2CA8235A412E00C9A71B /* TabBarView.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,
 				9B17457B2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				9B6E34C422B042430029AF76 /* ImageAsset.swift in Sources */,
@@ -2214,6 +2225,7 @@
 				9BBEEE07228D700000EED7F5 /* PushNotificationController.swift in Sources */,
 				04D91988234F0B0500E7D171 /* RegionListByLocation.swift in Sources */,
 				0412BF90235701E1003D485B /* ApplePaySetupView.swift in Sources */,
+				04AB2CAB235A418700C9A71B /* TabBarViewController.swift in Sources */,
 				04EC5AE9218873C0000C2EC3 /* Environment.swift in Sources */,
 				C2C3EAD52270B43200585FA4 /* PurchaseRecord.swift in Sources */,
 				9BC465462271DC98001951BF /* OhNoViewController.swift in Sources */,

@@ -13,6 +13,7 @@ import SwiftUI
 public enum OstelcoColor: String, CaseIterable {
     case azul
     case background
+    case backgroundAny
     case backgroundLight
     case blackForText
     case containerBorder

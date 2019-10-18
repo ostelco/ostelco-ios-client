@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="oMk-l7-Qvt">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="zSU-e2-tmu" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="zSU-e2-tmu" customClass="TabBarViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="rgL-ab-CN8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

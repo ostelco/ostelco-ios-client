@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        embedSwiftUI(HomeView(controller: self).environmentObject(HomeStore()))
+        embedSwiftUI(HomeView().environmentObject(HomeStore()))
     }
 
     @objc func didPullToRefresh() {
