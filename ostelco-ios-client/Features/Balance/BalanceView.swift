@@ -41,13 +41,14 @@ struct BalanceView: View {
             buttons.append(
                 .default(Text(product.label), action: {
                     #if STRIPE_PAYMENT
-                    // TODO: Start stripe pay
+                    self.store.controller.startStripePay(product: product)
                     #else
-                    // TODO: Test apple pay setup
-                    if (!self.showApplePaySetup()) {
-                        self.store.selectedProduct = product
+                    // Before we start payment, check if Apple pay is setup correctly.
+                    if !self.showApplePaySetup() {
+                        self.store.controller.startApplePay(product: product)
                     }
                     #endif
+
                 })
             )
         }

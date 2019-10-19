@@ -72,6 +72,8 @@
 		046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E05F622CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift */; };
 		047F29032224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
 		047F29042224460B00FC6A8F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047F29022224460B00FC6A8F /* LoginViewController.swift */; };
+		0482E470235A679B00DAC4D7 /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482E46F235A679B00DAC4D7 /* ApplePayViewController.swift */; };
+		0482E471235A679B00DAC4D7 /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482E46F235A679B00DAC4D7 /* ApplePayViewController.swift */; };
 		04834D32222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
 		04834D33222EAA7D00A01500 /* Singapore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D31222EAA7D00A01500 /* Singapore.gpx */; };
 		04834D35222EAB5900A01500 /* Norway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04834D34222EAB4E00A01500 /* Norway.gpx */; };
@@ -463,6 +465,7 @@
 		046FE92E22DF0A5200CF57E4 /* regions.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = regions.graphql; sourceTree = "<group>"; };
 		046FE93822E136AA00CF57E4 /* simProfilesForRegion.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = simProfilesForRegion.graphql; sourceTree = "<group>"; };
 		047F29022224460B00FC6A8F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0482E46F235A679B00DAC4D7 /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		04834D31222EAA7D00A01500 /* Singapore.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Singapore.gpx; sourceTree = "<group>"; };
 		04834D34222EAB4E00A01500 /* Norway.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Norway.gpx; sourceTree = "<group>"; };
 		04834D3B222EC7DC00A01500 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
@@ -886,6 +889,7 @@
 				0412BF8B235701A3003D485B /* BalanceLabel.swift */,
 				0412BF8E235701E1003D485B /* ApplePaySetupView.swift */,
 				0412BF912357020D003D485B /* ApplePaySetupButton.swift */,
+				0482E46F235A679B00DAC4D7 /* ApplePayViewController.swift */,
 			);
 			path = Balance;
 			sourceTree = "<group>";
@@ -1943,6 +1947,7 @@
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */,
 				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
+				0482E470235A679B00DAC4D7 /* ApplePayViewController.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
 				045A4BCB2355B2A600873410 /* PurchaseHistoryView.swift in Sources */,
@@ -2156,6 +2161,7 @@
 				9BC4653D2271AE0F001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
 				045A4BC62354790000873410 /* RemoteConfigManager.swift in Sources */,
 				042928F9223D4D8800806438 /* SignUpCompletedViewController.swift in Sources */,
+				0482E471235A679B00DAC4D7 /* ApplePayViewController.swift in Sources */,
 				042CA82F22C21A1D000F0622 /* ShakeToHelpViewController.swift in Sources */,
 				04D6C9862276E32700AE13DD /* OstelcoAnalytics.swift in Sources */,
 				045A4BCC2355B2A600873410 /* PurchaseHistoryView.swift in Sources */,
