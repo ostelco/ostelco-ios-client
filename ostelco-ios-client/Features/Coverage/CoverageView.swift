@@ -17,15 +17,22 @@ enum RegionGroupBackgroundColor: String, Codable {
     case azul
     case yellow
     
-    var toColor: Color {
+    var toOstelcoColor: OstelcoColor {
         switch self {
         case .lipstick:
-            return OstelcoColor.lipstick.toColor
+            return OstelcoColor.lipstick
         case .azul:
-            return OstelcoColor.azul.toColor
+            return OstelcoColor.azul
         case .yellow:
-            return Color.yellow
+            return OstelcoColor.statusOkay
         }
+    }
+    var toColor: Color {
+        return toOstelcoColor.toColor
+    }
+    
+    var toUIColor: UIColor {
+        return toOstelcoColor.toUIColor
     }
 }
 
@@ -43,11 +50,7 @@ struct CoverageView: View {
     @EnvironmentObject var store: CoverageStore
     @State private var selectedRegionGroup: RegionGroupViewModel? = nil
     @State private var showModal: Bool = false
-    
-    init() {
-        UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
-    }
-    
+        
     private func renderRegionGroup(_ regionGroup: RegionGroupViewModel) -> AnyView {
         if regionGroup.isPreview {
            return AnyView(
@@ -58,10 +61,10 @@ struct CoverageView: View {
            )
         } else {
             return AnyView(
-               Button(action: {
-                    self.store.selectedRegionGroup = regionGroup
-                    self.showModal = true
-               }) {
+                NavigationLink(destination: RegionGroupView(regionGroup: regionGroup ,countrySelected: { country in
+                   // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
+                    self.store.startOnboardingForCountry(country)
+            }).environmentObject(self.store)) {
                 RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)
                .clipped()
@@ -85,15 +88,7 @@ struct CoverageView: View {
                     ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
-            }
-        }.sheet(isPresented: $showModal) {
-            RegionGroupView(countrySelected: { country in
-                // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
-                self.showModal = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-                    self.store.startOnboardingForCountry(country)
-                })
-            }).environmentObject(self.store)
+            }.navigationBarTitle("", displayMode: .inline)
         }
     }
 }

@@ -15,12 +15,6 @@ struct AccountView: View {
     @State private var showLogoutSheet = false
     @State private var showPurchaseHistory = false
     
-    init(){
-        UINavigationBar.appearance().backgroundColor = .white
-        UINavigationBar.appearance().tintColor = .black
-        UINavigationBar.appearance().barTintColor = .white
-    }
-    
     private func renderUnreadMessagesBadge() -> AnyView {
         if store.unreadMessages > 0 {
             return AnyView(
@@ -31,13 +25,11 @@ struct AccountView: View {
         }
     }
     var body: some View {
-        
+        NavigationView {
             VStack {
                 VStack {
-                    OstelcoTitle(label: "Account")
-                    Button(action: {
-                        self.showPurchaseHistory.toggle()
-                    }) {
+                    // OstelcoTitle(label: "Account")
+                    NavigationLink(destination: PurchaseHistoryView()) {
                         HStack {
                             OstelcoText(label: "Purchase History")
                             Spacer()
@@ -101,6 +93,7 @@ struct AccountView: View {
                 Spacer()
             }
             .padding(15)
+            .navigationBarTitle("Account")
             .actionSheet(isPresented: $showLogoutSheet) {
                 ActionSheet(
                     title: Text(""),
@@ -113,11 +106,8 @@ struct AccountView: View {
                     ]
                 )
             }
-            .sheet(isPresented: $showPurchaseHistory) {
-                PurchaseHistoryView().environmentObject(self.store)
-            }
         }
-    
+    }
 }
 
 struct SettingsView_Previews: PreviewProvider {

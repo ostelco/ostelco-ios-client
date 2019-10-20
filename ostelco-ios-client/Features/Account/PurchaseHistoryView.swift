@@ -13,12 +13,8 @@ struct PurchaseHistoryView: View {
     
     @EnvironmentObject var store: AccountStore
     
-    init() {
-        
-    }
     var body: some View {
         VStack {
-            OstelcoTitle(label: "Purchase History")
             List(store.purchaseRecords, id: \.name) { record in
                 VStack(alignment: .leading) {
                     Text(record.date)
@@ -28,8 +24,8 @@ struct PurchaseHistoryView: View {
                         Text(record.amount)
                     }
                 }.padding()
-            }.listStyle(GroupedListStyle())
-        }
+            }
+        }.navigationBarTitle("Account", displayMode: .inline)
     }
 }
 

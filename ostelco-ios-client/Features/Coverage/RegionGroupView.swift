@@ -14,6 +14,7 @@ struct RegionGroupView: View {
     
     @EnvironmentObject var store: CoverageStore
     
+    let regionGroup: RegionGroupViewModel
     let countrySelected: (Country) -> Void
     
     private func renderSimProfile(_ regionGroup: RegionGroupViewModel, country: Country) -> AnyView {
@@ -31,30 +32,21 @@ struct RegionGroupView: View {
         )
     }
     
-    private func renderBody() -> AnyView {
-        if let regionGroup = store.selectedRegionGroup {
-            return AnyView(
-                VStack {
-                    RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
-                    List(store.allowedCountries(countries: regionGroup.countries).map({ Country($0) }), id: \.countryCode) { country in
-                        Group {
-                            self.renderSimProfile(regionGroup, country: country)
-                        }.frame(maxWidth: .infinity, minHeight: 94.0)
-                    }.cornerRadius(28)
-                    .padding([.leading, .trailing, .top ], 10)
-                }.background(OstelcoColor.lipstick.toColor)
-            )
-        } else {
-            return AnyView(Text("Something went wrong..."))
-        }
-    }
     var body: some View {
-        renderBody()
+        VStack {
+            RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
+            List(store.allowedCountries(countries: regionGroup.countries).map({ Country($0) }), id: \.countryCode) { country in
+                Group {
+                    self.renderSimProfile(self.regionGroup, country: country)
+                }.frame(maxWidth: .infinity, minHeight: 94.0)
+            }.cornerRadius(28)
+            .padding([.leading, .trailing, .top ], 10)
+        }.background(OstelcoColor.lipstick.toColor)
     }
 }
 struct RegionView_Previews: PreviewProvider {
     static var previews: some View {
-        RegionGroupView(countrySelected: { _ in
+        RegionGroupView(regionGroup: RegionGroupViewModel(name: "xxx", description: "xxx", backgroundColor: .lipstick, isPreview: false, countries: []), countrySelected: { _ in
         
         })
     }
