@@ -19,6 +19,9 @@ struct TabBarView: View {
         // Remove top border
         UITabBar.appearance().shadowImage = nil
         UITabBar.appearance().clipsToBounds = true
+        
+        // Remove bottom border
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
     
     var body: some View {

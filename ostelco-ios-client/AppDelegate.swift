@@ -30,9 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
         #endif
-        
-        self.configureAppearance()
-        
+                
         let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
         freschatConfig.domain = "msdk.eu.freshchat.com"
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
@@ -64,28 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     ApplicationErrors.log(error)
                 }
             }
-    }
-    
-    private func configureAppearance() {
-        let mainColor = OstelcoColor.controlTint.toUIColor
-        let highlightColor = OstelcoColor.highlighted.toUIColor
-        let backgroundColor = OstelcoColor.background.toUIColor
-        let tabAppearance = UITabBar.appearance()
-        tabAppearance.tintColor = highlightColor
-        tabAppearance.barTintColor = backgroundColor
-        tabAppearance.isTranslucent = false
-        tabAppearance.shadowImage = UIImage()
-        
-        let toolbarAppearance = UIToolbar.appearance()
-        toolbarAppearance.tintColor = mainColor
-        toolbarAppearance.barTintColor = backgroundColor
-        toolbarAppearance.isTranslucent = false
-        
-        let navigationAppearance = UINavigationBar.appearance()
-        navigationAppearance.tintColor = mainColor
-        navigationAppearance.barTintColor = backgroundColor
-        navigationAppearance.isTranslucent = false
-        navigationAppearance.shadowImage = UIImage()
     }
     
     // MARK: - Deeplink Handling
