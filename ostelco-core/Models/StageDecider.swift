@@ -222,7 +222,7 @@ public struct StageDecider {
             remove(.pendingVerification)
             remove(.jumio)
         }
-        if kycStatusMap.JUMIO == .PENDING {
+        if kycStatusMap.JUMIO == .PENDING && region.status != .AVAILABLE {
             remove(.jumio)
         }
         

@@ -140,9 +140,9 @@ extension OhNoIssueType {
         case .ekycRejected:
             return NSLocalizedString("EKYC Rejected", comment: "Error title when eKYC is rejected")
         case .generic:
-            return NSLocalizedString("Oh no", comment: "Generic error title")
+            return NSLocalizedString("Oh no...", comment: "Generic error title")
         case .noInternet:
-            return NSLocalizedString("No internet connection", comment: "Error title for no internet.")
+            return NSLocalizedString("No Internet Connection", comment: "Error title for no internet.")
         case .paymentFailedGeneric:
             return NSLocalizedString("Payment Failed", comment: "Error title when payment failed.")
         case .paymentFailedCardDeclined:

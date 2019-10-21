@@ -23,6 +23,11 @@ struct BalanceView: View {
     @State private var showProductsSheet = false
     @State private var presentApplePaySetup = false
     @State private var showSuccessText = false
+    @Binding private var currentTab: Tabs
+    
+    init(currentTab: Binding<Tabs>) {
+        self._currentTab = currentTab
+    }
     
     private func handlePaymentSuccess(_ product: Product?) {
         self.showSuccessText.toggle()
@@ -122,7 +127,9 @@ struct BalanceView: View {
                 .background(OstelcoColor.primaryButtonBackground.toColor)
                 .cornerRadius(27.5)
             }
-           ApplePayView(handleError: self.handleError)
+            ApplePayView(handleError: self.handleError)
+            renderOverlay()
+            
         }.actionSheet(isPresented: $showProductsSheet) {
             ActionSheet(
                 title: Text("Select a package"),
@@ -130,15 +137,77 @@ struct BalanceView: View {
             )
         }.sheet(isPresented: $presentApplePaySetup) {
             ApplePaySetupView()
+        }.onAppear {
+            if !self.store.hasAtLeastOneInstalledSimProfile {
+                self.store.loadSimProfiles()
+            }
+        }
+    }
+    
+    func renderOverlay() -> AnyView {
+        if store.hasAtLeastOneInstalledSimProfile {
+            return AnyView(EmptyView())
+        } else {
+            return AnyView(
+                Group {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                        }
+                    }.background(OstelcoColor.fogAny.toColor)
+                    ZStack {
+                        VStack {
+                            Spacer()
+                            OstelcoContainer {
+                                VStack(spacing: 20) {
+                                    OstelcoTitle(label: "Welcome to OYA!")
+                                    Text("Where would you like to use your first 1GB of OYA data?")
+                                        .font(.system(size: 21))
+                                        .foregroundColor(OstelcoColor.inputLabelAny.toColor)
+                                        .multilineTextAlignment(.center )
+                                    Button(action: {
+                                        self.currentTab = .coverage
+                                    }) {
+                                        ZStack {
+                                            HStack {
+                                                Image(systemName: "globe")
+                                                    .font(.system(size: 30, weight: .light))
+                                                    .foregroundColor(OstelcoColor.backgroundAny.toColor)
+                                                Spacer()
+                                            }.padding(.leading, 10)
+                                            Text("See Available Countries")
+                                                .font(.system(size: 18, weight: .semibold))
+                                                .foregroundColor(OstelcoColor.backgroundAny.toColor)
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, minHeight: 50)
+                                    .background(OstelcoColor.controlTintAny.toColor)
+                                    .cornerRadius(27.5)
+                                }.padding(25)
+                            }
+                        }
+                        // Lazy way to hide the bottom rounded corners from the above container, a better solution would be to configure the corners in the container itself.
+                        VStack {
+                            Spacer()
+                            Rectangle()
+                                .fill(OstelcoColor.backgroundAny.toColor)
+                                .frame(maxWidth: .infinity, maxHeight: 25)
+                        }
+                    }
+                }
+            )
         }
     }
 }
 
+/*
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
         BalanceView()
     }
-}
+}*/
 
 struct ApplePayView: View {
     

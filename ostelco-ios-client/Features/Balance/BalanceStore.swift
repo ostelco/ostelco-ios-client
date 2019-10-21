@@ -7,12 +7,14 @@
 //
 
 import ostelco_core
+import SwiftUI
 
 final class BalanceStore: ObservableObject {
     
     @Published var products: [Product] = []
     @Published var selectedProduct: Product? = nil
     @Published var balance: String?
+    @Published var hasAtLeastOneInstalledSimProfile: Bool = false
     
     let controller: TabBarViewController
     
@@ -24,9 +26,9 @@ final class BalanceStore: ObservableObject {
         
     init(controller: TabBarViewController) {
         self.controller = controller
-        
         loadProducts()
         fetchBalance()
+        loadSimProfiles()
     }
     
     func loadProducts() {
@@ -47,6 +49,17 @@ final class BalanceStore: ObservableObject {
             .catch { error in
                 ApplicationErrors.log(error)
         }
+    }
+    
+    func loadSimProfiles() {
+        APIManager.shared.primeAPI.loadRegions()
+            .map { $0.map { $0.simProfiles?.filter({ $0.fragments.simProfileFields.status == .installed }) ?? [] } }
+            .done { tmp in
+                self.hasAtLeastOneInstalledSimProfile = tmp.contains(where: { $0.isNotEmpty })
+            }.catch { error in
+                ApplicationErrors.log(error)
+        }
+        
     }
     
     private func updateBalance(from bundles: [PrimeGQL.BundlesQuery.Data.Context.Bundle]) {
