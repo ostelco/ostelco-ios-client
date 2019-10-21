@@ -25,7 +25,7 @@ struct PurchaseHistoryView: View {
                     }
                 }.padding()
             }
-        }.navigationBarTitle("Account", displayMode: .inline)
+        }.navigationBarTitle("Purchase History")
     }
 }
 
