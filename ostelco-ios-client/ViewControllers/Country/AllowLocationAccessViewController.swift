@@ -32,10 +32,10 @@ class AllowLocationAccessViewController: UIViewController {
         descriptionLabel.tapDelegate = self
         descriptionLabel.setLinkableText(
             LinkableText(
-                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify that you’re in Singapore", comment: "Explanation for location permissions before user is prompted."),
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in", comment: "Explanation for location permissions before user is prompted."),
                 linkedPortion: Link(
                     NSLocalizedString("by law", comment: "Explanation for location permissions before user is prompted: linkable part"),
-                    url: URL(string: "https://oya.sg")!
+                    url: ExternalLink.oyaWebpage.url
                 )
             )!
         )
