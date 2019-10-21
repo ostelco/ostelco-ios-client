@@ -52,7 +52,7 @@ struct RegionListByLocation: View {
                 )
             } else {
                 return AnyView(
-                    Text("Unfortunately OYA is currently not available in\n\(country.nameOrPlaceholder)")
+                    Text("Unfortunately, OYA is currently not\navailable in \(country.nameOrPlaceholder) :(")
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
                 )
