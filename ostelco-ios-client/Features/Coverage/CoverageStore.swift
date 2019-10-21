@@ -23,8 +23,7 @@ final class CoverageStore: ObservableObject {
         country = LocationController.shared.currentCountry
         NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
         
-        APIManager.shared.primeAPI.loadRegions()
-            .done { self.regions = $0 }.cauterize()
+        loadRegions()
         
         countryCodeToRegionCodeMap = RemoteConfigManager.shared.countryCodeAndRegionCodes.reduce(into: [:], { (result, value) in
             result[value.countryCode] = value.regionCodes
@@ -38,6 +37,11 @@ final class CoverageStore: ObservableObject {
                 countries: $0.countryCodes.map({ Country($0) })
             )
         }
+    }
+    
+    func loadRegions() {
+        APIManager.shared.primeAPI.loadRegions()
+        .done { self.regions = $0 }.cauterize()
     }
     
     @objc func countryChanged(_ notification: NSNotification) {

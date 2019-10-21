@@ -89,6 +89,8 @@ struct CoverageView: View {
                     
                 }.padding()
             }.navigationBarTitle("", displayMode: .inline)
+        }.onAppear {
+            self.store.loadRegions()
         }
     }
 }
