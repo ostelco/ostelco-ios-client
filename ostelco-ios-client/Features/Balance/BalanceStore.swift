@@ -16,8 +16,6 @@ final class BalanceStore: ObservableObject {
     @Published var balance: String?
     @Published var hasAtLeastOneInstalledSimProfile: Bool = false
     
-    @Binding var tab: Tabs
-    
     let controller: TabBarViewController
     
     private lazy var byteCountFormatter: ByteCountFormatter = {
@@ -26,9 +24,8 @@ final class BalanceStore: ObservableObject {
         return formatter
     }()
         
-    init(controller: TabBarViewController, tab: Binding<Tabs>) {
+    init(controller: TabBarViewController) {
         self.controller = controller
-        self._tab = tab
         loadProducts()
         fetchBalance()
         loadSimProfiles()

@@ -33,7 +33,8 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $currentTab) {
-            BalanceView().environmentObject(BalanceStore(controller: controller, tab: $currentTab))
+            // TODO: This seems like a hacky way to be able to change current tab from a child view.
+            BalanceView(currentTab: $currentTab).environmentObject(BalanceStore(controller: controller))
                 .tabItem {
                     Image(systemName: "house.fill")
                         .font(.system(size: 24))

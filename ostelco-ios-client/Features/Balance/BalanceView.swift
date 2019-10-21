@@ -23,6 +23,11 @@ struct BalanceView: View {
     @State private var showProductsSheet = false
     @State private var presentApplePaySetup = false
     @State private var showSuccessText = false
+    @Binding private var currentTab: Tabs
+    
+    init(currentTab: Binding<Tabs>) {
+        self._currentTab = currentTab
+    }
     
     private func handlePaymentSuccess(_ product: Product?) {
         self.showSuccessText.toggle()
@@ -132,6 +137,10 @@ struct BalanceView: View {
             )
         }.sheet(isPresented: $presentApplePaySetup) {
             ApplePaySetupView()
+        }.onAppear {
+            if !self.store.hasAtLeastOneInstalledSimProfile {
+                self.store.loadSimProfiles()
+            }
         }
     }
     
@@ -139,7 +148,6 @@ struct BalanceView: View {
         if store.hasAtLeastOneInstalledSimProfile {
             return AnyView(EmptyView())
         } else {
-            debugPrint("Render overlay...")
             return AnyView(
                 Group {
                     VStack {
@@ -159,7 +167,7 @@ struct BalanceView: View {
                                         .foregroundColor(OstelcoColor.inputLabelAny.toColor)
                                         .multilineTextAlignment(.center )
                                     Button(action: {
-                                        self.store.tab = .coverage
+                                        self.currentTab = .coverage
                                     }) {
                                         ZStack {
                                             HStack {
@@ -193,11 +201,13 @@ struct BalanceView: View {
     }
 }
 
+/*
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
         BalanceView()
     }
-}
+}*/
 
 struct ApplePayView: View {
     
