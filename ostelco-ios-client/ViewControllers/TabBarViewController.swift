@@ -30,6 +30,10 @@ class TabBarViewController: ApplePayViewController {
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
     }
+    
+    override func paymentSuccessful(_ product: Product?) {
+        
+    }
 }
 
 extension TabBarViewController: RegionOnboardingDelegate {
