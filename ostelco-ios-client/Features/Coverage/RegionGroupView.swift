@@ -41,6 +41,7 @@ struct RegionGroupView: View {
                 }.frame(maxWidth: .infinity, minHeight: 94.0)
             }.cornerRadius(28)
             .padding([.leading, .trailing, .top ], 10)
+            .padding(.bottom, 30)
         }.background(regionGroup.backgroundColor.toColor)
     }
 }
