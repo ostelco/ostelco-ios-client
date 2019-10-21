@@ -23,7 +23,7 @@ struct RegionListByLocation: View {
         if (regionDetails.simProfiles ?? []).contains(where: { $0.fragments.simProfileFields.status == .installed }) {
             return AnyView(
                 OstelcoContainer(state: .inactive) {
-                    ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION")
+                    ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", icon: "checkmark")
                 }
             )
         }
