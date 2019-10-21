@@ -26,17 +26,13 @@ struct AccountView: View {
     }
     var body: some View {
         NavigationView {
-            VStack {
-                VStack {
-                    // OstelcoTitle(label: "Account")
+            List {
+                Section {
                     NavigationLink(destination: PurchaseHistoryView()) {
                         HStack {
                             OstelcoText(label: "Purchase History")
-                            Spacer()
-                            Image(systemName: "chevron.right")
                         }
                     }
-                    Divider()
                     Button(action: {
                         self.store.showFreshchat()
                     }) {
@@ -47,7 +43,6 @@ struct AccountView: View {
                             Image(systemName: "chevron.right")
                         }
                     }
-                    Divider()
                     Button(action: {
                         self.showLogoutSheet.toggle()
                     }) {
@@ -58,8 +53,7 @@ struct AccountView: View {
                         }
                     }
                 }
-                VStack {
-                    OstelcoTitle(label: "Knowledge Base")
+                Section(header: Text("Knowledge Base").font(.system(size: 28, weight: .bold)).foregroundColor(.black)) {
                     Button(action: {
                         UIApplication.shared.open(ExternalLink.oyaWebpage.url)
                     }) {
@@ -69,7 +63,6 @@ struct AccountView: View {
                             Image(systemName: "arrow.up.right.square")
                         }
                     }
-                    Divider()
                     Button(action: {
                         UIApplication.shared.open(ExternalLink.termsAndConditions.url)
                     }) {
@@ -79,7 +72,6 @@ struct AccountView: View {
                             Image(systemName: "arrow.up.right.square")
                         }
                     }
-                    Divider()
                     Button(action: {
                         UIApplication.shared.open(ExternalLink.privacyPolicy.url)
                     }) {
@@ -90,9 +82,9 @@ struct AccountView: View {
                         }
                     }
                 }
-                Spacer()
-            }
-            .padding(15)
+            }.listStyle(GroupedListStyle())
+            
+            // .padding(15)
             .navigationBarTitle("Account")
             .actionSheet(isPresented: $showLogoutSheet) {
                 ActionSheet(
