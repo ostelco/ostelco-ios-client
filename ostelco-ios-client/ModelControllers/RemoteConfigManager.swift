@@ -12,7 +12,11 @@ class RemoteConfigManager {
     
     static let shared = RemoteConfigManager()
     private var remoteConfig: RemoteConfig!
+    #if DEBUG
+    private let expirationDuration = 0
+    #else
     private let expirationDuration = 3600
+    #endif
     private let appDefaults = [
         "country_code_to_region_codes": "[]",
         "region_groups": "[]"
