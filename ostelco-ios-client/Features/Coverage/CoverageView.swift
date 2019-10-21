@@ -78,7 +78,7 @@ struct CoverageView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    OstelcoTitle(label: "Location", image: "location.fill")
+                    OstelcoTitle(label: store.country?.nameOrPlaceholder ?? "(Unknown)", image: "location.fill")
                     
                     RegionListByLocation()
                     
