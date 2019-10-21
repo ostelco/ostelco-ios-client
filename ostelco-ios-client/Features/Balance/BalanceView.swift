@@ -119,7 +119,7 @@ struct BalanceView: View {
                     OstelcoAnalytics.logEvent(.BuyDataClicked)
                     self.showProductsSheet.toggle()
                 }) {
-                    Text("Buy Data")
+                    Text("Buy more Data")
                         .font(.system(size: 21, weight: .semibold))
                         .foregroundColor(OstelcoColor.backgroundLight.toColor)
                     }
