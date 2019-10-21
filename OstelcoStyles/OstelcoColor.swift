@@ -18,13 +18,16 @@ public enum OstelcoColor: String, CaseIterable {
     case blackForText
     case containerBorder
     case controlTint
+    case controlTintAny
     case countryText
     case countryTextSecondary
     case disabled
+    case fogAny
     case highlighted
     case lipstick
     case inputBackground
     case inputLabel
+    case inputLabelAny
     case inputPlaceholder
     case oyaBlue
     case paginationActive
