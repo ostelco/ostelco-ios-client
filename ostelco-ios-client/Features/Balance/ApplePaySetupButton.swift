@@ -13,14 +13,25 @@ struct ApplePaySetupButton: UIViewRepresentable {
     
     let paymentButtonType: PKPaymentButtonType
     
-    func makeUIView(context: Context) -> PKPaymentButton {
+    func makeUIView(context: Context) -> UIView {
+        let buttonContainer = UIView()
+        
         let paymentButton = PKPaymentButton(paymentButtonType: paymentButtonType, paymentButtonStyle: .black)
         paymentButton.translatesAutoresizingMaskIntoConstraints = false
-        paymentButton.cornerRadius = 8.0
-        return paymentButton
+        
+        buttonContainer.addSubview(paymentButton)
+        
+        paymentButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor).isActive = true
+        paymentButton.heightAnchor.constraint(equalTo: buttonContainer.heightAnchor).isActive = true
+        paymentButton.centerXAnchor.constraint(equalTo: buttonContainer.centerXAnchor).isActive = true
+        paymentButton.centerYAnchor.constraint(equalTo: buttonContainer.centerYAnchor).isActive = true
+        
+        paymentButton.cornerRadius = 6.0
+        
+        return buttonContainer
     }
     
-    func updateUIView(_ button: PKPaymentButton, context: Context) {
+    func updateUIView(_ view: UIView, context: Context) {
         
     }
 }
