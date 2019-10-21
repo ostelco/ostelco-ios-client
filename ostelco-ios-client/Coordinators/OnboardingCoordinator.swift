@@ -546,7 +546,7 @@ class RegionOnboardingCoordinator {
             singpassCoordinator?.startLogin(from: navigationController)
         case .verifyMyInfo(let code):
             let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
-            verifyMyInfo.regionCode = country.countryCode
+            verifyMyInfo.regionCode = region.region.id
             verifyMyInfo.myInfoCode = code
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)
