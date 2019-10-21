@@ -46,6 +46,6 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
 }

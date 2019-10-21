@@ -12,48 +12,24 @@ import UIKit
 import AVKit
 
 enum ESIMPage: Int, CaseIterable {
-    case instructions1
-    case instructions2
-    case instructions3
-    case instructions4
-    case instructions5
+    case video
     
     var image: UIImage? {
         switch self {
-        case .instructions1:
-            return .ostelco_app
-        case .instructions2:
-            return .ostelco_screenshot1
-        case .instructions3:
-            return .ostelco_screenshot2
-        case .instructions4:
-            return .ostelco_screenshot3
-        case .instructions5:
-            return .ostelco_screenshot4
+        case .video:
+            return nil
         }
     }
     
     var topText: BoldableText? {
         switch self {
-        case .instructions1:
+        case .video:
             return nil
-        case .instructions2:
-            return BoldableText(fullText: NSLocalizedString("When this screen appears: Tap 'Continue'\nand then 'Add Data Plan'", comment: "eSIM download instructions step 2."), boldedPortion: nil)
-        case .instructions3:
-            return BoldableText(fullText: NSLocalizedString("Tap 'Secondary'", comment: "eSIM download instructions step 3."), boldedPortion: nil)
-        case .instructions4:
-            return BoldableText(fullText: NSLocalizedString("Choose 'Custom Label' and name your\neSIM: OYA Malaysia", comment: "eSIM download instructions step 4."), boldedPortion: nil)
-        case .instructions5:
-            return BoldableText(fullText: NSLocalizedString("Choose \"...for mobile data only\"", comment: "eSIM download instructions step 5."), boldedPortion: nil)
         }
     }
     
     var bottomText: BoldableText? {
         switch self {
-        case .instructions1:
-            return BoldableText(
-                fullText: NSLocalizedString("Before we set up your eSIM, please read\nthese instructions. We have also sent them\nto your email", comment: "eSim instructions bottom text step 1"),
-                boldedPortion: nil)
         default:
             return nil
         }
@@ -61,8 +37,8 @@ enum ESIMPage: Int, CaseIterable {
     
     var videoURL: URL? {
         switch self {
-        default:
-            return nil
+        case .video:
+            return ExternalLink.esimInstructionsVideo.url
         }
     }
     

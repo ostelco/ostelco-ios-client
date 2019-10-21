@@ -127,7 +127,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
     
     // Everything after this point is the exact same as in SingaporeUserHappyFlowWithSingPassStageDeciderTests
