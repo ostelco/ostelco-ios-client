@@ -21,7 +21,7 @@ struct RegionGroupView: View {
         
         if store.simProfilesForCountry(country: country).filter({ $0.status == .installed }).isNotEmpty {
             return AnyView(
-                ESimCountryView(image: country.image, country: country.nameOrPlaceholder)
+                ESimCountryView(image: country.image, country: country.nameOrPlaceholder, icon: "checkmark")
             )
         }
         return AnyView(
@@ -41,7 +41,7 @@ struct RegionGroupView: View {
                 }.frame(maxWidth: .infinity, minHeight: 94.0)
             }.cornerRadius(28)
             .padding([.leading, .trailing, .top ], 10)
-        }.background(OstelcoColor.lipstick.toColor)
+        }.background(regionGroup.backgroundColor.toColor)
     }
 }
 struct RegionView_Previews: PreviewProvider {
