@@ -64,12 +64,12 @@ extension LocationProblem {
             )!
         case .disabledInSettings, .deniedByUser, .notDetermined:
             return LinkableText(
-                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\nPlease enable \"Location Services\" in Settings.", comment: "Error when user has disabled location access."),
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\nPlease grant OYA \"Location Access\" in your phone's Settings.", comment: "Error when user has disabled location access."),
                 linkedPortion: link
             )!
         case .restrictedByParentalControls:
             return LinkableText(
-                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\n\"Location Services\" are disabled due to Parental Control Settings on this device.", comment: "Error when user is restricted by parental controls"),
+                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\n\"Location Services\" are disabled due to Parental Control Settings on this phone.", comment: "Error when user is restricted by parental controls"),
                 linkedPortion: link
             )!
         }
