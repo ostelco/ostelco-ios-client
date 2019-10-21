@@ -371,13 +371,6 @@ extension RegionOnboardingCoordinator: AddressEditDelegate {
     }
 }
 
-extension RegionOnboardingCoordinator: ESIMOnBoardingDelegate {
-    func completedLanding() {
-        localContext.hasSeenESimOnboarding = true
-        advance()
-    }
-}
-
 extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
         let spinner = controller.showSpinner()
@@ -546,14 +539,10 @@ class RegionOnboardingCoordinator {
             singpassCoordinator?.startLogin(from: navigationController)
         case .verifyMyInfo(let code):
             let verifyMyInfo = MyInfoSummaryViewController.fromStoryboard()
-            verifyMyInfo.regionCode = country.countryCode
+            verifyMyInfo.regionCode = region.region.id
             verifyMyInfo.myInfoCode = code
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)
-        case .eSimOnboarding:
-            let eSimOnboarding = ESIMOnBoardingViewController.fromStoryboard()
-            eSimOnboarding.delegate = self
-            navigationController.setViewControllers([eSimOnboarding], animated: true)
         case .eSimInstructions:
             let instructions = ESIMInstructionsViewController.fromStoryboard()
             instructions.delegate = self

@@ -54,7 +54,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -67,7 +67,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedNRICAndJumioThenColdStartThenSelectedScanIC() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -80,7 +80,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedAddress() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -127,7 +127,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
     
     // Everything after this point is the exact same as in SingaporeUserHappyFlowWithSingPassStageDeciderTests

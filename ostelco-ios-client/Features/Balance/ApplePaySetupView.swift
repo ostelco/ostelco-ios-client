@@ -22,16 +22,17 @@ struct ApplePaySetupView: View {
                 .font(.system(size: 21))
                 .foregroundColor(OstelcoColor.blackForText.toColor)
                 .multilineTextAlignment(.center)
-            Text("Read about our current prices.")
-                .font(.system(size: 21))
-                .foregroundColor(OstelcoColor.blackForText.toColor)
             Spacer()
-            // TODO: Should open external link to somewhere
-            Text("Read about our current prices")
+            
+            Button(action: {
+                UIApplication.shared.open(ExternalLink.oyaWebpage.url)
+            }) {
+                Text("Read about our current prices")
                 .font(.system(size: 21, weight: .semibold))
                 .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
-            // TODO: Fix alignment and size
+            }
             ApplePaySetupButton(paymentButtonType: .setUp)
+                .frame(height: 44)
                 .onTapGesture {
                     PKPassLibrary().openPaymentSetup()
             }

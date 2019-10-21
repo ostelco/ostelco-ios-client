@@ -126,25 +126,12 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
-    }
-    
-    func testUserHasSeenTheESimOnboarding() {
-        let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true)
-        let region = RegionResponse(
-            region: Region(id: "sg", name: "Singapore"),
-            status: .APPROVED,
-            simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
-        )
-        
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
     
     func testUserHasSeenTheESimInstructions() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasSeenESimOnboarding: true, hasSeenESIMInstructions: true)
+        let localContext = RegionOnboardingContext(hasSeenESIMInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,

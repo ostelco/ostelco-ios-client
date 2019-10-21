@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lsf-aj-zcC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7y7-CI-oP5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -13,24 +13,24 @@
             <objects>
                 <viewController storyboardIdentifier="ESIMInstructionsViewController" id="7y7-CI-oP5" customClass="ESIMInstructionsViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kKs-eL-NW4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-11-IYb" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="32" y="44" width="350" height="0.5"/>
+                                <rect key="frame" x="32" y="88" width="350" height="10.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBu-JG-9LU" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="714" width="366" height="50"/>
+                                <rect key="frame" x="24" y="768" width="366" height="50"/>
                                 <state key="normal" title="I'm ready to set up my eSIM"/>
                                 <connections>
                                     <action selector="primaryButtonTapped:" destination="7y7-CI-oP5" eventType="touchUpInside" id="9as-v0-bv4"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="do3-8p-zAP">
-                                <rect key="frame" x="24" y="76.5" width="366" height="601.5"/>
+                                <rect key="frame" x="24" y="130.5" width="366" height="601.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-m4-Wv4">
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="601.5"/>
@@ -145,121 +145,6 @@
             </objects>
             <point key="canvasLocation" x="294" y="1300"/>
         </scene>
-        <!--On Boarding View Controller-->
-        <scene sceneID="OKx-hg-ozQ">
-            <objects>
-                <viewController id="Lsf-aj-zcC" customClass="ESIMOnBoardingViewController" customModule="Oya_Development_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3f0-SH-REC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-aQ-DYw" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="88" width="366" height="33.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="textColor" name="textHeading"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Three steps to get your 1GB of free data" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-xd-unb" customClass="BodyTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="155.5" width="366" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="lHf-a4-RCd" customClass="BackgroundRoundedImageView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="208" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="8tn-c1-Le8"/>
-                                    <constraint firstAttribute="height" constant="25" id="PU3-Bi-iAD"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-wI-seC" customClass="BackgroundRoundedImageView" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="265" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="SyW-uI-YZG"/>
-                                    <constraint firstAttribute="height" constant="25" id="UdC-Kp-khd"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepArrowIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-xm-Fnb">
-                                <rect key="frame" x="24" y="322" width="50" height="50"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-UT-kpb" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="210" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="stepItemUnlocked"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your identity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHa-f2-C0l" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="267" width="144" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="stepItemUnlocked"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up data = eSIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-iQ-nVD" customClass="StepsTextLabel" customModule="OstelcoStyles">
-                                <rect key="frame" x="65" y="336.5" width="146" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="stepItemUnlocked"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Sv-hb7" customClass="PrimaryButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="24" y="768" width="366" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="continueTapped:" destination="Lsf-aj-zcC" eventType="touchUpInside" id="ruS-j3-ll7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clz-Qn-znE" customClass="LinkTextButton" customModule="OstelcoStyles">
-                                <rect key="frame" x="163.5" y="701" width="87" height="33"/>
-                                <state key="normal" title="Need help?">
-                                    <color key="titleColor" name="textLink"/>
-                                </state>
-                                <connections>
-                                    <action selector="needHelpTapped:" destination="Lsf-aj-zcC" eventType="touchUpInside" id="kGy-ht-bq2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" name="background"/>
-                        <constraints>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="zAV-xd-unb" secondAttribute="trailing" constant="24" id="4S2-Uj-PU4"/>
-                            <constraint firstItem="lHf-a4-RCd" firstAttribute="top" secondItem="zAV-xd-unb" secondAttribute="bottom" constant="32" id="ALY-q0-dkL"/>
-                            <constraint firstItem="FFx-xm-Fnb" firstAttribute="top" secondItem="sfy-wI-seC" secondAttribute="bottom" constant="32" id="Ahv-xY-k4m"/>
-                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="top" secondItem="fki-HZ-HBP" secondAttribute="top" constant="44" id="EqN-Nf-DUo"/>
-                            <constraint firstItem="H3z-aQ-DYw" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="MN0-MU-nyL"/>
-                            <constraint firstItem="zPQ-UT-kpb" firstAttribute="centerY" secondItem="lHf-a4-RCd" secondAttribute="centerY" id="N9l-xR-vHc"/>
-                            <constraint firstItem="lHf-a4-RCd" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="QFE-lN-Dnt"/>
-                            <constraint firstItem="sfy-wI-seC" firstAttribute="top" secondItem="lHf-a4-RCd" secondAttribute="bottom" constant="32" id="QbM-3h-O7k"/>
-                            <constraint firstItem="CHa-f2-C0l" firstAttribute="centerY" secondItem="sfy-wI-seC" secondAttribute="centerY" id="QsI-8n-2sz"/>
-                            <constraint firstItem="zPQ-UT-kpb" firstAttribute="leading" secondItem="lHf-a4-RCd" secondAttribute="trailing" constant="16" id="RAM-vT-j8C"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CHa-f2-C0l" secondAttribute="trailing" symbolic="YES" id="SlY-Hk-zg1"/>
-                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="TN0-sT-rmy"/>
-                            <constraint firstItem="N1r-Sv-hb7" firstAttribute="top" secondItem="clz-Qn-znE" secondAttribute="bottom" constant="34" id="W8r-mu-LsO"/>
-                            <constraint firstItem="FFx-xm-Fnb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="WsV-Fc-OaR"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="N1r-Sv-hb7" secondAttribute="trailing" constant="24" id="X2V-hr-Vbj"/>
-                            <constraint firstItem="CHa-f2-C0l" firstAttribute="leading" secondItem="zPQ-UT-kpb" secondAttribute="leading" id="YKK-0b-tuz"/>
-                            <constraint firstItem="zAV-xd-unb" firstAttribute="top" secondItem="H3z-aQ-DYw" secondAttribute="bottom" constant="34" id="YSo-aa-2GN"/>
-                            <constraint firstItem="clz-Qn-znE" firstAttribute="centerX" secondItem="3f0-SH-REC" secondAttribute="centerX" id="dGt-vs-hAg"/>
-                            <constraint firstItem="6zE-iQ-nVD" firstAttribute="centerY" secondItem="FFx-xm-Fnb" secondAttribute="centerY" id="dKV-Dj-K2d"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6zE-iQ-nVD" secondAttribute="trailing" symbolic="YES" id="dWn-wh-fX7"/>
-                            <constraint firstItem="sfy-wI-seC" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="dyJ-Jk-XRl"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zPQ-UT-kpb" secondAttribute="trailing" symbolic="YES" id="j1E-BX-4L6"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="trailing" secondItem="H3z-aQ-DYw" secondAttribute="trailing" constant="24" id="no6-6o-6ny"/>
-                            <constraint firstItem="6zE-iQ-nVD" firstAttribute="leading" secondItem="CHa-f2-C0l" secondAttribute="leading" id="oUN-Wv-rie"/>
-                            <constraint firstItem="zAV-xd-unb" firstAttribute="leading" secondItem="fki-HZ-HBP" secondAttribute="leading" constant="24" id="ssp-UB-cfe"/>
-                            <constraint firstItem="fki-HZ-HBP" firstAttribute="bottom" secondItem="N1r-Sv-hb7" secondAttribute="bottom" constant="44" id="yPz-ys-rZ1"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="fki-HZ-HBP"/>
-                    </view>
-                    <connections>
-                        <outlet property="step1Icon" destination="lHf-a4-RCd" id="rgs-la-bNV"/>
-                        <outlet property="step2Icon" destination="sfy-wI-seC" id="1Mx-Vz-drx"/>
-                        <outlet property="step3Icon" destination="FFx-xm-Fnb" id="h7H-Kv-C38"/>
-                        <segue destination="7y7-CI-oP5" kind="show" identifier="showESIMInstructionsCarousel" id="eUh-kH-S1C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TFD-12-WhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="135" y="58"/>
-        </scene>
         <!--Sign Up Completed View Controller-->
         <scene sceneID="bMQ-md-hBk">
             <objects>
@@ -332,19 +217,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="14" height="12"/>
-        <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="background">
             <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="stepItemUnlocked">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="textHeading">
             <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="textLink">
-            <color red="0.6705882352941176" green="0.62352941176470589" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

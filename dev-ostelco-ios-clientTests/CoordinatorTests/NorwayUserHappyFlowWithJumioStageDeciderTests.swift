@@ -25,7 +25,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext()
+        let localContext = RegionOnboardingContext(hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -46,6 +46,6 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimOnboarding)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
     }
 }

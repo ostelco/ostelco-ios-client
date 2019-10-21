@@ -16,16 +16,22 @@ struct PurchaseHistoryView: View {
     var body: some View {
         VStack {
             List(store.purchaseRecords, id: \.name) { record in
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text(record.date)
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(OstelcoColor.inputLabelAny.toColor)
                     HStack {
                         Text(record.name)
+                            .font(.system(size: 17))
+                            .foregroundColor(OstelcoColor.inputLabelAny.toColor)
                         Spacer()
                         Text(record.amount)
+                            .font(.system(size: 17))
+                            .foregroundColor(OstelcoColor.inputLabelAny.toColor)
                     }
                 }.padding()
             }
-        }.navigationBarTitle("Account", displayMode: .inline)
+        }.navigationBarTitle("Purchase History")
     }
 }
 

@@ -31,7 +31,6 @@ public class OnboardingContext {
 }
 
 public class RegionOnboardingContext {
-    public var hasSeenESimOnboarding: Bool
     public var hasSeenESIMInstructions: Bool
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasCameraProblem: Bool
@@ -51,8 +50,7 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESimOnboarding: Bool = false, hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
-        self.hasSeenESimOnboarding = hasSeenESimOnboarding
+    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
@@ -89,7 +87,6 @@ public struct StageDecider {
         case address
         case pendingVerification
         case verifyMyInfo(code: String)
-        case eSimOnboarding
         case eSimInstructions
         case ohNo(OhNoIssueType)
         case cameraProblem
@@ -99,7 +96,7 @@ public struct StageDecider {
     public init() {}
 
     private func eSIMStage(_ region: RegionResponse, _ localContext: RegionOnboardingContext) -> RegionStage {
-        var stages: [RegionStage] = [.eSimOnboarding, .eSimInstructions, .done]
+        var stages: [RegionStage] = [.eSimInstructions, .done]
         
         func remove(_ stage: RegionStage) {
             if let index = stages.firstIndex(of: stage) {
@@ -107,16 +104,11 @@ public struct StageDecider {
             }
         }
         
-        if localContext.hasSeenESimOnboarding {
-            remove(.eSimOnboarding)
-        }
-        
         if localContext.hasSeenESIMInstructions {
             remove(.eSimInstructions)
         }
         
         if let profile = region.getGraphQLModel().getSimProfile(), profile.status == .installed {
-            remove(.eSimOnboarding)
             remove(.eSimInstructions)
         }
         return stages[0]
@@ -222,7 +214,7 @@ public struct StageDecider {
             remove(.pendingVerification)
             remove(.jumio)
         }
-        if kycStatusMap.JUMIO == .PENDING && region.status != .AVAILABLE {
+        if kycStatusMap.JUMIO == .PENDING && region.status != .AVAILABLE  && region.status != .PENDING {
             remove(.jumio)
         }
         

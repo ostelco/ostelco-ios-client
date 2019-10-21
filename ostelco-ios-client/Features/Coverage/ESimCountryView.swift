@@ -63,12 +63,14 @@ struct ESimCountryView: View {
     let image: UIImage
     let country: String
     let heading: String?
+    let icon: String?
     let action: (() -> Void)?
     
-    init(image: UIImage, country: String, heading: String? = nil, action: (() -> Void)? = nil) {
+    init(image: UIImage, country: String, heading: String? = nil, icon: String? = nil, action: (() -> Void)? = nil) {
         self.image = image
         self.country = country
         self.heading = heading
+        self.icon = icon
         self.action = action
     }
     
@@ -88,6 +90,12 @@ struct ESimCountryView: View {
                     .foregroundColor(OstelcoColor.countryText.toColor)
             }.fixedSize()
             Spacer()
+            icon.map {
+                Image(systemName: $0)
+                    .font(.system(size: 21, weight: .bold))
+                    .foregroundColor(OstelcoColor.highlighted.toColor)
+                
+            }
             action.map { ContextualButton(label: "GET", action: $0) }
         }.padding(.horizontal, 20)
     }
