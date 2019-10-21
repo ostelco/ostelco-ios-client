@@ -15,36 +15,15 @@ public class OstelcoFont {
     
     public init(fontType: OstelcoFontType,
                 fontSize: OstelcoFontSize) {
-        OstelcoFont.registerFontsIfNeeded()
         self.fontType = fontType
         self.fontSize = fontSize
     }
     
     public var toUIFont: UIFont {
-        guard let font = UIFont(name: self.fontType.fontName, size: self.fontSize.toCGFloat) else {
-            debugPrint("- OstelcoFont: Couldn't find font named \(self.fontType.fontName)")
-            return UIFont.systemFont(ofSize: self.fontSize.toCGFloat)
-        }
-        
-        return font
+        return UIFont.systemFont(ofSize: self.fontSize.toCGFloat, weight: self.fontType.fontWeight)
     }
     
     public static var bodyText = OstelcoFont(fontType: .regular, fontSize: .body)
-    
-    /// To use fonts from a framework, you have to register them with CoreText
-    /// manually before calling `UIFont(name:size:)`. This method checks if the
-    /// registration has already occurred, and then registers all fonts if it hasn't.
-    private static var _fontsRegistered = false
-    private static func registerFontsIfNeeded() {
-        guard !_fontsRegistered else {
-            // Fonts are already registered
-            return
-        }
-        
-        OstelcoFontType.allCases.forEach { $0.register() }
-        
-        _fontsRegistered = true
-    }
 }
 
 /// The types of font as indicated in https://app.zeplin.io/project/5c8b989f46989524fb0258ac/styleguide
@@ -53,38 +32,14 @@ public enum OstelcoFontType: CaseIterable {
     case medium
     case regular
     
-    var fontName: String {
+    var fontWeight: UIFont.Weight {
         switch self {
         case .bold:
-            return "Telenor-Bold"
+            return .bold
         case .medium:
-            return "Telenor-Medium"
+            return .medium
         case .regular:
-            return "Telenor"
-        }
-    }
-
-    func register() {
-        // Grab the current bundle
-        let bundle = Bundle(for: OstelcoFont.self)
-        
-        guard let fontFileURL = bundle.url(forResource: self.fontName, withExtension: "otf") else {
-            debugPrint("- OstelcoFont: Could not get path to font \(self.fontName) from bundle")
-            return
-        }
-        
-        guard
-            let fontData = try? Data(contentsOf: fontFileURL),
-            let dataProvider = CGDataProvider(data: fontData as NSData),
-            let font = CGFont(dataProvider) else {
-                
-            debugPrint("- OstelcoFont: Failed to create CGFont from data for \(self.fontName)")
-            return
-        }
-        
-        var errorRef: Unmanaged<CFError>?
-        if !CTFontManagerRegisterGraphicsFont(font, &errorRef) {
-            debugPrint("- OstelcoFont: Failed to register font! Error: \(String(describing: errorRef?.takeUnretainedValue()))")
+            return .regular
         }
     }
 }
