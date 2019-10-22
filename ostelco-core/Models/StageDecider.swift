@@ -60,7 +60,7 @@ public class RegionOnboardingContext {
     }
 }
 
-public enum IdentityVerificationOption {
+public enum IdentityVerificationOption: CaseIterable {
     case singpass
     case scanIC
     case jumio
@@ -174,13 +174,10 @@ public struct StageDecider {
         case .jumio:
             midStages.append(.cameraProblem)
             midStages.append(.jumio)
+            midStages.append(.pendingVerification)
         case .none:
             let options = identityOptionsForRegionID(region.region.id)
-            if options.count > 1 {
-                midStages.append(.selectIdentityVerificationMethod(options))
-            } else {
-                midStages.append(contentsOf: [.cameraProblem, .jumio, .pendingVerification])
-            }
+            midStages.append(.selectIdentityVerificationMethod(options))
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
