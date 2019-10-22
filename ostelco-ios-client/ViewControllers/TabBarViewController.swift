@@ -16,6 +16,8 @@ class TabBarViewController: ApplePayViewController {
     let primeAPI = APIManager.shared.primeAPI
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         embedSwiftUI(TabBarView(controller: self))
     }
     

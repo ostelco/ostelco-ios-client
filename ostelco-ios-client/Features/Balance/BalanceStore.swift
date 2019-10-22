@@ -12,7 +12,7 @@ import SwiftUI
 final class BalanceStore: ObservableObject {
     
     @Published var products: [Product] = []
-    @Published var selectedProduct: Product? = nil
+    @Published var selectedProduct: Product?
     @Published var balance: String?
     @Published var hasAtLeastOneInstalledSimProfile: Bool = false
     

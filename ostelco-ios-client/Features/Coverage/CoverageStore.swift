@@ -11,7 +11,7 @@ import ostelco_core
 final class CoverageStore: ObservableObject {
     @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
-    @Published var countryCodeToRegionCodeMap = [:] as [String:[String]]
+    @Published var countryCodeToRegionCodeMap = [:] as [String: [String]]
     @Published var regionGroups: [RegionGroupViewModel] = []
     
     @Published var selectedRegionGroup: RegionGroupViewModel?
@@ -59,7 +59,7 @@ final class CoverageStore: ObservableObject {
             
             let allowedCountryCodes = Array(
                 countryCodeToRegionCodeMap
-                    .filter({ (key, value) in Set(value).intersection(regionCodes).isNotEmpty })
+                    .filter({ (_, value) in Set(value).intersection(regionCodes).isNotEmpty })
                     .keys
                 )
             
@@ -86,7 +86,7 @@ final class CoverageStore: ObservableObject {
         }
         
         // TODO: We could make this logic smarter. This selects the region to use in cases for a country has multiple regions to select from.
-        guard let region = regions?.filter({ $0.region.id == regionCodes.first }).first else {
+        guard let region = regions?.first(where: { $0.region.id == regionCodes.first }) else {
             fatalError("If there are no regions for the given region code, our configuration is wrong.")
         }
         
