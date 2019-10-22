@@ -80,7 +80,7 @@ extension LocationProblem {
         switch self {
         case .disabledInSettings,
              .deniedByUser:
-            return NSLocalizedString("Settings", comment: "Title for primary action button when user needs to fix location settings")
+            return NSLocalizedString("Go to Settings", comment: "Title for primary action button when user needs to fix location settings")
         case .notDetermined,
              .authorizedButWrongCountry:
             return NSLocalizedString("Retry", comment: "Title for primary action button when user needs to retry selecting a country")
