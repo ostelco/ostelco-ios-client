@@ -19,15 +19,15 @@ struct PurchaseHistoryView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(record.date)
                         .font(.system(size: 17, weight: .bold))
-                        .foregroundColor(OstelcoColor.inputLabelAny.toColor)
+                        .foregroundColor(OstelcoColor.inputLabel.toColor)
                     HStack {
                         Text(record.name)
                             .font(.system(size: 17))
-                            .foregroundColor(OstelcoColor.inputLabelAny.toColor)
+                            .foregroundColor(OstelcoColor.inputLabel.toColor)
                         Spacer()
                         Text(record.amount)
                             .font(.system(size: 17))
-                            .foregroundColor(OstelcoColor.inputLabelAny.toColor)
+                            .foregroundColor(OstelcoColor.inputLabel.toColor)
                     }
                 }.padding()
             }

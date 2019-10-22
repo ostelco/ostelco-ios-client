@@ -27,7 +27,7 @@ public struct OstelcoContainer<Content: View>: View {
             content()
         }
         .frame(maxWidth: .infinity, minHeight: 94.0)
-        .background(OstelcoColor.background.toColor)
+        .background(OstelcoColor.foreground.toColor)
         
         switch state {
         case .inactive:
