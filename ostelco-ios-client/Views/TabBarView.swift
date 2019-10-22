@@ -22,7 +22,7 @@ struct TabBarView: View {
     
     init(controller: TabBarViewController) {
         self.controller = controller
-        UITabBar.appearance().barTintColor = OstelcoColor.backgroundAny.toUIColor
+        UITabBar.appearance().barTintColor = OstelcoColor.background.toUIColor
         // Remove top border
         UITabBar.appearance().shadowImage = nil
         UITabBar.appearance().clipsToBounds = true
@@ -36,7 +36,7 @@ struct TabBarView: View {
             // TODO: This seems like a hacky way to be able to change current tab from a child view.
             BalanceView(currentTab: $currentTab).environmentObject(BalanceStore(controller: controller))
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "house")
                         .font(.system(size: 24))
                     Text("Balance")
                         .font(.system(size: 10))

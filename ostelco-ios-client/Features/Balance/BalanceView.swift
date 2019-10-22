@@ -98,7 +98,7 @@ struct BalanceView: View {
                 }) {
                     Text("Buy more Data")
                         .font(.system(size: 21, weight: .semibold))
-                        .foregroundColor(OstelcoColor.backgroundLight.toColor)
+                        .foregroundColor(OstelcoColor.background.toColor)
                     }
                 .frame(width: 250, height: 56)
                 .background(OstelcoColor.primaryButtonBackground.toColor)
@@ -131,7 +131,7 @@ struct BalanceView: View {
                         HStack {
                             Spacer()
                         }
-                    }.background(OstelcoColor.fogAny.toColor)
+                    }.background(OstelcoColor.fog.toColor)
                     ZStack {
                         VStack {
                             Spacer()
@@ -140,7 +140,7 @@ struct BalanceView: View {
                                     OstelcoTitle(label: "Welcome to OYA!")
                                     Text("Where would you like to start using your first 1GB of OYA data?")
                                         .font(.system(size: 21))
-                                        .foregroundColor(OstelcoColor.inputLabelAny.toColor)
+                                        .foregroundColor(OstelcoColor.inputLabel.toColor)
                                         .multilineTextAlignment(.center )
                                     Button(action: {
                                         self.currentTab = .coverage
@@ -149,25 +149,26 @@ struct BalanceView: View {
                                             HStack {
                                                 Image(systemName: "globe")
                                                     .font(.system(size: 30, weight: .light))
-                                                    .foregroundColor(OstelcoColor.backgroundAny.toColor)
+                                                    .foregroundColor(OstelcoColor.primaryButtonLabel.toColor)
                                                 Spacer()
                                             }.padding(.leading, 10)
                                             Text("See Available Countries")
                                                 .font(.system(size: 18, weight: .semibold))
-                                                .foregroundColor(OstelcoColor.backgroundAny.toColor)
+                                                .foregroundColor(OstelcoColor.primaryButtonLabel.toColor)
                                         }
                                     }
                                     .frame(maxWidth: .infinity, minHeight: 50)
-                                    .background(OstelcoColor.controlTintAny.toColor)
+                                    .background(OstelcoColor.primaryButtonBackground.toColor)
                                     .cornerRadius(27.5)
                                 }.padding(25)
                             }
                         }
+                        
                         // Lazy way to hide the bottom rounded corners from the above container, a better solution would be to configure the corners in the container itself.
                         VStack {
                             Spacer()
                             Rectangle()
-                                .fill(OstelcoColor.backgroundAny.toColor)
+                                .fill(OstelcoColor.foreground.toColor)
                                 .frame(maxWidth: .infinity, maxHeight: 25)
                         }
                     }
