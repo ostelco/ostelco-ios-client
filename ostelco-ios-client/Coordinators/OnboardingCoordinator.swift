@@ -530,9 +530,10 @@ class RegionOnboardingCoordinator {
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
         switch stage {
-        case .selectIdentityVerificationMethod:
+        case .selectIdentityVerificationMethod(let options):
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
             selectEKYCMethod.delegate = self
+            selectEKYCMethod.options = options
             navigationController.setViewControllers([selectEKYCMethod], animated: true)
         case .singpass:
             singpassCoordinator = SingPassCoordinator(delegate: self, primeAPI: primeAPI)

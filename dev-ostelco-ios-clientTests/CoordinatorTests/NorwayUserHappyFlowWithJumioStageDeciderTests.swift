@@ -20,12 +20,12 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: nil, myInfo: nil, nricFin: nil, addressPhone: nil)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.jumio]))
     }
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,

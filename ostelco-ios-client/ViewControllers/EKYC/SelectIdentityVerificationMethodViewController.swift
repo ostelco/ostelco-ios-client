@@ -19,14 +19,17 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     @IBOutlet private var singPassRadioButton: RadioButton!
     @IBOutlet private var scanICRadioButton: RadioButton!
+    @IBOutlet private var jumioRadioButton: RadioButton!
     @IBOutlet private var continueButton: UIButton!
+    @IBOutlet private var singPassContainer: UIStackView!
+    @IBOutlet private var scanICContainer: UIStackView!
+    @IBOutlet private var jumioContainer: UIStackView!
+    
     
     var spinnerView: UIView?
+    var options: [IdentityVerificationOption]!
     
-    private lazy var radioButtons: [RadioButton] = [
-        self.singPassRadioButton,
-        self.scanICRadioButton
-    ]
+    private var radioButtons: [RadioButton] = []
         
     weak var delegate: SelectIdentityVerificationMethodDelegate?
     
@@ -38,6 +41,8 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setRadioButtons()
+        self.toggleRadioButtonContainersVisibility()
         self.updateContinue()
     }
 
@@ -59,11 +64,38 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         if self.singPassRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             self.delegate?.selected(option: .singpass)
-        } else if self.scanICRadioButton.isCurrentSelected {
+        } else if self.scanICRadioButton.isCurrentSelected || self.jumioRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             self.delegate?.selected(option: .scanIC)
         } else {
             ApplicationErrors.assertAndLog("At least one of these should be checked if continue is enabled!")
+        }
+    }
+    
+    private func setRadioButtons() {
+        self.options.forEach { option in
+            switch option {
+            case .singpass:
+                radioButtons.append(self.singPassRadioButton)
+            case .scanIC:
+                radioButtons.append(self.scanICRadioButton)
+            case .jumio:
+                radioButtons.append(self.jumioRadioButton)
+            }
+        }
+    }
+    
+    private func toggleRadioButtonContainersVisibility() {
+        let excludedOptions = Set(IdentityVerificationOption.allCases).subtracting(Set(self.options))
+        excludedOptions.forEach {
+            switch $0 {
+            case .singpass:
+                self.singPassContainer.isHidden = true
+            case .scanIC:
+                self.scanICContainer.isHidden = true
+            case .jumio:
+                self.jumioContainer.isHidden = true
+            }
         }
     }
     
@@ -86,6 +118,10 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     @IBAction private func scanICTapped() {
         self.selectRadioButton(self.scanICRadioButton)
+    }
+    
+    @IBAction func jumioTapped(_ sender: Any) {
+        self.selectRadioButton(self.jumioRadioButton)
     }
 }
 
