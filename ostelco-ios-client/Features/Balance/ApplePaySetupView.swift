@@ -24,13 +24,6 @@ struct ApplePaySetupView: View {
                 .multilineTextAlignment(.center)
             Spacer()
             
-            Button(action: {
-                UIApplication.shared.open(ExternalLink.oyaWebpage.url)
-            }) {
-                Text("Read about our current prices")
-                .font(.system(size: 21, weight: .semibold))
-                .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
-            }
             ApplePaySetupButton(paymentButtonType: .setUp)
                 .frame(height: 44)
                 .onTapGesture {
