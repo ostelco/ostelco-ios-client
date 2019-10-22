@@ -48,7 +48,7 @@ struct RegionGroupViewModel: Identifiable {
 struct CoverageView: View {
     
     @EnvironmentObject var store: CoverageStore
-    @State private var selectedRegionGroup: RegionGroupViewModel? = nil
+    @State private var selectedRegionGroup: RegionGroupViewModel?
     @State private var showModal: Bool = false
         
     private func renderRegionGroup(_ regionGroup: RegionGroupViewModel) -> AnyView {
@@ -61,7 +61,7 @@ struct CoverageView: View {
            )
         } else {
             return AnyView(
-                NavigationLink(destination: RegionGroupView(regionGroup: regionGroup ,countrySelected: { country in
+                NavigationLink(destination: RegionGroupView(regionGroup: regionGroup, countrySelected: { country in
                    // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
                     self.store.startOnboardingForCountry(country)
             }).environmentObject(self.store)) {
@@ -78,7 +78,7 @@ struct CoverageView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    OstelcoTitle(label: store.country?.nameOrPlaceholder ?? "(Unknown)", image: "location.fill")
+                    OstelcoTitle(label: store.country?.nameOrPlaceholder ?? "Unknown", image: "location.fill")
                     
                     RegionListByLocation()
                     
