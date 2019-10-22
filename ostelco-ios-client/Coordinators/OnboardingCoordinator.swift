@@ -512,7 +512,15 @@ class RegionOnboardingCoordinator {
             
             UserManager.shared.customer = context.customer
             
-            let stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: self.region), localContext: self.localContext)
+            let region = context.regions
+                .map {
+                    $0.fragments.regionDetailsFragment
+                }
+            .first(where: {
+                $0.region.id == self.region.region.id
+            })!
+            
+            let stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: region), localContext: self.localContext)
             
             self.afterDismissing {
                 self.navigateTo(stage)
@@ -563,6 +571,7 @@ class RegionOnboardingCoordinator {
             let addressController = AddressEditViewController.fromStoryboard()
             addressController.mode = .nricEnter
             addressController.delegate = self
+            addressController.regionCode = region.region.id
             navigationController.setViewControllers([addressController], animated: true)
         case .pendingVerification:
             let pending = PendingVerificationViewController.fromStoryboard()

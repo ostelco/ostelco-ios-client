@@ -64,9 +64,12 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         if self.singPassRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "singpass"))
             self.delegate?.selected(option: .singpass)
-        } else if self.scanICRadioButton.isCurrentSelected || self.jumioRadioButton.isCurrentSelected {
+        } else if self.scanICRadioButton.isCurrentSelected {
             OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
             self.delegate?.selected(option: .scanIC)
+        } else if self.jumioRadioButton.isCurrentSelected {
+            OstelcoAnalytics.logEvent(.ChosenIDMethod(idMethod: "jumio"))
+            self.delegate?.selected(option: .jumio)
         } else {
             ApplicationErrors.assertAndLog("At least one of these should be checked if continue is enabled!")
         }
