@@ -25,7 +25,6 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     @IBOutlet private var scanICContainer: UIStackView!
     @IBOutlet private var jumioContainer: UIStackView!
     
-    
     var spinnerView: UIView?
     var options: [IdentityVerificationOption]!
     
@@ -123,7 +122,7 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
         self.selectRadioButton(self.scanICRadioButton)
     }
     
-    @IBAction func jumioTapped(_ sender: Any) {
+    @IBAction private func jumioTapped(_ sender: Any) {
         self.selectRadioButton(self.jumioRadioButton)
     }
 }

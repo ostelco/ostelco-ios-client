@@ -42,10 +42,7 @@ enum OnboardingPage: Int, CaseIterable {
         case .fullyDigital:
             return LinkableText(
                 fullText: NSLocalizedString("OYA is fully digital\n\nNo need to wait for a SIM card in the mail\n\nTry it now! With 1GB free data", comment: "Login onboarding step 3 text"),
-                linkedPortion: Link(
-                    NSLocalizedString("fully digital", comment: "Login onboarding step 3 linkable part"),
-                    url: ExternalLink.fullyDigital.url
-                )
+                linkedPortion: nil
             )
         }
     }

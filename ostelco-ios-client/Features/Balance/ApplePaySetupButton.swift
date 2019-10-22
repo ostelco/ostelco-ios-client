@@ -35,6 +35,7 @@ struct ApplePaySetupButton: UIViewRepresentable {
         
     }
 }
+
 struct ApplePaySetupButton_Previews: PreviewProvider {
     static var previews: some View {
         ApplePaySetupButton(paymentButtonType: .setUp)

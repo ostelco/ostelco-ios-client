@@ -24,7 +24,7 @@ struct RegionGroupCardView: View {
     
     var body: some View {
         Group {
-            Image(uiImage: UIImage.ostelco_illustration).renderingMode(Image.TemplateRenderingMode?.init(Image.TemplateRenderingMode.original))
+            Image(uiImage: UIImage.ostelco_illustration).renderingMode(Image.TemplateRenderingMode?(Image.TemplateRenderingMode.original))
         }.frame(maxWidth: .infinity)
         .padding(.top, 70)
         .padding(.bottom, 20)

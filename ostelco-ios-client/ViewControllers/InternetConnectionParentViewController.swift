@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class InternetConnectionParentViewController: UIViewController, InternetConnectionMonitorDelegate {
     
@@ -33,6 +34,12 @@ class InternetConnectionParentViewController: UIViewController, InternetConnecti
             self.workingChild = self.children.first
             
             let noInternet = OhNoViewController.fromStoryboard(type: .noInternet)
+            if MFMailComposeViewController.canSendMail() {
+                noInternet.primaryButtonAction = {
+                    let email = MFMailComposeViewController()
+                    email.setToRecipients(["support@oya.world"])
+                }
+            }
             embedFullViewChild(noInternet)
         }
     }

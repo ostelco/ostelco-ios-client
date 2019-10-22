@@ -138,7 +138,7 @@ struct BalanceView: View {
                             OstelcoContainer {
                                 VStack(spacing: 20) {
                                     OstelcoTitle(label: "Welcome to OYA!")
-                                    Text("Where would you like to use your first 1GB of OYA data?")
+                                    Text("Where would you like to start using your first 1GB of OYA data?")
                                         .font(.system(size: 21))
                                         .foregroundColor(OstelcoColor.inputLabelAny.toColor)
                                         .multilineTextAlignment(.center )

@@ -18,7 +18,7 @@ enum LegalLink: CaseIterable {
         switch self {
         case .termsAndConditions:
             return LinkableText(
-                fullText: NSLocalizedString("I hereby agree to the Terms & Conditions", comment: "Label for agreeing to the terms"),
+                fullText: NSLocalizedString("I agree to the Terms & Conditions", comment: "Label for agreeing to the terms"),
                 linkedPortion: Link(
                     NSLocalizedString("Terms & Conditions", comment: "Label for agreeing to the terms: linkable part"),
                     url: ExternalLink.termsAndConditions.url
