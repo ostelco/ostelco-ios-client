@@ -17,56 +17,19 @@ class OhNoViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: BodyTextLabel!
     @IBOutlet private var gifView: LoopingVideoView!
+    @IBOutlet private var needHelpButton: UIButton!
     
     /// Convenience method for loading and populating with values for a given type
     ///
     /// - Parameter type: The type to use to configure copy and image
     /// - Returns: The instantiated and configured VC.
     static func fromStoryboard(type: OhNoIssueType) -> OhNoViewController {
-        let vc = self.fromStoryboard()
-        vc.displayTitle = type.displayTitle
-        vc.videoURL = type.gifVideo.url(for: vc.traitCollection.userInterfaceStyle)
-        vc.buttonTitle = type.buttonTitle
-        vc.boldableText = type.boldableText
-        vc.linkableText = type.linkableText
-        
+        let vc = fromStoryboard()
+        vc.type = type
         return vc
     }
     
-    /// The title at the top of the screen
-    var displayTitle: String = "Oh no" {
-        didSet {
-            self.configureTitle()
-        }
-    }
-    
-    /// The text displayed on the button
-    var buttonTitle: String = "Try again" {
-        didSet {
-            self.configurePrimaryButton()
-        }
-    }
-    
-    /// [optional] Text which may or may not contain bolding. Note that either boldable or linkable text should be provided.
-    var boldableText: BoldableText? {
-        didSet {
-            self.configureDescription()
-        }
-    }
-    
-    /// [optional] Text containing a link. Note that either boldable or linkable text should be provided.
-    var linkableText: LinkableText? {
-        didSet {
-            self.configureDescription()
-        }
-    }
-    
-    /// The gif video to use to entertain the user while explaining something went wrong.
-    var videoURL: URL? {
-        didSet {
-            self.configureGIFVideo()
-        }
-    }
+    var type: OhNoIssueType = .noInternet
     
     /// The action to take when the user taps the primary button.
     var primaryButtonAction: (() -> Void)?
@@ -74,47 +37,49 @@ class OhNoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configurePrimaryButton()
-        self.configureDescription()
-        self.configureTitle()
-        self.configureGIFVideo()
+        configurePrimaryButton()
+        configureDescription()
+        configureTitle()
+        configureGIFVideo()
+        
+        needHelpButton.isHidden = type == .noInternet
     }
     
     private func configureDescription() {
-        guard self.descriptionLabel != nil else {
+        guard descriptionLabel != nil else {
             // Come back once the view has loaded.
             return
         }
         
-        if let boldable = self.boldableText {
-            self.descriptionLabel.setBoldableText(boldable)
-        } else if let linkable = self.linkableText {
-            self.descriptionLabel.setLinkableText(linkable)
+        if let boldable = type.boldableText {
+            descriptionLabel.setBoldableText(boldable)
+        } else if let linkable = type.linkableText {
+            descriptionLabel.setLinkableText(linkable)
         } else {
-            self.descriptionLabel.text = "Something went wrong.\n\nTry again in a while, or contact support"
+            descriptionLabel.text = "Something went wrong.\n\nTry again in a while, or contact support"
         }
     }
     
     private func configureTitle() {
-        self.titleLabel?.text = self.displayTitle
+        titleLabel?.text = type.displayTitle
     }
     
     private func configurePrimaryButton() {
-        primaryButton?.isHidden = primaryButtonAction == nil
-        primaryButton?.setTitle(self.buttonTitle, for: .normal)
+        primaryButton.isHidden = primaryButtonAction == nil
+        primaryButton.setTitle(type.buttonTitle, for: .normal)
     }
     
     private func configureGIFVideo() {
-        self.gifView?.videoURL = self.videoURL
-        self.gifView?.play()
+        gifView?.videoURL = type.gifVideo.url(for: traitCollection.userInterfaceStyle)
+        gifView?.play()
     }
     
     @IBAction private func needHelpTapped() {
-        self.showNeedHelpActionSheet()
+        showNeedHelpActionSheet()
     }
     
     @IBAction private func primaryButtonTapped() {
-        guard let action = self.primaryButtonAction else {
+        guard let action = primaryButtonAction else {
             ApplicationErrors.assertAndLog("You probably want to do something here!")
             return
         }
@@ -166,11 +131,8 @@ extension OhNoIssueType {
     var linkableText: LinkableText? {
         if case .noInternet = self {
             return LinkableText(
-                fullText: NSLocalizedString("Try again in a while or contact support\n\nsupport@oya.world", comment: "Error message when user has no connection"),
-                linkedPortion: Link(
-                    NSLocalizedString("support@oya.world", comment: "Error message when user has no connection: linkable part"),
-                    url: URL(string: "mailto:support@oya.world")!
-                )
+                fullText: NSLocalizedString("Try again in a while", comment: "Error message when user has no connection"),
+                linkedPortion: nil
             )
         }
         return nil
@@ -208,8 +170,10 @@ extension OhNoIssueType {
             return NSLocalizedString("Try again", comment: "Retry button title when MyInfo fails.")
         case .ekycRejected:
             return NSLocalizedString("Retry", comment: "Retry button title when eKYC is rejected.")
-        case .noInternet, .serverUnreachable:
-            return NSLocalizedString("Check again", comment: "Retry button title when server is unreachable or no network.")
+        case .noInternet:
+            return NSLocalizedString("Contact Support", comment: "Contact Support button title when no network.")
+        case .serverUnreachable:
+            return NSLocalizedString("Check again", comment: "Retry button title when server is unreachable.")
         case .paymentFailedGeneric,
              .paymentFailedCardDeclined:
             return NSLocalizedString("OK", comment: "Retry button title when payment fails.")
