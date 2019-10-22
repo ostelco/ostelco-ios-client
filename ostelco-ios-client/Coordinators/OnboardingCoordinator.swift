@@ -563,6 +563,7 @@ class RegionOnboardingCoordinator {
             let addressController = AddressEditViewController.fromStoryboard()
             addressController.mode = .nricEnter
             addressController.delegate = self
+            addressController.regionCode = region.region.id
             navigationController.setViewControllers([addressController], animated: true)
         case .pendingVerification:
             let pending = PendingVerificationViewController.fromStoryboard()
