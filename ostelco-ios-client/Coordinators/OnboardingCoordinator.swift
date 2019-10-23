@@ -56,8 +56,12 @@ class OnboardingCoordinator {
                 
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
-                self.afterDismissing {
-                    self.navigateTo(stage)
+                if stage == .home {
+                    self.delegate?.onboardingComplete()
+                } else {
+                    self.afterDismissing {
+                        self.navigateTo(stage)
+                    }
                 }
         }.recover { error in
             self.localContext.serverIsUnreachable = (error as NSError).code == -1004

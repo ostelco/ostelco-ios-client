@@ -40,6 +40,7 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        checkPermissions()
     }
     
     public func startUpdatingLocation() {
@@ -97,8 +98,19 @@ open class LocationController: NSObject, CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         assert(Thread.isMainThread)
+        checkPermissions()
         DispatchQueue.main.async {
             self.authChangeCallback?(status)
+        }
+    }
+    
+    func checkPermissions() {
+        if authorizationStatus == .restricted {
+            locationProblem = .restrictedByParentalControls
+        } else if authorizationStatus == .denied {
+            locationProblem = .deniedByUser
+        } else {
+            locationProblem = nil
         }
     }
 }
