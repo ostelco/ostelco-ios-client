@@ -89,7 +89,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioButGotRejected() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -142,7 +142,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemBeforeJumioWhenSelectingScanICInSingaporeIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCameraProblem: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCameraProblem: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -155,7 +155,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
     
     func testShowCameraProblemAfterVerifyIdentityOnboardingInNorwayIfThereIsACameraProblem() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCameraProblem: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCameraProblem: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "NO"),
             status: .PENDING,

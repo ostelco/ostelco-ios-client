@@ -35,6 +35,7 @@ public class RegionOnboardingContext {
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasCameraProblem: Bool
     public var hasCompletedJumio: Bool
+    public var hasSeenJumioInstructions: Bool
     public var serverIsUnreachable: Bool
     public var simProfile: SimProfile?
     
@@ -50,11 +51,12 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
+    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
         self.hasCompletedJumio = hasCompletedJumio
+        self.hasSeenJumioInstructions = hasSeenJumioInstructions
         self.serverIsUnreachable = serverIsUnreachable
         self.myInfoCode = myInfoCode
     }
@@ -83,6 +85,7 @@ public struct StageDecider {
         case selectIdentityVerificationMethod([IdentityVerificationOption])
         case singpass
         case nric
+        case jumioInstructions
         case jumio
         case address
         case pendingVerification
@@ -172,6 +175,7 @@ public struct StageDecider {
 
         switch localContext.selectedVerificationOption {
         case .jumio:
+            midStages.append(.jumioInstructions)
             midStages.append(.cameraProblem)
             midStages.append(.jumio)
             midStages.append(.pendingVerification)
@@ -181,7 +185,7 @@ public struct StageDecider {
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.cameraProblem, .jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: [.jumioInstructions, .cameraProblem, .jumio, .address, .pendingVerification])
         }
         
         if localContext.hasCameraProblem == false {
@@ -191,6 +195,10 @@ public struct StageDecider {
         if let code = localContext.myInfoCode {
             remove(.singpass)
             midStages.append(.verifyMyInfo(code: code))
+        }
+        
+        if localContext.hasSeenJumioInstructions {
+            remove(.jumioInstructions)
         }
         
         if localContext.hasCompletedJumio {
@@ -208,6 +216,7 @@ public struct StageDecider {
         }
         
         if kycStatusMap.JUMIO == .APPROVED {
+            remove(.jumioInstructions)
             remove(.pendingVerification)
             remove(.jumio)
         }
@@ -216,6 +225,7 @@ public struct StageDecider {
         }
         
         if kycStatusMap.JUMIO == .REJECTED && localContext.hasCompletedJumio {
+            remove(.jumioInstructions)
             remove(.pendingVerification)
             remove(.jumio)
             midStages.append(.ohNo(.ekycRejected))
