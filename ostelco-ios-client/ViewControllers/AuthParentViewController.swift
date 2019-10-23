@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate {
     var onboarding: OnboardingCoordinator?
+    var onboardingRoot: UIViewController?
+    var mainRoot: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +31,22 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
     func onboardingComplete() {
         onboarding = nil
         
-        let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
-        embedFullViewChild(tabs!)
+        onboardingRoot?.willMove(toParent: nil)
+        onboardingRoot?.view.removeFromSuperview()
+        onboardingRoot?.removeFromParent()
+        onboardingRoot = nil
+        
+        if mainRoot == nil {
+            let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
+            mainRoot = tabs
+            embedFullViewChild(tabs!)
+        }
     }
     
     @objc func setupOnboarding() {
         let navigationController = UINavigationController()
-        embedFullViewChild(navigationController)
+        onboardingRoot = navigationController
+        embedFullViewChild(navigationController, removePrevious: false)
         
         let onboarding = OnboardingCoordinator(navigationController: navigationController)
         onboarding.delegate = self
