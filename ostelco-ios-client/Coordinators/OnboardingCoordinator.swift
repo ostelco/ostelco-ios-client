@@ -118,15 +118,6 @@ class OnboardingCoordinator {
             navigationController.setViewControllers([awesome], animated: true)
         }
     }
-    
-    private func checkLocation(country: Country) -> LocationProblem? {
-        let controller = LocationController.shared
-        if controller.checkInCorrectCountry(country) {
-            return nil
-        } else {
-            return controller.locationProblem
-        }
-    }
 }
 
 extension OnboardingCoordinator: LoginDelegate {
@@ -512,20 +503,32 @@ class RegionOnboardingCoordinator {
             
             UserManager.shared.customer = context.customer
             
-            let region = context.regions
-                .map {
-                    $0.fragments.regionDetailsFragment
-                }
-            .first(where: {
+            let region = context.regions.map {
+                $0.fragments.regionDetailsFragment
+            }.first(where: {
                 $0.region.id == self.region.region.id
             })!
             
-            let stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: region), localContext: self.localContext)
+            let stage: StageDecider.RegionStage
+            if let problem = self.checkLocation(country: Country(region.region.id)) {
+                stage = .locationProblem(problem)
+            } else {
+                stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: region), localContext: self.localContext)
+            }
             
             self.afterDismissing {
                 self.navigateTo(stage)
             }
         }.cauterize()
+    }
+    
+    private func checkLocation(country: Country) -> LocationProblem? {
+        let controller = LocationController.shared
+        if controller.checkInCorrectCountry(country) {
+            return nil
+        } else {
+            return controller.locationProblem
+        }
     }
     
     private func afterDismissing(completion: @escaping () -> Void) {
@@ -587,6 +590,11 @@ class RegionOnboardingCoordinator {
                 self?.advance()
             }
             navigationController.present(ohNo, animated: true, completion: nil)
+        case .locationProblem(let problem):
+            let locationProblem = LocationProblemViewController.fromStoryboard()
+            locationProblem.delegate = self
+            locationProblem.locationProblem = problem
+            navigationController.present(locationProblem, animated: true, completion: nil)
         case .done:
             delegate?.onboardingCompleteForCountry(country)
         }
@@ -616,5 +624,11 @@ class RegionOnboardingCoordinator {
             self.localContext.hasCameraProblem = !hasCameraAccess
             completionHandler()
         }
+    }
+}
+
+extension RegionOnboardingCoordinator: LocationProblemDelegate {
+    func retry() {
+        advance()
     }
 }
