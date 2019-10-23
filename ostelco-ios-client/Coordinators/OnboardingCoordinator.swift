@@ -537,6 +537,7 @@ class RegionOnboardingCoordinator {
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
+        print(stage)
         switch stage {
         case .selectIdentityVerificationMethod(let options):
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
@@ -584,7 +585,12 @@ class RegionOnboardingCoordinator {
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
             ohNo.primaryButtonAction = { [weak self] in
-                self?.advance()
+                switch issue {
+                case .ekycRejected:
+                    self?.delegate?.onboardingCancelled()
+                default:
+                    self?.advance()
+                }
             }
             navigationController.present(ohNo, animated: true, completion: nil)
         case .done:
