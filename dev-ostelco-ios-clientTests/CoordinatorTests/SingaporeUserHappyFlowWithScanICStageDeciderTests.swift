@@ -20,7 +20,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap()
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
@@ -33,7 +33,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
@@ -46,7 +46,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)

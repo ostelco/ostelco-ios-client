@@ -108,7 +108,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+            kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .ohNo(.ekycRejected))
