@@ -30,19 +30,18 @@ class JumioCoordinator: NSObject {
         }
     }
     
-    private let country: Country
+    private let regionID: String
     private var netverifyController: NetverifyViewController?
     private var primeAPI: PrimeAPI
     
     weak var delegate: JumioCoordinatorDelegate?
     
-    init(country: Country, primeAPI: PrimeAPI) throws {
+    init(regionID: String, primeAPI: PrimeAPI) throws {
         guard !JumioDeviceInfo.isJailbrokenDevice() else {
             // Prevent SDK from being initialized on Jailbroken devices
             throw Error.deviceIsJailbroken
         }
-        
-        self.country = country
+        self.regionID = regionID
         self.primeAPI = primeAPI
     }
     
@@ -67,9 +66,8 @@ class JumioCoordinator: NSObject {
     }
 
     private func createScanID() -> Promise<String> {
-        let countryCode = self.country.countryCode.lowercased()
         return primeAPI
-            .createJumioScanForRegion(code: countryCode)
+            .createJumioScanForRegion(code: regionID)
             .map { scan in
                 return scan.scanId
             }
@@ -92,7 +90,7 @@ class JumioCoordinator: NSObject {
         config.delegate = self
         
         // This must be a 3-letter code following ISO-3166
-        config.preselectedCountry = country.threeLetterCountryCode
+        config.preselectedCountry = Country(regionID).threeLetterCountryCode
         
         // General appearance
         let baseAppearance = NetverifyBaseView.jumioAppearance()

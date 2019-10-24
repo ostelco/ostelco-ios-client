@@ -63,7 +63,7 @@ struct CoverageView: View {
             return AnyView(
                 NavigationLink(destination: RegionGroupView(regionGroup: regionGroup, countrySelected: { country in
                    // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
-                    self.store.startOnboardingForCountry(country)
+                    self.store.startOnboardingForRegion(self.store.getRegionFromCountry(country))
             }).environmentObject(self.store)) {
                 RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)

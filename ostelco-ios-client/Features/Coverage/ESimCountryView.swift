@@ -102,9 +102,9 @@ struct ESimCountryView: View {
 }
 
 #if DEBUG
-let country = Country("NO")
 
 struct ESimCountryView_Previews: PreviewProvider {
+    static let country = Country("NO")
     
     static var previews: some View {
         ESimCountryView(image: country.image, country: country.nameOrPlaceholder)

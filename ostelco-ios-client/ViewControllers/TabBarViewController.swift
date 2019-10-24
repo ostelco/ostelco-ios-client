@@ -25,9 +25,9 @@ class TabBarViewController: ApplePayViewController {
         FreshchatManager.shared.show(self)
     }
     
-    func startOnboardingForRegionInCountry(_ country: Country, region: PrimeGQL.RegionDetailsFragment) {
+    func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
         let navigationController = UINavigationController()
-        let coordinator = RegionOnboardingCoordinator(country: country, region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
+        let coordinator = RegionOnboardingCoordinator(region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
         currentCoordinator = coordinator
         present(navigationController, animated: true, completion: nil)
@@ -39,7 +39,8 @@ class TabBarViewController: ApplePayViewController {
 }
 
 extension TabBarViewController: RegionOnboardingDelegate {
-    func onboardingCompleteForCountry(_ country: Country) {
+    func onboardingCompleteForRegion(_ regionID: String) {
+        
         dismiss(animated: true, completion: nil)
     }
     
