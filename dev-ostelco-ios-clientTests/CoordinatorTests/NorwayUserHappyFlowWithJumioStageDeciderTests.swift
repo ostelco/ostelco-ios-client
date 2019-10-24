@@ -25,7 +25,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
@@ -38,7 +38,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumioAndAddress() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,

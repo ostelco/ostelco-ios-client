@@ -541,7 +541,6 @@ class RegionOnboardingCoordinator {
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
-        print(stage)
         switch stage {
         case .selectIdentityVerificationMethod(let options):
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
@@ -565,6 +564,10 @@ class RegionOnboardingCoordinator {
             let nric = NRICVerifyViewController.fromStoryboard()
             nric.delegate = self
             navigationController.setViewControllers([nric], animated: true)
+        case .jumioInstructions:
+            let instructions = JumioInstructionsViewController.fromStoryboard()
+            instructions.delegate = self
+            navigationController.pushViewController(instructions, animated: true)
         case .jumio:
             if let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
                 self.jumioCoordinator = jumio
@@ -626,5 +629,12 @@ class RegionOnboardingCoordinator {
             self.localContext.hasCameraProblem = !hasCameraAccess
             completionHandler()
         }
+    }
+}
+
+extension RegionOnboardingCoordinator: JumioInstructionsDelegate {
+    func jumioInstructionsViewed() {
+        localContext.hasSeenJumioInstructions = true
+        advance()
     }
 }

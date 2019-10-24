@@ -23,10 +23,10 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
     }
 
-    func testUserHasCompletedNRIC() {
+    func testUserHasCompletedNRICButSelectedScanIC() {
         let decider = StageDecider()
         let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC)
         let region = RegionResponse(
@@ -36,7 +36,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
     }
     
     func testUserHasCompletedNRICThenColdStartThenSelectedScanIC() {
@@ -49,12 +49,12 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumio)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
     }
 
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
@@ -80,7 +80,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
 
     func testUserHasCompletedAddress() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .scanIC, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
