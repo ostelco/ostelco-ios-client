@@ -170,18 +170,18 @@ public struct StageDecider {
             }
         }
 
+        let jumioSteps: [RegionStage] = [.cameraProblem, .jumio, .address, .pendingVerification]
+        
         switch localContext.selectedVerificationOption {
         case .jumio:
-            midStages.append(.cameraProblem)
-            midStages.append(.jumio)
-            midStages.append(.pendingVerification)
+            midStages.append(contentsOf: jumioSteps)
         case .none:
             let options = identityOptionsForRegionID(region.region.id)
             midStages.append(.selectIdentityVerificationMethod(options))
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.cameraProblem, .jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: jumioSteps)
         }
         
         if localContext.hasCameraProblem == false {
@@ -199,15 +199,17 @@ public struct StageDecider {
         
         let kycStatusMap = region.kycStatusMap
         
-        if kycStatusMap.NRIC_FIN == .APPROVED {
+        // Any field which is nil implies that it is not a needed step, so we can skip it.
+        // Also any marked as approved can be skipped.
+        if kycStatusMap.NRIC_FIN == .APPROVED || kycStatusMap.NRIC_FIN == nil {
             remove(.nric)
         }
         
-        if kycStatusMap.ADDRESS == .APPROVED {
+        if kycStatusMap.ADDRESS == .APPROVED || kycStatusMap.ADDRESS == nil {
             remove(.address)
         }
         
-        if kycStatusMap.JUMIO == .APPROVED {
+        if kycStatusMap.JUMIO == .APPROVED || kycStatusMap.JUMIO == nil {
             remove(.pendingVerification)
             remove(.jumio)
         }
