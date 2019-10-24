@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,11 +18,12 @@
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKu-PM-jBU" customClass="BorderlessTextField" customModule="OstelcoStyles">
                         <rect key="frame" x="24" y="11.5" width="366" height="21"/>
+                        <color key="textColor" name="inputLabel"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
-                <color key="backgroundColor" name="inputBackground"/>
+                <color key="backgroundColor" name="foreground"/>
                 <constraints>
                     <constraint firstItem="ZKu-PM-jBU" firstAttribute="centerY" secondItem="yFr-AW-9XF" secondAttribute="centerY" id="4ol-rA-K1t"/>
                     <constraint firstAttribute="trailing" secondItem="ZKu-PM-jBU" secondAttribute="trailing" constant="24" id="GSG-aL-Tph"/>
@@ -36,8 +37,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="inputBackground">
-            <color red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="foreground">
+            <color red="0.12156862745098039" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="inputLabel">
+            <color red="0.8666666666666667" green="0.8666666666666667" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
