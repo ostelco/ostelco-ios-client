@@ -20,7 +20,20 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap()
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+        )
+        
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
+    }
+
+    func testUserHasCompletedNRICButSelectedScanIC() {
+        let decider = StageDecider()
+        let localContext = RegionOnboardingContext(selectedVerificationOption: IdentityVerificationOption.scanIC)
+        let region = RegionResponse(
+            region: Region(id: "sg", name: "Singapore"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
@@ -33,7 +46,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .PENDING,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .none, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
