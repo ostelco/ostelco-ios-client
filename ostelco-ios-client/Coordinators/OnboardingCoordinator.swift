@@ -378,7 +378,7 @@ extension RegionOnboardingCoordinator: AddressEditDelegate {
 extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
         let spinner = controller.showSpinner()
-        makeSimProfileForRegion(country.countryCode)
+        makeSimProfileForRegion(region.region.id)
             .then { simProfile -> PromiseKit.Promise<Void> in
                 switch simProfile.status {
                 case .INSTALLED:
@@ -426,7 +426,7 @@ extension RegionOnboardingCoordinator: NRICVerifyDelegate {
     func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
         let spinnerView = controller.showSpinner()
         primeAPI
-            .validateNRIC(nric, forRegion: country.countryCode)
+            .validateNRIC(nric, forRegion: region.region.id)
             .ensure {
                 controller.removeSpinner(spinnerView)
         }
