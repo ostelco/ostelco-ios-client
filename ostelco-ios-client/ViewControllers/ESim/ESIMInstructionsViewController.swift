@@ -26,8 +26,8 @@ class ESIMInstructionsViewController: UIViewController {
         let pages = ESIMPage.allCases.map { $0.viewController }
         return PageControllerDataSource(pageController: self.pageController,
                                         viewControllers: pages,
-                                        pageIndicatorTintColor: OstelcoColor.paginationInactive.toUIColor,
-                                        currentPageIndicatorTintColor: OstelcoColor.paginationActive.toUIColor,
+                                        pageIndicatorTintColor: .clear,
+                                        currentPageIndicatorTintColor: .clear,
                                         delegate: self)
     }()
     

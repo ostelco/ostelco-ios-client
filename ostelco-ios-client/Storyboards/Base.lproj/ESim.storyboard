@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eSIM Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xML-11-IYb" customClass="Heading2Label" customModule="OstelcoStyles">
-                                <rect key="frame" x="32" y="88" width="350" height="10.5"/>
+                                <rect key="frame" x="32" y="88" width="350" height="0.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="textHeading"/>
                                 <nil key="highlightedColor"/>
@@ -30,10 +30,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="do3-8p-zAP">
-                                <rect key="frame" x="24" y="130.5" width="366" height="601.5"/>
+                                <rect key="frame" x="24" y="120.5" width="366" height="611.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii6-m4-Wv4">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="601.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="611.5"/>
                                         <color key="backgroundColor" name="background"/>
                                         <connections>
                                             <segue destination="1cU-eB-9Qs" kind="embed" id="D3w-bP-v4t"/>
