@@ -64,9 +64,11 @@ class AllowLocationAccessViewController: UIViewController {
         case .restricted:
             delegate.handleLocationProblem(.restrictedByParentalControls)
         case .denied:
+            OstelcoAnalytics.logEvent(.permissionLocationDenied)
             delegate.handleLocationProblem(.deniedByUser)
         case .authorizedAlways,
              .authorizedWhenInUse:
+            OstelcoAnalytics.logEvent(.permissionLocationGranted)
             delegate.locationUsageAuthorized()
         @unknown default:
             ApplicationErrors.assertAndLog("Apple added another case to this! You should update your handling.")

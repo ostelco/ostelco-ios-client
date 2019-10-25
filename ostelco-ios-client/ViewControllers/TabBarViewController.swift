@@ -34,7 +34,9 @@ class TabBarViewController: ApplePayViewController {
     }
     
     override func paymentSuccessful(_ product: Product?) {
-        
+        if let product = product {
+            OstelcoAnalytics.logEvent(.ecommercePurchase(currency: product.currency, value: product.amount, tax: product.tax))
+        }
     }
 }
 

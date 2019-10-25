@@ -27,6 +27,7 @@ struct ApplePaySetupView: View {
             ApplePaySetupButton(paymentButtonType: .setUp)
                 .frame(height: 44)
                 .onTapGesture {
+                    OstelcoAnalytics.logEvent(.setupApplePay)
                     PKPassLibrary().openPaymentSetup()
             }
         }.padding(20)

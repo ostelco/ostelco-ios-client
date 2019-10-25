@@ -38,6 +38,7 @@ class ApplePayViewController: UIViewController, ApplePayDelegate {
     #endif
 
     func paymentError(_ error: Error) {
+        OstelcoAnalytics.logEvent(.ecommercePurchaseFailed(failureReason: error.localizedDescription))
         if let applePayError = error as? ApplePayError {
             switch applePayError {
             case .unsupportedDevice, .noSupportedCards, .otherRestrictions:

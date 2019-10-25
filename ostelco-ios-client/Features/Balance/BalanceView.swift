@@ -13,6 +13,7 @@ import Stripe
 import ostelco_core
 import PromiseKit
 import UIKit
+import FirebaseAnalytics
 
 // TODO: Missing pull to refresh balance
 // TODO: Only loading products once, not on view did appear as original VC did (does this matter?)
@@ -93,7 +94,7 @@ struct BalanceView: View {
                     .font(.system(size: 21))
                     .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
                 Button(action: {
-                    OstelcoAnalytics.logEvent(.BuyDataClicked)
+                    OstelcoAnalytics.logEvent(.buyDataFlowStarted)
                     self.showProductsSheet.toggle()
                 }) {
                     Text("Buy more Data")

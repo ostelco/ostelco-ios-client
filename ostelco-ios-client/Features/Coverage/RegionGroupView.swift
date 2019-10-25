@@ -26,7 +26,6 @@ struct RegionGroupView: View {
         }
         return AnyView(
             ESimCountryView(image: country.image, country: country.nameOrPlaceholder, action: {
-                // TODO: Refactor this so isnt dependent on CoverageViewController
                 self.countrySelected(country)
             })
         )
