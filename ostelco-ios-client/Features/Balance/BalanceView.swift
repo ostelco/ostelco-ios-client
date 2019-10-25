@@ -116,6 +116,8 @@ struct BalanceView: View {
             if !self.store.hasAtLeastOneInstalledSimProfile {
                 self.store.loadSimProfiles()
             }
+            
+            self.store.loadProducts()
         }
     }
     
