@@ -61,4 +61,33 @@ final class GlobalStore: ObservableObject {
         }
         return nil
     }
+    
+    func allowedCountries() -> [String] {
+        let countryCodeToRegionCodeMap = RemoteConfigManager.shared.countryCodeAndRegionCodes.reduce(into: [:], { (result, value) in
+            result[value.countryCode] = value.regionCodes
+        })
+        
+        if let regionDetailslist = regions {
+            let regionCodes = Set(
+                regionDetailslist.map({ $0.region.id })
+            )
+            
+            let allowedCountryCodes = Array(
+                countryCodeToRegionCodeMap
+                    .filter({ (_, value) in Set(value).intersection(regionCodes).isNotEmpty })
+                    .keys
+                )
+            
+            return allowedCountryCodes
+        }
+        
+        return []
+    }
+    
+    func showCountryNotSupportedMessage() -> Bool {
+        if let country = country, allowedCountries().contains(country.countryCode) {
+            return false
+        }
+        return true
+    }
 }

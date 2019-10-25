@@ -120,7 +120,13 @@ struct BalanceView: View {
     }
     
     func renderOverlay() -> AnyView {
-        if store.hasAtLeastOneInstalledSimProfile {
+        if let country = global.country, global.showCountryNotSupportedMessage() {
+                return AnyView(
+                    MessageContainer(
+                        messageType: .countryNotSupported(country: country)
+                    )
+                )
+        } else if store.hasAtLeastOneInstalledSimProfile {
             if let country = global.showCountryChangedMessage() {
                 return AnyView(
                     MessageContainer(messageType: .welcomeToCountry(action: { self.currentTab = .coverage }, country: country))

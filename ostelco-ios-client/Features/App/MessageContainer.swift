@@ -13,6 +13,7 @@ import ostelco_core
 enum MessageType {
     case welcomeNewUser(action: () -> Void)
     case welcomeToCountry(action: () -> Void, country: Country)
+    case countryNotSupported(country: Country)
 }
 
 struct MessageContainer: View {
@@ -61,7 +62,7 @@ struct MessageView: View {
         switch messageType {
             case .welcomeNewUser:
                 return OstelcoTitle(label: "Welcome to OYA!")
-        case .welcomeToCountry( _, let country):
+        case .welcomeToCountry( _, let country), .countryNotSupported(let country):
                 return OstelcoTitle(label: "Welcome to \(country.nameOrPlaceholder)!")
         }
     }
@@ -72,6 +73,8 @@ struct MessageView: View {
                 return Text("Where would you like to start using your first 1GB of OYA data?")
             case .welcomeToCountry:
                 return Text("You can continue to use your OYA data here with a few simple steps")
+            case .countryNotSupported:
+                return Text("Unfortunately you cannot use your OYA data here at this point")
         }
     }
     
@@ -92,6 +95,8 @@ struct MessageView: View {
             return Text("See Available Countries")
         case .welcomeToCountry:
             return Text("Continue to use your OYA data here")
+        default:
+            return Text("")
         }
     }
     
@@ -110,6 +115,8 @@ struct MessageView: View {
                         .foregroundColor(OstelcoColor.primaryButtonLabel.toColor)
                 }
             })
+        default:
+            return AnyView(EmptyView())
         }
     }
     
