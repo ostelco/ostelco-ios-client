@@ -378,7 +378,7 @@ extension RegionOnboardingCoordinator: AddressEditDelegate {
 extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
         let spinner = controller.showSpinner()
-        makeSimProfileForRegion(country.countryCode)
+        makeSimProfileForRegion(region.region.id)
             .then { simProfile -> PromiseKit.Promise<Void> in
                 switch simProfile.status {
                 case .INSTALLED:
@@ -426,7 +426,7 @@ extension RegionOnboardingCoordinator: NRICVerifyDelegate {
     func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
         let spinnerView = controller.showSpinner()
         primeAPI
-            .validateNRIC(nric, forRegion: country.countryCode)
+            .validateNRIC(nric, forRegion: region.region.id)
             .ensure {
                 controller.removeSpinner(spinnerView)
         }
@@ -482,12 +482,11 @@ extension RegionOnboardingCoordinator: AllowCameraAccessDelegate {
 }
 
 protocol RegionOnboardingDelegate: class {
-    func onboardingCompleteForCountry(_ country: Country)
+    func onboardingCompleteForRegion(_ regionID: String)
     func onboardingCancelled()
 }
 
 class RegionOnboardingCoordinator {
-    let country: Country
     let region: PrimeGQL.RegionDetailsFragment
     var localContext: RegionOnboardingContext
     let navigationController: UINavigationController
@@ -499,8 +498,7 @@ class RegionOnboardingCoordinator {
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
     
-    init(country: Country, region: PrimeGQL.RegionDetailsFragment, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
-        self.country = country
+    init(region: PrimeGQL.RegionDetailsFragment, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
         self.region = region
         self.localContext = localContext
         self.navigationController = navigationController
@@ -569,7 +567,7 @@ class RegionOnboardingCoordinator {
             instructions.delegate = self
             navigationController.pushViewController(instructions, animated: true)
         case .jumio:
-            if let jumio = try? JumioCoordinator(country: country, primeAPI: primeAPI) {
+            if let jumio = try? JumioCoordinator(regionID: region.region.id, primeAPI: primeAPI) {
                 self.jumioCoordinator = jumio
                 
                 jumio.delegate = self
@@ -601,12 +599,12 @@ class RegionOnboardingCoordinator {
             }
             navigationController.present(ohNo, animated: true, completion: nil)
         case .done:
-            delegate?.onboardingCompleteForCountry(country)
+            delegate?.onboardingCompleteForRegion(region.region.id)
         }
     }
     
     private func hasMultipleIdentityOptions() -> Bool {
-        return stageDecider.identityOptionsForRegionID(country.countryCode).count > 1
+        return stageDecider.identityOptionsForRegionID(region.region.id).count > 1
     }
     
     /**

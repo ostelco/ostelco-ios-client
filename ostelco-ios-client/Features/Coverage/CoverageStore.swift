@@ -97,13 +97,8 @@ final class CoverageStore: ObservableObject {
         return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode })))
     }
     
-    func startOnboardingForCountry(_ country: Country) {
-        let region = getRegionFromCountry(country)
-        controller.startOnboardingForRegionInCountry(country, region: region)
-    }
-    
-    func startOnboardingForRegionInCountry(_ country: Country, region: PrimeGQL.RegionDetailsFragment) {
-        controller.startOnboardingForRegionInCountry(country, region: region)
+    func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
+        controller.startOnboardingForRegion(region)
     }
 
 }

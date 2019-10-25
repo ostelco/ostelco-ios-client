@@ -29,12 +29,7 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
     }
 
     func onboardingComplete() {
-        onboarding = nil
-        
-        onboardingRoot?.willMove(toParent: nil)
-        onboardingRoot?.view.removeFromSuperview()
-        onboardingRoot?.removeFromParent()
-        onboardingRoot = nil
+        killOldOnboarding()
         
         if mainRoot == nil {
             let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
@@ -43,7 +38,18 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         }
     }
     
+    private func killOldOnboarding() {
+        onboarding = nil
+        
+        onboardingRoot?.willMove(toParent: nil)
+        onboardingRoot?.view.removeFromSuperview()
+        onboardingRoot?.removeFromParent()
+        onboardingRoot = nil
+    }
+    
     @objc func setupOnboarding() {
+        killOldOnboarding()
+        
         let navigationController = UINavigationController()
         onboardingRoot = navigationController
         embedFullViewChild(navigationController, removePrevious: false)
