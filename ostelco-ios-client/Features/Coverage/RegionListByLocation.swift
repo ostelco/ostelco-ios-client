@@ -13,6 +13,7 @@ import ostelco_core
 struct RegionListByLocation: View {
     
     @EnvironmentObject var store: CoverageStore
+    @EnvironmentObject var global: GlobalStore
     
     var body: some View {
         renderListOrUnavailable()
@@ -39,7 +40,7 @@ struct RegionListByLocation: View {
     
     private func renderListOrUnavailable() -> AnyView {
         
-        if let country = store.country {
+        if let country = global.country {
             // regions can be nil if its not loaded or we failed to fetch them from server, we present these errors as if there are no available regions.
             if let regionCodes = store.countryCodeToRegionCodeMap[country.countryCode], let regionDetailsList = store.regions?.filter({ regionCodes.contains($0.region.id.lowercased()) }), regionDetailsList.isNotEmpty {
                 

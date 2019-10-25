@@ -48,6 +48,7 @@ struct RegionGroupViewModel: Identifiable {
 struct CoverageView: View {
     
     @EnvironmentObject var store: CoverageStore
+    @EnvironmentObject var global: GlobalStore
     @State private var selectedRegionGroup: RegionGroupViewModel?
     @State private var showModal: Bool = false
         
@@ -78,7 +79,7 @@ struct CoverageView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    OstelcoTitle(label: store.country?.nameOrPlaceholder ?? "Unknown", image: "location.fill")
+                    OstelcoTitle(label: global.country?.nameOrPlaceholder ?? "Unknown", image: "location.fill")
                     
                     RegionListByLocation()
                     
