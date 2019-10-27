@@ -48,6 +48,7 @@ struct RegionGroupViewModel: Identifiable {
 struct CoverageView: View {
     
     @EnvironmentObject var store: CoverageStore
+    @EnvironmentObject var global: GlobalStore
     @State private var selectedRegionGroup: RegionGroupViewModel?
     @State private var showModal: Bool = false
         
@@ -62,8 +63,9 @@ struct CoverageView: View {
         } else {
             return AnyView(
                 NavigationLink(destination: RegionGroupView(regionGroup: regionGroup, countrySelected: { country in
-                   // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
-                    self.store.startOnboardingForCountry(country)
+                    let regionDetails = self.store.getRegionFromCountry(country)
+                     OstelcoAnalytics.logEvent(.getNewRegionFlowStarted(regionCode: regionDetails.region.id, countryCode: country.countryCode))
+                    self.store.startOnboardingForRegion(regionDetails)
             }).environmentObject(self.store)) {
                 RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)
@@ -78,7 +80,7 @@ struct CoverageView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    OstelcoTitle(label: store.country?.nameOrPlaceholder ?? "Unknown", image: "location.fill")
+                    OstelcoTitle(label: global.country?.nameOrPlaceholder ?? "Unknown", image: "location.fill")
                     
                     RegionListByLocation()
                     
@@ -88,9 +90,12 @@ struct CoverageView: View {
                     ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
-            }.navigationBarTitle("", displayMode: .inline)
+            }.padding(.top, 50).navigationBarTitle("Coverage", displayMode: .inline)
+            .navigationBarHidden(true)
+            .statusBar(hidden: true)
         }.onAppear {
             self.store.loadRegions()
+            OstelcoAnalytics.setScreenName(name: "CoverageView")
         }
     }
 }

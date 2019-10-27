@@ -42,8 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationSupportsShakeToEdit = true
         
         self.registerForNotifications()
-
+        self.configureAppearance()
+        
         return true
+    }
+    
+    private func configureAppearance() {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().isTranslucent = true
     }
     
     private func registerForNotifications() {

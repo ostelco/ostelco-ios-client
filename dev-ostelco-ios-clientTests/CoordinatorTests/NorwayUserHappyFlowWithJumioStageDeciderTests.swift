@@ -25,12 +25,25 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     
     func testUserHasCompletedJumio() {
         let decider = StageDecider()
-        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true)
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true, hasSeenJumioInstructions: true)
         let region = RegionResponse(
             region: Region(id: "no", name: "Norway"),
             status: .PENDING,
             simProfiles: nil,
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+        )
+        
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
+    }
+    
+    func testUserHasCompletedJumioAndAddress() {
+        let decider = StageDecider()
+        let localContext = RegionOnboardingContext(selectedVerificationOption: .jumio, hasCompletedJumio: true, hasSeenJumioInstructions: true)
+        let region = RegionResponse(
+            region: Region(id: "no", name: "Norway"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .pendingVerification)
@@ -43,7 +56,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             region: Region(id: "no", name: "Norway"),
             status: .APPROVED,
             simProfiles: nil,
-            kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
+            kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
         XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)

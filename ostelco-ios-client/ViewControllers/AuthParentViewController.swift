@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate {
     var onboarding: OnboardingCoordinator?
+    var onboardingRoot: UIViewController?
+    var mainRoot: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,22 +22,39 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user == nil {
                 self.setupOnboarding()
+            } else {
+                OstelcoAnalytics.logEvent(.signIn)
             }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(setupOnboarding), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
-    func onboardingComplete() {
+    func onboardingComplete(force: Bool = false) {
+        killOldOnboarding()
+        
+        if force || mainRoot == nil {
+            let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
+            mainRoot = tabs
+            embedFullViewChild(tabs!)
+        }
+    }
+    
+    private func killOldOnboarding() {
         onboarding = nil
         
-        let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
-        embedFullViewChild(tabs!)
+        onboardingRoot?.willMove(toParent: nil)
+        onboardingRoot?.view.removeFromSuperview()
+        onboardingRoot?.removeFromParent()
+        onboardingRoot = nil
     }
     
     @objc func setupOnboarding() {
+        killOldOnboarding()
+        
         let navigationController = UINavigationController()
-        embedFullViewChild(navigationController)
+        onboardingRoot = navigationController
+        embedFullViewChild(navigationController, removePrevious: false)
         
         let onboarding = OnboardingCoordinator(navigationController: navigationController)
         onboarding.delegate = self

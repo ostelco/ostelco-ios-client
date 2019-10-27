@@ -32,6 +32,9 @@ struct PurchaseHistoryView: View {
                 }.padding()
             }
         }.navigationBarTitle("Purchase History")
+        .onAppear {
+            OstelcoAnalytics.setScreenName(name: "PurchaseHistoryView")
+        }
     }
 }
 

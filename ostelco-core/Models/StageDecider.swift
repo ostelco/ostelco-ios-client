@@ -35,6 +35,8 @@ public class RegionOnboardingContext {
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasCameraProblem: Bool
     public var hasCompletedJumio: Bool
+    public var hasSeenAwesome: Bool
+    public var hasSeenJumioInstructions: Bool
     public var serverIsUnreachable: Bool
     public var simProfile: SimProfile?
     
@@ -50,17 +52,20 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
+    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false) {
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
         self.hasCompletedJumio = hasCompletedJumio
+        self.hasSeenJumioInstructions = hasSeenJumioInstructions
         self.serverIsUnreachable = serverIsUnreachable
+        self.hasSeenAwesome = hasSeenAwesome
         self.myInfoCode = myInfoCode
+        
     }
 }
 
-public enum IdentityVerificationOption: CaseIterable {
+public enum IdentityVerificationOption: String, CaseIterable {
     case singpass
     case scanIC
     case jumio
@@ -75,14 +80,15 @@ public struct StageDecider {
         case locationPermissions
         case notificationPermissions
         case locationProblem(LocationProblem)
-        case awesome
         case ohNo(OhNoIssueType)
+        case awesome
     }
     
     public enum RegionStage: Equatable {
         case selectIdentityVerificationMethod([IdentityVerificationOption])
         case singpass
         case nric
+        case jumioInstructions
         case jumio
         case address
         case pendingVerification
@@ -92,12 +98,13 @@ public struct StageDecider {
         case cameraProblem
         case locationProblem(LocationProblem)
         case done
+        case awesome
     }
     
     public init() {}
 
     private func eSIMStage(_ region: RegionResponse, _ localContext: RegionOnboardingContext) -> RegionStage {
-        var stages: [RegionStage] = [.eSimInstructions, .done]
+        var stages: [RegionStage] = [.eSimInstructions, .awesome, .done]
         
         func remove(_ stage: RegionStage) {
             if let index = stages.firstIndex(of: stage) {
@@ -112,6 +119,11 @@ public struct StageDecider {
         if let profile = region.getGraphQLModel().getSimProfile(), profile.status == .installed {
             remove(.eSimInstructions)
         }
+        
+        if localContext.hasSeenAwesome {
+            remove(.awesome)
+        }
+        
         return stages[0]
     }
     
@@ -171,18 +183,18 @@ public struct StageDecider {
             }
         }
 
+        let jumioSteps: [RegionStage] = [.cameraProblem, .jumioInstructions, .jumio, .address, .pendingVerification]
+        
         switch localContext.selectedVerificationOption {
         case .jumio:
-            midStages.append(.cameraProblem)
-            midStages.append(.jumio)
-            midStages.append(.pendingVerification)
+            midStages.append(contentsOf: jumioSteps)
         case .none:
             let options = identityOptionsForRegionID(region.region.id)
             midStages.append(.selectIdentityVerificationMethod(options))
         case .singpass:
             midStages.append(.singpass)
         case .scanIC:
-            midStages.append(contentsOf: [.cameraProblem, .jumio, .address, .pendingVerification])
+            midStages.append(contentsOf: jumioSteps)
         }
         
         if localContext.hasCameraProblem == false {
@@ -194,21 +206,28 @@ public struct StageDecider {
             midStages.append(.verifyMyInfo(code: code))
         }
         
+        if localContext.hasSeenJumioInstructions {
+            remove(.jumioInstructions)
+        }
+        
         if localContext.hasCompletedJumio {
             remove(.jumio)
         }
         
         let kycStatusMap = region.kycStatusMap
         
-        if kycStatusMap.NRIC_FIN == .APPROVED {
+        // Any field which is nil implies that it is not a needed step, so we can skip it.
+        // Also any marked as approved can be skipped.
+        if kycStatusMap.NRIC_FIN == .APPROVED || kycStatusMap.NRIC_FIN == nil {
             remove(.nric)
         }
         
-        if kycStatusMap.ADDRESS == .APPROVED {
+        if kycStatusMap.ADDRESS == .APPROVED || kycStatusMap.ADDRESS == nil {
             remove(.address)
         }
         
-        if kycStatusMap.JUMIO == .APPROVED {
+        if kycStatusMap.JUMIO == .APPROVED || kycStatusMap.JUMIO == nil {
+            remove(.jumioInstructions)
             remove(.pendingVerification)
             remove(.jumio)
         }
@@ -217,6 +236,7 @@ public struct StageDecider {
         }
         
         if kycStatusMap.JUMIO == .REJECTED && localContext.hasCompletedJumio {
+            remove(.jumioInstructions)
             remove(.pendingVerification)
             remove(.jumio)
             midStages.append(.ohNo(.ekycRejected))

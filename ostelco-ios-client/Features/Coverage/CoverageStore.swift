@@ -9,7 +9,6 @@
 import ostelco_core
 
 final class CoverageStore: ObservableObject {
-    @Published var country: Country?
     @Published var regions: [PrimeGQL.RegionDetailsFragment]?
     @Published var countryCodeToRegionCodeMap = [:] as [String: [String]]
     @Published var regionGroups: [RegionGroupViewModel] = []
@@ -20,9 +19,6 @@ final class CoverageStore: ObservableObject {
     
     init(controller: TabBarViewController) {
         self.controller = controller
-        country = LocationController.shared.currentCountry
-        NotificationCenter.default.addObserver(self, selector: #selector(countryChanged(_:)), name: CurrentCountryChanged, object: nil)
-        
         loadRegions()
         
         countryCodeToRegionCodeMap = RemoteConfigManager.shared.countryCodeAndRegionCodes.reduce(into: [:], { (result, value) in
@@ -42,13 +38,6 @@ final class CoverageStore: ObservableObject {
     func loadRegions() {
         APIManager.shared.primeAPI.loadRegions()
         .done { self.regions = $0 }.cauterize()
-    }
-    
-    @objc func countryChanged(_ notification: NSNotification) {
-        guard let controller = notification.object as? LocationController else {
-            fatalError("Something other than the location controller is posting this notification!")
-        }
-        country = controller.currentCountry
     }
     
     func allowedCountries() -> [String] {
@@ -97,13 +86,8 @@ final class CoverageStore: ObservableObject {
         return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode })))
     }
     
-    func startOnboardingForCountry(_ country: Country) {
-        let region = getRegionFromCountry(country)
-        controller.startOnboardingForRegionInCountry(country, region: region)
-    }
-    
-    func startOnboardingForRegionInCountry(_ country: Country, region: PrimeGQL.RegionDetailsFragment) {
-        controller.startOnboardingForRegionInCountry(country, region: region)
+    func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
+        controller.startOnboardingForRegion(region)
     }
 
 }

@@ -13,6 +13,7 @@ public struct UserDefaultsWrapper {
     // Underlying keys for user defaults
     private enum Key: String, CaseIterable {
         case contactEmail = "ContactEmail"
+        case countryCode = "CountryCode"
     }
     
     private static var defaults: UserDefaults {
@@ -51,5 +52,17 @@ public struct UserDefaultsWrapper {
             }
         }
     }
-
+    
+    public static var countryCode: String? {
+        get {
+            return self.value(for: .countryCode)
+        }
+        set {
+            if let newCountry = newValue {
+                self.setValue(newCountry, for: .countryCode)
+            } else {
+                self.removeValue(for: .countryCode)
+            }
+        }
+    }
 }
