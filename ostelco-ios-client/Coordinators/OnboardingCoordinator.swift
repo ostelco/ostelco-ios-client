@@ -568,6 +568,11 @@ class RegionOnboardingCoordinator {
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)
         case .eSimInstructions:
+            OstelcoAnalytics.logEvent(.identificationSuccessful(
+                regionCode: region.region.id,
+                countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "")
+                )
             let instructions = ESIMInstructionsViewController.fromStoryboard()
             instructions.delegate = self
             navigationController.setViewControllers([instructions], animated: true)
@@ -593,6 +598,11 @@ class RegionOnboardingCoordinator {
             addressController.regionCode = region.region.id
             navigationController.setViewControllers([addressController], animated: true)
         case .pendingVerification:
+            OstelcoAnalytics.logEvent(.identificationPendingValidation(
+                regionCode: region.region.id,
+                countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "")
+            )
             let pending = PendingVerificationViewController.fromStoryboard()
             pending.delegate = self
             navigationController.setViewControllers([pending], animated: true)
@@ -602,6 +612,17 @@ class RegionOnboardingCoordinator {
             navigationController.setViewControllers([cameraPermissions], animated: true)
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
+            switch issue {
+            case .ekycRejected:
+                OstelcoAnalytics.logEvent(.identificationFailed(
+                    regionCode: region.region.id,
+                    countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                    ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "",
+                    failureReason: issue.displayTitle)
+                )
+            default:
+                break
+            }
             ohNo.primaryButtonAction = { [weak self] in
                 switch issue {
                 case .ekycRejected:
