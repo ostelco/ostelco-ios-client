@@ -22,6 +22,8 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user == nil {
                 self.setupOnboarding()
+            } else {
+                OstelcoAnalytics.logEvent(.signIn)
             }
         }
         

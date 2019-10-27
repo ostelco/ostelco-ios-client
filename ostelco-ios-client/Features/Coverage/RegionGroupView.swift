@@ -26,7 +26,6 @@ struct RegionGroupView: View {
         }
         return AnyView(
             ESimCountryView(image: country.image, country: country.nameOrPlaceholder, action: {
-                // TODO: Refactor this so isnt dependent on CoverageViewController
                 self.countrySelected(country)
             })
         )
@@ -45,7 +44,9 @@ struct RegionGroupView: View {
                 .padding([.leading, .trailing, .top ], 10)
                 .padding(.bottom, 30)
             }.padding(.top, 25)
-            }.edgesIgnoringSafeArea(.top)
+        }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "RegionGroupView")
+        }
     }
 }
 struct RegionView_Previews: PreviewProvider {

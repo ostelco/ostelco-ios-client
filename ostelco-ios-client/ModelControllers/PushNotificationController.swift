@@ -71,9 +71,9 @@ class PushNotificationController: NSObject {
                     seal.reject(error)
                 } else {
                     if granted {
-                        OstelcoAnalytics.logEvent(.PushNotificationsAccepted)
+                        OstelcoAnalytics.logEvent(.permissionNotificationsGranted)
                     } else {
-                        OstelcoAnalytics.logEvent(.PushNotificationsDeclined)
+                        OstelcoAnalytics.logEvent(.permissionNotificationsDenied)
                     }
                     
                     seal.fulfill(granted)

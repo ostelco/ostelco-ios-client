@@ -107,6 +107,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     // MARK: - Helpers for starting Apple Pay.
 
     func startApplePay(product: Product) {
+        OstelcoAnalytics.logEvent(.addToCart(name: product.name, sku: product.sku, countryCode: product.country, amount: product.amount, currency: product.currency))
         shownApplePay = false
         authorizedApplePay = false
         purchasingProduct = product

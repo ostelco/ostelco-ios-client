@@ -11,7 +11,7 @@ import ostelco_core
 import FirebaseAnalytics
 import Crashlytics
 
-class OstelcoAnalytics {
+public class OstelcoAnalytics {
     
     enum AnalyticsError: Swift.Error, LocalizedError {
         case eventNameIsEmpty
@@ -38,40 +38,86 @@ class OstelcoAnalytics {
     static func setUserId(_ id: String) {
         Analytics.setUserID(id)
     }
+    
+    static func setScreenName(name: String, screenClass: String? = nil) {
+        Analytics.setScreenName(name, screenClass: screenClass)
+    }
 }
 
 enum AnalyticsEvent {
-    case LegalStuffAgreed
-    case EnteredNickname
-    case ChosenCountry(country: Country)
-    case ChosenIDMethod(idMethod: String)
-    case ESimOnboardingIntro
-    case ESimOnboardingIntroCompleted
-    case ESimOnboardingPending
-    case SignUpCompleted
-    case UnlockMoreData
-    case BecomeMemberClicked
-    case BuyDataClicked
-    case PushNotificationsAccepted
-    case PushNotificationsDeclined
-
+    
+    case signInFlowStarted
+    case signIn
+    case legalStuffAgreed
+    case nicknameEntered
+    case signup
+    case permissionLocationGranted
+    case permissionLocationDenied
+    case permissionNotificationsGranted
+    case permissionNotificationsDenied
+    case getNewRegionFlowStarted(regionCode: String, countryCode: String)
+    case identificationMethodChosen(regionCode: String, countryCode: String, ekycMethod: String)
+    case identificationPendingValidation(regionCode: String, countryCode: String, ekycMethod: String)
+    case identificationSuccessful(regionCode: String, countryCode: String, ekycMethod: String)
+    case identificationFailed(regionCode: String, countryCode: String, ekycMethod: String, failureReason: String)
+    case esimSetupStarted(regionCode: String, countryCode: String)
+    case esimSetupCompleted(regionCode: String, countryCode: String)
+    case logout
+    case buyDataFlowStarted
+    case setupApplePay
+    case addToCart(name: String, sku: String, countryCode: String, amount: Decimal, currency: String)
+    case ecommercePurchase(currency: String, value: Decimal, tax: Decimal)
+    case ecommercePurchaseFailed(failureReason: String)
+    
     var name: String {
         switch self {
-        case .ChosenCountry:
-            return "chosen_country"
-        case .ChosenIDMethod:
-            return "chosen_id_method"
+        case .addToCart:
+            return AnalyticsEventAddToCart
+        case .ecommercePurchase:
+            return AnalyticsEventEcommercePurchase
+        case .ecommercePurchaseFailed:
+            return "purchase_failed"
         default:
-            return String(describing: self).snakeCased() ?? ""
+            return String(describing: self).components(separatedBy: "(")[0].snakeCased() ?? ""
         }
     }
     
-    var metadata: [String: NSObject] {
+    var metadata: [String: Any] {
         switch self {
-        case .ChosenCountry(let country):
-            return ["country": country.countryCode as NSObject]
-        case .ChosenIDMethod(let idMethod):
-            return ["id_method": idMethod as NSObject]
+        case .getNewRegionFlowStarted(let regionCode, let countryCode):
+            return ["region_code": regionCode, "country_code": countryCode]
+        case .identificationMethodChosen(let regionCode, let countryCode, let ekycMethod):
+            return ["region_code": regionCode, "country_code": countryCode, "ekyc_method": ekycMethod]
+        case .identificationPendingValidation(let regionCode, let countryCode, let ekycMethod):
+            return ["region_code": regionCode, "country_code": countryCode, "ekyc_method": ekycMethod]
+        case .identificationSuccessful(let regionCode, let countryCode, let ekycMethod):
+            return ["region_code": regionCode, "country_code": countryCode, "ekyc_method": ekycMethod]
+        case .identificationFailed(let regionCode, let countryCode, let ekycMethod, let failureReason):
+            return ["region_code": regionCode, "country_code": countryCode, "ekyc_method": ekycMethod, "failure_reaon": failureReason]
+        case .esimSetupStarted(let regionCode, let countryCode):
+            return ["region_code": regionCode, "country_code": countryCode]
+        case .esimSetupCompleted(let regionCode, let countryCode):
+            return ["region_code": regionCode, "country_code": countryCode]
+        case .addToCart(let name, let sku, let countryCode, let amount, let currency):
+            return [
+                "quantity": "1",
+                "item_categgory":
+                "one-time-purchase",
+                "item_name": name,
+                "item_sku": sku,
+                "item_location": countryCode,
+                "value": NSDecimalNumber(decimal: amount).stringValue,
+                "price": NSDecimalNumber(decimal: amount).stringValue,
+                "currency": currency
+            ]
+        case .ecommercePurchase(let currency, let value, let tax):
+            return [
+                "currency": currency,
+                "value": Double(truncating: value as NSNumber),
+                "tax": Double(truncating: tax as NSNumber)
+            ]
+        case .ecommercePurchaseFailed(let failureReason):
+            return ["failure_reason": failureReason]
         default:
             return [:]
         }

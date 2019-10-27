@@ -103,7 +103,7 @@ class TheLegalStuffViewController: UIViewController {
     }
     
     @IBAction private func continueTapped() {
-        OstelcoAnalytics.logEvent(.LegalStuffAgreed)
+        OstelcoAnalytics.logEvent(.legalStuffAgreed)
         delegate?.legaleseAgreed()
     }
 }

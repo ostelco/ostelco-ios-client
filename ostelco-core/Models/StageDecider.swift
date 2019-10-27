@@ -62,7 +62,7 @@ public class RegionOnboardingContext {
     }
 }
 
-public enum IdentityVerificationOption: CaseIterable {
+public enum IdentityVerificationOption: String, CaseIterable {
     case singpass
     case scanIC
     case jumio
