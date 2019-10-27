@@ -48,8 +48,6 @@ class OnboardingCoordinator {
     func advance() {
         primeAPI.loadContext()
             .done { (context) in
-                print(context.customer!)
-                
                 self.localContext.serverIsUnreachable = false
                 
                 let location = LocationController.shared
@@ -66,10 +64,6 @@ class OnboardingCoordinator {
                     }
                 }
         }.recover { error in
-            if case APIHelper.Error.jsonError(let innerError) = error, innerError.errorCode == FailedToFetchCustomerCode {
-                UserManager.shared.logOut()
-            }
-            
             self.localContext.serverIsUnreachable = (error as NSError).code == -1004
             let context: Context? = nil
             let stage = self.stageDecider.compute(context: context, localContext: self.localContext)

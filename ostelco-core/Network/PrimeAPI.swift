@@ -11,7 +11,6 @@ import Foundation
 import Apollo
 
 public typealias Long = Int64
-public let FailedToFetchCustomerCode = "FAILED_TO_FETCH_CUSTOMER"
 
 extension Int64: JSONDecodable, JSONEncodable {
     public init(jsonValue value: JSONValue) throws {
@@ -127,8 +126,8 @@ open class PrimeAPI: BasicNetwork {
                     if let data = result?.data {
                         seal.fulfill(data.context)
                     } else {
-                        // Note: OnboardingCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
-                        seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: FailedToFetchCustomerCode, httpStatusCode: 404, message: "Failed to fetch customer.")))
+                        // Note: RootCoordinator excepts an error of specific type to redirect user to signup when user is logged in but has not user in our server yet.
+                        seal.reject(APIHelper.Error.jsonError(JSONRequestError(errorCode: "FAILED_TO_FETCH_CUSTOMER", httpStatusCode: 404, message: "Failed to fetch customer.")))
                     }
                 }
                 
