@@ -90,7 +90,9 @@ struct CoverageView: View {
                     ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
-            }.navigationBarTitle("", displayMode: .inline)
+            }.padding(.top, 50).navigationBarTitle("Coverage", displayMode: .inline)
+            .navigationBarHidden(true)
+            .statusBar(hidden: true)
         }.onAppear {
             self.store.loadRegions()
         }
