@@ -114,6 +114,7 @@ struct BalanceView: View {
         }.sheet(isPresented: $presentApplePaySetup) {
             ApplePaySetupView()
         }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "BalanceView")
             if !self.store.hasAtLeastOneInstalledSimProfile {
                 self.store.loadSimProfiles()
             }

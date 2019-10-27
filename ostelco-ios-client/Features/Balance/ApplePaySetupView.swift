@@ -31,6 +31,9 @@ struct ApplePaySetupView: View {
                     PKPassLibrary().openPaymentSetup()
             }
         }.padding(20)
+        .onAppear {
+            OstelcoAnalytics.setScreenName(name: "ApplePaySetupView")
+        }
     }
 }
 

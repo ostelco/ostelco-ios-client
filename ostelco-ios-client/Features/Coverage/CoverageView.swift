@@ -93,6 +93,7 @@ struct CoverageView: View {
             }.navigationBarTitle("", displayMode: .inline)
         }.onAppear {
             self.store.loadRegions()
+            OstelcoAnalytics.setScreenName(name: "CoverageView")
         }
     }
 }

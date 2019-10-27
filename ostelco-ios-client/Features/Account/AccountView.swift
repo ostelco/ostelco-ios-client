@@ -98,6 +98,8 @@ struct AccountView: View {
                     ]
                 )
             }
+        }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "AccountView")
         }
     }
 }

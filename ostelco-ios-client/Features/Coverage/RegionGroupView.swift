@@ -42,6 +42,9 @@ struct RegionGroupView: View {
             .padding([.leading, .trailing, .top ], 10)
             .padding(.bottom, 30)
         }.background(regionGroup.backgroundColor.toColor)
+            .onAppear {
+                OstelcoAnalytics.setScreenName(name: "RegionGroupView")
+        }
     }
 }
 struct RegionView_Previews: PreviewProvider {

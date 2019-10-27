@@ -38,6 +38,10 @@ public class OstelcoAnalytics {
     static func setUserId(_ id: String) {
         Analytics.setUserID(id)
     }
+    
+    static func setScreenName(name: String, screenClass: String? = nil) {
+        Analytics.setScreenName(name, screenClass: screenClass)
+    }
 }
 
 enum AnalyticsEvent {
