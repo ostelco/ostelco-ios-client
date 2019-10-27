@@ -217,8 +217,8 @@ extension OnboardingCoordinator: GetStartedDelegate {
         
         primeAPI.createCustomer(with: user)
             .done { [weak self] customer in
-                OstelcoAnalytics.logEvent(.EnteredNickname)
                 UserManager.shared.customer = PrimeGQL.ContextQuery.Data.Context.Customer(legacyModel: customer)
+                OstelcoAnalytics.logEvent(.signup)
                 self?.advance()
         }
         .catch { error in
@@ -285,6 +285,7 @@ extension OnboardingCoordinator: LocationProblemDelegate {
 extension RegionOnboardingCoordinator: SelectIdentityVerificationMethodDelegate {
     func selected(option: IdentityVerificationOption) {
         localContext.selectedVerificationOption = option
+        OstelcoAnalytics.logEvent(.identificationMethodChosen(regionCode: region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? "", ekycMethod: option.rawValue))
         switch option {
         case .scanIC, .jumio:
             checkCameraAccess {
@@ -377,6 +378,7 @@ extension RegionOnboardingCoordinator: AddressEditDelegate {
 
 extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
+        OstelcoAnalytics.logEvent(.esimSetupStarted(regionCode: region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
         let spinner = controller.showSpinner()
         makeSimProfileForRegion(region.region.id)
             .then { simProfile -> PromiseKit.Promise<Void> in
@@ -405,6 +407,7 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
             controller.removeSpinner(spinner)
         }
         .done { [weak self] _ in
+            OstelcoAnalytics.logEvent(.esimSetupCompleted(regionCode: self?.region.region.id ?? "", countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
             self?.localContext.hasSeenESIMInstructions = true
             self?.advance()
         }
@@ -467,6 +470,10 @@ extension RegionOnboardingCoordinator: JumioCoordinatorDelegate {
 extension RegionOnboardingCoordinator: PendingVerificationDelegate {
     func checkStatus() {
         advance()
+    }
+    
+    func viewDidAppear() {
+        OstelcoAnalytics.logEvent(.identificationPendingValidation(regionCode: region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? "", ekycMethod: localContext.selectedVerificationOption?.rawValue ?? ""))
     }
 }
 
@@ -555,6 +562,11 @@ class RegionOnboardingCoordinator {
             verifyMyInfo.delegate = self
             navigationController.setViewControllers([verifyMyInfo], animated: true)
         case .eSimInstructions:
+            OstelcoAnalytics.logEvent(.identificationSuccessful(
+                regionCode: region.region.id,
+                countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "")
+                )
             let instructions = ESIMInstructionsViewController.fromStoryboard()
             instructions.delegate = self
             navigationController.setViewControllers([instructions], animated: true)
@@ -580,6 +592,11 @@ class RegionOnboardingCoordinator {
             addressController.regionCode = region.region.id
             navigationController.setViewControllers([addressController], animated: true)
         case .pendingVerification:
+            OstelcoAnalytics.logEvent(.identificationPendingValidation(
+                regionCode: region.region.id,
+                countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "")
+            )
             let pending = PendingVerificationViewController.fromStoryboard()
             pending.delegate = self
             navigationController.setViewControllers([pending], animated: true)
@@ -589,6 +606,17 @@ class RegionOnboardingCoordinator {
             navigationController.setViewControllers([cameraPermissions], animated: true)
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
+            switch issue {
+            case .ekycRejected:
+                OstelcoAnalytics.logEvent(.identificationFailed(
+                    regionCode: region.region.id,
+                    countryCode: LocationController.shared.currentCountry?.countryCode ?? "",
+                    ekycMethod: localContext.selectedVerificationOption?.rawValue ?? "",
+                    failureReason: issue.displayTitle)
+                )
+            default:
+                break
+            }
             ohNo.primaryButtonAction = { [weak self] in
                 switch issue {
                 case .ekycRejected:

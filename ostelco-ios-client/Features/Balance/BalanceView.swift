@@ -13,6 +13,7 @@ import Stripe
 import ostelco_core
 import PromiseKit
 import UIKit
+import FirebaseAnalytics
 
 // TODO: Only loading products once, not on view did appear as original VC did (does this matter?)
 struct BalanceView: View {
@@ -92,7 +93,7 @@ struct BalanceView: View {
                     .font(.system(size: 21))
                     .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
                 Button(action: {
-                    OstelcoAnalytics.logEvent(.BuyDataClicked)
+                    OstelcoAnalytics.logEvent(.buyDataFlowStarted)
                     self.showProductsSheet.toggle()
                 }) {
                     Text("Buy more Data")
@@ -113,6 +114,7 @@ struct BalanceView: View {
         }.sheet(isPresented: $presentApplePaySetup) {
             ApplePaySetupView()
         }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "BalanceView")
             if !self.store.hasAtLeastOneInstalledSimProfile {
                 self.store.loadSimProfiles()
             }

@@ -54,6 +54,7 @@ class UserManager: TokenProvider {
     }
         
     func logOut() {
+        OstelcoAnalytics.logEvent(.logout)
         do {
             try Auth.auth().signOut()
         } catch let error {

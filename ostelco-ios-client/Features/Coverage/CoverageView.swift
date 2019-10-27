@@ -63,8 +63,9 @@ struct CoverageView: View {
         } else {
             return AnyView(
                 NavigationLink(destination: RegionGroupView(regionGroup: regionGroup, countrySelected: { country in
-                   // TODO: Change RegionView presentation from modal to either animation or navigation, then we can remove the below hack
-                    self.store.startOnboardingForRegion(self.store.getRegionFromCountry(country))
+                    let regionDetails = self.store.getRegionFromCountry(country)
+                     OstelcoAnalytics.logEvent(.getNewRegionFlowStarted(regionCode: regionDetails.region.id, countryCode: country.countryCode))
+                    self.store.startOnboardingForRegion(regionDetails)
             }).environmentObject(self.store)) {
                 RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)
@@ -94,6 +95,7 @@ struct CoverageView: View {
             .statusBar(hidden: true)
         }.onAppear {
             self.store.loadRegions()
+            OstelcoAnalytics.setScreenName(name: "CoverageView")
         }
     }
 }

@@ -36,6 +36,8 @@ class GetStartedViewController: UIViewController {
             ApplicationErrors.assertAndLog("No nickname but passed validation?!")
             return
         }
+        
+        OstelcoAnalytics.logEvent(.nicknameEntered)
 
         delegate?.enteredNickname(controller: self, nickname: nickname)
     }
