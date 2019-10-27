@@ -42,8 +42,10 @@ class TabBarViewController: ApplePayViewController {
 
 extension TabBarViewController: RegionOnboardingDelegate {
     func onboardingCompleteForRegion(_ regionID: String) {
-        
         dismiss(animated: true, completion: nil)
+        if let parent = self.parent as? AuthParentViewController {
+            parent.onboardingComplete(force: true)
+        }
     }
     
     func onboardingCancelled() {

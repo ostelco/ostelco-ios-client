@@ -16,7 +16,7 @@ import AVFoundation
 import CoreTelephony
 
 protocol OnboardingCoordinatorDelegate: class {
-    func onboardingComplete()
+    func onboardingComplete(force: Bool)
 }
 
 class OnboardingCoordinator {
@@ -57,7 +57,7 @@ class OnboardingCoordinator {
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
                 if stage == .home {
-                    self.delegate?.onboardingComplete()
+                    self.delegate?.onboardingComplete(force: false)
                 } else {
                     self.afterDismissing {
                         self.navigateTo(stage)
@@ -96,7 +96,7 @@ class OnboardingCoordinator {
             nicknameEntry.delegate = self
             navigationController.setViewControllers([nicknameEntry], animated: true)
         case .home:
-            delegate?.onboardingComplete()
+            delegate?.onboardingComplete(force: false)
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
             ohNo.primaryButtonAction = { [weak self] in
@@ -488,6 +488,13 @@ extension RegionOnboardingCoordinator: AllowCameraAccessDelegate {
     }
 }
 
+extension RegionOnboardingCoordinator: SignUpCompletedDelegate {
+    func acknowledgedSuccess() {
+        localContext.hasSeenAwesome = true
+        advance()
+    }
+}
+
 protocol RegionOnboardingDelegate: class {
     func onboardingCompleteForRegion(_ regionID: String)
     func onboardingCancelled()
@@ -626,6 +633,10 @@ class RegionOnboardingCoordinator {
                 }
             }
             navigationController.present(ohNo, animated: true, completion: nil)
+        case .awesome:
+            let awesome = SignUpCompletedViewController.fromStoryboard()
+            awesome.delegate = self
+            navigationController.setViewControllers([awesome], animated: true)
         case .done:
             delegate?.onboardingCompleteForRegion(region.region.id)
         }
