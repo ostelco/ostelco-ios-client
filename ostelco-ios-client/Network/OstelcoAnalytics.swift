@@ -71,6 +71,8 @@ enum AnalyticsEvent {
             return AnalyticsEventAddToCart
         case .ecommercePurchase:
             return AnalyticsEventEcommercePurchase
+        case .ecommercePurchaseFailed:
+            return "purchase_failed"
         default:
             return String(describing: self).snakeCased() ?? ""
         }
