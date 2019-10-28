@@ -17,19 +17,12 @@ protocol SelectIdentityVerificationMethodDelegate: class {
 
 class SelectIdentityVerificationMethodViewController: UIViewController {
     
-    @IBOutlet private var singPassRadioButton: RadioButton!
-    @IBOutlet private var scanICRadioButton: RadioButton!
-    @IBOutlet private var jumioRadioButton: RadioButton!
-    @IBOutlet private var continueButton: UIButton!
-    @IBOutlet private var singPassContainer: UIStackView!
-    @IBOutlet private var scanICContainer: UIStackView!
-    @IBOutlet private var jumioContainer: UIStackView!
-    
     var spinnerView: UIView?
     var options: [IdentityVerificationOption]!
     
-    private var radioButtons: [RadioButton] = []
-        
+    @IBOutlet private var singpassViews: [UIView]?
+    @IBOutlet private var jumioViews: [UIView]?
+    
     weak var delegate: SelectIdentityVerificationMethodDelegate?
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,87 +33,31 @@ class SelectIdentityVerificationMethodViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setRadioButtons()
-        self.toggleRadioButtonContainersVisibility()
-        self.updateContinue()
-    }
-
-    @IBAction private func selectRadioButton(_ radioButton: RadioButton) {
-        self.radioButtons.forEach { button in
-            if button == radioButton {
-                button.isCurrentSelected = true
-            } else {
-                button.isCurrentSelected = false
-            }
+        
+        if !options.contains(.singpass) {
+            singpassViews?.forEach({ $0.isHidden = true })
         }
         
-        self.updateContinue()
-    }
-    
-    @IBAction private func continueTapped() {
-        spinnerView = showSpinner()
-        
-        if self.singPassRadioButton.isCurrentSelected {
-            self.delegate?.selected(option: .singpass)
-        } else if self.scanICRadioButton.isCurrentSelected {
-            self.delegate?.selected(option: .scanIC)
-        } else if self.jumioRadioButton.isCurrentSelected {
-            self.delegate?.selected(option: .jumio)
-        } else {
-            ApplicationErrors.assertAndLog("At least one of these should be checked if continue is enabled!")
+        if !options.contains(.scanIC) && !options.contains(.jumio) {
+            jumioViews?.forEach({ $0.isHidden = true })
         }
     }
     
-    private func setRadioButtons() {
-        self.options.forEach { option in
-            switch option {
-            case .singpass:
-                radioButtons.append(self.singPassRadioButton)
-            case .scanIC:
-                radioButtons.append(self.scanICRadioButton)
-            case .jumio:
-                radioButtons.append(self.jumioRadioButton)
-            }
-        }
+    @IBAction private func singpassTapped(_ sender: Any) {
+        delegate?.selected(option: .singpass)
     }
     
-    private func toggleRadioButtonContainersVisibility() {
-        let excludedOptions = Set(IdentityVerificationOption.allCases).subtracting(Set(self.options))
-        excludedOptions.forEach {
-            switch $0 {
-            case .singpass:
-                self.singPassContainer.isHidden = true
-            case .scanIC:
-                self.scanICContainer.isHidden = true
-            case .jumio:
-                self.jumioContainer.isHidden = true
-            }
+    @IBAction private func jumioTapped(_ sender: Any) {
+        if options.contains(.scanIC) {
+            delegate?.selected(option: .scanIC)
         }
-    }
-    
-    private func updateContinue() {
-        if self.radioButtons.contains(where: { $0.isCurrentSelected }) {
-            self.continueButton.isEnabled = true
-        } else {
-            // No option has been selected yet. Disable.
-            self.continueButton.isEnabled = false
+        if options.contains(.jumio) {
+            delegate?.selected(option: .jumio)
         }
     }
     
     @IBAction private func needHelpTapped(_ sender: Any) {
-        self.showNeedHelpActionSheet()
-    }
-    
-    @IBAction private func singPassTapped() {
-        self.selectRadioButton(self.singPassRadioButton)
-    }
-    
-    @IBAction private func scanICTapped() {
-        self.selectRadioButton(self.scanICRadioButton)
-    }
-    
-    @IBAction private func jumioTapped(_ sender: Any) {
-        self.selectRadioButton(self.jumioRadioButton)
+        showNeedHelpActionSheet()
     }
 }
 
