@@ -139,7 +139,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .done)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .awesome)
     }
     
     func testUserHasInstalledESIMThenColdStart() {

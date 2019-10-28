@@ -26,23 +26,27 @@ struct RegionGroupView: View {
         }
         return AnyView(
             ESimCountryView(image: country.image, country: country.nameOrPlaceholder, action: {
-                // TODO: Refactor this so isnt dependent on CoverageViewController
                 self.countrySelected(country)
             })
         )
     }
     
     var body: some View {
-        VStack {
-            RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
-            List(store.allowedCountries(countries: regionGroup.countries).map({ Country($0) }), id: \.countryCode) { country in
-                Group {
-                    self.renderSimProfile(self.regionGroup, country: country)
-                }.frame(maxWidth: .infinity, minHeight: 94.0)
-            }.cornerRadius(28)
-            .padding([.leading, .trailing, .top ], 10)
-            .padding(.bottom, 30)
-        }.background(regionGroup.backgroundColor.toColor)
+        ZStack {
+            regionGroup.backgroundColor.toColor
+            VStack {
+                RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
+                List(store.allowedCountries(countries: regionGroup.countries).map({ Country($0) }), id: \.countryCode) { country in
+                    Group {
+                        self.renderSimProfile(self.regionGroup, country: country)
+                    }.frame(maxWidth: .infinity, minHeight: 94.0)
+                }.cornerRadius(28)
+                .padding([.leading, .trailing, .top ], 10)
+                .padding(.bottom, 30)
+            }.padding(.top, 25)
+        }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "RegionGroupView")
+        }
     }
 }
 struct RegionView_Previews: PreviewProvider {

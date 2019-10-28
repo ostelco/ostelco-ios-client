@@ -12,6 +12,7 @@ import UIKit
 
 protocol PendingVerificationDelegate: class {
     func checkStatus()
+    func viewDidAppear()
 }
 
 class PendingVerificationViewController: UIViewController {
@@ -28,6 +29,11 @@ class PendingVerificationViewController: UIViewController {
     weak var delegate: PendingVerificationDelegate?
     
     // MARK: - View Lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.viewDidAppear()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,13 +13,13 @@ import Stripe
 import ostelco_core
 import PromiseKit
 import UIKit
+import FirebaseAnalytics
 
-// TODO: Missing pull to refresh balance
 // TODO: Only loading products once, not on view did appear as original VC did (does this matter?)
-// TODO: Original VC registered for PN for some reason, not sure why
 struct BalanceView: View {
     
     @EnvironmentObject var store: BalanceStore
+    @EnvironmentObject var global: GlobalStore
     @State private var showProductsSheet = false
     @State private var presentApplePaySetup = false
     @Binding private var currentTab: Tabs
@@ -93,7 +93,7 @@ struct BalanceView: View {
                     .font(.system(size: 21))
                     .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
                 Button(action: {
-                    OstelcoAnalytics.logEvent(.BuyDataClicked)
+                    OstelcoAnalytics.logEvent(.buyDataFlowStarted)
                     self.showProductsSheet.toggle()
                 }) {
                     Text("Buy more Data")
@@ -114,6 +114,7 @@ struct BalanceView: View {
         }.sheet(isPresented: $presentApplePaySetup) {
             ApplePaySetupView()
         }.onAppear {
+            OstelcoAnalytics.setScreenName(name: "BalanceView")
             if !self.store.hasAtLeastOneInstalledSimProfile {
                 self.store.loadSimProfiles()
             }
@@ -123,58 +124,23 @@ struct BalanceView: View {
     }
     
     func renderOverlay() -> AnyView {
-        if store.hasAtLeastOneInstalledSimProfile {
-            return AnyView(EmptyView())
+        if let country = global.country, global.showCountryNotSupportedMessage() {
+                return AnyView(
+                    MessageContainer(
+                        messageType: .countryNotSupported(country: country)
+                    )
+                )
+        } else if store.hasAtLeastOneInstalledSimProfile {
+            if let country = global.showCountryChangedMessage() {
+                return AnyView(
+                    MessageContainer(messageType: .welcomeToCountry(action: { self.currentTab = .coverage }, country: country))
+                )
+            } else {
+                return AnyView(EmptyView())
+            }
         } else {
             return AnyView(
-                Group {
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                        }
-                    }.background(OstelcoColor.fog.toColor)
-                    ZStack {
-                        VStack {
-                            Spacer()
-                            OstelcoContainer {
-                                VStack(spacing: 20) {
-                                    OstelcoTitle(label: "Welcome to OYA!")
-                                    Text("Where would you like to start using your first 1GB of OYA data?")
-                                        .font(.system(size: 21))
-                                        .foregroundColor(OstelcoColor.inputLabel.toColor)
-                                        .multilineTextAlignment(.center )
-                                    Button(action: {
-                                        self.currentTab = .coverage
-                                    }) {
-                                        ZStack {
-                                            HStack {
-                                                Image(systemName: "globe")
-                                                    .font(.system(size: 30, weight: .light))
-                                                    .foregroundColor(OstelcoColor.primaryButtonLabel.toColor)
-                                                Spacer()
-                                            }.padding(.leading, 10)
-                                            Text("See Available Countries")
-                                                .font(.system(size: 18, weight: .semibold))
-                                                .foregroundColor(OstelcoColor.primaryButtonLabel.toColor)
-                                        }
-                                    }
-                                    .frame(maxWidth: .infinity, minHeight: 50)
-                                    .background(OstelcoColor.primaryButtonBackground.toColor)
-                                    .cornerRadius(27.5)
-                                }.padding(25)
-                            }
-                        }
-                        
-                        // Lazy way to hide the bottom rounded corners from the above container, a better solution would be to configure the corners in the container itself.
-                        VStack {
-                            Spacer()
-                            Rectangle()
-                                .fill(OstelcoColor.foreground.toColor)
-                                .frame(maxWidth: .infinity, maxHeight: 25)
-                        }
-                    }
-                }
+                MessageContainer(messageType: .welcomeNewUser(action: { self.currentTab = .coverage }))
             )
         }
     }

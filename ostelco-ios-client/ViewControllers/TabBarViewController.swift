@@ -34,14 +34,18 @@ class TabBarViewController: ApplePayViewController {
     }
     
     override func paymentSuccessful(_ product: Product?) {
-        
+        if let product = product {
+            OstelcoAnalytics.logEvent(.ecommercePurchase(currency: product.currency, value: product.amount, tax: product.tax))
+        }
     }
 }
 
 extension TabBarViewController: RegionOnboardingDelegate {
     func onboardingCompleteForRegion(_ regionID: String) {
-        
         dismiss(animated: true, completion: nil)
+        if let parent = self.parent as? AuthParentViewController {
+            parent.onboardingComplete(force: true)
+        }
     }
     
     func onboardingCancelled() {

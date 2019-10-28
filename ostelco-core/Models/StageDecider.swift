@@ -35,6 +35,7 @@ public class RegionOnboardingContext {
     public var selectedVerificationOption: IdentityVerificationOption?
     public var hasCameraProblem: Bool
     public var hasCompletedJumio: Bool
+    public var hasSeenAwesome: Bool
     public var hasSeenJumioInstructions: Bool
     public var serverIsUnreachable: Bool
     public var simProfile: SimProfile?
@@ -51,18 +52,20 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil) {
+    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false) {
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
         self.hasCompletedJumio = hasCompletedJumio
         self.hasSeenJumioInstructions = hasSeenJumioInstructions
         self.serverIsUnreachable = serverIsUnreachable
+        self.hasSeenAwesome = hasSeenAwesome
         self.myInfoCode = myInfoCode
+        
     }
 }
 
-public enum IdentityVerificationOption: CaseIterable {
+public enum IdentityVerificationOption: String, CaseIterable {
     case singpass
     case scanIC
     case jumio
@@ -77,8 +80,8 @@ public struct StageDecider {
         case locationPermissions
         case notificationPermissions
         case locationProblem(LocationProblem)
-        case awesome
         case ohNo(OhNoIssueType)
+        case awesome
     }
     
     public enum RegionStage: Equatable {
@@ -94,12 +97,13 @@ public struct StageDecider {
         case ohNo(OhNoIssueType)
         case cameraProblem
         case done
+        case awesome
     }
     
     public init() {}
 
     private func eSIMStage(_ region: RegionResponse, _ localContext: RegionOnboardingContext) -> RegionStage {
-        var stages: [RegionStage] = [.eSimInstructions, .done]
+        var stages: [RegionStage] = [.eSimInstructions, .awesome, .done]
         
         func remove(_ stage: RegionStage) {
             if let index = stages.firstIndex(of: stage) {
@@ -114,6 +118,11 @@ public struct StageDecider {
         if let profile = region.getGraphQLModel().getSimProfile(), profile.status == .installed {
             remove(.eSimInstructions)
         }
+        
+        if localContext.hasSeenAwesome {
+            remove(.awesome)
+        }
+        
         return stages[0]
     }
     
