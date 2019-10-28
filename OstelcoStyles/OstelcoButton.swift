@@ -156,6 +156,20 @@ public class PrimaryButton: OstelcoButton {
     }
 }
 
+public class IDOptionButton: OstelcoButton {
+    
+    public override func commonInit() {
+        super.commonInit()
+        
+        let layer = self.layer
+        layer.cornerRadius = bounds.height / 2.0
+        layer.shadowColor = OstelcoColor.choiceButtonShadow.toUIColor.cgColor
+        layer.shadowRadius = 18.0
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 0, height: 7)
+    }
+}
+
 public class SmallButton: OstelcoButton {
     
     public override func commonInit() {

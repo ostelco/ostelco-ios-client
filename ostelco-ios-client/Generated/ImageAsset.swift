@@ -20,7 +20,7 @@ public enum ImageAsset: String, CaseIterable {
     case flagsTh
     case flagsUs
     case home
-    case icIcon
+    case idIcon
     case illustration
     case instructionsESimContinue
     case instructionsESimLaptop
@@ -79,7 +79,7 @@ public extension UIImage {
 
     static let ostelco_home = UIImage(from: .home)
 
-    static let ostelco_icIcon = UIImage(from: .icIcon)
+    static let ostelco_idIcon = UIImage(from: .idIcon)
 
     static let ostelco_illustration = UIImage(from: .illustration)
 

@@ -59,7 +59,7 @@ extension LocationProblem {
         case .authorizedButWrongCountry(let expected, let actual):
             let format = "It seems like you're in %@.\n\nTo give you mobile data, by law, we have to verify that you're in %@"
             return LinkableText(
-                fullText: String(format: NSLocalizedString(format, comment: "Error message when user is in the wrong country"), expected, actual),
+                fullText: String(format: NSLocalizedString(format, comment: "Error message when user is in the wrong country"), actual, expected),
                 linkedPortion: link
             )!
         case .disabledInSettings, .deniedByUser, .notDetermined:

@@ -48,8 +48,6 @@ struct MessageContainer: View {
 }
 
 struct MessageView: View {
-    
-    
     let messageType: MessageType
     let action: (() -> Void)?
     
@@ -60,8 +58,8 @@ struct MessageView: View {
     
     func renderTitle() -> OstelcoTitle {
         switch messageType {
-            case .welcomeNewUser:
-                return OstelcoTitle(label: "Welcome to OYA!")
+        case .welcomeNewUser:
+            return OstelcoTitle(label: "Welcome to OYA!")
         case .welcomeToCountry( _, let country), .countryNotSupported(let country):
                 return OstelcoTitle(label: "Welcome to \(country.nameOrPlaceholder)!")
         }
@@ -69,12 +67,12 @@ struct MessageView: View {
     
     func renderDescription() -> Text {
         switch messageType {
-            case .welcomeNewUser:
-                return Text("Where would you like to start using your first 1GB of OYA data?")
-            case .welcomeToCountry:
-                return Text("You can continue to use your OYA data here with a few simple steps")
-            case .countryNotSupported:
-                return Text("Unfortunately you cannot use your OYA data here at this point")
+        case .welcomeNewUser:
+            return Text("Where would you like to start using your first 1GB of OYA data?")
+        case .welcomeToCountry:
+            return Text("You can continue to use your OYA data here with a few simple steps")
+        case .countryNotSupported:
+            return Text("Unfortunately you cannot use your OYA data here at this point")
         }
     }
     

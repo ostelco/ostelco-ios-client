@@ -96,6 +96,7 @@ public struct StageDecider {
         case eSimInstructions
         case ohNo(OhNoIssueType)
         case cameraProblem
+        case locationProblem(LocationProblem)
         case done
         case awesome
     }
