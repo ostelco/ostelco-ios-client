@@ -54,8 +54,7 @@ final class GlobalStore: ObservableObject {
     func showCountryChangedMessage() -> Country? {
         if let previousCountry = previousCountry, let country = country {
             
-            if previousCountry.countryCode != country.countryCode && simProfilesForCountry(country: country).filter({ $0.status == .installed }).isEmpty
-            {
+            if previousCountry.countryCode != country.countryCode && simProfilesForCountry(country: country).filter({ $0.status == .installed }).isEmpty {
                 return country
             }
         }
