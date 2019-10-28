@@ -630,7 +630,10 @@ class RegionOnboardingCoordinator {
             ohNo.primaryButtonAction = { [weak self] in
                 switch issue {
                 case .ekycRejected:
-                    self?.delegate?.onboardingCancelled()
+                    self?.localContext.selectedVerificationOption = nil
+                    self?.localContext.hasSeenJumioInstructions = false
+                    self?.localContext.hasCompletedJumio = false
+                    self?.advance()
                 default:
                     self?.advance()
                 }
