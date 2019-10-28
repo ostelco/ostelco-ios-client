@@ -107,7 +107,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
     // MARK: - Helpers for starting Apple Pay.
 
     func startApplePay(product: Product) {
-        OstelcoAnalytics.logEvent(.addToCart(name: product.name, sku: product.sku, countryCode: product.country, amount: product.amount, currency: product.currency))
+        OstelcoAnalytics.logEvent(.addToCart(name: product.name, sku: product.sku, countryCode: product.country, amount: product.stripeAmount, currency: product.currency))
         shownApplePay = false
         authorizedApplePay = false
         purchasingProduct = product
@@ -121,9 +121,9 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
             return
         }
         // Convert to acutal amount (prime uses currency’s smallest unit)
-        let applePayAmount = convertStripeToNormalCurrency(amount: product.amount, currency: product.currency)
-        let tax = convertStripeToNormalCurrency(amount: product.tax, currency: product.currency)
-        let subTotal = convertStripeToNormalCurrency(amount: product.subTotal, currency: product.currency)
+        let applePayAmount = product.stripeAmount
+        let tax = product.stripeTax
+        let subTotal = product.stripeSubTotal
         // Configure the line items on the payment request
         paymentRequest.paymentSummaryItems = [
             PKPaymentSummaryItem(label: product.subTotalLabel, amount: subTotal),

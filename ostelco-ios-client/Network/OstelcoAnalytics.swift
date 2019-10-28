@@ -62,11 +62,12 @@ enum AnalyticsEvent {
     case identificationFailed(regionCode: String, countryCode: String, ekycMethod: String, failureReason: String)
     case esimSetupStarted(regionCode: String, countryCode: String)
     case esimSetupCompleted(regionCode: String, countryCode: String)
+    case esimSetupFailed(regionCode: String, countryCode: String)
     case logout
     case buyDataFlowStarted
     case setupApplePay
-    case addToCart(name: String, sku: String, countryCode: String, amount: Decimal, currency: String)
-    case ecommercePurchase(currency: String, value: Decimal, tax: Decimal)
+    case addToCart(name: String, sku: String, countryCode: String, amount: NSDecimalNumber, currency: String)
+    case ecommercePurchase(currency: String, value: NSDecimalNumber, tax: NSDecimalNumber)
     case ecommercePurchaseFailed(failureReason: String)
     
     var name: String {
@@ -96,7 +97,7 @@ enum AnalyticsEvent {
             return ["region_code": regionCode, "country_code": countryCode, "ekyc_method": ekycMethod, "failure_reaon": failureReason]
         case .esimSetupStarted(let regionCode, let countryCode):
             return ["region_code": regionCode, "country_code": countryCode]
-        case .esimSetupCompleted(let regionCode, let countryCode):
+        case .esimSetupCompleted(let regionCode, let countryCode), .esimSetupFailed(let regionCode, let countryCode):
             return ["region_code": regionCode, "country_code": countryCode]
         case .addToCart(let name, let sku, let countryCode, let amount, let currency):
             return [
@@ -106,15 +107,15 @@ enum AnalyticsEvent {
                 "item_name": name,
                 "item_sku": sku,
                 "item_location": countryCode,
-                "value": NSDecimalNumber(decimal: amount).stringValue,
-                "price": NSDecimalNumber(decimal: amount).stringValue,
+                "value": amount,
+                "price": amount,
                 "currency": currency
             ]
         case .ecommercePurchase(let currency, let value, let tax):
             return [
                 "currency": currency,
-                "value": Double(truncating: value as NSNumber),
-                "tax": Double(truncating: tax as NSNumber)
+                "value": value,
+                "tax": tax
             ]
         case .ecommercePurchaseFailed(let failureReason):
             return ["failure_reason": failureReason]
