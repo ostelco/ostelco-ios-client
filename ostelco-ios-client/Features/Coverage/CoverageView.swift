@@ -87,7 +87,7 @@ struct CoverageView: View {
                     OstelcoTitle(label: "All Destinations")
                 
                     // TODO: Cleanup
-                    ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }), id: \.id) { self.renderRegionGroup($0) }
+                    ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }).sorted(by: { $0.name < $1.name }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
             }.padding(.top, 50).navigationBarTitle("Coverage", displayMode: .inline)
