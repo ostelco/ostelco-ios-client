@@ -643,7 +643,7 @@ class RegionOnboardingCoordinator {
             let locationProblem = LocationProblemViewController.fromStoryboard()
             locationProblem.delegate = self
             locationProblem.locationProblem = problem
-            navigationController.present(locationProblem, animated: true, completion: nil)
+            navigationController.setViewControllers([locationProblem], animated: true)
         case .awesome:
             let awesome = SignUpCompletedViewController.fromStoryboard()
             awesome.delegate = self
