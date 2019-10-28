@@ -403,6 +403,7 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
             self?.advance()
         }
         .catch { error in
+            OstelcoAnalytics.logEvent(.esimSetupFailed(regionCode: self.region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
             ApplicationErrors.log(error)
             controller.showAlert(title: "Error", msg: error.localizedDescription)
         }
