@@ -14,6 +14,7 @@ public enum OstelcoColor: String, CaseIterable {
     case azul
     case background
     case blackForText
+    case choiceButtonShadow
     case containerBorder
     case controlTint
     case countryText
