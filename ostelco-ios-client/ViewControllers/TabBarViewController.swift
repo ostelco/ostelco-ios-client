@@ -37,6 +37,9 @@ class TabBarViewController: ApplePayViewController {
         if let product = product {
             OstelcoAnalytics.logEvent(.ecommercePurchase(currency: product.currency, value: product.amount, tax: product.tax))
         }
+        if let parent = self.parent as? AuthParentViewController {
+            parent.onboardingComplete(force: true)
+        }
     }
 }
 
