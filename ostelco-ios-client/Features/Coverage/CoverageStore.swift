@@ -83,7 +83,7 @@ final class CoverageStore: ObservableObject {
     }
     
     func allowedCountries(countries: [Country]) -> [String] {
-        return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode })))
+        return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode }))).sorted()
     }
     
     func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {

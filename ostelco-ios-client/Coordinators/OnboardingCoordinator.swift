@@ -403,6 +403,7 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
             self?.advance()
         }
         .catch { error in
+            OstelcoAnalytics.logEvent(.esimSetupFailed(regionCode: self.region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
             ApplicationErrors.log(error)
             controller.showAlert(title: "Error", msg: error.localizedDescription)
         }
@@ -630,7 +631,10 @@ class RegionOnboardingCoordinator {
             ohNo.primaryButtonAction = { [weak self] in
                 switch issue {
                 case .ekycRejected:
-                    self?.delegate?.onboardingCancelled()
+                    self?.localContext.selectedVerificationOption = nil
+                    self?.localContext.hasSeenJumioInstructions = false
+                    self?.localContext.hasCompletedJumio = false
+                    self?.advance()
                 default:
                     self?.advance()
                 }
@@ -640,7 +644,7 @@ class RegionOnboardingCoordinator {
             let locationProblem = LocationProblemViewController.fromStoryboard()
             locationProblem.delegate = self
             locationProblem.locationProblem = problem
-            navigationController.present(locationProblem, animated: true, completion: nil)
+            navigationController.setViewControllers([locationProblem], animated: true)
         case .awesome:
             let awesome = SignUpCompletedViewController.fromStoryboard()
             awesome.delegate = self

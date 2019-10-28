@@ -44,7 +44,8 @@ struct RegionGroupView: View {
                 .padding([.leading, .trailing, .top ], 10)
                 .padding(.bottom, 30)
             }.padding(.top, 25)
-        }.onAppear {
+        }.edgesIgnoringSafeArea(.top)
+        .onAppear {
             OstelcoAnalytics.setScreenName(name: "RegionGroupView")
         }
     }
