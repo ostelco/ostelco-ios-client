@@ -51,12 +51,21 @@ struct ApplicationErrors {
                     withAdditionalUserInfo userInfo: [String: Any]? = nil,
                     file: StaticString = #file,
                     line: UInt = #line) {
-        debugPrint("""
-            \(file.fileName) line \(line)
-            - Error: \(error)
-            - UserInfo: \(String(describing: userInfo))
-            """)
+        write("""
+        \(file.fileName) line \(line)
+        - Error: \(error)
+        - UserInfo: \(String(describing: userInfo))
+        """)
+        Crashlytics.sharedInstance().setObjectValue(String(describing: userInfo), forKey: "userInfo")
+        Crashlytics.sharedInstance().setObjectValue("\(file.fileName) line \(line)", forKey: "userInfo")
+        write(String(describing: error.localizedDescription))
+        
         Crashlytics.sharedInstance().recordError(error, withAdditionalUserInfo: userInfo)
+    }
+    
+    static func write(_ string: String) {
+        debugPrint(string)
+        CLSLogv("%@", getVaList([string]))
     }
     
     /// Throws an assertion failure at the point where it's called in non-production builds.
