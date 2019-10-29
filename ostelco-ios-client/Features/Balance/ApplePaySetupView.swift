@@ -16,11 +16,11 @@ struct ApplePaySetupView: View {
             OstelcoTitle(label: "OYA uses Apple Pay")
             Text("For now, we only accept payment through Apple Pay.")
                 .font(.system(size: 21))
-                .foregroundColor(OstelcoColor.blackForText.toColor)
+                .foregroundColor(OstelcoColor.textHeading.toColor)
                 .multilineTextAlignment(.center)
             Text("Please click on the button below to set it up.")
                 .font(.system(size: 21))
-                .foregroundColor(OstelcoColor.blackForText.toColor)
+                .foregroundColor(OstelcoColor.inputLabel.toColor)
                 .multilineTextAlignment(.center)
             Spacer()
             
