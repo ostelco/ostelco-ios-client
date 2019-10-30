@@ -1,0 +1,19 @@
+{
+  "name": "config",
+  "version": "1.0.0",
+  "description": "We use [Firebase Remote Config](https://firebase.google.com/docs/remote-config) for dynamic configuration of our app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish:prod": "bash update.sh prod",
+    "publish:dev": "bash update.sh dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^20.1.0",
+    "request-promise": "^4.2.2",
+    "request": "^2.88.0"
+  }
+}
