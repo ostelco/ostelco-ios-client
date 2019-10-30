@@ -60,7 +60,7 @@ struct RegionListByLocation: View {
             }
         } else {
             return AnyView(
-                Text("We are having troubles finding your location.")
+                Text("We are having trouble finding your location.")
             )
         }
     }

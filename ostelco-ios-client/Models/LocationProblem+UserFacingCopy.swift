@@ -53,24 +53,22 @@ extension LocationProblem {
     
     /// The explanatory copy the user should see about the problem.
     var linkableCopy: LinkableText {
-        let link = Link(NSLocalizedString("by law", comment: "Location errors: linkable part"), url: ExternalLink.locationRequirement.url)
-        
         switch self {
         case .authorizedButWrongCountry(let expected, let actual):
-            let format = "It seems like you're in %@.\n\nTo give you mobile data, by law, we have to verify that you're in %@"
+            let format = "It seems like you're in %@.\n\nTo give you mobile data, we have to verify that you're in %@"
             return LinkableText(
                 fullText: String(format: NSLocalizedString(format, comment: "Error message when user is in the wrong country"), actual, expected),
-                linkedPortion: link
+                linkedPortion: nil
             )!
         case .disabledInSettings, .deniedByUser, .notDetermined:
             return LinkableText(
-                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\nPlease grant OYA \"Location Access\" in your phone's Settings.", comment: "Error when user has disabled location access."),
-                linkedPortion: link
+                fullText: NSLocalizedString("To give you mobile data, we have to verify which country you're in.\n\nPlease grant OYA \"Location Access\" in your phone's Settings.", comment: "Error when user has disabled location access."),
+                linkedPortion: nil
             )!
         case .restrictedByParentalControls:
             return LinkableText(
-                fullText: NSLocalizedString("To give you mobile data, by law, we have to verify which country you're in.\n\n\"Location Services\" are disabled due to Parental Control Settings on this phone.", comment: "Error when user is restricted by parental controls"),
-                linkedPortion: link
+                fullText: NSLocalizedString("To give you mobile data, we have to verify which country you're in.\n\n\"Location Services\" are disabled due to Parental Control Settings on this phone.", comment: "Error when user is restricted by parental controls"),
+                linkedPortion: nil
             )!
         }
     }

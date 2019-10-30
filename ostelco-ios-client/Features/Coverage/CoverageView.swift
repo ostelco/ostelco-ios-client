@@ -84,6 +84,8 @@ struct CoverageView: View {
                     
                     RegionListByLocation()
                     
+                    Spacer(minLength: 10)
+                    
                     OstelcoTitle(label: "All Destinations")
                 
                     // TODO: Cleanup
