@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Crashlytics
+import ostelco_core
 
 class NeedHelpAlertController: UIAlertController {
     
@@ -25,6 +27,13 @@ class NeedHelpAlertController: UIAlertController {
             }
             self.addAction(startOverAction)
         }
+        
+        let crashlyticsAction = UIAlertAction(title: "Trigger Crashlytics Crash", style: .default) { _ in
+            ApplicationErrors.log(ApplicationErrors.General.noMyInfoConfigFound)
+            Crashlytics.sharedInstance().crash()
+        }
+        
+        self.addAction(crashlyticsAction)
         #endif
         
         if UserManager.shared.hasCurrentUser {
