@@ -5,12 +5,12 @@
   "main": "apollo.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "downloadschema" : "apollo client:download-schema"
+    "downloadschema": "apollo client:download-schema"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo": "^2.15.0",
-    "dotenv": "^8.0.0"
+    "apollo": "^2.21.0",
+    "dotenv": "^8.2.0"
   }
 }
