@@ -26,5 +26,27 @@ The above commands defaults to our `dev` project, to run them in `prod` add `ENV
 
 `ENVIRONMENT=prod node index.js get`
 
+### Update config
+
+To update the config you could
+
+1. Copy the "value" of the config you want to modify
+
+```
+"feature_flags": {
+      "defaultValue": {
+        "value": "{\"enableStripeInsteadOfApplePay\":false}"
+      }
+    }
+```
+This part from the above
+
+`{\"enableStripeInsteadOfApplePay\":false}`
+
+2. Use a tool to unescape the string like https://www.freeformatter.com/json-escape.html
+3. Optionally use https://jsonlint.com/ to pretty print it before modifying
+4. Use tool from step 2 to escape the string
+5. Update the `"value"` field with the new values 
+6. Run the scripts to publish the newly modified config
 
 
