@@ -2,6 +2,10 @@ This project is based on [REST APIs using the node client](https://github.com/fi
 
 More information about what we are using remote config for can be found in this [private gdrive document](https://docs.google.com/document/d/1UNAAbFE_U8KVSd5SNg_Z0Gm9Kn7TY2UbQbbsDdz6ZGg)
 
+The project is written using our favourite command / programming languages `javascript` and `bash`, though fear not, the project can easily be converted to other languages, here are some other quickstart examples of firebase remote config:
+- https://github.com/firebase/quickstart-java/tree/master/config
+- https://github.com/firebase/quickstart-python/tree/master/config
+
 ### Environment
 
 ```
