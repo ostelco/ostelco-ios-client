@@ -1,5 +1,15 @@
 This project is based on [REST APIs using the node client](https://github.com/firebase/quickstart-nodejs/tree/master/config) to manipulate remote config in firebase.
 
+
+### Environment
+
+```
+node -v
+v10.15.3
+npm -v
+6.11.3
+```
+
 ### Prerequisites
 1. Download the corresponding service account files and add them to .secrets
 
