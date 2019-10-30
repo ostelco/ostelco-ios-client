@@ -1,0 +1,5 @@
+{
+	"country_codes_to_region_codes": [{"countryCode":"AU","regionCodes":["my"]},{"countryCode":"CN","regionCodes":["my"]},{"countryCode":"HK","regionCodes":["my"]},{"countryCode":"IN","regionCodes":["my"]},{"countryCode":"ID","regionCodes":["my"]},{"countryCode":"JP","regionCodes":["my"]},{"countryCode":"PH","regionCodes":["my"]},{"countryCode":"KR","regionCodes":["my"]},{"countryCode":"TH","regionCodes":["my"]},{"countryCode":"VN","regionCodes":["my"]},{"countryCode":"SG","regionCodes":["sg"]},{"countryCode":"US","regionCodes":["us"]},{"countryCode":"MY","regionCodes":["my"]},{"countryCode":"NO","regionCodes":["no"]}],
+	"region_groups": [{"name":"Asia","description":"Southeast asia & pacific","backgroundColor":"lipstick","isPreview":false,"countryCodes":["SG","MY"]},{"name":"The Americas","description":"Latin & north america","backgroundColor":"azul","isPreview":true,"countryCodes":[]},{"name":"Loltel","description":"Only certain people should see this","backgroundColor":"yellow","isPreview":true,"countryCodes":["NO"]}]
+	"feature_flags": {"enableStripeInsteadOfApplePay":false}
+}
