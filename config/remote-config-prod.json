@@ -20,9 +20,9 @@
     "versionNumber": "3",
     "updateTime": "2019-10-29T13:07:48.179Z",
     "updateUser": {
-      "email": "havard@redotter.sg"
+      "email": "firebase-adminsdk-7r7s0@pi-ostelco-prod.iam.gserviceaccount.com""
     },
-    "updateOrigin": "CONSOLE",
+    "updateOrigin": "REST_API",
     "updateType": "INCREMENTAL_UPDATE"
   }
 }
