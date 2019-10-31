@@ -16,7 +16,8 @@ npm -v
 ```
 
 ### Prerequisites
-1. Download the corresponding service account files and add them to .secrets
+1. create a .secrets directory this folder `mkdir .secrets` 
+2. Download the corresponding service account files and add them to .secrets
 
 for dev: `pi-ostelco-dev-firebase-adminsdk.json`
 
@@ -24,8 +25,8 @@ for prod: `pi-ostelco-prod-firebase-adminsdk.json`
 
 More info on how to download service accounts from the firebase remote config REST API [documentation](https://firebase.google.com/docs/remote-config/use-config-rest#step_2_get_an_access_token_to_authenticate_and_authorize_api_requests)
 
-2. `npm install`
-3. `npm run publish:dev` or `npm run publish:prod`
+3. `npm install`
+4. `npm run publish:dev` or `npm run publish:prod`
 
 
 It's also possible to run the `index.js` directly
