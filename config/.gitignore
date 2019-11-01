@@ -1,0 +1,5 @@
+.secrets
+.idea
+
+# File written by the index.js script from the code this project is based on.
+config.json
