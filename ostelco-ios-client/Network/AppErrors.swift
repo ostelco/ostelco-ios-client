@@ -56,8 +56,7 @@ struct ApplicationErrors {
         - Error: \(error)
         - UserInfo: \(String(describing: userInfo))
         """)
-        Crashlytics.sharedInstance().setObjectValue(String(describing: userInfo), forKey: "userInfo")
-        Crashlytics.sharedInstance().setObjectValue("\(file.fileName) line \(line)", forKey: "userInfo")
+        Crashlytics.sharedInstance().setObjectValue("\(file.fileName) line \(line)", forKey: "line")
         write(String(describing: error.localizedDescription))
         
         Crashlytics.sharedInstance().recordError(error, withAdditionalUserInfo: userInfo)
