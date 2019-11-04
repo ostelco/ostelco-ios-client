@@ -33,6 +33,10 @@ struct TabBarView: View {
         UINavigationBar.appearance().shadowImage = UIImage()
     }
     
+    func resetTabs() {
+        currentTab = .balance
+    }
+    
     var body: some View {
         TabView(selection: $currentTab) {
             // TODO: This seems like a hacky way to be able to change current tab from a child view. (this = passing the state variable from the tabbar view to the corresponding views, it feels like we should be able to control this through some other kind of mechanism)
