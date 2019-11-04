@@ -21,6 +21,7 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user == nil {
+                self.killMainApp()
                 self.setupOnboarding()
             } else {
                 OstelcoAnalytics.logEvent(.signIn)
@@ -30,14 +31,21 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
         NotificationCenter.default.addObserver(self, selector: #selector(setupOnboarding), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
-    func onboardingComplete(force: Bool = false) {
+    func onboardingComplete() {
         killOldOnboarding()
         
-        if force || mainRoot == nil {
+        if mainRoot == nil {
             let tabs = UIStoryboard(name: "TabController", bundle: nil).instantiateInitialViewController()
             mainRoot = tabs
             embedFullViewChild(tabs!)
         }
+    }
+    
+    private func killMainApp() {
+        mainRoot?.willMove(toParent: nil)
+        mainRoot?.view.removeFromSuperview()
+        mainRoot?.removeFromParent()
+        mainRoot = nil
     }
     
     private func killOldOnboarding() {

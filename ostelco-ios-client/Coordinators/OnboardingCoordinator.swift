@@ -16,7 +16,7 @@ import AVFoundation
 import CoreTelephony
 
 protocol OnboardingCoordinatorDelegate: class {
-    func onboardingComplete(force: Bool)
+    func onboardingComplete()
 }
 
 class OnboardingCoordinator {
@@ -57,7 +57,7 @@ class OnboardingCoordinator {
                 UserManager.shared.customer = context.customer
                 let stage = self.stageDecider.compute(context: context.toLegacyModel(), localContext: self.localContext)
                 if stage == .home {
-                    self.delegate?.onboardingComplete(force: false)
+                    self.delegate?.onboardingComplete()
                 } else {
                     self.afterDismissing {
                         self.navigateTo(stage)
@@ -96,7 +96,7 @@ class OnboardingCoordinator {
             nicknameEntry.delegate = self
             navigationController.setViewControllers([nicknameEntry], animated: true)
         case .home:
-            delegate?.onboardingComplete(force: false)
+            delegate?.onboardingComplete()
         case .ohNo(let issue):
             let ohNo = OhNoViewController.fromStoryboard(type: issue)
             ohNo.primaryButtonAction = { [weak self] in
@@ -111,7 +111,7 @@ class OnboardingCoordinator {
             let locationProblem = LocationProblemViewController.fromStoryboard()
             locationProblem.delegate = self
             locationProblem.locationProblem = problem
-            navigationController.present(locationProblem, animated: true, completion: nil)
+            navigationController.setViewControllers([locationProblem], animated: true)
         case .notificationPermissions:
             let notificationPermissions = EnableNotificationsViewController.fromStoryboard()
             notificationPermissions.delegate = self

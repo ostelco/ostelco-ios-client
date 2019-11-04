@@ -15,10 +15,13 @@ class TabBarViewController: ApplePayViewController {
     var currentCoordinator: RegionOnboardingCoordinator?
     let primeAPI = APIManager.shared.primeAPI
     
+    var tabBar: TabBarView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        embedSwiftUI(TabBarView(controller: self))
+        tabBar = TabBarView(controller: self)
+        embedSwiftUI(tabBar!)
     }
     
     func showFreshchat() {
@@ -26,6 +29,8 @@ class TabBarViewController: ApplePayViewController {
     }
     
     func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
+        currentCoordinator = nil
+        
         let navigationController = UINavigationController()
         let coordinator = RegionOnboardingCoordinator(region: region, localContext: RegionOnboardingContext(), navigationController: navigationController, primeAPI: primeAPI)
         coordinator.delegate = self
@@ -37,18 +42,14 @@ class TabBarViewController: ApplePayViewController {
         if let product = product {
             OstelcoAnalytics.logEvent(.ecommercePurchase(currency: product.currency, value: product.stripeAmount, tax: product.stripeTax))
         }
-        if let parent = self.parent as? AuthParentViewController {
-            parent.onboardingComplete(force: true)
-        }
+        tabBar?.resetTabs()
     }
 }
 
 extension TabBarViewController: RegionOnboardingDelegate {
     func onboardingCompleteForRegion(_ regionID: String) {
         dismiss(animated: true, completion: nil)
-        if let parent = self.parent as? AuthParentViewController {
-            parent.onboardingComplete(force: true)
-        }
+        tabBar?.resetTabs()
     }
     
     func onboardingCancelled() {
