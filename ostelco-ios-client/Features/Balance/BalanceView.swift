@@ -85,13 +85,16 @@ struct BalanceView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack(alignment: .firstTextBaseline) {
-                    BalanceLabel(label: store.balance ?? "")
-                }
+                Spacer()
+                
+                BalanceLabel(label: store.balance ?? "")
                 
                 Text("remaining")
                     .font(.system(size: 21))
                     .foregroundColor(OstelcoColor.primaryButtonBackground.toColor)
+                
+                Spacer()
+                    
                 Button(action: {
                     OstelcoAnalytics.logEvent(.buyDataFlowStarted)
                     self.showProductsSheet.toggle()
@@ -103,6 +106,8 @@ struct BalanceView: View {
                 .frame(width: 250, height: 56)
                 .background(OstelcoColor.primaryButtonBackground.toColor)
                 .cornerRadius(27.5)
+                
+                Spacer()
             }
             renderOverlay()
             
