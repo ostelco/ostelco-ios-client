@@ -44,12 +44,13 @@ struct RegionGroupView: View {
                 .padding([.leading, .trailing, .top ], 10)
                 .padding(.bottom, 30)
             }.padding(.top, 25)
-        }.edgesIgnoringSafeArea(.top)
+        }
         .onAppear {
             OstelcoAnalytics.setScreenName(name: "RegionGroupView")
         }
     }
 }
+    
 struct RegionView_Previews: PreviewProvider {
     static var previews: some View {
         RegionGroupView(regionGroup: RegionGroupViewModel(name: "xxx", description: "xxx", backgroundColor: .lipstick, isPreview: false, countries: []), countrySelected: { _ in

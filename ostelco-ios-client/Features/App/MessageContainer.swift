@@ -32,7 +32,8 @@ struct MessageContainer: View {
                 HStack {
                     Spacer()
                 }
-            }.background(OstelcoColor.fog.toColor)
+            }
+            .background(OstelcoColor.fog.toColor)
             ZStack {
                 MessageView(messageType: messageType)
                 // Lazy way to hide the bottom rounded corners from the above container, a better solution would be to configure the corners in the container itself.
