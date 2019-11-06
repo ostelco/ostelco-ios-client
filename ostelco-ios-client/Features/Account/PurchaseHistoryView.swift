@@ -14,27 +14,34 @@ struct PurchaseHistoryView: View {
     @EnvironmentObject var store: AccountStore
     
     var body: some View {
-        VStack {
-            List(store.purchaseRecords, id: \.name) { record in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(record.date)
-                        .font(.system(size: 17, weight: .bold))
-                        .foregroundColor(OstelcoColor.inputLabel.toColor)
-                    HStack {
-                        Text(record.name)
-                            .font(.system(size: 17))
-                            .foregroundColor(OstelcoColor.inputLabel.toColor)
-                        Spacer()
-                        Text(record.amount)
-                            .font(.system(size: 17))
-                            .foregroundColor(OstelcoColor.inputLabel.toColor)
-                    }
-                }.padding()
-            }
-        }.navigationBarTitle("Purchase History")
+        List(store.purchaseRecords, id: \.name) { record in
+            RecordRow(record: record)
+        }
+        .navigationBarTitle("Purchase History")
         .onAppear {
             OstelcoAnalytics.setScreenName(name: "PurchaseHistoryView")
         }
+    }
+}
+
+struct RecordRow: View {
+    let record: PurchaseRecord
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(record.date)
+                .font(.system(size: 17, weight: .bold))
+                .foregroundColor(OstelcoColor.inputLabel.toColor)
+            HStack {
+                Text(record.name)
+                    .font(.system(size: 17))
+                    .foregroundColor(OstelcoColor.inputLabel.toColor)
+                Spacer()
+                Text(record.amount)
+                    .font(.system(size: 17))
+                    .foregroundColor(OstelcoColor.inputLabel.toColor)
+            }
+        }.padding()
     }
 }
 

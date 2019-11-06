@@ -16,3 +16,4 @@ if UIApplication.isNonUITesting {
 }
 
 _ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, appDelegateClassName)
+ 
