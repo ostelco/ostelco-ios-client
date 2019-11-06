@@ -48,11 +48,14 @@ class TabBarViewController: ApplePayViewController {
 
 extension TabBarViewController: RegionOnboardingDelegate {
     func onboardingCompleteForRegion(_ regionID: String) {
-        dismiss(animated: true, completion: nil)
-        tabBar?.resetTabs()
+        currentCoordinator = nil
+        dismiss(animated: true) {
+            self.tabBar?.resetTabs()
+        }
     }
     
     func onboardingCancelled() {
+        currentCoordinator = nil
         dismiss(animated: true, completion: nil)
     }
 }

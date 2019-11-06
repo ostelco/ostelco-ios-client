@@ -48,6 +48,8 @@ class OnboardingCoordinator {
     func advance() {
         primeAPI.loadContext()
             .done { (context) in
+                assert(Thread.isMainThread)
+                
                 self.localContext.serverIsUnreachable = false
                 
                 let location = LocationController.shared
@@ -82,6 +84,8 @@ class OnboardingCoordinator {
     }
     
     private func navigateTo(_ stage: StageDecider.Stage) {
+        assert(Thread.isMainThread)
+        
         switch stage {
         case .loginCarousel:
             let loginViewController = LoginViewController.fromStoryboard()
@@ -445,17 +449,26 @@ extension RegionOnboardingCoordinator: NRICVerifyDelegate {
 
 extension RegionOnboardingCoordinator: JumioCoordinatorDelegate {
     func scanSucceeded(scanID: String) {
-        localContext.hasCompletedJumio = true
-        advance()
+        afterDismissing { [weak self] in
+            self?.localContext.hasCompletedJumio = true
+            self?.jumioCoordinator = nil
+            self?.advance()
+        }
     }
     
     func scanCancelled() {
-        delegate?.onboardingCancelled()
+        afterDismissing { [weak self] in
+            self?.jumioCoordinator = nil
+            self?.delegate?.onboardingCancelled()
+        }
     }
     
     func scanFailed(errorMessage: String) {
-        localContext.selectedVerificationOption = nil
-        advance()
+        afterDismissing { [weak self] in
+            self?.jumioCoordinator = nil
+            self?.localContext.selectedVerificationOption = nil
+            self?.advance()
+        }
     }
 }
 
@@ -516,6 +529,8 @@ class RegionOnboardingCoordinator {
     func advance() {
         primeAPI.loadContext()
         .done { (context) in
+            assert(Thread.isMainThread)
+            
             self.localContext.serverIsUnreachable = false
             
             UserManager.shared.customer = context.customer
@@ -557,6 +572,8 @@ class RegionOnboardingCoordinator {
     }
     
     func navigateTo(_ stage: StageDecider.RegionStage) {
+        assert(Thread.isMainThread)
+        
         switch stage {
         case .selectIdentityVerificationMethod(let options):
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
@@ -653,11 +670,7 @@ class RegionOnboardingCoordinator {
             delegate?.onboardingCompleteForRegion(region.region.id)
         }
     }
-    
-    private func hasMultipleIdentityOptions() -> Bool {
-        return stageDecider.identityOptionsForRegionID(region.region.id).count > 1
-    }
-    
+  
     /**
      Returns a simProfile from server and caches it in memory for future calls.
      */

@@ -47,17 +47,18 @@ class JumioCoordinator: NSObject {
     
     deinit {
         netverifyController?.destroy()
+        netverifyController = nil
     }
     
     func startScan(from viewController: UIViewController) {
         createScanID()
-            .map { self.createNetverifyController(with: $0) }
+            .map { [weak self] in
+                self?.createNetverifyController(with: $0)
+            }
             .done { netverifyVC in
-                if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
-                    // For iPad, present from sheet
-                    netverifyVC.modalPresentationStyle = .formSheet
+                if let netverifyVC = netverifyVC {
+                    viewController.present(netverifyVC, animated: true, completion: nil)
                 }
-                viewController.present(netverifyVC, animated: true, completion: nil)
             }
             .catch { [weak self] error in
                 ApplicationErrors.log(error)
@@ -66,18 +67,13 @@ class JumioCoordinator: NSObject {
     }
 
     private func createScanID() -> Promise<String> {
-        return primeAPI
-            .createJumioScanForRegion(code: regionID)
+        return primeAPI.createJumioScanForRegion(code: regionID)
             .map { scan in
                 return scan.scanId
             }
     }
         
     private func createNetverifyController(with scanID: String) -> NetverifyViewController {
-        // Make sure the old one is gone before starting a new one.
-        netverifyController?.destroy()
-        netverifyController = nil
-        
         // Setup the Configuration for Netverify - use tokens from JUMIO console
         let config: NetverifyConfiguration = NetverifyConfiguration()
         let environment = Environment()
