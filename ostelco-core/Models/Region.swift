@@ -52,15 +52,9 @@ public struct Region: Codable {
     public let name: String
     
     /// Testing initializer
-    public init(id: String,
-                name: String) {
+    public init(id: String, name: String) {
         self.id = id
         self.name = name
-    }
-    
-    // Convenience method to access the related country object.
-    public var country: Country {
-        return Country(self.id)
     }
     
     public init(gqlRegion: PrimeGQL.RegionDetailsFragment.Region) {

@@ -53,7 +53,7 @@ struct AccountView: View {
                         }
                     }
                 }
-                Section(header: Text("Knowledge Base").font(.system(size: 28, weight: .bold)).foregroundColor(.black)) {
+                Section(header: Text("Knowledge Base").font(.system(size: 28, weight: .bold)).foregroundColor(OstelcoColor.text.toColor)) {
                     Button(action: {
                         UIApplication.shared.open(ExternalLink.oyaWebpage.url)
                     }) {
@@ -82,9 +82,8 @@ struct AccountView: View {
                         }
                     }
                 }
-            }.listStyle(GroupedListStyle())
-            
-            // .padding(15)
+            }
+            .listStyle(GroupedListStyle())
             .navigationBarTitle("Account")
             .actionSheet(isPresented: $showLogoutSheet) {
                 ActionSheet(
@@ -98,7 +97,8 @@ struct AccountView: View {
                     ]
                 )
             }
-        }.onAppear {
+        }
+        .onAppear {
             OstelcoAnalytics.setScreenName(name: "AccountView")
         }
     }

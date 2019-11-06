@@ -15,7 +15,7 @@ public struct OstelcoText: View {
         self.label = label
     }
     
-    public var body: some View {
+    public var body: Text {
         Text(label)
         .font(.system(size: 17))
         .foregroundColor(OstelcoColor.text.toColor)

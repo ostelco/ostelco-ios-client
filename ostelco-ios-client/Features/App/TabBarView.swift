@@ -26,7 +26,7 @@ struct TabBarView: View {
         self.controller = controller
         UITabBar.appearance().barTintColor = OstelcoColor.background.toUIColor
         // Remove top border
-        UITabBar.appearance().shadowImage = nil
+        UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().clipsToBounds = true
         
         // Remove bottom border
@@ -62,8 +62,8 @@ struct TabBarView: View {
                         .font(.system(size: 10))
                 }.tag(Tabs.account)
         }
-        .accentColor(OstelcoColor.azul.toColor)
-        .onDisappear()
+        .accentColor(OstelcoColor.highlighted.toColor)
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
