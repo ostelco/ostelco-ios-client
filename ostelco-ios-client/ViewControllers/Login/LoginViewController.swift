@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
 
     @objc
     func handleAuthorizationAppleIDButtonPress() {
-        OstelcoAnalytics.logEvent(.signInFlowStarted)
+        OstelcoAnalytics.logEvent(.signInFlowStarted(method: "apple"))
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]

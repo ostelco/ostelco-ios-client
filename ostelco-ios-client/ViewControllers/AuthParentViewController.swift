@@ -24,7 +24,7 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
                 self.killMainApp()
                 self.setupOnboarding()
             } else {
-                OstelcoAnalytics.logEvent(.signIn)
+                OstelcoAnalytics.logEvent(.signIn(method: "apple"))
             }
         }
         

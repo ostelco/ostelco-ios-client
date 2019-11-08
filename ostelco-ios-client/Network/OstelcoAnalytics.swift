@@ -10,6 +10,7 @@ import Foundation
 import ostelco_core
 import FirebaseAnalytics
 import Crashlytics
+import FacebookCore
 
 public class OstelcoAnalytics {
     
@@ -33,6 +34,13 @@ public class OstelcoAnalytics {
         } else {
             Analytics.logEvent(event.name, parameters: event.metadata)
         }
+
+        switch event {
+        case .ecommercePurchase:
+            AppEvents.logEvent(.purchased)
+        default:
+            break
+        }
     }
     
     static func setUserId(_ id: String) {
@@ -46,8 +54,8 @@ public class OstelcoAnalytics {
 
 enum AnalyticsEvent {
     
-    case signInFlowStarted
-    case signIn
+    case signInFlowStarted(method: String)
+    case signIn(method: String)
     case legalStuffAgreed
     case nicknameEntered
     case signup
@@ -85,6 +93,10 @@ enum AnalyticsEvent {
     
     var metadata: [String: Any] {
         switch self {
+        case .signInFlowStarted(let method):
+            return ["method": method]
+        case .signIn(let method):
+            return ["method": method]
         case .getNewRegionFlowStarted(let regionCode, let countryCode):
             return ["region_code": regionCode, "country_code": countryCode]
         case .identificationMethodChosen(let regionCode, let countryCode, let ekycMethod):
@@ -102,7 +114,7 @@ enum AnalyticsEvent {
         case .addToCart(let name, let sku, let countryCode, let amount, let currency):
             return [
                 "quantity": "1",
-                "item_categgory":
+                "item_category":
                 "one-time-purchase",
                 "item_name": name,
                 "item_sku": sku,
