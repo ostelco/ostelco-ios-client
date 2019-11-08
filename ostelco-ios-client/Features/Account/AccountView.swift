@@ -24,6 +24,7 @@ struct AccountView: View {
             return AnyView(EmptyView())
         }
     }
+    
     var body: some View {
         NavigationView {
             List {
@@ -40,17 +41,12 @@ struct AccountView: View {
                             OstelcoText(label: "Chat to Support")
                             Spacer()
                             renderUnreadMessagesBadge()
-                            Image(systemName: "chevron.right")
                         }
                     }
                     Button(action: {
                         self.showLogoutSheet.toggle()
                     }) {
-                        HStack {
-                            OstelcoText(label: "Log Out")
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                        }
+                        OstelcoText(label: "Log Out")
                     }
                 }
                 Section(header: Text("Knowledge Base").font(.system(size: 28, weight: .bold)).foregroundColor(OstelcoColor.text.toColor)) {
@@ -99,6 +95,7 @@ struct AccountView: View {
             }
         }
         .onAppear {
+            UITableView.appearance().backgroundColor = OstelcoColor.background.toUIColor
             OstelcoAnalytics.setScreenName(name: "AccountView")
         }
     }
