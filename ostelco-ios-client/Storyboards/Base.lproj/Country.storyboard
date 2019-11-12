@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAl-Dj-xla">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -224,7 +224,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="fakeModalLocation" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-Yo-QL8">
-                                <rect key="frame" x="-132.66666666666666" y="262.33333333333326" width="640.33333333333337" height="387.66666666666674"/>
+                                <rect key="frame" x="-137.66666666666666" y="29" width="650.33333333333337" height="504"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="background"/>
@@ -232,14 +232,13 @@
                             <constraint firstAttribute="trailing" secondItem="iZq-29-s8v" secondAttribute="trailing" constant="24" id="0Cq-B4-voF"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="u9V-Ch-8LS" secondAttribute="trailing" constant="24" id="2iY-Do-M8J"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="leading" secondItem="q3Q-44-Cly" secondAttribute="leading" constant="24" id="FQj-gX-sGt"/>
-                            <constraint firstItem="rfg-Yo-QL8" firstAttribute="top" secondItem="iZq-29-s8v" secondAttribute="bottom" constant="80" id="GGe-me-ujv"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="top" secondItem="9nq-pm-G8D" secondAttribute="top" constant="44" id="JBb-lV-fcV"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="bottom" secondItem="1eB-vY-7gZ" secondAttribute="bottom" constant="44" id="Maw-Xq-FcE"/>
                             <constraint firstItem="9nq-pm-G8D" firstAttribute="trailing" secondItem="1eB-vY-7gZ" secondAttribute="trailing" constant="24" id="Tom-r8-zng"/>
                             <constraint firstItem="u9V-Ch-8LS" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="24" id="aa4-Jm-7BO"/>
                             <constraint firstItem="1eB-vY-7gZ" firstAttribute="leading" secondItem="9nq-pm-G8D" secondAttribute="leading" constant="24" id="nob-xI-rR6"/>
+                            <constraint firstItem="rfg-Yo-QL8" firstAttribute="bottom" secondItem="9nq-pm-G8D" secondAttribute="centerY" constant="122" id="trT-lB-mPc"/>
                             <constraint firstItem="rfg-Yo-QL8" firstAttribute="centerX" secondItem="q3Q-44-Cly" secondAttribute="centerX" id="tzd-69-KCB"/>
-                            <constraint firstItem="1eB-vY-7gZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rfg-Yo-QL8" secondAttribute="bottom" constant="34" id="xMl-0y-rav"/>
                             <constraint firstItem="iZq-29-s8v" firstAttribute="top" secondItem="u9V-Ch-8LS" secondAttribute="bottom" constant="20" id="yFE-Yl-DKK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9nq-pm-G8D"/>
@@ -368,26 +367,26 @@ Please enable “Location Access” in Settings.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="fakeModalLocation" width="320" height="270"/>
+        <image name="fakeModalLocation" width="325" height="252"/>
         <image name="instructionsLocation" width="355" height="290"/>
         <image name="stepArrowIcon" width="25" height="25"/>
         <namedColor name="background">
-            <color red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="stepItemBulletLocked">
             <color red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
-            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textHeading">
-            <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textLink">
-            <color red="0.6705882352941176" green="0.62352941176470589" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18400000035762787" green="0.086000002920627594" blue="0.9100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bMg-lB-hOd"/>
+        <segue reference="7AW-gF-J98"/>
     </inferredMetricsTieBreakers>
 </document>
