@@ -211,8 +211,7 @@ public class DataRemainingLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .highlighted
-        self.appFont = OstelcoFont(fontType: .regular,
-                                   fontSize: .finePrint)
+        self.appFont = OstelcoFont(fontType: .regular, fontSize: .finePrint)
     }
 }
 
@@ -223,8 +222,7 @@ public class Heading1Label: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .bold,
-                                   fontSize: .heading1)
+        self.appFont = OstelcoFont(fontType: .bold, fontSize: .heading1)
     }
 }
 
@@ -233,8 +231,23 @@ public class Heading2Label: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .bold,
-                                   fontSize: .heading2)
+        self.appFont = OstelcoFont(fontType: .bold, fontSize: .heading2)
+    }
+    
+    public override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        let context = UIGraphicsGetCurrentContext()
+        context?.move(to: CGPoint(x: bounds.midX-25, y: bounds.maxY))
+        context?.setStrokeColor(OstelcoColor.oyaBlue.toUIColor.cgColor)
+        context?.setLineWidth(4)
+        context?.addLine(to: CGPoint(x: bounds.midX+25, y: bounds.maxY))
+        context?.strokePath()
+    }
+    
+    public override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let rect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
+        return rect.insetBy(dx: 0, dy: -10)
     }
 }
 
@@ -245,8 +258,7 @@ public class OnboardingLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .onboarding)
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .onboarding)
     }
 }
 
@@ -255,8 +267,7 @@ public class BodyTextBoldLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .bold,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .bold, fontSize: .body)
     }
 }
 
@@ -265,8 +276,7 @@ public class BodyTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .regular,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .regular, fontSize: .body)
     }
     
     public func setBoldableText(_ boldable: BoldableText) {
@@ -298,8 +308,7 @@ public class StepsTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .highlighted
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .body)
     }
 }
 
@@ -308,9 +317,7 @@ public class StepNumberLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .disabled
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .body)
-        // self.alpha = 0.5
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .body)
     }
 }
 
@@ -319,8 +326,7 @@ public class UpdateTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .text
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .body)
     }
 }
 
@@ -329,8 +335,7 @@ public class UpdateTextGreyLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .textSecondary
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .body)
     }
 }
 
@@ -339,8 +344,7 @@ public class ErrorTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .statusError
-        self.appFont = OstelcoFont(fontType: .regular,
-                                   fontSize: .body)
+        self.appFont = OstelcoFont(fontType: .regular, fontSize: .body)
     }
 }
 
@@ -349,8 +353,7 @@ public class AppVersionTextLabel: OstelcoLabel {
     public override func commonInit() {
         super.commonInit()
         self.appTextColor = .textSecondary
-        self.appFont = OstelcoFont(fontType: .medium,
-                                   fontSize: .finePrint)
+        self.appFont = OstelcoFont(fontType: .medium, fontSize: .finePrint)
     }
 }
 
@@ -358,8 +361,7 @@ public class InputFieldHeadlineLabel: OstelcoLabel {
     
     public override func commonInit() {
         super.commonInit()
-        self.appFont = OstelcoFont(fontType: .regular,
-                                   fontSize: .inputHeadline)
+        self.appFont = OstelcoFont(fontType: .regular, fontSize: .inputHeadline)
         self.appTextColor = .text
         self.alpha = 0.75
     }
