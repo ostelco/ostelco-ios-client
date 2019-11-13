@@ -38,7 +38,7 @@ struct AccountView: View {
                         self.store.showFreshchat()
                     }) {
                         HStack {
-                            OstelcoText(label: "Chat to Support")
+                            OstelcoText(label: "Chat with Support")
                             Spacer()
                             renderUnreadMessagesBadge()
                         }
