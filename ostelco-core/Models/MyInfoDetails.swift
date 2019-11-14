@@ -60,10 +60,13 @@ public struct MyInfoAddress: Codable {
     
     public var floorAndUnit: String {
         var addressBits = [String]()
-        if let floor = self.floor {
-            addressBits.append("#\(floor)")
+        
+        if let unit = self.unit, unit.isNotEmpty {
+            addressBits.append("#\(unit)")
         }
-        addressBits.appendIfNotNil(self.unit, string: { $0 })
+        if let floor = self.floor, floor.isNotEmpty {
+            addressBits.append(floor)
+        }
         return addressBits.joined(separator: "-")
     }
     

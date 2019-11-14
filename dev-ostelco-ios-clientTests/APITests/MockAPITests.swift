@@ -191,7 +191,7 @@ class MockAPITests: XCTestCase {
                 XCTFail("Couldn't load test info details or create update!")
                 return
         }
-        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=%2309-128,%20102%20PEARL%20GARDEN%0ABEDOK%20NORTH%20AVENUE%204,%20460102", statusCode: 204)
+        self.stubEmptyDataAtAbsolutePath("regions/sg/kyc/profile?address=%23128-09,%20102%20PEARL%20GARDEN%0ABEDOK%20NORTH%20AVENUE%204,%20460102", statusCode: 204)
         
         self.mockAPI.updateEKYCProfile(with: update, forRegion: "sg").awaitResult(in: self)
     }
