@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */; };
-		040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */; };
 		040A6A3222955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */; };
 		040A6A3322955E05002EE6BA /* ESIMInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */; };
 		0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412168B2226BBBA00455278 /* GetStartedViewController.swift */; };
@@ -417,7 +415,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMPageViewController.swift; sourceTree = "<group>"; };
 		040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESIMInstructionsViewController.swift; sourceTree = "<group>"; };
 		0412168B2226BBBA00455278 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		0412168E2226BEB100455278 /* TheLegalStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheLegalStuffViewController.swift; sourceTree = "<group>"; };
@@ -842,7 +839,6 @@
 		047F29192224536100FC6A8F /* ESim */ = {
 			isa = PBXGroup;
 			children = (
-				040A6A2E22953974002EE6BA /* ESIMPageViewController.swift */,
 				040A6A3122955E05002EE6BA /* ESIMInstructionsViewController.swift */,
 				042928F7223D4D8800806438 /* SignUpCompletedViewController.swift */,
 			);
@@ -1943,7 +1939,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BC4653C2271ADA9001951BF /* LocationProblem+UserFacingCopy.swift in Sources */,
-				040A6A2F22953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				04AB2CA7235A412E00C9A71B /* TabBarView.swift in Sources */,
 				9BBF7075226751A200E4B9B4 /* Netverify+Ostelco.swift in Sources */,
 				04834D3F222EC92C00A01500 /* UIViewController+UIActivityIndicator.swift in Sources */,
@@ -2158,7 +2153,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				040A6A3022953974002EE6BA /* ESIMPageViewController.swift in Sources */,
 				042928F0223D083A00806438 /* SelectIdentityVerificationMethodViewController.swift in Sources */,
 				04AB2CA8235A412E00C9A71B /* TabBarView.swift in Sources */,
 				04BA349D222587F6000359C4 /* SplashViewController.swift in Sources */,

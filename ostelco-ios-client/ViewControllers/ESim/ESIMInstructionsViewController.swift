@@ -9,6 +9,7 @@
 import ostelco_core
 import OstelcoStyles
 import UIKit
+import AVKit
 
 protocol ESIMInstructionsDelegate: class {
     func completedInstructions(_ controller: ESIMInstructionsViewController)
@@ -16,55 +17,24 @@ protocol ESIMInstructionsDelegate: class {
 
 class ESIMInstructionsViewController: UIViewController {
 
-    private var pageController: UIPageViewController!
-    
-    @IBOutlet private var primaryButton: PrimaryButton!
+    private var playerController: AVPlayerViewController!
     
     weak var delegate: ESIMInstructionsDelegate?
-    
-    private lazy var dataSource: PageControllerDataSource = {
-        let pages = ESIMPage.allCases.map { $0.viewController }
-        return PageControllerDataSource(pageController: self.pageController,
-                                        viewControllers: pages,
-                                        pageIndicatorTintColor: .clear,
-                                        currentPageIndicatorTintColor: .clear,
-                                        delegate: self)
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let index = self.dataSource.currentIndex
-        self.updateUI(for: index)
+        self.playerController.player = AVPlayer(url: ExternalLink.esimInstructionsVideo.url)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pageController = segue.destination as? UIPageViewController {
-            self.pageController = pageController
+        if let playerController = segue.destination as? AVPlayerViewController {
+            self.playerController = playerController
         }
     }
-    
-    private func updateUI(for index: Int) {
-        if index == (ESIMPage.allCases.count - 1) {
-            primaryButton.setTitle(NSLocalizedString("I'm ready to set up my eSIM", comment: "Last action button in eSim Carousel"), for: .normal)
-        } else {
-            primaryButton.setTitle(NSLocalizedString("Next", comment: "Action button in Carousel"), for: .normal)
-        }
-    }
-    
+  
     @IBAction private func primaryButtonTapped(_ sender: UIButton) {
-        let index = dataSource.currentIndex
-        if index == (ESIMPage.allCases.count - 1) {
-            self.delegate?.completedInstructions(self)
-        } else {
-            self.dataSource.goToNextPage()
-        }
-    }
-}
-
-extension ESIMInstructionsViewController: PageControllerDataSourceDelegate {
-    func pageChanged(to index: Int) {
-        self.updateUI(for: index)
+        self.delegate?.completedInstructions(self)
     }
 }
 
