@@ -238,10 +238,10 @@ public class Heading2Label: OstelcoLabel {
         super.draw(rect)
         
         let context = UIGraphicsGetCurrentContext()
-        context?.move(to: CGPoint(x: bounds.midX-25, y: bounds.maxY))
+        context?.move(to: CGPoint(x: bounds.midX - 25, y: bounds.maxY))
         context?.setStrokeColor(OstelcoColor.oyaBlue.toUIColor.cgColor)
         context?.setLineWidth(4)
-        context?.addLine(to: CGPoint(x: bounds.midX+25, y: bounds.maxY))
+        context?.addLine(to: CGPoint(x: bounds.midX + 25, y: bounds.maxY))
         context?.strokePath()
     }
     

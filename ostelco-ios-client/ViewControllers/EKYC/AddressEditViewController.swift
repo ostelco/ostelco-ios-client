@@ -127,7 +127,7 @@ class AddressEditViewController: UITableViewController {
                 return
             }
             
-            dataSource.setValue(info.street, forSection: .floor)
+            dataSource.setValue(info.floor, forSection: .floor)
             dataSource.setValue(info.unit, forSection: .unit)
             dataSource.setValue(info.block, forSection: .block)
             dataSource.setValue(info.building, forSection: .building)
