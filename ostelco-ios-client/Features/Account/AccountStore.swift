@@ -10,9 +10,9 @@ final class AccountStore: ObservableObject {
     @Published var purchaseRecords: [PurchaseRecord] = []
     @Published var unreadMessages: Int = 0
     
-    private let controller: TabBarViewController
+    private let controller: UIViewController
     
-    init(controller: TabBarViewController) {
+    init(controller: UIViewController) {
         self.controller = controller
         
         updateUnreadMessagesCount()
@@ -23,7 +23,9 @@ final class AccountStore: ObservableObject {
             let sortedPurchases = purchaseModels.sorted { $0.timestamp > $1.timestamp }
             return sortedPurchases.map { PurchaseRecord(from: $0) }
         }
-        .done { self.purchaseRecords = $0 }
+        .done {
+            self.purchaseRecords = $0
+        }
         .catch { error in
             ApplicationErrors.log(error)
             // TODO: Notify user about this error.
