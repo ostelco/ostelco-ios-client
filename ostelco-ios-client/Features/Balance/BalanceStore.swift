@@ -14,7 +14,7 @@ final class BalanceStore: ObservableObject {
     @Published var products: [Product] = []
     @Published var selectedProduct: Product?
     @Published var balance: String?
-    @Published var hasAtLeastOneInstalledSimProfile: Bool = false
+    @Published var hasAtLeastOneApprovedCountry: Bool = false
     
     let controller: TabBarViewController
     
@@ -28,7 +28,7 @@ final class BalanceStore: ObservableObject {
         self.controller = controller
         loadProducts()
         fetchBalance()
-        loadSimProfiles()
+        checkRegions()
     }
     
     func loadProducts() {
@@ -51,11 +51,13 @@ final class BalanceStore: ObservableObject {
         }
     }
     
-    func loadSimProfiles() {
+    func checkRegions() {
         APIManager.shared.primeAPI.loadRegions()
-            .map { $0.map { $0.simProfiles?.filter({ $0.fragments.simProfileFields.status == .installed }) ?? [] } }
-            .done { tmp in
-                self.hasAtLeastOneInstalledSimProfile = tmp.contains(where: { $0.isNotEmpty })
+            .filterValues({ (region) -> Bool in
+                return region.status == .approved
+            })
+            .done { result in
+                self.hasAtLeastOneApprovedCountry = result.isNotEmpty
             }.catch { error in
                 ApplicationErrors.log(error)
         }

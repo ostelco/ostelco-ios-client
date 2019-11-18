@@ -120,8 +120,8 @@ struct BalanceView: View {
             ApplePaySetupView()
         }.onAppear {
             OstelcoAnalytics.setScreenName(name: "BalanceView")
-            if !self.store.hasAtLeastOneInstalledSimProfile {
-                self.store.loadSimProfiles()
+            if !self.store.hasAtLeastOneApprovedCountry {
+                self.store.checkRegions()
             }
             
             self.store.loadProducts()
@@ -136,7 +136,7 @@ struct BalanceView: View {
                         messageType: .countryNotSupported(country: country)
                     )
                 )
-        } else if store.hasAtLeastOneInstalledSimProfile {
+        } else if store.hasAtLeastOneApprovedCountry {
             if let country = global.showCountryChangedMessage() {
                 return AnyView(
                     MessageContainer(messageType: .welcomeToCountry(action: { self.currentTab = .coverage }, country: country))
