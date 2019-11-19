@@ -81,7 +81,6 @@ public struct StageDecider {
         case notificationPermissions
         case locationProblem(LocationProblem)
         case ohNo(OhNoIssueType)
-        case awesome
     }
     
     public enum RegionStage: Equatable {

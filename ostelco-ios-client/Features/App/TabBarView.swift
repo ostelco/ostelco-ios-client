@@ -24,13 +24,6 @@ struct TabBarView: View {
     
     init(controller: TabBarViewController) {
         self.controller = controller
-        UITabBar.appearance().barTintColor = OstelcoColor.background.toUIColor
-        // Remove top border
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().clipsToBounds = true
-        
-        // Remove bottom border
-        UINavigationBar.appearance().shadowImage = UIImage()
     }
     
     func resetTabs() {
