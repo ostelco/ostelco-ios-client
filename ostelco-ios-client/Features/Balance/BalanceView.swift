@@ -86,6 +86,8 @@ struct BalanceView: View {
         ZStack {
             VStack {
                 Spacer()
+                Spacer()
+                Spacer()
                 
                 BalanceLabel(label: store.balance ?? "")
                 
@@ -107,6 +109,7 @@ struct BalanceView: View {
                 .background(OstelcoColor.primaryButtonBackground.toColor)
                 .cornerRadius(27.5)
                 
+                Spacer()
                 Spacer()
             }
             renderOverlay()
