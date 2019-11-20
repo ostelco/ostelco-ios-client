@@ -120,10 +120,6 @@ class OnboardingCoordinator {
             let notificationPermissions = EnableNotificationsViewController.fromStoryboard()
             notificationPermissions.delegate = self
             navigationController.setViewControllers([notificationPermissions], animated: true)
-        case .awesome:
-            let awesome = SignUpCompletedViewController.fromStoryboard()
-            awesome.delegate = self
-            navigationController.setViewControllers([awesome], animated: true)
         }
     }
 }
@@ -414,13 +410,6 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     }
 }
 
-extension OnboardingCoordinator: SignUpCompletedDelegate {
-    func acknowledgedSuccess() {
-        localContext.hasSeenAwesome = true
-        advance()
-    }
-}
-
 extension RegionOnboardingCoordinator: NRICVerifyDelegate {
     func enteredNRICS(_ controller: NRICVerifyViewController, nric: String) {
         let spinnerView = controller.showSpinner()
@@ -494,6 +483,10 @@ extension RegionOnboardingCoordinator: AllowCameraAccessDelegate {
 }
 
 extension RegionOnboardingCoordinator: SignUpCompletedDelegate {
+    func regionName() -> String {
+        region.region.name
+    }
+    
     func acknowledgedSuccess() {
         localContext.hasSeenAwesome = true
         advance()
