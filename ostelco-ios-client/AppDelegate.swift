@@ -48,16 +48,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
+        UINavigationBar.appearance().barTintColor = OstelcoColor.background.toUIColor
+        
+        // Remove bottom border
+        UINavigationBar.appearance().shadowImage = UIImage()
         
         UITabBar.appearance().barTintColor = OstelcoColor.background.toUIColor
         // Remove top border
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().clipsToBounds = true
         
-        // Remove bottom border
-        UINavigationBar.appearance().shadowImage = UIImage()
+        UITableView.appearance().backgroundColor = OstelcoColor.background.toUIColor
     }
     
     private func registerForNotifications() {

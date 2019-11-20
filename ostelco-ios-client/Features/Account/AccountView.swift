@@ -95,7 +95,6 @@ struct AccountView: View {
             }
         }
         .onAppear {
-            UITableView.appearance().backgroundColor = OstelcoColor.background.toUIColor
             OstelcoAnalytics.setScreenName(name: "AccountView")
         }
     }

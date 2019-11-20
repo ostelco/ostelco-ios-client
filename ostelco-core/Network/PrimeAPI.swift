@@ -14,7 +14,6 @@ public typealias Long = Int64
 
 extension Int64: JSONDecodable, JSONEncodable {
     public init(jsonValue value: JSONValue) throws {
-        debugPrint(value)
         if let longValue = value as? Int64 {
             // If this is integer, grab it
             self = longValue

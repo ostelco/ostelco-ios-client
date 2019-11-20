@@ -46,17 +46,16 @@ struct TabBarView: View {
                         .font(.system(size: 24))
                     Text("Coverage")
                         .font(.system(size: 10))
-                }.tag(Tabs.coverage)
+            }.tag(Tabs.coverage)
             AccountView().environmentObject(AccountStore(controller: controller))
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                         .font(.system(size: 24))
                     Text("Account")
                         .font(.system(size: 10))
-                }.tag(Tabs.account)
+            }.tag(Tabs.account)
         }
         .accentColor(OstelcoColor.highlighted.toColor)
-        .edgesIgnoringSafeArea(.top)
     }
 }
 

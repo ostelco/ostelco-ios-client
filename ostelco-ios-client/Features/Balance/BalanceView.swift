@@ -126,7 +126,6 @@ struct BalanceView: View {
             
             self.store.loadProducts()
         }
-        .edgesIgnoringSafeArea(.top)
     }
     
     func renderOverlay() -> AnyView {

@@ -87,7 +87,7 @@ enum AnalyticsEvent {
         case .ecommercePurchaseFailed:
             return "purchase_failed"
         default:
-            return String(describing: self).components(separatedBy: "(")[0].snakeCased() ?? ""
+            return String(describing: self).components(separatedBy: "(").first?.snakeCased() ?? ""
         }
     }
     

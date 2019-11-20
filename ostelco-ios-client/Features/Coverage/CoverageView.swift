@@ -92,9 +92,9 @@ struct CoverageView: View {
                     ForEach(store.regionGroups.filter({ $0.isPreview || store.regions != nil && Set(store.allowedCountries()).intersection(Set($0.countries.map({ $0.countryCode }))).isNotEmpty }).sorted(by: { $0.name < $1.name }), id: \.id) { self.renderRegionGroup($0) }
                     
                 }.padding()
-            }.padding(.top, 50).navigationBarTitle("Coverage", displayMode: .inline)
+            }
             .navigationBarHidden(true)
-            .statusBar(hidden: true)
+            .navigationBarTitle("Coverage", displayMode: .inline)
         }.onAppear {
             self.store.loadRegions()
             OstelcoAnalytics.setScreenName(name: "CoverageView")
@@ -104,6 +104,6 @@ struct CoverageView: View {
 
 struct CoverageView_Previews: PreviewProvider {
     static var previews: some View {
-        CoverageView()
+        CoverageView().environmentObject(CoverageStore(controller: TabBarViewController())).environmentObject(GlobalStore())
     }
 }

@@ -54,6 +54,9 @@ platform :ios do
 
   desc "Push beta build to TestFlight from developer machine using testflight build numbers"
   lane :tfbeta do
+
+    app_version = "1.7"
+
     # Ensure that your git status is not dirty
     ensure_git_status_clean
 
@@ -62,7 +65,7 @@ platform :ios do
 
     # Bump version number here when it is changed in project files.
     latest_build_number = latest_testflight_build_number(
-      version: "1.7"
+      version: app_version
     )
 
     build_number = ((latest_build_number.is_a? String) ? latest_build_number.to_i : latest_build_number) + 1
@@ -80,7 +83,7 @@ platform :ios do
 
     # Add a git tag for this build. This will automatically
     # use an appropriate git tag name
-    add_git_tag
+    add_git_tag(build_number: build_number, prefix: app_version)
 
     # Push the new commit and tag back to your git remote
     push_to_git_remote
