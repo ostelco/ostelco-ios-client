@@ -16,10 +16,19 @@ import UIKit
 
 let MyInfoNotification: Notification.Name = Notification.Name(rawValue: "MyInfoNotification")
 
-class OurColor: UIColor {
-    override func resolvedColor(with traitCollection: UITraitCollection) -> UIColor {
-        print("Trait collection: \(traitCollection)")
-        return super.resolvedColor(with: traitCollection)
+// This is a hack because of a bug in SwiftUI.
+extension UITabBarController {
+    // swiftlint:disable:next override_in_extensionn
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.stackedItemPositioning = .centered
+        appearance.backgroundColor = OstelcoColor.background.toUIColor
+        appearance.shadowImage = UIImage()
+        
+        tabBar.clipsToBounds = true
+        tabBar.standardAppearance = appearance
     }
 }
 
@@ -60,15 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Remove bottom border
         UINavigationBar.appearance().shadowImage = UIImage()
-        
-        UITabBar.appearance().barStyle = .default
-        UITabBar.appearance().isTranslucent = false
-        UITabBar.appearance().itemPositioning = .centered
-        UITabBar.appearance().barTintColor = OstelcoColor.background.toUIColor
-        
-        // Remove top border
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().clipsToBounds = true
         
         UITableView.appearance().backgroundColor = OstelcoColor.background.toUIColor
     }
