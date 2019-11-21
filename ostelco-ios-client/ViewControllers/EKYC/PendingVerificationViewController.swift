@@ -12,7 +12,7 @@ import UIKit
 
 protocol PendingVerificationDelegate: class {
     func checkStatus()
-    func viewDidAppear()
+    func reportAnalytics()
 }
 
 class PendingVerificationViewController: UIViewController {
@@ -32,7 +32,7 @@ class PendingVerificationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        delegate?.viewDidAppear()
+        delegate?.reportAnalytics()
     }
     
     override func viewDidLoad() {

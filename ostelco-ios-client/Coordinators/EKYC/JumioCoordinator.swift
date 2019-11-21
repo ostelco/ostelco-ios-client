@@ -178,8 +178,6 @@ extension JumioCoordinator: NetverifyViewControllerDelegate {
                                  didFinishWith documentData: NetverifyDocumentData,
                                  scanReference: String) {
         debugPrint("NetverifyViewController finished successfully with scan reference: \(scanReference)")
-        let message = documentData.toOstelcoString()
-        debugPrint(message)
         delegate?.scanSucceeded(scanID: scanReference)
     }
     

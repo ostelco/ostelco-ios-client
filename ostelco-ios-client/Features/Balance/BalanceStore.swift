@@ -43,7 +43,6 @@ final class BalanceStore: ObservableObject {
         APIManager.shared.primeAPI
             .loadBundles()
             .done { [weak self] bundles in
-                debugPrint(bundles)
                 self?.updateBalance(from: bundles)
             }
             .catch { error in
