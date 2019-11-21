@@ -466,7 +466,7 @@ extension RegionOnboardingCoordinator: PendingVerificationDelegate {
         advance()
     }
     
-    func viewDidAppear() {
+    func reportAnalytics() {
         OstelcoAnalytics.logEvent(.identificationPendingValidation(regionCode: region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? "", ekycMethod: localContext.selectedVerificationOption?.rawValue ?? ""))
     }
 }
