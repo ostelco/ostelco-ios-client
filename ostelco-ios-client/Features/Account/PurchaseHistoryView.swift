@@ -12,13 +12,13 @@ import ostelco_core
 
 struct PurchaseHistoryView: View {
     
-    @EnvironmentObject var store: AccountStore
+    @Binding var purchaseRecords: [PurchaseRecord]
     
     var body: some View {
-        List(store.purchaseRecords, id: \.id) { record in
+        List(purchaseRecords, id: \.id) { record in
             RecordRow(record: record)
         }
-        .navigationBarTitle("Purchase History")
+        .navigationBarTitle("Purchase History", displayMode: .inline)
         .onAppear {
             OstelcoAnalytics.setScreenName(name: "PurchaseHistoryView")
         }
@@ -52,18 +52,11 @@ struct RecordRow: View {
 
 struct PurchaseHistoryView_Previews: PreviewProvider {
 
-    static var store: AccountStore = {
-        let store = AccountStore(controller: UIViewController())
-        store.purchaseRecords = [
+    static var previews: some View {
+        PurchaseHistoryView(purchaseRecords: .constant([
             PurchaseRecord(name: "first", amount: "10x", date: "01/01/01", id: "1"),
             PurchaseRecord(name: "second", amount: "20x", date: "01/01/02", id: "2"),
             PurchaseRecord(name: "third", amount: "30x", date: "01/01/03", id: "3")
-        ]
-        
-        return store
-    }()
-    
-    static var previews: some View {
-        PurchaseHistoryView().environmentObject(store)
+        ]))
     }
 }
