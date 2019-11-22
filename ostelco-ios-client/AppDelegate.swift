@@ -18,7 +18,7 @@ let MyInfoNotification: Notification.Name = Notification.Name(rawValue: "MyInfoN
 
 // This is a hack because of a bug in SwiftUI.
 extension UITabBarController {
-    // swiftlint:disable:next override_in_extensionn
+    // swiftlint:disable:next override_in_extension
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let appearance = UITabBarAppearance()
