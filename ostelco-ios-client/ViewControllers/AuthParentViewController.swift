@@ -58,7 +58,9 @@ class AuthParentViewController: UIViewController, OnboardingCoordinatorDelegate 
     }
     
     @objc func setupOnboarding() {
-        killOldOnboarding()
+        if onboarding != nil {
+            return
+        }
         
         let navigationController = UINavigationController()
         onboardingRoot = navigationController
