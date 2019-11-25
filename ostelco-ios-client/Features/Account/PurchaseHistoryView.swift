@@ -18,7 +18,7 @@ struct PurchaseHistoryView: View {
         List(purchaseRecords, id: \.id) { record in
             RecordRow(record: record)
         }
-        .navigationBarTitle("Purchase History", displayMode: .inline)
+        .navigationBarTitle("Purchase History" )
         .onAppear {
             OstelcoAnalytics.setScreenName(name: "PurchaseHistoryView")
         }
