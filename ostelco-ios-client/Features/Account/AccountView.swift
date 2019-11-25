@@ -29,7 +29,7 @@ struct AccountView: View {
         NavigationView {
             List {
                 Section {
-                    NavigationLink(destination: PurchaseHistoryView()) {
+                    NavigationLink(destination: PurchaseHistoryView(purchaseRecords: $store.purchaseRecords)) {
                         HStack {
                             OstelcoText(label: "Purchase History")
                         }

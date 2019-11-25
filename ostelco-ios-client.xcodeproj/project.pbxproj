@@ -136,7 +136,6 @@
 		589A636D9395D888A25E7469 /* Pods_dev_ostelco_ios_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEE41DA855AF318565ECAFF /* Pods_dev_ostelco_ios_clientTests.framework */; };
 		9B0685F9228AC84F00AD3F3E /* URLQueryItem+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */; };
 		9B0685FB228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */; };
-		9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */; };
 		9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70482265D4D200E4B9B4 /* MyInfoDetails+Testing.swift */; };
 		9B1745692276D6D800CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
 		9B17456A2276D75700CF321B /* ScanICStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */; };
@@ -170,7 +169,6 @@
 		9B4F1A4622A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
 		9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */; };
 		9B4F1A4922A7CB9500FCC8CC /* OnboardingCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4822A7CB9500FCC8CC /* OnboardingCoordinatorTests.swift */; };
-		9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */; };
 		9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9A22731E97004473E1 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */; };
 		9B560A9C2273289D004473E1 /* PageControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */; };
@@ -296,9 +294,7 @@
 		9BBF70562265EE4500E4B9B4 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */; };
 		9BBF70572265EE4F00E4B9B4 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */; };
 		9BBF70582265EE4F00E4B9B4 /* LocatableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */; };
-		9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */; };
 		9BBF705D2265F04200E4B9B4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF705C2265F04200E4B9B4 /* CountryCell.swift */; };
-		9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */; };
 		9BBF70622265F43800E4B9B4 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBF705C2265F04200E4B9B4 /* CountryCell.swift */; };
 		9BBF70632265F9A500E4B9B4 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */; };
 		9BBF70642265F9A500E4B9B4 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */; };
@@ -524,7 +520,6 @@
 		917B0F5D4E06F092C2FE563F /* Pods-ostelco-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ostelco-core.debug.xcconfig"; path = "Target Support Files/Pods-ostelco-core/Pods-ostelco-core.debug.xcconfig"; sourceTree = "<group>"; };
 		9B0685F8228AC84F00AD3F3E /* URLQueryItem+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLQueryItem+Codable.swift"; sourceTree = "<group>"; };
 		9B0685FA228ACADA00AD3F3E /* StripeEphemeralKeyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeEphemeralKeyRequest.swift; sourceTree = "<group>"; };
-		9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryDataSourceTests.swift; path = "dev-ostelco-ios-clientTests/CountryDataSourceTests.swift"; sourceTree = SOURCE_ROOT; };
 		9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanICStepsViewController.swift; sourceTree = "<group>"; };
 		9B1745732276F64B00CF321B /* TextEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditCell.swift; sourceTree = "<group>"; };
 		9B1745762276F66400CF321B /* TextEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextEditCell.xib; sourceTree = "<group>"; };
@@ -549,7 +544,6 @@
 		9B4F1A4122A6AD8800FCC8CC /* JumioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumioCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4522A6BEA700FCC8CC /* SingPassCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingPassCoordinator.swift; sourceTree = "<group>"; };
 		9B4F1A4822A7CB9500FCC8CC /* OnboardingCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinatorTests.swift; sourceTree = "<group>"; };
-		9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorDestinations+Equatable.swift"; sourceTree = "<group>"; };
 		9B560A9822731E57004473E1 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		9B560A9B2273289D004473E1 /* PageControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerDataSource.swift; sourceTree = "<group>"; };
 		9B5CBF3A22803A9A00D83D7B /* UserSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetup.swift; sourceTree = "<group>"; };
@@ -636,7 +630,6 @@
 		9BBF704C2265DD8A00E4B9B4 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
 		9BBF704F2265DE2F00E4B9B4 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		9BBF70522265E0DB00E4B9B4 /* LocatableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatableCell.swift; sourceTree = "<group>"; };
-		9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataSource.swift; sourceTree = "<group>"; };
 		9BBF705C2265F04200E4B9B4 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		9BBF705E2265F04F00E4B9B4 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		9BBF70652265FA3100E4B9B4 /* UITableView+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Footer.swift"; sourceTree = "<group>"; };
@@ -1001,7 +994,6 @@
 				9BBEEE20228DA83800EED7F5 /* MockPushNotificationController.swift */,
 				9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */,
 				9BBEEE22228EDF0200EED7F5 /* MockUserManager.swift */,
-				9B4F1A4B22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift */,
 				9B8E926422A9368F00A1E35E /* MockPlacemarks.swift */,
 			);
 			path = Mocks;
@@ -1084,7 +1076,6 @@
 			isa = PBXGroup;
 			children = (
 				9B1745792276F6E900CF321B /* AddressEditDataSource.swift */,
-				9BBF70592265F02200E4B9B4 /* CountryDataSource.swift */,
 				9BBEEE05228D6E6A00EED7F5 /* PushNotificationController.swift */,
 				04834D7D2237D53700A01500 /* UserManager.swift */,
 				0494336D22BB9E2400E5BB24 /* FreshchatManager.swift */,
@@ -1273,7 +1264,6 @@
 				9B6A928E22844F99007F5EC9 /* APITests */,
 				9B4F1A4A22A7CB9A00FCC8CC /* CoordinatorTests */,
 				9B3FA6912289B485001E4D60 /* BasicNetworkTests.swift */,
-				9B0685FE228B204D00AD3F3E /* CountryDataSourceTests.swift */,
 				9BE2D459225B625500B51999 /* EnumHelperTests.swift */,
 				9BBA3DC12296FB9D0014FADE /* LinkableTextTests.swift */,
 				9BBF70462265D45700E4B9B4 /* MyInfoTests.swift */,
@@ -1949,7 +1939,6 @@
 				04978D6B22ABA012002B09E0 /* LinkHelper.swift in Sources */,
 				9B17457A2276F6E900CF321B /* AddressEditDataSource.swift in Sources */,
 				045A4BC52354790000873410 /* RemoteConfigManager.swift in Sources */,
-				9BBF705A2265F02200E4B9B4 /* CountryDataSource.swift in Sources */,
 				0482E470235A679B00DAC4D7 /* ApplePayViewController.swift in Sources */,
 				04834D782237BF0C00A01500 /* UIViewController+Alerts.swift in Sources */,
 				043E710E2239F17200E01993 /* main.swift in Sources */,
@@ -2118,7 +2107,6 @@
 			files = (
 				9BBA3DC42297F78C0014FADE /* LocationProblem+Testing.swift in Sources */,
 				0437197B22C3731900609355 /* SingaporeUserHappyFlowWithSingPassStageDeciderTests.swift in Sources */,
-				9B4F1A4C22A7D42200FCC8CC /* CoordinatorDestinations+Equatable.swift in Sources */,
 				9BBEEE23228EDF0200EED7F5 /* MockUserManager.swift in Sources */,
 				9B821598227AEE1400DC6B64 /* RequestGeneratorTests.swift in Sources */,
 				9B77166422D8AAC30068CB03 /* ContextTests.swift in Sources */,
@@ -2130,7 +2118,6 @@
 				046E05F722CA3461008D81F4 /* NorwayUserHappyFlowWithJumioStageDeciderTests.swift in Sources */,
 				046E05F522CA2B26008D81F4 /* SingaporeUserHappyFlowWithScanICStageDeciderTests.swift in Sources */,
 				9B068600228B2B3100AD3F3E /* MyInfoDetails+Testing.swift in Sources */,
-				9B0685FF228B204D00AD3F3E /* CountryDataSourceTests.swift in Sources */,
 				0437197F22C4EC4400609355 /* EdgeCasesInStageDeciderTests.swift in Sources */,
 				9BE2D45A225B625500B51999 /* EnumHelperTests.swift in Sources */,
 				9B49D95622930B690059C98F /* PushParsingTests.swift in Sources */,
@@ -2223,7 +2210,6 @@
 				9B4F1A4722A6BEA700FCC8CC /* SingPassCoordinator.swift in Sources */,
 				045A4BC923549FB000873410 /* AccountView.swift in Sources */,
 				C23CFC8C227610E5000117A8 /* ApplePayDelegate.swift in Sources */,
-				9BBF70612265F2FD00E4B9B4 /* CountryDataSource.swift in Sources */,
 				041216B022281CE000455278 /* AllowLocationAccessViewController.swift in Sources */,
 				04491637234DACFF0022731A /* RegionGroupView.swift in Sources */,
 				9B174581227722C200CF321B /* ValidationState.swift in Sources */,
@@ -2495,7 +2481,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/ostelco-ios-client.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2529,7 +2515,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -2561,12 +2547,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 16;
+				DYLIB_CURRENT_VERSION = 21;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
@@ -2600,11 +2586,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 16;
+				DYLIB_CURRENT_VERSION = 21;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-core/Info.plist";
@@ -2632,12 +2618,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 16;
+				DYLIB_CURRENT_VERSION = 21;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
@@ -2665,11 +2651,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 16;
+				DYLIB_CURRENT_VERSION = 21;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = OstelcoStyles/Info.plist;
@@ -2719,7 +2705,7 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2775,7 +2761,7 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "dev-ostelco-ios-clientTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2799,12 +2785,12 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-ios-client/SupportingFiles/Development.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2832,12 +2818,12 @@
 				CODE_SIGN_ENTITLEMENTS = "ostelco-ios-client/SupportingFiles/dev-ostelco-ios-client.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 2R8HFAXUXD;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ostelco-ios-client/SupportingFiles/Development.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ostelco_core
+import ostelco_core
 
 class EdgeCasesInStageDeciderTests: XCTestCase {
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.

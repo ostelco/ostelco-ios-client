@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ostelco_core
+import ostelco_core
 
 class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
     func testUserHasSelectedACountry() {
