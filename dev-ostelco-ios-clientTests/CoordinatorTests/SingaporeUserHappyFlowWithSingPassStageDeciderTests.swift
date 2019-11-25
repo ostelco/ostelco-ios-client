@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ostelco_core
+import ostelco_core
 
 class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
     // Testing the flow of a singapore user who uses singpass and has no trouble:
