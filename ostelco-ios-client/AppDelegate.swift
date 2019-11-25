@@ -32,6 +32,24 @@ extension UITabBarController {
     }
 }
 
+// This is a hack because of a bug in SwiftUI.
+extension UINavigationController {
+    // swiftlint:disable:next override_in_extension
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        
+        appearance.backgroundColor = OstelcoColor.background.toUIColor
+        
+        // Remove bottom border
+        appearance.shadowImage = UIImage()
+        
+        navigationBar.standardAppearance = appearance
+    }
+}
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -64,12 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        UINavigationBar.appearance().backgroundColor = OstelcoColor.background.toUIColor
-        UINavigationBar.appearance().barTintColor = OstelcoColor.background.toUIColor
-        
-        // Remove bottom border
-        UINavigationBar.appearance().shadowImage = UIImage()
-        
         UITableView.appearance().backgroundColor = OstelcoColor.background.toUIColor
     }
     
