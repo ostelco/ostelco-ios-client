@@ -115,7 +115,7 @@ public struct StageDecider {
             remove(.eSimInstructions)
         }
         
-        if let profile = region.getGraphQLModel().getSimProfile(), profile.status == .installed {
+        if let profiles = region.simProfiles, profiles.contains(where: { $0.isInstalled }) {
             remove(.eSimInstructions)
         }
         

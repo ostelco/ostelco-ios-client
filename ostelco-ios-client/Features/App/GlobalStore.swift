@@ -40,12 +40,16 @@ final class GlobalStore: ObservableObject {
         UserDefaultsWrapper.countryCode = country?.countryCode
     }
     
-    func simProfilesForCountry(country: Country) -> [PrimeGQL.SimProfileFields] {
+    func simProfilesForCountry(country: Country) -> [SimProfile] {
         if let regionDetailsList = regions, let regionCodes = countryCodeToRegionCodeMap[country.countryCode] {
             return regionDetailsList
                 .filter({ regionCodes.contains($0.region.id) })
                 .filter({ $0.simProfiles != nil })
-                .map({ $0.simProfiles!.map({ $0.fragments.simProfileFields }) })
+                .map({
+                    $0.simProfiles!.map({
+                        SimProfile(gqlSimProfile: $0.fragments.simProfileFields)
+                    })
+                })
                 .reduce([], +)
         }
         return []
@@ -54,7 +58,7 @@ final class GlobalStore: ObservableObject {
     func showCountryChangedMessage() -> Country? {
         if let previousCountry = previousCountry, let country = country {
             
-            if previousCountry.countryCode != country.countryCode && simProfilesForCountry(country: country).filter({ $0.status == .installed }).isEmpty {
+            if previousCountry.countryCode != country.countryCode && simProfilesForCountry(country: country).filter({ $0.isInstalled }).isEmpty {
                 return country
             }
         }

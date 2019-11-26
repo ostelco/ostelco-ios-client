@@ -54,6 +54,7 @@ public enum RegionEndpoint: APIEndpoint {
     case simProfiles
     case scans
     case iccId(code: String)
+    case installed
     case resendEmail
     
     var value: String {
@@ -89,6 +90,8 @@ public enum RegionEndpoint: APIEndpoint {
             return code
         case .resendEmail:
             return "resendEmail"
+        case .installed:
+            return "installed"
         }
     }
 }

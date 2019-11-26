@@ -19,7 +19,7 @@ struct RegionGroupView: View {
     
     private func renderSimProfile(_ regionGroup: RegionGroupViewModel, country: Country) -> AnyView {
         
-        if store.simProfilesForCountry(country: country).filter({ $0.status == .installed }).isNotEmpty {
+        if store.simProfilesForCountry(country: country).filter({ SimProfile(gqlSimProfile: $0).isInstalled }).isNotEmpty {
             return AnyView(
                 ESimCountryView(image: country.image, country: country.nameOrPlaceholder, icon: "checkmark")
             )

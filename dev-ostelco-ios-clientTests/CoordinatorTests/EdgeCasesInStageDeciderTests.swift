@@ -21,7 +21,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             region: Region(id: "sg", name: "Singapore"),
             status: .APPROVED,
             simProfiles: [
-                SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED, installedReportedByAppOn: "xxx")
             ],
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
@@ -41,7 +41,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED, installedReportedByAppOn: "xxx")
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
                 )
@@ -176,7 +176,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
                     region: Region(id: "no", name: "Norway"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxxx", iccId: "xxxx", status: .INSTALLED)
+                        SimProfile(eSimActivationCode: "xxx", alias: "xxxx", iccId: "xxxx", status: .INSTALLED, installedReportedByAppOn: "xxx")
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
                 )

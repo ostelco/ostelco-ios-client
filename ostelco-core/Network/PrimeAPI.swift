@@ -428,6 +428,25 @@ open class PrimeAPI: BasicNetwork {
         }
     }
     
+    /// Updates the user's eSIM profile status to show the app has installed it.
+    ///
+    /// - Parameters:
+    ///   - iccId: The identifier for the specific eSIM
+    /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
+    public func markESIMAsInstalled(iccId: String) -> PromiseKit.Promise<Void> {
+        let endpoints: [RegionEndpoint] = [
+            .iccId(code: iccId),
+            .installed
+        ]
+
+        let path = RootEndpoint.regions.pathByAddingEndpoints(endpoints)
+
+        return self.sendQuery(to: path, queryItems: nil, method: .PUT)
+        .map { data, response in
+            try APIHelper.validateAndLookForServerError(data: data, response: response, decoder: self.decoder)
+        }
+    }
+    
     // TODO: Load from GraphQL
     /// Validates the given NRIC.
     ///
@@ -581,7 +600,7 @@ open class PrimeAPI: BasicNetwork {
     ///   - method: The `HTTPMethod` to use to send it.
     /// - Returns: A promise, which when fulfilled, will contain any returned data and the URLResponse that came with it.
     public func sendQuery(to path: String,
-                          queryItems: [URLQueryItem],
+                          queryItems: [URLQueryItem]?,
                           method: HTTPMethod) -> PromiseKit.Promise<(data: Data, response: URLResponse)> {
         return self.tokenProvider.getToken()
             .map { token -> Request in

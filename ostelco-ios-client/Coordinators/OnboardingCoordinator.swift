@@ -371,29 +371,14 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
     func completedInstructions(_ controller: ESIMInstructionsViewController) {
         OstelcoAnalytics.logEvent(.esimSetupStarted(regionCode: region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
         let spinner = controller.showSpinner()
+        
         makeSimProfileForRegion(region.region.id)
-            .then { simProfile -> PromiseKit.Promise<Void> in
-                switch simProfile.status {
-                case .INSTALLED:
-                    return PromiseKit.Promise.value(())
-                case .AVAILABLE_FOR_DOWNLOAD:
-                    if simProfile.isDummyProfile {
-                        return PromiseKit.Promise<Void> { seal in
-                            controller.showAlert(title: "YOU DID NOT GET AN ESIM", msg: "Triggered fake eSIM path, which means you don't install an eSIM on your phone but we let you pass through the onboarding pretending you have one. This message should only be visible to testers.") { _ in
-                                seal.fulfill(())
-                            }
-                        }
-                        
-                    }
-                    guard simProfile.hasValidESimActivationCode() else {
-                        fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
-                    }
-                    return ESimManager.shared.addPlan(address: simProfile.eSimServerAddress, matchingID: simProfile.matchingID, iccid: simProfile.iccId)
-                default:
-                    fatalError("Invalid simProfile status, expected \(SimProfileStatus.AVAILABLE_FOR_DOWNLOAD) on \(SimProfileStatus.INSTALLED) got: \(simProfile.status)")
-                }
-                return PromiseKit.Promise.value(())
-        }
+        .then({ simProfile in
+            self.installESimProfile(controller: controller, simProfile: simProfile)
+        })
+        .then({ iccId in
+            self.primeAPI.markESIMAsInstalled(iccId: iccId)
+        })
         .ensure {
             controller.removeSpinner(spinner)
         }
@@ -406,6 +391,28 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
             OstelcoAnalytics.logEvent(.esimSetupFailed(regionCode: self.region.region.id, countryCode: LocationController.shared.currentCountry?.countryCode ?? ""))
             ApplicationErrors.log(error)
             controller.showAlert(title: "Error", msg: error.localizedDescription)
+        }
+    }
+    
+    func installESimProfile(controller: UIViewController, simProfile: SimProfile) -> PromiseKit.Promise<String> {
+        switch simProfile.status {
+        case .INSTALLED:
+            return PromiseKit.Promise.value(simProfile.iccId)
+        case .AVAILABLE_FOR_DOWNLOAD:
+            if simProfile.isDummyProfile {
+                return PromiseKit.Promise<String> { seal in
+                    controller.showAlert(title: "YOU DID NOT GET AN ESIM", msg: "Triggered fake eSIM path, which means you don't install an eSIM on your phone but we let you pass through the onboarding pretending you have one. This message should only be visible to testers.") { _ in
+                        seal.fulfill(simProfile.iccId)
+                    }
+                }
+                
+            }
+            guard simProfile.hasValidESimActivationCode() else {
+                fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
+            }
+            return self.esimManager.addPlan(address: simProfile.eSimServerAddress, matchingID: simProfile.matchingID, iccid: simProfile.iccId)
+        default:
+            fatalError("Invalid simProfile status, expected \(SimProfileStatus.AVAILABLE_FOR_DOWNLOAD) or \(SimProfileStatus.INSTALLED) got: \(simProfile.status)")
         }
     }
 }
@@ -504,6 +511,7 @@ class RegionOnboardingCoordinator {
     let navigationController: UINavigationController
     let primeAPI: PrimeAPI
     let stageDecider = StageDecider()
+    let esimManager = ESimManager()
     
     public weak var delegate: RegionOnboardingDelegate?
     
