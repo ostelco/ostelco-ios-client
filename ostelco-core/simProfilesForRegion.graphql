@@ -13,4 +13,5 @@ fragment simProfileFields on SimProfile {
     alias
     iccId
     status
+    installedReportedByAppOn
 }

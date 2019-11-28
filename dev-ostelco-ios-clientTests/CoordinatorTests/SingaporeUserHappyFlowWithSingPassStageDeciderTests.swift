@@ -153,7 +153,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
                     region: Region(id: "sg", name: "Singapore"),
                     status: .APPROVED,
                     simProfiles: [
-                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED)
+                        SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED, installedReportedByAppOn: "xxx")
                     ],
                     kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
                 )

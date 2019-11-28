@@ -21,7 +21,7 @@ struct RegionListByLocation: View {
     
     private func renderSimProfile(_ regionDetails: PrimeGQL.RegionDetailsFragment, country: Country) -> AnyView {
         
-        if (regionDetails.simProfiles ?? []).contains(where: { $0.fragments.simProfileFields.status == .installed }) {
+        if (regionDetails.simProfiles ?? []).contains(where: { SimProfile(gqlSimProfile: $0.fragments.simProfileFields).isInstalled }) {
             return AnyView(
                 OstelcoContainer(state: .inactive) {
                     ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", icon: "checkmark")

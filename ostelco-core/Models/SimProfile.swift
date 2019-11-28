@@ -25,15 +25,18 @@ public struct SimProfile: Codable, Equatable {
     public let alias: String
     public let iccId: String
     public let status: SimProfileStatus
+    public let installedReportedByAppOn: String?
     
     public init(eSimActivationCode: String,
                 alias: String,
                 iccId: String,
-                status: SimProfileStatus) {
+                status: SimProfileStatus,
+                installedReportedByAppOn: String?) {
         self.eSimActivationCode = eSimActivationCode
         self.alias = alias
         self.iccId = iccId
         self.status = status
+        self.installedReportedByAppOn = installedReportedByAppOn
     }
     
     // Assumes that an eSimActivationCode contains three parts separated by "$" where
@@ -54,6 +57,10 @@ public struct SimProfile: Codable, Equatable {
     public var isDummyProfile: Bool {
         return eSimActivationCode.lowercased() == "dummy esim" || iccId.lowercased().starts(with: "test")
     }
+    
+    public var isInstalled: Bool {
+        return status == .INSTALLED || installedReportedByAppOn != nil
+    }
 }
 
 extension SimProfile {
@@ -62,7 +69,8 @@ extension SimProfile {
         self.init(eSimActivationCode: gqlSimProfile.eSimActivationCode,
                   alias: gqlSimProfile.alias,
                   iccId: gqlSimProfile.iccId,
-                  status: status
+                  status: status,
+                  installedReportedByAppOn: gqlSimProfile.installedReportedByAppOn
         )
     }
     

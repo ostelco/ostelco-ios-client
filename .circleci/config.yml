@@ -2,7 +2,7 @@ version: 3
 jobs:
   beta:
     macos:
-      xcode: "11.3.0"
+      xcode: "11.2.1"
     working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
@@ -39,7 +39,7 @@ jobs:
           path: output
   build-and-test:
     macos:
-      xcode: "11.3.0"
+      xcode: "11.2.1"
     working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output

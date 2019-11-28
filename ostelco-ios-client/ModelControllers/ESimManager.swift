@@ -12,20 +12,18 @@ import ostelco_core
 import FacebookCore
 
 class ESimManager {
-    static let shared = ESimManager()
-    
     /**
      Tries to download and install an eSIM on the device using apples eSIM APIs.
      */
-    func addPlan(address: String, matchingID: String, iccid: String) -> PromiseKit.Promise<Void> {
+    func addPlan(address: String, matchingID: String, simProfile: SimProfile) -> PromiseKit.Promise<SimProfile> {
         let planObj = CTCellularPlanProvisioning()
         
         let request = CTCellularPlanProvisioningRequest()
         request.address = address
         request.matchingID = matchingID
-        request.iccid = iccid
+        request.iccid = simProfile.iccId
 
-        return PromiseKit.Promise<Void> { seal in
+        return PromiseKit.Promise<SimProfile> { seal in
             planObj.addPlan(with: request) { (result: CTCellularPlanProvisioningAddPlanResult) in
                 switch result {
                 case .unknown:
@@ -34,7 +32,7 @@ class ESimManager {
                     seal.reject(ApplicationErrors.General.addPlanFailed(message: "Failed"))
                 case .success:
                     AppEvents.logEvent(.completedRegistration)
-                    seal.fulfill(())
+                    seal.fulfill(simProfile)
                 @unknown default:
                     seal.reject(ApplicationErrors.General.addPlanFailed(message: "Unknown default"))
                 }

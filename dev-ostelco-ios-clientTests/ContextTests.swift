@@ -30,5 +30,13 @@ class ContextTests: XCTestCase {
         
         XCTAssert(profiles!.isNotEmpty)
     }
+    
+    func testSimProfilesCountAsInstalledWhenRightPropertiesAreSet() {
+        let first = SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .AVAILABLE_FOR_DOWNLOAD, installedReportedByAppOn: "someDateThatIsGoodWeDontCare")
+        XCTAssert(first.isInstalled)
+        
+        let second = SimProfile(eSimActivationCode: "xxx", alias: "xxx", iccId: "xxx", status: .INSTALLED, installedReportedByAppOn: nil)
+        XCTAssert(second.isInstalled)
+    }
 
 }

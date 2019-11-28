@@ -506,8 +506,8 @@ public enum PrimeGQL {
               self.resultMap = unsafeResultMap
             }
 
-            public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
-              self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+            public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus, installedReportedByAppOn: String? = nil) {
+              self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status, "installedReportedByAppOn": installedReportedByAppOn])
             }
 
             public var __typename: String {
@@ -1314,7 +1314,7 @@ public enum PrimeGQL {
 
   public struct SimProfileFields: GraphQLFragment {
     public static let fragmentDefinition =
-      "fragment simProfileFields on SimProfile {\n  __typename\n  eSimActivationCode\n  alias\n  iccId\n  status\n}"
+      "fragment simProfileFields on SimProfile {\n  __typename\n  eSimActivationCode\n  alias\n  iccId\n  status\n  installedReportedByAppOn\n}"
 
     public static let possibleTypes = ["SimProfile"]
 
@@ -1324,6 +1324,7 @@ public enum PrimeGQL {
       GraphQLField("alias", type: .nonNull(.scalar(String.self))),
       GraphQLField("iccId", type: .nonNull(.scalar(String.self))),
       GraphQLField("status", type: .nonNull(.scalar(SimProfileStatus.self))),
+      GraphQLField("installedReportedByAppOn", type: .scalar(String.self)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1332,8 +1333,8 @@ public enum PrimeGQL {
       self.resultMap = unsafeResultMap
     }
 
-    public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
-      self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+    public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus, installedReportedByAppOn: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status, "installedReportedByAppOn": installedReportedByAppOn])
     }
 
     public var __typename: String {
@@ -1378,6 +1379,15 @@ public enum PrimeGQL {
       }
       set {
         resultMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var installedReportedByAppOn: String? {
+      get {
+        return resultMap["installedReportedByAppOn"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "installedReportedByAppOn")
       }
     }
   }
@@ -1579,8 +1589,8 @@ public enum PrimeGQL {
         self.resultMap = unsafeResultMap
       }
 
-      public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus) {
-        self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status])
+      public init(eSimActivationCode: String, alias: String, iccId: String, status: SimProfileStatus, installedReportedByAppOn: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "SimProfile", "eSimActivationCode": eSimActivationCode, "alias": alias, "iccId": iccId, "status": status, "installedReportedByAppOn": installedReportedByAppOn])
       }
 
       public var __typename: String {
