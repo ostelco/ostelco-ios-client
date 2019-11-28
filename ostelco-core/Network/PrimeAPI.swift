@@ -433,9 +433,13 @@ open class PrimeAPI: BasicNetwork {
     /// - Parameters:
     ///   - iccId: The identifier for the specific eSIM
     /// - Returns: A promise which when fulfilled, indicates successful completion of the operation.
-    public func markESIMAsInstalled(iccId: String) -> PromiseKit.Promise<Void> {
+    public func markESIMAsInstalled(simProfile: SimProfile) -> PromiseKit.Promise<Void> {
+        if simProfile.isDummyProfile {
+            return .value(())
+        }
+        
         let endpoints: [RegionEndpoint] = [
-            .iccId(code: iccId),
+            .iccId(code: simProfile.iccId),
             .installed
         ]
 

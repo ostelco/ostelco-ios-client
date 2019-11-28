@@ -376,8 +376,8 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
         .then({ simProfile in
             self.installESimProfile(controller: controller, simProfile: simProfile)
         })
-        .then({ iccId in
-            self.primeAPI.markESIMAsInstalled(iccId: iccId)
+        .then({ profile in
+            self.primeAPI.markESIMAsInstalled(simProfile: profile)
         })
         .ensure {
             controller.removeSpinner(spinner)
@@ -394,15 +394,15 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
         }
     }
     
-    func installESimProfile(controller: UIViewController, simProfile: SimProfile) -> PromiseKit.Promise<String> {
+    func installESimProfile(controller: UIViewController, simProfile: SimProfile) -> PromiseKit.Promise<SimProfile> {
         switch simProfile.status {
         case .INSTALLED:
-            return PromiseKit.Promise.value(simProfile.iccId)
+            return PromiseKit.Promise.value(simProfile)
         case .AVAILABLE_FOR_DOWNLOAD:
             if simProfile.isDummyProfile {
-                return PromiseKit.Promise<String> { seal in
+                return PromiseKit.Promise<SimProfile> { seal in
                     controller.showAlert(title: "YOU DID NOT GET AN ESIM", msg: "Triggered fake eSIM path, which means you don't install an eSIM on your phone but we let you pass through the onboarding pretending you have one. This message should only be visible to testers.") { _ in
-                        seal.fulfill(simProfile.iccId)
+                        seal.fulfill(simProfile)
                     }
                 }
                 
@@ -410,7 +410,7 @@ extension RegionOnboardingCoordinator: ESIMInstructionsDelegate {
             guard simProfile.hasValidESimActivationCode() else {
                 fatalError("Invalid ESim activation code, could not find esim server address or activation code from: \(simProfile.eSimActivationCode)")
             }
-            return self.esimManager.addPlan(address: simProfile.eSimServerAddress, matchingID: simProfile.matchingID, iccid: simProfile.iccId)
+            return self.esimManager.addPlan(address: simProfile.eSimServerAddress, matchingID: simProfile.matchingID, simProfile: simProfile)
         default:
             fatalError("Invalid simProfile status, expected \(SimProfileStatus.AVAILABLE_FOR_DOWNLOAD) or \(SimProfileStatus.INSTALLED) got: \(simProfile.status)")
         }
