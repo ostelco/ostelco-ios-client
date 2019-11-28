@@ -20,7 +20,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: nil, myInfo: nil, nricFin: nil, addressPhone: nil)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.jumio]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .selectIdentityVerificationMethod([.jumio]))
     }
     
     func testUserHasCompletedJumio() {
@@ -33,7 +33,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .address)
     }
     
     func testUserHasCompletedJumioAndAddress() {
@@ -46,7 +46,7 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .pendingVerification)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .pendingVerification)
     }
     
     func testUserHasCompletedJumioAndIsApproved() {
@@ -59,6 +59,6 @@ class NorwayUserHappyFlowWithJumioStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .eSimInstructions)
     }
 }
