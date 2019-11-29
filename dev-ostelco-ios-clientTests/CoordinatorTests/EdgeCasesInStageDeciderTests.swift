@@ -71,7 +71,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
 
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
 
     func testUserHasCompletedNRICAndCancelledJumioInSingapore() {
@@ -84,7 +84,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasCompletedJumioButGotRejected() {
@@ -97,7 +97,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .ohNo(.ekycRejected))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .ohNo(.ekycRejected))
     }
     
     // Edge cases for Norway flow
@@ -111,7 +111,23 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .ohNo(.ekycRejected))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .ohNo(.ekycRejected))
+    }
+    
+    func testUserTriesToSignupForCountryOutsideOfNorwayWhenInNorway() {
+        let decider = StageDecider()
+        let localContext = RegionOnboardingContext()
+        let region = RegionResponse(
+            region: Region(id: "ma", name: "Malaysia"),
+            status: .PENDING,
+            simProfiles: nil,
+            kycStatusMap: KYCStatusMap(jumio: nil, myInfo: nil, nricFin: nil, addressPhone: nil)
+        )
+        
+        let current = Country("NO")
+        let target = Country("MA")
+        
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: current, targetCountry: target), .caution(current: current, target: target))
     }
     
     func testUserIsRejectedInNorwayForJumioButWantsToTryAgain() {
@@ -124,7 +140,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.jumio]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .selectIdentityVerificationMethod([.jumio]))
     }
     
     func testUserIsRejectedInSingaporeForJumioButWantsToTryAgain() {
@@ -137,7 +153,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testShowCameraProblemBeforeJumioWhenSelectingScanICInSingaporeIfThereIsACameraProblem() {
@@ -150,7 +166,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap()
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .cameraProblem)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .cameraProblem)
     }
     
     func testShowCameraProblemAfterVerifyIdentityOnboardingInNorwayIfThereIsACameraProblem() {
@@ -163,7 +179,7 @@ class EdgeCasesInStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: nil, myInfo: nil, nricFin: nil, addressPhone: nil)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .cameraProblem)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("NO"), targetCountry: Country("NO")), .cameraProblem)
     }
     
     func testExistingUserLogsIn() {

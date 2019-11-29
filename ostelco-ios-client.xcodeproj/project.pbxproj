@@ -182,6 +182,8 @@
 		9B609A332303ED2900169599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B609A322303ED2900169599 /* Colors.xcassets */; };
 		9B609A342303F08E00169599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B609A322303ED2900169599 /* Colors.xcassets */; };
 		9B611A47227C8EA700194364 /* MyInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224D91F225FADFC00AE10FD /* MyInfoDetails.swift */; };
+		9B62417B238FE95F0011AE85 /* CautionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62417A238FE95F0011AE85 /* CautionViewController.swift */; };
+		9B62417C238FEB3F0011AE85 /* CautionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62417A238FE95F0011AE85 /* CautionViewController.swift */; };
 		9B6A927F22832F5B007F5EC9 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */; };
 		9B6A928122833242007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
 		9B6A92822283330A007F5EC9 /* STPAPIClient+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */; };
@@ -551,6 +553,7 @@
 		9B5CBF52228184F100D83D7B /* FirebaseAuthUser+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseAuthUser+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B5CBF5522818A0F00D83D7B /* MockTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTokenProvider.swift; sourceTree = "<group>"; };
 		9B609A322303ED2900169599 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		9B62417A238FE95F0011AE85 /* CautionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CautionViewController.swift; sourceTree = "<group>"; };
 		9B6A927E22832F5B007F5EC9 /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		9B6A928022833242007F5EC9 /* STPAPIClient+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPAPIClient+PromiseKit.swift"; sourceTree = "<group>"; };
 		9B6A9284228418A4007F5EC9 /* SimProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimProfileRequest.swift; sourceTree = "<group>"; };
@@ -825,6 +828,7 @@
 				9B1745682276D6D800CF321B /* ScanICStepsViewController.swift */,
 				04A63DEC231E91BF00A12CAD /* AllowCameraAccessViewController.swift */,
 				9BBC41512360DF2E004DD895 /* JumioInstructionsViewController.swift */,
+				9B62417A238FE95F0011AE85 /* CautionViewController.swift */,
 			);
 			path = EKYC;
 			sourceTree = "<group>";
@@ -1984,6 +1988,7 @@
 				04A80CD5234C969400ECEE84 /* ESimCountryView.swift in Sources */,
 				04D6C9882276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,
 				9B560A9922731E57004473E1 /* OnboardingPageViewController.swift in Sources */,
+				9B62417B238FE95F0011AE85 /* CautionViewController.swift in Sources */,
 				0412168F2226BEB100455278 /* TheLegalStuffViewController.swift in Sources */,
 				04A80CCA234B5A7300ECEE84 /* CoverageView.swift in Sources */,
 				0412168C2226BBBA00455278 /* GetStartedViewController.swift in Sources */,
@@ -2196,6 +2201,7 @@
 				04BBA8212362EA1200BFED03 /* MessageContainer.swift in Sources */,
 				0494336F22BB9FF700E5BB24 /* FreshchatManager.swift in Sources */,
 				04A80CD6234C969400ECEE84 /* ESimCountryView.swift in Sources */,
+				9B62417C238FEB3F0011AE85 /* CautionViewController.swift in Sources */,
 				04834D7F2237D53700A01500 /* UserManager.swift in Sources */,
 				04BA34A12226B8D9000359C4 /* EnableNotificationsViewController.swift in Sources */,
 				04D6C9892276F7CB00AE13DD /* String+SnakeCase.swift in Sources */,

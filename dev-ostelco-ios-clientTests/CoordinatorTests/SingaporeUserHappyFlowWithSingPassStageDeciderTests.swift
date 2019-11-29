@@ -87,7 +87,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap()
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasSelectedSingpass() {
@@ -100,7 +100,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap()
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .singpass)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .singpass)
     }
     
     func testUserHasCompletedSingpass() {
@@ -113,7 +113,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: nil, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: nil)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .verifyMyInfo(code: "xxx"))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .verifyMyInfo(code: "xxx"))
     }
     
     func testUserHasCompletedSingpassAndVerifiedTheirAddress() {
@@ -126,7 +126,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .eSimInstructions)
     }
     
     func testUserHasSeenTheESimInstructions() {
@@ -139,7 +139,7 @@ class SingaporeUserHappyFlowWithSingPassStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .APPROVED, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .awesome)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .awesome)
     }
     
     func testUserHasInstalledESIMThenColdStart() {

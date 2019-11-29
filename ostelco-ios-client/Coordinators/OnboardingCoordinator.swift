@@ -536,17 +536,25 @@ class RegionOnboardingCoordinator {
             
             UserManager.shared.customer = context.customer
             
-            let region = context.regions.map {
+            let regionFragment = context.regions.map {
                 $0.fragments.regionDetailsFragment
             }.first(where: {
                 $0.region.id == self.region.region.id
             })!
             
+            let region = RegionResponse(gqlData: regionFragment)
             let stage: StageDecider.RegionStage
-            if let problem = self.checkLocation(country: Country(region.region.id)) {
+            let onboardingCountry = Country(region.region.id)
+            
+             if let problem = self.checkLocation(country: onboardingCountry) {
                 stage = .locationProblem(problem)
             } else {
-                stage = self.stageDecider.stageForRegion(region: RegionResponse(gqlData: region), localContext: self.localContext)
+                stage = self.stageDecider.stageForRegion(
+                    region: region,
+                    localContext: self.localContext,
+                    currentCountry: LocationController.shared.currentCountry,
+                    targetCountry: onboardingCountry
+                )
             }
             
             self.afterDismissing {
@@ -576,6 +584,9 @@ class RegionOnboardingCoordinator {
         assert(Thread.isMainThread)
         
         switch stage {
+        case .caution(let current, let target):
+            let controller = CautionViewController.fromStoryboard(delegate: self, current: current, target: target)
+            navigationController.setViewControllers([controller], animated: true)
         case .selectIdentityVerificationMethod(let options):
             let selectEKYCMethod = SelectIdentityVerificationMethodViewController.fromStoryboard()
             selectEKYCMethod.delegate = self
@@ -692,6 +703,17 @@ class RegionOnboardingCoordinator {
             self.localContext.hasCameraProblem = !hasCameraAccess
             completionHandler()
         }
+    }
+}
+
+extension RegionOnboardingCoordinator: CautionDelegate {
+    func userChoseContinue() {
+        localContext.hasSeenCaution = true
+        advance()
+    }
+    
+    func userChoseCancel() {
+        delegate?.onboardingCancelled()
     }
 }
 

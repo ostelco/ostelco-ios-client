@@ -39,6 +39,7 @@ public class RegionOnboardingContext {
     public var hasSeenJumioInstructions: Bool
     public var serverIsUnreachable: Bool
     public var simProfile: SimProfile?
+    public var hasSeenCaution: Bool
     
     private var _myInfoCode: String?
     public var myInfoCode: String? {
@@ -52,7 +53,7 @@ public class RegionOnboardingContext {
         }
     }
     
-    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false) {
+    public init(hasSeenESIMInstructions: Bool = false, selectedVerificationOption: IdentityVerificationOption? = nil, hasCameraProblem: Bool = false, hasCompletedJumio: Bool = false, hasSeenJumioInstructions: Bool = false, serverIsUnreachable: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false, hasSeenCaution: Bool = false) {
         self.hasSeenESIMInstructions = hasSeenESIMInstructions
         self.hasCameraProblem = hasCameraProblem
         self.selectedVerificationOption = selectedVerificationOption
@@ -60,8 +61,8 @@ public class RegionOnboardingContext {
         self.hasSeenJumioInstructions = hasSeenJumioInstructions
         self.serverIsUnreachable = serverIsUnreachable
         self.hasSeenAwesome = hasSeenAwesome
+        self.hasSeenCaution = hasSeenCaution
         self.myInfoCode = myInfoCode
-        
     }
 }
 
@@ -84,6 +85,7 @@ public struct StageDecider {
     }
     
     public enum RegionStage: Equatable {
+        case caution(current: Country?, target: Country)
         case selectIdentityVerificationMethod([IdentityVerificationOption])
         case singpass
         case nric
@@ -168,7 +170,8 @@ public struct StageDecider {
         return stages[0]
     }
     
-    public func stageForRegion(region: RegionResponse, localContext: RegionOnboardingContext) -> RegionStage {
+    // swiftlint:disable:next cyclomatic_complexity
+    public func stageForRegion(region: RegionResponse, localContext: RegionOnboardingContext, currentCountry: Country?, targetCountry: Country) -> RegionStage {
         // Late Stages
         if region.status == .APPROVED {
             return eSIMStage(region, localContext)
@@ -180,6 +183,10 @@ public struct StageDecider {
             if let index = midStages.firstIndex(of: stage) {
                 midStages.remove(at: index)
             }
+        }
+        
+        if currentCountry != targetCountry && !localContext.hasSeenCaution {
+            midStages.append(.caution(current: currentCountry, target: targetCountry))
         }
 
         let jumioSteps: [RegionStage] = [.cameraProblem, .jumioInstructions, .jumio, .address, .pendingVerification]

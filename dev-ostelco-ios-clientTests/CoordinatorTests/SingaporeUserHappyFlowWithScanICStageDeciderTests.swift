@@ -23,7 +23,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .PENDING, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .jumioInstructions)
     }
 
     func testUserHasCompletedNRICButSelectedScanIC() {
@@ -36,7 +36,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .jumioInstructions)
     }
     
     func testUserHasCompletedNRICThenColdStartThenSelectedScanIC() {
@@ -49,7 +49,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .jumioInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .jumioInstructions)
     }
 
     func testUserHasCompletedJumio() {
@@ -62,7 +62,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .address)
     }
     
     func testUserHasCompletedNRICAndJumioThenColdStartThenSelectedScanIC() {
@@ -75,7 +75,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .PENDING)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .address)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .address)
     }
 
     func testUserHasCompletedAddress() {
@@ -88,7 +88,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .pendingVerification)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .pendingVerification)
     }
     
     func testUserHasCompletedEverythingExceptJumioWhichIsPendingThenColdStart() {
@@ -101,7 +101,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .PENDING, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
     
     func testUserHasCompletedEverythingExceptJumioWhichIsRejectedThenColdStart() {
@@ -114,7 +114,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .REJECTED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .selectIdentityVerificationMethod([.scanIC, .singpass]))
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .selectIdentityVerificationMethod([.scanIC, .singpass]))
     }
 
     func testUserHasCompletedScanIC() {
@@ -127,7 +127,7 @@ class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
             kycStatusMap: KYCStatusMap(jumio: .APPROVED, myInfo: .PENDING, nricFin: .APPROVED, addressPhone: .APPROVED)
         )
         
-        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext), .eSimInstructions)
+        XCTAssertEqual(decider.stageForRegion(region: region, localContext: localContext, currentCountry: Country("SG"), targetCountry: Country("SG")), .eSimInstructions)
     }
     
     // Everything after this point is the exact same as in SingaporeUserHappyFlowWithSingPassStageDeciderTests
