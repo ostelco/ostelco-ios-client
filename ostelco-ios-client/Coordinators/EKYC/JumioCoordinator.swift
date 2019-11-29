@@ -33,16 +33,18 @@ class JumioCoordinator: NSObject {
     private let regionID: String
     private var netverifyController: NetverifyViewController?
     private var primeAPI: PrimeAPI
+    private let targetCountry: Country
     
     weak var delegate: JumioCoordinatorDelegate?
     
-    init(regionID: String, primeAPI: PrimeAPI) throws {
+    init(regionID: String, primeAPI: PrimeAPI, targetCountry: Country) throws {
         guard !JumioDeviceInfo.isJailbrokenDevice() else {
             // Prevent SDK from being initialized on Jailbroken devices
             throw Error.deviceIsJailbroken
         }
         self.regionID = regionID
         self.primeAPI = primeAPI
+        self.targetCountry = targetCountry
     }
     
     deinit {
@@ -86,7 +88,7 @@ class JumioCoordinator: NSObject {
         config.delegate = self
         
         // This must be a 3-letter code following ISO-3166
-        config.preselectedCountry = Country(regionID).threeLetterCountryCode
+        config.preselectedCountry = targetCountry.threeLetterCountryCode
         
         configureJumioAppearance()
         

@@ -64,8 +64,7 @@ struct CoverageView: View {
             return AnyView(
                 NavigationLink(destination: RegionGroupView(regionGroup: regionGroup, countrySelected: { country in
                     let regionDetails = self.store.getRegionFromCountry(country)
-                     OstelcoAnalytics.logEvent(.getNewRegionFlowStarted(regionCode: regionDetails.region.id, countryCode: country.countryCode))
-                    self.store.startOnboardingForRegion(regionDetails)
+                    self.store.startOnboardingForRegion(regionDetails, targetCountry: country)
             }).environmentObject(self.store)) {
                 RegionGroupCardView(label: regionGroup.name, description: regionGroup.description, backgroundColor: regionGroup.backgroundColor.toColor)
                }.cornerRadius(28)

@@ -31,8 +31,7 @@ struct RegionListByLocation: View {
         return AnyView(
             OstelcoContainer {
                 ESimCountryView(image: country.image, country: regionDetails.region.name, heading: "BASED ON LOCATION", action: {
-                     OstelcoAnalytics.logEvent(.getNewRegionFlowStarted(regionCode: regionDetails.region.id, countryCode: country.countryCode))
-                    self.store.startOnboardingForRegion(regionDetails)
+                    self.store.startOnboardingForRegion(regionDetails, targetCountry: country)
                 })
             }
         )

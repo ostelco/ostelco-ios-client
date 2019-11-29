@@ -86,8 +86,9 @@ final class CoverageStore: ObservableObject {
         return Array(Set(allowedCountries()).intersection(countries.map({ $0.countryCode }))).sorted()
     }
     
-    func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment) {
-        controller.startOnboardingForRegion(region)
+    func startOnboardingForRegion(_ region: PrimeGQL.RegionDetailsFragment, targetCountry: Country) {
+        OstelcoAnalytics.logEvent(.getNewRegionFlowStarted(regionCode: region.region.id, countryCode: targetCountry.countryCode))
+        controller.startOnboardingForRegion(region, targetCountry: targetCountry)
     }
 
 }

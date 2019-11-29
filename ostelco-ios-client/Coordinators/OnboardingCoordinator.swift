@@ -512,14 +512,16 @@ class RegionOnboardingCoordinator {
     let primeAPI: PrimeAPI
     let stageDecider = StageDecider()
     let esimManager = ESimManager()
+    let targetCountry: Country
     
     public weak var delegate: RegionOnboardingDelegate?
     
     var singpassCoordinator: SingPassCoordinator?
     var jumioCoordinator: JumioCoordinator?
     
-    init(region: PrimeGQL.RegionDetailsFragment, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
+    init(region: PrimeGQL.RegionDetailsFragment, targetCountry: Country, localContext: RegionOnboardingContext, navigationController: UINavigationController, primeAPI: PrimeAPI) {
         self.region = region
+        self.targetCountry = targetCountry
         self.localContext = localContext
         self.navigationController = navigationController
         self.primeAPI = primeAPI
@@ -544,16 +546,16 @@ class RegionOnboardingCoordinator {
             
             let region = RegionResponse(gqlData: regionFragment)
             let stage: StageDecider.RegionStage
-            let onboardingCountry = Country(region.region.id)
+            let targetCountry = self.targetCountry
             
-             if let problem = self.checkLocation(country: onboardingCountry) {
+            if let problem = self.checkLocation(country: targetCountry) {
                 stage = .locationProblem(problem)
             } else {
                 stage = self.stageDecider.stageForRegion(
                     region: region,
                     localContext: self.localContext,
                     currentCountry: LocationController.shared.currentCountry,
-                    targetCountry: onboardingCountry
+                    targetCountry: targetCountry
                 )
             }
             
@@ -619,7 +621,7 @@ class RegionOnboardingCoordinator {
             instructions.delegate = self
             navigationController.pushViewController(instructions, animated: true)
         case .jumio:
-            if let jumio = try? JumioCoordinator(regionID: region.region.id, primeAPI: primeAPI) {
+            if let jumio = try? JumioCoordinator(regionID: region.region.id, primeAPI: primeAPI, targetCountry: targetCountry) {
                 self.jumioCoordinator = jumio
                 
                 jumio.delegate = self

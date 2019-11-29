@@ -8,13 +8,6 @@
 
 // Inspired from: https://github.com/juanpablofernandez/CountryList
 public class Country: Equatable {
-    
-    private static let defaultCodes =  ["NO", "SG", "US"]
-    
-    public static var defaultCountries: [Country] {
-        return self.defaultCodes.map { Country($0) }
-    }
-    
     public let countryCode: String
     
     public var name: String? {
@@ -37,6 +30,8 @@ public class Country: Equatable {
             return "NOR"
         case "us":
             return "USA"
+        case "my":
+            return "MYS"
         default:
             // TODO: Get a full mapping of 2 digit to 3 digit codes for Jumio
             // https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
