@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ostelco_core
 
 struct PurchaseRecord {
     let name: String

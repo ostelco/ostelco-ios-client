@@ -7,8 +7,6 @@
 //
 
 @testable import Oya_Development_app
-import ostelco_core
-import OstelcoStyles
 import XCTest
 
 class LinkableTextTests: XCTestCase {

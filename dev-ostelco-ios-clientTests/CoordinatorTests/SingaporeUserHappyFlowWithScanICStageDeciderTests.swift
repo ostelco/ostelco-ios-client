@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ostelco_core
+@testable import Oya_Development_app
 
 class SingaporeUserHappyFlowWithScanICStageDeciderTests: XCTestCase {
     

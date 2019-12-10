@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ostelco_core
 import FirebaseAnalytics
 import Crashlytics
 import FacebookCore

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OstelcoStyles
 
 // ref: https://github.com/vincechan/SwiftLoadingIndicator/blob/master/SwiftLoadingIndicator/LoadingIndicatorView.swift
 

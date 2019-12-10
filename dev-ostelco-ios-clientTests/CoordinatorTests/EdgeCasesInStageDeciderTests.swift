@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import ostelco_core
+@testable import Oya_Development_app
 
 class EdgeCasesInStageDeciderTests: XCTestCase {
     // Existing Singapore user who logs in to a new device but has completed the onboarding on a different device.

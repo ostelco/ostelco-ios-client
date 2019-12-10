@@ -7,7 +7,6 @@
 //
 
 @testable import Oya_Development_app
-import ostelco_core
 import XCTest
 
 class MyInfoTests: XCTestCase {
