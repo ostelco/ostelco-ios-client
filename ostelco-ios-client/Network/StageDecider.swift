@@ -11,20 +11,16 @@ import Foundation
 public class OnboardingContext {
     public var hasFirebaseToken: Bool
     public var hasAgreedToTerms: Bool
-    public var hasSeenRegionOnboarding: Bool
     public var locationProblem: LocationProblem?
     public var hasSeenLocationPermissions: Bool
     public var hasSeenNotificationPermissions: Bool
-    public var hasSeenAwesome: Bool
     public var serverIsUnreachable: Bool
     
-    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, myInfoCode: String? = nil, hasSeenAwesome: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenRegionOnboarding: Bool = false, hasSeenLocationPermissions: Bool = false, hasSeenNotificationPermissions: Bool = false) {
+    public init(hasFirebaseToken: Bool = false, hasAgreedToTerms: Bool = false, serverIsUnreachable: Bool = false, locationProblem: LocationProblem? = nil, hasSeenLocationPermissions: Bool = false, hasSeenNotificationPermissions: Bool = false) {
         self.hasFirebaseToken = hasFirebaseToken
         self.hasAgreedToTerms = hasAgreedToTerms
-        self.hasSeenAwesome = hasSeenAwesome
         self.serverIsUnreachable = serverIsUnreachable
         self.locationProblem = locationProblem
-        self.hasSeenRegionOnboarding = hasSeenRegionOnboarding
         self.hasSeenLocationPermissions = hasSeenLocationPermissions
         self.hasSeenNotificationPermissions = hasSeenNotificationPermissions
     }
