@@ -8,7 +8,6 @@
 
 import Crashlytics
 import Foundation
-import ostelco_core
 
 /// Wrapper for logging errors throughout the application
 struct ApplicationErrors {

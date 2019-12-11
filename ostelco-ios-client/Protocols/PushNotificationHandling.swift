@@ -6,7 +6,6 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import ostelco_core
 import UIKit
 
 /// A protocol to allow any class to listen to push notifications

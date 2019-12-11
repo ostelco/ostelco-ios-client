@@ -7,8 +7,8 @@
 //
 
 import OHHTTPStubs
-import ostelco_core
 import XCTest
+@testable import Oya_Development_app
 
 extension XCTestCase {
     

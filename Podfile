@@ -12,13 +12,9 @@ def firebase_version
   '~>6.10.0'
 end
 
-# Framework target
-target 'ostelco-core' do
+abstract_target 'ostelco-ios' do
   pod 'PromiseKit', '~> 6.8.4' # Promises for Swift
   pod "Apollo"
-end
-
-abstract_target 'ostelco-ios' do
   pod 'Crashlytics', '~>3.13.1'
   pod 'Fabric', '~>1.10.0'
   pod 'FacebookCore'

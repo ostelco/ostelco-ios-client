@@ -8,8 +8,6 @@
 
 import Firebase
 import FirebaseDynamicLinks
-import ostelco_core
-import OstelcoStyles
 import PromiseKit
 import Stripe
 import UIKit
@@ -58,14 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
     
-        STPPaymentConfiguration.shared().publishableKey = Environment().configuration(.StripePublishableKey)
+        STPPaymentConfiguration.shared().publishableKey = EnvironmentPlist().configuration(.StripePublishableKey)
         #if STRIPE_PAYMENT
             debugPrint("Stripe Payment enabled")
         #else
-            STPPaymentConfiguration.shared().appleMerchantIdentifier = Environment().configuration(.AppleMerchantId)
+            STPPaymentConfiguration.shared().appleMerchantIdentifier = EnvironmentPlist().configuration(.AppleMerchantId)
         #endif
                 
-        let freschatConfig: FreshchatConfig = FreshchatConfig(appID: Environment().configuration(.FreshchatAppID), andAppKey: Environment().configuration(.FreshchatAppKey))
+        let freschatConfig: FreshchatConfig = FreshchatConfig(appID: EnvironmentPlist().configuration(.FreshchatAppID), andAppKey: EnvironmentPlist().configuration(.FreshchatAppKey))
         freschatConfig.domain = "msdk.eu.freshchat.com"
         // freschatConfig.gallerySelectionEnabled = true; // set NO to disable picture selection for messaging via gallery
         // freschatConfig.cameraCaptureEnabled = true; // set NO to disable picture selection for messaging via camera

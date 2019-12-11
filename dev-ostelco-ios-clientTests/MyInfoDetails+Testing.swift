@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ostelco_core
+@testable import Oya_Development_app
 
 extension MyInfoDetails {
     

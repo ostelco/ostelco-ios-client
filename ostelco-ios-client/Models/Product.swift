@@ -5,7 +5,7 @@
 //  Created by mac on 3/15/19.
 //  Copyright © 2019 mac. All rights reserved.
 //
-import ostelco_core
+
 import Stripe
 
 public class Product {
@@ -74,7 +74,7 @@ extension Product {
     }
     
     var stripePaymentRequest: PKPaymentRequest {
-        let merchantIdentifier = Environment().configuration(.AppleMerchantId)
+        let merchantIdentifier = EnvironmentPlist().configuration(.AppleMerchantId)
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: country, currency: currency)
          // canMakePayments()
          

@@ -6,7 +6,7 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import ostelco_core
+import Oya_Development_app
 
 extension LocationProblem: CaseIterable {
     

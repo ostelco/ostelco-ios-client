@@ -8,8 +8,8 @@
 
 import Foundation
 import OHHTTPStubs
-@testable import ostelco_core
 import XCTest
+@testable import Oya_Development_app
 
 class BasicNetworkTests: XCTestCase {
     

@@ -6,7 +6,6 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-@testable import ostelco_core
 @testable import Oya_Development_app
 import XCTest
 import PromiseKit

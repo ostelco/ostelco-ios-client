@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import ostelco_core
+@testable import Oya_Development_app
 
 extension RegionResponse {
     

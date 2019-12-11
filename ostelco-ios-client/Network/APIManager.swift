@@ -6,7 +6,6 @@
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-import ostelco_core
 import PromiseKit
 
 class APIManager {
@@ -14,7 +13,7 @@ class APIManager {
     static let shared = APIManager()
     
     lazy var primeAPI: PrimeAPI = {
-        let baseURLString = Environment().configuration(PlistKey.ServerURL)
+        let baseURLString = EnvironmentPlist().configuration(PlistKey.ServerURL)
         return PrimeAPI(
             baseURLString: baseURLString,
             tokenProvider: self.tokenProvider
@@ -22,7 +21,7 @@ class APIManager {
     }()
     
     var baseURLString: String {
-        return Environment().configuration(PlistKey.ServerURL)
+        return EnvironmentPlist().configuration(PlistKey.ServerURL)
     }
     
     var tokenProvider: TokenProvider = UserManager.shared

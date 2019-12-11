@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import ostelco_core
 import XCTest
+@testable import Oya_Development_app
 
 class RequestGeneratorTests: XCTestCase {
     

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ostelco_core
 import PromiseKit
 import Stripe
 
@@ -112,7 +111,7 @@ extension ApplePayDelegate where Self: PKPaymentAuthorizationViewControllerDeleg
         authorizedApplePay = false
         purchasingProduct = product
         applePayError = nil
-        let merchantIdentifier = Environment().configuration(.AppleMerchantId)
+        let merchantIdentifier = EnvironmentPlist().configuration(.AppleMerchantId)
         // TODO: Consult with Payment Service Provider (Stripe in our case) to determine which country code value to use
         // https://developer.apple.com/documentation/passkit/pkpaymentrequest/1619246-countrycode
         let paymentRequest = Stripe.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: product.country, currency: product.currency)
