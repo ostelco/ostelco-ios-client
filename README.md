@@ -1,6 +1,14 @@
 # Getting Started 
 Make sure you have the latest version of the Xcode command line tools installed, which includes Ruby.
 
+# File Structure
+
+Files in this project are grouped by their kind. For example extentions can be found in the `Extensions` folder, protocols that apply to the whole project can be found in `Protocols`. The folder `Onboarding` includes all the files necessary for the onboarding portion of the app. As of today, this is the only part of the app which is not using SwiftUI and is entirely self-contained. The files such as `BalanceStore.swift` which are not in a folder are either targets for refactoring or removal.
+
+If you are mostly a backend engineer, you're likely to only need to mess with files in `Network`. In this folder, you will find the graphql files used to generate queries the app uses as well as `schema.json` which the app uses to determine what is available from the server's GraphQL API. If you change any of these files, the build process will automatically update the associated auto-generated Swift files based on the current state of `schema.json` and the graphql files.
+
+# Tooling
+
 ## Bundler 
 
 [Bundler](https://bundler.io/docs.html) is a Ruby dependency manager we use to deal with versioning of several major iOS tools that are written in Ruby.
@@ -44,17 +52,6 @@ Here are a few things we are handling with Fastlane:
 ```
 fastlane ios tfbeta # Uses testflight build numbers.
 ```
-
-### Deploy to Testflight (dev) from CI [Not tested]
-
-To deploy using CI, push a tag to git matching pattern `beta-tf*`.
-e.g.
-
-```
-git tag -a beta-tf.v1.14 -m "Beta version 1 build 14"
-git push origin  beta-tf.v1.14
-```
-
 
 ## Private Keys
 
