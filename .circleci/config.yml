@@ -74,22 +74,6 @@ jobs:
 
 workflows:
   version: 2
-  build-upload-testflight:
-    jobs:
-      - beta:
-          filters:
-            tags:
-              only: /^beta-tf.*/
-            branches:
-              ignore: /.*/
   build-test-adhoc:
     jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only:
-                - /feature/.*/
-                - /release/.*/
-                - /fix/.*/
-                - /refactor/.*/
-                - /bugfix/.*/
+      - build-and-test
